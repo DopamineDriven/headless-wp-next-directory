@@ -1,0 +1,36 @@
+{
+	"name": "headless-wp-next-directory",
+	"description": "Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel",
+	"version": "1.0.0",
+	"repository": "https://github.com/DopamineDriven/headless-wp-next-directory.git",
+	"author": "Andrew Ross <andrew.simpson.ross@gmail.com>, James Lovejoy <james.lovejoy2@gmail.com>",
+	"license": "MIT",
+	"private": true,
+	"scripts": {
+		"dev": "next",
+		"build": "next build",
+		"start": "next start"
+	},
+	"dependencies": {
+		"classnames": "^2.2.6",
+		"date-fns": "^2.15.0",
+		"gray-matter": "^4.0.2",
+		"next": "^9.4.4",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"remark": "^12.0.1",
+		"remark-html": "^12.0.0",
+		"vercel": "^19.2.0"
+	},
+	"devDependencies": {
+		"@types/node": "^14.0.24",
+		"@types/react": "^16.9.43",
+		"@types/react-dom": "^16.9.8",
+		"postcss-flexbugs-fixes": "^4.2.1",
+		"postcss-preset-env": "^6.7.0",
+		"prettier": "^2.0.5",
+		"stylelint-config-recommended": "^3.0.0",
+		"tailwindcss": "^1.5.2",
+		"typescript": "^3.9.7"
+	}
+}
