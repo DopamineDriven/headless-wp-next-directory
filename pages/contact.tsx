@@ -1,12 +1,12 @@
 import Header from '../components/fixed-header';
 
-const Index = () => {
+const Contact = () => {
 	return (
 		<>
 			<Header />
-			<div>Landing Page</div>
+			<div>Contact Page</div>
 		</>
 	);
 };
 
-export default Index;
+export default Contact;

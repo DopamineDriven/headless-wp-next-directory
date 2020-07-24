@@ -1,12 +1,12 @@
 import Header from '../components/fixed-header';
 
-const Index = () => {
+const About = () => {
 	return (
 		<>
 			<Header />
-			<div>Landing Page</div>
+			<div>About Page</div>
 		</>
 	);
 };
 
-export default Index;
+export default About;
