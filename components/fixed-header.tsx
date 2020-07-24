@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Header = () => {
 	return (
-		<nav className='flex items-center justify-between flex-wrap bg-cyan-500 p-6'>
+		<nav className='flex items-center justify-between flex-wrap bg-cimaRed p-6'>
 			{/* <div className='flex items-center flex-shrink-0 text-white mr-6'>
 				<svg
 					className='fill-current h-8 w-8 mr-2'
@@ -30,14 +30,14 @@ const Header = () => {
 			<div className='w-full block flex-grow lg:flex lg:items-center lg:w-auto'>
 				<div className='text-sm lg:flex-grow'>
 					<Link href='/'>
-						<a className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4'>
+						<a className='block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4'>
 							Directory
 						</a>
 					</Link>
 					<Link href='/about'>
 						<a
 							href='#responsive-header'
-							className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4'
+							className='block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4'
 						>
 							About
 						</a>
@@ -45,7 +45,7 @@ const Header = () => {
 					<Link href='/contact'>
 						<a
 							href='#responsive-header'
-							className='block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white'
+							className='block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white'
 						>
 							Contact
 						</a>
