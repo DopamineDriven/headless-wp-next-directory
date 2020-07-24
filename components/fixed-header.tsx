@@ -66,5 +66,16 @@ export default Header;
 				>
 					Download
 				</a>
-			</div>
+            </div>
+            
+
+            const Header = () => {
+	return (
+		<h2 className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8'>
+			<Link href='/'>
+				<a className='hover:underline'>This Blog Fucks.</a>
+			</Link>
+		</h2>
+	);
+};
 */

@@ -4,7 +4,7 @@ const Index = () => {
 	return (
 		<>
 			<Header />
-			<div>Landing Page</div>
+			<div className='pt-24 pl-32 '>Landing Page</div>
 		</>
 	);
 };
