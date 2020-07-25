@@ -21,3 +21,7 @@ $ npx @svgr/cli --icon Logo.svg
 - target the .svg file
 - copy paste the output of the command line into a .tsx (or .jsx) file
 - voila 
+
+## next-google-fonts npm
+- https://github.com/joe-bell/next-google-fonts
+- https://johnny.am/blog/n2-adding-google-fonts-to-nextjs-project
