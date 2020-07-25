@@ -24,14 +24,14 @@ const Header = ({ props }: Props) => {
 			<div className='w-full block flex-grow lg:flex lg:items-center lg:w-auto'>
 				<div className='text-sm lg:flex-grow'>
 					<Link href='/'>
-						<a className='block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4'>
+						<a className='block mt-4 lg:inline-block lg:mt-0 text-white hover:text-blizzardBlue mr-4'>
 							Directory
 						</a>
 					</Link>
 					<Link href='/about'>
 						<a
 							href='#responsive-header'
-							className='block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4'
+							className='block mt-4 lg:inline-block lg:mt-0 text-white hover:text-blizzardBlue  mr-4'
 						>
 							About
 						</a>
@@ -39,7 +39,7 @@ const Header = ({ props }: Props) => {
 					<Link href='/contact'>
 						<a
 							href='#responsive-header'
-							className='block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white'
+							className='block mt-4 lg:inline-block lg:mt-0 text-white hover:text-blizzardBlue'
 						>
 							Contact
 						</a>
