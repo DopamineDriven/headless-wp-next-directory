@@ -1,17 +1,33 @@
+import Head from 'next/head';
+import Link from 'next/link';
 import Header from '../components/fixed-header';
+import Layout from '../components/layout';
+import Container from '../components/container';
+import { CLIENT_NAME } from '../lib/constants';
 
 interface Props {
 	props: string | number;
+	preview?: boolean;
 }
 
-const Contact = ({ props }: Props) => {
+const Contact = ({ preview, props }: Props) => {
 	return (
 		<>
 			<Header props={props} />
-			<div className='p-4 shadow rounded bg-white'>
-				<h1 className='text-purple-500 leading-normal'>Next.js</h1>
-				<p className='text-gray-500'>with Tailwind CSS</p>
-			</div>
+			<Layout preview={preview}>
+				<Head>
+					<title>{`${CLIENT_NAME} contact page`}</title>
+				</Head>
+				<Container>
+					<h2 className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8'>
+						<Link href='/'>
+							<a className='hover:underline text-cimaRed px-8'>
+								Chicago Independent Media Alliance
+							</a>
+						</Link>
+					</h2>
+				</Container>
+			</Layout>
 		</>
 	);
 };
