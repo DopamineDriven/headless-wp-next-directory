@@ -25,3 +25,24 @@ $ npx @svgr/cli --icon Logo.svg
 ## next-google-fonts npm
 - https://github.com/joe-bell/next-google-fonts
 - https://johnny.am/blog/n2-adding-google-fonts-to-nextjs-project
+
+```css
+@font-face {
+	font-family: 'Barlow Condensed';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/barlow-condensed-v4-latin-regular.eot'); /* IE9 Compat Modes */
+	src: local('Barlow Condensed Regular'), local('BarlowCondensed-Regular'),
+		url('../fonts/barlow-condensed-v4-latin-regular.eot?#iefix')
+			format('embedded-opentype'),
+		/* IE6-IE8 */ url('../fonts/barlow-condensed-v4-latin-regular.woff2')
+			format('woff2'),
+		/* Super Modern Browsers */
+			url('../fonts/barlow-condensed-v4-latin-regular.woff') format('woff'),
+		/* Modern Browsers */ url('../fonts/barlow-condensed-v4-latin-regular.ttf')
+			format('truetype'),
+		/* Safari, Android, iOS */
+			url('../fonts/barlow-condensed-v4-latin-regular.svg#BarlowCondensed')
+			format('svg'); /* Legacy iOS */
+}
+```
