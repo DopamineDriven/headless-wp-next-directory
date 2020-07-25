@@ -13,3 +13,11 @@ Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
         - Regular 400 (regular text)
         - Medium 500 to Semi-bold 600 (titles)
 - Transparent PNG ripped from website
+
+## generate JSX from .svg files via the command line
+```git
+$ npx @svgr/cli --icon Logo.svg
+```
+- target the .svg file
+- copy paste the output of the command line into a .tsx (or .jsx) file
+- voila 
