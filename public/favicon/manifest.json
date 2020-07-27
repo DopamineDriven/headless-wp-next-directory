@@ -1,7 +1,7 @@
 {
-	"name": "headless-wp-next-directory",
+	"name": "chicago independent media alliance",
 	"short_name": "CIMA",
-	"start_url": "https://headless-wp-next-directory.dopaminedriven.vercel.app/",
+	"start_url": "https://headless-wp-next-directory.vercel.app/",
 	"icons": [
 		{
 			"src": "/favicon/android-icon-36x36.png",
@@ -40,7 +40,7 @@
 			"density": "4.0"
 		}
 	],
-	"theme_color": "#000000",
-	"background_color": "#000000",
+	"theme_color": "#B8242C",
+	"background_color": "#FFFFFF",
 	"display": "standalone"
 }
