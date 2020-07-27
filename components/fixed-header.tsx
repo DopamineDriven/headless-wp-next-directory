@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import SvgLogo from './svg-logo-only';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome/index';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
 	props: string | number;
@@ -16,9 +18,7 @@ const Header = ({ props }: Props) => {
 			</div>
 			<div className='block lg:hidden'>
 				<button className='flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white'>
-					<Link href='/'>
-						<SvgLogo props={props} />
-					</Link>
+					<FontAwesomeIcon icon={faBars} />
 				</button>
 			</div>
 			<div className='w-full block flex-grow lg:flex lg:items-center lg:w-auto'>
