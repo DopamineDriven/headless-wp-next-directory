@@ -10,8 +10,8 @@ function SvgLogo({ props }: Props) {
 			y={0}
 			viewBox='0 0 612 792'
 			xmlSpace='preserve'
-			width='4em'
-			height='4em'
+			width='5em'
+			height='5em'
 			{...props}
 		>
 			<style>
