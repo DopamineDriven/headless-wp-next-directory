@@ -60,3 +60,9 @@ $ npx @svgr/cli --icon Logo.svg
 ## Useful Supplemental Resources
 - https://sergiodxa.com/articles/next-tailwind/
 - https://tailwindcss.com/docs/configuration/
+
+## Card ideas
+- https://tailwindtemplates.io/cards/#339
+- https://tailwindtemplates.io/cards/#335
+- https://tailwindtemplates.io/search/#230
+- https://tailwindtemplates.io/search/#331
