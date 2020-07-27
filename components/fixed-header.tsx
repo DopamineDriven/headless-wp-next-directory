@@ -49,9 +49,11 @@ const Header = ({ props }: Props) => {
 						className='text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
 						type='button'
 						onClick={() => setNavOpen(!navOpen)}
-						name='responsive'
+						name='open-nav-button'
 					>
-						<FontAwesomeIcon icon={faBars} />
+						<a aria-label='open-nav'>
+							<FontAwesomeIcon icon={faBars} />
+						</a>
 					</button>
 				</div>
 				<div

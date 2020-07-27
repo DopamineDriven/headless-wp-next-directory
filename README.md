@@ -56,3 +56,7 @@ $ npx @svgr/cli --icon Logo.svg
 			format('svg'); /* Legacy iOS */
 }
 ```
+
+## Useful Supplemental Resources
+- https://sergiodxa.com/articles/next-tailwind/
+- https://tailwindcss.com/docs/configuration/
