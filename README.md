@@ -1,6 +1,11 @@
 # headless-wp-next-directory
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## Using @fortawesome/react-fontawesome with nextjs
+- https://github.com/UnlyEd/next-right-now/tree/master/src/pages
+- https://github.com/UnlyEd/next-right-now
+- https://github.com/FortAwesome/react-fontawesome#nextjs
+- https://stackoverflow.com/questions/44752189/how-to-add-font-awesome-to-next-js-project
 
 ## CIMA
 - https://savechicagomedia.org/
@@ -23,6 +28,7 @@ $ npx @svgr/cli --icon Logo.svg
 - voila 
 
 ## next-google-fonts npm
+- 
 - https://github.com/joe-bell/next-google-fonts
 - https://johnny.am/blog/n2-adding-google-fonts-to-nextjs-project
 
