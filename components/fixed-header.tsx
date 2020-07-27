@@ -41,20 +41,14 @@ const Header = ({ props }: Props) => {
 						</li>
 						<li className='nav-item'>
 							<Link href='/about'>
-								<a
-									href='#responsive-header'
-									className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75'
-								>
+								<a className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75'>
 									About
 								</a>
 							</Link>
 						</li>
 						<li class-name='nav-item'>
 							<Link href='/contact'>
-								<a
-									href='#responsive-header'
-									className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75'
-								>
+								<a className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75'>
 									Contact
 								</a>
 							</Link>
