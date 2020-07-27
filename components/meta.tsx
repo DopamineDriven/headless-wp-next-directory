@@ -108,6 +108,7 @@ const MetaData = () => {
 				name='keywords'
 				content='nextjs, typescript, react, wordpress, tailwindcss, vercel'
 			/>
+			<meta httpEquiv='content-language' content='en-us' />
 		</Head>
 	);
 };
