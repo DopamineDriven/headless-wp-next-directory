@@ -20,18 +20,6 @@
 
 /* Write custom utilities here */
 
-/* .nav-item {
-  @apply display list;
-  display: list-item;
-  text-align: match-parent;
-}
-
-.nav-item:after,:before {
-  @apply box-content;
-    box-sizing: border-box;
-    border: 0 solid #e2e8f0;
-} */
-
 .has-text-align-left {
 	@apply text-left;
 }
