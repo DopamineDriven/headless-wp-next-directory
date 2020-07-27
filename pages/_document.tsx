@@ -17,3 +17,6 @@ export default class MyDocument extends Document {
 		);
 	}
 }
+
+// https://github.com/vercel/next.js/issues/9160
+// https://gitlab.com/kachkaev/website-frontend/blob/ec20c3bfec24cde40d80194bcad5ba69b308a5ef/src/pages/_document.tsx#L31
