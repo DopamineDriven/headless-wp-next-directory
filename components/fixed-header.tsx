@@ -10,7 +10,7 @@ const Header = ({ props }: Props) => {
 		<nav className='flex items-center justify-between flex-wrap bg-cimaRed p-6'>
 			<div className='flex items-center flex-shrink-0 text-white mr-4'>
 				<Link href='/'>
-					<SvgLogo props={props} />
+					<a>{<SvgLogo props={props} />}</a>
 				</Link>
 				<span className='font-semibold text-xl tracking-tight'></span>
 			</div>
