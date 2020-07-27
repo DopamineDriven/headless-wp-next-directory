@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
 	}
 	render() {
 		return (
-			<Html lang='en'>
+			<Html lang={process.env.HTML_LANG}>
 				<Head />
 				<body>
 					<Main />
