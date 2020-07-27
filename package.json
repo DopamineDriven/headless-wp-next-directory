@@ -3,7 +3,18 @@
 	"description": "Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel",
 	"version": "1.0.0",
 	"repository": "https://github.com/DopamineDriven/headless-wp-next-directory.git",
-	"author": "Andrew Ross <andrew.simpson.ross@gmail.com>, James Lovejoy <james.lovejoy2@gmail.com>",
+	"contributors": [
+		{
+			"name": "Andrew Ross",
+			"url": "https://github.com/DopamineDriven",
+			"githubUsername": "DopamineDriven"
+		},
+		{
+			"name": "James Lovejoy",
+			"url": "https://github.com/jlovejo2",
+			"githubUsername": "jlovejo2"
+		}
+	],
 	"license": "MIT",
 	"private": true,
 	"scripts": {
@@ -12,9 +23,13 @@
 		"start": "next start"
 	},
 	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.30",
+		"@fortawesome/free-brands-svg-icons": "^5.14.0",
+		"@fortawesome/free-regular-svg-icons": "^5.14.0",
+		"@fortawesome/free-solid-svg-icons": "^5.14.0",
+		"@fortawesome/react-fontawesome": "^0.1.11",
 		"classnames": "^2.2.6",
 		"date-fns": "^2.15.0",
-		"font-awesome": "^4.7.0",
 		"gray-matter": "^4.0.2",
 		"next": "^9.4.4",
 		"react": "^16.13.1",
