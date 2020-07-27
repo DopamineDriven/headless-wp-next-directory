@@ -1,7 +1,11 @@
 # headless-wp-next-directory
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## Tailwind Starter Kits
+- https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/react/navbars
+
 ## Using @fortawesome/react-fontawesome with nextjs
+- https://github.com/FortAwesome/react-fontawesome/tree/master/examples
 - https://github.com/UnlyEd/next-right-now/tree/master/src/pages
 - https://github.com/UnlyEd/next-right-now
 - https://github.com/FortAwesome/react-fontawesome#nextjs
