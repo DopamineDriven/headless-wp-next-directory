@@ -22,7 +22,7 @@ const Header = ({ props }: Props) => {
 				</button>
 			</div>
 			<div className='w-full block flex-grow lg:flex lg:items-center lg:w-auto'>
-				<div className='text-sm lg:flex-grow'>
+				<div className='text-md lg:flex-grow'>
 					<Link href='/'>
 						<a className='block mt-4 lg:inline-block lg:mt-0 text-white font-bold hover:text-black hover:font-bold mr-4'>
 							Directory
