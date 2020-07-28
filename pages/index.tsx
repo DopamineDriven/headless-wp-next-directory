@@ -20,14 +20,14 @@ const Index = ({ preview, props }: Props) => {
 					<title>{`${CLIENT_NAME} landing page`}</title>
 				</Head>
 				<Container>
-					<h2 className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8'>
+					<SearchBox />
+					<h2 className='md:text-3xl font-bold text-center tracking-tight md:tracking-tighter leading-tight mb-8 mt-8'>
 						<Link href='/'>
 							<a className='hover:underline text-cimaRed px-8'>
 								Chicago Independent Media Alliance
 							</a>
 						</Link>
 					</h2>
-					<SearchBox />
 				</Container>
 			</Layout>
 		</>

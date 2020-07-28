@@ -9,13 +9,13 @@ type Props = {
 const Alert = ({ preview }: Props) => {
 	return (
 		<div
-			className={cn('border-b', {
+			className={cn('border-b bg-cimaRed', {
 				'bg-accent-7 border-accent-7 text-white': preview,
 				'bg-accent-1 border-accent-2': !preview
 			})}
 		>
 			<Container>
-				<div className='pb-2 text-center text-xs'>
+				<div className='pb-2 text-center text-xs text-white'>
 					{preview ? (
 						<>
 							This is page is a preview.{' '}
@@ -32,7 +32,7 @@ const Alert = ({ preview }: Props) => {
 							The source code is{' '}
 							<a
 								href={`https://github.com/DopamineDriven/${EXAMPLE_PATH}`}
-								className='underline hover:text-success duration-200 transition-colors'
+								className='underline hover:text-blizzardBlue duration-200 transition-colors'
 							>
 								available on GitHub
 							</a>
