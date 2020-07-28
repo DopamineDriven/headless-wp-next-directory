@@ -4,6 +4,7 @@ import Header from '../components/fixed-header';
 import Layout from '../components/layout';
 import Container from '../components/container';
 import { CLIENT_NAME } from '../lib/constants';
+import SearchBox from '../components/search-box';
 
 interface Props {
 	props: string | number;
@@ -26,6 +27,7 @@ const Index = ({ preview, props }: Props) => {
 							</a>
 						</Link>
 					</h2>
+					<SearchBox />
 				</Container>
 			</Layout>
 		</>
