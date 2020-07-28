@@ -84,6 +84,8 @@ $ npx @svgr/cli --icon Logo.svg
 			format('svg'); /* Legacy iOS */
 }
 ```
+## Customizable Background Patterns -- SVGs
+- http://www.heropatterns.com/
 
 ## Useful Supplemental Resources
 - https://sergiodxa.com/articles/next-tailwind/

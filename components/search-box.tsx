@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 
+// https://tailwindtemplates.io/search/#230
+
 const SearchBox = () => {
 	return (
 		<div className='bg-white shadow-2xl p-4 mt-8 md:mt-6 sm:mt-4 flex'>

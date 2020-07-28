@@ -10,12 +10,12 @@
 export const fallbackLanguage: string = 'en';
 
 // export const languages: string[] = [
-// 	'en', // english
-// 	'es', // spanish
-// 	'ko', // korean
-// 	'hi', // hindi
+// 	'en', // english**
+// 	'es', // spanish**
+// 	'ko', // korean**
+// 	'hi', // hindi**
 // 	'de', // german
-// 	'pl', // polish
+// 	'pl', // polish**
 // 	'fr', // french
 // 	'zh', // chinese
 // 	'it', // italian

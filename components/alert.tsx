@@ -9,13 +9,13 @@ type Props = {
 const Alert = ({ preview }: Props) => {
 	return (
 		<div
-			className={cn('border-b bg-cimaRed', {
+			className={cn('border-t bg-black', {
 				'bg-accent-7 border-accent-7 text-white': preview,
 				'bg-accent-1 border-accent-2': !preview
 			})}
 		>
 			<Container>
-				<div className='pb-2 text-center text-xs text-white'>
+				<div className='py-1 text-center text-xs text-white'>
 					{preview ? (
 						<>
 							This is page is a preview.{' '}

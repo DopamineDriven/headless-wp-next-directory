@@ -1,4 +1,4 @@
-interface Client {
+interface Company {
 	name: string | FullName;
 	mediaType: string;
 	picture: string;
@@ -12,4 +12,4 @@ interface FullName {
 	lastName: string;
 }
 
-export default Client;
+export default Company;
