@@ -2,12 +2,16 @@
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
-## Tailwind Starter Kits
+## Configure GraphQL JWT w/ WPEngine
+- https://github.com/vercel/next.js/tree/canary/examples/cms-wordpress#step-5-add-authentication-for-preview-mode-optional
+- https://wpengine.com/support/sftp/
 
+## Tailwind Starter Kits
 - https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/react/navbars
 
 ## Using @fortawesome/react-fontawesome with nextjs
-
+- https://github.com/UnlyEd/next-right-now/blob/master/src/pages/_app.tsx
+- https://stackoverflow.com/questions/44752189/how-to-add-font-awesome-to-next-js-project
 - https://github.com/FortAwesome/react-fontawesome/tree/master/examples
 - https://github.com/UnlyEd/next-right-now/tree/master/src/pages
 - https://github.com/UnlyEd/next-right-now
@@ -15,7 +19,6 @@ Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 - https://stackoverflow.com/questions/44752189/how-to-add-font-awesome-to-next-js-project
 
 ## CIMA
-
 - https://savechicagomedia.org/
 - Color-Scheme:
   - cimaRed: #B8242C
@@ -28,19 +31,14 @@ Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 - Transparent PNG ripped from website
 
 ## generate JSX from .svg files via the command line
-
 ```git
 $ npx @svgr/cli --icon Logo.svg
 ```
-
 - target the .svg file
 - copy paste the output of the command line into a .tsx (or .jsx) file
 - voila
 
 ## next-google-fonts npm
-
--
-
 - https://github.com/joe-bell/next-google-fonts
 - https://johnny.am/blog/n2-adding-google-fonts-to-nextjs-project
 
@@ -63,12 +61,10 @@ $ npx @svgr/cli --icon Logo.svg
 ```
 
 ## Useful Supplemental Resources
-
 - https://sergiodxa.com/articles/next-tailwind/
 - https://tailwindcss.com/docs/configuration/
 
 ## Card ideas
-
 - https://tailwindtemplates.io/cards/#339
 - https://tailwindtemplates.io/cards/#335
 - https://tailwindtemplates.io/search/#230
