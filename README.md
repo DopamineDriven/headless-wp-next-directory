@@ -2,6 +2,17 @@
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## JAMstack
+- https://jamstack.wtf/
+- https://files.bejamas.io/ebooks/JAMstack%20SEO%20Guide.pdf
+- https://jamstack.org/
+- https://bejamas.io/blog/static-site-generators/
+- https://bejamas.io/blog/jamstack/
+- https://bejamas.io/blog/headless-cms/
+
+## Lazy-Loading Images with Next
+- https://stackoverflow.com/questions/54045665/lazy-loading-images-in-next-js-and-or-in-other-forms-of-react-server-side-render
+
 ## Configure GraphQL JWT w/ WPEngine
 - https://github.com/vercel/next.js/tree/canary/examples/cms-wordpress#step-5-add-authentication-for-preview-mode-optional
 - https://wpengine.com/support/sftp/
