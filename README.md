@@ -2,6 +2,11 @@
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## HWP+Next
+- https://webdevstudios.com/2020/06/02/building-the-nextjs-9-4-wordpress-example/
+- experimental: https://github.com/gregrickaby/nextjs-wordpress
+- local C:\Users\Anthr\nextjs-wp-experimental\nextjs-wordpress-master
+
 ## JAMstack
 - https://jamstack.wtf/
 - https://files.bejamas.io/ebooks/JAMstack%20SEO%20Guide.pdf

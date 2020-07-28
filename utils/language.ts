@@ -1,4 +1,6 @@
-// // https://levelup.gitconnected.com/a-simple-next-js-frontend-for-a-multilingual-website-ae31a17387e2
+// https://levelup.gitconnected.com/a-simple-next-js-frontend-for-a-multilingual-website-ae31a17387e2
+// https://github.com/timrijkse/nextjs-multilanguage.git
+// https://github.com/timrijkse/nextjs-multilanguage
 
 // interface Props {
 //     lang: string;
