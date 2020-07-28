@@ -65,6 +65,12 @@ const MetaData = () => {
 				href='/favicon/apple-icon-precomposed.png'
 			/>
 			<link
+				rel='apple-touch-icon'
+				type='img/png'
+				sizes='192x192'
+				href='/favicon/apple-touch-icon.png'
+			/>
+			<link
 				rel='icon'
 				type='image/png'
 				sizes='96x96'
