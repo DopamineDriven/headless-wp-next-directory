@@ -1,6 +1,7 @@
 import Container from './container';
 import cn from 'classnames';
-import { EXAMPLE_PATH } from '../lib/constants';
+// import { EXAMPLE_PATH } from '../lib/constants';
+import SocialMediaCima from './social-media-cima';
 
 type Props = {
 	preview?: boolean;
@@ -15,7 +16,7 @@ const Alert = ({ preview }: Props) => {
 			})}
 		>
 			<Container>
-				<div className='py-1 text-center text-xs text-white'>
+				<div className='pb-1 text-center text-xl text-white align-middle items-center'>
 					{preview ? (
 						<>
 							This is page is a preview.{' '}
@@ -29,14 +30,7 @@ const Alert = ({ preview }: Props) => {
 						</>
 					) : (
 						<>
-							The source code is{' '}
-							<a
-								href={`https://github.com/DopamineDriven/${EXAMPLE_PATH}`}
-								className='underline hover:text-blizzardBlue duration-200 transition-colors'
-							>
-								available on GitHub
-							</a>
-							.
+							<SocialMediaCima />
 						</>
 					)}
 				</div>
