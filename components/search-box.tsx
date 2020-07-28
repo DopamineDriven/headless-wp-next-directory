@@ -15,7 +15,7 @@ const SearchBox = () => {
 			<button
 				type='submit'
 				name='search-button'
-				className='mx-2 hover:bg-white align-middle rounded bg-black hover:text-black border border-black text-white font-bold py-3 px-6 md:px-6 sm:px-4 lg:px-8 duration-200 transition-colors lg:mb-0'
+				className='mx-2 hover:bg-white align-middle shadow-xl rounded-full bg-black hover:text-black border border-black text-white font-bold py-3 px-6 md:px-6 sm:px-4 lg:px-8 duration-200 transition-colors lg:mb-0'
 			>
 				<a aria-label='search' className='text-xl'>
 					{<FontAwesomeIcon icon={faSearch} />}
