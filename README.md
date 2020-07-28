@@ -1,6 +1,9 @@
 # headless-wp-next-directory
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
+## Favicon
+- https://favicon.io/favicon-converter/
+- https://www.creativebloq.com/illustrator/create-perfect-favicon-12112760
 
 ## HWP+Next
 - https://webdevstudios.com/2020/06/02/building-the-nextjs-9-4-wordpress-example/
