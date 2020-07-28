@@ -1,11 +1,16 @@
-import Company from './company';
+import Author from './author';
+
 
 interface PostType {
 	slug: string;
 	title: string;
 	date: string;
-	coverImage: string;
-	client: Company;
+	featuredImage: {
+		node: {
+			sourceUrl: string;
+		};
+	};
+	author: Author;
 	excerpt: string;
 	ogImage: {
 		url: string;
