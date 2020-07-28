@@ -9,28 +9,40 @@
 			"githubUrl": "https://github.com/DopamineDriven",
 			"githubUsername": "DopamineDriven",
 			"twitterUrl": "https://twitter.com/Dopamine_Driven",
-			"twitterUsername": "@Dopamine_Driven"
+			"twitterUsername": "@Dopamine_Driven",
+			"linkedinUrl": "https://www.linkedin.com/in/asross/"
 		},
 		{
 			"name": "James Lovejoy",
 			"githubUrl": "https://github.com/jlovejo2",
 			"githubUsername": "jlovejo2",
 			"twitterUrl": "https://twitter.com/jlovejo2",
-			"twitterUsername": "@jlovejo2"
+			"twitterUsername": "@jlovejo2",
+			"linkedinUrl": "https://www.linkedin.com/in/james-lovejoy-b414307a/"
 		},
 		{
 			"name": "Joe Shields",
 			"githubUrl": "https://github.com/JShields30",
 			"githubUsername": "JShields30",
 			"twitterUrl": "https://twitter.com/JShields312",
-			"twitterUsername": "@JShields312"
+			"twitterUsername": "@JShields312",
+			"linkedinUrl": "https://www.linkedin.com/in/jshields90/"
 		},
 		{
 			"name": "Yong Lee",
 			"githubUrl": "https://github.com/yhlee-dho",
 			"githubUsername": "yhlee-dho",
 			"twitterUrl": "https://twitter.com/YongLee08380800",
-			"twitterUsername": "@YongLee08380800"
+			"twitterUsername": "@YongLee08380800",
+			"linkedinUrl": "https://www.linkedin.com/in/yong-lee-a16430193/"
+		},
+		{
+			"name": "David Bartolone",
+			"githubUrl": "https://github.com/TechHedz",
+			"githubUsername": "TechHedz",
+			"twitterUrl": "https://twitter.com/DevHedz",
+			"twitterUsername": "@DevHedz",
+			"linkedinUrl": "https://www.linkedin.com/in/dbartolone/"
 		}
 	],
 	"license": "MIT",
@@ -49,7 +61,7 @@
 		"classnames": "^2.2.6",
 		"date-fns": "^2.15.0",
 		"gray-matter": "^4.0.2",
-		"next": "^9.4.4",
+		"next": "^9.5.0",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"remark": "^12.0.1",
