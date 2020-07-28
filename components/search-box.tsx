@@ -1,9 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 
+// https://tailwindtemplates.io/search/#230
+
 const SearchBox = () => {
 	return (
-		<div className='bg-white shadow p-4 flex'>
+		<div className='bg-white shadow-2xl p-4 mt-8 md:mt-6 sm:mt-4 flex'>
 			<span className='w-auto flex justify-end items-center text-gray-500 p-2' />
 			<input
 				type='text'
@@ -13,10 +15,10 @@ const SearchBox = () => {
 			<button
 				type='submit'
 				name='search-button'
-				className='mx-2 hover:bg-cimaRed align-middle rounded bg-black hover:text-white border border-black text-white font-bold py-3 px-6 md:px-6 sm:px-4 lg:px-8 duration-200 transition-colors lg:mb-0'
+				className='mx-2 hover:bg-white align-middle shadow-xl rounded-full bg-black hover:text-black border border-black text-white font-bold py-3 px-6 md:px-6 sm:px-4 lg:px-8 duration-200 transition-colors lg:mb-0'
 			>
 				<a aria-label='search' className='text-xl'>
-					{<FontAwesomeIcon icon={faSearch} className='text-white' />}
+					{<FontAwesomeIcon icon={faSearch} />}
 				</a>
 			</button>
 		</div>

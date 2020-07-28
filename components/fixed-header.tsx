@@ -3,13 +3,13 @@ import Link from 'next/link';
 import SvgLogo from './svg-logo-only';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import Href from '../types/href';
+import NavRef from '../types/nav-ref';
 
 interface Props {
 	props: string | number;
 }
 
-const links: Href[] = [
+const links: NavRef[] = [
 	{
 		href: '/',
 		label: 'Directory'
@@ -39,7 +39,7 @@ const Header = ({ props }: Props) => {
 		</li>
 	));
 	return (
-		<nav className='relative flex flex-wrap items-center justify-between px-2 py-1 navbar-expand-lg bg-cimaRed mb-3'>
+		<nav className='relative flex flex-wrap shadow-boxshadow items-center justify-between px-2 py-1 navbar-expand-lg bg-cimaRed'>
 			<div className='container mx-auto flex flex-wrap items-center justify-between'>
 				<div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
 					<Link href='/'>

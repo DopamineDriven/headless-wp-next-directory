@@ -206,7 +206,7 @@ module.exports = {
 			'2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
 			inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
 			outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
-			none: 'none'
+			boxshadow: '0 2px 8px #f0f1f2'
 		},
 		container: {},
 		cursor: {

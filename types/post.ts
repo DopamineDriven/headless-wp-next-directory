@@ -1,11 +1,11 @@
-import Client from './client';
+import Company from './company';
 
 interface PostType {
 	slug: string;
 	title: string;
 	date: string;
 	coverImage: string;
-	client: Client;
+	client: Company;
 	excerpt: string;
 	ogImage: {
 		url: string;
