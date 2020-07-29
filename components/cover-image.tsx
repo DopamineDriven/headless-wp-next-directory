@@ -32,3 +32,5 @@ const CoverImage = ({ title, src, slug }: Props) => {
 };
 
 export default CoverImage;
+
+// image vs img tags https://stackoverflow.com/questions/11928566/img-vs-image-tag-in-html
