@@ -103,15 +103,11 @@ export const getAllPostsForHome = async (preview: boolean) => {
 	return data?.posts;
 };
 
-export const getPostAndMorePosts = async ({
-	slug,
-	preview,
-	previewData
-}: {
-	slug: string | number;
-	preview: boolean;
-	previewData: any;
-}) => {
+export const getPostAndMorePosts = async (
+	slug: string | number,
+	preview: boolean,
+	previewData: any
+) => {
 	const postPreview = preview && previewData?.post;
 	// slug may be ID of unpublished post (number)
 	const isId: boolean = Number.isInteger(Number(slug));
