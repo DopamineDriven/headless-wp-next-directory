@@ -102,3 +102,7 @@ export const getAllPostsForHome = async (preview?: boolean) => {
 	);
 	return data?.posts;
 };
+
+export const getPostAndMorePosts = async ({slug, preview, previewData}: {slug:}) => {
+    
+}
