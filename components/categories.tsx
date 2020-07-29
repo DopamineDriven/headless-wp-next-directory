@@ -10,7 +10,7 @@ const Categories = ({ categories }: Props) => {
 				categories.edges.map((category: any, index: any) => {
 					<span key={index} className='ml-1'>
 						{category.node.name}
-					</span>;
+					</span>
 				})
 			) : (
 				<span className='ml-1'>{categories.edges.node.name}</span>
