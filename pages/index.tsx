@@ -22,7 +22,7 @@ const Index = ({ preview, props }: Props) => {
 				</Head>
 				<Container>
 					<SearchBox />
-					<h2 className='md:text-4xl font-bold text-center font-serif tracking-tight md:tracking-tighter leading-tight mb-8 mt-2'>
+					<h2 className='md:text-5xl font-bold text-center font-serif tracking-tight md:tracking-tighter leading-tight mb-8 mt-2'>
 						<Link href='/'>
 							<a className='hover:text-cimaRed cursor-text select-text text-black px-8'>
 								Chicago Independent Media Alliance
