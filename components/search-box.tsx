@@ -11,6 +11,7 @@ const SearchBox = () => {
 				type='text'
 				className='md:w-full lg:w-11/12 rounded p-5'
 				placeholder='Try&nbsp;"ethnic&nbsp;media"'
+				name="search-form"
 			/>
 			<button
 				type='submit'
