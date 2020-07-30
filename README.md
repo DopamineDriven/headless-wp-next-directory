@@ -10,7 +10,7 @@ Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 - experimental: https://github.com/gregrickaby/nextjs-wordpress
 - deployed site https://nextjs-wordpress-indol.now.sh/
 - local C:\Users\Anthr\nextjs-wp-experimental\nextjs-wordpress-master
-- Deeper dive into api priner for headless WP
+- Deeper dive into api primer for headless WP
     - https://nextjs-wordpress-indol.now.sh/blog/post/headless-wordpress-deeper-dive-api-primer-and-how-to-post-to-other-platforms/22330
 - https://webdevstudios.com/2019/10/22/headless-wordpress/
 - WP Online Newsrooms
@@ -69,7 +69,7 @@ $ npx @svgr/cli --icon Logo.svg
 ## next-google-fonts npm
 - https://github.com/joe-bell/next-google-fonts
 - https://johnny.am/blog/n2-adding-google-fonts-to-nextjs-project
-
+- https://fonts.google.com/specimen/Barlow+Condensed?preview.text=CIMA&preview.text_type=custom&sidebar.open=true&selection.family=Barlow+Condensed|Barlow+Semi+Condensed#license
 ```css
 @font-face {
 	font-family: 'Barlow Condensed';
