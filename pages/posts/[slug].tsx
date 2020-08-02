@@ -1,30 +1,26 @@
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import Head from 'next/head';
 import Container from '../../components/container';
-import Header from '../../components/fixed-header';
-import Layout from '../../components/layout';
-import SectionSeparator from '../../components/section-separator';
 import PostBody from '../../components/post-body';
+import MoreStories from '../../components/more-stories';
+import Header from '../../components/header';
 import PostHeader from '../../components/post-header';
-import PostTitle from '../../components/post-title';
-import MorePosts from '../../components/more-posts';
-import Tags from '../../components/tags';
+import SectionSeparator from '../../components/section-separator';
+import Layout from '../../components/layout';
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
-import { CLIENT_NAME } from '../../lib/constants';
-import PostType from '../../types/post';
-// import Posts from '../../types/posts';
-import { AuthorProps } from '../../components/avatar';
+import PostTitle from '../../components/post-title';
+import Head from 'next/head';
+import { CMS_NAME } from '../../lib/constants';
+import Tags from '../../components/tags';
 
-type Props = {
-	post: PostType;
-	posts: any;
+interface SlugProps {
 	props: string | number;
-    preview?: boolean;
-    author: AuthorProps;
-};
+	post: any;
+	posts: any;
+	preview: boolean;
+}
 
-const Post = ({ post, posts, preview, props, author }: Props) => {
+export default function Post({ post, posts, preview, props }: SlugProps) {
 	const router = useRouter();
 	const morePosts = posts?.edges;
 
@@ -38,25 +34,26 @@ const Post = ({ post, posts, preview, props, author }: Props) => {
 			<Layout preview={preview}>
 				<Container>
 					{router.isFallback ? (
-						<PostTitle>Loading...</PostTitle>
+						<PostTitle>Loading…</PostTitle>
 					) : (
 						<>
 							<article>
 								<Head>
 									<title>
-										{post.title} | {CLIENT_NAME}
+										{post.title} | Next.js Blog Example with {CMS_NAME}
 									</title>
 									<meta
-										property={'og:image'}
+										property='og:image'
 										content={post.featuredImage?.node?.sourceUrl}
 									/>
 								</Head>
 								<PostHeader
 									title={post.title}
-									coverImage={post.featuredImage.node.sourceUrl}
+									coverImage={post.featuredImage.node}
 									date={post.date}
-									author={author}
+									author={post.author.node}
 									categories={post.categories}
+									slug={post.slug}
 								/>
 								<PostBody content={post.content} />
 								<footer>
@@ -65,22 +62,28 @@ const Post = ({ post, posts, preview, props, author }: Props) => {
 							</article>
 
 							<SectionSeparator />
-							{morePosts.length > 0 && <MorePosts posts={morePosts} />}
+							{morePosts.length > 0 && <MoreStories posts={morePosts} />}
 						</>
 					)}
 				</Container>
 			</Layout>
 		</>
 	);
-};
+}
 
-export default Post;
+type Params = {
+	params: {
+		slug: string | number;
+	};
+	preview: boolean;
+	previewData: any;
+};
 
 export async function getStaticProps({
 	params,
 	preview = false,
 	previewData
-}: any) {
+}: Params) {
 	const data = await getPostAndMorePosts(params.slug, preview, previewData);
 
 	return {

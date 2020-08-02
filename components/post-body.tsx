@@ -1,14 +1,16 @@
-import postBodyStyles from './post-body.module.css';
+import styles from './post-body.module.css';
 
-const PostBody = ({ content }: any) => {
+type PostBodyProps = {
+	content: string;
+};
+
+export default function PostBody({ content }: PostBodyProps) {
 	return (
-		<div className='max-w-2xl mx-auto'>
+		<div className='max-w-3xl mx-auto  content-center text-center items-center justify-center align-middle'>
 			<div
-				className={postBodyStyles.content}
+				className={styles.content}
 				dangerouslySetInnerHTML={{ __html: content }}
 			/>
 		</div>
 	);
-};
-
-export default PostBody;
+}

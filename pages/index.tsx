@@ -1,37 +1,40 @@
 import Head from 'next/head';
-import Link from 'next/link';
-import Header from '../components/fixed-header';
-import Layout from '../components/layout';
 import Container from '../components/container';
-import { CLIENT_NAME } from '../lib/constants';
-import SearchBox from '../components/search-box';
+import MoreStories from '../components/more-stories';
 import HeroPost from '../components/hero-post';
-import MorePosts from '../components/more-posts';
+import Intro from '../components/intro';
+import Layout from '../components/layout';
 import { getAllPostsForHome } from '../lib/api';
-import PostType from '../types/post';
-import { AuthorProps } from '../components/avatar';
+import { CMS_NAME } from '../lib/constants';
+import Header from '../components/header';
+import SearchBox from '../components/search-box';
+import Link from 'next/link';
 
-type Props = {
+interface IndexProps {
+	allPosts: any;
+	preview: boolean;
 	props: string | number;
-	preview?: boolean;
-	allPosts: PostType[];
-	author: AuthorProps;
-};
+}
 
-const Index = ({ allPosts, preview, props, author }: Props) => {
-	let edges: any;
-	const heroPost = allPosts[0];
+export default function Index({
+	allPosts: { edges },
+	preview,
+	props
+}: IndexProps) {
+	const heroPost = edges[0]?.node;
 	const morePosts = edges.slice(1);
+
 	return (
 		<>
 			<Header props={props} />
 			<Layout preview={preview}>
 				<Head>
-					<title>{`${CLIENT_NAME} landing page`}</title>
+					<title>Next.js and {CMS_NAME}</title>
 				</Head>
 				<Container>
+					<Intro />
 					<SearchBox />
-					<h2 className='md:text-5xl font-bold text-center font-serif tracking-tight md:tracking-tighter leading-tight mb-8 mt-2'>
+					<h2 className='md:text-6xl font-bold text-center font-serif tracking-tight md:tracking-tighter leading-tight mb-8 mt-8'>
 						<Link href='/'>
 							<a className='hover:text-cimaRed cursor-text select-text text-black px-8'>
 								Chicago Independent Media Alliance
@@ -41,25 +44,27 @@ const Index = ({ allPosts, preview, props, author }: Props) => {
 					{heroPost && (
 						<HeroPost
 							title={heroPost.title}
-							coverImage={heroPost.featuredImage.node.sourceUrl}
+							coverImage={heroPost.featuredImage.node}
 							date={heroPost.date}
-							author={author}
+							author={heroPost.author.node}
 							slug={heroPost.slug}
 							excerpt={heroPost.excerpt}
 						/>
 					)}
-					{morePosts.length > 0 && <MorePosts posts={morePosts} />}
+					{morePosts.length > 0 && <MoreStories posts={morePosts} />}
 				</Container>
 			</Layout>
 		</>
 	);
+}
+
+type StaticProps = {
+	preview: boolean;
 };
 
-export default Index;
-
-// export async function getStaticProps({ preview = false }) {
-// 	const allPosts = await getAllPostsForHome(preview);
-// 	return {
-// 		props: { allPosts, preview }
-// 	};
-// }
+export async function getStaticProps({ preview = false }: StaticProps) {
+	const allPosts = await getAllPostsForHome(preview);
+	return {
+		props: { allPosts, preview }
+	};
+}

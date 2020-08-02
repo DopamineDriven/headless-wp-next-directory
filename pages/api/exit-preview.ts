@@ -1,4 +1,4 @@
-export default async function exit(_: Request, res: any) {
+export default async function exit(_req: any, res: any) {
 	// Exit the current user from "Preview Mode". This function accepts no args.
 	res.clearPreviewData();
 
