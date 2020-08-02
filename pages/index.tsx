@@ -6,14 +6,19 @@ import Container from '../components/container';
 import { CLIENT_NAME } from '../lib/constants';
 import SearchBox from '../components/search-box';
 import HeroPost from '../components/hero-post';
+import MorePosts from '../components/more-posts';
+import { getAllPostsForHome } from '../lib/api';
 
-interface Props {
+type Props = {
 	props: string | number;
 	preview?: boolean;
-	allPosts: { edges: any };
-}
+	// allPosts: { edges: any };
+};
 
-const Index = ({ allPosts, preview, props }: Props) => {
+const Index = ({ preview, props }: Props) => {
+	let edges: any;
+	const heroPost: any = edges[0]?.node;
+	const morePosts: any = edges.slice(1);
 	return (
 		<>
 			<Header props={props} />
@@ -30,6 +35,17 @@ const Index = ({ allPosts, preview, props }: Props) => {
 							</a>
 						</Link>
 					</h2>
+					{heroPost && (
+						<HeroPost
+							title={heroPost.title}
+							coverImage={heroPost.featuredImage.node}
+							date={heroPost.date}
+							author={heroPost.author.node}
+							slug={heroPost.slug}
+							excerpt={heroPost.excerpt}
+						/>
+					)}
+					{morePosts.length > 0 && <MorePosts posts={morePosts} />}
 				</Container>
 			</Layout>
 		</>
@@ -37,3 +53,10 @@ const Index = ({ allPosts, preview, props }: Props) => {
 };
 
 export default Index;
+
+export async function getStaticProps({ preview = false }) {
+	const allPosts = await getAllPostsForHome(preview);
+	return {
+		props: { allPosts, preview }
+	};
+}
