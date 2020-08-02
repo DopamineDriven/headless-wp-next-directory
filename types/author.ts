@@ -6,9 +6,9 @@ interface Author {
 	avatar: {
 		url: string;
 	}
-	facebook: string;
-	twitter: string;
-	instagram: string;
+	// facebook: string;
+	// twitter: string;
+	// instagram: string;
 }
 
 export default Author;
