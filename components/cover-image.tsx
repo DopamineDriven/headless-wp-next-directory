@@ -4,7 +4,7 @@ import Link from 'next/link';
 interface Props {
 	title: string;
 	src: string;
-	slug?: string;
+	slug?: string | number;
 }
 
 const CoverImage = ({ title, src, slug }: Props) => {
