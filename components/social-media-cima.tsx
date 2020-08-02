@@ -6,11 +6,11 @@ import {
 	faTwitter
 } from '@fortawesome/free-brands-svg-icons';
 
-interface Props {
+type Props = {
 	href: string;
 	name: string;
 	icon: IconProp;
-}
+};
 
 const iconLinks: Props[] = [
 	{

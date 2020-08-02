@@ -1,8 +1,8 @@
 import Author from '../types/author';
 
-interface Props {
+type Props = {
 	author: Author;
-}
+};
 
 const Avatar = ({ author }: Props) => {
 	const name =
