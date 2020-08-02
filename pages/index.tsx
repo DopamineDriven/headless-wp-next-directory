@@ -5,14 +5,15 @@ import Layout from '../components/layout';
 import Container from '../components/container';
 import { CLIENT_NAME } from '../lib/constants';
 import SearchBox from '../components/search-box';
-import SocialMediaCima from '../components/social-media-cima';
+import HeroPost from '../components/hero-post';
 
 interface Props {
 	props: string | number;
 	preview?: boolean;
+	allPosts: { edges: any };
 }
 
-const Index = ({ preview, props }: Props) => {
+const Index = ({ allPosts, preview, props }: Props) => {
 	return (
 		<>
 			<Header props={props} />

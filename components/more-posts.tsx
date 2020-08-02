@@ -28,3 +28,5 @@ const MorePosts = ({ posts }: Props) => {
 		</section>
 	);
 };
+
+export default MorePosts;
