@@ -1,6 +1,6 @@
-interface Props {
+type Props = {
 	props: string | number;
-}
+};
 
 function SvgLogo({ props }: Props) {
 	return (
@@ -14,7 +14,7 @@ function SvgLogo({ props }: Props) {
 			height='5em'
 			{...props}
 		>
-            <title>CIMA</title>
+			<title>CIMA</title>
 			<style>
 				{
 					'.logo_svg__st0{fill:#fff}.logo_svg__st1{display:none}.logo_svg__st2{fill:#b8242c}'

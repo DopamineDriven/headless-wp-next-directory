@@ -1,6 +1,6 @@
-interface Props {
+type Props = {
 	props: number | string;
-}
+};
 
 function SvgLogo({ props }: Props) {
 	return (

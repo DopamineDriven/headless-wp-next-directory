@@ -1,11 +1,11 @@
 import cn from 'classnames';
 import Link from 'next/link';
 
-interface Props {
+type Props = {
 	title: string;
 	src: string;
 	slug?: string | number;
-}
+};
 
 const CoverImage = ({ title, src, slug }: Props) => {
 	const image = (

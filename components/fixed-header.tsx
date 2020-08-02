@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import NavRef from '../types/nav-ref';
 
-interface Props {
+type Props = {
 	props: string | number;
-}
+};
 
 const links: NavRef[] = [
 	{
