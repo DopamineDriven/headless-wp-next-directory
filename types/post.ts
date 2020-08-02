@@ -3,7 +3,7 @@ import Tag from './tag';
 import Category from './category';
 
 interface PostType {
-	slug?: string | number;
+	slug: string | number;
 	title: string;
 	date: string;
 	featuredImage: {

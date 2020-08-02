@@ -1,4 +1,4 @@
-const API_URL: string | undefined = process.env.WORDPRESS_API_URL; // should be of type RequestInfo or string or undefined...
+const API_URL: any = process.env.WORDPRESS_API_URL; // should be of type RequestInfo or string or undefined...
 
 const fetchAPI = async (query: any, { variables }: any = {}) => {
 	const headers: any = { 'Content-Type': 'application/json' };
@@ -9,7 +9,7 @@ const fetchAPI = async (query: any, { variables }: any = {}) => {
 		] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
 	}
 
-	const res: Response = await fetch(`${API_URL}`, {
+	const res: any = await fetch(API_URL, {
 		method: 'POST',
 		headers,
 		body: JSON.stringify({
@@ -21,7 +21,7 @@ const fetchAPI = async (query: any, { variables }: any = {}) => {
 	const json: any = await res.json();
 	if (json.errors) {
 		console.log(json.errors);
-		throw new Error('Failed to fetch API');
+		throw new Error();
 	}
 	return json.data;
 };
@@ -220,6 +220,5 @@ export const getPostAndMorePosts = async (
 
 	return data;
 };
-
 
 // https://docs.gdc.cancer.gov/API/Users_Guide/GraphQL_Examples/

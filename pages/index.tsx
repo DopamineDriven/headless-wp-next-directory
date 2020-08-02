@@ -8,17 +8,20 @@ import SearchBox from '../components/search-box';
 import HeroPost from '../components/hero-post';
 import MorePosts from '../components/more-posts';
 import { getAllPostsForHome } from '../lib/api';
+import PostType from '../types/post';
+import { AuthorProps } from '../components/avatar';
 
 type Props = {
 	props: string | number;
 	preview?: boolean;
-	// allPosts: { edges: any };
+	allPosts: PostType[];
+	author: AuthorProps;
 };
 
-const Index = ({ preview, props }: Props) => {
+const Index = ({ allPosts, preview, props, author }: Props) => {
 	let edges: any;
-	const heroPost: any = edges[0]?.node;
-	const morePosts: any = edges.slice(1);
+	const heroPost = allPosts[0];
+	const morePosts = edges.slice(1);
 	return (
 		<>
 			<Header props={props} />
@@ -38,9 +41,9 @@ const Index = ({ preview, props }: Props) => {
 					{heroPost && (
 						<HeroPost
 							title={heroPost.title}
-							coverImage={heroPost.featuredImage.node}
+							coverImage={heroPost.featuredImage.node.sourceUrl}
 							date={heroPost.date}
-							author={heroPost.author.node}
+							author={author}
 							slug={heroPost.slug}
 							excerpt={heroPost.excerpt}
 						/>
@@ -54,9 +57,9 @@ const Index = ({ preview, props }: Props) => {
 
 export default Index;
 
-export async function getStaticProps({ preview = false }) {
-	const allPosts = await getAllPostsForHome(preview);
-	return {
-		props: { allPosts, preview }
-	};
-}
+// export async function getStaticProps({ preview = false }) {
+// 	const allPosts = await getAllPostsForHome(preview);
+// 	return {
+// 		props: { allPosts, preview }
+// 	};
+// }

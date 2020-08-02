@@ -14,15 +14,17 @@ import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
 import { CLIENT_NAME } from '../../lib/constants';
 import PostType from '../../types/post';
 // import Posts from '../../types/posts';
+import { AuthorProps } from '../../components/avatar';
 
 type Props = {
 	post: PostType;
 	posts: any;
 	props: string | number;
-	preview?: boolean;
+    preview?: boolean;
+    author: AuthorProps;
 };
 
-const Post = ({ post, posts, preview, props }: Props) => {
+const Post = ({ post, posts, preview, props, author }: Props) => {
 	const router = useRouter();
 	const morePosts = posts?.edges;
 
@@ -53,7 +55,7 @@ const Post = ({ post, posts, preview, props }: Props) => {
 									title={post.title}
 									coverImage={post.featuredImage.node.sourceUrl}
 									date={post.date}
-									author={post.author}
+									author={author}
 									categories={post.categories}
 								/>
 								<PostBody content={post.content} />

@@ -1,5 +1,7 @@
 type Props = {
-	categories: any;
+	categories: {
+		edges: any;
+	};
 };
 
 const Categories = ({ categories }: Props) => {

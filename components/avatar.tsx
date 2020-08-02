@@ -1,19 +1,22 @@
-import Author from '../types/author';
-
-type Props = {
-	author: Author;
+export type AuthorProps = {
+	author: {
+		firstName?: string;
+		lastName?: string;
+		name: string;
+		avatar: { url: string };
+	};
 };
 
-const Avatar = ({ author }: Props) => {
+const Avatar = ({ author }: AuthorProps) => {
 	const name =
-		author.node.firstName && author.node.lastName
-			? `${author.node.firstName} ${author.node.lastName}`
-			: author.node.name;
+		author.firstName && author.lastName
+			? `${author.firstName} ${author.lastName}`
+			: author.name;
 
 	return (
 		<div className='flex items-center'>
 			<img
-				src={author.node.avatar.url}
+				src={author.avatar.url}
 				className='w-12 h-12 rounded-full mr-4'
 				alt={name}
 			/>

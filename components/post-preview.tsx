@@ -2,7 +2,7 @@ import Avatar from './avatar';
 import DateFormater from './date-formatter';
 import CoverImage from './cover-image';
 import Link from 'next/link';
-import Author from '../types/author';
+import { AuthorProps } from './avatar';
 
 type Props = {
 	title: string;
@@ -10,7 +10,7 @@ type Props = {
 	date: string;
 	excerpt: string;
 	slug: string | number;
-	author: Author;
+	author: AuthorProps;
 };
 
 const PostPreview = ({
@@ -41,7 +41,7 @@ const PostPreview = ({
 				className='text-lg leading-relaxed mb-4'
 				dangerouslySetInnerHTML={{ __html: excerpt }}
 			/>
-			<Avatar author={author} />
+			<Avatar author={author.author} />
 		</div>
 	);
 };
