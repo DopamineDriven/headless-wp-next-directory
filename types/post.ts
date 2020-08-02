@@ -1,8 +1,9 @@
 import Author from './author';
-
+import Tag from './tag';
+import Category from './category';
 
 interface PostType {
-	slug: string;
+	slug: string | number;
 	title: string;
 	date: string;
 	featuredImage: {
@@ -16,6 +17,8 @@ interface PostType {
 		url: string;
 	};
 	content: string;
+	categories?: Category[];
+	tags?: Tag[];
 }
 
 export default PostType;
