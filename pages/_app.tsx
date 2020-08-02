@@ -5,10 +5,10 @@ import { AppProps } from 'next/app';
 
 config.autoAddCss = false;
 
-export function reportWebVitals(metric: any): void {
-	// These metrics can be sent to any analytics service
-	console.log(metric);
-}
+// export function reportWebVitals(metric: any): void {
+// 	// These metrics can be sent to any analytics service
+// 	console.log(metric);
+// }
 
 function App({ Component, pageProps }: AppProps) {
 	return <Component {...pageProps} />;
