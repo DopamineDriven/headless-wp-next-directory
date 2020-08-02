@@ -1,4 +1,5 @@
 # headless-wp-next-directory
+- deactivated plugins
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 ## ServerSideProps and Cookies in NextJS
