@@ -18,7 +18,7 @@ interface PostType {
 	};
 	content: string;
 	categories?: Category[];
-	tags?: Tag[];
+	tags: { edges: any[] };
 }
 
 export default PostType;
