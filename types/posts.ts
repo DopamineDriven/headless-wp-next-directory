@@ -1,7 +1,9 @@
 import PostType from './post';
 
 interface Posts {
-	node: PostType[];
+	edges: {
+		node: PostType[];
+	};
 }
 
 export default Posts;
