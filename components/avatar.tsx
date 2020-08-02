@@ -6,14 +6,14 @@ type Props = {
 
 const Avatar = ({ author }: Props) => {
 	const name =
-		author.firstName && author.lastName
-			? `${author.firstName} ${author.lastName}`
-			: author.name;
+		author.node.firstName && author.node.lastName
+			? `${author.node.firstName} ${author.node.lastName}`
+			: author.node.name;
 
 	return (
 		<div className='flex items-center'>
 			<img
-				src={author.avatar.url}
+				src={author.node.avatar.url}
 				className='w-12 h-12 rounded-full mr-4'
 				alt={name}
 			/>
