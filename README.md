@@ -95,6 +95,7 @@ $ npx @svgr/cli --icon Logo.svg
 - https://tailwindcss.com/docs/configuration/
 
 ## Card ideas
+- https://tailwindcomponents.com/component/team-cards
 - https://tailwindtemplates.io/cards/#339
 - https://tailwindtemplates.io/cards/#335
 - https://tailwindtemplates.io/search/#230
