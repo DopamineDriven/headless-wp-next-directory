@@ -1,6 +1,9 @@
 # headless-wp-next-directory
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
+## ServerSideProps and Cookies in NextJS
+- https://github.com/maticzav/nookies
+
 ## Favicon
 - https://favicon.io/favicon-converter/
 - https://www.creativebloq.com/illustrator/create-perfect-favicon-12112760
