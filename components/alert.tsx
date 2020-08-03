@@ -3,7 +3,7 @@ import cn from 'classnames';
 import SocialMediaCima from './social-media-cima';
 
 type Props = {
-	preview?: boolean;
+	preview?: boolean; // this is a boolean
 };
 
 const Alert = ({ preview }: Props) => {
