@@ -1,11 +1,9 @@
-import Author from '../types/author';
+type AvatarProps = {
+	author: any;
+};
 
-interface Props {
-	author: Author;
-}
-
-const Avatar = ({ author }: Props) => {
-	const name =
+export default function Avatar({ author }: AvatarProps) {
+	const nombre =
 		author.firstName && author.lastName
 			? `${author.firstName} ${author.lastName}`
 			: author.name;
@@ -14,12 +12,10 @@ const Avatar = ({ author }: Props) => {
 		<div className='flex items-center'>
 			<img
 				src={author.avatar.url}
-				className='w-12 h-12 rounded-full mr-4'
-				alt={name}
+				className='w-16 h-16 rounded-full mr-4'
+				alt={nombre}
 			/>
-			<div className='text-xl font-bold'>{name}</div>
+			<div className='text-xl font-bold'>{nombre}</div>
 		</div>
 	);
-};
-
-export default Avatar;
+}

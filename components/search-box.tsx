@@ -7,7 +7,7 @@ const SearchBox = () => {
 	return (
 		<div className='bg-white shadow-2xl p-4 mt-8 md:mt-6 sm:mt-4 flex'>
 			<span className='w-auto flex justify-end items-center text-gray-500 p-2' />
-			<label className='text-black text-2xl align-middle mx-2 pt-3'>Search</label>
+			<label className='text-black text-2xl align-middle mx-2 pt-3'></label>
 			<input
 				type='text'
 				className='md:w-full lg:w-11/12 rounded p-5'

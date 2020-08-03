@@ -1,23 +1,26 @@
 import cn from 'classnames';
 import Link from 'next/link';
 
-interface Props {
+export type CoverImageProps = {
 	title: string;
-	src: string;
-	slug?: string;
-}
+	coverImage: { sourceUrl: string } | any;
+	slug?: string | number;
+};
 
-const CoverImage = ({ title, src, slug }: Props) => {
+export default function CoverImage({
+	title,
+	coverImage,
+	slug
+}: CoverImageProps) {
 	const image = (
 		<img
-			src={src}
-			alt={`cover image for ${title}`}
-			className={cn(' shadow-sm', {
-				'hover:shadow-md transition-shadow duration-500': slug
+			src={coverImage ? coverImage.sourceUrl : coverImage}
+			alt={title}
+			className={cn('shadow-small', {
+				'hover:shadow-medium transition-shadow duration-200': slug
 			})}
 		/>
 	);
-
 	return (
 		<div className='-mx-5 sm:mx-0'>
 			{slug ? (
@@ -29,8 +32,4 @@ const CoverImage = ({ title, src, slug }: Props) => {
 			)}
 		</div>
 	);
-};
-
-export default CoverImage;
-
-// image vs img tags https://stackoverflow.com/questions/11928566/img-vs-image-tag-in-html
+}

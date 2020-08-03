@@ -3,11 +3,15 @@ import Link from 'next/link';
 import SvgLogo from './svg-logo-only';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import NavRef from '../types/nav-ref';
 
-interface Props {
-	props: string | number;
+interface NavRef {
+	href: string;
+	label: string;
 }
+
+type HeaderProps = {
+	props: string | number;
+};
 
 const links: NavRef[] = [
 	{
@@ -24,13 +28,13 @@ const links: NavRef[] = [
 	}
 ];
 
-const Header = ({ props }: Props) => {
+const Header = ({ props }: HeaderProps) => {
 	const [navOpen, setNavOpen] = useState(false);
 	const navlist = links.map(link => (
 		<li className='nav-item' key={`${link.href}-${link.label}`}>
 			<Link href={link.href}>
 				<a
-					className='px-3 py-2 flex items-center text-xs uppercase font-bold leading-snug text-white hover:opacity-75'
+					className='px-3 py-2 flex items-center text-lg uppercase font-bold leading-snug text-white hover:opacity-75'
 					aria-label={link.label}
 				>
 					{link.label}
@@ -72,5 +76,3 @@ const Header = ({ props }: Props) => {
 };
 
 export default Header;
-
-// https://www.creative-tim.com/learning-lab/tailwind-starter-kit/documentation/react/navbars
