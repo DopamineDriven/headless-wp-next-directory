@@ -67,6 +67,36 @@ i
 - https://www.vim.org/
 - https://developer.wordpress.org/cli/commands/
 
+## Enale WPGraphQL JWT Authentication Plugin in WP Engine Admin Portal
+- after enabling, open GraphiQL IDE
+```gql
+mutation Login {
+  login(
+    input: {
+      clientMutationId: "uniqueId"
+      password: "insert password"
+      username: "nextjsheadless"
+    }
+  ) {
+    refreshToken
+  }
+}
+```
+- this returns a refresh token value for the WORDPRESS_AUTH_REFRESH_TOKEN key in .env.local
+- set the value of the WORDPRESS_PREVIEW_SECRET key to any url-friendly string 
+
+## View drafts locally or on the deployed site
+- append the following relative path on the landing page url
+- /api/preview?secret=secret-path&id=target-id
+- where 
+	- secret-path = /preview-mode
+	- target-id = id of the unpublished post (determined via phpmyadmin)
+- this will load the corresponding post
+- for example, try
+```url
+https://headless-wp-next-directory.vercel.app/api/preview?secret=/preview-mode&id=22
+```
+- (08-04-20)
 
 ## Favicon
 - https://favicon.io/favicon-converter/

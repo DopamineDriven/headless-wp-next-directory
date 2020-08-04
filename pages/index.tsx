@@ -54,7 +54,7 @@ type StaticProps = {
 	preview: boolean;
 };
 
-export async function getStaticProps({ preview = false }: StaticProps) {
+export async function getStaticProps({ preview = true }: StaticProps) {
 	const allPosts = await getAllPostsForHome(preview);
 	return {
 		props: { allPosts, preview }
