@@ -67,6 +67,23 @@ i
 - https://www.vim.org/
 - https://developer.wordpress.org/cli/commands/
 
+## Enale WPGraphQL JWT Authentication Plugin in WP Engine Admin Portal
+- after enabling, open GraphiQL IDE
+```gql
+mutation Login {
+  login(
+    input: {
+      clientMutationId: "uniqueId"
+      password: "insert password"
+      username: "nextjsheadless"
+    }
+  ) {
+    refreshToken
+  }
+}
+```
+- this returns a refresh token value for the WORDPRESS_AUTH_REFRESH_TOKEN key in .env.local
+- set the value of the WORDPRESS_PREVIEW_SECRET key to any url-friendly string 
 
 ## Favicon
 - https://favicon.io/favicon-converter/
