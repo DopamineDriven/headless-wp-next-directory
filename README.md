@@ -91,6 +91,12 @@ mutation Login {
 - where 
 	- secret-path = /preview-mode
 	- target-id = id of the unpublished post (determined via phpmyadmin)
+- this will load the corresponding post
+- for example, try
+```url
+https://headless-wp-next-directory.vercel.app/api/preview?secret=/preview-mode&id=22
+```
+- (08-04-20)
 
 ## Favicon
 - https://favicon.io/favicon-converter/
