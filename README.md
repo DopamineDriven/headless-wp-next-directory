@@ -85,6 +85,13 @@ mutation Login {
 - this returns a refresh token value for the WORDPRESS_AUTH_REFRESH_TOKEN key in .env.local
 - set the value of the WORDPRESS_PREVIEW_SECRET key to any url-friendly string 
 
+## View drafts locally or on the deployed site
+- append the following relative path on the landing page url
+- /api/preview?secret=secret-path&id=target-id
+- where 
+	- secret-path = /preview-mode
+	- target-id = id of the unpublished post (determined via phpmyadmin)
+
 ## Favicon
 - https://favicon.io/favicon-converter/
 - https://www.creativebloq.com/illustrator/create-perfect-favicon-12112760
