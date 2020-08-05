@@ -6,18 +6,17 @@ import { faSortDown } from '@fortawesome/free-solid-svg-icons/faSortDown';
 
 interface Props {
 	allPosts: any;
+	dropdownOptions: string[];
 }
 
-const SearchBox = ({ allPosts }: Props) => {
+const SearchBox = ({ allPosts, dropdownOptions }: Props) => {
 	return (
 		<div className='bg-white shadow-2xl p-4 mt-8 md:mt-6 sm:mt-4 flex mb-2'>
 			<div className='inline-block relative w-64'>
 				<select className='block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 mt-4 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline'>
-					<option>
-						Really long option that will likely overlap the chevron
-					</option>
-					<option>Option 2</option>
-					<option>Option 3</option>
+					{dropdownOptions.map((value, index) => {
+						return <option key={index}>{value}</option>;
+					})}
 				</select>
 				<div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700'>
 					{<FontAwesomeIcon icon={faSortDown} />}
