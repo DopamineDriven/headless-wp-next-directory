@@ -13,12 +13,16 @@ const Footer = () => {
 						<a
 							href='https://nextjs.org/docs/basic-features/pages'
 							className='mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-500 transition-colors mb-6 lg:mb-0'
+							target='__blank'
+							aria-label='Documentation'
 						>
 							Read Documentation
 						</a>
 						<a
 							href={`https://github.com/DopamineDriven/${EXAMPLE_PATH}`}
 							className='mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-500 transition-colors mb-6 lg:mb-0'
+							target='__blank'
+							aria-label='Github'
 						>
 							View on GitHub
 						</a>
