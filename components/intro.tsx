@@ -12,19 +12,47 @@ export default function Intro() {
 				</Link>
 			</h1>
 			<h2 className='text-center justify-center text-black text-lg mt-5 md:pl-8'>
-				A statically generated blog powered by{' '}
+				Powered by{' '}
 				<a
 					href='https://nextjs.org/'
 					className='underline hover:text-success duration-200 transition-colors'
 				>
 					Next.js
 				</a>{' '}
-				and{' '}
+				,{' '}
+				<a
+					href='https://www.typescriptlang.org/'
+					className='underline hover:text-success duration-200 transition-colors'
+				>
+					TypeScript
+				</a>{' '}
+				,{' '}
+				<a
+					href='https://graphql.org/'
+					className='underline hover:text-success duration-200 transition-colors'
+				>
+					GraphQL
+				</a>{' '}
+				,{' '}
+				<a
+					href='https://tailwindcss.com/'
+					className='underline hover:text-success duration-200 transition-colors'
+				>
+					Tailwind&nbsp;CSS
+				</a>{' '}
+				,{' '}
 				<a
 					href={CMS_URL}
 					className='underline hover:text-success duration-200 transition-colors'
 				>
 					{CMS_NAME}
+				</a>
+				,&nbsp;and{' '}
+				<a
+					href='https://vercel.com/'
+					className='underline hover:text-success duration-200 transition-colors'
+				>
+					Vercel
 				</a>
 				.
 			</h2>
