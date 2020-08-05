@@ -32,7 +32,7 @@ export default function Index({
 				</Head>
 				<Container>
 					<Intro />
-					<SearchBox />
+					<SearchBox allPosts={edges} />
 					{heroPost && (
 						<HeroPost
 							title={heroPost.title}

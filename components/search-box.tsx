@@ -4,7 +4,11 @@ import { faSortDown } from '@fortawesome/free-solid-svg-icons/faSortDown';
 
 // https://tailwindtemplates.io/search/#230
 
-const SearchBox = () => {
+interface Props {
+	allPosts: any;
+}
+
+const SearchBox = ({ allPosts }: Props) => {
 	return (
 		<div className='bg-white shadow-2xl p-4 mt-8 md:mt-6 sm:mt-4 flex mb-2'>
 			<div className='inline-block relative w-64'>
