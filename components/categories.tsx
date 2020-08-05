@@ -16,7 +16,7 @@ export default function Categories({ categories }: any) {
 			{categories.edges.length > 0 ? (
 				categories.edges.map((category: any, index: any) => (
 					<span key={index} className='ml-1 text-success'>
-						&num;{category.node.name}
+						#{category.node.name}
 					</span>
 				))
 			) : (

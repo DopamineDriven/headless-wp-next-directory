@@ -4,7 +4,6 @@ Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 ## Search Bar Configuration
 - https://medium.com/@matswainson/building-a-search-component-for-your-next-js-markdown-blog-9e75e0e7d210
 - https://github.com/matswainson/nextjs-blog-search-api
-
 ## WP Decoupled with Nextjs
 - https://github.com/rtCamp/wp-decoupled
 
