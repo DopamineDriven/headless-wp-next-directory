@@ -1,4 +1,4 @@
-export const CMS_NAME = 'WordPress Engine';
+export const CMS_NAME = 'Headless WP Engine';
 export const CMS_URL = 'https://wpengine.com/';
 export const EXAMPLE_PATH = 'headless-wp-next-directory';
 export const HOME_OG_IMAGE_URL =
