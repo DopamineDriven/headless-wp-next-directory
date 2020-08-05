@@ -8,7 +8,6 @@ import { getAllPostsForHome } from '../lib/api';
 import { CMS_NAME } from '../lib/constants';
 import Header from '../components/header';
 import SearchBox from '../components/search-box';
-import Link from 'next/link';
 
 interface IndexProps {
 	allPosts: any;
@@ -34,13 +33,6 @@ export default function Index({
 				<Container>
 					<Intro />
 					<SearchBox />
-					<h2 className='md:text-6xl font-bold text-center font-serif tracking-tight md:tracking-tighter leading-tight mb-8 mt-8'>
-						<Link href='/'>
-							<a className='hover:text-cimaRed cursor-text select-text text-black px-8'>
-								Chicago Independent Media Alliance
-							</a>
-						</Link>
-					</h2>
 					{heroPost && (
 						<HeroPost
 							title={heroPost.title}
