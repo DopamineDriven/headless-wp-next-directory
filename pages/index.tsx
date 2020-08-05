@@ -70,8 +70,8 @@ type StaticProps = {
 
 export async function getStaticProps({ preview = false }: StaticProps) {
 	const allPosts = await getAllPostsForHome(preview);
-	const tagsAndPosts = await getTagAndPosts();
-	const categoriesAndPosts = await getCategoriesAndPosts();
+	const tagsAndPosts = await getTagAndPosts(true);
+	const categoriesAndPosts = await getCategoriesAndPosts(false);
 
 	return {
 		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts }
