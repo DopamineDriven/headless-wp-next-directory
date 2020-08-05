@@ -8,5 +8,6 @@ export const CLIENT_NAME = 'CIMA';
 export const SELECT_DROPDOWN_OPTIONS = [
 	'Print & Digital',
 	'Digital Only',
-	'Radio, Podcast, Broadcast'
+	'Radio, Podcast, Broadcast',
+	'Non-Profit'
 ];
