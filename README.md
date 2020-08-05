@@ -209,4 +209,5 @@ $ npx @svgr/cli --icon Logo.svg
 ```
 - https://tailwindcomponents.com/component/search-input
 
-- Thanks for waiting Andrew, so for editing the wp-config.php directly, there are two ways to do this, the first is through the use of a plugin like: https://wordpress.org/plugins/wp-config-file-editor/ and the second would be to connect to the site through ssh and edit it directly, which is the method that we use here, more info can be found here: https://wpengine.com/support/ssh-gateway/
+## HTML Symbols
+- https://dev.w3.org/html5/html-author/charref
