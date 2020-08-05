@@ -6,7 +6,10 @@ export default function Intro() {
 		<>
 			<h1 className='text-6xl sm:text-6xl xs:text-6xl font-bold text-center font-serif tracking-tight leading-tight mt-8'>
 				<Link href='/'>
-					<a className='hover:text-cimaRed cursor-text select-text text-black'>
+					<a
+						className='hover:text-cimaRed cursor-text select-text text-black'
+						aria-label='Chicago Independent Media Alliance'
+					>
 						Chicago Independent Media Alliance
 					</a>
 				</Link>
@@ -16,6 +19,8 @@ export default function Intro() {
 				<a
 					href='https://nextjs.org/'
 					className='underline hover:text-success duration-500 transition-colors'
+					aria-label='Next JS'
+					target='__blank'
 				>
 					Next.js
 				</a>
@@ -23,6 +28,8 @@ export default function Intro() {
 				<a
 					href='https://www.typescriptlang.org/'
 					className='underline hover:text-success duration-500 transition-colors'
+					aria-label='TypeScript'
+					target='__blank'
 				>
 					TypeScript
 				</a>
@@ -30,6 +37,8 @@ export default function Intro() {
 				<a
 					href='https://graphql.org/'
 					className='underline hover:text-success duration-500 transition-colors'
+					aria-label='GraphQL'
+					target='__blank'
 				>
 					GraphQL
 				</a>
@@ -37,6 +46,8 @@ export default function Intro() {
 				<a
 					href='https://tailwindcss.com/'
 					className='underline hover:text-success duration-500 transition-colors'
+					aria-label='Tailwind CSS'
+					target='__blank'
 				>
 					Tailwind&nbsp;CSS
 				</a>
@@ -44,6 +55,8 @@ export default function Intro() {
 				<a
 					href={CMS_URL}
 					className='underline hover:text-success duration-500 transition-colors'
+					aria-label={`${CMS_NAME}`}
+					target='__blank'
 				>
 					{CMS_NAME}
 				</a>
@@ -51,6 +64,8 @@ export default function Intro() {
 				<a
 					href='https://vercel.com/'
 					className='underline hover:text-success duration-500 transition-colors'
+					aria-label='Vercel'
+					target='__blank'
 				>
 					Vercel
 				</a>
