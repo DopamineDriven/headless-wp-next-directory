@@ -1,13 +1,12 @@
 import Head from 'next/head';
 import Container from '../components/container';
-import MoreStories from '../components/more-stories';
-import HeroPost from '../components/hero-post';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
 import {
 	getAllPostsForHome,
 	getTagAndPosts,
-	getCategoriesAndPosts
+	getCategoriesAndPosts,
+	getPlugins
 } from '../lib/api';
 import {
 	CMS_NAME,
@@ -16,7 +15,7 @@ import {
 } from '../lib/constants';
 import Header from '../components/header';
 import SearchBox from '../components/search-box';
-import Cards from "../components/more-cards";
+import Cards from '../components/more-cards';
 
 interface IndexProps {
 	allPosts: any;
@@ -24,6 +23,7 @@ interface IndexProps {
 	props: string | number;
 	tagsAndPosts: any;
 	categoriesAndPosts: any;
+	plugins: any;
 }
 
 export default function Index({
@@ -31,13 +31,14 @@ export default function Index({
 	preview,
 	tagsAndPosts,
 	categoriesAndPosts,
+	plugins,
 	props
 }: IndexProps) {
-	const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
 
 	console.log(tagsAndPosts);
 	console.log(categoriesAndPosts);
+	console.log(plugins);
 
 	return (
 		<>
@@ -69,12 +70,12 @@ export async function getStaticProps({ preview = false }: StaticProps) {
 	const allPosts = await getAllPostsForHome(preview);
 	const tagsAndPosts = await getTagAndPosts();
 	const categoriesAndPosts = await getCategoriesAndPosts();
+	const plugins = getPlugins();
 
 	return {
-		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts }
+		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts, plugins }
 	};
 }
-
 
 /*
 interface IndexProps {

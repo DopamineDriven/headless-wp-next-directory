@@ -34,13 +34,6 @@ query MyQuery {
   }
 }
 ```
-```tsx
-<ul className="wp-block-social-links">
-  <li className="wp-social-link wp-social-link-wordpress">
-  </li>
-</ul>
-```
-
 - plugins are independent of posts and authors
 
 ## Search Bar Configuration
