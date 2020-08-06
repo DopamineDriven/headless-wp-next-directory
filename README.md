@@ -38,6 +38,9 @@ query MyQuery {
 - plugin component made
 - plugin in index and slug.tsx
 
+## WP-GraphQL-Composer Plugin
+- https://developer.aliyun.com/mirror/npm/package/wp-graphql-composer/v/0.1.7
+
 ## Search Bar Configuration
 
 - https://medium.com/@matswainson/building-a-search-component-for-your-next-js-markdown-blog-9e75e0e7d210

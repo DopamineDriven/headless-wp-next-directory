@@ -57,7 +57,7 @@ export default function Index({
 						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
 					/>
 					{morePosts.length > 0 && <Cards posts={morePosts} />}
-	{plugins.length > 0 ? <Plugins plugins={plugins} /> : null}
+	{/* {plugins.length > 0 ? <Plugins plugins={plugins} /> : null} */}
 				</Container>
 			</Layout>
 		</>
