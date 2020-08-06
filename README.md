@@ -35,6 +35,8 @@ query MyQuery {
 }
 ```
 - plugins are independent of posts and authors
+- plugin component made
+- plugin in index and slug.tsx
 
 ## Search Bar Configuration
 
