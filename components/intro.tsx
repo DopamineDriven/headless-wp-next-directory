@@ -4,7 +4,7 @@ import Link from 'next/link';
 export default function Intro() {
 	return (
 		<>
-			<h1 className='text-6xl sm:text-6xl xs:text-6xl font-bold text-center font-serif tracking-tight leading-tight mt-8'>
+			<h1 className='text-4xl sm:text-4xl xs:text-4xl font-bold text-center justify-center font-serif tracking-tight leading-tight mt-4'>
 				<Link href='/'>
 					<a
 						className='hover:text-cimaRed cursor-text select-text text-black'
