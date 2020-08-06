@@ -35,7 +35,7 @@ export default function PostHeader({
 				/>
 			</div>
 			<div className='max-w-2xl mx-auto align-middle content-center justified-center text-center'>
-				<div className='block md:hidden mb-6'>
+				<div className='block md:hidden mb-6 w-inherit'>
 					<Avatar author={author} />
 				</div>
 				<div className='mb-6 text-2xl'>

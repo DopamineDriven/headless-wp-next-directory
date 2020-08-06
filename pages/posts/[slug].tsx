@@ -7,7 +7,7 @@ import Header from '../../components/header';
 import PostHeader from '../../components/post-header';
 import SectionSeparator from '../../components/section-separator';
 import Layout from '../../components/layout';
-import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
+import { getAllPostsWithSlug, getPostAndMorePosts, getPlugins } from '../../lib/api';
 import PostTitle from '../../components/post-title';
 import Head from 'next/head';
 import { CMS_NAME } from '../../lib/constants';
@@ -18,11 +18,13 @@ interface SlugProps {
 	post: any;
 	posts: any;
 	preview: boolean;
+	plugins: any;
 }
 
-export default function Post({ post, posts, preview, props }: SlugProps) {
+export default function Post({ plugins, post, posts, preview, props }: SlugProps) {
 	const router = useRouter();
 	const morePosts = posts?.edges;
+	console.log(plugins);
 
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
@@ -85,10 +87,11 @@ export async function getStaticProps({
 	previewData
 }: Params) {
 	const data = await getPostAndMorePosts(params.slug, preview, previewData);
-
+	const plugins = await getPlugins();
 	return {
 		props: {
 			preview,
+			plugins,
 			post: data.post,
 			posts: data.posts
 		}

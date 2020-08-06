@@ -13,7 +13,8 @@ module.exports = {
 				blizzardBlue: '#b3ddf2',
 				chicagoRed: '#ff0000',
 				cimaRed: '#B8242C',
-				wcdPink: '#eb57a3'
+				wcdPink: '#eb57a3',
+				tinyHouseWhite: '#f0f1f2'
 			},
 			spacing: {
 				28: '7rem'

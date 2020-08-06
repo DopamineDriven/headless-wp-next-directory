@@ -3,15 +3,14 @@ import Link from 'next/link';
 import Header from '../components/header';
 import Layout from '../components/layout';
 import Container from '../components/container';
-import { CLIENT_NAME, SELECT_DROPDOWN_OPTIONS } from '../lib/constants';
-import Cards from '../components/more-cards';
+import { CLIENT_NAME } from '../lib/constants';
 import {
 	getAllPostsForHome,
 	getTagAndPosts,
 	getCategoriesAndPosts
 } from '../lib/api';
 import Intro from '../components/intro';
-import SearchBox from '../components/search-box';
+import HeroPost from '../components/hero-post';
 
 interface AboutProps {
 	props: string | number;
@@ -28,7 +27,7 @@ const About = ({
 	tagsAndPosts,
 	categoriesAndPosts
 }: AboutProps) => {
-	let morePosts = edges.slice(0);
+	const heroPost = edges[0]?.node;
 	console.log(tagsAndPosts);
 	console.log(categoriesAndPosts);
 	return (
@@ -39,17 +38,27 @@ const About = ({
 					<title>{`${CLIENT_NAME} about page`}</title>
 				</Head>
 				<Container>
-					{/* <h2 className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mt-8'>
+					<h2 className='text-6xl font-bold tracking-tight md:tracking-tighter text-center align-middle justify-center font-serif leading-tight mt-8'>
 						<Link href='/'>
-							<a className='hover:underline text-cimaRed px-8'>About</a>
+							<a
+								className='text-black hover:text-cimaRed cursor-text select-text'
+								aria-label='About Chicago Independent Media Alliance'
+							>
+								About
+							</a>
 						</Link>
-					</h2> */}
+					</h2>
 					<Intro />
-					<SearchBox
-						allPosts={morePosts}
-						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
-					/>
-					{morePosts.length > 0 && <Cards posts={morePosts} />}
+					{heroPost && (
+						<HeroPost
+							title={heroPost.title}
+							coverImage={heroPost.featuredImage.node}
+							date={heroPost.date}
+							author={heroPost.author.node}
+							slug={heroPost.slug}
+							excerpt={heroPost.excerpt}
+						/>
+					)}
 				</Container>
 			</Layout>
 		</>
