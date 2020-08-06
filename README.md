@@ -2,6 +2,47 @@
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## Simple Social Icons Plugin
+```ts
+query MyQuery {
+  plugins {
+    edges {
+      node {
+        name
+        path
+        pluginUri
+        id
+        description
+        author
+        authorUri
+      }
+    }
+  }
+}
+```
+- returns
+```json
+{
+  "node": {
+    "name": "Simple Social Icons",
+    "path": "simple-social-icons/simple-social-icons.php",
+    "pluginUri": "https://wordpress.org/plugins/simple-social-icons/",
+    "id": "cGx1Z2luOnNpbXBsZS1zb2NpYWwtaWNvbnMvc2ltcGxlLXNvY2lhbC1pY29ucy5waHA=",
+    "description": "A simple CSS and SVG driven social icons widget.",
+    "author": "StudioPress",
+    "authorUri": "https://www.studiopress.com/"
+  }
+}
+```
+```tsx
+<ul className="wp-block-social-links">
+  <li className="wp-social-link wp-social-link-wordpress">
+  </li>
+</ul>
+```
+
+- plugins are independent of posts and authors
+
 ## Search Bar Configuration
 
 - https://medium.com/@matswainson/building-a-search-component-for-your-next-js-markdown-blog-9e75e0e7d210
@@ -115,7 +156,7 @@ mutation Login {
 - this returns a refresh token value for the WORDPRESS_AUTH_REFRESH_TOKEN key in .env.local
 - set the value of the WORDPRESS_PREVIEW_SECRET key to any url-friendly string
 ```ts
-href={`*landing-page*/api/preview?secret=${WORDPRESS_PREVIEW_SECRET}&id=*draft id*`}
+href={`localhost:3000/api/preview?secret=${process.env.WORDPRESS_PREVIEW_SECRET}&id=${draft.id}`}
 ```
 
 ## View drafts locally or on the deployed site
