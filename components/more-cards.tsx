@@ -12,11 +12,11 @@ export default function MoreCards({ posts }: CardsProps) {
 	return (
 		<section>
 			<div className='grid grid-cols-3 align-middle content-center'>
-				{posts.map(({ node }: any) => (
+				{posts.map(({ node }: NodeProps) => (
 					<Card
 						key={node.slug}
 						title={node.title}
-						coverImage={node.featuredImage?.node}
+						coverImage={node.featuredImage.node}
 						date={node.date}
 						author={node.author.node}
 						slug={node.slug}

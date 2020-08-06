@@ -51,7 +51,7 @@ export default function Post({ plugins, post, posts, preview, props }: SlugProps
 								</Head>
 								<PostHeader
 									title={post.title}
-									coverImage={post.featuredImage?.node}
+									coverImage={post.featuredImage.node}
 									date={post.date}
 									author={post.author.node}
 									categories={post.categories}
