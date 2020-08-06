@@ -16,6 +16,7 @@ import {
 import Header from '../components/header';
 import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
+import Plugins from "../components/plugins";
 
 interface IndexProps {
 	allPosts: any;
@@ -56,6 +57,7 @@ export default function Index({
 						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
 					/>
 					{morePosts.length > 0 && <Cards posts={morePosts} />}
+	{plugins.length > 0 ? <Plugins plugins={plugins} /> : null}
 				</Container>
 			</Layout>
 		</>
@@ -70,7 +72,7 @@ export async function getStaticProps({ preview = false }: StaticProps) {
 	const allPosts = await getAllPostsForHome(preview);
 	const tagsAndPosts = await getTagAndPosts();
 	const categoriesAndPosts = await getCategoriesAndPosts();
-	const plugins = getPlugins();
+	const plugins = await getPlugins();
 
 	return {
 		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts, plugins }

@@ -24,6 +24,7 @@ interface SlugProps {
 export default function Post({ plugins, post, posts, preview, props }: SlugProps) {
 	const router = useRouter();
 	const morePosts = posts?.edges;
+	console.log(plugins);
 
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
@@ -86,10 +87,11 @@ export async function getStaticProps({
 	previewData
 }: Params) {
 	const data = await getPostAndMorePosts(params.slug, preview, previewData);
-
+	const plugins = await getPlugins();
 	return {
 		props: {
 			preview,
+			plugins,
 			post: data.post,
 			posts: data.posts
 		}
