@@ -29,7 +29,7 @@ export default function PostHeader({
 			</div>
 			<div className='mb-8 md:mb-4 -mx-5 sm:mx-0'>
 				<CoverImage
-					title={coverImage.title}
+					title={coverImage?.title}
 					coverImage={coverImage}
 					slug={slug}
 				/>

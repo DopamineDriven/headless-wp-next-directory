@@ -11,13 +11,20 @@ export default function Avatar({ author }: AvatarProps) {
 			: author.name;
 
 	return (
-		<div className='flex w-full items-center text-center align-middle justify-center rounded-full'>
-			<img
-				src={author.avatar.url}
-				className='h-24 w-24 rounded-full border-tinyHouseWhite border-collapse border-opacity-50 border-4 shadow-xl'
-				alt={nombre}
-			/>
-		</div>
+		<>
+			<div className='flex w-full items-center text-center align-middle justify-center rounded-full'>
+				<div>
+					<img
+						src={author.avatar.url}
+						className='h-24 w-24 rounded-full border-tinyHouseWhite border-collapse border-opacity-50 border-4 shadow-xl'
+						alt={nombre}
+					/>
+				</div>
+			</div>
+			<div className='flex text-lg w-full items-center text-center align-middle justify-center'>
+				<h2>{nombre}</h2>
+			</div>
+		</>
 	);
 }
 
