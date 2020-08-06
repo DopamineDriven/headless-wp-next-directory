@@ -29,20 +29,20 @@
 			"linkedinUrl": "https://www.linkedin.com/in/jshields90/"
 		},
 		{
-			"name": "Yong Lee",
-			"githubUrl": "https://github.com/yhlee-dho",
-			"githubUsername": "yhlee-dho",
-			"twitterUrl": "https://twitter.com/YongLee08380800",
-			"twitterUsername": "@YongLee08380800",
-			"linkedinUrl": "https://www.linkedin.com/in/yong-lee-a16430193/"
-		},
-		{
 			"name": "David Bartolone",
 			"githubUrl": "https://github.com/TechHedz",
 			"githubUsername": "TechHedz",
 			"twitterUrl": "https://twitter.com/DevHedz",
 			"twitterUsername": "@DevHedz",
 			"linkedinUrl": "https://www.linkedin.com/in/dbartolone/"
+		},
+		{
+			"name": "Yong Lee",
+			"githubUrl": "https://github.com/yhlee-dho",
+			"githubUsername": "yhlee-dho",
+			"twitterUrl": "https://twitter.com/YongLee08380800",
+			"twitterUsername": "@YongLee08380800",
+			"linkedinUrl": "https://www.linkedin.com/in/yong-lee-a16430193/"
 		}
 	],
 	"license": "MIT",

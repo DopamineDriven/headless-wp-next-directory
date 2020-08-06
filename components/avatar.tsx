@@ -1,3 +1,5 @@
+import SectionSeparator from './section-separator';
+
 type AvatarProps = {
 	author: any;
 };
@@ -12,10 +14,9 @@ export default function Avatar({ author }: AvatarProps) {
 		<div className='flex items-center'>
 			<img
 				src={author.avatar.url}
-				className='w-16 h-16 rounded-full mr-4'
+				className='h14 w-14 rounded-full border-black border-2 shadow-large'
 				alt={nombre}
 			/>
-			<div className='text-xl font-bold'>{nombre}</div>
 		</div>
 	);
 }
