@@ -1,10 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import CoverImage, { CoverImageProps } from './cover-image';
 import {
 	faGithub,
 	faLinkedin,
 	faTwitter
 } from '@fortawesome/free-brands-svg-icons';
+import Date from './date';
+import Avatar from './avatar';
+import Link from 'next/link';
 
 type Props = {
 	href: string;
@@ -30,7 +34,23 @@ const iconLinks: Props[] = [
 	}
 ];
 
-const Card = () => {
+type CardProps = {
+	coverImage: CoverImageProps;
+	title: string;
+	slug: string | number;
+	date: string;
+	author: any;
+	excerpt: string;
+};
+
+const Card = ({
+	author,
+	coverImage,
+	excerpt,
+	date,
+	slug,
+	title
+}: CardProps) => {
 	const iconMap = iconLinks.map(link => (
 		<a
 			key={link.name}
@@ -47,31 +67,30 @@ const Card = () => {
 		</a>
 	));
 	return (
-		<div className='row-gap-2 inline-block ml-5'>
+		<div className='inline-block ml-5'>
 			<div className='max-w-xs rounded overflow-hidden shadow-lg my-4 inline-block mx-8 justify-center'>
-				<img
-					className='w-full'
-					src='https://res.cloudinary.com/asross311/image/upload/v1596621036/ASR_Assets/windy-city-devs_xrktse.jpg'
-					alt='next'
-				/>
+				<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
 				<div className='flex flex-col items-center justify-center bg-white px-4 pt-4 shadow rounded-lg'>
-					<div className='inline-flex shadow-lg border border-gray-200 rounded-full overflow-hidden h-40 w-40'>
-						<img
-							src='https://res.cloudinary.com/asross311/image/upload/v1592800832/ASR_Assets/Yong_ehso3r.png'
-							alt='yonger'
-							className='h-14 w-14 rounded-full border-blizzardBlue border-4'
-						/>
+					<div className='inline-flex'>
+						<Avatar author={author} />
 					</div>
 
-					<h2 className='mt-4 font-bold text-xl'>Windy City Devs</h2>
-					<h6 className='mt-2 text-sm font-medium'>
-						Modernizing Web Development
-					</h6>
+					<h2 className='mt-4 font-bold text-xl'>
+						<Link as={`/posts/${slug}`} href='/posts/[slug]'>
+							<a
+								className='hover:underline text-xl font-semibold'
+								dangerouslySetInnerHTML={{ __html: title }}
+							></a>
+						</Link>
+					</h2>
+					<h6
+						className='mt-2 text-sm font-medium'
+						dangerouslySetInnerHTML={{ __html: excerpt }}
+					></h6>
 
 					<p className='text-xs text-gray-500 text-center mt-3'>
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab enim
-						molestiae nulla.
+						<Date dateString={date} />
 					</p>
 					<hr className='border-accent-2 w-full mt-8' />
 
