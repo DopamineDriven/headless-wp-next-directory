@@ -3,6 +3,7 @@ import Date from './date';
 import CoverImage, { CoverImageProps } from './cover-image';
 import PostTitle from './post-title';
 import Categories from './categories';
+import CardIcons from './card-icons';
 
 type PostHeaderProps = {
 	title: string;
@@ -11,6 +12,7 @@ type PostHeaderProps = {
 	date: string;
 	categories: any;
 	slug: string | number;
+	social: any;
 };
 
 export default function PostHeader({
@@ -19,6 +21,7 @@ export default function PostHeader({
 	date,
 	author,
 	categories,
+	social,
 	slug
 }: PostHeaderProps) {
 	return (
@@ -40,7 +43,10 @@ export default function PostHeader({
 				</div>
 				<div className='mb-6 text-2xl grid-cols-1'>
 					Posted on&nbsp;<Date dateString={date} />
+					<hr className='border-accent-2 w-full my-2' />
 					<Categories categories={categories} />
+					<hr className='border-accent-2 w-full mt-2' />
+					<CardIcons social={social} />
 				</div>
 			</div>
 		</>

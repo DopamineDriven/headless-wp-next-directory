@@ -55,6 +55,7 @@ export default function Post({ post, posts, preview, props }: SlugProps) {
 									author={post.author.node}
 									categories={post.categories}
 									slug={post.slug}
+									social={post.social}
 								/>
 								<PostBody content={post.content} />
 								<footer>
