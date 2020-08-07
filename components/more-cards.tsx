@@ -11,7 +11,7 @@ type CardsProps = {
 export default function MoreCards({ posts }: CardsProps) {
 	return (
 		<section>
-			<div className='grid grid-cols-3 align-middle content-center'>
+			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4 align-middle content-center'>
 				{posts.map(({ node }: NodeProps) => (
 					<Card
 						key={node.slug}
