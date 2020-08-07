@@ -5,8 +5,7 @@ import Layout from '../components/layout';
 import {
 	getAllPostsForHome,
 	getTagAndPosts,
-	getCategoriesAndPosts,
-	getPlugins
+	getCategoriesAndPosts
 } from '../lib/api';
 import {
 	CMS_NAME,
@@ -16,7 +15,6 @@ import {
 import Header from '../components/header';
 import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
-import Plugins from "../components/plugins";
 
 interface IndexProps {
 	allPosts: any;
@@ -24,7 +22,6 @@ interface IndexProps {
 	props: string | number;
 	tagsAndPosts: any;
 	categoriesAndPosts: any;
-	plugins: any;
 }
 
 export default function Index({
@@ -32,14 +29,11 @@ export default function Index({
 	preview,
 	tagsAndPosts,
 	categoriesAndPosts,
-	plugins,
 	props
 }: IndexProps) {
 	let morePosts = edges.slice(0);
-
 	console.log(tagsAndPosts);
 	console.log(categoriesAndPosts);
-	console.log(plugins);
 
 	return (
 		<>
@@ -57,7 +51,6 @@ export default function Index({
 						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
 					/>
 					{morePosts.length > 0 && <Cards posts={morePosts} />}
-	{/* {plugins.length > 0 ? <Plugins plugins={plugins} /> : null} */}
 				</Container>
 			</Layout>
 		</>
@@ -72,10 +65,9 @@ export async function getStaticProps({ preview = false }: StaticProps) {
 	const allPosts = await getAllPostsForHome(preview);
 	const tagsAndPosts = await getTagAndPosts();
 	const categoriesAndPosts = await getCategoriesAndPosts();
-	const plugins = await getPlugins();
 
 	return {
-		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts, plugins }
+		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts }
 	};
 }
 

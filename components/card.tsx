@@ -1,38 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import CoverImage, { CoverImageProps } from './cover-image-card';
 import {
-	faGithub,
-	faLinkedin,
-	faTwitter
+	faTwitter,
+	faFacebook,
+	faInstagram
 } from '@fortawesome/free-brands-svg-icons';
 import Date from './date';
 import Avatar from './avatar';
 import Link from 'next/link';
-
-type Props = {
-	href: string;
-	name: string;
-	icon: IconProp;
-};
-
-const iconLinks: Props[] = [
-	{
-		href: 'https://www.linkedin.com/in/asross/',
-		name: 'facebook',
-		icon: faLinkedin
-	},
-	{
-		href: 'https://twitter.com/Dopamine_Driven',
-		name: 'twitter',
-		icon: faTwitter
-	},
-	{
-		href: 'https://www.github.com/DopamineDriven/',
-		name: 'github',
-		icon: faGithub
-	}
-];
 
 type CardProps = {
 	coverImage: CoverImageProps;
@@ -41,6 +16,7 @@ type CardProps = {
 	date: string;
 	author: any;
 	excerpt: string;
+	social: any;
 };
 
 const Card = ({
@@ -49,23 +25,9 @@ const Card = ({
 	excerpt,
 	date,
 	slug,
+	social,
 	title
 }: CardProps) => {
-	const iconMap = iconLinks.map(link => (
-		<a
-			key={link.name}
-			aria-label={link.name}
-			target='__blank'
-			href={link.href}
-			className='bg-black text-white hover:text-black hover:bg-white transition-colors leading-relaxed duration-500 text-lg inline-block text-center items-center align-middle justify-center w-8 border mx-1 my-2 rounded-full border-blizzardBlue focus:outline-none'
-		>
-			<FontAwesomeIcon
-				icon={link.icon}
-				className='align-middle text-center'
-				fontSize='xl'
-			/>
-		</a>
-	));
 	return (
 		<div className='inline-block ml-5'>
 			<div className='max-w-xs rounded overflow-hidden shadow-lg my-4 inline-block mx-2 justify-center'>
@@ -95,7 +57,47 @@ const Card = ({
 					<hr className='border-accent-2 w-full mt-8' />
 
 					<ul className='flex flex-row mt-4 space-x-2'>
-						<li>{iconMap}</li>
+						<li>
+							{' '}
+							<a
+								aria-label='facebook'
+								target='__blank'
+								href={social.facebook}
+								className='bg-black text-white hover:text-black hover:bg-white transition-colors leading-relaxed duration-500 text-lg inline-block text-center items-center align-middle justify-center w-8 border mx-1 my-2 rounded-full border-blizzardBlue focus:outline-none'
+							>
+								<FontAwesomeIcon
+									icon={faFacebook}
+									className='align-middle text-center'
+									fontSize='xl'
+								/>
+							</a>
+							{' '}
+							<a
+								aria-label='instagram'
+								target='__blank'
+								href={social.instagram}
+								className='bg-black text-white hover:text-black hover:bg-white transition-colors leading-relaxed duration-500 text-lg inline-block text-center items-center align-middle justify-center w-8 border mx-1 my-2 rounded-full border-blizzardBlue focus:outline-none'
+							>
+								<FontAwesomeIcon
+									icon={faInstagram}
+									className='align-middle text-center'
+									fontSize='xl'
+								/>
+							</a>
+							{' '}
+							<a
+								aria-label='twitter'
+								target='__blank'
+								href={social.twitter}
+								className='bg-black text-white hover:text-black hover:bg-white transition-colors leading-relaxed duration-500 text-lg inline-block text-center items-center align-middle justify-center w-8 border mx-1 my-2 rounded-full border-blizzardBlue focus:outline-none'
+							>
+								<FontAwesomeIcon
+									icon={faTwitter}
+									className='align-middle text-center'
+									fontSize='xl'
+								/>
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>

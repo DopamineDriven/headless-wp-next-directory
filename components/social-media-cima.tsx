@@ -6,6 +6,7 @@ import {
 	faTwitter
 } from '@fortawesome/free-brands-svg-icons';
 
+
 type Props = {
 	href: string;
 	name: string;
