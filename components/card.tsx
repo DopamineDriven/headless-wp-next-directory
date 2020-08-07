@@ -68,7 +68,7 @@ const Card = ({
 	));
 	return (
 		<div className='inline-block ml-5'>
-			<div className='max-w-xs rounded overflow-hidden shadow-lg my-4 inline-block mx-8 justify-center'>
+			<div className='max-w-xs rounded overflow-hidden shadow-lg my-4 inline-block mx-2 justify-center'>
 				<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
 				<div className='flex flex-col items-center justify-center bg-white px-4 pt-2 shadow rounded-lg'>
