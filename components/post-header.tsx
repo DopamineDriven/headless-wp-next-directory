@@ -42,7 +42,8 @@ export default function PostHeader({
 					<Avatar author={author} />
 				</div>
 				<div className='mb-6 text-2xl grid-cols-1'>
-					Posted on&nbsp;<Date dateString={date} />
+					Posted on&nbsp;
+					<Date dateString={date} />
 					<hr className='border-accent-2 w-full my-2' />
 					<Categories categories={categories} />
 					<hr className='border-accent-2 w-full mt-2' />
