@@ -2,6 +2,11 @@
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## WPGQL Custom Post Types
+- https://edwincromley.gitbooks.io/wp-graphql/content/handling-custom-post-types.html ***
+- https://github.com/wp-graphql/wp-graphql-custom-post-type-ui
+- https://stackoverflow.com/questions/60170927/wordpress-wp-graphql-not-working-with-custom-post-type ***
+
 ## WPGQL Typings
 - https://medium.com/javascript-in-plain-english/graphql-pagination-using-edges-vs-nodes-in-connections-f2ddb8edffa0 ***
 - https://relay.dev/graphql/connections.htm ********&larr;
