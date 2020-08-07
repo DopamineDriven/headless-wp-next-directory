@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Container from '../../components/container';
 import PostBody from '../../components/post-body';
-import MoreStories from '../../components/more-stories';
+// import MoreStories from '../../components/more-stories';
 import Header from '../../components/header';
 import PostHeader from '../../components/post-header';
 import SectionSeparator from '../../components/section-separator';
@@ -12,6 +12,7 @@ import PostTitle from '../../components/post-title';
 import Head from 'next/head';
 import { CMS_NAME } from '../../lib/constants';
 import Tags from '../../components/tags';
+import MoreCards from '../../components/more-cards';
 
 interface SlugProps {
 	props: string | number;
@@ -54,6 +55,7 @@ export default function Post({ post, posts, preview, props }: SlugProps) {
 									author={post.author.node}
 									categories={post.categories}
 									slug={post.slug}
+									social={post.social}
 								/>
 								<PostBody content={post.content} />
 								<footer>
@@ -62,7 +64,7 @@ export default function Post({ post, posts, preview, props }: SlugProps) {
 							</article>
 
 							<SectionSeparator />
-							{morePosts.length > 0 && <MoreStories posts={morePosts} />}
+							{morePosts.length > 0 && <MoreCards posts={morePosts} />}
 						</>
 					)}
 				</Container>
