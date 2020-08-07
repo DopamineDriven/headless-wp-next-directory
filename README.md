@@ -2,6 +2,13 @@
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## WPGQL Typings
+- https://medium.com/javascript-in-plain-english/graphql-pagination-using-edges-vs-nodes-in-connections-f2ddb8edffa0 ***
+- https://relay.dev/graphql/connections.htm ********&larr;
+- https://www.typescriptlang.org/docs/handbook/basic-types.html *EDGE(S) AND NODE(S) MUST BE OBJECT TYPES*
+- https://github.com/aliemteam/wp-graphql
+- https://github.com/MichalLytek/type-graphql#readme
+
 ## Simple Social Icons Plugin
 ```ts
 query MyQuery {
