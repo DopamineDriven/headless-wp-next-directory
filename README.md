@@ -3,6 +3,7 @@
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
 ## WPGQL Custom Post Types
+- https://wordpress.org/plugins/headless-cms/
 - https://www.wpwatercooler.com/devbranch/ep04-using-wpgraphql-with-wordpress/
 - https://edwincromley.gitbooks.io/wp-graphql/content/handling-custom-post-types.html ***
 - https://github.com/wp-graphql/wp-graphql-custom-post-type-ui

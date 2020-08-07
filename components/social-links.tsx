@@ -3,52 +3,55 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
 	faFacebook,
 	faInstagram,
-    faTwitter,
-    faWordpress
+	faTwitter
 } from '@fortawesome/free-brands-svg-icons';
+// import { faBookmark } from '@fortawesome/free-regular-svg-icons';
 
 type Props = {
-	href: string;
+	social: { facebook?: any } | { twitter?: any } | { instagram?: any } | any;
 	name: string;
 	icon: IconProp;
 };
 const socialLinks: Props[] = [
 	{
-		href: `https://www.facebook.com/`,
+		social: URL,
 		name: 'Facebook',
 		icon: faFacebook
 	},
 	{
-		href: `https://twitter.com/`,
-		name: 'Twitter',
-		icon: faTwitter
-	},
-	{
-		href: `https://www.instagram.com/`,
+		social: URL,
 		name: 'Instagram',
 		icon: faInstagram
-    },
-    {
-        href: 'https://www.wordpress.org',
-        name: 'wordpress',
-        icon: faWordpress
-    }
+	},
+	{
+		social: URL,
+		name: 'Twitter',
+		icon: faTwitter
+	}
 ];
 
 const SocialLinks = () => {
-    // const socialMap = socialLinks.map(link => (
-    //     <li key={link.name}
-    //         className={`wp-social-link wp-social-link-${link.name} `}
-    //     >
-
-    //     </li>
-    // ))
+	const socialMap = socialLinks.map(link => (
+			<a
+				key={link.name}
+				aria-label={link.name}
+				target='__blank'
+				href={link.social}
+			></a>
+	));
 	return (
-        <div></div>
+		<div>
+            <ul>
+            <li
+			className='wp-social-link wp-social-link'
+		>
+            </li>
+            </ul>
+        </div>
 		// <ul className='wp-block-social-links'>
 		// 	<li className='wp-social-link wp-social-link-wordpress'>
-        //         <a href="https://wordpress.org"
-        //     </li>
+		//         <a href="https://wordpress.org"
+		//     </li>
 		// </ul>
 	);
 };
