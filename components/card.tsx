@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import CoverImage, { CoverImageProps } from './cover-image';
+import CoverImage, { CoverImageProps } from './cover-image-card';
 import {
 	faGithub,
 	faLinkedin,
@@ -75,8 +75,8 @@ const Card = ({
 					<div className='grid-cols-1'>
 						<Avatar author={author} />
 					</div>
-
-					<h2 className='mt-4 font-bold text-xl'>
+					<hr className='border-accent-2 my-6 w-full' />
+					<h2 className='font-bold text-xl'>
 						<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 							<a
 								className='hover:underline text-xl font-semibold'
@@ -85,7 +85,7 @@ const Card = ({
 						</Link>
 					</h2>
 					<h6
-						className='mt-2 text-sm font-medium text-center overflow-y-scroll h-12 w-full'
+						className='mt-2 text-sm text-center overflow-y h-20 w-full'
 						dangerouslySetInnerHTML={{ __html: excerpt }}
 					></h6>
 

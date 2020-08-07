@@ -4,10 +4,10 @@ import Link from 'next/link';
 export type CoverImageProps = {
 	title: string;
 	coverImage: { sourceUrl: string } | any;
-	slug?: string | number;
+	slug: string | number;
 };
 
-export default function CoverImage({
+export default function CoverImageCard({
 	title,
 	coverImage,
 	slug
@@ -16,7 +16,7 @@ export default function CoverImage({
 		<img
 			src={coverImage ? coverImage.sourceUrl : coverImage}
 			alt={title}
-			className={cn('shadow-small w-full justify-center', {
+			className={cn('shadow-small w-full h-40 max-h-full', {
 				'hover:shadow-medium transition-shadow duration-200': slug
 			})}
 		/>
