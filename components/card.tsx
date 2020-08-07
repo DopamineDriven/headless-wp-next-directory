@@ -8,6 +8,7 @@ import {
 import Date from './date';
 import Avatar from './avatar';
 import Link from 'next/link';
+import CardIcons from './card-icons';
 
 type CardProps = {
 	coverImage: CoverImageProps;
@@ -70,8 +71,7 @@ const Card = ({
 									className='align-middle text-center'
 									fontSize='xl'
 								/>
-							</a>
-							{' '}
+							</a>{' '}
 							<a
 								aria-label='instagram'
 								target='__blank'
@@ -83,8 +83,7 @@ const Card = ({
 									className='align-middle text-center'
 									fontSize='xl'
 								/>
-							</a>
-							{' '}
+							</a>{' '}
 							<a
 								aria-label='twitter'
 								target='__blank'
