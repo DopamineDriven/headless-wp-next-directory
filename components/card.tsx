@@ -71,8 +71,8 @@ const Card = ({
 			<div className='max-w-xs rounded overflow-hidden shadow-lg my-4 inline-block mx-8 justify-center'>
 				<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
-				<div className='flex flex-col items-center justify-center bg-white px-4 pt-4 shadow rounded-lg'>
-					<div className='inline-flex'>
+				<div className='flex flex-col items-center justify-center bg-white px-4 pt-2 shadow rounded-lg'>
+					<div className='grid-cols-1'>
 						<Avatar author={author} />
 					</div>
 
@@ -85,7 +85,7 @@ const Card = ({
 						</Link>
 					</h2>
 					<h6
-						className='mt-2 text-sm font-medium'
+						className='mt-2 text-sm font-medium text-center overflow-y-scroll h-12 w-full'
 						dangerouslySetInnerHTML={{ __html: excerpt }}
 					></h6>
 
