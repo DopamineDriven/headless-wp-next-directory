@@ -37,7 +37,7 @@ export default function PostPreview({
 				<Date dateString={date} />
 			</div>
 			<div
-				className='text-3xl leading-relaxed mb-2'
+				className='text-3xl leading-relaxed mb-2 text-center justify-center'
 				dangerouslySetInnerHTML={{ __html: excerpt }}
 			/>
 			<Avatar author={author} />

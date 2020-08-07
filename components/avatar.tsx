@@ -21,7 +21,7 @@ export default function Avatar({ author }: AvatarProps) {
 					/>
 				</div>
 			</div>
-			<div className='flex text-lg w-full items-center text-center align-middle justify-center'>
+			<div className='flex text-xs pt-2 w-full items-center text-center align-middle justify-center'>
 				<h2>{nombre}</h2>
 			</div>
 		</>

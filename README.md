@@ -248,7 +248,7 @@ $ npx @svgr/cli --icon Logo.svg
 - voila
 
 ## next-google-fonts npm
-
+- https://codeconqueror.com/blog/using-google-fonts-with-next-js
 - https://github.com/joe-bell/next-google-fonts
 - https://johnny.am/blog/n2-adding-google-fonts-to-nextjs-project
 - https://fonts.google.com/specimen/Barlow+Condensed?preview.text=CIMA&preview.text_type=custom&sidebar.open=true&selection.family=Barlow+Condensed|Barlow+Semi+Condensed#license

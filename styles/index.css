@@ -1,4 +1,13 @@
 @tailwind base;
+/* Write custom base styles here */
+@font-face {
+	font-family: 'Barlow Condensed', sans-serif;
+	font-weight: 400;
+	src: url(https://fonts.googleapis.com/css2?family=Barlow%20Condensed&family=Barlow%20Semi%20Condensed&display=swap)
+		format('woff');
+}
+
+/*https://github.com/tailwindlabs/discuss/issues/277*/
 /* @font-face {
     font-family: 'Barrow Condensed', sans-serif;
     font-style: regular;
@@ -6,7 +15,6 @@
     font-display: swap;
     src: local('Great Vibes'), local('GreatVibes-Regular'), url(https://fonts.gstatic.com/s/greatvibes/v7/RWmMoKWR9v4ksMfaWd_JN9XLiaQ6DQ.woff2) format('woff2');
 } */
-/* Write custom base styles here */
 
 /* Start purging... */
 @tailwind components;
@@ -19,6 +27,10 @@
 /* Stop purging. */
 
 /* Write custom utilities here */
+
+.html {
+	@apply font-body;
+}
 
 .has-text-align-left {
 	@apply text-left;

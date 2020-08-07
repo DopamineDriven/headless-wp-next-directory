@@ -2,6 +2,10 @@ module.exports = {
 	purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
 	theme: {
 		extend: {
+			fontFamily: {
+				body: ['Barlow Condensed', 'sans-serif'],
+				display: ['Barlow Condensed', 'sans-serif']
+			},
 			colors: {
 				'accent-1': '#FAFAFA',
 				'accent-2': '#EAEAEA',
