@@ -3,8 +3,10 @@
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
 ## WPGQL Custom Post Types
+- https://www.wpwatercooler.com/devbranch/ep04-using-wpgraphql-with-wordpress/
 - https://edwincromley.gitbooks.io/wp-graphql/content/handling-custom-post-types.html ***
 - https://github.com/wp-graphql/wp-graphql-custom-post-type-ui
+- https://github.com/wp-graphql/wp-graphql/issues/344
 - https://stackoverflow.com/questions/60170927/wordpress-wp-graphql-not-working-with-custom-post-type ***
 
 ## WPGQL Typings
@@ -13,6 +15,19 @@ Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 - https://www.typescriptlang.org/docs/handbook/basic-types.html *EDGE(S) AND NODE(S) MUST BE OBJECT TYPES*
 - https://github.com/aliemteam/wp-graphql
 - https://github.com/MichalLytek/type-graphql#readme
+
+```ts
+add_action( 'graphql_register_types', function() {
+  register_graphql_field( 'Post', 'color', [
+     'type' => 'String',
+     'description' => __( 'The color of the post', 'wp-graphql' ),
+     'resolve' => function( $post ) {
+       $color = get_post_meta( $post->ID, 'color', true );
+       return ! empty( $color ) ? $color : 'blue';
+     }
+  ] );
+} );
+```
 
 ## Simple Social Icons Plugin
 ```ts
