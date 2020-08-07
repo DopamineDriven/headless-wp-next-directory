@@ -38,8 +38,8 @@ export default function PostHeader({
 				<div className='block md:hidden mb-6 w-inherit'>
 					<Avatar author={author} />
 				</div>
-				<div className='mb-6 text-2xl'>
-					Posted <Date dateString={date} />
+				<div className='mb-6 text-2xl grid-cols-1'>
+					Posted on&nbsp;<Date dateString={date} />
 					<Categories categories={categories} />
 				</div>
 			</div>
