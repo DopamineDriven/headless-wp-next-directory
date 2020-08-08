@@ -11,9 +11,9 @@ type CardIconProps = {
 
 const CardIcons = ({ social }: CardIconProps) => {
 	return (
-		<>
+		<div className="align-middle justify-center text-center content-center">
 			<ul className='flex flex-row mt-4 space-x-2'>
-				<li>
+				<li className='align-middle'>
 					{' '}
 					<a
 						aria-label='facebook'
@@ -53,7 +53,7 @@ const CardIcons = ({ social }: CardIconProps) => {
 					</a>
 				</li>
 			</ul>
-		</>
+		</div>
 	);
 };
 
