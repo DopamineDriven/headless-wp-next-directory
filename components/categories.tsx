@@ -11,11 +11,11 @@
 
 export default function Categories({ categories }: any) {
 	return (
-		<span className='ml-1'>
+		<span className='ml-1 text-sm'>
 			{categories.edges.length > 0 ? (
 				categories.edges.map((category: any, index: any) => (
 					<span key={index} className='ml-1 text-success'>
-						#{category.node.name}
+						#{category.node.name}&nbsp;
 					</span>
 				))
 			) : (
