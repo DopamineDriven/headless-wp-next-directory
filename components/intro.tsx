@@ -16,27 +16,36 @@ const handleClick = (e: Event) => {
 	e.preventDefault();
 };
 
-const Sorts: Sorting[] = [
+const sorts: Sorting[] = [
 	{
-		sort: getAllPostsForHomeDateAsc(handleClick),
+		sort: getAllPostsForHomeDateAsc(),
 		title: 'date ascending (most recent)'
 	},
 	{
-		sort: getAllPostsForHomeDateDesc(handleClick),
+		sort: getAllPostsForHomeDateDesc(),
 		title: 'date descending (least recent)'
 	},
 	{
-		sort: getAllPostsForHomeAlphabetical(handleClick),
+		sort: getAllPostsForHomeAlphabetical(),
 		title: 'alphabetical order'
 	},
 	{
-		sort: getAllPostsForHomeReverseAlphabetical(handleClick),
+		sort: getAllPostsForHomeReverseAlphabetical(),
 		title: 'reverse-alphabetical order'
 	}
 ];
 
 export default function Intro() {
-	
+	const sortingMap = sorts.map(sorting => (
+		<button
+			key={sorting.title}
+			className='mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-500 transition-colors mb-6 lg:mb-0 rounded'
+			aria-label='Documentation'
+			onClick={() => sorting.sort}
+		>
+			{sorting.title}
+		</button>
+	));
 	return (
 		<>
 			<h1 className='text-6xl sm:text-6xl xs:text-5xl font-bold text-center justify-center font-body tracking-tight leading-tight mt-4'>
@@ -111,11 +120,7 @@ export default function Intro() {
 				Sort Directory by Company Title or Date Published
 			</h2>
 			<div className='grid-cols-4 inline-block px-4 py-2 justify-center items-center align-middle'>
-
-				<button
-					className='mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-500 transition-colors mb-6 lg:mb-0 rounded'
-					aria-label='Documentation'
-				></button>
+				{sortingMap}
 			</div>
 		</>
 	);
