@@ -7,21 +7,23 @@ import { faSortDown } from '@fortawesome/free-solid-svg-icons/faSortDown';
 interface Props {
 	allPosts: any;
 	dropdownOptions: string[];
+	tags: any;
+	categories: object[];
 }
 
-const SearchBox = ({ allPosts, dropdownOptions }: Props) => {
+const SearchBox = ({ allPosts, dropdownOptions, tags, categories }: Props) => {
 	return (
 		<div className='p-4 mt-4'>
 			<div className='flex'>
 				<ul className='w-1 flex border-b'>
-					{dropdownOptions.map((value, index) => {
+					{categories.map((value, index) => {
 						return (
 							<li key={index} className='mr-1'>
 								<a
 									href='#'
 									className='bg-gray-300 inline-block h-full border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold'
 								>
-									{value}
+									{value.node.name}
 								</a>
 							</li>
 						);
