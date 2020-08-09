@@ -11,8 +11,8 @@ type CardIconProps = {
 
 const CardIcons = ({ social }: CardIconProps) => {
 	return (
-		<div className="align-middle justify-center text-center content-center">
-			<ul className='flex flex-row mt-4 space-x-2'>
+		<div className="align-middle justify-center text-center content-center inline-block">
+			<ul className='flex flex-row align-middle'>
 				<li className='align-middle'>
 					{' '}
 					<a
@@ -23,7 +23,7 @@ const CardIcons = ({ social }: CardIconProps) => {
 					>
 						<FontAwesomeIcon
 							icon={faFacebook}
-							className='align-middle text-center'
+							className='align-middle text-2xl text-center pb-1'
 							fontSize='xl'
 						/>
 					</a>{' '}
@@ -35,7 +35,7 @@ const CardIcons = ({ social }: CardIconProps) => {
 					>
 						<FontAwesomeIcon
 							icon={faInstagram}
-							className='align-middle text-center'
+							className='align-middle text-center text-2xl pb-1'
 							fontSize='xl'
 						/>
 					</a>{' '}
@@ -47,7 +47,7 @@ const CardIcons = ({ social }: CardIconProps) => {
 					>
 						<FontAwesomeIcon
 							icon={faTwitter}
-							className='align-middle text-center'
+							className='align-middle text-2xl text-center pb-1'
 							fontSize='xl'
 						/>
 					</a>
