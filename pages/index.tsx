@@ -87,7 +87,7 @@ export default function Index({
 				<Container>
 					<Intro />
 					<SearchBox
-						allPosts={morePosts}
+						allPosts={morePosts.edges.node.categories}
 						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
 					/>
 					{/* <hr className='border-accent-2 w-full mt-8' />
