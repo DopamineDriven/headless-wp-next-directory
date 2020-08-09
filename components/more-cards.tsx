@@ -12,9 +12,9 @@ type CardsProps = {
 export default function MoreCards({ posts }: CardsProps) {
 	return (
 		<section>
-			<h2 className='mb-8 text-6xl md:text-6xl tracking-tighter leading-tight'>
+			{/* <h2 className='mb-8 text-6xl md:text-6xl tracking-tighter leading-tight'>
 				More Companies
-			</h2>
+			</h2> */}
 			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-4 align-middle content-center'>
 				{posts.map(({ node }: NodeProps) => (
 					<Card
