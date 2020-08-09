@@ -16,13 +16,15 @@ import Header from '../components/header';
 import HeroPost from '../components/hero-post';
 import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
+import tagsType from '../types/tag';
+import CategoryProps from '../types/category';
 
 interface IndexProps {
 	allPosts: any;
 	preview: boolean;
 	props: string | number;
-	tagsAndPosts: any;
-	categoriesAndPosts: any;
+	tagsAndPosts: tagsType;
+	categoriesAndPosts: CategoryProps[];
 }
 
 export default function Index({
