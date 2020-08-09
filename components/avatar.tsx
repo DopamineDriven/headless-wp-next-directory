@@ -1,3 +1,5 @@
+import SectionSeparator from './section-separator';
+
 type AvatarProps = {
 	author: any;
 };
@@ -9,13 +11,29 @@ export default function Avatar({ author }: AvatarProps) {
 			: author.name;
 
 	return (
-		<div className='flex items-center'>
-			<img
-				src={author.avatar.url}
-				className='w-16 h-16 rounded-full mr-4'
-				alt={nombre}
-			/>
-			<div className='text-xl font-bold'>{nombre}</div>
-		</div>
+		<>
+			<div className='flex w-full items-center text-center align-middle justify-center rounded-full'>
+				<div>
+					<img
+						src={author.avatar.url}
+						className='h-24 w-24 rounded-full border-tinyHouseWhite border-collapse border-opacity-50 border-4 shadow-xl'
+						alt={nombre}
+					/>
+				</div>
+			</div>
+			<div className='flex text-lg font-semibold pt-2 w-full items-center text-center align-middle justify-center'>
+				<h2>{nombre}</h2>
+			</div>
+		</>
 	);
 }
+
+/*
+		<div className='flex w-full items-center text-center align-middle justify-center rounded-full shadow-lg border-collapse bg-blizzardBlue border-4 border-white border-opacity-50'>
+			<img
+				src={author.avatar.url}
+				className='h-24 w-24 rounded-full border-transparent border-collapse border-opacity-75 border-2 shadow-xl'
+				alt={nombre}
+			/>
+		</div>
+*/

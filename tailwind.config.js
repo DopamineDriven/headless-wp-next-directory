@@ -2,6 +2,10 @@ module.exports = {
 	purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
 	theme: {
 		extend: {
+			fontFamily: {
+				body: ['Barlow Condensed', 'sans-serif'],
+				display: ['Barlow Condensed', 'sans-serif']
+			},
 			colors: {
 				'accent-1': '#FAFAFA',
 				'accent-2': '#EAEAEA',
@@ -13,7 +17,8 @@ module.exports = {
 				blizzardBlue: '#b3ddf2',
 				chicagoRed: '#ff0000',
 				cimaRed: '#B8242C',
-				wcdPink: '#eb57a3'
+				wcdPink: '#eb57a3',
+				tinyHouseWhite: '#f0f1f2'
 			},
 			spacing: {
 				28: '7rem'

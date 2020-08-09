@@ -4,14 +4,32 @@ import Header from '../components/header';
 import Layout from '../components/layout';
 import Container from '../components/container';
 import { CLIENT_NAME } from '../lib/constants';
-import Card from '../components/card';
+import {
+	getAllPostsForHomeAlphabetical,
+	getTagAndPosts,
+	getCategoriesAndPosts
+} from '../lib/api';
+import Intro from '../components/intro';
+import HeroPost from '../components/hero-post';
 
-interface Props {
+interface AboutProps {
 	props: string | number;
 	preview?: boolean;
+	allPosts: any;
+	tagsAndPosts: any;
+	categoriesAndPosts: any;
 }
 
-const About = ({ preview, props }: Props) => {
+const About = ({
+	allPosts: { edges },
+	preview,
+	props,
+	tagsAndPosts,
+	categoriesAndPosts
+}: AboutProps) => {
+	const heroPost = edges[0]?.node;
+	console.log(tagsAndPosts);
+	console.log(categoriesAndPosts);
 	return (
 		<>
 			<Header props={props} />
@@ -20,12 +38,27 @@ const About = ({ preview, props }: Props) => {
 					<title>{`${CLIENT_NAME} about page`}</title>
 				</Head>
 				<Container>
-					<h2 className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8'>
+					<h2 className='text-6xl font-bold tracking-tight md:tracking-tighter text-center align-middle justify-center font-serif leading-tight mt-8'>
 						<Link href='/'>
-							<a className='hover:underline text-cimaRed px-8'>About</a>
+							<a
+								className='text-black hover:text-cimaRed cursor-text select-text'
+								aria-label='About Chicago Independent Media Alliance'
+							>
+								About
+							</a>
 						</Link>
 					</h2>
-					<Card /> <Card /> <Card /> <Card /> <Card /> <Card />
+					<Intro />
+					{heroPost && (
+						<HeroPost
+							title={heroPost.title}
+							coverImage={heroPost.featuredImage.node}
+							date={heroPost.date}
+							author={heroPost.author.node}
+							slug={heroPost.slug}
+							excerpt={heroPost.excerpt}
+						/>
+					)}
 				</Container>
 			</Layout>
 		</>
@@ -33,3 +66,17 @@ const About = ({ preview, props }: Props) => {
 };
 
 export default About;
+
+type StaticProps = {
+	preview: boolean;
+};
+
+export async function getStaticProps({ preview = false }: StaticProps) {
+	const allPosts = await getAllPostsForHomeAlphabetical(preview);
+	const tagsAndPosts = await getTagAndPosts();
+	const categoriesAndPosts = await getCategoriesAndPosts();
+
+	return {
+		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts }
+	};
+}

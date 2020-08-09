@@ -66,7 +66,7 @@ const Header = ({ props }: HeaderProps) => {
 						(navOpen ? ' flex float-right' : ' hidden')
 					}
 				>
-					<ul className='flex flex-col lg:flex-row list-none lg:ml-auto'>
+					<ul className='flex flex-col lg:flex-row list-none lg:ml-auto font-body'>
 						{navlist}
 					</ul>
 				</div>
