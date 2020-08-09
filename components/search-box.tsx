@@ -13,8 +13,8 @@ interface Props {
 const SearchBox = ({ allPosts, dropdownOptions }: Props) => {
 	return (
 		<Container>
-			<div className='mt-4 flex-row'>
-				<div className='flex'>
+			<div className='mt-4 flex-row w-auto overflow-hidden'>
+				<div className='flex w-auto'>
 					<ul className='w-full flex border-b'>
 						{dropdownOptions.map((value, index) => {
 							return (
@@ -30,33 +30,33 @@ const SearchBox = ({ allPosts, dropdownOptions }: Props) => {
 						})}
 					</ul>
 				</div>
-				<div className='flex bg-white shadow-2xl p-4 mb-3'>
-					<div className='flex w-inherit relative'>
-						<select className='appearance-none w-full h-auto bg-white border border-gray-400 hover:border-gray-500 px-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline'>
+				<div className='flex bg-white shadow-2xl p-2 mb-3'>
+					<div className='flex w-auto py-2 h-auto relative'>
+						<select className='appearance-none w-full h-auto bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight focus:outline-none focus:shadow-outline'>
 							{dropdownOptions.map((value, index) => {
 								return <option key={index}>{value}</option>;
 							})}
 						</select>
-						<div className='pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700'>
+						<div className='pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700'>
 							{<FontAwesomeIcon icon={faSortDown} />}
 						</div>
 					</div>
-					<div className='flex w-3/4'>
+					<div className='flex w-full'>
 						<span className='w-auto flex justify-end items-center text-gray-500 p-2' />
-						<label className='text-black text-2xl align-middle mx-2 pt-3'></label>
+						<label className='text-black text-2xl align-middle'></label>
 						<input
 							type='text'
-							className='md:w-full lg:w-11/12 rounded p-5'
-							placeholder='Try&nbsp;"ethnic&nbsp;media"'
+							className='w-full rounded'
+							placeholder='Search...'
 							name='search-form'
 						/>
 
 						<button
 							type='submit'
 							name='search-button'
-							className='mx-2 hover:bg-white align-middle shadow-xl rounded-full bg-black hover:text-black border border-black text-white font-bold py-3 px-6 md:px-6 sm:px-4 lg:px-8 duration-200 transition-colors lg:mb-0'
+							className='hover:bg-white align-middle shadow-xl rounded-full bg-black hover:text-black border border-black text-white font-bold py-1 px-2 md:px-2 sm:px-2 lg:px-2 duration-500 transition-colors lg:mb-0'
 						>
-							<a aria-label='search' className='text-xl'>
+							<a aria-label='search' className='text-md'>
 								{<FontAwesomeIcon icon={faSearch} />}
 							</a>
 						</button>
