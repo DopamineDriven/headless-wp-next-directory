@@ -16,13 +16,13 @@ export default function CoverImage({
 		<img
 			src={coverImage ? coverImage.sourceUrl : coverImage}
 			alt={title}
-			className={cn('shadow-small w-full justify-center', {
-				'hover:shadow-medium transition-shadow duration-200': slug
+			className={cn('shadow-small justify-center align-middle content-center text-center items-center', {
+				'hover:shadow-medium transition-shadow duration-200 justify-center align-middle items-center content-center': slug
 			})}
 		/>
 	);
 	return (
-		<div className='-mx-5 sm:mx-0'>
+		<div className='sm:mx-0 flex align-middle content-center justify-center text-center'>
 			{slug ? (
 				<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 					<a aria-label={title}>{image}</a>

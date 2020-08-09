@@ -26,6 +26,7 @@ export default function PostHeader({
 }: PostHeaderProps) {
 	return (
 		<>
+		<div className="max-w-screen">
 			<PostTitle>{title}</PostTitle>
 			<div className='hidden md:block md:mb-6'>
 				<Avatar author={author} />
@@ -49,6 +50,7 @@ export default function PostHeader({
 					<hr className='border-accent-2 w-full mt-2' />
 					<CardIcons social={social} />
 				</div>
+			</div>
 			</div>
 		</>
 	);
