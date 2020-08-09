@@ -50,7 +50,9 @@ const Card = ({
 						<Date dateString={date} />
 					</p>
 					<hr className='border-accent-2 w-full mt-8' />
-					<CardIcons social={social} />
+					<div className="">
+						<CardIcons social={social} />
+					</div>
 				</div>
 			</div>
 		</div>
