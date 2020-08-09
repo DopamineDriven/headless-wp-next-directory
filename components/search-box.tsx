@@ -32,7 +32,7 @@ const SearchBox = ({ allPosts, dropdownOptions }: Props) => {
 				</div>
 				<div className='flex bg-white shadow-2xl p-2 mb-3'>
 					<div className='flex w-auto py-2 h-auto relative'>
-						<select className='appearance-none w-full h-auto bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight focus:outline-none focus:shadow-outline'>
+						<select className='appearance-none w-full h-auto bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight mx--5 focus:outline-none focus:shadow-outline'>
 							{dropdownOptions.map((value, index) => {
 								return <option key={index}>{value}</option>;
 							})}

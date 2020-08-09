@@ -20,14 +20,14 @@ const iconLinks: Props[] = [
 		icon: faFacebook
 	},
 	{
-		href: 'https://twitter.com/chiindymedia?lang=en',
-		name: 'twitter',
-		icon: faTwitter
-	},
-	{
 		href: 'https://www.instagram.com/chiindymedia/',
 		name: 'instagram',
 		icon: faInstagram
+	},
+	{
+		href: 'https://twitter.com/chiindymedia?lang=en',
+		name: 'twitter',
+		icon: faTwitter
 	}
 ];
 
