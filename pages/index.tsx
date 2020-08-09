@@ -31,6 +31,7 @@ export default function Index({
 	const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(1);
 
+	console.log(heroPost);
 	console.log(tagsAndPosts);
 	console.log(categoriesAndPosts);
 
@@ -46,11 +47,17 @@ export default function Index({
 					<SearchBox
 						allPosts={morePosts}
 						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
+						tags={tagsAndPosts}
+						categories={categoriesAndPosts}
 					/>
 					{heroPost && (
 						<HeroPost
 							title={heroPost.title}
-							coverImage={heroPost.featuredImage.node}
+							coverImage={
+								heroPost.featuredImage
+									? heroPost.featuredImage.node
+									: 'No featured Image'
+							}
 							date={heroPost.date}
 							author={heroPost.author.node}
 							slug={heroPost.slug}
