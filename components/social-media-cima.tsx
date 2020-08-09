@@ -44,7 +44,7 @@ const SocialMediaCima = () => {
 		</a>
 	));
 	return (
-		<div className='flex flex-wrap my-1 align-middle content-center items-center text-center'>
+		<div className='flex flex-wrap my-1 align-middle content-center items-center text-center justify-center'>
 			<ul className='flex flex-col lg:flex-row list-none lg:mx-auto items-center text-center'>
 				<li className='align-middle items-center content-center text-center'>
 					{iconMap}

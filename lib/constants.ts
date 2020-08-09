@@ -6,8 +6,10 @@ export const HOME_OG_IMAGE_URL: string =
 export const CLIENT_NAME: string = 'CIMA';
 
 export const SELECT_DROPDOWN_OPTIONS: string[] = [
-	'Print & Digital',
-	'Digital Only',
-	'Radio, Podcast, Broadcast',
-	'Non-Profit'
+	
+	'Print',
+	'Digital',
+	'Podcast',
+	'Radio',
+	'News'
 ];

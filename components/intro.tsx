@@ -115,10 +115,10 @@ export default function Intro() {
 				</a>
 				.
 			</h2>
-			<hr className='border-accent-2 w-full mt-8' />
+			{/* <hr className='border-accent-2 w-full mt-8' />
 			<h2 className='text-2xl sm:text-2xl xs:text-2xl font-bold text-center justify-center font-body tracking-tight leading-tight mt-4'>
 				Sort Directory by Company Title or Date Published
-			</h2>
+			</h2> */}
 			{/* <div className='grid-cols-4 inline-block px-4 py-2 justify-center items-center align-middle'>
 				{sortingMap}
 			</div> */}
