@@ -4,7 +4,7 @@ type AvatarProps = {
 	author: any;
 };
 
-export default function Avatar({ author }: AvatarProps) {
+export default function Avatar({ author }: any) {
 	const nombre =
 		author.firstName && author.lastName
 			? `${author.firstName} ${author.lastName}`
@@ -12,11 +12,11 @@ export default function Avatar({ author }: AvatarProps) {
 
 	return (
 		<>
-			<div className='flex w-full items-center text-center align-middle justify-center rounded-full'>
+			<div className='flex w-full items-center text-center align-middle justify-center rounded-full overflow-hidden'>
 				<div>
 					<img
 						src={author.avatar.url}
-						className='h-24 w-24 rounded-full border-tinyHouseWhite border-collapse border-opacity-50 border-4 shadow-xl'
+						className='h-24 w-24 rounded-full border-tinyHouseWhite border-collapse border-opacity-50 border-4'
 						alt={nombre}
 					/>
 				</div>

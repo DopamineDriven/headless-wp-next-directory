@@ -3,12 +3,9 @@ import Container from '../components/container';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
 import {
-	getTagAndPosts,
-	getCategoriesAndPosts,
-	// getAllPostsForHomeDateAsc,
-	// getAllPostsForHomeDateDesc,
 	getAllPostsForHomeAlphabetical,
-	// getAllPostsForHomeReverseAlphabetical
+	getTagAndPosts,
+	getCategoriesAndPosts
 } from '../lib/api';
 import {
 	CMS_NAME,
@@ -18,35 +15,9 @@ import {
 import Header from '../components/header';
 import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
-import { GetStaticProps } from 'next';
-
-type Sorting = {
-	sort: any;
-	title: string;
-};
-
-// const sortArrayObjects: Sorting[] = [
-// 	{
-// 		sort: getAllPostsForHomeDateAsc(),
-// 		title: 'date ascending (most recent)'
-// 	},
-// 	{
-// 		sort: getAllPostsForHomeDateDesc(),
-// 		title: 'date descending (least recent)'
-// 	},
-// 	{
-// 		sort: getAllPostsForHomeAlphabetical(),
-// 		title: 'alphabetical order'
-// 	},
-// 	{
-// 		sort: getAllPostsForHomeReverseAlphabetical(),
-// 		title: 'reverse-alphabetical order'
-// 	}
-// ];
-
 
 interface IndexProps {
-	allPostsAlphabetized: any;
+	allPosts: any;
 	preview: boolean;
 	props: string | number;
 	tagsAndPosts: any;
@@ -54,7 +25,7 @@ interface IndexProps {
 }
 
 export default function Index({
-	allPostsAlphabetized: { edges },
+	allPosts: { edges },
 	preview,
 	tagsAndPosts,
 	categoriesAndPosts,
@@ -63,17 +34,6 @@ export default function Index({
 	let morePosts = edges.slice(0);
 	console.log(tagsAndPosts);
 	console.log(categoriesAndPosts);
-
-	// const sortingMap = sortArrayObjects.map(sorting => (
-	// 	<button
-	// 		key={sorting.title}
-	// 		className='mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-500 transition-colors mb-6 lg:mb-0 rounded'
-	// 		aria-label='sorting-functions'
-	// 		onClick={preventDefault => sorting.sort(preventDefault)}
-	// 	>
-	// 		{sorting.title}
-	// 	</button>
-	// ));
 
 	return (
 		<>
@@ -87,16 +47,9 @@ export default function Index({
 				<Container>
 					<Intro />
 					<SearchBox
-						allPosts={morePosts.edges.node.categories}
+						allPosts={morePosts}
 						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
 					/>
-					{/* <hr className='border-accent-2 w-full mt-8' />
-					<h2 className='text-2xl sm:text-2xl xs:text-2xl font-bold text-center justify-center font-body tracking-tight leading-tight mt-4'>
-						Sort Directory by Title or Date Published
-					</h2>
-					<div className='grid-cols-4 inline-block px-4 py-2 justify-center items-center align-middle'>
-						{sortingMap}
-					</div> */}
 					{morePosts.length > 0 && <Cards posts={morePosts} />}
 				</Container>
 			</Layout>
@@ -107,6 +60,125 @@ export default function Index({
 type StaticProps = {
 	preview: boolean;
 };
+
+export async function getStaticProps({ preview = false }: StaticProps) {
+	const allPosts = await getAllPostsForHomeAlphabetical(preview);
+	const tagsAndPosts = await getTagAndPosts();
+	const categoriesAndPosts = await getCategoriesAndPosts();
+
+	return {
+		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts }
+	};
+}
+
+// import Head from 'next/head';
+// import Container from '../components/container';
+// import Intro from '../components/intro';
+// import Layout from '../components/layout';
+// import {
+// 	getTagAndPosts,
+// 	getCategoriesAndPosts,
+// 	// getAllPostsForHomeDateAsc,
+// 	// getAllPostsForHomeDateDesc,
+// 	getAllPostsForHomeAlphabetical,
+// 	// getAllPostsForHomeReverseAlphabetical
+// } from '../lib/api';
+// import {
+// 	CMS_NAME,
+// 	CLIENT_NAME,
+// 	SELECT_DROPDOWN_OPTIONS
+// } from '../lib/constants';
+// import Header from '../components/header';
+// import SearchBox from '../components/search-box';
+// import Cards from '../components/more-cards';
+// import { GetStaticProps } from 'next';
+
+// type Sorting = {
+// 	sort: any;
+// 	title: string;
+// };
+
+// // const sortArrayObjects: Sorting[] = [
+// // 	{
+// // 		sort: getAllPostsForHomeDateAsc(),
+// // 		title: 'date ascending (most recent)'
+// // 	},
+// // 	{
+// // 		sort: getAllPostsForHomeDateDesc(),
+// // 		title: 'date descending (least recent)'
+// // 	},
+// // 	{
+// // 		sort: getAllPostsForHomeAlphabetical(),
+// // 		title: 'alphabetical order'
+// // 	},
+// // 	{
+// // 		sort: getAllPostsForHomeReverseAlphabetical(),
+// // 		title: 'reverse-alphabetical order'
+// // 	}
+// // ];
+
+// interface IndexProps {
+// 	allPosts: any;
+// 	preview: boolean;
+// 	props: string | number;
+// 	tagsAndPosts: any;
+// 	categoriesAndPosts: any;
+// }
+
+// export default function Index({
+// 	allPosts: { edges },
+// 	preview,
+// 	tagsAndPosts,
+// 	categoriesAndPosts,
+// 	props
+// }: IndexProps) {
+// 	let morePosts = edges.slice(0);
+// 	console.log(tagsAndPosts);
+// 	console.log(categoriesAndPosts);
+
+// 	// const sortingMap = sortArrayObjects.map(sorting => (
+// 	// 	<button
+// 	// 		key={sorting.title}
+// 	// 		className='mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-500 transition-colors mb-6 lg:mb-0 rounded'
+// 	// 		aria-label='sorting-functions'
+// 	// 		onClick={preventDefault => sorting.sort(preventDefault)}
+// 	// 	>
+// 	// 		{sorting.title}
+// 	// 	</button>
+// 	// ));
+
+// 	return (
+// 		<>
+// 			<Header props={props} />
+// 			<Layout preview={preview}>
+// 				<Head>
+// 					<title>
+// 						{CLIENT_NAME} landing page via {CMS_NAME}
+// 					</title>
+// 				</Head>
+// 				<Container>
+// 					<Intro />
+// 					<SearchBox
+// 						allPosts={morePosts.edges.categories}
+// 						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
+// 					/>
+// 					{/* <hr className='border-accent-2 w-full mt-8' />
+// 					<h2 className='text-2xl sm:text-2xl xs:text-2xl font-bold text-center justify-center font-body tracking-tight leading-tight mt-4'>
+// 						Sort Directory by Title or Date Published
+// 					</h2>
+// 					<div className='grid-cols-4 inline-block px-4 py-2 justify-center items-center align-middle'>
+// 						{sortingMap}
+// 					</div> */}
+// 					{morePosts.length > 0 && <Cards posts={morePosts} />}
+// 				</Container>
+// 			</Layout>
+// 		</>
+// 	);
+// }
+
+// type StaticProps = {
+// 	preview: boolean;
+// };
 
 // type Data = {
 // 	res: Response;
@@ -133,28 +205,28 @@ type StaticProps = {
 // 			data
 // 		}
 // 	};
-// };
+// // };
 
-export async function getStaticProps({ preview = false }: StaticProps) {
-	const tagsAndPosts = await getTagAndPosts();
-	const categoriesAndPosts = await getCategoriesAndPosts();
-	const allPostsAlphabetized = await getAllPostsForHomeAlphabetical(preview);
-	// const allPostsReverseAlphabetized = await getAllPostsForHomeReverseAlphabetical(
-	// 	preview
-	// );
-	// const allPostsDateAsc = await getAllPostsForHomeDateAsc(preview);
-	// const allPostsDateDesc = await getAllPostsForHomeDateDesc(preview);
-	const data: any = {
-		allPostsAlphabetized,
-		// allPostsReverseAlphabetized,
-		// allPostsDateAsc,
-		// allPostsDateDesc
-	};
+// export async function getStaticProps({ preview = false }: StaticProps) {
+// 	const tagsAndPosts = await getTagAndPosts();
+// 	const categoriesAndPosts = await getCategoriesAndPosts();
+// 	const allPostsAlphabetized = await getAllPostsForHomeAlphabetical(preview);
+// 	// const allPostsReverseAlphabetized = await getAllPostsForHomeReverseAlphabetical(
+// 	// 	preview
+// 	// );
+// 	// const allPostsDateAsc = await getAllPostsForHomeDateAsc(preview);
+// 	// const allPostsDateDesc = await getAllPostsForHomeDateDesc(preview);
+// 	const data: any = {
+// 		allPostsAlphabetized
+// 		// allPostsReverseAlphabetized,
+// 		// allPostsDateAsc,
+// 		// allPostsDateDesc
+// 	};
 
-	return {
-		props: { allPostsAlphabetized, preview, tagsAndPosts, categoriesAndPosts }
-	};
-}
+// 	return {
+// 		props: { allPostsAlphabetized, preview, tagsAndPosts, categoriesAndPosts }
+// 	};
+// }
 // /*
 // /*
 // interface IndexProps {

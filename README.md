@@ -2,6 +2,13 @@
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## Hero
+- https://www.williampnicholson.com/posts/2019-09-10/
+
+```svg
+
+```
+
 ## WPGQL Custom Post Types
 - https://wordpress.org/plugins/headless-cms/
 - https://www.wpwatercooler.com/devbranch/ep04-using-wpgraphql-with-wordpress/

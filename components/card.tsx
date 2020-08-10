@@ -25,7 +25,7 @@ const Card = ({
 }: CardProps) => {
 	return (
 		<div className='inline-block'>
-			<div className='max-w-xs rounded overflow-hidden bg-white shadow-lg my-4 inline-block mx-2 justify-center'>
+			<div className='max-w-xs rounded overflow-hidden bg-white shadow-lg my-4 inline-block justify-center'>
 				<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
 				<div className='flex flex-col items-center text-center justify-center bg-white px-4 pt-2 shadow rounded-lg'>
