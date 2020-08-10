@@ -28,7 +28,7 @@ const Card = ({
 			<div className='max-w-xs rounded-lg rounded-b-lg overflow-x-hidden overflow-y-hidden bg-white shadow-lg my-4 inline-block justify-right'>
 				<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
-				<div className='flex flex-col text-center justify-center bg-white px-4 pt-2 shadow rounded-b-lg'>
+				<div className='flex flex-col text-center justify-center bg-white pt-2 shadow rounded-b-lg'>
 					<h2 className='font-bold text-xl overflow-y h-16'>
 						<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 							<a
@@ -43,13 +43,10 @@ const Card = ({
 					></h6>
 					<>
 					<div className='grid-cols-1'>
-						<Avatar author={author} />
+						<Avatar author={author} date={date} />
 					</div>
-					<p className='text-xs text-gray-500 text-center'>
-						<Date dateString={date} />
-					</p>
 					</>
-					<hr className='border-accent-2 w-full mt-2' />
+					<hr className='border-customGray w-full mt-2' />
 					<div className="text-right items-end align-middle float-right">
 						<CardIcons social={social} />
 					</div>

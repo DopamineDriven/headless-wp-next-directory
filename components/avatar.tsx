@@ -1,10 +1,12 @@
 import SectionSeparator from './section-separator';
+import Date from './date';
 
 type AvatarProps = {
 	author: any;
+	date: string;
 };
 
-export default function Avatar({ author }: any) {
+export default function Avatar({ author, date }: AvatarProps) {
 	const nombre =
 		author.firstName && author.lastName
 			? `${author.firstName} ${author.lastName}`
@@ -12,7 +14,7 @@ export default function Avatar({ author }: any) {
 
 	return (
 		<>
-			<div className='flex w-full items-center text-center align-middle justify-center rounded-full overflow-hidden'>
+			<div className='grid grid-cols-3 items-left text-left align-middle justify-center rounded-full float-left overflow-hidden'>
 				<div>
 					<img
 						src={author.avatar.url}
@@ -20,9 +22,12 @@ export default function Avatar({ author }: any) {
 						alt={nombre}
 					/>
 				</div>
-			</div>
-			<div className='flex text-lg font-semibold pt-2 w-full items-center text-center align-middle justify-center'>
-				<h2>{nombre}</h2>
+				<div className='grid grid-rows-2 py-0 my-0 text-sm pt-2 w-full items-left text-left float-left justify-center'>
+					<div className="align-bottom">{nombre}</div>
+					<div className='text-xs text-gray-500 text-left align-top'>
+						<Date dateString={date} />
+					</div>
+				</div>
 			</div>
 		</>
 	);
