@@ -25,10 +25,10 @@ const Card = ({
 }: CardProps) => {
 	return (
 		<div className='inline-block'>
-			<div className='max-w-xs rounded overflow-hidden bg-white shadow-lg my-4 inline-block justify-right'>
+			<div className='max-w-xs rounded-lg rounded-b-lg overflow-x-hidden overflow-y-hidden bg-white shadow-lg my-4 inline-block justify-right'>
 				<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
-				<div className='flex flex-col text-center justify-center bg-white px-4 pt-2 shadow rounded-lg'>
+				<div className='flex flex-col text-center justify-center bg-white px-4 pt-2 shadow rounded-b-lg'>
 					<h2 className='font-bold text-xl overflow-y h-16'>
 						<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 							<a
