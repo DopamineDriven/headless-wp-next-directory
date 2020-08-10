@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBold } from '@fortawesome/free-solid-svg-icons';
 import {
 	faFacebook,
 	faInstagram,
@@ -19,35 +20,33 @@ const CardIcons = ({ social }: CardIconProps) => {
 						aria-label='facebook'
 						target='__blank'
 						href={social.facebook}
-						className='bg-black text-white hover:text-black hover:bg-white transition-colors leading-relaxed duration-500 text-lg inline-block text-center items-center align-middle justify-center w-8 border mx-1 my-2 rounded-full border-blizzardBlue focus:outline-none'
+						className='bg-customGray text-white hover:text-white hover:bg-iconHover transition-colors leading-relaxed duration-500 text-lg inline-block text-center items-center align-middle justify-center w-8 h-8 mx-1 my-2 rounded-full focus:outline-none'
 					>
 						<FontAwesomeIcon
 							icon={faFacebook}
-							className='align-middle text-2xl text-center font-bold pb-1'
+							className='align-middle text-center font-extrabold text-1xl'
 						/>
 					</a>{' '}
 					<a
 						aria-label='instagram'
 						target='__blank'
 						href={social.instagram}
-						className='bg-customGray text-white hover:text-black hover:bg-white transition-colors leading-relaxed duration-500 text-lg inline-block text-center items-center align-middle justify-center w-8 h-8  mx-1 my-2 rounded-full border-blizzardBlue focus:outline-none'
+						className='bg-customGray text-white hover:text-white hover:bg-iconHover transition-colors leading-relaxed duration-500 text-lg inline-block text-center items-center align-middle justify-center w-8 h-8 mx-1 my-2 rounded-full focus:outline-none'
 					>
 						<FontAwesomeIcon
 							icon={faInstagram}
-							className='align-middle text-center text-1xl'
-							fontSize='xl'
+							className='align-middle text-center font-extrabold text-1xl'
 						/>
 					</a>{' '}
 					<a
 						aria-label='twitter'
 						target='__blank'
 						href={social.twitter}
-						className='bg-black text-white hover:text-black hover:bg-white transition-colors leading-relaxed duration-500 text-lg inline-block text-center items-center align-middle justify-center w-8 border mx-1 my-2 rounded-full border-blizzardBlue focus:outline-none'
+						className='bg-customGray text-white hover:text-white hover:bg-iconHover transition-colors leading-relaxed duration-500 text-lg inline-block text-center items-center align-middle justify-center w-8 h-8 mx-1 my-2 rounded-full focus:outline-none'
 					>
 						<FontAwesomeIcon
 							icon={faTwitter}
-							className='align-middle text-2xl text-center pb-1'
-							fontSize='xl'
+							className='align-middle text-center font-extrabold text-1xl'
 						/>
 					</a>
 				</li>
