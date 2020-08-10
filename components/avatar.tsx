@@ -16,7 +16,7 @@ export default function Avatar({ author }: any) {
 				<div>
 					<img
 						src={author.avatar.url}
-						className='h-24 w-24 rounded-full border-tinyHouseWhite border-collapse border-opacity-50 border-4'
+						className='h-16 w-16 rounded-full border-tinyHouseWhite border-collapse border-opacity-50 border-4'
 						alt={nombre}
 					/>
 				</div>
