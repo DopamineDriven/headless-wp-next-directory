@@ -18,7 +18,10 @@ module.exports = {
 				chicagoRed: '#ff0000',
 				cimaRed: '#B8242C',
 				wcdPink: '#eb57a3',
-				tinyHouseWhite: '#f0f1f2'
+				tinyHouseWhite: '#f0f1f2',
+				customGray: '#D0D0D0',
+				iconHover: '#9D9D9D',
+				iconHoverTwo: '#AEAEAE'
 			},
 			spacing: {
 				28: '7rem'
@@ -30,6 +33,8 @@ module.exports = {
 				tight: 1.2
 			},
 			fontSize: {
+				'1xl': '1.0rem',
+				'3xl': '2.0rem',
 				'5xl': '2.5rem',
 				'6xl': '2.75rem',
 				'7xl': '4.5rem',
