@@ -16,8 +16,8 @@ export default function CoverImageCard({
 		<img
 			src={coverImage ? coverImage.sourceUrl : coverImage}
 			alt={title}
-			className={cn('shadow-small w-full h-40 max-h-full', {
-				'hover:shadow-medium transition-shadow duration-200': slug
+			className={cn('shadow-sm w-full h-40 max-h-full', {
+				'hover:shadow-lg transition-shadow duration-400': slug
 			})}
 		/>
 	);
