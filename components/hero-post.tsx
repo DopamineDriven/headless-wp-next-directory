@@ -45,7 +45,7 @@ export default function HeroPost({
 						className='text-2xl leading-relaxed mb-4'
 						dangerouslySetInnerHTML={{ __html: excerpt }}
 					/>
-					<Avatar author={author} />
+					<Avatar author={author} date={date} />
 				</div>
 			</div>
 			<SectionSeparator />
