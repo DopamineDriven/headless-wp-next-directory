@@ -62,7 +62,9 @@ export default function Post({ post, posts, preview, props }: SlugProps) {
 									{post.tags.edges.length > 0 && <Tags tags={post.tags} />}
 								</footer> */}
 							</article>
-							{morePosts.length > 0 && <MoreCards posts={morePosts} />}
+							<div className='max-w-5xl grid mx-auto content-center justify-center items-center text-center'>
+								{morePosts.length > 0 && <MoreCards posts={morePosts} />}
+							</div>
 						</>
 					)}
 				</Container>

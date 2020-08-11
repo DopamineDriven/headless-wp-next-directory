@@ -1,5 +1,4 @@
 import Card from './card';
-import {CoverImageProps} from "./cover-image-card";
 
 type NodeProps = {
 	node: any;
