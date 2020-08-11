@@ -1,6 +1,6 @@
 .content {
 	@apply text-lg leading-relaxed;
-	@apply font-polished;
+	@apply font-subpolished;
 	@apply leading-tight;
 }
 

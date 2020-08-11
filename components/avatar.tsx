@@ -23,8 +23,8 @@ export default function Avatar({ author, date }: AvatarProps) {
 					/>
 				</div>
 				<div className='grid grid-rows-2 my-0 text-sm pt-1 w-full pb-2 items-left align-top text-left float-left'>
-					<div className="align-top font-semibold font-polished">{nombre}</div>
-					<div className='text-xs text-gray-500 text-left align-top float-left font-polished'>
+					<div className="align-top font-semibold font-subpolished">{nombre}</div>
+					<div className='text-xs text-gray-500 text-left align-top float-left font-subpolished'>
 						<Date dateString={date} />
 					</div>
 				</div>

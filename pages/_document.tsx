@@ -11,6 +11,10 @@ export default class MyDocument extends Document {
 				<Head>
 					<meta charSet='utf-8' />
 					<link rel='stylesheet' href='https://use.typekit.net/hzg4mdi.css' />
+					<link
+						href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap'
+						rel='stylesheet'
+					/>
 				</Head>
 				<body>
 					<Main />

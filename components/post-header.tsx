@@ -48,7 +48,7 @@ export default function PostHeader({
 						<div className='pb-1'>
 							<Categories categories={categories} />
 						</div>
-						<div className='text-sm'>
+						<div className='text-sm font-subpolished'>
 							<Date dateString={date} />
 						</div>
 					</div>

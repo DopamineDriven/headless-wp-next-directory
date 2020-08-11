@@ -5,7 +5,8 @@ module.exports = {
 			fontFamily: {
 				body: ['Barlow Condensed', 'sans-serif'],
 				display: ['Barlow Condensed', 'sans-serif'],
-				polished: ['brandon-grotesque', 'sans-serif']
+				polished: ['brandon-grotesque', 'sans-serif'],
+				subpolished: ['Montserrat', 'sans-serif']
 			},
 			colors: {
 				'accent-1': '#FAFAFA',

@@ -6,7 +6,8 @@ import { Fragment } from 'react';
 const MetaData = () => {
 	return (
 		<Fragment>
-			<GoogleFonts href='https://fonts.googleapis.com/css2?family=Barlow+Condensed&family=Barlow+Semi+Condensed&display=swap' />
+			<GoogleFonts href='https://fonts.googleapis.com/css2?family=Barlow%20Condensed&family=Barlow%20Semi%20Condensed&display=swap' />
+
 			<Head>
 				<link
 					rel='apple-icon-57x57'
@@ -103,6 +104,7 @@ const MetaData = () => {
 					rel='canonical'
 					href='https://headless-wp-next-directory.vercel.app/'
 				/>
+				<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
 				<link rel="stylesheet" href="https://use.typekit.net/hzg4mdi.css" />
 				<meta name='msapplication-TileColor' content='#ffffff' />
 				<meta
