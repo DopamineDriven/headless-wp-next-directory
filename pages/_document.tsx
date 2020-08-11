@@ -10,6 +10,7 @@ export default class MyDocument extends Document {
 			<Html lang='en'>
 				<Head>
 					<meta charSet='utf-8' />
+					<link rel='stylesheet' href='https://use.typekit.net/hzg4mdi.css' />
 				</Head>
 				<body>
 					<Main />

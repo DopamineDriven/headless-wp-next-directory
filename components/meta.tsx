@@ -103,6 +103,7 @@ const MetaData = () => {
 					rel='canonical'
 					href='https://headless-wp-next-directory.vercel.app/'
 				/>
+				<link rel="stylesheet" href="https://use.typekit.net/hzg4mdi.css" />
 				<meta name='msapplication-TileColor' content='#ffffff' />
 				<meta
 					name='msapplication-config'

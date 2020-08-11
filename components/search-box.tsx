@@ -13,7 +13,7 @@ interface Props {
 const SearchBox = ({ allPosts, dropdownOptions }: Props) => {
 	return (
 		<Container>
-			<div className='mt-4 flex-row w-auto overflow-hidden'>
+			<div className='mt-4 flex-row w-auto overflow-hidden mb-4'>
 				<div className='flex w-auto'>
 					<ul className='w-full flex border-b'>
 						{dropdownOptions.map((value, index) => {

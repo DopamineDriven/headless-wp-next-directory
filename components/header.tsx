@@ -20,12 +20,12 @@ const links: NavRef[] = [
 		label: 'Directory'
 	},
 	{
-		href: '/contact',
-		label: 'Contact'
-	},
-	{
 		href: '/about',
 		label: 'About'
+	},
+	{
+		href: '/contact',
+		label: 'Contact'
 	}
 ];
 
@@ -35,7 +35,7 @@ const Header = ({ props }: HeaderProps) => {
 		<li className='nav-item' key={`${link.href}-${link.label}`}>
 			<Link href={link.href}>
 				<a
-					className='px-3 py-2 flex items-center text-lg uppercase font-bold leading-snug text-black hover:opacity-75'
+					className='px-3 py-2 flex items-right float-right text-lg uppercase font-bold leading-snug text-black hover:opacity-75'
 					aria-label={link.label}
 				>
 					{link.label}
@@ -44,21 +44,22 @@ const Header = ({ props }: HeaderProps) => {
 		</li>
 	));
 	return (
-		<nav className='relative grid w-full cover overflow-x-hidden overflow-y-hidden mb-10'>
+		<div className='relative grid grid-cols-1 w-full bg-cover overflow-x-hidden overflow-y-hidden'>
 			<a className='bg-cover grid grid-flow-row w-full'>
 				<img
 					src={'/assets/headerhero.jpg'}
-					className='overflow-x-hidden overflow-y-hidden bg-cover flex relative'
+					className='overflow-x-hidden overflow-y-hidden bg-cover object-contain grid grid-cols-1 relative'
+					title="chicago skyline"
 				/>
 			</a>
 
-			<div className='container flex items-center justify-between'>
-				<div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
+			<div className='container flex flex-row items-center justify-between'>
+				<div className='w-full relative grid grid-cols-1 justify-between lg:w-auto lg:static lg:block lg:justify-start'>
 					<Link href='/'>
 						<a>{<SvgLogo props={props} />}</a>
 					</Link>
 					<button
-						className='text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
+						className='text-black cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
 						type='button'
 						onClick={() => setNavOpen(!navOpen)}
 						name='open-nav-button'
@@ -74,12 +75,12 @@ const Header = ({ props }: HeaderProps) => {
 						(navOpen ? ' flex float-right' : ' hidden')
 					}
 				>
-					<ul className='flex flex-col lg:flex-row list-none lg:ml-auto font-body'>
+					<ul className='flex flex-col lg:flex-row list-none lg:ml-auo font-polished items-right float-right align-middle text-right'>
 						{navlist}
 					</ul>
 				</div>
 			</div>
-		</nav>
+		</div>
 	);
 };
 

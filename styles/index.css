@@ -7,6 +7,12 @@
 		format('woff');
 }
 
+@font-face {
+	font-family: 'brandon-grotesque', sans-serif;
+	font-weight: 400;
+	src: url(https://use.typekit.net/hzg4mdi.css) format('woff');
+}
+
 /*https://github.com/tailwindlabs/discuss/issues/277*/
 /* @font-face {
     font-family: 'Barrow Condensed', sans-serif;
@@ -30,6 +36,7 @@
 
 .html {
 	@apply font-body;
+	@apply font-polished;
 }
 
 .has-text-align-left {
