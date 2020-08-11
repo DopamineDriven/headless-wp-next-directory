@@ -4,7 +4,8 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				body: ['Barlow Condensed', 'sans-serif'],
-				display: ['Barlow Condensed', 'sans-serif']
+				display: ['Barlow Condensed', 'sans-serif'],
+				polished: ['brandon-grotesque', 'sans-serif']
 			},
 			colors: {
 				'accent-1': '#FAFAFA',
@@ -24,7 +25,8 @@ module.exports = {
 				iconHoverTwo: '#AEAEAE'
 			},
 			spacing: {
-				28: '7rem'
+				28: '7rem',
+				44: '11rem'
 			},
 			letterSpacing: {
 				tighter: '-.04em'

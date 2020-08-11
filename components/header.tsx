@@ -20,12 +20,12 @@ const links: NavRef[] = [
 		label: 'Directory'
 	},
 	{
-		href: '/contact',
-		label: 'Contact'
-	},
-	{
 		href: '/about',
 		label: 'About'
+	},
+	{
+		href: '/contact',
+		label: 'Contact'
 	}
 ];
 
@@ -75,7 +75,7 @@ const Header = ({ props }: HeaderProps) => {
 						(navOpen ? ' flex float-right' : ' hidden')
 					}
 				>
-					<ul className='flex flex-col lg:flex-row list-none lg:ml-auo font-body items-right float-right align-middle text-right'>
+					<ul className='flex flex-col lg:flex-row list-none lg:ml-auo font-polished items-right float-right align-middle text-right'>
 						{navlist}
 					</ul>
 				</div>

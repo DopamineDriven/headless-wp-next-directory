@@ -14,17 +14,17 @@ export default function Avatar({ author, date }: AvatarProps) {
 
 	return (
 		<>
-			<div className='grid grid-cols-3 items-left text-left align-middle justify-center rounded-full float-left overflow-hidden'>
-				<div>
+			<div className='grid grid-cols-3 items-left text-left rounded-full float-left overflow-hidden'>
+				<div className='grid grid-rows-1 pl-4'>
 					<img
 						src={author.avatar.url}
-						className='h-16 w-16 rounded-full border-tinyHouseWhite border-collapse border-opacity-50 border-4'
+						className='h-12 w-12 rounded-full'
 						alt={nombre}
 					/>
 				</div>
-				<div className='grid grid-rows-2 py-0 my-0 text-sm pt-2 w-full items-left text-left float-left justify-center'>
-					<div className="align-bottom">{nombre}</div>
-					<div className='text-xs text-gray-500 text-left align-top'>
+				<div className='grid grid-rows-2 my-0 text-sm pt-1 w-full pb-2 items-left align-top text-left float-left'>
+					<div className="align-top font-semibold font-polished">{nombre}</div>
+					<div className='text-xs text-gray-500 text-left align-top float-left font-polished'>
 						<Date dateString={date} />
 					</div>
 				</div>

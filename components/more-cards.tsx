@@ -15,7 +15,7 @@ export default function MoreCards({ posts }: CardsProps) {
 			{/* <h2 className='mb-8 text-6xl md:text-6xl tracking-tighter leading-tight'>
 				More Companies
 			</h2> */}
-			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-8 align-middle text-center'>
+			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 col-gap-8 row-gap-6 align-middle text-center'>
 				{posts.map(({ node }: NodeProps) => (
 					<Card
 						key={node.slug}

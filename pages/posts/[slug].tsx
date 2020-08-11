@@ -62,8 +62,6 @@ export default function Post({ post, posts, preview, props }: SlugProps) {
 									{post.tags.edges.length > 0 && <Tags tags={post.tags} />}
 								</footer> */}
 							</article>
-
-							<SectionSeparator />
 							{morePosts.length > 0 && <MoreCards posts={morePosts} />}
 						</>
 					)}

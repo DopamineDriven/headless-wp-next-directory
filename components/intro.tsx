@@ -48,7 +48,7 @@ export default function Intro() {
 	// ));
 	return (
 		<>
-			<h1 className='text-6xl sm:text-6xl xs:text-5xl font-bold text-center justify-center font-body tracking-tight leading-tight mt-4'>
+			<h1 className='text-6xl sm:text-6xl xs:text-5xl font-bold text-center justify-center font-polished tracking-tight leading-tight mt-4'>
 				<Link href='/'>
 					<a
 						className='hover:text-cimaRed cursor-text select-text text-black'
@@ -58,7 +58,7 @@ export default function Intro() {
 					</a>
 				</Link>
 			</h1>
-			<h2 className='text-center justify-center text-black text-lg mt-5 px-2'>
+			<h2 className='text-center justify-center text-black text-lg mt-5 px-2 font-polished'>
 				Powered by{' '}
 				<a
 					href='https://nextjs.org/'
