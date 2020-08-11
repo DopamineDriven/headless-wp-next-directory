@@ -15,6 +15,7 @@ import {
 import Header from '../components/header';
 import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
+import Revision from "../components/revision";
 import { Fragment } from 'react';
 import Link from 'next/link';
 
@@ -38,6 +39,7 @@ export default function Index({
 	let morePosts = edges.slice(0);
 	console.log(tagsAndPosts);
 	console.log(categoriesAndPosts);
+	console.log(Revision.toString())
 
 	return (
 		<>
