@@ -42,12 +42,12 @@ const Card = ({
 						dangerouslySetInnerHTML={{ __html: excerpt }}
 					></div>
 					<>
-						<div className='grid-cols-1 pl-2'>
+						<div className='grid-cols-1 pl-2 font-subpolished'>
 							<Avatar author={author} date={date} />
 						</div>
 					</>
 					<hr className='border-customGray w-full mt-2' />
-					<div className='text-right items-end align-middle float-right pr-2 py-1'>
+					<div className='text-right items-end align-middle float-right pr-2 py-1 font-subpolished'>
 						<CardIcons social={social} />
 					</div>
 				</div>
