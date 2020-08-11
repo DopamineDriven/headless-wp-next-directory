@@ -1,8 +1,9 @@
-import Avatar from './avatar';
+import Avatar from './avatar-sub';
 import Date from './date';
 import CoverImage, { CoverImageProps } from './cover-image';
 import PostTitle from './post-title';
 import Categories from './categories';
+import CardIcons from './card-icons';
 
 type PostHeaderProps = {
 	title: string;
@@ -11,6 +12,7 @@ type PostHeaderProps = {
 	date: string;
 	categories: any;
 	slug: string | number;
+	social: any;
 };
 
 export default function PostHeader({
@@ -19,29 +21,39 @@ export default function PostHeader({
 	date,
 	author,
 	categories,
+	social,
 	slug
 }: PostHeaderProps) {
 	return (
 		<>
-			<PostTitle>{title}</PostTitle>
-			<div className='hidden md:block md:mb-6'>
-				<Avatar author={author} />
-			</div>
-			<div className='mb-8 md:mb-4 -mx-5 sm:mx-0'>
-				<CoverImage
-					title={coverImage.title}
-					coverImage={coverImage}
-					slug={slug}
-				/>
-			</div>
-			<div className='max-w-2xl mx-auto align-middle content-center justified-center text-center'>
-				<div className='block md:hidden mb-6'>
+			<div className='max-w-screen font-polished'>
+				<PostTitle>{title}</PostTitle>
+				<div className='mb-4 md:mb-4 -mx-5 sm:mx-0'>
+					<CoverImage
+						title={coverImage?.title}
+						coverImage={coverImage}
+						slug={slug}
+					/>
+				</div>
+				<div className='hidden md:block align-middle content-center text-center justify-center'>
 					<Avatar author={author} />
 				</div>
-				<div className='mb-6 text-2xl'>
-					Posted <Date dateString={date} />
-					<Categories categories={categories} />
+
+				<div className='max-w-4xl mx-auto align-middle content-center justified-center text-center'>
+					<CardIcons social={social} />
+					<div className='block md:hidden w-inherit'>
+						<Avatar author={author} />
+					</div>
+					<div className='mb-2 grid-cols-1'>
+						<div className='pb-1'>
+							<Categories categories={categories} />
+						</div>
+						<div className='text-sm'>
+							<Date dateString={date} />
+						</div>
+					</div>
 				</div>
+				<hr className='border-customGray w-4xl' />
 			</div>
 		</>
 	);

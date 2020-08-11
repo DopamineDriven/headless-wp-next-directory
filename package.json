@@ -29,20 +29,20 @@
 			"linkedinUrl": "https://www.linkedin.com/in/jshields90/"
 		},
 		{
-			"name": "Yong Lee",
-			"githubUrl": "https://github.com/yhlee-dho",
-			"githubUsername": "yhlee-dho",
-			"twitterUrl": "https://twitter.com/YongLee08380800",
-			"twitterUsername": "@YongLee08380800",
-			"linkedinUrl": "https://www.linkedin.com/in/yong-lee-a16430193/"
-		},
-		{
 			"name": "David Bartolone",
 			"githubUrl": "https://github.com/TechHedz",
 			"githubUsername": "TechHedz",
 			"twitterUrl": "https://twitter.com/DevHedz",
 			"twitterUsername": "@DevHedz",
 			"linkedinUrl": "https://www.linkedin.com/in/dbartolone/"
+		},
+		{
+			"name": "Yong Lee",
+			"githubUrl": "https://github.com/yhlee-dho",
+			"githubUsername": "yhlee-dho",
+			"twitterUrl": "https://twitter.com/YongLee08380800",
+			"twitterUsername": "@YongLee08380800",
+			"linkedinUrl": "https://www.linkedin.com/in/yong-lee-a16430193/"
 		}
 	],
 	"license": "MIT",
@@ -61,7 +61,8 @@
 		"classnames": "^2.2.6",
 		"date-fns": "^2.15.0",
 		"gray-matter": "^4.0.2",
-		"next": "^9.5.1",
+		"next": "^9.5.0",
+		"next-google-fonts": "^1.2.1",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"remark": "^12.0.1",

@@ -21,7 +21,7 @@ export default function PostPreview({
 	slug
 }: PostPreviewProps) {
 	return (
-		<div>
+		<div className='font-polished'>
 			<div className='mb-2'>
 				<CoverImage title={title} coverImage={coverImage} slug={slug} />
 			</div>
@@ -37,10 +37,10 @@ export default function PostPreview({
 				<Date dateString={date} />
 			</div>
 			<div
-				className='text-3xl leading-relaxed mb-2'
+				className='text-3xl leading-relaxed mb-2 text-center justify-center'
 				dangerouslySetInnerHTML={{ __html: excerpt }}
 			/>
-			<Avatar author={author} />
+			<Avatar author={author} date={date} />
 		</div>
 	);
 }

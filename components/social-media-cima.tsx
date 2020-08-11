@@ -6,6 +6,7 @@ import {
 	faTwitter
 } from '@fortawesome/free-brands-svg-icons';
 
+
 type Props = {
 	href: string;
 	name: string;
@@ -19,14 +20,14 @@ const iconLinks: Props[] = [
 		icon: faFacebook
 	},
 	{
-		href: 'https://twitter.com/chiindymedia?lang=en',
-		name: 'twitter',
-		icon: faTwitter
-	},
-	{
 		href: 'https://www.instagram.com/chiindymedia/',
 		name: 'instagram',
 		icon: faInstagram
+	},
+	{
+		href: 'https://twitter.com/chiindymedia?lang=en',
+		name: 'twitter',
+		icon: faTwitter
 	}
 ];
 
@@ -43,7 +44,7 @@ const SocialMediaCima = () => {
 		</a>
 	));
 	return (
-		<div className='flex flex-wrap my-1 align-middle content-center items-center text-center'>
+		<div className='flex flex-wrap my-1 align-middle content-center items-center text-center justify-center'>
 			<ul className='flex flex-col lg:flex-row list-none lg:mx-auto items-center text-center'>
 				<li className='align-middle items-center content-center text-center'>
 					{iconMap}

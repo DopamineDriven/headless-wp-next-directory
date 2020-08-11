@@ -23,7 +23,7 @@ export default function HeroPost({
 }: HeroPostProps) {
 	return (
 		<section>
-			<div className='mb-8 md:mb-8'>
+			<div className='mb-8 md:mb-8 mt-8'>
 				<CoverImage title={title} coverImage={coverImage} slug={slug} />
 			</div>
 			<div className='md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8 mb-20 md:mb-10'>
@@ -45,7 +45,7 @@ export default function HeroPost({
 						className='text-2xl leading-relaxed mb-4'
 						dangerouslySetInnerHTML={{ __html: excerpt }}
 					/>
-					<Avatar author={author} />
+					<Avatar author={author} date={date} />
 				</div>
 			</div>
 			<SectionSeparator />
