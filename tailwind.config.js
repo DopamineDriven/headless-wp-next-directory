@@ -36,6 +36,7 @@ module.exports = {
 				tight: 1.2
 			},
 			fontSize: {
+				'smxmd': '0.9375rem',
 				'1xl': '1.0rem',
 				'3xl': '2.0rem',
 				'5xl': '2.5rem',

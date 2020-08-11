@@ -38,7 +38,7 @@ const Card = ({
 						</Link>
 					</div>
 					<div
-						className='text-sm px-4 text-left leading-tight overflow-y h-16 w-full'
+						className='text-smxmd px-4 text-left leading-tight overflow-y h-16 w-full'
 						dangerouslySetInnerHTML={{ __html: excerpt }}
 					></div>
 					<>

@@ -14,7 +14,7 @@ export default function Avatar({ author, date }: AvatarProps) {
 
 	return (
 		<>
-			<div className='ml-1 flex flex-row items-left text-left float-left overflow-hidden'>
+			<div className='ml-1 mt-1 flex flex-row items-left text-left float-left overflow-hidden'>
 				<div className='flex flex-col w-1/3 mr-2'>
 					<img
 						src={author.avatar.url}
