@@ -9,7 +9,7 @@ type Props = {
 const Alert = ({ preview }: Props) => {
 	return (
 		<div
-			className={cn('border-t bg-black', {
+			className={cn('border-t bg-black mt-2', {
 				'bg-accent-7 border-accent-7 text-white': preview,
 				'bg-black border-accent-2 align-middle text-center content-center items-center justify-center': !preview
 			})}
