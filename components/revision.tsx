@@ -1,6 +1,6 @@
-import { parseISO, format } from "date-fns"
+import { parseISO, format } from "date-fns";
 
-type PluginProps = {
+type RevisionProps = {
 	revisions: {
 		edges: any;
 	} | any;
@@ -9,9 +9,7 @@ type PluginProps = {
 
 
 
-export default function Revision({ revisions }: PluginProps) {
-    // const plugs: any = plugins.edges?.node.author;
-    // plugs.value === "StudioPress" ? console.log("plugin success", plugs) : null; 
+export default function Revision({ revisions }: RevisionProps) {
 	console.log(revisions);
 	const revised = (
 		<div className='ml-1'>
