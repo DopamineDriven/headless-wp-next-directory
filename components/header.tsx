@@ -43,8 +43,13 @@ const Header = ({ props }: HeaderProps) => {
 			</Link>
 		</li>
 	));
+	// https://emortlock.github.io/tailwind-react-ui/#header-1
+	// src image https://res.cloudinary.com/asross311/image/upload/v1597147257/ASR_Assets/headerhero_euqvup.jpg
 	return (
-		<div className='relative grid grid-cols-1 w-full bg-cover overflow-x-hidden overflow-y-hidden'>
+		<div 
+			className='relative grid grid-cols-1 w-full bg-cover overflow-x-hidden overflow-y-hidden antialiased'
+		
+		>
 			<a className='bg-cover grid grid-flow-row w-full'>
 				<img
 					src={'/assets/headerhero.jpg'}

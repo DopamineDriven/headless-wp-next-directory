@@ -2,12 +2,14 @@
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## Thread Vercel with WPEngine in Production
+- Goal: link new/updated posts in the headless CMS with a deployed build on Vercel in real time
+  - First steps: 
+    - determine how WP Engine communicates with local env under the hood
+    - configure communication between Vercel and WP Engine clouds in real time
+
 ## Hero
 - https://www.williampnicholson.com/posts/2019-09-10/
-
-```svg
-
-```
 
 ## WPGQL Custom Post Types
 - https://wordpress.org/plugins/headless-cms/
