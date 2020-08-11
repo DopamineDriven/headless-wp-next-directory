@@ -56,4 +56,20 @@ const Card = ({
 	);
 };
 
+// interface CardSlugProps {
+// 	title: string;
+// }
+
+// const CardSlug = ({ title }: CardSlugProps) => {
+// 	return (
+// 		<>
+// 			<Link as={`/posts/${Card()}`} href='/posts/[slug]'>
+// 				<a>
+// 				<Card />
+// 				</a>
+// 			</Link>
+// 		</>
+// 	);
+// };
+
 export default Card;

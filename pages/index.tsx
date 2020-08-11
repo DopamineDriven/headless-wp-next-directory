@@ -15,6 +15,8 @@ import {
 import Header from '../components/header';
 import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
+import { Fragment } from 'react';
+import Link from 'next/link';
 
 interface IndexProps {
 	allPosts: any;
@@ -22,6 +24,7 @@ interface IndexProps {
 	props: string | number;
 	tagsAndPosts: any;
 	categoriesAndPosts: any;
+	slug: string | number;
 }
 
 export default function Index({
@@ -29,7 +32,8 @@ export default function Index({
 	preview,
 	tagsAndPosts,
 	categoriesAndPosts,
-	props
+	props,
+	slug
 }: IndexProps) {
 	let morePosts = edges.slice(0);
 	console.log(tagsAndPosts);

@@ -1,6 +1,6 @@
-import Avatar from './avatar-sub';
+import Avatar from './post-avatar';
 import Date from './date';
-import CoverImage, { CoverImageProps } from './cover-image';
+import CoverImage, { CoverImageProps } from './post-cover-image';
 import PostTitle from './post-title';
 import Categories from './categories';
 import CardIcons from './card-icons';

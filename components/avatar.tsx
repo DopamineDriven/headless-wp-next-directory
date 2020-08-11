@@ -14,17 +14,18 @@ export default function Avatar({ author, date }: AvatarProps) {
 
 	return (
 		<>
-			<div className='grid grid-cols-3 items-left text-left rounded-full float-left overflow-hidden'>
-				<div className='grid grid-rows-1 pl-4'>
+			<div className='ml-1 flex flex-row items-left text-left float-left overflow-hidden'>
+				<div className='flex flex-col w-1/3 mr-2'>
 					<img
 						src={author.avatar.url}
 						className='h-12 w-12 rounded-full'
 						alt={nombre}
 					/>
 				</div>
-				<div className='grid grid-rows-2 my-0 text-sm pt-1 w-full pb-2 items-left align-top text-left float-left'>
-					<div className="align-top font-semibold font-subpolished">{nombre}</div>
-					<div className='text-xs text-gray-500 text-left align-top float-left font-subpolished'>
+
+				<div className='flex flex-col w-2/3 my-0 text-sm pt-1 pb-2 items-left align-top text-left float-left'>
+					<div className="flex flex-row align-top font-semibold font-subpolished">{nombre}</div>
+					<div className='flex flex-row text-xs text-gray-500 text-left align-top float-left font-subpolished'>
 						<Date dateString={date} />
 					</div>
 				</div>
