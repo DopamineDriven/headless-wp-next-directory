@@ -44,15 +44,14 @@ const Header = ({ props }: HeaderProps) => {
 		</li>
 	));
 	return (
-		<nav className='flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-oneFourth pb-20 sm:mb-10 md:mb-8 lg:mb-12 xl:mb-8 container overflow-y-hidden overflow-x-hidden -mx-5'>
+		<nav className='flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-oneFourth pb-20 sm:mb-2 md:mb-4 lg:mb-6 xl:mb-8 container overflow-y-hidden overflow-x-hidden -mx-5'>
 			<Container>
 				<div
 					className='xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-oneFourth absolute flex flex-row w-full bg-contain antialiased'
 					style={{
 						backgroundImage: `url(https://res.cloudinary.com/asross311/image/upload/v1597147257/ASR_Assets/headerhero_euqvup.jpg)`,
 						backgroundRepeat: 'no-repeat',
-						backgroundSize: '100% 100%',
-						backgroundPosition: ''
+						backgroundSize: '100% 100%'
 					}}
 				>
 					<Container>

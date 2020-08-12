@@ -2,7 +2,6 @@ import Alert from './alert';
 import Footer from './footer';
 import Meta from './meta';
 import { ReactNode } from 'react';
-import Header from "./header";
 
 type Props = {
 	preview?: boolean;
