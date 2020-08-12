@@ -17,7 +17,7 @@ function SvgLogo({ props }: Props) {
 			<title>CIMA</title>
 			<style>
 				{
-					'.logo_svg__st0{fill:#fff}.logo_svg__st1{display:none}.logo_svg__st2{fill:#b8242c}'
+					'.logo_svg__st0{fill:#fff}.logo_svg__st1{display:none}.logo_svg__st2{fill:#AEAEAE}'
 				}
 			</style>
 			<path

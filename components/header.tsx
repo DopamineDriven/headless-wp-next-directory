@@ -17,16 +17,16 @@ type HeaderProps = {
 
 const links: NavRef[] = [
 	{
-		href: '/',
-		label: 'Directory'
+		href: '/contact',
+		label: 'Contact'
 	},
 	{
 		href: '/about',
 		label: 'About'
 	},
 	{
-		href: '/contact',
-		label: 'Contact'
+		href: '/',
+		label: 'Directory'
 	}
 ];
 
@@ -36,7 +36,7 @@ const Header = ({ props }: HeaderProps) => {
 		<li className='nav-item' key={`${link.href}-${link.label}`}>
 			<Link href={link.href}>
 				<a
-					className='px-3 py-2 flex items-right float-right text-lg uppercase font-bold leading-snug text-black hover:opacity-75'
+					className='px-3 py-2 flex items-right float-right text-lg uppercase font-bold leading-snug text-white hover:opacity-75'
 					aria-label={link.label}
 				>
 					{link.label}
@@ -64,10 +64,10 @@ const Header = ({ props }: HeaderProps) => {
 					backgroundSize: '100% 50%',
 				}}
 			>
-				<div className='container flex flex-row justify-between'>
-					<div className='w-1/3 min-w-full flex flex-row justify-between lg:w-auto lg:static lg:block lg:justify-start'>
+				<div className='container flex flex-row justify-between mx-10 my-5'>
+					<div className='flex flex-row justify-between lg:w-auto lg:static lg:block lg:justify-start'>
 						<Link href='/'>
-							<a className="flex w-full">{<SvgLogo props={props} />}</a>
+							<a className="flex">{<SvgLogo props={props} />}</a>
 						</Link>
 						<button
 							className='text-black cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
@@ -82,11 +82,11 @@ const Header = ({ props }: HeaderProps) => {
 					</div>
 					<div
 						className={
-							'lg:flex flex-grow flex-col text-right float-right items-right w-2/3' +
+							'lg:flex flex-grow text-right float-right items-right align-middle' +
 							(navOpen ? ' flex float-right' : ' hidden')
 						}
 					>
-						<ul className='flex flex-col lg:flex-row list-none lg:ml-auto font-polished min-w-full items-right float-right text-right'>
+						<ul className='flex flex-col lg:flex-row-reverse list-none lg:ml-auto font-polished w-full items-right float-right text-right'>
 							{navlist}
 						</ul>
 					</div>
