@@ -56,7 +56,7 @@ const Header = ({ props }: HeaderProps) => {
 			<Container>
 		
 			<div
-				className='absolute grid grid-rows-1 w-full h-full min-h-full bg-cover antialiased'
+				className='absolute flex flex-row w-full h-full min-h-full antialiased'
 				style={{
 					backgroundImage:
 						`url(https://res.cloudinary.com/asross311/image/upload/v1597147257/ASR_Assets/headerhero_euqvup.jpg)`,
@@ -64,10 +64,10 @@ const Header = ({ props }: HeaderProps) => {
 					backgroundSize: '100% 50%',
 				}}
 			>
-				<div className='container flex flex-row items-center justify-between'>
-					<div className='w-full relative grid grid-cols-1 justify-between lg:w-auto lg:static lg:block lg:justify-start'>
+				<div className='container flex flex-row justify-between'>
+					<div className='w-1/3 min-w-full flex flex-row justify-between lg:w-auto lg:static lg:block lg:justify-start'>
 						<Link href='/'>
-							<a>{<SvgLogo props={props} />}</a>
+							<a className="flex w-full">{<SvgLogo props={props} />}</a>
 						</Link>
 						<button
 							className='text-black cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
@@ -82,11 +82,11 @@ const Header = ({ props }: HeaderProps) => {
 					</div>
 					<div
 						className={
-							'lg:flex flex-grow items-right' +
+							'lg:flex flex-grow flex-col text-right float-right items-right w-2/3' +
 							(navOpen ? ' flex float-right' : ' hidden')
 						}
 					>
-						<ul className='flex flex-col lg:flex-row list-none lg:ml-auo font-polished items-right float-right align-middle text-right'>
+						<ul className='flex flex-col lg:flex-row list-none lg:ml-auto font-polished min-w-full items-right float-right text-right'>
 							{navlist}
 						</ul>
 					</div>
