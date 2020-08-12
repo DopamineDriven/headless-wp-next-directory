@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import About from '../pages/about';
 import HeaderSVG from './header-svg';
-import Container from "./container";
+import Container from './container';
 
 interface NavRef {
 	href: string;
@@ -37,7 +37,7 @@ const Header = ({ props }: HeaderProps) => {
 		<li className='nav-item' key={`${link.href}-${link.label}`}>
 			<Link href={link.href}>
 				<a
-					className='px-3 py-2 flex items-right float-right text-lg font-bold leading-snug text-white hover:opacity-75'
+					className='px-5 py-5 flex items-right float-right xl:text-2xl lg:text-xl md:text-lg sm:text-smxmd font-bold leading-tight text-white hover:opacity-75'
 					aria-label={link.label}
 				>
 					{link.label}
@@ -45,56 +45,49 @@ const Header = ({ props }: HeaderProps) => {
 			</Link>
 		</li>
 	));
-	const myImage = () => {
-		return (
-			<img src="/assets/headerheroheightreduced" alt="my image" />
-		)
-	}
-	// https://emortlock.github.io/tailwind-react-ui/#header-1
-	// src image https://res.cloudinary.com/asross311/image/upload/v1597147257/ASR_Assets/headerhero_euqvup.jpg
 	return (
-		<nav className="h-half mb-5 container overflow-y-hidden overflow-x-hidden -mx-5">
+		<nav className='flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird pb-20 mb-40 sm:mb-10 md:mb-8 lg:mb-12 xl:mb-8 container overflow-y-hidden overflow-x-hidden -mx-5'>
 			<Container>
-		
-			<div
-				className='absolute flex flex-row w-full h-full min-h-full antialiased'
-				style={{
-					backgroundImage:
-						`url(https://res.cloudinary.com/asross311/image/upload/v1597147257/ASR_Assets/headerhero_euqvup.jpg)`,
-					backgroundRepeat: 'no-repeat',
-					backgroundSize: '100% 40%',
-				}}
-			>
-				<div className='container flex flex-row justify-between mx-5 my-5'>
-					<div className='flex lg:flex-row justify-between lg:w-auto lg:static lg:block lg:justify-start'>
-						<Link href='/'>
-							<a className="flex pr-10">{<SvgLogo props={props} />}</a>
-						</Link>
-						<button
-							className='pt-5 text-white float-right align-middle flex flex-row-reverse cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent lg:hidden outline-none focus:outline-none'
-							type='button'
-							onClick={() => setNavOpen(!navOpen)}
-							name='open-nav-button'
-						>
-							<a aria-label='open-nav'>
-								<FontAwesomeIcon icon={faBars} />
-							</a>
-						</button>
-					</div>
-					<div
-						className={
-							'lg:flex flex-grow text-right float-right items-right align-middle' +
-							(navOpen ? ' flex float-right' : 'hidden')
-						}
-					>
-						<ul className='flex flex-col lg:flex-row-reverse list-none lg:ml-auto font-polished w-full items-right float-right text-right'>
-							{navlist}
-						</ul>
-					</div>
+				<div
+					className='xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird absolute flex flex-row w-full bg-contain antialiased'
+					style={{
+						backgroundImage: `url(https://res.cloudinary.com/asross311/image/upload/v1597147257/ASR_Assets/headerhero_euqvup.jpg)`,
+						backgroundRepeat: 'no-repeat',
+						backgroundSize: '100% 100%',
+						backgroundPosition: ''
+					}}
+				>
+					<Container>
+						<div className='container flex flex-row justify-between mx-5 my-5'>
+							<div className='flex sm:flex-row justify-between sm:w-auto sm:static sm:block sm:justify-start'>
+								<Link href='/'>
+									<a className='flex pr-10'>{<SvgLogo props={props} />}</a>
+								</Link>
+								<button
+									className='pt-5 text-white float-right align-middle flex flex-row-reverse cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent sm:hidden outline-none focus:outline-none'
+									type='button'
+									onClick={() => setNavOpen(!navOpen)}
+									name='open-nav-button'
+								>
+									<a aria-label='open-nav'>
+										<FontAwesomeIcon icon={faBars} />
+									</a>
+								</button>
+							</div>
+							<div
+								className={
+									'sm:flex flex-grow text-right float-right items-right align-middle sm:text-smxmd' +
+									(navOpen ? ' flex float-right' : 'hidden')
+								}
+							>
+								<ul className='flex flex-col sm:flex-row-reverse sm:text-smxmd list-none sm:ml-auto font-polished w-full items-right float-right text-right'>
+									{navlist}
+								</ul>
+							</div>
+						</div>
+					</Container>
 				</div>
-			</div>
-
-		</Container>
+			</Container>
 		</nav>
 	);
 };

@@ -1,6 +1,7 @@
 module.exports = {
 	purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
 	theme: {
+		
 		extend: {
 			fontFamily: {
 				body: ['Barlow Condensed', 'sans-serif'],
@@ -26,14 +27,15 @@ module.exports = {
 				iconHoverTwo: '#AEAEAE'
 			},
 			height: {
-				full: '100vh',
 				threeFourths: '75vh',
 				twoThirds: 'calc(100vh*(2/3))',
 				threeFifths: '60vh',
 				half: '50vh',
-				oneThird: 'calc(100vh / 3)',
+				twoFifths: '40vh',
+				oneThird: '33.33vh',
 				oneFourth: '25vh',
-				oneFifth: '20vh'
+				oneFifth: '20vh',
+				oneSixth: '16.67'
 			},
 			spacing: {
 				14: '3.5rem',

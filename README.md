@@ -7,13 +7,7 @@ Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
   - First steps: 
     - determine how WP Engine communicates with local env under the hood
     - configure communication between Vercel and WP Engine clouds in real time
-				100: '25rem',
-        150: '37.5rem',
-        250: '62.5rem',
-        300: '75rem',
-                threeFifths: '60vh',
-        				twoThirds: '66.67vh',
-                threeFourths: '75vh',
+
 ## Hero
 - https://www.williampnicholson.com/posts/2019-09-10/
 
