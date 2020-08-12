@@ -25,11 +25,27 @@ module.exports = {
 				iconHover: '#9D9D9D',
 				iconHoverTwo: '#AEAEAE'
 			},
+			height: {
+				full: '100vh',
+				threeFourths: '75vh',
+				twoThirds: 'calc(100vh*(2/3))',
+				threeFifths: '60vh',
+				half: '50vh',
+				oneThird: 'calc(100vh / 3)',
+				oneFourth: '25vh',
+				oneFifth: '20vh'
+			},
 			spacing: {
 				14: '3.5rem',
 				18: '4.5rem',
 				28: '7rem',
-				44: '11rem'
+				44: '11rem',
+				100: '25rem',
+				150: '37.5rem',
+				200: '50rem',
+				250: '62.5rem',
+				300: '75rem',
+				309: '77.25rem'
 			},
 			letterSpacing: {
 				tighter: '-.04em'
@@ -38,7 +54,7 @@ module.exports = {
 				tight: 1.2
 			},
 			fontSize: {
-				'smxmd': '0.9375rem',
+				smxmd: '0.9375rem',
 				'1xl': '1.0rem',
 				'3xl': '2.0rem',
 				'5xl': '2.5rem',

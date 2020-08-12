@@ -4,6 +4,7 @@ import SvgLogo from './svg-logo-only';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import HeaderSVG from './header-svg';
+import Container from "./container";
 
 interface NavRef {
 	href: string;
@@ -43,49 +44,57 @@ const Header = ({ props }: HeaderProps) => {
 			</Link>
 		</li>
 	));
+	const myImage = () => {
+		return (
+			<img src="/assets/headerheroheightreduced" alt="my image" />
+		)
+	}
 	// https://emortlock.github.io/tailwind-react-ui/#header-1
 	// src image https://res.cloudinary.com/asross311/image/upload/v1597147257/ASR_Assets/headerhero_euqvup.jpg
 	return (
-		<div 
-			className='relative grid grid-cols-1 w-full bg-cover overflow-x-hidden overflow-y-hidden antialiased'
+		<nav className="h-half mb-5 container overflow-y-hidden overflow-x-hidden -mx-5">
+			<Container>
 		
-		>
-			<a className='bg-cover grid grid-flow-row w-full'>
-				<img
-					src={'/assets/headerhero.jpg'}
-					className='overflow-x-hidden overflow-y-hidden bg-cover object-contain grid grid-cols-1 relative'
-					title="chicago skyline"
-				/>
-			</a>
-
-			<div className='container flex flex-row items-center justify-between'>
-				<div className='w-full relative grid grid-cols-1 justify-between lg:w-auto lg:static lg:block lg:justify-start'>
-					<Link href='/'>
-						<a>{<SvgLogo props={props} />}</a>
-					</Link>
-					<button
-						className='text-black cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
-						type='button'
-						onClick={() => setNavOpen(!navOpen)}
-						name='open-nav-button'
+			<div
+				className='absolute grid grid-rows-1 w-full h-full min-h-full bg-cover antialiased'
+				style={{
+					backgroundImage:
+						`url(https://res.cloudinary.com/asross311/image/upload/v1597147257/ASR_Assets/headerhero_euqvup.jpg)`,
+					backgroundRepeat: 'no-repeat',
+					backgroundSize: '100% 50%',
+				}}
+			>
+				<div className='container flex flex-row items-center justify-between'>
+					<div className='w-full relative grid grid-cols-1 justify-between lg:w-auto lg:static lg:block lg:justify-start'>
+						<Link href='/'>
+							<a>{<SvgLogo props={props} />}</a>
+						</Link>
+						<button
+							className='text-black cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
+							type='button'
+							onClick={() => setNavOpen(!navOpen)}
+							name='open-nav-button'
+						>
+							<a aria-label='open-nav'>
+								<FontAwesomeIcon icon={faBars} />
+							</a>
+						</button>
+					</div>
+					<div
+						className={
+							'lg:flex flex-grow items-right' +
+							(navOpen ? ' flex float-right' : ' hidden')
+						}
 					>
-						<a aria-label='open-nav'>
-							<FontAwesomeIcon icon={faBars} />
-						</a>
-					</button>
-				</div>
-				<div
-					className={
-						'lg:flex flex-grow items-right' +
-						(navOpen ? ' flex float-right' : ' hidden')
-					}
-				>
-					<ul className='flex flex-col lg:flex-row list-none lg:ml-auo font-polished items-right float-right align-middle text-right'>
-						{navlist}
-					</ul>
+						<ul className='flex flex-col lg:flex-row list-none lg:ml-auo font-polished items-right float-right align-middle text-right'>
+							{navlist}
+						</ul>
+					</div>
 				</div>
 			</div>
-		</div>
+
+		</Container>
+		</nav>
 	);
 };
 
