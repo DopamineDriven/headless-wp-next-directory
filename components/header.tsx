@@ -3,8 +3,6 @@ import Link from 'next/link';
 import SvgLogo from './svg-logo-only';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
-import About from '../pages/about';
-import HeaderSVG from './header-svg';
 import Container from './container';
 
 interface NavRef {
@@ -37,7 +35,7 @@ const Header = ({ props }: HeaderProps) => {
 		<li className='nav-item' key={`${link.href}-${link.label}`}>
 			<Link href={link.href}>
 				<a
-					className='px-3 py-3 flex items-right float-right xl:text-2xl lg:text-xl md:text-lg sm:text-smxmd font-bold leading-none text-white hover:opacity-75'
+					className='px-3 py-1 flex items-right float-right xl:text-3xl lg:text-2xl md:text-xl sm:text-lg text-sm font-bold leading-none text-white hover:opacity-75'
 					aria-label={link.label}
 				>
 					{link.label}
@@ -58,14 +56,14 @@ const Header = ({ props }: HeaderProps) => {
 					}}
 				>
 					<Container>
-						<div className='container flex flex-row justify-between mx-5 my-5'>
+						<div className='container flex flex-row justify-between mx-5'>
 							<div className='flex w-1/2 sm:flex-row justify-between sm:w-auto sm:static sm:justify-start'>
 								<Link href='/'>
 									<a className='flex pr-10'>{<SvgLogo props={props} />}</a>
 								</Link>
-								<div className="inline-block pt-8 float-right text-right justify-center w-full min-w-full">
+								<div className="block pt-8 float-right text-right justify-center w-full min-w-full">
 								<button
-									className='text-white opacity-75 float-right align-middle -mt-7 pr-20 flex flex-col cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent sm:hidden outline-none focus:outline-none'
+									className='text-white opacity-75 float-right align-middle pr-20 flex flex-col cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent sm:hidden outline-none focus:outline-none'
 									type='button'
 									onClick={() => setNavOpen(!navOpen)}
 									name='open-nav-button'
@@ -78,11 +76,11 @@ const Header = ({ props }: HeaderProps) => {
 							</div>
 							<div
 								className={
-									'sm:flex flex-grow text-right items-right align-middle sm:text-smxmd' +
+									'sm:flex flex-grow text-right items-right align-top' +
 									(navOpen ? ' flex' : ' hidden')
 								}
 							>
-								<ul className='flex flex-col-reverse sm:flex-row-reverse sm:text-smxmd list-none sm:ml-auto font-polished w-full float-right text-right'>
+								<ul className='flex flex-col-reverse sm:flex-row-reverse sm:text-smxmd list-none sm:ml-auto font-polished w-full float-right text-right sm:pt-4'>
 									{navlist}
 								</ul>
 							</div>
