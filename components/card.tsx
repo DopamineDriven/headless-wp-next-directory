@@ -29,16 +29,16 @@ const Card = ({
 				<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
 				<div className='flex flex-col text-left justify-center bg-white pt-4 shadow rounded-b-lg'>
-					<div className='font-bold text-xl overflow-y h-10 mt-2 w-full font-polished'>
+					<div className='font-bold text-xl h-12 mt-2 w-full font-polished leading-tight px-4 pb-2'>
 						<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 							<a
-								className='hover:underline text-xl font-semibold text-left pl-4 pr-4'
+								className='hover:underline text-xl font-semibold text-left'
 								dangerouslySetInnerHTML={{ __html: title }}
 							></a>
 						</Link>
 					</div>
 					<div
-						className='text-smxmd px-4 text-left leading-tight overflow-y h-16 w-full'
+						className='text-smxmd px-4 mt-1 text-left leading-tight overflow-y h-16 w-full'
 						dangerouslySetInnerHTML={{ __html: excerpt }}
 					></div>
 					<>
