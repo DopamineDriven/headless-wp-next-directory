@@ -28,7 +28,7 @@ const Card = ({
 			<div className='max-w-xs rounded-lg overflow-x-hidden overflow-y-hidden bg-white shadow-lg inline-block'>
 				<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
-				<div className='flex flex-col text-left justify-center bg-white pt-4 shadow rounded-b-lg'>
+				<div className='flex flex-col text-left justify-center bg-white shadow rounded-b-lg'>
 					<div className='font-bold text-xl h-12 mt-2 w-full font-polished leading-tight px-4 pb-2'>
 						<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 							<a
