@@ -9,7 +9,7 @@ type AvatarProps = {
 export default function Avatar({ author, date }: AvatarProps) {
 	const nombre =
 		author.firstName && author.lastName
-			? `${author.firstName}${author.lastName}`
+			? `${author.firstName} ${author.lastName}`
 			: author.name;
 
 	return (
