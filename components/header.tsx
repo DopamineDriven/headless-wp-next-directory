@@ -65,7 +65,7 @@ const Header = ({ props }: HeaderProps) => {
 								</Link>
 								<div className="inline-block pt-8 float-right text-right justify-center w-full min-w-full">
 								<button
-									className='text-white opacity-75 float-left align-middle -mt-1 pr-10 flex flex-col cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent sm:hidden outline-none focus:outline-none'
+									className='text-white opacity-75 float-right align-middle -mt-7 pr-20 flex flex-col cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent sm:hidden outline-none focus:outline-none'
 									type='button'
 									onClick={() => setNavOpen(!navOpen)}
 									name='open-nav-button'
