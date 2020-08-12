@@ -38,6 +38,7 @@ module.exports = {
 				oneSixth: '16.67'
 			},
 			spacing: {
+				7: '1.75rem',
 				14: '3.5rem',
 				18: '4.5rem',
 				28: '7rem',

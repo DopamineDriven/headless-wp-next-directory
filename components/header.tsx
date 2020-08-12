@@ -37,7 +37,7 @@ const Header = ({ props }: HeaderProps) => {
 		<li className='nav-item' key={`${link.href}-${link.label}`}>
 			<Link href={link.href}>
 				<a
-					className='px-5 py-5 flex items-right float-right xl:text-2xl lg:text-xl md:text-lg sm:text-smxmd font-bold leading-none text-white hover:opacity-75'
+					className='px-3 py-3 flex items-right float-right xl:text-2xl lg:text-xl md:text-lg sm:text-smxmd font-bold leading-none text-white hover:opacity-75'
 					aria-label={link.label}
 				>
 					{link.label}
@@ -65,7 +65,7 @@ const Header = ({ props }: HeaderProps) => {
 								</Link>
 								<div className="inline-block pt-8 float-right text-right justify-center w-full min-w-full">
 								<button
-									className='fixed text-white opacity-75 float-right align-middle -mt-1 pr-10 flex flex-col cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent sm:hidden outline-none focus:outline-none'
+									className='text-white opacity-75 float-right align-middle -mt-7 pr-20 flex flex-col cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent sm:hidden outline-none focus:outline-none'
 									type='button'
 									onClick={() => setNavOpen(!navOpen)}
 									name='open-nav-button'
