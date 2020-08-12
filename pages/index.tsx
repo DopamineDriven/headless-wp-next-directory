@@ -52,11 +52,11 @@ export default function Index({
 				</Head>
 				<Container>
 					<Intro />
-					<SearchBox
+					{/* <SearchBox
 						allPosts={morePosts}
 						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
-					/>
-					<div className='max-w-5xl grid mx-auto content-center justify-center items-center text-center'>
+					/> */}
+					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
 						{morePosts.length > 0 && <Cards posts={morePosts} />}
 					</div>
 				</Container>
