@@ -48,7 +48,7 @@ export default function Intro() {
 	// ));
 	return (
 		<>
-			<h1 className='text-6xl sm:text-6xl xs:text-5xl font-bold text-center justify-center font-polished tracking-tight leading-tight mt-4'>
+			<h1 className='text-6xl sm:text-6xl xs:text-5xl font-bold text-center justify-center font-polished tracking-tight leading-tight mt-50'>
 				<Link href='/'>
 					<a
 						className='hover:text-cimaRed cursor-text select-text text-black'
