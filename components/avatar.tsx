@@ -1,12 +1,13 @@
 import SectionSeparator from './section-separator';
 import Date from './date';
+import Modified from "./modified";
 
 type AvatarProps = {
 	author: any;
-	date: string;
+	modified: string;
 };
 
-export default function Avatar({ author, date }: AvatarProps) {
+export default function Avatar({ author, modified }: AvatarProps) {
 	const nombre =
 		author.firstName && author.lastName
 			? `${author.firstName} ${author.lastName}`
@@ -28,7 +29,7 @@ export default function Avatar({ author, date }: AvatarProps) {
 						<a className='flex w-full'>{nombre}</a>
 					</div>
 					<div className='flex flex-row text-xs text-gray-500 text-left align-top float-left font-subpolished'>
-						<Date dateString={date} />
+						<Modified modifiedString={modified} />
 					</div>
 				</div>
 			</div>

@@ -20,7 +20,7 @@ export default function MoreCards({ posts }: CardsProps) {
 						key={node.slug}
 						title={node.title}
 						coverImage={node.featuredImage.node}
-						date={node.date}
+						modified={node.modified}
 						social={node.social}
 						author={node.author.node}
 						slug={node.slug}
