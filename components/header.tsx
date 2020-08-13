@@ -35,7 +35,7 @@ const Header = ({ props }: HeaderProps) => {
 		<li className='nav-item' key={`${link.href}-${link.label}`}>
 			<Link href={link.href}>
 				<a
-					className='px-3 py-1 flex items-right float-right xl:text-2xl lg:text-2xl md:text-xl sm:text-lg text-sm font-bold leading-none text-white hover:opacity-75'
+					className='px-3 py-1 flex items-center float-right text-right text-2xl w-full sm:text-xl font-bold leading-none text-white'
 					aria-label={link.label}
 				>
 					{link.label}
@@ -44,10 +44,10 @@ const Header = ({ props }: HeaderProps) => {
 		</li>
 	));
 	return (
-		<nav className='flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-oneFourth pb-20 sm:mb-2 md:mb-4 lg:mb-6 xl:mb-8 container overflow-y-hidden overflow-x-hidden -mx-5'>
+		<nav className='flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-oneThird pb-20 sm:mb-2 md:mb-4 lg:mb-6 xl:mb-8 container overflow-y-hidden overflow-x-hidden -mx-5'>
 			<Container>
 				<div
-					className='xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-oneFourth absolute flex flex-row w-full bg-contain antialiased'
+					className='xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-oneThird absolute flex flex-row w-full bg-contain antialiased' 
 					style={{
 						backgroundImage: `url(https://res.cloudinary.com/asross311/image/upload/v1597147257/ASR_Assets/headerhero_euqvup.jpg)`,
 						backgroundRepeat: 'no-repeat',
@@ -55,14 +55,13 @@ const Header = ({ props }: HeaderProps) => {
 					}}
 				>
 					<Container>
-						<div className='container flex flex-row justify-between mx-5'>
-							<div className='flex w-1/2 sm:flex-row justify-between sm:w-auto sm:static sm:justify-start'>
+						<div className='container flex flex-wrap px-4 justify-between mx-auto'>
+							<div className='flex w-full relative sm:flex-row justify-between sm:w-auto sm:static sm:justify-start sm:block'>
 								<Link href='/'>
-									<a className='flex pr-10'>{<SvgLogo props={props} />}</a>
+									<a className='inline-block leading-relaxed mr-4 whitespace-no-wrap '>{<SvgLogo props={props} />}</a>
 								</Link>
-								<div className="block pt-8 float-right text-right justify-center w-full min-w-full">
 								<button
-									className='text-white opacity-75 float-right align-middle pr-20 flex flex-col cursor-pointer text-xl leading-none py-1 border border-solid border-transparent rounded bg-transparent sm:hidden outline-none focus:outline-none'
+									className='text-white block cursor-pointer text-xl leading-none px-3 border border-solid border-transparent rounded bg-transparent sm:hidden outline-none focus:outline-none'
 									type='button'
 									onClick={() => setNavOpen(!navOpen)}
 									name='open-nav-button'
@@ -71,15 +70,15 @@ const Header = ({ props }: HeaderProps) => {
 										<FontAwesomeIcon icon={faBars} />
 									</a>
 								</button>
-								</div>
+
 							</div>
 							<div
 								className={
-									'sm:flex flex-grow text-right items-right align-top' +
+									'sm:flex flex-grow items-center' +
 									(navOpen ? ' flex' : ' hidden')
 								}
 							>
-								<ul className='flex flex-col-reverse sm:flex-row-reverse sm:text-smxmd list-none sm:ml-auto font-polished w-full float-right text-right sm:pt-4'>
+								<ul className='flex flex-col sm:flex-row list-none sm:ml-auto'>
 									{navlist}
 								</ul>
 							</div>
@@ -92,7 +91,8 @@ const Header = ({ props }: HeaderProps) => {
 };
 
 export default Header;
-
+// <ul className='flex flex-col-reverse sm:flex-row-reverse sm:text-smxmd list-none sm:ml-auto font-polished w-full float-right text-right sm:pt-4'>
+// text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none
 /*
 import { useState } from 'react';
 import Link from 'next/link';
