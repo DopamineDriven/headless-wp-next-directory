@@ -8,7 +8,7 @@ type CardProps = {
 	coverImage: CoverImageProps;
 	title: string;
 	slug: string | number;
-	date: string;
+	modified: string;
 	author: any;
 	excerpt: string;
 	social: any;
@@ -18,7 +18,7 @@ const Card = ({
 	author,
 	coverImage,
 	excerpt,
-	date,
+	modified,
 	slug,
 	social,
 	title
@@ -43,7 +43,7 @@ const Card = ({
 					></div>
 					<>
 						<div className='grid-cols-1 pl-2 font-subpolished'>
-							<Avatar author={author} date={date} />
+							<Avatar author={author} modified={modified} />
 						</div>
 					</>
 					<hr className='border-customGray w-full mt-2' />

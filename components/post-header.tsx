@@ -1,5 +1,6 @@
 import Avatar from './post-avatar';
 import Date from './date';
+import Modified from './modified';
 import CoverImage, { CoverImageProps } from './post-cover-image';
 import PostTitle from './post-title';
 import Categories from './categories';
@@ -10,6 +11,7 @@ type PostHeaderProps = {
 	coverImage: CoverImageProps;
 	author: any;
 	date: string;
+	modified: string;
 	categories: any;
 	slug: string | number;
 	social: any;
@@ -19,6 +21,7 @@ export default function PostHeader({
 	title,
 	coverImage,
 	date,
+	modified,
 	author,
 	categories,
 	social,
@@ -49,7 +52,12 @@ export default function PostHeader({
 							<Categories categories={categories} />
 						</div>
 						<div className='text-sm font-subpolished'>
+							Published&nbsp;
 							<Date dateString={date} />
+						</div>
+						<div className='text-sm font-subpolished'>
+							Updated&nbsp;
+							<Modified modifiedString={modified} />
 						</div>
 					</div>
 				</div>
