@@ -1,7 +1,7 @@
 import { parseISO, format } from 'date-fns';
 
 type ModifiedProps = {
-	modifiedString: any;
+	modifiedString: string;
 };
 
 export default function Modified({ modifiedString }: ModifiedProps) {
