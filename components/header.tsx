@@ -16,16 +16,16 @@ type HeaderProps = {
 
 const links: NavRef[] = [
 	{
-		href: '/contact',
-		label: 'Contact'
+		href: '/',
+		label: 'Directory'
 	},
 	{
 		href: '/about',
 		label: 'About'
 	},
 	{
-		href: '/',
-		label: 'Directory'
+		href: '/contact',
+		label: 'Contact'
 	}
 ];
 
@@ -44,10 +44,10 @@ const Header = ({ props }: HeaderProps) => {
 		</li>
 	));
 	return (
-		<nav className='flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-oneThird pb-20 sm:mb-2 md:mb-4 lg:mb-6 xl:mb-8 container overflow-y-hidden overflow-x-hidden -mx-5'>
+		<nav className='flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-threeTenths pb-20 sm:mb-2 md:mb-4 lg:mb-6 xl:mb-8 container overflow-y-hidden overflow-x-hidden -mx-5'>
 			<Container>
 				<div
-					className='xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-oneThird absolute flex flex-row w-full bg-contain antialiased' 
+					className='xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-threeTenths absolute flex flex-row w-full bg-contain antialiased'
 					style={{
 						backgroundImage: `url(https://res.cloudinary.com/asross311/image/upload/v1597147257/ASR_Assets/headerhero_euqvup.jpg)`,
 						backgroundRepeat: 'no-repeat',
@@ -58,7 +58,9 @@ const Header = ({ props }: HeaderProps) => {
 						<div className='container flex flex-wrap px-4 justify-between mx-auto'>
 							<div className='flex w-full relative sm:flex-row justify-between sm:w-auto sm:static sm:justify-start sm:block'>
 								<Link href='/'>
-									<a className='inline-block leading-relaxed mr-4 whitespace-no-wrap '>{<SvgLogo props={props} />}</a>
+									<a className='inline-block leading-relaxed mr-4 whitespace-no-wrap '>
+										{<SvgLogo props={props} />}
+									</a>
 								</Link>
 								<button
 									className='text-white block cursor-pointer text-xl leading-none px-3 border border-solid border-transparent rounded bg-transparent sm:hidden outline-none focus:outline-none'
@@ -70,7 +72,6 @@ const Header = ({ props }: HeaderProps) => {
 										<FontAwesomeIcon icon={faBars} />
 									</a>
 								</button>
-
 							</div>
 							<div
 								className={
