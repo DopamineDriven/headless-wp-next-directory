@@ -33,6 +33,7 @@ module.exports = {
 				half: '50vh',
 				twoFifths: '40vh',
 				oneThird: '33.33vh',
+				threeTenths: '30vh',
 				oneFourth: '25vh',
 				oneFifth: '20vh',
 				oneSixth: '16.67'
