@@ -52,6 +52,7 @@ export default function Post({ post, posts, preview, props }: SlugProps) {
 									title={post.title}
 									coverImage={post.featuredImage.node}
 									date={post.date}
+									modified={post.modified}
 									author={post.author.node}
 									categories={post.categories}
 									slug={post.slug}
