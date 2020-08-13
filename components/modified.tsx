@@ -1,12 +1,10 @@
 import { parseISO, format } from 'date-fns';
 
-export type ModifiedProps = {
-	modifiedString: string;
+type ModifiedProps = {
+	modifiedString: any;
 };
 
 export default function Modified({ modifiedString }: ModifiedProps) {
-	const modified = parseISO(modifiedString);
-	return (
-		<time dateTime={modifiedString}>{format(modified, 'LLLL	d, yyyy')}</time>
-	);
+	const date: Date = parseISO(modifiedString);
+	return (<time dateTime={modifiedString}>{format(date, 'LLLL	d, yyyy')}</time>);
 }
