@@ -20,6 +20,7 @@ export default function MoreStories({ posts }: MoreStoriesProps) {
 						key={node.slug}
 						title={node.title}
 						coverImage={node.featuredImage.node}
+						modified={node.modified}
 						date={node.date}
 						author={node.author.node}
 						slug={node.slug}
