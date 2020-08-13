@@ -54,6 +54,7 @@ const About = ({
 							title={heroPost.title}
 							coverImage={heroPost.featuredImage.node}
 							date={heroPost.date}
+							modified={heroPost.modified}
 							author={heroPost.author.node}
 							slug={heroPost.slug}
 							excerpt={heroPost.excerpt}

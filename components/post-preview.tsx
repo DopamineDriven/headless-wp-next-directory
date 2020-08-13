@@ -7,6 +7,7 @@ type PostPreviewProps = {
 	coverImage: CoverImageProps;
 	title: string;
 	date: string;
+	modified: string;
 	excerpt: string;
 	author: any;
 	slug: string | number;
@@ -16,6 +17,7 @@ export default function PostPreview({
 	title,
 	coverImage,
 	date,
+	modified,
 	excerpt,
 	author,
 	slug
@@ -40,7 +42,7 @@ export default function PostPreview({
 				className='text-3xl leading-relaxed mb-2 text-center justify-center'
 				dangerouslySetInnerHTML={{ __html: excerpt }}
 			/>
-			<Avatar author={author} date={date} />
+			<Avatar author={author} modified={modified} />
 		</div>
 	);
 }
