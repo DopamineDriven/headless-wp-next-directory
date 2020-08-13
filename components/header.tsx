@@ -35,7 +35,7 @@ const Header = ({ props }: HeaderProps) => {
 		<li className='nav-item' key={`${link.href}-${link.label}`}>
 			<Link href={link.href}>
 				<a
-					className='px-3 py-1 flex items-center float-right text-right text-2xl w-full sm:text-xl font-bold leading-none text-white'
+					className='px-3 py-1 flex items-center float-right text-right text-2xl w-full sm:text-xl font-bold leading-none text-white hover:opacity-75'
 					aria-label={link.label}
 				>
 					{link.label}
