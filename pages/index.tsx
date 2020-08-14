@@ -5,7 +5,9 @@ import Layout from '../components/layout';
 import {
 	getAllPostsForHomeAlphabetical,
 	getTagAndPosts,
-	getCategoriesAndPosts
+	getCategoriesAndPosts,
+	getAllPostsForHomeSorted,
+	getAllPostsTitleDesc
 } from '../lib/api';
 import {
 	CMS_NAME,
@@ -15,27 +17,69 @@ import {
 import Header from '../components/header';
 import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
+// import CustomSelect, { Field } from '../components/custom-select';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
+export enum Field {
+	TITLE = 'TITLE',
+	MODIFIED = 'MODIFIED',
+	DATE = 'DATE'
+}
+
+// enum Order {
+// 	ASC = 'ASC',
+// 	DESC = 'DESC'
+// }
+
+export interface CustomDropDown {
+	field: Field;
+	color: string;
+}
+
+const fieldVals: CustomDropDown[] = [
+	{
+		field: Field.DATE,
+		color: 'white'
+	},
+	{
+		field: Field.MODIFIED,
+		color: 'white'
+	},
+	{
+		field: Field.TITLE,
+		color: 'white'
+	}
+];
 interface IndexProps {
 	allPosts: any;
 	preview: boolean;
 	props: string | number;
 	tagsAndPosts: any;
 	categoriesAndPosts: any;
-	slug: string | number;
+	// slug: string | number;
+	field: string;
+	order: string;
+	// setField: Promise<any>;
+	// color: string;
 }
+
 
 export default function Index({
 	allPosts: { edges },
 	preview,
 	tagsAndPosts,
 	categoriesAndPosts,
-	props
-}: IndexProps) {
+	props,
+	field,
+	order
+}: // field,
+// setField,
+// color
+IndexProps) {
 	let morePosts = edges.slice(0);
 	console.log('tags:', tagsAndPosts);
 	console.log('categories:', categoriesAndPosts);
-
 	return (
 		<>
 			<Header props={props} />
@@ -62,15 +106,30 @@ export default function Index({
 
 type StaticProps = {
 	preview: boolean;
+	field: string;
+	order: string;
 };
 
-export async function getStaticProps({ preview = false }: StaticProps) {
-	const allPosts = await getAllPostsForHomeAlphabetical(preview);
+export async function getStaticProps({
+	preview = false,
+	field = 'TITLE',
+	order = 'ASC'
+}: StaticProps) {
+	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
 	const tagsAndPosts = await getTagAndPosts();
 	const categoriesAndPosts = await getCategoriesAndPosts();
+	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 
 	return {
-		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts }
+		props: {
+			allPosts,
+			preview,
+			tagsAndPosts,
+			categoriesAndPosts,
+			field,
+			order,
+
+		}
 	};
 }
 

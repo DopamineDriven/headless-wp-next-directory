@@ -1,5 +1,6 @@
 import { CMS_NAME, CMS_URL } from '../lib/constants';
 import Link from 'next/link';
+
 // import {
 // 	getAllPostsForHomeDateAsc,
 // 	getAllPostsForHomeDateDesc,
@@ -115,6 +116,7 @@ export default function Intro() {
 				</a>
 				.
 			</h2>
+			<hr />
 			{/* <hr className='border-accent-2 w-full mt-8' />
 			<h2 className='text-2xl sm:text-2xl xs:text-2xl font-bold text-center justify-center font-body tracking-tight leading-tight mt-4'>
 				Sort Directory by Company Title or Date Published
