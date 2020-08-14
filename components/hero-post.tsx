@@ -1,6 +1,6 @@
 import Avatar from './avatar';
 import Date from './date';
-import CoverImage, { CoverImageProps } from './cover-image';
+import CoverImage, { CoverImageProps } from './post-cover-image';
 import Link from 'next/link';
 import SectionSeparator from './section-separator';
 
@@ -10,6 +10,7 @@ type HeroPostProps = {
 	slug: string | number;
 	excerpt: string;
 	date: string;
+	modified: string;
 	title: string;
 };
 
@@ -17,6 +18,7 @@ export default function HeroPost({
 	title,
 	coverImage,
 	date,
+	modified,
 	excerpt,
 	author,
 	slug
@@ -45,7 +47,7 @@ export default function HeroPost({
 						className='text-2xl leading-relaxed mb-4'
 						dangerouslySetInnerHTML={{ __html: excerpt }}
 					/>
-					<Avatar author={author} />
+					<Avatar author={author} modified={modified} />
 				</div>
 			</div>
 			<SectionSeparator />

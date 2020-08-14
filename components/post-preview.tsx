@@ -1,12 +1,13 @@
 import Avatar from './avatar';
 import Date from './date';
-import CoverImage, { CoverImageProps } from './cover-image';
+import CoverImage, { CoverImageProps } from './post-cover-image';
 import Link from 'next/link';
 
 type PostPreviewProps = {
 	coverImage: CoverImageProps;
 	title: string;
 	date: string;
+	modified: string;
 	excerpt: string;
 	author: any;
 	slug: string | number;
@@ -16,12 +17,13 @@ export default function PostPreview({
 	title,
 	coverImage,
 	date,
+	modified,
 	excerpt,
 	author,
 	slug
 }: PostPreviewProps) {
 	return (
-		<div>
+		<div className='font-polished'>
 			<div className='mb-2'>
 				<CoverImage title={title} coverImage={coverImage} slug={slug} />
 			</div>
@@ -40,7 +42,7 @@ export default function PostPreview({
 				className='text-3xl leading-relaxed mb-2 text-center justify-center'
 				dangerouslySetInnerHTML={{ __html: excerpt }}
 			/>
-			<Avatar author={author} />
+			<Avatar author={author} modified={modified} />
 		</div>
 	);
 }

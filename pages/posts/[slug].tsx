@@ -5,13 +5,13 @@ import PostBody from '../../components/post-body';
 // import MoreStories from '../../components/more-stories';
 import Header from '../../components/header';
 import PostHeader from '../../components/post-header';
-import SectionSeparator from '../../components/section-separator';
+// import SectionSeparator from '../../components/section-separator';
 import Layout from '../../components/layout';
 import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
 import PostTitle from '../../components/post-title';
 import Head from 'next/head';
 import { CMS_NAME } from '../../lib/constants';
-import Tags from '../../components/tags';
+// import Tags from '../../components/tags';
 import MoreCards from '../../components/more-cards';
 
 interface SlugProps {
@@ -52,6 +52,7 @@ export default function Post({ post, posts, preview, props }: SlugProps) {
 									title={post.title}
 									coverImage={post.featuredImage.node}
 									date={post.date}
+									modified={post.modified}
 									author={post.author.node}
 									categories={post.categories}
 									slug={post.slug}
@@ -62,9 +63,9 @@ export default function Post({ post, posts, preview, props }: SlugProps) {
 									{post.tags.edges.length > 0 && <Tags tags={post.tags} />}
 								</footer> */}
 							</article>
-
-							<SectionSeparator />
-							{morePosts.length > 0 && <MoreCards posts={morePosts} />}
+							<div className='max-w-5xl grid mx-auto content-center justify-center items-center text-center'>
+								{morePosts.length > 0 && <MoreCards posts={morePosts} />}
+							</div>
 						</>
 					)}
 				</Container>

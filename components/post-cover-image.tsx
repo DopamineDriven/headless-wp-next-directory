@@ -17,7 +17,7 @@ export default function CoverImage({
 			src={coverImage ? coverImage.sourceUrl : coverImage}
 			alt={title}
 			className={cn('shadow-small justify-center align-middle content-center text-center items-center', {
-				'hover:shadow-medium transition-shadow duration-200 justify-center align-middle items-center content-center': slug
+				'hover:shadow-lg transition-shadow duration-400 justify-center align-middle items-center content-center': slug
 			})}
 		/>
 	);

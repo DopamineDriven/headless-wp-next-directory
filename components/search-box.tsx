@@ -16,7 +16,7 @@ const SearchBox = ({ allPosts, dropdownOptions, tags, categories }: Props) => {
 
 	return (
 		<Container>
-			<div className='mt-4 flex-row w-auto overflow-hidden'>
+			<div className='mt-4 flex-row w-auto overflow-hidden mb-4'>
 				<div className='flex w-auto'>
 					<ul className='w-full flex border-b'>
 						{categories.map((category, index) => {
@@ -24,7 +24,7 @@ const SearchBox = ({ allPosts, dropdownOptions, tags, categories }: Props) => {
 								<li key={index} className='mr-1'>
 									<a
 										href='#'
-										className='bg-gray-300 inline-block h-full border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold'
+										className='bg-gray-300 inline-block h-auto border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold'
 									>
 										{category.node.name}
 									</a>

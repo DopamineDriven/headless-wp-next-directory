@@ -1,10 +1,13 @@
 import SectionSeparator from './section-separator';
+import Date from './date';
+import Modified from "./modified";
 
 type AvatarProps = {
 	author: any;
+	modified: string;
 };
 
-export default function Avatar({ author }: AvatarProps) {
+export default function Avatar({ author, modified }: AvatarProps) {
 	const nombre =
 		author.firstName && author.lastName
 			? `${author.firstName} ${author.lastName}`
@@ -12,17 +15,23 @@ export default function Avatar({ author }: AvatarProps) {
 
 	return (
 		<>
-			<div className='flex w-full items-center text-center align-middle justify-center rounded-full'>
-				<div>
+			<div className='ml-1 mt-1 flex flex-row items-left text-left float-left overflow-hidden'>
+				<div className='flex flex-col w-1/3 mr-6'>
 					<img
 						src={author.avatar.url}
-						className='h-24 w-24 rounded-full border-tinyHouseWhite border-collapse border-opacity-50 border-4 shadow-xl'
+						className='h-12 w-12 rounded-full'
 						alt={nombre}
 					/>
 				</div>
-			</div>
-			<div className='flex text-lg font-semibold pt-2 w-full items-center text-center align-middle justify-center'>
-				<h2>{nombre}</h2>
+
+				<div className='flex flex-col w-2/3 my-0 text-sm pt-1 pb-2 items-left align-top text-left float-left -mx-5'>
+					<div className='flex flex-row w-32 align-top font-semibold font-subpolished'>
+						<a className='flex w-full'>{nombre}</a>
+					</div>
+					<div className='flex flex-row text-xs text-gray-500 text-left align-top float-left font-subpolished'>
+						<Modified modifiedString={modified} />
+					</div>
+				</div>
 			</div>
 		</>
 	);
