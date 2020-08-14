@@ -112,7 +112,7 @@ type StaticProps = {
 export async function getStaticProps({
 	preview = false,
 	field = 'MODIFIED',
-	order = 'DESC'
+	order = 'ASC'
 }: StaticProps) {
 	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
 	const tagsAndPosts = await getTagAndPosts();
