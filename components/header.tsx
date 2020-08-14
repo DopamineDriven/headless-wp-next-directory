@@ -44,10 +44,10 @@ const Header = ({ props }: HeaderProps) => {
 		</li>
 	));
 	// calculate vpw/vph - https://www.hawatel.com/blog/handle-window-resize-in-react/
-	
+
 	const heightOnOpen = navOpen ? ' h-oneThird' : ' h-oneFifth';
 	return (
-		<nav className={`flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird ${heightOnOpen} pb-20 sm:mb-2 md:mb-4 lg:mb-6 xl:mb-8 container overflow-y-hidden overflow-x-hidden -mx-5`}>
+		<nav className={`flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird ${heightOnOpen} pb-20 xl:mb-2 container overflow-y-hidden overflow-x-hidden -mx-5`}>
 			<Container>
 				<div
 					className={`xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird ${heightOnOpen} absolute flex flex-row w-full bg-contain antialiased`}

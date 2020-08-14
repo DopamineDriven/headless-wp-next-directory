@@ -2,6 +2,12 @@
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## Responsive Navbar ideas
+- Coupled
+  - https://github.com/maximakymenko/react-burger-menu-article-app
+  - https://css-tricks.com/hamburger-menu-with-a-side-of-react-hooks-and-styled-components/
+- https://medium.com/@sidbentifraouine/responsive-animated-top-navigation-bar-with-react-transition-group-fd0ccbfb4bbb
+
 ## Thread Vercel with WPEngine in Production
 - Goal: link new/updated posts in the headless CMS with a deployed build on Vercel in real time
   - First steps: 
