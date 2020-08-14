@@ -35,7 +35,7 @@ const Header = ({ props }: HeaderProps) => {
 		<li className='nav-item' key={`${link.href}-${link.label}`}>
 			<Link href={link.href}>
 				<a
-					className='px-3 py-1 flex items-center float-right text-right text-2xl w-full sm:text-xl font-bold leading-none text-white hover:opacity-75'
+					className='px-3 pb-2 flex items-center float-right text-right text-xl w-full sm:text-xl font-bold leading-none text-white hover:opacity-75'
 					aria-label={link.label}
 				>
 					{link.label}
@@ -43,11 +43,14 @@ const Header = ({ props }: HeaderProps) => {
 			</Link>
 		</li>
 	));
+	// calculate vpw/vph - https://www.hawatel.com/blog/handle-window-resize-in-react/
+	
+	const heightOnOpen = navOpen ? ' h-oneThird' : ' h-oneFifth';
 	return (
-		<nav className='flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-threeTenths pb-20 sm:mb-2 md:mb-4 lg:mb-6 xl:mb-8 container overflow-y-hidden overflow-x-hidden -mx-5'>
+		<nav className={`flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird ${heightOnOpen} pb-20 sm:mb-2 md:mb-4 lg:mb-6 xl:mb-8 container overflow-y-hidden overflow-x-hidden -mx-5`}>
 			<Container>
 				<div
-					className='xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird h-threeTenths absolute flex flex-row w-full bg-contain antialiased'
+					className={`xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird ${heightOnOpen} absolute flex flex-row w-full bg-contain antialiased`}
 					style={{
 						backgroundImage: `url(https://res.cloudinary.com/asross311/image/upload/v1597147257/ASR_Assets/headerhero_euqvup.jpg)`,
 						backgroundRepeat: 'no-repeat',

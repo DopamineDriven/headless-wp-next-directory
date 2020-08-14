@@ -55,10 +55,8 @@ export default function PostHeader({
 					<div className='block md:hidden w-inherit'>
 						<Avatar author={author} />
 					</div>
-					<div className='grid-cols-1'>
-						<div className=''>
-							<Categories categories={categories} />
-						</div>
+					<div className='flex flex-col'>
+						<Categories categories={categories} />
 					</div>
 					<CardIcons social={social} />
 				</div>
