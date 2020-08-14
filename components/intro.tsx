@@ -149,10 +149,10 @@ export default function Intro() {
 				.
 			</h2>
 			<hr />
-			<h2 className='text-2xl sm:text-2xl xs:text-2xl font-bold text-center justify-center font-polished tracking-tight leading-tight mt-4'>
+			{/* <h2 className='text-2xl sm:text-2xl xs:text-2xl font-bold text-center justify-center font-polished tracking-tight leading-tight mt-4'>
 				Sort Directory by Company Title or Date Published
 			</h2>
-			<div className='flex flex-row justify-center items-center align-middle'></div>
+			<div className='flex flex-row justify-center items-center align-middle'></div> */}
 			{/* <hr className='border-accent-2 w-full mt-8' /> */}
 		</>
 	);
