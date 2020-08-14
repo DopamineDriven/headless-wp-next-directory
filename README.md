@@ -2,16 +2,22 @@
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## Responsive Navbar ideas
+- Apple (mobile)
+  - https://www.apple.com/
+- Coupled
+  - https://github.com/maximakymenko/react-burger-menu-article-app
+  - https://css-tricks.com/hamburger-menu-with-a-side-of-react-hooks-and-styled-components/
+- https://medium.com/@sidbentifraouine/responsive-animated-top-navigation-bar-with-react-transition-group-fd0ccbfb4bbb
+
 ## Thread Vercel with WPEngine in Production
 - Goal: link new/updated posts in the headless CMS with a deployed build on Vercel in real time
   - First steps: 
     - determine how WP Engine communicates with local env under the hood
     - configure communication between Vercel and WP Engine clouds in real time
 
-## Hero
-- https://www.williampnicholson.com/posts/2019-09-10/
-
 ## WPGQL Custom Post Types
+- https://spin.atomicobject.com/2020/03/29/next-js-graphql-api/
 - https://wordpress.org/plugins/headless-cms/
 - https://www.wpwatercooler.com/devbranch/ep04-using-wpgraphql-with-wordpress/
 - https://edwincromley.gitbooks.io/wp-graphql/content/handling-custom-post-types.html ***
@@ -324,27 +330,6 @@ $ npx @svgr/cli --icon Logo.svg
 - https://tailwindtemplates.io/cards/#335
 - https://tailwindtemplates.io/search/#230
 - https://tailwindtemplates.io/search/#331
-
-```html
-<svg
-	version="1.1"
-	class="h-4 text-dark"
-	xmlns="http://www.w3.org/2000/svg"
-	xmlns:xlink="http://www.w3.org/1999/xlink"
-	x="0px"
-	y="0px"
-	viewBox="0 0 52.966 52.966"
-	style="enable-background:new 0 0 52.966 52.966;"
-	xml:space="preserve"
->
-	<path
-		d="M51.704,51.273L36.845,35.82c3.79-3.801,6.138-9.041,6.138-14.82c0-11.58-9.42-21-21-21s-21,9.42-21,21s9.42,21,21,21
-        c5.083,0,9.748-1.817,13.384-4.832l14.895,15.491c0.196,0.205,0.458,0.307,0.721,0.307c0.25,0,0.499-0.093,0.693-0.279
-        C52.074,52.304,52.086,51.671,51.704,51.273z M21.983,40c-10.477,0-19-8.523-19-19s8.523-19,19-19s19,8.523,19,19
-        S32.459,40,21.983,40z"
-	/>
-</svg>
-```
 
 - https://tailwindcomponents.com/component/search-input
 
