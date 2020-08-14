@@ -98,16 +98,10 @@ export default function Index({
 
 type StaticProps = {
 	preview: boolean;
-	field: string;
-	order: string;
 };
 
-export async function getStaticProps({
-	preview = false,
-	field = 'TITLE',
-	order = 'ASC'
-}: StaticProps) {
-	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
+export async function getStaticProps({ preview = false }: StaticProps) {
+	const allPosts = await getAllPostsForHomeAlphabetical(preview);
 	const tagsAndPosts = await getTagAndPosts();
 	const categoriesAndPosts = await getCategoriesAndPosts();
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
@@ -117,9 +111,7 @@ export async function getStaticProps({
 			allPosts,
 			preview,
 			tagsAndPosts,
-			categoriesAndPosts,
-			field,
-			order
+			categoriesAndPosts
 		}
 	};
 }
