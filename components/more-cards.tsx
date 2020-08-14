@@ -1,5 +1,4 @@
 import Card from './card';
-import Link from 'next/link';
 type NodeProps = {
 	node: any;
 };
