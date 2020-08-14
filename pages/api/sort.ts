@@ -1,37 +1,41 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getAllPostsForHomeSorted } from './api';
+import { title } from 'process';
+import { getAllPostsForHomeSorted } from '../../lib/api';
 
 enum Field {
-	'TITLE',
-	'DATE'
+	TITLE = 'TITLE',
+	MODIFIED = 'MODIFIED',
+	DATE = 'DATE'
 }
 
 enum Order {
-	'ASC',
-	'DESC'
+	ASC = 'ASC',
+	DESC = 'DESC'
 }
+
 interface Sorting {
-	allPosts: any;
 	req: NextApiRequest;
 	res: NextApiResponse;
-	field: Field;
-	order: Order;
+	field: string;
+	order: string;
 	preview: boolean;
 	slug: string | number;
 }
 
-const userSortedPosts = ({
-	allPosts: { edges },
+const { TITLE, MODIFIED, DATE } = Field;
+const { ASC, DESC } = Order;
+
+const Sort = async ({
 	req,
 	res,
 	field,
 	order,
 	preview,
 	slug
-}: Sorting) => {
+}: Sorting & Promise<any>) => {
 	res.statusCode = 200;
 	res.setHeader('Content-Type', 'application/json');
 	res.end(JSON.stringify({ results: [] }));
 };
 
-export default userSortedPosts;
+export default Sort;
