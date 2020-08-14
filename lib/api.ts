@@ -6,6 +6,7 @@ import {
 } from 'graphql';
 // import { APIFetchOptions } from "@types/wordpress__api-fetch"
 import { APIFetchOptions } from '@wordpress/api-fetch';
+import WPGraphQL from 'wp-graphql';
 
 const API_URL = process.env.WORDPRESS_API_URL;
 
