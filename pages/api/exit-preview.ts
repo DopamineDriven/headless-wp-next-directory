@@ -1,6 +1,6 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+// import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function exit(_req: NextApiRequest, res: NextApiResponse) {
+export default async function exit(_req: any, res: any) {
 	// Exit the current user from "Preview Mode". This function accepts no args.
 	res.clearPreviewData();
 

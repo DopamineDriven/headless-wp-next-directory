@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { title } from 'process';
-import { getAllPostsForHomeSorted } from '../../lib/api';
+// import { getAllPostsForHomeSorted } from '../../lib/api';
 
 enum Field {
 	TITLE = 'TITLE',

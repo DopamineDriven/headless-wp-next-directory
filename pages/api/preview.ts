@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+// import { NextApiRequest, NextApiResponse } from 'next';
 import { getPreviewPost } from '../../lib/api';
 // import { ProcessEnv } from '../../types/process-env';
 // const Env: ProcessEnv = `[${process.env.WORDPRESS_PREVIEW_SECRET}]` || null;
@@ -9,8 +9,8 @@ import { getPreviewPost } from '../../lib/api';
 // };
 
 export default async function preview(
-	req: NextApiRequest,
-	res: NextApiResponse
+	req: any,
+	res: any
 ) {
 	const { secret, id, slug } = req.query;
 

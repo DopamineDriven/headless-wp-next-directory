@@ -1,7 +1,7 @@
 // @flow
 import { usePopper } from 'react-popper';
 import { StrictModifiers } from '@popperjs/core';
-import { getAllPostsForHomeSorted } from '../lib/api';
+// import { getAllPostsForHomeSorted } from '../lib/api';
 import { FormEvent, useState, useRef } from 'react';
 
 export enum Field {
