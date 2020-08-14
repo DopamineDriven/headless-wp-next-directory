@@ -5,9 +5,9 @@ import Layout from '../components/layout';
 import {
 	getAllPostsForHomeAlphabetical,
 	getTagAndPosts,
-	getCategoriesAndPosts,
-	getAllPostsForHomeSorted,
-	getAllPostsTitleDesc
+	getCategoriesAndPosts
+	// getAllPostsForHomeSorted,
+	// getAllPostsTitleDesc
 } from '../lib/api';
 import {
 	CMS_NAME,
