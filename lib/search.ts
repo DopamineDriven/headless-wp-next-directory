@@ -1,12 +1,21 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getAllPostsForHomeSorted } from './api';
 
+enum Field {
+	'TITLE',
+	'DATE'
+}
+
+enum Order {
+	'ASC',
+	'DESC'
+}
 interface Sorting {
 	allPosts: any;
 	req: NextApiRequest;
 	res: NextApiResponse;
-	field: string;
-	order: string;
+	field: Field;
+	order: Order;
 	preview: boolean;
 	slug: string | number;
 }

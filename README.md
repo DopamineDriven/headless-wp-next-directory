@@ -3,6 +3,8 @@
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
 ## Responsive Navbar ideas
+- Apple (mobile)
+  - https://www.apple.com/
 - Coupled
   - https://github.com/maximakymenko/react-burger-menu-article-app
   - https://css-tricks.com/hamburger-menu-with-a-side-of-react-hooks-and-styled-components/
