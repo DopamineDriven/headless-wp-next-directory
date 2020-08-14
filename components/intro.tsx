@@ -78,6 +78,7 @@ export default function Intro() {
 			</Link>
 		</div>
 	));
+	console.log(sortingMap);
 	return (
 		<>
 			<h1 className='text-6xl sm:text-6xl xs:text-5xl font-bold text-center justify-center font-polished tracking-tight leading-tight mt-50'>
@@ -151,10 +152,8 @@ export default function Intro() {
 			<h2 className='text-2xl sm:text-2xl xs:text-2xl font-bold text-center justify-center font-polished tracking-tight leading-tight mt-4'>
 				Sort Directory by Company Title or Date Published
 			</h2>
-			<div className='flex flex-row justify-center items-center align-middle'>
-				{sortingMap}
-			</div>
-			<hr className='border-accent-2 w-full mt-8' />
+			<div className='flex flex-row justify-center items-center align-middle'></div>
+			{/* <hr className='border-accent-2 w-full mt-8' /> */}
 		</>
 	);
 }
