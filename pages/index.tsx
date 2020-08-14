@@ -57,26 +57,18 @@ interface IndexProps {
 	props: string | number;
 	tagsAndPosts: any;
 	categoriesAndPosts: any;
-	// slug: string | number;
+
 	field: string;
 	order: string;
-	// setField: Promise<any>;
-	// color: string;
 }
-
 
 export default function Index({
 	allPosts: { edges },
 	preview,
 	tagsAndPosts,
 	categoriesAndPosts,
-	props,
-	field,
-	order
-}: // field,
-// setField,
-// color
-IndexProps) {
+	props
+}: IndexProps) {
 	let morePosts = edges.slice(0);
 	console.log('tags:', tagsAndPosts);
 	console.log('categories:', categoriesAndPosts);
@@ -127,8 +119,7 @@ export async function getStaticProps({
 			tagsAndPosts,
 			categoriesAndPosts,
 			field,
-			order,
-
+			order
 		}
 	};
 }

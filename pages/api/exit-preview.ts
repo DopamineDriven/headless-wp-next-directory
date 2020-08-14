@@ -1,9 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function exit(
-	_req: NextApiRequest,
-	res: NextApiResponse
-): Promise<any> {
+export default async function exit(_req: NextApiRequest, res: NextApiResponse) {
 	// Exit the current user from "Preview Mode". This function accepts no args.
 	res.clearPreviewData();
 
