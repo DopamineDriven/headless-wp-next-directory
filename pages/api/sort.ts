@@ -25,14 +25,7 @@ interface Sorting {
 const { TITLE, MODIFIED, DATE } = Field;
 const { ASC, DESC } = Order;
 
-const Sort = async ({
-	req,
-	res,
-	field,
-	order,
-	preview,
-	slug
-}: Sorting & Promise<any>) => {
+const Sort = async ({ req, res, field, order, preview, slug }: Sorting) => {
 	res.statusCode = 200;
 	res.setHeader('Content-Type', 'application/json');
 	res.end(JSON.stringify({ results: [] }));
