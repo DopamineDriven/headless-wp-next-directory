@@ -30,7 +30,6 @@ export default function PostHeader({
 	return (
 		<>
 			<div className='max-w-screen font-polished'>
-				<PostTitle>{title}</PostTitle>
 				<div className='mb-4 md:mb-4 -mx-5 sm:mx-0'>
 					<CoverImage
 						title={coverImage?.title}
@@ -38,29 +37,32 @@ export default function PostHeader({
 						slug={slug}
 					/>
 				</div>
-				<div className='hidden md:block align-middle content-center text-center justify-center'>
-					<Avatar author={author} />
-				</div>
+				<PostTitle>{title}</PostTitle>
 
 				<div className='max-w-4xl mx-auto align-middle content-center justified-center text-center'>
-					<CardIcons social={social} />
+					<div className='hidden md:block align-middle content-center text-center justify-center'>
+						<Avatar author={author} />
+					</div>
+					<div className='text-xs font-subpolished'>
+						Published&nbsp;
+						<Date dateString={date} />
+					</div>
+					<div className='text-xs font-subpolished'>
+						Updated&nbsp;
+						<Modified modifiedString={modified} />
+					</div>
+
 					<div className='block md:hidden w-inherit'>
 						<Avatar author={author} />
 					</div>
-					<div className='mb-2 grid-cols-1'>
-						<div className='pb-1'>
+					<div className='grid-cols-1'>
+						<div className=''>
 							<Categories categories={categories} />
 						</div>
-						<div className='text-sm font-subpolished'>
-							Published&nbsp;
-							<Date dateString={date} />
-						</div>
-						<div className='text-sm font-subpolished'>
-							Updated&nbsp;
-							<Modified modifiedString={modified} />
-						</div>
 					</div>
+					<CardIcons social={social} />
 				</div>
+
 				<hr className='border-customGray w-4xl' />
 			</div>
 		</>
