@@ -20,7 +20,7 @@ export default function Categories({ categories }: any) {
 					categories.edges.map((category: any, index: any) => (
 						<span
 							key={index}
-							className='inline-block bg-gray-400 rounded-full px-3 py-1 my-1 text-sm font-semibold text-black mr-2'
+							className='inline-block bg-customGray hover:bg-iconHover transition-colors leading-relaxed duration-500 cursor-pointer rounded-full px-3 py-1 text-sm font-semibold mx-1 text-white'
 						>
 							#{category.node.name}&nbsp;
 						</span>
