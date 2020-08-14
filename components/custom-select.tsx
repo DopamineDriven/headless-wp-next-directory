@@ -2,7 +2,7 @@
 import { usePopper } from 'react-popper';
 import { StrictModifiers } from '@popperjs/core';
 import { getAllPostsForHomeSorted } from '../lib/api';
-import { useState, useRef } from 'react';
+import { FormEvent, useState, useRef } from 'react';
 
 enum Field {
 	TITLE = 'TITLE',
@@ -16,18 +16,21 @@ enum Order {
 }
 
 interface CustomDropDown {
-	field: string | string[];
-	order: string | string[];
+    field: Field;
+    setField: (field: Field) => void;
 	color: string;
 }
 
 const { TITLE, MODIFIED, DATE } = Field;
 const { ASC, DESC } = Order;
 
-const CustomSelect = ({ color, field, order }: CustomDropDown) => {
+const CustomSelect = ({ color, field }: CustomDropDown) => {
 	const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
 	const btnDropdownRef = useRef(null);
-	const popoverDropdownRef = useRef(null);
+    const popoverDropdownRef = useRef(null);
+    const handleForm = (e: FormEvent) => {
+		e.preventDefault();
+	};
 	const openDropdownPopover = () => {
 		usePopper<StrictModifiers>(
 			btnDropdownRef.current,
@@ -75,7 +78,8 @@ const CustomSelect = ({ color, field, order }: CustomDropDown) => {
 								className={
 									'text-sm py-2 px-4 font-polished block w-full whitespace-no-wrap bg-transparent' +
 									(color === 'white' ? 'black' : 'text-white')
-								}
+                                }
+                                onClick={e => handleForm(e)}
 							></a>
 						</div>
 					</div>
