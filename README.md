@@ -8,10 +8,8 @@ Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
     - determine how WP Engine communicates with local env under the hood
     - configure communication between Vercel and WP Engine clouds in real time
 
-## Hero
-- https://www.williampnicholson.com/posts/2019-09-10/
-
 ## WPGQL Custom Post Types
+- https://spin.atomicobject.com/2020/03/29/next-js-graphql-api/
 - https://wordpress.org/plugins/headless-cms/
 - https://www.wpwatercooler.com/devbranch/ep04-using-wpgraphql-with-wordpress/
 - https://edwincromley.gitbooks.io/wp-graphql/content/handling-custom-post-types.html ***
