@@ -9,48 +9,44 @@ import {
 	// getAllPostsForHomeSorted,
 	// getAllPostsTitleDesc
 } from '../lib/api';
-import {
-	CMS_NAME,
-	CLIENT_NAME,
-	SELECT_DROPDOWN_OPTIONS
-} from '../lib/constants';
+import { CMS_NAME, CLIENT_NAME } from '../lib/constants';
 import Header from '../components/header';
-import SearchBox from '../components/search-box';
+// import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
 // import CustomSelect, { Field } from '../components/custom-select';
-import { useEffect, useState } from 'react';
-import Link from 'next/link';
+// import { useEffect, useState } from 'react';
+// import Link from 'next/link';
 
-export enum Field {
-	TITLE = 'TITLE',
-	MODIFIED = 'MODIFIED',
-	DATE = 'DATE'
-}
+// export enum Field {
+// 	TITLE = 'TITLE',
+// 	MODIFIED = 'MODIFIED',
+// 	DATE = 'DATE'
+// }
 
 // enum Order {
 // 	ASC = 'ASC',
 // 	DESC = 'DESC'
 // }
 
-export interface CustomDropDown {
-	field: Field;
-	color: string;
-}
+// export interface CustomDropDown {
+// 	field: Field;
+// 	color: string;
+// }
 
-const fieldVals: CustomDropDown[] = [
-	{
-		field: Field.DATE,
-		color: 'white'
-	},
-	{
-		field: Field.MODIFIED,
-		color: 'white'
-	},
-	{
-		field: Field.TITLE,
-		color: 'white'
-	}
-];
+// const fieldVals: CustomDropDown[] = [
+// 	{
+// 		field: Field.DATE,
+// 		color: 'white'
+// 	},
+// 	{
+// 		field: Field.MODIFIED,
+// 		color: 'white'
+// 	},
+// 	{
+// 		field: Field.TITLE,
+// 		color: 'white'
+// 	}
+// ];
 interface IndexProps {
 	allPosts: any;
 	preview: boolean;
@@ -58,8 +54,8 @@ interface IndexProps {
 	tagsAndPosts: any;
 	categoriesAndPosts: any;
 
-	field: string;
-	order: string;
+	// field: string;
+	// order: string;
 }
 
 export default function Index({
@@ -95,7 +91,6 @@ export default function Index({
 		</>
 	);
 }
-
 type StaticProps = {
 	preview: boolean;
 };

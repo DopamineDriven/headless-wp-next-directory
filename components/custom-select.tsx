@@ -3,11 +3,11 @@ import { usePopper } from 'react-popper';
 // import { getAllPostsForHomeSorted } from '../lib/api';
 import { FormEvent, useState, useRef } from 'react';
 
-export enum Field {
-	TITLE = 'TITLE',
-	MODIFIED = 'MODIFIED',
-	DATE = 'DATE'
-}
+// export enum Field {
+// 	TITLE = 'TITLE',
+// 	MODIFIED = 'MODIFIED',
+// 	DATE = 'DATE'
+// }
 
 // enum Order {
 // 	ASC = 'ASC',
@@ -15,29 +15,29 @@ export enum Field {
 // }
 
 export interface CustomDropDown {
-	field: Field;
+	// field: Field;
 	color: string;
 }
 
-const fieldVals: CustomDropDown[] = [
-	{
-		field: Field.DATE,
-		color: 'white'
-	},
-	{
-		field: Field.MODIFIED,
-		color: 'white'
-	},
-	{
-		field: Field.TITLE,
-		color: 'white'
-	}
-];
+// const fieldVals: CustomDropDown[] = [
+// 	{
+// 		field: Field.DATE,
+// 		color: 'white'
+// 	},
+// 	{
+// 		field: Field.MODIFIED,
+// 		color: 'white'
+// 	},
+// 	{
+// 		field: Field.TITLE,
+// 		color: 'white'
+// 	}
+// ];
 
 // const { TITLE, MODIFIED, DATE } = Field;
 // const { ASC, DESC } = Order;
 
-const CustomSelect = ({ color, field }: CustomDropDown) => {
+const CustomSelect = ({ color }: CustomDropDown) => {
 	const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
 	const btnDropdownRef = useRef(null);
 	const popoverDropdownRef = useRef(null);
