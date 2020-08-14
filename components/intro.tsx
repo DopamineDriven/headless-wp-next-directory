@@ -1,5 +1,21 @@
 import { CMS_NAME, CMS_URL } from '../lib/constants';
 import Link from 'next/link';
+import { link } from 'fs';
+interface SortRef {
+	href: string;
+	label: string;
+}
+
+const links: SortRef[] = [
+	{
+		href: '/',
+		label: 'Title Ascending'
+	},
+	{
+		href: '/reverse-alphabetical',
+		label: 'Title Descending'
+	}
+];
 
 // import {
 // 	getAllPostsForHomeDateAsc,
@@ -37,16 +53,20 @@ import Link from 'next/link';
 // ];
 
 export default function Intro() {
-	// const sortingMap = sorts.map(sorting => (
-	// 	<button
-	// 		key={sorting.title}
-	// 		className='mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-500 transition-colors mb-6 lg:mb-0 rounded'
-	// 		aria-label='Documentation'
-	// 		onClick={() => sorting.sort}
-	// 	>
-	// 		{sorting.title}
-	// 	</button>
-	// ));
+	const sortingMap = links.map(sorting => (
+		<div key={sorting.label} className="flex flex-row mx-4 mt-2 text-center items-center justify-center">
+		<Link href={sorting.href}>
+			<button
+				key={sorting.label}
+				className='block bg-customGray px-2 hover:bg-iconHover hover:opacity-75 text-white font-bold font-polished duration-300 transition-colors lg:mb-0 rounded'
+				aria-label='Documentation'
+				onClick={() => sorting}
+			>
+				{sorting.label}
+			</button>
+		</Link>
+		</div>
+	));
 	return (
 		<>
 			<h1 className='text-6xl sm:text-6xl xs:text-5xl font-bold text-center justify-center font-polished tracking-tight leading-tight mt-50'>
@@ -117,13 +137,13 @@ export default function Intro() {
 				.
 			</h2>
 			<hr />
-			{/* <hr className='border-accent-2 w-full mt-8' />
-			<h2 className='text-2xl sm:text-2xl xs:text-2xl font-bold text-center justify-center font-body tracking-tight leading-tight mt-4'>
+			<h2 className='text-2xl sm:text-2xl xs:text-2xl font-bold text-center justify-center font-polished tracking-tight leading-tight mt-4'>
 				Sort Directory by Company Title or Date Published
-			</h2> */}
-			{/* <div className='grid-cols-4 inline-block px-4 py-2 justify-center items-center align-middle'>
+			</h2>
+			<div className='flex flex-row justify-center items-center align-middle'>
 				{sortingMap}
-			</div> */}
+			</div>
+			<hr className='border-accent-2 w-full mt-8' />
 		</>
 	);
 }
