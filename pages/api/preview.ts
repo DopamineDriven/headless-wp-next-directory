@@ -1,7 +1,17 @@
-// testing preview mode
+import { NextApiRequest, NextApiResponse } from 'next';
 import { getPreviewPost } from '../../lib/api';
+// import { ProcessEnv } from '../../types/process-env';
+// const Env: ProcessEnv = `[${process.env.WORDPRESS_PREVIEW_SECRET}]` || null;
 
-export default async function preview(req: any, res: any) {
+// type Post = {
+// 	post: string | number;
+// 	message: string;
+// };
+
+export default async function preview(
+	req: NextApiRequest,
+	res: NextApiResponse
+): Promise<any> {
 	const { secret, id, slug } = req.query;
 
 	// Check the secret and next parameters
@@ -15,7 +25,10 @@ export default async function preview(req: any, res: any) {
 	}
 
 	// Fetch WordPress to check if the provided `id` or `slug` exists
-	const post = await getPreviewPost(id || slug, id ? 'DATABASE_ID' : 'SLUG');
+	const post: any = await getPreviewPost(
+		id || slug,
+		id ? 'DATABASE_ID' : 'SLUG'
+	);
 
 	// If the post doesn't exist prevent preview mode from being enabled
 	if (!post) {

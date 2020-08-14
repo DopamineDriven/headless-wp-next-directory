@@ -33,8 +33,8 @@ export default function Index({
 	props
 }: IndexProps) {
 	let morePosts = edges.slice(0);
-	console.log(tagsAndPosts);
-	console.log(categoriesAndPosts);
+	console.log('tags:', tagsAndPosts);
+	console.log('categories:', categoriesAndPosts);
 
 	return (
 		<>
