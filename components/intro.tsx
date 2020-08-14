@@ -14,6 +14,14 @@ const links: SortRef[] = [
 	{
 		href: '/reverse-alphabetical',
 		label: 'Title Descending'
+	},
+	{
+		href: '/newest',
+		label: 'Date Newest'
+	},
+	{
+		href: '/oldest',
+		label: 'Date Oldest'
 	}
 ];
 
@@ -54,17 +62,20 @@ const links: SortRef[] = [
 
 export default function Intro() {
 	const sortingMap = links.map(sorting => (
-		<div key={sorting.label} className="flex flex-row mx-4 mt-2 text-center items-center justify-center">
-		<Link href={sorting.href}>
-			<button
-				key={sorting.label}
-				className='block bg-customGray px-2 hover:bg-iconHover hover:opacity-75 text-white font-bold font-polished duration-300 transition-colors lg:mb-0 rounded'
-				aria-label='Documentation'
-				onClick={() => sorting}
-			>
-				{sorting.label}
-			</button>
-		</Link>
+		<div
+			key={sorting.label}
+			className='flex flex-row mx-3 mt-2 text-center items-center justify-center'
+		>
+			<Link href={sorting.href}>
+				<button
+					key={sorting.label}
+					className='block bg-white px-2 hover:opacity-75 text-iconHover border-1 border-iconHover font-bold font-polished duration-300 transition-colors lg:mb-0 rounded'
+					aria-label='Documentation'
+					onClick={() => sorting}
+				>
+					{sorting.label}
+				</button>
+			</Link>
 		</div>
 	));
 	return (
