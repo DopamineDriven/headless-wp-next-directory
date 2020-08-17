@@ -44,13 +44,15 @@ const Header = ({ props }: HeaderProps) => {
 		</li>
 	));
 	// calculate vpw/vph - https://www.hawatel.com/blog/handle-window-resize-in-react/
-
-	const heightOnOpen = navOpen ? ' h-oneThird' : ' h-oneFifth';
+	// hamburger menu hidden when >=640px; visible when 
+	const heightOnOpen = navOpen ? ' h-threeTenths' : ' h-threeTenths';
 	return (
-		<nav className={`flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird ${heightOnOpen} pb-20 xl:mb-2 container overflow-y-hidden overflow-x-hidden -mx-5`}>
+		<nav
+			className={`flex flex-row flex-wrap xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird ${heightOnOpen} pb-20 xl:mb-2 container overflow-y-hidden overflow-x-hidden -mx-5`}
+		>
 			<Container>
 				<div
-					className={`xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird ${heightOnOpen} absolute flex flex-row w-full bg-contain antialiased`}
+					className={`xl:h-half lg:h-twoFifths md:h-twoFifths sm:h-oneThird ${heightOnOpen} transform duration-1000 absolute flex flex-row w-full bg-contain antialiased`}
 					style={{
 						backgroundImage: `url(https://res.cloudinary.com/asross311/image/upload/v1597147257/ASR_Assets/headerhero_euqvup.jpg)`,
 						backgroundRepeat: 'no-repeat',
@@ -71,9 +73,45 @@ const Header = ({ props }: HeaderProps) => {
 									onClick={() => setNavOpen(!navOpen)}
 									name='open-nav-button'
 								>
-									<a aria-label='open-nav'>
-										<FontAwesomeIcon icon={faBars} />
-									</a>
+									{navOpen ? (
+										<a
+											aria-label='open-nav'
+											className='transition-colors duration-1000 hover:opacity-75'
+										>
+											<svg
+												fill='none'
+												viewBox='0 0 24 24'
+												className='h-6 w-6 transition transform rotate-180 duration-1000 hover-opacity-75'
+											>
+												<path
+													d='M6 18L18 6M6 6L18 18'
+													strokeLinecap='round'
+													strokeLinejoin='round'
+													strokeWidth='2'
+													stroke='currentColor'
+												/>
+											</svg>
+										</a>
+									) : (
+										<a
+											aria-label='open-nav'
+											className='transition-colors duration-1000 hover:opacity-75 transform rotate-45'
+										>
+											<svg
+												fill='none'
+												viewBox='0 0 24 24'
+												className='h-6 w-6 transform rotate-45 transition duration-1000 hover:opacity-75'
+											>
+												<path
+													d='M6 18L18 6M6 6L18 18'
+													strokeLinecap='round'
+													strokeLinejoin='round'
+													strokeWidth='2'
+													stroke='currentColor'
+												/>
+											</svg>
+										</a>
+									)}
 								</button>
 							</div>
 							<div
