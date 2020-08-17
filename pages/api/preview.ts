@@ -7,10 +7,12 @@ import { getPreviewPost } from '../../lib/api';
 // 	post: string | number;
 // 	message: string;
 // };
+import { NextApiRequest, NextApiResponse } from 'next';
+import { NowRequest, NowResponse } from '@vercel/node';
 
 export default async function preview(
-	req: any,
-	res: any
+	req: NowRequest & NextApiRequest,
+	res: NowResponse & NextApiResponse
 ) {
 	const { secret, id, slug } = req.query;
 

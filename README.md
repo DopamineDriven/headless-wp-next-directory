@@ -2,6 +2,9 @@
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## Multilingual Support
+- https://levelup.gitconnected.com/a-simple-next-js-frontend-for-a-multilingual-website-ae31a17387e2
+
 ## Responsive Navbar ideas
 - Apple (mobile)
   - https://www.apple.com/
