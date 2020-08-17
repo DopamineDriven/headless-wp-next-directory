@@ -23,7 +23,7 @@ const CardIcons = ({ social }: CardIconProps) => {
 					>
 						<FontAwesomeIcon
 							icon={faFacebook}
-							className='align-middle text-center font-extrabold text-1xl'
+							className='align-middle text-center font-extrabold text-md'
 						/>
 					</a>{' '}
 					<a
@@ -34,7 +34,7 @@ const CardIcons = ({ social }: CardIconProps) => {
 					>
 						<FontAwesomeIcon
 							icon={faInstagram}
-							className='align-middle text-center font-extrabold text-1xl'
+							className='align-middle text-center font-extrabold text-md'
 						/>
 					</a>{' '}
 					<a
@@ -45,7 +45,7 @@ const CardIcons = ({ social }: CardIconProps) => {
 					>
 						<FontAwesomeIcon
 							icon={faTwitter}
-							className='align-middle text-center font-extrabold text-1xl'
+							className='align-middle text-center font-extrabold text-md'
 						/>
 					</a>
 				</li>

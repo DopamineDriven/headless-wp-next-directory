@@ -4,20 +4,27 @@
 	font-family: 'Barlow Condensed', sans-serif;
 	font-weight: 400;
 	src: url(https://fonts.googleapis.com/css2?family=Barlow%20Condensed&family=Barlow%20Semi%20Condensed&display=swap)
-		format('woff');
+		format('woff2');
 }
 
 @font-face {
 	font-family: 'brandon-grotesque', sans-serif;
 	font-weight: 400;
-	src: url(https://use.typekit.net/hzg4mdi.css) format('woff');
+	src: url(https://use.typekit.net/hzg4mdi.css) format('woff2');
 }
 
 @font-face {
 	font-family: 'Montserrat', 'sans-serif';
 	font-weight: 400;
 	src: url(https://fonts.googleapis.com/css2?family=Montserrat&display=swap)
-		format('woff');
+		format('woff2');
+}
+
+@font-face {
+	font-family: 'Playfair Display', serif;
+	font-weight: 500;
+	src: url(https://fonts.googleapis.com/css2?family=Playfair%20Display:wght@500&display=swap)
+		format('woff2');
 }
 
 /*https://github.com/tailwindlabs/discuss/issues/277*/
@@ -42,6 +49,7 @@
 /* Write custom utilities here */
 
 .html {
+	@apply font-header;
 	@apply font-body;
 	@apply font-polished;
 	@apply font-subpolished;

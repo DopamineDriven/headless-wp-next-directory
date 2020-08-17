@@ -35,7 +35,7 @@ const Header = ({ props }: HeaderProps) => {
 		<li className='nav-item' key={`${link.href}-${link.label}`}>
 			<Link href={link.href}>
 				<a
-					className='px-3 pb-2 flex items-center float-right text-right text-xl w-full sm:text-xl font-bold leading-none text-white hover:opacity-75'
+					className='px-3 pb-2 flex items-center float-right text-right text-xl w-full sm:text-2xl font-bold leading-tight sm:leading-none text-white font-header hover:opacity-75'
 					aria-label={link.label}
 				>
 					{link.label}
@@ -44,7 +44,7 @@ const Header = ({ props }: HeaderProps) => {
 		</li>
 	));
 	// calculate vpw/vph - https://www.hawatel.com/blog/handle-window-resize-in-react/
-	// hamburger menu hidden when >=640px; visible when 
+	// hamburger menu hidden when >=640px; visible when <640px 
 	const heightOnOpen = navOpen ? ' h-threeTenths' : ' h-threeTenths';
 	return (
 		<nav
