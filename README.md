@@ -3,6 +3,7 @@
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
 ## Multilingual Support
+- https://medium.com/swlh/making-a-multilingual-site-with-next-js-part-2-518c5c699d23 (published 8/13/20)
 - https://levelup.gitconnected.com/a-simple-next-js-frontend-for-a-multilingual-website-ae31a17387e2
 
 ## Responsive Navbar ideas
