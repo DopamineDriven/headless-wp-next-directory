@@ -3,6 +3,7 @@
 	"description": "Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel",
 	"version": "1.0.0",
 	"repository": "https://github.com/DopamineDriven/headless-wp-next-directory.git",
+	"author": "Andrew Ross <andrew.simpson.ross@gmail.com>",
 	"contributors": [
 		{
 			"name": "Andrew Ross",
@@ -29,20 +30,20 @@
 			"linkedinUrl": "https://www.linkedin.com/in/jshields90/"
 		},
 		{
-			"name": "David Bartolone",
-			"githubUrl": "https://github.com/TechHedz",
-			"githubUsername": "TechHedz",
-			"twitterUrl": "https://twitter.com/DevHedz",
-			"twitterUsername": "@DevHedz",
-			"linkedinUrl": "https://www.linkedin.com/in/dbartolone/"
-		},
-		{
 			"name": "Yong Lee",
 			"githubUrl": "https://github.com/yhlee-dho",
 			"githubUsername": "yhlee-dho",
 			"twitterUrl": "https://twitter.com/YongLee08380800",
 			"twitterUsername": "@YongLee08380800",
 			"linkedinUrl": "https://www.linkedin.com/in/yong-lee-a16430193/"
+		},
+		{
+			"name": "David Bartolone",
+			"githubUrl": "https://github.com/TechHedz",
+			"githubUsername": "TechHedz",
+			"twitterUrl": "https://twitter.com/DevHedz",
+			"twitterUsername": "@DevHedz",
+			"linkedinUrl": "https://www.linkedin.com/in/dbartolone/"
 		}
 	],
 	"license": "MIT",

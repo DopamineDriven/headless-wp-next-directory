@@ -45,6 +45,7 @@ module.exports = {
 				half: '50vh',
 				nineTwentieths: '45vh',
 				twoFifths: '40vh',
+				sevenTwentieths: '35vh',
 				oneThird: '33.33vh',
 				threeTenths: '30vh',
 				oneFourth: '25vh',

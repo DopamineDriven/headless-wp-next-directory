@@ -66,8 +66,8 @@ export default function Index({
 	props
 }: IndexProps) {
 	let morePosts = edges.slice(0);
-	console.log('tags:', tagsAndPosts);
-	console.log('categories:', categoriesAndPosts);
+	// console.log('tags:', tagsAndPosts);
+	// console.log('categories:', categoriesAndPosts);
 	return (
 		<>
 			<Header props={props} />
