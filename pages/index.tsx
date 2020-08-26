@@ -38,9 +38,36 @@ export default function Index({
 	const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
 
+	const [filterQuery, setFilterQuery] = useState('');
 	const [allCompanies, setAllCompanies] = useState(morePosts);
+	const [filteredCompanies, setFilteredCompanies] = useState(morePosts);
+	const [search, setSearch] = useState('');
+
 	// console.log('tags:', tagsAndPosts);
 	// console.log('categories:', categoriesAndPosts);
+
+	useEffect(() => {
+		if (!search) {
+			setFilteredCompanies(allCompanies);
+		} else {
+			if (filterQuery === 'title') {
+				console.log(filteredCompanies);
+				const filterCompanies = allCompanies.filter(company => {
+					if (company.node.name.toLowerCase().includes(search)) {
+						console.log(company);
+						return company;
+					} else {
+						return null;
+					}
+				});
+				setFilteredCompanies(filterCompanies);
+			} else {
+				console.log('not title');
+				setFilteredCompanies(allCompanies);
+			}
+		}
+	}, [filterQuery, filteredCompanies, search]);
+
 	return (
 		<>
 			<Header props={props} />
@@ -53,6 +80,7 @@ export default function Index({
 				<Container>
 					<Intro />
 					<SearchBox
+						tags={tagsAndPosts}
 						allPosts={morePosts}
 						dropdownOptions={tagsAndPosts}
 						categories={categoriesAndPosts}
