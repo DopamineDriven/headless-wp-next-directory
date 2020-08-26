@@ -54,8 +54,7 @@ export default function Index({
 					<Intro />
 					<SearchBox
 						allPosts={morePosts}
-						dropdownOptions={['', '']}
-						tags={tagsAndPosts}
+						dropdownOptions={tagsAndPosts}
 						categories={categoriesAndPosts}
 					/>
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
