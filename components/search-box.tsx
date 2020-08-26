@@ -4,11 +4,12 @@ import { faSortDown } from '@fortawesome/free-solid-svg-icons/faSortDown';
 import Container from './container';
 import CategoryProps from '../types/category';
 import TagProps from '../types/tag';
+import { ChangeEvent } from 'react';
 
 interface Props {
-	selectChange: () => void;
+	selectChange: (evt: ChangeEvent) => void;
 	selectSearch: string;
-	filterFunc: () => void;
+	filterFunc: (evt: ChangeEvent) => void;
 	allPosts: any;
 	tags: TagProps[];
 	dropdownOptions: string[];
