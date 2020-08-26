@@ -1,9 +1,9 @@
 import PostType from './post';
+import { Post } from 'wp-graphql';
+import { DocumentNode } from 'graphql';
 
-interface Posts {
-	edges: {
-		node: PostType[];
-	};
+interface PostsProps {
+	node: DocumentNode & Post;
 }
 
-export default Posts;
+export default PostsProps;
