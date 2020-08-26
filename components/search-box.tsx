@@ -3,17 +3,17 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons/faSortDown';
 import Container from './container';
 import CategoryProps from '../types/category';
+import TagProps from '../types/tag';
 
 interface Props {
 	allPosts: any;
-	dropdownOptions: string[];
-	tags: any;
+	dropdownOptions: TagProps[];
 	categories: CategoryProps[];
 }
 
-const SearchBox = ({ allPosts, dropdownOptions, tags, categories }: Props) => {
+const SearchBox = ({ allPosts, dropdownOptions, categories }: Props) => {
 	// const handleTabSearch = tabName => {};
-
+	console.log(dropdownOptions);
 	return (
 		<Container>
 			<div className='mt-4 flex-row w-auto overflow-hidden mb-4'>
@@ -37,7 +37,7 @@ const SearchBox = ({ allPosts, dropdownOptions, tags, categories }: Props) => {
 					<div className='flex w-auto py-2 h-auto relative'>
 						<select className='appearance-none w-full h-auto bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight mx--5 focus:outline-none focus:shadow-outline'>
 							{dropdownOptions.map((value, index) => {
-								return <option key={index}>{value}</option>;
+								return <option key={index}>{value.node.name}</option>;
 							})}
 						</select>
 						<div className='pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700'>
