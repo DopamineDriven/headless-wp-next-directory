@@ -73,7 +73,7 @@
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-popper": "^2.2.3",
-		"tailwindcss": "^1.6.2",
+		"tailwindcss": "^1.7.5",
 		"vercel": "^19.2.0",
 		"wp-graphql": "^1.0.0",
 		"yarn": "^1.22.4"
