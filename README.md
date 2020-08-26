@@ -2,6 +2,26 @@
 
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
+## 8/26/20
+- Conditional rendering support incorporated for social icons
+  - if string === '', then return
+  ```tsx
+  <></>
+  ```
+- so, if a company doesn't have one or more social media sites, there will be no corresponding icon on their card
+- see components/card-icons.tsx 
+  - https://dev.to/dopaminedriven/hacking-the-fontawesome-library-for-custom-icon-integration-with-nextjs-and-typescript-1em8
+
+## Patching node_modules
+```git
+npx patch-package @fortawesome/fontawesome-common-types
+```
+- however, if you were to edit the core css in fontawesome-svg-core, for example, then target that module
+```git
+npx patch-package @fortawesome/fontawesome-svg-core
+```
+- see my post for more details on custom icon incorporation
+
 ## Multilingual Support
 - https://medium.com/swlh/making-a-multilingual-site-with-next-js-part-2-518c5c699d23 (published 8/13/20)
 - https://levelup.gitconnected.com/a-simple-next-js-frontend-for-a-multilingual-website-ae31a17387e2

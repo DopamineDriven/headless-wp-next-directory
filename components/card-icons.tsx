@@ -1,4 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCustomWebsite } from '../lib/fas-custom-integration';
 import {
 	faFacebook,
 	faInstagram,
@@ -67,6 +68,25 @@ const CardIcons = ({ social }: CardIconProps) => {
 							) : (
 								<FontAwesomeIcon
 									icon={faTwitter}
+									className='align-middle text-center font-extrabold text-md'
+								/>
+							)}
+						</a>
+					)}
+					{social.website === '' ? (
+						<></>
+					) : (
+						<a
+							aria-label='website'
+							target='__blank'
+							href={social.website}
+							className='bg-customGray text-white hover:text-white hover:bg-iconHover transition-colors leading-relaxed duration-500 text-lg inline-block text-center items-center align-middle justify-center w-8 h-8 mx-1 my-2 rounded-full focus:outline-none'
+						>
+							{social.website === '' ? (
+								<></>
+							) : (
+								<FontAwesomeIcon
+									icon={faCustomWebsite}
 									className='align-middle text-center font-extrabold text-md'
 								/>
 							)}
