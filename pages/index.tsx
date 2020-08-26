@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useState, useEffect, ChangeEvent, SyntheticEvent } from 'react';
 import Container from '../components/container';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
@@ -11,51 +12,21 @@ import {
 } from '../lib/api';
 import { CMS_NAME, CLIENT_NAME } from '../lib/constants';
 import Header from '../components/header';
-// import SearchBox from '../components/search-box';
+import HeroPost from '../components/hero-post';
+import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
+import TagProps from '../types/tag';
+import CategoryProps from '../types/category';
+import PostsProps from '../types/posts';
 // import CustomSelect, { Field } from '../components/custom-select';
-// import { useEffect, useState } from 'react';
 // import Link from 'next/link';
 
-// export enum Field {
-// 	TITLE = 'TITLE',
-// 	MODIFIED = 'MODIFIED',
-// 	DATE = 'DATE'
-// }
-
-// enum Order {
-// 	ASC = 'ASC',
-// 	DESC = 'DESC'
-// }
-
-// export interface CustomDropDown {
-// 	field: Field;
-// 	color: string;
-// }
-
-// const fieldVals: CustomDropDown[] = [
-// 	{
-// 		field: Field.DATE,
-// 		color: 'white'
-// 	},
-// 	{
-// 		field: Field.MODIFIED,
-// 		color: 'white'
-// 	},
-// 	{
-// 		field: Field.TITLE,
-// 		color: 'white'
-// 	}
-// ];
 interface IndexProps {
 	allPosts: any;
 	preview: boolean;
 	props: string | number;
-	tagsAndPosts: any;
-	categoriesAndPosts: any;
-
-	// field: string;
-	// order: string;
+	tagsAndPosts: TagProps[];
+	categoriesAndPosts: CategoryProps[];
 }
 
 export default function Index({
@@ -65,9 +36,40 @@ export default function Index({
 	categoriesAndPosts,
 	props
 }: IndexProps) {
+	const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
+
+	const [filterQuery, setFilterQuery] = useState('');
+	const [allCompanies, setAllCompanies] = useState<PostsProps[]>(morePosts);
+	const [filteredCompanies, setFilteredCompanies] = useState<PostsProps[]>();
+	const [search, setSearch] = useState<string | null>(null);
+
 	// console.log('tags:', tagsAndPosts);
 	// console.log('categories:', categoriesAndPosts);
+
+	useEffect(() => {
+		if (!search) {
+			setFilteredCompanies(allCompanies);
+		} else {
+			if (filterQuery === 'title') {
+				console.log(filteredCompanies);
+				const filterCompanies = edges.node.filter((company: PostsProps) => {
+					console.log(company);
+					if (company.node.title) {
+						console.log('company title: ', company.node.title);
+						return company;
+					} else {
+						return null;
+					}
+				});
+				setFilteredCompanies(filterCompanies);
+			} else {
+				console.log('not title');
+				setFilteredCompanies(allCompanies);
+			}
+		}
+	}, [filterQuery, search]);
+
 	return (
 		<>
 			<Header props={props} />
@@ -79,10 +81,23 @@ export default function Index({
 				</Head>
 				<Container>
 					<Intro />
-					{/* <SearchBox
+					<SearchBox
+						selectSearch={filterQuery}
+						selectChange={(evt: SyntheticEvent): void => {
+							const element = evt.currentTarget as HTMLSelectElement;
+							console.log('select event: ', element.value);
+							setFilterQuery(element.value);
+						}}
+						filterFunc={(evt: SyntheticEvent): void => {
+							const element = evt.currentTarget as HTMLInputElement;
+							const searchQuery = element.value.toLowerCase();
+							setSearch(searchQuery);
+						}}
+						tags={tagsAndPosts}
 						allPosts={morePosts}
-						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
-					/> */}
+						dropdownOptions={['choose an option', 'title', '2222222']}
+						categories={categoriesAndPosts}
+					/>
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
 						{morePosts.length > 0 && <Cards posts={morePosts} />}
 					</div>
@@ -91,12 +106,32 @@ export default function Index({
 		</>
 	);
 }
+
+enum Field {
+	TITLE = 'TITLE',
+	MODIFIED = 'MODIFIED',
+	DATE = 'DATE'
+}
+
+enum Order {
+	ASC = 'ASC',
+	DESC = 'DESC'
+}
+
 type StaticProps = {
 	preview: boolean;
+	context: any;
+	field: any;
+	order: any;
 };
 
-export async function getStaticProps({ preview = false }: StaticProps) {
-	const allPosts = await getAllPostsForHomeAlphabetical(preview);
+export async function getServerSideProps({
+	preview = false,
+	context,
+	field = 'TITLE',
+	order = 'ASC'
+}: StaticProps) {
+	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
 	const tagsAndPosts = await getTagAndPosts();
 	const categoriesAndPosts = await getCategoriesAndPosts();
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
