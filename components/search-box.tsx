@@ -7,11 +7,12 @@ import TagProps from '../types/tag';
 
 interface Props {
 	allPosts: any;
+	tags: TagProps[];
 	dropdownOptions: TagProps[];
 	categories: CategoryProps[];
 }
 
-const SearchBox = ({ allPosts, dropdownOptions, categories }: Props) => {
+const SearchBox = ({ allPosts, dropdownOptions, tags, categories }: Props) => {
 	// const handleTabSearch = tabName => {};
 	console.log(dropdownOptions);
 	return (
