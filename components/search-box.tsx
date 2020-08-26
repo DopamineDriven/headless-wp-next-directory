@@ -6,13 +6,24 @@ import CategoryProps from '../types/category';
 import TagProps from '../types/tag';
 
 interface Props {
+	selectChange: () => void;
+	selectSearch: string;
+	filterFunc: () => void;
 	allPosts: any;
 	tags: TagProps[];
-	dropdownOptions: TagProps[];
+	dropdownOptions: string[];
 	categories: CategoryProps[];
 }
 
-const SearchBox = ({ allPosts, dropdownOptions, tags, categories }: Props) => {
+const SearchBox = ({
+	selectChange,
+	selectSearch,
+	filterFunc,
+	allPosts,
+	dropdownOptions,
+	tags,
+	categories
+}: Props) => {
 	// const handleTabSearch = tabName => {};
 	console.log(dropdownOptions);
 	return (
@@ -36,9 +47,17 @@ const SearchBox = ({ allPosts, dropdownOptions, tags, categories }: Props) => {
 				</div>
 				<div className='flex bg-white shadow-2xl p-2 mb-3'>
 					<div className='flex w-auto py-2 h-auto relative'>
-						<select className='appearance-none w-full h-auto bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight mx--5 focus:outline-none focus:shadow-outline'>
-							{dropdownOptions.map((value, index) => {
-								return <option key={index}>{value.node.name}</option>;
+						<select
+							onChange={selectChange}
+							value={selectSearch}
+							className='appearance-none w-full h-auto bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight mx--5 focus:outline-none focus:shadow-outline'
+						>
+							{dropdownOptions.map((dropDownOption, index) => {
+								return (
+									<option key={index} value={dropDownOption}>
+										{dropDownOption}
+									</option>
+								);
 							})}
 						</select>
 						<div className='pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700'>
@@ -53,6 +72,7 @@ const SearchBox = ({ allPosts, dropdownOptions, tags, categories }: Props) => {
 							className='w-full rounded'
 							placeholder='Search...'
 							name='search-form'
+							onChange={filterFunc}
 						/>
 
 						<button
