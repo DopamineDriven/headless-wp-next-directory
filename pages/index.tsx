@@ -15,28 +15,29 @@ import Header from '../components/header';
 import HeroPost from '../components/hero-post';
 import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
-import tagsType from '../types/tag';
+import TagProps from '../types/tag';
 import CategoryProps from '../types/category';
+import PostsProps from '../types/posts';
 // import CustomSelect, { Field } from '../components/custom-select';
 // import Link from 'next/link';
 
 interface IndexProps {
-	allPosts: any;
+	allPosts: PostsProps[];
 	preview: boolean;
 	props: string | number;
-	tagsAndPosts: any;
-	categoriesAndPosts: any;
+	tagsAndPosts: TagProps[];
+	categoriesAndPosts: CategoryProps[];
 }
 
 export default function Index({
-	allPosts: { edges },
+	allPosts,
 	preview,
 	tagsAndPosts,
 	categoriesAndPosts,
 	props
 }: IndexProps) {
-	const heroPost = edges[0]?.node;
-	let morePosts = edges.slice(0);
+	const heroPost = allPosts[0]?.node;
+	let morePosts = allPosts;
 
 	const [filterQuery, setFilterQuery] = useState('');
 	const [allCompanies, setAllCompanies] = useState(morePosts);
@@ -53,8 +54,9 @@ export default function Index({
 			if (filterQuery === 'title') {
 				console.log(filteredCompanies);
 				const filterCompanies = allCompanies.filter(company => {
-					if (company.node.name.toLowerCase().includes(search)) {
-						console.log(company);
+					console.log(company);
+					if (company.node.title) {
+						console.log('company title: ', company.node.title);
 						return company;
 					} else {
 						return null;
@@ -68,6 +70,24 @@ export default function Index({
 		}
 	}, [filterQuery, filteredCompanies, search]);
 
+	const handleSearchChange = event => {
+		console.log('search change');
+
+		const searchQuery = event.target.value.toLowerCase();
+
+		setSearch(searchQuery);
+
+		console.log(search);
+	};
+
+	//This function is used in the <Select/> to add the value the user select to the state variable
+	const handleSelectChange = event => {
+		console.log('select change');
+		setFilterValue(event.target.value);
+
+		console.log(filterQuery);
+	};
+
 	return (
 		<>
 			<Header props={props} />
@@ -80,9 +100,12 @@ export default function Index({
 				<Container>
 					<Intro />
 					<SearchBox
+						selectSearch={filterQuery}
+						selectChange={handleSelectChange}
+						filterFunc={handleSearchChange}
 						tags={tagsAndPosts}
 						allPosts={morePosts}
-						dropdownOptions={tagsAndPosts}
+						dropdownOptions={['title', '2222222']}
 						categories={categoriesAndPosts}
 					/>
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
