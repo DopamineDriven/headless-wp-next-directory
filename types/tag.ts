@@ -1,9 +1,16 @@
-interface Tag {
-	edges: {
-		node: {
-			name: string;
-		};
-	};
+import { Tag } from 'wp-graphql';
+import { DocumentNode } from 'graphql';
+
+interface TagProps {
+	node: DocumentNode & Tag;
 }
 
-export default Tag;
+// interface Tag {
+// 	edges: {
+// 		node: {
+// 			name: string;
+// 		};
+// 	};
+// }
+
+export default TagProps;

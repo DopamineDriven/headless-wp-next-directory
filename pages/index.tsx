@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useState, useEffect } from 'react';
 import Container from '../components/container';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
@@ -11,8 +12,13 @@ import {
 } from '../lib/api';
 import { CMS_NAME, CLIENT_NAME } from '../lib/constants';
 import Header from '../components/header';
-// import SearchBox from '../components/search-box';
+import HeroPost from '../components/hero-post';
+import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
+import tagsType from '../types/tag';
+import CategoryProps from '../types/category';
+// import CustomSelect, { Field } from '../components/custom-select';
+// import Link from 'next/link';
 
 interface IndexProps {
 	allPosts: any;
@@ -29,7 +35,10 @@ export default function Index({
 	categoriesAndPosts,
 	props
 }: IndexProps) {
+	const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
+
+	const [allCompanies, setAllCompanies] = useState(morePosts);
 	// console.log('tags:', tagsAndPosts);
 	// console.log('categories:', categoriesAndPosts);
 	return (
@@ -43,10 +52,11 @@ export default function Index({
 				</Head>
 				<Container>
 					<Intro />
-					{/* <SearchBox
+					<SearchBox
 						allPosts={morePosts}
-						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
-					/> */}
+						dropdownOptions={tagsAndPosts}
+						categories={categoriesAndPosts}
+					/>
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
 						{morePosts.length > 0 && <Cards posts={morePosts} />}
 					</div>
@@ -55,8 +65,6 @@ export default function Index({
 		</>
 	);
 }
-
-
 
 enum Field {
 	TITLE = 'TITLE',
@@ -73,10 +81,15 @@ type StaticProps = {
 	preview: boolean;
 	context: any;
 	field: any;
-	order: any
+	order: any;
 };
 
-export async function getServerSideProps({ preview = false, context, field="TITLE", order="ASC" }: StaticProps) {
+export async function getServerSideProps({
+	preview = false,
+	context,
+	field = 'TITLE',
+	order = 'ASC'
+}: StaticProps) {
 	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
 	const tagsAndPosts = await getTagAndPosts();
 	const categoriesAndPosts = await getCategoriesAndPosts();
