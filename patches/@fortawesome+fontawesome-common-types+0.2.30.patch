@@ -1,0 +1,19 @@
+diff --git a/node_modules/@fortawesome/fontawesome-common-types/index.d.ts b/node_modules/@fortawesome/fontawesome-common-types/index.d.ts
+index b70b000..7374a7b 100644
+--- a/node_modules/@fortawesome/fontawesome-common-types/index.d.ts
++++ b/node_modules/@fortawesome/fontawesome-common-types/index.d.ts
+@@ -1,4 +1,4 @@
+-export type IconPrefix = "fas" | "fab" | "far" | "fal" | "fad";
++export type IconPrefix = "fas" | "fab" | "fac" | "far" | "fal" | "fad";
+ export type IconPathData = string | string[]
+ 
+ export interface IconLookup {
+@@ -21,7 +21,7 @@ export interface IconPack {
+   [key: string]: IconDefinition;
+ }
+ 
+-export type IconName = '500px' | 
++export type IconName = 'website-icon' | '500px' | 
+   'accessible-icon' | 
+   'accusoft' | 
+   'acquisitions-incorporated' | 

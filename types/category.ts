@@ -2,7 +2,7 @@ interface Category {
 	edges: {
 		node: {
 			name: string;
-		};
+		}
 	};
 }
 
