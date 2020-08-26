@@ -1,52 +1,78 @@
 // @flow
 import { usePopper } from 'react-popper';
-import { StrictModifiers } from '@popperjs/core';
-import { getAllPostsForHomeSorted } from '../lib/api';
+// import { getAllPostsForHomeSorted } from '../lib/api';
 import { FormEvent, useState, useRef } from 'react';
 
-enum Field {
-	TITLE = 'TITLE',
-	MODIFIED = 'MODIFIED',
-	DATE = 'DATE'
-}
+// export enum Field {
+// 	TITLE = 'TITLE',
+// 	MODIFIED = 'MODIFIED',
+// 	DATE = 'DATE'
+// }
 
-enum Order {
-	ASC = 'ASC',
-	DESC = 'DESC'
-}
+// enum Order {
+// 	ASC = 'ASC',
+// 	DESC = 'DESC'
+// }
 
-interface CustomDropDown {
-    field: Field;
-    setField: (field: Field) => void;
+export interface CustomDropDown {
+	// field: Field;
 	color: string;
 }
 
-const { TITLE, MODIFIED, DATE } = Field;
-const { ASC, DESC } = Order;
+// const fieldVals: CustomDropDown[] = [
+// 	{
+// 		field: Field.DATE,
+// 		color: 'white'
+// 	},
+// 	{
+// 		field: Field.MODIFIED,
+// 		color: 'white'
+// 	},
+// 	{
+// 		field: Field.TITLE,
+// 		color: 'white'
+// 	}
+// ];
 
-const CustomSelect = ({ color, field }: CustomDropDown) => {
+// const { TITLE, MODIFIED, DATE } = Field;
+// const { ASC, DESC } = Order;
+
+const CustomSelect = ({ color }: CustomDropDown) => {
 	const [dropdownPopoverShow, setDropdownPopoverShow] = useState(false);
 	const btnDropdownRef = useRef(null);
-    const popoverDropdownRef = useRef(null);
-    const handleForm = (e: FormEvent) => {
+	const popoverDropdownRef = useRef(null);
+	const handleForm = (e: FormEvent) => {
 		e.preventDefault();
 	};
 	const openDropdownPopover = () => {
-		usePopper<StrictModifiers>(
-			btnDropdownRef.current,
-			popoverDropdownRef.current,
-			{
-				placement: 'bottom-start'
-			}
-		);
+		usePopper(btnDropdownRef.current, popoverDropdownRef.current, {
+			placement: 'bottom-start'
+		});
 		setDropdownPopoverShow(true);
 	};
 	const closeDropdownPopover = () => {
 		setDropdownPopoverShow(false);
 	};
 
+	const dripdrop = dropdownPopoverShow
+		? closeDropdownPopover()
+		: openDropdownPopover();
+
 	let bgColor;
 	color === 'white' ? (bgColor = 'bg-customGray') : (bgColor = `bg-${color}`);
+
+	// const fieldMap = fieldVals.map(val => (
+	// 	<a
+	// 		key={val.field}
+	// 		className={
+	// 			'text-sm py-2 px-4 font-polished block w-full whitespace-no-wrap bg-transparent' +
+	// 			(color === `${val.color}` ? 'black' : 'text-white')
+	// 		}
+	// 		onClick={() => getAllPostsForHomeSorted(val.field) }
+	// 	>
+	// 		{val.field}
+	// 	</a>
+	// ));
 
 	return (
 		<>
@@ -58,11 +84,7 @@ const CustomSelect = ({ color, field }: CustomDropDown) => {
 							style={{ transition: 'all .15s ease' }}
 							type='button'
 							ref={btnDropdownRef}
-							onClick={() => {
-								dropdownPopoverShow
-									? closeDropdownPopover()
-									: openDropdownPopover();
-							}}
+							onClick={() => dripdrop}
 						>
 							{color === 'white' ? 'FIELDS' : `FIELD`}
 						</button>
@@ -77,10 +99,12 @@ const CustomSelect = ({ color, field }: CustomDropDown) => {
 							<a
 								className={
 									'text-sm py-2 px-4 font-polished block w-full whitespace-no-wrap bg-transparent' +
-									(color === 'white' ? 'black' : 'text-white')
-                                }
-                                onClick={e => handleForm(e)}
-							></a>
+									(color === `${color}` ? 'black' : 'text-white')
+								}
+								onClick={(e) => e.preventDefault()}
+							>
+								Test
+							</a>
 						</div>
 					</div>
 				</div>

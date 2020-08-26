@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+// import { NextApiRequest, NextApiResponse } from 'next';
 import { getPreviewPost } from '../../lib/api';
 // import { ProcessEnv } from '../../types/process-env';
 // const Env: ProcessEnv = `[${process.env.WORDPRESS_PREVIEW_SECRET}]` || null;
@@ -7,11 +7,13 @@ import { getPreviewPost } from '../../lib/api';
 // 	post: string | number;
 // 	message: string;
 // };
+import { NextApiRequest, NextApiResponse } from 'next';
+import { NowRequest, NowResponse } from '@vercel/node';
 
 export default async function preview(
-	req: NextApiRequest,
-	res: NextApiResponse
-): Promise<any> {
+	req: NowRequest & NextApiRequest,
+	res: NowResponse & NextApiResponse
+) {
 	const { secret, id, slug } = req.query;
 
 	// Check the secret and next parameters
