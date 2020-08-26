@@ -52,7 +52,7 @@
 		"dev": "next",
 		"build": "next build",
 		"start": "next start",
-		"postinstall": "npx patch package"
+		"postinstall": "npx patch-package"
 	},
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^1.2.30",
