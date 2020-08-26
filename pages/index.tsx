@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent, SyntheticEvent } from 'react';
 import Container from '../components/container';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
@@ -22,7 +22,7 @@ import PostsProps from '../types/posts';
 // import Link from 'next/link';
 
 interface IndexProps {
-	allPosts: PostsProps[];
+	allPosts: any;
 	preview: boolean;
 	props: string | number;
 	tagsAndPosts: TagProps[];
@@ -30,19 +30,19 @@ interface IndexProps {
 }
 
 export default function Index({
-	allPosts,
+	allPosts: { edges },
 	preview,
 	tagsAndPosts,
 	categoriesAndPosts,
 	props
 }: IndexProps) {
-	const heroPost = allPosts[0]?.node;
-	let morePosts = allPosts;
+	const heroPost = edges[0]?.node;
+	let morePosts = edges.slice(0);
 
 	const [filterQuery, setFilterQuery] = useState('');
-	const [allCompanies, setAllCompanies] = useState(morePosts);
-	const [filteredCompanies, setFilteredCompanies] = useState(morePosts);
-	const [search, setSearch] = useState('');
+	const [allCompanies, setAllCompanies] = useState<PostsProps[]>(morePosts);
+	const [filteredCompanies, setFilteredCompanies] = useState<PostsProps[]>();
+	const [search, setSearch] = useState<string | null>(null);
 
 	// console.log('tags:', tagsAndPosts);
 	// console.log('categories:', categoriesAndPosts);
@@ -53,7 +53,7 @@ export default function Index({
 		} else {
 			if (filterQuery === 'title') {
 				console.log(filteredCompanies);
-				const filterCompanies = allCompanies.filter(company => {
+				const filterCompanies = edges.node.filter((company: PostsProps) => {
 					console.log(company);
 					if (company.node.title) {
 						console.log('company title: ', company.node.title);
@@ -68,25 +68,7 @@ export default function Index({
 				setFilteredCompanies(allCompanies);
 			}
 		}
-	}, [filterQuery, filteredCompanies, search]);
-
-	const handleSearchChange = event => {
-		console.log('search change');
-
-		const searchQuery = event.target.value.toLowerCase();
-
-		setSearch(searchQuery);
-
-		console.log(search);
-	};
-
-	//This function is used in the <Select/> to add the value the user select to the state variable
-	const handleSelectChange = event => {
-		console.log('select change');
-		setFilterValue(event.target.value);
-
-		console.log(filterQuery);
-	};
+	}, [filterQuery, search]);
 
 	return (
 		<>
@@ -101,11 +83,19 @@ export default function Index({
 					<Intro />
 					<SearchBox
 						selectSearch={filterQuery}
-						selectChange={handleSelectChange}
-						filterFunc={handleSearchChange}
+						selectChange={(evt: SyntheticEvent): void => {
+							const element = evt.currentTarget as HTMLSelectElement;
+							console.log('select event: ', element.value);
+							setFilterQuery(element.value);
+						}}
+						filterFunc={(evt: SyntheticEvent): void => {
+							const element = evt.currentTarget as HTMLInputElement;
+							const searchQuery = element.value.toLowerCase();
+							setSearch(searchQuery);
+						}}
 						tags={tagsAndPosts}
 						allPosts={morePosts}
-						dropdownOptions={['title', '2222222']}
+						dropdownOptions={['choose an option', 'title', '2222222']}
 						categories={categoriesAndPosts}
 					/>
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
