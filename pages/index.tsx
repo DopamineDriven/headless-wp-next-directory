@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { useState, useEffect } from 'react';
 import Container from '../components/container';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
@@ -71,6 +72,9 @@ export default function Index({
 }: IndexProps) {
 	const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
+
+	const [allCompanies, setAllCompanies] = useState(morePosts);
+	const [];
 	// console.log('tags:', tagsAndPosts);
 	// console.log('categories:', categoriesAndPosts);
 	return (
@@ -84,28 +88,12 @@ export default function Index({
 				</Head>
 				<Container>
 					<Intro />
-					{/* <SearchBox
+					<SearchBox
 						allPosts={morePosts}
-					dropdownOptions={SELECT_DROPDOWN_OPTIONS}
-					tags={tagsAndPosts}
+						dropdownOptions={['', '']}
+						tags={tagsAndPosts}
 						categories={categoriesAndPosts}
 					/>
-					{heroPost && (
-						<HeroPost
-							title={heroPost.title}
-							coverImage={
-								heroPost.featuredImage
-									? heroPost.featuredImage.node
-									: 'No featured Image'
-							}
-							date={heroPost.date}
-							author={heroPost.author.node}
-							slug={heroPost.slug}
-							excerpt={heroPost.excerpt}
-						/>
-					)}
-					{morePosts.length > 0 && <Cards posts={morePosts} />}
-					/> */}
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
 						{morePosts.length > 0 && <Cards posts={morePosts} />}
 					</div>
