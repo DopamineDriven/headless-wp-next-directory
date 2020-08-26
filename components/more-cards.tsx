@@ -13,7 +13,7 @@ export default function MoreCards({ posts }: CardsProps) {
 			{/* <h2 className='mb-8 text-6xl md:text-6xl tracking-tighter leading-tight'>
 				More Companies
 			</h2> */}
-			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 align-middle text-center'>
+			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 col-gap-8 row-gap-6 align-middle text-center'>
 				{posts.map(({ node }: NodeProps) => (
 					<Card
 						key={node.slug}
@@ -37,7 +37,7 @@ export default function MoreCards({ posts }: CardsProps) {
 // 			{/* <h2 className='mb-8 text-6xl md:text-6xl tracking-tighter leading-tight'>
 // 				More Companies
 // 			</h2> */}
-// 			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 align-middle text-center'>
+// 			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 col-gap-8 row-gap-6 align-middle text-center'>
 // 				<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 // 					<a>
 // 						{posts.map(({ node }: NodeProps) => (
