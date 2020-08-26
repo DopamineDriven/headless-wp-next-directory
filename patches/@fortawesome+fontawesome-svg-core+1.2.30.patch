@@ -1,0 +1,27 @@
+diff --git a/node_modules/@fortawesome/fontawesome-svg-core/index.d.ts b/node_modules/@fortawesome/fontawesome-svg-core/index.d.ts
+index 04f99e0..7fe1cc7 100644
+--- a/node_modules/@fortawesome/fontawesome-svg-core/index.d.ts
++++ b/node_modules/@fortawesome/fontawesome-svg-core/index.d.ts
+@@ -23,6 +23,7 @@ export type SizeProp =
+   | "xs"
+   | "lg"
+   | "sm"
++  | "xl"
+   | "1x"
+   | "2x"
+   | "3x"
+diff --git a/node_modules/@fortawesome/fontawesome-svg-core/styles.css b/node_modules/@fortawesome/fontawesome-svg-core/styles.css
+index b991207..56901ff 100644
+--- a/node_modules/@fortawesome/fontawesome-svg-core/styles.css
++++ b/node_modules/@fortawesome/fontawesome-svg-core/styles.css
+@@ -155,6 +155,10 @@ svg:not(:root).svg-inline--fa {
+   line-height: 0.75em;
+   vertical-align: -.0667em; }
+ 
++.fa-xl {
++  font-size: 1.5em
++}
++
+ .fa-xs {
+   font-size: .75em; }
+ 
