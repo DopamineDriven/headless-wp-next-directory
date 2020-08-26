@@ -13,49 +13,13 @@ import { CMS_NAME, CLIENT_NAME } from '../lib/constants';
 import Header from '../components/header';
 // import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
-// import CustomSelect, { Field } from '../components/custom-select';
-// import { useEffect, useState } from 'react';
-// import Link from 'next/link';
 
-// export enum Field {
-// 	TITLE = 'TITLE',
-// 	MODIFIED = 'MODIFIED',
-// 	DATE = 'DATE'
-// }
-
-// enum Order {
-// 	ASC = 'ASC',
-// 	DESC = 'DESC'
-// }
-
-// export interface CustomDropDown {
-// 	field: Field;
-// 	color: string;
-// }
-
-// const fieldVals: CustomDropDown[] = [
-// 	{
-// 		field: Field.DATE,
-// 		color: 'white'
-// 	},
-// 	{
-// 		field: Field.MODIFIED,
-// 		color: 'white'
-// 	},
-// 	{
-// 		field: Field.TITLE,
-// 		color: 'white'
-// 	}
-// ];
 interface IndexProps {
 	allPosts: any;
 	preview: boolean;
 	props: string | number;
 	tagsAndPosts: any;
 	categoriesAndPosts: any;
-
-	// field: string;
-	// order: string;
 }
 
 export default function Index({
@@ -91,12 +55,29 @@ export default function Index({
 		</>
 	);
 }
+
+
+
+enum Field {
+	TITLE = 'TITLE',
+	MODIFIED = 'MODIFIED',
+	DATE = 'DATE'
+}
+
+enum Order {
+	ASC = 'ASC',
+	DESC = 'DESC'
+}
+
 type StaticProps = {
 	preview: boolean;
+	context: any;
+	field: any;
+	order: any
 };
 
-export async function getStaticProps({ preview = false }: StaticProps) {
-	const allPosts = await getAllPostsForHomeAlphabetical(preview);
+export async function getServerSideProps({ preview = false, context, field="TITLE", order="ASC" }: StaticProps) {
+	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
 	const tagsAndPosts = await getTagAndPosts();
 	const categoriesAndPosts = await getCategoriesAndPosts();
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);

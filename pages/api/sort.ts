@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { title } from 'process';
 // import { getAllPostsForHomeSorted } from '../../lib/api';
+import { NowRequest, NowResponse } from '@vercel/node';
 
 enum Field {
 	TITLE = 'TITLE',
@@ -14,8 +15,8 @@ enum Order {
 }
 
 interface Sorting {
-	req: NextApiRequest;
-	res: NextApiResponse;
+	req: NextApiRequest & NowRequest;
+	res: NextApiResponse & NowResponse;
 	field: string;
 	order: string;
 	preview: boolean;
