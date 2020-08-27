@@ -1,7 +1,16 @@
 diff --git a/node_modules/wp-graphql/lib/lib/abstract-types/basePostType.d.ts b/node_modules/wp-graphql/lib/lib/abstract-types/basePostType.d.ts
-index 7ac37c5..a8764b1 100644
+index 7ac37c5..2989e1b 100644
 --- a/node_modules/wp-graphql/lib/lib/abstract-types/basePostType.d.ts
 +++ b/node_modules/wp-graphql/lib/lib/abstract-types/basePostType.d.ts
+@@ -12,7 +12,7 @@ export interface BasePost<TMeta = Meta> {
+     /** The date the object was published, as GMT. */
+     date_gmt: string;
+     /** The excerpt for the object. */
+-    excerpt: ContentDescriptor;
++    excerpt: string;
+     /** The ID of the featured media for the object. */
+     featured_media: number;
+     /** The globally unique identifier for the object. */
 @@ -36,7 +36,7 @@ export interface BasePost<TMeta = Meta> {
      /** The theme file to use to display the object. Currently unused */
      template: '';
