@@ -29,7 +29,7 @@ const SearchBox = ({
 	console.log(dropdownOptions);
 	return (
 		<Container>
-			<div className='mt-4 flex-row w-auto overflow-hidden mb-4'>
+			<div className='mt-4 flex-row w-auto overflow-y-hidden mb-4 text-sm overflow-x-scroll'>
 				<div className='flex w-auto'>
 					<ul className='w-full flex border-b'>
 						{categories.map((category, index) => {
