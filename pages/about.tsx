@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import Container from '../components/container';
 import { CLIENT_NAME } from '../lib/constants';
 import {
-	getAllPostsForHomeAlphabetical,
+	getAllPostsForAbout,
 	getTagAndPosts,
 	getCategoriesAndPosts
 } from '../lib/api';
@@ -73,7 +73,7 @@ type StaticProps = {
 };
 
 export async function getStaticProps({ preview = false }: StaticProps) {
-	const allPosts = await getAllPostsForHomeAlphabetical(preview);
+	const allPosts = await getAllPostsForAbout(preview);
 	const tagsAndPosts = await getTagAndPosts();
 	const categoriesAndPosts = await getCategoriesAndPosts();
 
