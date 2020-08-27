@@ -1,9 +1,10 @@
 import SectionSeparator from './section-separator';
 import Date from './date';
-import Modified from "./modified";
+import Modified from './modified';
+import { authorType, authorProps } from '../types/posts';
 
 type AvatarProps = {
-	author: any;
+	author: authorProps;
 	modified: string;
 };
 
