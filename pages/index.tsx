@@ -53,10 +53,12 @@ export default function Index({
 		} else {
 			if (filterQuery === 'title') {
 				console.log(filteredCompanies);
-				const filterCompanies = edges.node.filter((company: PostsProps) => {
-					console.log(company);
-					if (company.node.title) {
-						console.log('company title: ', company.node.title);
+				const filterCompanies = edges.filter((company: PostsProps) => {
+					//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
+					//this was done so that toLowerCase() and includes() functions coudl work
+					const companyTitle = company.node.title;
+					if (companyTitle.toLowerCase().includes(search)) {
+						console.log('company title: ', companyTitle);
 						return company;
 					} else {
 						return null;
