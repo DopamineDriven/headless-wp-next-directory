@@ -1,5 +1,5 @@
 import Card from './card';
-import PostsProps from '../types/posts';
+import { PostsProps } from '../types/posts';
 
 type NodeProps = {
 	node: any;
@@ -25,7 +25,7 @@ export default function MoreCards({ posts }: CardsProps) {
 							coverImage={node.featuredImage.node}
 							modified={node.modified}
 							social={node.social}
-							author={node.author.node}
+							author={node.author}
 							slug={node.slug}
 							excerpt={node.excerpt}
 						/>
