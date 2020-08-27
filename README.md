@@ -1,5 +1,7 @@
 # headless-wp-next-directory
 
+## node_modules/wp-graphql/lib/lib/abstract-types
+
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
 ## 8/26/20
