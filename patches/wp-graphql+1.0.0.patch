@@ -1,0 +1,13 @@
+diff --git a/node_modules/wp-graphql/lib/lib/abstract-types/basePostType.d.ts b/node_modules/wp-graphql/lib/lib/abstract-types/basePostType.d.ts
+index 7ac37c5..a8764b1 100644
+--- a/node_modules/wp-graphql/lib/lib/abstract-types/basePostType.d.ts
++++ b/node_modules/wp-graphql/lib/lib/abstract-types/basePostType.d.ts
+@@ -36,7 +36,7 @@ export interface BasePost<TMeta = Meta> {
+     /** The theme file to use to display the object. Currently unused */
+     template: '';
+     /** The title for the object. */
+-    title: RawOrRendered;
++    title: string;
+     /** Type of Post for the object. */
+     readonly type: string;
+ }
