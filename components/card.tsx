@@ -3,15 +3,17 @@ import Date from './date';
 import Avatar from './avatar';
 import Link from 'next/link';
 import CardIcons from './card-icons';
+import { ContentDescriptor } from 'wp-graphql/lib/lib/abstract-types';
+import { authorType, socialType } from '../types/posts';
 
 type CardProps = {
 	coverImage: CoverImageProps;
 	title: string;
 	slug: string | number;
 	modified: string;
-	author: any;
-	excerpt: string;
-	social: any;
+	author: authorType;
+	excerpt?: string;
+	social: socialType;
 };
 
 const Card = ({
@@ -23,6 +25,12 @@ const Card = ({
 	social,
 	title
 }: CardProps) => {
+	//had to add this in because without it _html was erroring out because it is of type string.
+
+	if (!excerpt) {
+		excerpt = '';
+	}
+
 	return (
 		<div className='inline-block font-polished'>
 			<div className='max-w-xs rounded-lg overflow-x-hidden overflow-y-hidden bg-white shadow-lg inline-block'>
@@ -43,7 +51,7 @@ const Card = ({
 					></div>
 					<>
 						<div className='grid-cols-1 pl-2 font-subpolished'>
-							<Avatar author={author} modified={modified} />
+							<Avatar author={author.node} modified={modified} />
 						</div>
 					</>
 					<hr className='border-customGray w-full mt-2' />
