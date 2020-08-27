@@ -1,10 +1,12 @@
 import Card from './card';
+import { PostsProps } from '../types/posts';
+
 type NodeProps = {
 	node: any;
 };
 
 type CardsProps = {
-	posts: any;
+	posts: PostsProps[];
 };
 
 export default function MoreCards({ posts }: CardsProps) {
@@ -14,18 +16,21 @@ export default function MoreCards({ posts }: CardsProps) {
 				More Companies
 			</h2> */}
 			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 col-gap-8 row-gap-6 align-middle text-center'>
-				{posts.map(({ node }: NodeProps) => (
-					<Card
-						key={node.slug}
-						title={node.title}
-						coverImage={node.featuredImage.node}
-						modified={node.modified}
-						social={node.social}
-						author={node.author.node}
-						slug={node.slug}
-						excerpt={node.excerpt}
-					/>
-				))}
+				{posts.map((company: PostsProps) => {
+					const node: any = company.node;
+					return (
+						<Card
+							key={node.slug}
+							title={node.title}
+							coverImage={node.featuredImage.node}
+							modified={node.modified}
+							social={node.social}
+							author={node.author}
+							slug={node.slug}
+							excerpt={node.excerpt}
+						/>
+					);
+				})}
 			</div>
 		</section>
 	);
