@@ -3,7 +3,7 @@ import { Post } from 'wp-graphql';
 import { DocumentNode } from 'graphql';
 
 interface PostsProps {
-	node: DocumentNode & Post;
+	node: Post;
 }
 
 export default PostsProps;
