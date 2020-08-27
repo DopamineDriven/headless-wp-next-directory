@@ -41,7 +41,9 @@ export default function Index({
 
 	const [filterQuery, setFilterQuery] = useState('');
 	const [allCompanies, setAllCompanies] = useState<PostsProps[]>(morePosts);
-	const [filteredCompanies, setFilteredCompanies] = useState<PostsProps[]>();
+	const [filteredCompanies, setFilteredCompanies] = useState<PostsProps[]>(
+		morePosts
+	);
 	const [search, setSearch] = useState<string | null>(null);
 
 	// console.log('tags:', tagsAndPosts);
@@ -101,7 +103,7 @@ export default function Index({
 						categories={categoriesAndPosts}
 					/>
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
-						{morePosts.length > 0 && <Cards posts={morePosts} />}
+						{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
 					</div>
 				</Container>
 			</Layout>
