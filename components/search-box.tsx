@@ -38,7 +38,7 @@ const SearchBox = ({
 							return (
 								<li key={index} className='mr-1'>
 									<a
-										href='#'
+										href={`http://localhost:3000/category/${category.node.name}`}
 										onClick={handleCategoryClick}
 										className='bg-gray-300 inline-block h-auto border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold'
 										data-categoryname={category.node.name}
