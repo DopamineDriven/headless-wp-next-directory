@@ -6,8 +6,7 @@ import Layout from '../components/layout';
 import {
 	getAllPostsForHomeAlphabetical,
 	getTagAndPosts,
-	getCategories,
-	getAllPostsForCategory
+	getCategories
 	// getAllPostsForHomeSorted,
 	// getAllPostsTitleDesc
 } from '../lib/api';
