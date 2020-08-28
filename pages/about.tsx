@@ -4,11 +4,7 @@ import Header from '../components/header';
 import Layout from '../components/layout';
 import Container from '../components/container';
 import { CLIENT_NAME } from '../lib/constants';
-import {
-	getAllPostsForAbout,
-	getTagAndPosts,
-	getCategoriesAndPosts
-} from '../lib/api';
+import { getAllPostsForAbout, getTagAndPosts, getCategories } from '../lib/api';
 import Intro from '../components/intro';
 import HeroPost from '../components/hero-post';
 
@@ -75,7 +71,7 @@ type StaticProps = {
 export async function getStaticProps({ preview = false }: StaticProps) {
 	const allPosts = await getAllPostsForAbout(preview);
 	const tagsAndPosts = await getTagAndPosts();
-	const categoriesAndPosts = await getCategoriesAndPosts();
+	const categoriesAndPosts = await getCategories();
 
 	return {
 		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts }
