@@ -6,7 +6,7 @@ import Layout from '../components/layout';
 import {
 	getAllPostsForHomeAlphabetical,
 	getTagAndPosts,
-	getCategoriesAndPosts
+	getCategories
 	// getAllPostsForHomeSorted,
 	// getAllPostsTitleDesc
 } from '../lib/api';
@@ -17,23 +17,23 @@ import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
 import TagProps from '../types/tag';
 import CategoryProps from '../types/category';
-import { PostsProps } from '../types/posts';
+import { PostsProps, AllPostsProps } from '../types/posts';
 // import CustomSelect, { Field } from '../components/custom-select';
 // import Link from 'next/link';
 
 interface IndexProps {
-	allPosts: any;
+	allPosts: AllPostsProps;
 	preview: boolean;
 	props: string | number;
 	tagsAndPosts: TagProps[];
-	categoriesAndPosts: CategoryProps[];
+	categories: CategoryProps[];
 }
 
 export default function Index({
 	allPosts: { edges },
 	preview,
 	tagsAndPosts,
-	categoriesAndPosts,
+	categories,
 	props
 }: IndexProps) {
 	const heroPost = edges[0]?.node;
@@ -45,6 +45,7 @@ export default function Index({
 		morePosts
 	);
 	const [search, setSearch] = useState<string | null>(null);
+	const [searchCategory, setSearchedCategory] = useState<string | null>(null);
 
 	// console.log('tags:', tagsAndPosts);
 	// console.log('categories:', categoriesAndPosts);
@@ -100,7 +101,7 @@ export default function Index({
 						tags={tagsAndPosts}
 						allPosts={morePosts}
 						dropdownOptions={['choose an option', 'title', '2222222']}
-						categories={categoriesAndPosts}
+						categories={categories}
 					/>
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
 						{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
@@ -127,17 +128,20 @@ type StaticProps = {
 	context: any;
 	field: any;
 	order: any;
+	desiredCategory: string;
 };
 
 export async function getServerSideProps({
 	preview = false,
 	context,
 	field = 'TITLE',
-	order = 'ASC'
+	order = 'ASC',
+	desiredCategory
 }: StaticProps) {
+	console.log(context);
 	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
 	const tagsAndPosts = await getTagAndPosts();
-	const categoriesAndPosts = await getCategoriesAndPosts();
+	const categories = await getCategories();
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 
 	return {
@@ -145,7 +149,7 @@ export async function getServerSideProps({
 			allPosts,
 			preview,
 			tagsAndPosts,
-			categoriesAndPosts
+			categories
 		}
 	};
 }

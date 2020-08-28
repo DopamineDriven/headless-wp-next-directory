@@ -5,12 +5,13 @@ import Container from './container';
 import CategoryProps from '../types/category';
 import TagProps from '../types/tag';
 import { ChangeEvent, SyntheticEvent } from 'react';
+import { PostsProps } from '../types/posts';
 
 interface Props {
 	selectChange: (evt: SyntheticEvent) => void;
 	selectSearch: string;
 	filterFunc: (evt: SyntheticEvent) => void;
-	allPosts: any;
+	allPosts: PostsProps[];
 	tags: TagProps[];
 	dropdownOptions: string[];
 	categories: CategoryProps[];
@@ -36,8 +37,9 @@ const SearchBox = ({
 							return (
 								<li key={index} className='mr-1'>
 									<a
-										href='#'
+										href={`http://localhost:3000/category/${category.node.name}`}
 										className='bg-gray-300 inline-block h-auto border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold'
+										data-categoryname={category.node.name}
 									>
 										{category.node.name}
 									</a>
