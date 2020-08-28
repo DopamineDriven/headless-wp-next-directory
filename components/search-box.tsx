@@ -5,12 +5,13 @@ import Container from './container';
 import CategoryProps from '../types/category';
 import TagProps from '../types/tag';
 import { ChangeEvent, SyntheticEvent } from 'react';
+import { PostsProps } from '../types/posts';
 
 interface Props {
 	selectChange: (evt: SyntheticEvent) => void;
 	selectSearch: string;
 	filterFunc: (evt: SyntheticEvent) => void;
-	allPosts: any;
+	allPosts: PostsProps[];
 	tags: TagProps[];
 	dropdownOptions: string[];
 	categories: CategoryProps[];
