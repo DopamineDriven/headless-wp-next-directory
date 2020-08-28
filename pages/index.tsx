@@ -6,7 +6,8 @@ import Layout from '../components/layout';
 import {
 	getAllPostsForHomeAlphabetical,
 	getTagAndPosts,
-	getCategoriesAndPosts
+	getCategories,
+	getAllPostsForCategory
 	// getAllPostsForHomeSorted,
 	// getAllPostsTitleDesc
 } from '../lib/api';
@@ -26,14 +27,14 @@ interface IndexProps {
 	preview: boolean;
 	props: string | number;
 	tagsAndPosts: TagProps[];
-	categoriesAndPosts: CategoryProps[];
+	categories: CategoryProps[];
 }
 
 export default function Index({
 	allPosts: { edges },
 	preview,
 	tagsAndPosts,
-	categoriesAndPosts,
+	categories,
 	props
 }: IndexProps) {
 	const heroPost = edges[0]?.node;
@@ -45,6 +46,7 @@ export default function Index({
 		morePosts
 	);
 	const [search, setSearch] = useState<string | null>(null);
+	const [searchCategory, setSearchedCategory] = useState<string | null>(null);
 
 	// console.log('tags:', tagsAndPosts);
 	// console.log('categories:', categoriesAndPosts);
@@ -83,13 +85,21 @@ export default function Index({
 		console.log('dataset value: ', evt.target.dataset['categoryname']);
 		const categoryName = evt.target.dataset['categoryname'];
 
-		const companiesBasedOnCategory = categoriesAndPosts.filter(
-			(category, index) => {
-				category.node.name === categoryName;
-			}
-		);
+		if (!categoryName) {
+			console.log('no category name in dataset...');
+			return;
+		}
 
-		console.log(companiesBasedOnCategory);
+		setSearchedCategory(categoryName);
+
+		// const categoryObj = categories.filter((category, index) => {
+		// 	console.log(category.node.posts);
+		// 	category.node.name === categoryName;
+		// });
+
+		// console.log(categoryObj[0]);
+
+		// const postsForCategory = categoryObj[0].nodes.posts
 		// setFilteredCompanies(companiesBasedOnCategory);
 	};
 
@@ -119,7 +129,7 @@ export default function Index({
 						tags={tagsAndPosts}
 						allPosts={morePosts}
 						dropdownOptions={['choose an option', 'title', '2222222']}
-						categories={categoriesAndPosts}
+						categories={categories}
 						handleCategoryClick={handleRerenderPostsForCategory}
 					/>
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
@@ -147,17 +157,21 @@ type StaticProps = {
 	context: any;
 	field: any;
 	order: any;
+	desiredCategory: string;
 };
 
 export async function getServerSideProps({
 	preview = false,
 	context,
 	field = 'TITLE',
-	order = 'ASC'
+	order = 'ASC',
+	desiredCategory
 }: StaticProps) {
+	console.log(context);
 	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
 	const tagsAndPosts = await getTagAndPosts();
-	const categoriesAndPosts = await getCategoriesAndPosts();
+	const categories = await getCategories();
+	// const postsForCategory = await getAllPostsForCategory(desiredCategory);
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 
 	return {
@@ -165,7 +179,8 @@ export async function getServerSideProps({
 			allPosts,
 			preview,
 			tagsAndPosts,
-			categoriesAndPosts
+			categories
+			// postsForCategory
 		}
 	};
 }
