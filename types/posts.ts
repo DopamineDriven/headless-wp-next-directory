@@ -4,6 +4,10 @@ import { DocumentNode } from 'graphql';
 import { CoverImageProps } from '../components/cover-image-card';
 import { ContentDescriptor } from 'wp-graphql/lib/lib/abstract-types';
 
+export interface AllPostsProps {
+	edges: PostsProps[];
+}
+
 export interface PostsProps {
 	node: UniquePostFields;
 }
