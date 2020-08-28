@@ -90,7 +90,7 @@ export default function Index({
 		);
 
 		console.log(companiesBasedOnCategory);
-		setFilteredCompanies(companiesBasedOnCategory);
+		// setFilteredCompanies(companiesBasedOnCategory);
 	};
 
 	return (

@@ -2,7 +2,11 @@ import { Category } from 'wp-graphql';
 import { DocumentNode } from 'graphql';
 
 interface CategoryProps {
-	node: DocumentNode & Category;
+	node: DocumentNode & UniqueCategory;
+}
+
+interface UniqueCategory extends Category {
+	posts: [];
 }
 
 // import { Category } from 'wp-graphql';
