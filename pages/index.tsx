@@ -74,6 +74,25 @@ export default function Index({
 		}
 	}, [filterQuery, search]);
 
+	const handleRerenderPostsForCategory = (evt: SyntheticEvent) => {
+		//this is necessary because Element, document, and window can be an EventTarget and they do not support dataset.
+		//So the if statement is looking specifically for an anchor tag element to exist as target.
+		if (!(evt.target instanceof HTMLAnchorElement)) {
+			return;
+		}
+		console.log('dataset value: ', evt.target.dataset['categoryname']);
+		const categoryName = evt.target.dataset['categoryname'];
+
+		const companiesBasedOnCategory = categoriesAndPosts.filter(
+			(category, index) => {
+				category.node.name === categoryName;
+			}
+		);
+
+		console.log(companiesBasedOnCategory);
+		setFilteredCompanies(companiesBasedOnCategory);
+	};
+
 	return (
 		<>
 			<Header props={props} />
@@ -101,6 +120,7 @@ export default function Index({
 						allPosts={morePosts}
 						dropdownOptions={['choose an option', 'title', '2222222']}
 						categories={categoriesAndPosts}
+						handleCategoryClick={handleRerenderPostsForCategory}
 					/>
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
 						{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
