@@ -14,6 +14,7 @@ interface Props {
 	tags: TagProps[];
 	dropdownOptions: string[];
 	categories: CategoryProps[];
+	handleCategoryClick: (evt: SyntheticEvent) => void;
 }
 
 const SearchBox = ({
@@ -23,7 +24,8 @@ const SearchBox = ({
 	allPosts,
 	dropdownOptions,
 	tags,
-	categories
+	categories,
+	handleCategoryClick
 }: Props) => {
 	// const handleTabSearch = tabName => {};
 	console.log(dropdownOptions);
@@ -37,7 +39,9 @@ const SearchBox = ({
 								<li key={index} className='mr-1'>
 									<a
 										href='#'
+										onClick={handleCategoryClick}
 										className='bg-gray-300 inline-block h-auto border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold'
+										data-categoryname={category.node.name}
 									>
 										{category.node.name}
 									</a>
