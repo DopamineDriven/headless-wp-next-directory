@@ -5,7 +5,12 @@ html {
 }
 
 body {
-	overflow: hidden; /* Hide scrollbars */
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+	display: none; /* Hide scrollbar for Chrome, Safari and Opera https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
 }
 
 @tailwind base;
