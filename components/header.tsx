@@ -32,8 +32,8 @@ const links: NavRef[] = [
 const Header = ({ props }: HeaderProps) => {
 	const [navOpen, setNavOpen] = useState(false);
 	const navlist = links.map(link => (
-		<li className='nav-item' key={`${link.href}-${link.label}`}>
-			<Link href={link.href} passHref as={`/${link.label}`}>
+		<li className='nav-item' key={`${link.label}`}>
+			<Link href={link.href} passHref as={`${link.href}`}>
 				<a
 					className='px-3 pb-2 flex items-center float-right text-right text-xl w-full sm:text-2xl font-bold leading-tight sm:leading-none text-white font-header hover:opacity-75'
 					aria-label={link.label}
