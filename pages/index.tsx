@@ -144,7 +144,7 @@ export const getServerSideProps = async ({
 	const tagsAndPosts = await getTagAndPosts();
 	const categories = await getCategories();
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
-
+	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
 	return {
 		props: {
 			allPosts,
