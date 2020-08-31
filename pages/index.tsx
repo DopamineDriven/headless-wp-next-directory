@@ -3,6 +3,7 @@ import { useState, useEffect, ChangeEvent, SyntheticEvent } from 'react';
 import Container from '../components/container';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
+import { GetServerSideProps } from 'next';
 import {
 	getAllPostsForHomeAlphabetical,
 	getTagAndPosts,
@@ -12,7 +13,7 @@ import {
 } from '../lib/api';
 import { CMS_NAME, CLIENT_NAME } from '../lib/constants';
 import Header from '../components/header';
-import HeroPost from '../components/hero-post';
+// import HeroPost from '../components/hero-post';
 import SearchBox from '../components/search-box';
 import Cards from '../components/more-cards';
 import TagProps from '../types/tag';
@@ -131,28 +132,29 @@ type StaticProps = {
 	desiredCategory: string;
 };
 
-export async function getServerSideProps({
+export const getServerSideProps = async ({
 	preview = false,
 	context,
 	field = 'TITLE',
 	order = 'ASC',
 	desiredCategory
-}: StaticProps) {
+}: StaticProps & GetServerSideProps) => {
 	console.log(context);
 	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
 	const tagsAndPosts = await getTagAndPosts();
 	const categories = await getCategories();
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
-
+	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
 	return {
 		props: {
 			allPosts,
 			preview,
 			tagsAndPosts,
-			categories
+			categories,
+			revalidate: 1
 		}
 	};
-}
+};
 
 // import Head from 'next/head';
 // import Container from '../components/container';
