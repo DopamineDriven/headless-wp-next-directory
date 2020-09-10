@@ -132,6 +132,8 @@ type StaticProps = {
 	desiredCategory: string;
 };
 
+const { TITLE, MODIFIED, DATE } = Field;
+
 export const getServerSideProps = async ({
 	preview = false,
 	context,
