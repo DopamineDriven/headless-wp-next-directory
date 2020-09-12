@@ -20,14 +20,15 @@ const CardIcons = ({ social }: CardIconProps) => {
 							aria-label='facebook'
 							target='__blank'
 							href={social.facebook}
-							className='bg-customGray text-white hover:text-white transition-colors leading-relaxed duration-500 text-lg inline-block text-center items-center align-middle justify-center w-8 h-8 mx-1 my-2 rounded-full focus:outline-none'
+							className='bg-customGray text-white hover:text-white transition-colors leading-relaxed duration-1000 inline-block text-center items-center align-middle justify-center w-8 h-8 mx-1 my-2 rounded-full focus:outline-none'
 						>
 							{social.facebook === '' ? (
 								<></>
 							) : (
 								<FontAwesomeIcon
 									icon={faFacebook}
-									className='align-middle text-center font-extrabold text-md'
+									className='align-middle block justify-center text-center font-extrabold rounded-full my-1'
+									size='2x'
 								/>
 							)}
 						</a>

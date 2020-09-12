@@ -1,13 +1,10 @@
 import Head from 'next/head';
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants';
-import GoogleFonts from 'next-google-fonts';
 import { Fragment } from 'react';
 
 const MetaData = () => {
 	return (
 		<Fragment>
-			<GoogleFonts href='https://fonts.googleapis.com/css2?family=Barlow%20Condensed&family=Barlow%20Semi%20Condensed&display=swap' />
-
 			<Head>
 				<link
 					rel='apple-icon-57x57'
@@ -104,8 +101,6 @@ const MetaData = () => {
 					rel='canonical'
 					href='https://headless-wp-next-directory.vercel.app/'
 				/>
-				<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
-				<link rel="stylesheet" href="https://use.typekit.net/hzg4mdi.css" />
 				<meta name='msapplication-TileColor' content='#ffffff' />
 				<meta
 					name='msapplication-config'

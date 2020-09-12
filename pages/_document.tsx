@@ -10,7 +10,6 @@ export default class MyDocument extends Document {
 			<Html lang='en-US'>
 				<Head>
 					<meta charSet='utf-8' />
-					<link rel='stylesheet' href='https://use.typekit.net/hzg4mdi.css' />
 					<link
 						href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap'
 						rel='stylesheet'
@@ -19,6 +18,16 @@ export default class MyDocument extends Document {
 						href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap'
 						rel='stylesheet'
 					/>
+					<link
+						href='https://fonts.googleapis.com/css2?family=Barlow%20Condensed&family=Barlow%20Semi%20Condensed&display=swap'
+						rel='stylesheet'
+					/>
+					<link
+						href='https://fonts.googleapis.com/css2?family=Montserrat&display=swap'
+						rel='stylesheet'
+					/>
+					<link rel='stylesheet' href='https://use.typekit.net/hzg4mdi.css' />
+					<link rel='stylesheet' href='https://use.typekit.net/cub6off.css' />
 					{/* Global Site Tag (gtag.js) - Google Analytics */}
 					<script
 						async

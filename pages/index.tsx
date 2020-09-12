@@ -19,7 +19,6 @@ import Cards from '../components/more-cards';
 import TagProps from '../types/tag';
 import CategoryProps from '../types/category';
 import { PostsProps, AllPostsProps } from '../types/posts';
-// import CustomSelect, { Field } from '../components/custom-select';
 // import Link from 'next/link';
 
 interface IndexProps {
