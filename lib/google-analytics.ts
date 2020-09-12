@@ -4,6 +4,8 @@ export const gaInit = () => {
 	ReactGA.initialize(`UA-${process.env.GA_TRACKING_ID}`);
 };
 
+
+// method without ReactGA (likely unneeded but good for reference)
 export const pageview = (url: string) => {
 	ReactGA.ga('config', process.env.GA_TRACKING_ID, {
 		page_path: url
