@@ -134,6 +134,10 @@ type StaticProps = {
 
 const { TITLE, MODIFIED, DATE } = Field;
 
+// 09/12/20 --- Note
+// test ISR (incremental static regeneration)
+// this uses revalidate in getStaticProps and is a hybrid method 
+
 export const getServerSideProps = async ({
 	preview = false,
 	context,
