@@ -1,6 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-
 export default class MyDocument extends Document {
 	static async getInitialProps(ctx: any) {
 		const initialProps = await Document.getInitialProps(ctx);
@@ -8,7 +7,7 @@ export default class MyDocument extends Document {
 	}
 	render() {
 		return (
-			<Html lang='en'>
+			<Html lang='en-US'>
 				<Head>
 					<meta charSet='utf-8' />
 					<link rel='stylesheet' href='https://use.typekit.net/hzg4mdi.css' />
@@ -19,6 +18,23 @@ export default class MyDocument extends Document {
 					<link
 						href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap'
 						rel='stylesheet'
+					/>
+					{/* Global Site Tag (gtag.js) - Google Analytics */}
+					<script
+						async
+						src={`https://www.googletagmanager.com/gtag/js?id=UA-${process.env.GA_TRACKING_ID}`}
+					/>
+					<script
+						dangerouslySetInnerHTML={{
+							__html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-${process.env.GA_TRACKING_ID}', {
+              page_path: window.location.pathname,
+            });
+          `
+						}}
 					/>
 				</Head>
 				<body>
