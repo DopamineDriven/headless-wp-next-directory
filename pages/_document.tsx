@@ -27,6 +27,7 @@ export default class MyDocument extends Document {
 						rel='stylesheet'
 					/>
 					<link rel='stylesheet' href='https://use.typekit.net/hzg4mdi.css' />
+					<link rel='stylesheet' href='https://use.typekit.net/cub6off.css' />
 					{/* Global Site Tag (gtag.js) - Google Analytics */}
 					<script
 						async

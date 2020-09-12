@@ -61,14 +61,14 @@ module.exports = {
 			},
 			fontFamily: {
 				head: ['goudy-bookletter-1911', 'serif'],
-				// header: ['Playfair Display', 'serif'],
-				// body: ['Barlow Condensed', 'sans-serif'],
-				// display: ['Barlow Condensed', 'sans-serif'],
-				// polished: ['brandon-grotesque', 'sans-serif'],
+				header: ['Playfair Display', 'serif'],
+				body: ['Barlow Condensed', 'sans-serif'],
+				display: ['Barlow Condensed', 'sans-serif'],
+				polished: ['brandon-grotesque', 'sans-serif'],
 				somaRoman: ['neue-haas-grotesk-text', 'sans-serif'],
 				somaDisplay: ['neue-haas-grotesk-display', 'sans-serif'],
-				// somaDisplayLight: ['neue-haas-grotesk-display', 'sans-serif']
-				// subpolished: ['Montserrat', 'sans-serif']
+				somaDisplayLight: ['neue-haas-grotesk-display', 'sans-serif'],
+				subpolished: ['Montserrat', 'sans-serif']
 			},
 			colors: {
 				'accent-1': '#FAFAFA',
@@ -280,10 +280,14 @@ module.exports = {
 				250: '62.5rem',
 				275: '69.25rem',
 				300: '75rem',
-				308: '77rem'
+				308: '77rem',
+				309: '77.25rem'
 			},
 			lineHeight: {
+				superpressed: 0.3,
+				pressed: 0.6,
 				tight: 1.2,
+				chillin: 1.8,
 				portfolio: '5vw',
 				headerAbout: '3.38298vw',
 				headerP: '4.38298vw',
@@ -292,11 +296,13 @@ module.exports = {
 				leadingAboutMobile: '3.58298vw'
 			},
 			fontSize: {
+				onehalf: '0.5rem',
 				smxmd: '0.9375rem',
 				'1xl': '1.0rem',
+				threehalves: '1.25rem',
 				'3xl': '2.0rem',
 				'5xl': '2.5rem',
-				'6xl': '3rem',
+				'6xl': '2.75rem',
 				'7xl': '4.5rem',
 				'8xl': '6.25rem',
 				'10xl': '10rem',
