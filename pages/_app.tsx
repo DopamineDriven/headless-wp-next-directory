@@ -2,7 +2,8 @@ import '../styles/index.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { AppProps, NextWebVitalsMetric } from 'next/app';
-import { ReactElement } from 'react';
+import { ReactElement, useEffect } from 'react';
+import * as gtag from 'lib/google-analytics';
 
 config.autoAddCss = false;
 
