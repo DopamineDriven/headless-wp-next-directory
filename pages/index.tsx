@@ -3,7 +3,7 @@ import { useState, useEffect, ChangeEvent, SyntheticEvent } from 'react';
 import Container from '../components/container';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
 import {
 	getAllPostsForHomeAlphabetical,
 	getTagAndPosts,
@@ -20,6 +20,8 @@ import TagProps from '../types/tag';
 import CategoryProps from '../types/category';
 import { PostsProps, AllPostsProps } from '../types/posts';
 // import Link from 'next/link';
+import FieldEnum from 'types/enums/field-enum';
+import OrderEnum from 'types/enums/order-enum';
 
 interface IndexProps {
 	allPosts: AllPostsProps;
@@ -112,38 +114,46 @@ export default function Index({
 	);
 }
 
-enum Field {
+export enum Field {
 	TITLE = 'TITLE',
 	MODIFIED = 'MODIFIED',
 	DATE = 'DATE'
 }
 
-enum Order {
+export enum Order {
 	ASC = 'ASC',
 	DESC = 'DESC'
 }
 
-type StaticProps = {
+interface StaticProps extends GetStaticProps {
 	preview: boolean;
 	context: any;
-	field: any;
-	order: any;
+	field: Field;
+	order: Order;
 	desiredCategory: string;
-};
+}
 
 const { TITLE, MODIFIED, DATE } = Field;
-
+const { ASC, DESC } = Order;
 // 09/12/20 --- Note
 // test ISR (incremental static regeneration)
-// this uses revalidate in getStaticProps and is a hybrid method 
+// this uses revalidate in getStaticProps and is a hybrid method
 
-export const getServerSideProps = async ({
+// ISR usage -> replaced getServerSideProps with getStaticProps success
+
+/*
+IMPORTANT
+@jlovejo2 check out this link...seems very promising for systematically deriving GQL types from lib/api
+https://github.com/vercel/next.js/pull/11842/files
+IMPORTANT
+*/
+export const getStaticProps = async ({
 	preview = false,
 	context,
-	field = 'TITLE',
-	order = 'ASC',
+	field = MODIFIED || TITLE || DATE,
+	order = ASC || DESC,
 	desiredCategory
-}: StaticProps & GetServerSideProps) => {
+}: StaticProps) => {
 	console.log(context);
 	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
 	const tagsAndPosts = await getTagAndPosts();
@@ -155,6 +165,8 @@ export const getServerSideProps = async ({
 			allPosts,
 			preview,
 			tagsAndPosts,
+			field,
+			order,
 			categories,
 			revalidate: 1
 		}
