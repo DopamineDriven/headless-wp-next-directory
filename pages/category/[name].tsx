@@ -70,7 +70,8 @@ export async function getStaticProps({ params, preview = false }: Params) {
 	return {
 		props: {
 			preview,
-			posts: data
+			posts: data,
+			revalidate: 1
 		}
 	};
 }

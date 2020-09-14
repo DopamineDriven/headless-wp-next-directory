@@ -1,7 +1,17 @@
 # headless-wp-next-directory
 
-## node_modules/wp-graphql/lib/lib/abstract-types
+## InferGetStaticPropsType, GetStaticPropsResult, GetStaticPropsContext...
+- https://github.com/vercel/next.js/pull/11842/files
 
+## getInitialProps
+- https://linguinecode.com/post/next-js-typescript-getinitialprops
+
+## Incremental Static Regeneration (ISR)
+- https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
+- https://github.com/vercel/next.js/discussions/11552
+- https://youtu.be/IJkTpR7sSwI
+
+## node_modules/wp-graphql/lib/lib/abstract-types
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
 ## 8/26/20
