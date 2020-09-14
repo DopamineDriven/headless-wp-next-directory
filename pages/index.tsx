@@ -1,5 +1,11 @@
 import Head from 'next/head';
-import { useState, useEffect, ChangeEvent, SyntheticEvent } from 'react';
+import {
+	useState,
+	useEffect,
+	ChangeEvent,
+	SyntheticEvent,
+	Fragment
+} from 'react';
 import Container from '../components/container';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
@@ -78,7 +84,7 @@ export default function Index({
 	}, [filterQuery, search]);
 
 	return (
-		<>
+		<Fragment>
 			<Header props={props} />
 			<Layout preview={preview}>
 				<Head>
@@ -110,7 +116,7 @@ export default function Index({
 					</div>
 				</Container>
 			</Layout>
-		</>
+		</Fragment>
 	);
 }
 
@@ -132,6 +138,17 @@ interface StaticProps extends GetStaticProps {
 	order: Order;
 	desiredCategory: string;
 }
+
+/*
+type PostTypesListed =
+	| 'title'
+	| 'date'
+	| 'slug'
+	| 'coverImage'
+	| 'excerpt'
+	| 'articleImage'
+	| 'postTitle';
+*/
 
 const { TITLE, MODIFIED, DATE } = Field;
 const { ASC, DESC } = Order;
