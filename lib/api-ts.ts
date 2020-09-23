@@ -266,6 +266,33 @@ export async function getPostAndMorePosts({
 	return data;
 }
 
+export async function getTagAndPosts() {
+	const variablesGetTagAndPosts = {};
+	const data = await fetchAPI(
+		`query GET_TAGS {
+    tags {
+      edges {
+        node {
+          id
+          databaseId
+          name
+          posts {
+            nodes {
+              id
+              title
+              date
+            }
+          }
+        }
+      }
+    }
+  }`,
+		variablesGetTagAndPosts
+	);
+
+	return data.tags.edges;
+}
+
 // export async function getAllPostsForHome({ preview }: allPostsForHomeArgs) {
 // 	const data = await fetchAPI(
 // 		`
