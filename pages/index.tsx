@@ -10,7 +10,7 @@ import {
 	getCategories
 	// getAllPostsForHomeSorted,
 	// getAllPostsTitleDesc
-} from '../lib/api';
+} from '../lib/api-ts';
 import { CMS_NAME, CLIENT_NAME } from '../lib/constants';
 import Header from '../components/header';
 // import HeroPost from '../components/hero-post';
@@ -140,7 +140,11 @@ export const getServerSideProps = async ({
 	desiredCategory
 }: StaticProps & GetServerSideProps) => {
 	console.log(context);
-	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
+	const allPosts = await getAllPostsForHomeAlphabetical({
+		preview,
+		field,
+		order
+	});
 	const tagsAndPosts = await getTagAndPosts();
 	const categories = await getCategories();
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
