@@ -8,33 +8,37 @@ import {
 // import { APIFetchOptions } from '@wordpress/api-fetch';
 import WPGraphQL from 'wp-graphql';
 
-// const API_URL = process.env.WORDPRESS_API_URL;
+async function fetchAPI(query: string, variables: any): Promise<any> {
+	const headers = { 'Content-Type': 'application/json', Authorization: '' };
 
-// async function fetchAPI(query, { variables } = {}): Promise<APIFetchOptions> {
-// 	const headers = { 'Content-Type': 'application/json' };
+	let API_URL: string = '';
 
-// 	if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
-// 		headers[
-// 			'Authorization'
-// 		] = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
-// 	}
+	if (process.env.WORDPRESS_API_URL) {
+		API_URL = process.env.WORDPRESS_API_URL;
+	} else {
+		throw new Error('No wordpress api url specified...');
+	}
 
-// 	const res = await fetch(API_URL, {
-// 		method: 'POST',
-// 		headers,
-// 		body: JSON.stringify({
-// 			query,
-// 			variables
-// 		})
-// 	});
+	if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
+		headers.Authorization = `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
+	}
 
-// 	const json = await res.json();
-// 	if (json.errors) {
-// 		console.error(json.errors);
-// 		throw new Error('Failed to fetch API');
-// 	}
-// 	return json.data;
-// }
+	const res = await fetch(API_URL, {
+		method: 'POST',
+		headers,
+		body: JSON.stringify({
+			query,
+			variables
+		})
+	});
+
+	const json = await res.json();
+	if (json.errors) {
+		console.error(json.errors);
+		throw new Error('Failed to fetch API');
+	}
+	return json.data;
+}
 
 // export async function getPreviewPost(id, idType = 'DATABASE_ID') {
 // 	const data = await fetchAPI(
