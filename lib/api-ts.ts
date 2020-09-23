@@ -9,7 +9,7 @@ import {
 import WPGraphQL from 'wp-graphql';
 import {
 	allPostsForHomeAlphabeticalArgs,
-	getAllPostsForAbout,
+	getAllPostsForAboutArgs,
 	getAllPostsForCategoryArgs,
 	getPostAndMorePostsArgs,
 	previewPostArgs
@@ -421,7 +421,9 @@ export async function getAllTypes() {
 	return types.__schema?.types;
 }
 
-export async function getAllPostsForAbout({ preview }: getAllPostsForAbout) {
+export async function getAllPostsForAbout({
+	preview
+}: getAllPostsForAboutArgs) {
 	const data = await fetchAPI(
 		`
     query AllPosts {
