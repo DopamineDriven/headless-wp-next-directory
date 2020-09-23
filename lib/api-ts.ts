@@ -7,6 +7,7 @@ import {
 // import { APIFetchOptions } from "@types/wordpress__api-fetch"
 // import { APIFetchOptions } from '@wordpress/api-fetch';
 import WPGraphQL from 'wp-graphql';
+import { allPostsForHomeArgs, previewPostArgs } from './types';
 
 async function fetchAPI(query: string, variables: any): Promise<any> {
 	const headers = { 'Content-Type': 'application/json', Authorization: '' };
@@ -40,79 +41,86 @@ async function fetchAPI(query: string, variables: any): Promise<any> {
 	return json.data;
 }
 
-// export async function getPreviewPost(id, idType = 'DATABASE_ID') {
-// 	const data = await fetchAPI(
-// 		`
-//     query PreviewPost($id: ID!, $idType: PostIdType!) {
-//       post(id: $id, idType: $idType) {
-//         databaseId
-//         slug
-//         status
-//       }
-//     }`,
-// 		{
-// 			variables: { id, idType }
-// 		}
-// 	);
-// 	return data.post;
-// }
+export async function getPreviewPost({
+	id,
+	idType = 'DATABASE_ID'
+}: previewPostArgs) {
+	const data = await fetchAPI(
+		`
+    query PreviewPost($id: ID!, $idType: PostIdType!) {
+      post(id: $id, idType: $idType) {
+        databaseId
+        slug
+        status
+      }
+    }`,
+		{
+			variables: { id, idType }
+		}
+	);
+	return data.post;
+}
 
-// export async function getAllPostsWithSlug() {
-// 	const data = await fetchAPI(`
-//     {
-//       posts(first: 10000) {
-//         edges {
-//           node {
-//             slug
-//           }
-//         }
-//       }
-//     }
-//   `);
-// 	return data?.posts;
-// }
+export async function getAllPostsWithSlug() {
+	const variablesAllPostsWithSlug = {};
+	const data = await fetchAPI(
+		`
+    {
+      posts(first: 10000) {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `,
+		variablesAllPostsWithSlug
+	);
+	return data?.posts;
+}
 
-// export async function getAllPostsForHome(preview) {
-// 	const data = await fetchAPI(
-// 		`
-//     query AllPosts {
-//       posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
-//         edges {
-//           node {
-//             title
-//             excerpt
-//             slug
-//             date
-//             featuredImage {
-//               node {
-//                 sourceUrl
-//               }
-//             }
-//             author {
-//               node {
-//                 name
-//                 firstName
-//                 lastName
-//                 avatar {
-//                   url
-//                 }
-//               }
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `,
-// 		{
-// 			variables: {
-// 				onlyEnabled: !preview,
-// 				preview
-// 			}
-// 		}
-// 	);
+export async function getAllPostsForHome({ preview }: allPostsForHomeArgs) {
+	const data = await fetchAPI(
+		`
+    query AllPosts {
+      posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+        edges {
+          node {
+            title
+            excerpt
+            slug
+            date
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            author {
+              node {
+                name
+                firstName
+                lastName
+                avatar {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+		{
+			variables: {
+				onlyEnabled: !preview,
+				preview
+			}
+		}
+	);
 
-// 	return data?.posts;
-// }
+	return data?.posts;
+}
 
 // export async function getPostAndMorePosts(slug, preview, previewData) {
 // 	const postPreview = preview && previewData?.post;
