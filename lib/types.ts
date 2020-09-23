@@ -19,6 +19,6 @@ export interface getAllPostsForCategoryArgs {
 	desiredCategory: string;
 }
 
-export interface getAllPostsForAbout {
+export interface getAllPostsForAboutArgs {
 	preview: boolean;
 }
