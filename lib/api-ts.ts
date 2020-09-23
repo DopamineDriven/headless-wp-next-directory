@@ -9,6 +9,7 @@ import {
 import WPGraphQL from 'wp-graphql';
 import {
 	allPostsForHomeAlphabeticalArgs,
+	getAllPostsForCategoryArgs,
 	getPostAndMorePostsArgs,
 	previewPostArgs
 } from './types';
@@ -313,6 +314,91 @@ export async function getCategories() {
 	console.log(data);
 	console.log(data.categories);
 	return data.categories?.edges;
+}
+
+export async function getAllPostsForCategory({
+	desiredCategory
+}: getAllPostsForCategoryArgs) {
+	const variablesGetAllPostsForCategory = {};
+	const data = await fetchAPI(
+		`query GET_CATEGORIES {
+      categories {
+        edges {
+          node {
+            id
+            databaseId
+            name
+            posts {
+              nodes {
+                id
+                title
+                date
+                excerpt
+                slug
+                modified
+                social {
+                  facebook
+                  instagram
+                  twitter
+                  website
+                  }
+                featuredImage {
+                  node {
+                      sourceUrl
+                    }
+                  }
+                author {
+                  node {
+                    name
+                    firstName
+                    lastName
+                    avatar {
+                      url
+                      }
+                    }
+                  }
+              }
+            }
+          }
+        }
+      }
+    }`,
+		variablesGetAllPostsForCategory
+	);
+
+	//This function is filtering through the all the populated categories that were returned
+	// and returning only the objects that match the given category name
+	const categoryArrayofObjs = await data.categories.edges.filter(
+		(category: any, index: number) => {
+			return category.node.name === desiredCategory;
+		}
+	);
+
+	//This next block of code is restructuring the data returned from wordpress so that it can be used in the same components on the front
+	//essentially the posts in this call for category objects are
+	// nodes  [
+	//   {
+	//     postdata
+	// }
+	// ]
+	// and to match all calls we need
+	// [
+	//   {
+	//     node:
+	//     {
+	//       post data
+	//     }
+	//   }
+	// ]
+
+	const dataArray = [];
+
+	for (let post of categoryArrayofObjs[0].node.posts.nodes) {
+		const restructureDataObj = { node: post };
+		dataArray.push(restructureDataObj);
+	}
+
+	return dataArray;
 }
 
 // export async function getAllPostsForHome({ preview }: allPostsForHomeArgs) {
