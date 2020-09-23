@@ -26,10 +26,10 @@ export default function Avatar({ author, modified }: AvatarProps) {
 				</div>
 
 				<div className='flex flex-col w-2/3 my-0 text-sm pt-1 pb-2 items-left align-top text-left float-left -mx-5'>
-					<div className='flex flex-row w-32 align-top font-semibold font-subpolished'>
+					<div className='flex flex-row w-40 min-w-40 align-top font-semibold font-subpolished'>
 						<a className='flex w-full'>{nombre}</a>
 					</div>
-					<div className='flex flex-row text-xs text-gray-500 text-left align-top float-left font-subpolished'>
+					<div className='flex flex-row text-xs text-gray-500 text-left align-top float-left font-subpolished w-40 min-w-40'>
 						<Modified modifiedString={modified} />
 					</div>
 				</div>

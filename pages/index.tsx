@@ -1,9 +1,15 @@
 import Head from 'next/head';
-import { useState, useEffect, ChangeEvent, SyntheticEvent } from 'react';
+import {
+	useState,
+	useEffect,
+	ChangeEvent,
+	SyntheticEvent,
+	Fragment
+} from 'react';
 import Container from '../components/container';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
 import {
 	getAllPostsForHomeAlphabetical,
 	getTagAndPosts,
@@ -19,8 +25,9 @@ import Cards from '../components/more-cards';
 import TagProps from '../types/tag';
 import CategoryProps from '../types/category';
 import { PostsProps, AllPostsProps } from '../types/posts';
-// import CustomSelect, { Field } from '../components/custom-select';
 // import Link from 'next/link';
+import FieldEnum from 'types/enums/field-enum';
+import OrderEnum from 'types/enums/order-enum';
 
 interface IndexProps {
 	allPosts: AllPostsProps;
@@ -77,7 +84,7 @@ export default function Index({
 	}, [filterQuery, search]);
 
 	return (
-		<>
+		<Fragment>
 			<Header props={props} />
 			<Layout preview={preview}>
 				<Head>
@@ -109,37 +116,64 @@ export default function Index({
 					</div>
 				</Container>
 			</Layout>
-		</>
+		</Fragment>
 	);
 }
 
-enum Field {
+export enum Field {
 	TITLE = 'TITLE',
 	MODIFIED = 'MODIFIED',
 	DATE = 'DATE'
 }
 
-enum Order {
+export enum Order {
 	ASC = 'ASC',
 	DESC = 'DESC'
 }
 
-type StaticProps = {
+interface StaticProps extends GetServerSideProps {
 	preview: boolean;
 	context: any;
-	field: any;
-	order: any;
+	field: Field;
+	order: Order;
 	desiredCategory: string;
-};
+}
+
+/*
+type PostTypesListed =
+	| 'title'
+	| 'date'
+	| 'slug'
+	| 'coverImage'
+	| 'excerpt'
+	| 'articleImage'
+	| 'postTitle';
+*/
+
+const { TITLE, MODIFIED, DATE } = Field;
+const { ASC, DESC } = Order;
+
+// 09/12/20 --- Note
+// test ISR (incremental static regeneration)
+// this uses revalidate in getStaticProps and is a hybrid method
+
+// ISR usage -> replaced getServerSideProps with getStaticProps success
+
+/*
+IMPORTANT
+@jlovejo2 check out this link...seems very promising for systematically deriving GQL types from lib/api
+https://github.com/vercel/next.js/pull/11842/files
+IMPORTANT
+*/
 
 export const getServerSideProps = async ({
 	preview = false,
-	context,
-	field = 'TITLE',
-	order = 'ASC',
+	// context,
+	field = MODIFIED || TITLE || DATE,
+	order = ASC || DESC,
 	desiredCategory
 }: StaticProps & GetServerSideProps) => {
-	console.log(context);
+	// console.log(context);
 	const allPosts = await getAllPostsForHomeAlphabetical({
 		preview,
 		field,
@@ -154,6 +188,8 @@ export const getServerSideProps = async ({
 			allPosts,
 			preview,
 			tagsAndPosts,
+			field,
+			order,
 			categories,
 			revalidate: 1
 		}

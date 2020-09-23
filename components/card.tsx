@@ -55,7 +55,7 @@ const Card = ({
 						</div>
 					</>
 					<hr className='border-customGray w-full mt-2' />
-					<div className='text-right items-end align-middle float-right pr-2 py-1 font-subpolished'>
+					<div className='text-right block float-right pr-2 font-subpolished'>
 						<CardIcons social={social} />
 					</div>
 				</div>
