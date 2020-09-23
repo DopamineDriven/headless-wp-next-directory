@@ -131,7 +131,7 @@ export enum Order {
 	DESC = 'DESC'
 }
 
-interface StaticProps extends GetStaticProps {
+interface StaticProps extends GetServerSideProps {
 	preview: boolean;
 	context: any;
 	field: Field;
@@ -164,14 +164,14 @@ IMPORTANT
 https://github.com/vercel/next.js/pull/11842/files
 IMPORTANT
 */
-export const getStaticProps = async ({
+
+export const getServerSideProps = async ({
 	preview = false,
-	context,
+	// context,
 	field = MODIFIED || TITLE || DATE,
-	order = ASC || DESC,
-	desiredCategory
+	order = ASC || DESC
 }: StaticProps) => {
-	console.log(context);
+	// console.log(context);
 	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
 	const tagsAndPosts = await getTagAndPosts();
 	const categories = await getCategories();
