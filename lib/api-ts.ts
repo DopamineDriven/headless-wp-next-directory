@@ -9,6 +9,7 @@ import {
 import WPGraphQL from 'wp-graphql';
 import {
 	allPostsForHomeAlphabeticalArgs,
+	getAllPostsForAbout,
 	getAllPostsForCategoryArgs,
 	getPostAndMorePostsArgs,
 	previewPostArgs
@@ -399,6 +400,74 @@ export async function getAllPostsForCategory({
 	}
 
 	return dataArray;
+}
+
+export async function getAllTypes() {
+	const variablesGetAllTypes = {};
+	const types = await fetchAPI(
+		`
+    query GET_TYPES {
+      __schema {
+        types {
+          name
+          description
+        }
+      }
+    }
+  `,
+		variablesGetAllTypes
+	);
+	console.log(types);
+	return types.__schema?.types;
+}
+
+export async function getAllPostsForAbout({ preview }: getAllPostsForAbout) {
+	const data = await fetchAPI(
+		`
+    query AllPosts {
+      posts(first: 35, where: { orderby: { field: TITLE, order: ASC } }) {
+        edges {
+          node {
+            title
+            excerpt
+            slug
+            date
+            modified
+            social {
+              facebook
+              instagram
+              twitter
+              website
+            }
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            author {
+              node {
+                name
+                firstName
+                lastName
+                avatar {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+		{
+			variables: {
+				onlyEnabled: !preview,
+				preview
+			}
+		}
+	);
+	console.log(typeof data, 'type of data.posts'); // data.posts: object, data: object, posts: undefined
+	return data?.posts;
 }
 
 // export async function getAllPostsForHome({ preview }: allPostsForHomeArgs) {

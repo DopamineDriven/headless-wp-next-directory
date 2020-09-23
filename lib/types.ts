@@ -18,3 +18,7 @@ export interface getPostAndMorePostsArgs {
 export interface getAllPostsForCategoryArgs {
 	desiredCategory: string;
 }
+
+export interface getAllPostsForAbout {
+	preview: boolean;
+}
