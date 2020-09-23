@@ -3,6 +3,14 @@ export interface previewPostArgs {
 	idType: string;
 }
 
-export interface allPostsForHomeArgs {
+export interface allPostsForHomeAlphabeticalArgs {
 	preview: boolean;
+	field?: string;
+	order?: string;
+}
+
+export interface getPostAndMorePostsArgs {
+	slug: string | number;
+	preview: boolean;
+	previewData: any;
 }

@@ -7,7 +7,11 @@ import {
 // import { APIFetchOptions } from "@types/wordpress__api-fetch"
 // import { APIFetchOptions } from '@wordpress/api-fetch';
 import WPGraphQL from 'wp-graphql';
-import { allPostsForHomeArgs, previewPostArgs } from './types';
+import {
+	allPostsForHomeAlphabeticalArgs,
+	getPostAndMorePostsArgs,
+	previewPostArgs
+} from './types';
 
 async function fetchAPI(query: string, variables: any): Promise<any> {
 	const headers = { 'Content-Type': 'application/json', Authorization: '' };
@@ -80,17 +84,28 @@ export async function getAllPostsWithSlug() {
 	return data?.posts;
 }
 
-export async function getAllPostsForHome({ preview }: allPostsForHomeArgs) {
+export async function getAllPostsForHomeAlphabetical({
+	preview,
+	field,
+	order
+}: allPostsForHomeAlphabeticalArgs) {
 	const data = await fetchAPI(
 		`
     query AllPosts {
-      posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+      posts(first: 35, where: { orderby: { field: ${field}, order: ${order} } }) {
         edges {
           node {
             title
             excerpt
             slug
             date
+            modified
+            social {
+              facebook
+              instagram
+              twitter
+              website
+            }
             featuredImage {
               node {
                 sourceUrl
@@ -114,13 +129,184 @@ export async function getAllPostsForHome({ preview }: allPostsForHomeArgs) {
 		{
 			variables: {
 				onlyEnabled: !preview,
-				preview
+				preview,
+				field,
+				order
+			}
+		}
+	);
+	console.log(typeof data, 'type of data.posts'); // data.posts: object, data: object, posts: undefined
+	return data?.posts;
+}
+
+export async function getPostAndMorePosts({
+	slug,
+	preview,
+	previewData
+}: getPostAndMorePostsArgs) {
+	const postPreview = preview && previewData?.post;
+	// The slug may be the id of an unpublished post
+	const isId = Number.isInteger(Number(slug));
+	console.log(typeof isId, 'type of id');
+	const isSamePost = isId
+		? Number(slug) === postPreview.id
+		: slug === postPreview.slug;
+	console.log(typeof isSamePost, 'type of isSamePost');
+	const isDraft = isSamePost && postPreview?.status === 'draft';
+	const isRevision = isSamePost && postPreview?.status === 'publish';
+	console.log(typeof isDraft, 'draft type');
+	console.log(typeof isRevision, 'revision type');
+	const data = await fetchAPI(
+		`
+    fragment AuthorFields on User {
+      name
+      firstName
+      lastName
+      avatar {
+        url
+      }
+    }
+    fragment PostFields on Post {
+      title
+      excerpt
+      slug
+      date
+      modified
+      social {
+        facebook
+        instagram
+        twitter
+        website
+      }
+      featuredImage {
+        node {
+          sourceUrl
+        }
+      }
+      author {
+        node {
+          ...AuthorFields
+        }
+      }
+      categories {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+      tags {
+        edges {
+          node {
+            name
+          }
+        }
+      }
+    }
+    query PostBySlug($id: ID!, $idType: PostIdType!) {
+      post(id: $id, idType: $idType) {
+        ...PostFields
+        content
+        ${
+					// Only some of the fields of a revision are considered (there are some inconsistencies)
+					isRevision
+						? `
+        revisions(first: 1, where: { orderby: { field: MODIFIED, order: DESC } }) {
+          edges {
+            node {
+              title
+              excerpt
+              content
+              author {
+                node {
+                  ...AuthorFields
+                }
+              }
+            }
+          }
+        }
+        `
+						: ''
+				}
+      }
+      posts(first: 35, where: { orderby: { field: TITLE, order: ASC } }) {
+        edges {
+          node {
+            ...PostFields
+          }
+        }
+      }
+    }
+  `,
+		{
+			variables: {
+				id: isDraft ? postPreview.id : slug,
+				idType: isDraft ? 'DATABASE_ID' : 'SLUG'
 			}
 		}
 	);
 
-	return data?.posts;
+	// Draft posts may not have an slug
+	if (isDraft) data.post.slug = postPreview.id;
+	// Apply a revision (changes in a published post)
+	if (isRevision && data.post.revisions) {
+		const revision = data.post.revisions.edges[0]?.node;
+
+		if (revision) Object.assign(data.post, revision);
+		delete data.post.revisions;
+	}
+
+	// Filter out the main post
+	data.posts.edges = data.posts.edges.filter(
+		({ node }: any) => node.slug !== slug
+	);
+	// If there are still 3 posts, remove the last one
+	if (data.posts.edges.length > 10) data.posts.edges.pop();
+
+	return data;
 }
+
+// export async function getAllPostsForHome({ preview }: allPostsForHomeArgs) {
+// 	const data = await fetchAPI(
+// 		`
+//     query AllPosts {
+//       posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+//         edges {
+//           node {
+//             title
+//             excerpt
+//             slug
+//             date
+//             featuredImage {
+//               node {
+//                 sourceUrl
+//               }
+//             }
+//             author {
+//               node {
+//                 name
+//                 firstName
+//                 lastName
+//                 avatar {
+//                   url
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   `,
+// 		{
+// 			variables: {
+// 				onlyEnabled: !preview,
+// 				preview
+// 			}
+// 		}
+// 	);
+
+// 	return data?.posts;
+// }
 
 // export async function getPostAndMorePosts(slug, preview, previewData) {
 // 	const postPreview = preview && previewData?.post;
