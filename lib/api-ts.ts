@@ -293,6 +293,28 @@ export async function getTagAndPosts() {
 	return data.tags.edges;
 }
 
+export async function getCategories() {
+	const variablesGetCategories = {};
+	const data = await fetchAPI(
+		`query GET_CATEGORIES {
+    categories {
+      edges {
+        node {
+          id
+          databaseId
+          name
+        }
+      }
+    }
+  }`,
+		variablesGetCategories
+	);
+
+	console.log(data);
+	console.log(data.categories);
+	return data.categories?.edges;
+}
+
 // export async function getAllPostsForHome({ preview }: allPostsForHomeArgs) {
 // 	const data = await fetchAPI(
 // 		`
