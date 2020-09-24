@@ -80,6 +80,19 @@ export default function Index({
 					}
 				});
 				setFilteredCompanies(filterCompanies);
+			} else if (filterQuery === 'description') {
+				const filterCompanies = edges.filter((company: PostsProps) => {
+					//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
+					//this was done so that toLowerCase() and includes() functions coudl work
+					const companyDescription: any = company.node.excerpt;
+					if (companyDescription.toLowerCase().includes(search)) {
+						console.log('company description: ', companyDescription);
+						return company;
+					} else {
+						return null;
+					}
+				});
+				setFilteredCompanies(filterCompanies);
 			} else {
 				console.log('not title');
 				setFilteredCompanies(allCompanies);
@@ -112,7 +125,7 @@ export default function Index({
 						}}
 						tags={tagsAndPosts}
 						allPosts={morePosts}
-						dropdownOptions={['title', '2222222']}
+						dropdownOptions={['title', 'description']}
 						categories={categories}
 					/>
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
