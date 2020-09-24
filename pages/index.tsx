@@ -9,7 +9,11 @@ import {
 import Container from '../components/container';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
-import { GetServerSideProps, GetStaticProps } from 'next';
+import {
+	GetServerSideProps,
+	GetStaticProps,
+	InferGetServerSidePropsType
+} from 'next';
 import {
 	getAllPostsForHomeAlphabetical,
 	getTagAndPosts,
@@ -47,7 +51,7 @@ export default function Index({
 	const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
 
-	const [filterQuery, setFilterQuery] = useState('');
+	const [filterQuery, setFilterQuery] = useState('title');
 	const [allCompanies, setAllCompanies] = useState<PostsProps[]>(morePosts);
 	const [filteredCompanies, setFilteredCompanies] = useState<PostsProps[]>(
 		morePosts
@@ -108,7 +112,7 @@ export default function Index({
 						}}
 						tags={tagsAndPosts}
 						allPosts={morePosts}
-						dropdownOptions={['choose an option', 'title', '2222222']}
+						dropdownOptions={['title', '2222222']}
 						categories={categories}
 					/>
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
