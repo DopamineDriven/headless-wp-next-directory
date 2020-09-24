@@ -9,14 +9,18 @@ import {
 import Container from '../components/container';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
-import { GetServerSideProps, GetStaticProps } from 'next';
+import {
+	GetServerSideProps,
+	GetStaticProps,
+	InferGetServerSidePropsType
+} from 'next';
 import {
 	getAllPostsForHomeAlphabetical,
 	getTagAndPosts,
 	getCategories
 	// getAllPostsForHomeSorted,
 	// getAllPostsTitleDesc
-} from '../lib/api';
+} from '../lib/api-ts';
 import { CMS_NAME, CLIENT_NAME } from '../lib/constants';
 import Header from '../components/header';
 // import HeroPost from '../components/hero-post';
@@ -47,7 +51,7 @@ export default function Index({
 	const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
 
-	const [filterQuery, setFilterQuery] = useState('');
+	const [filterQuery, setFilterQuery] = useState('title');
 	const [allCompanies, setAllCompanies] = useState<PostsProps[]>(morePosts);
 	const [filteredCompanies, setFilteredCompanies] = useState<PostsProps[]>(
 		morePosts
@@ -70,6 +74,19 @@ export default function Index({
 					const companyTitle: any = company.node.title;
 					if (companyTitle.toLowerCase().includes(search)) {
 						console.log('company title: ', companyTitle);
+						return company;
+					} else {
+						return null;
+					}
+				});
+				setFilteredCompanies(filterCompanies);
+			} else if (filterQuery === 'description') {
+				const filterCompanies = edges.filter((company: PostsProps) => {
+					//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
+					//this was done so that toLowerCase() and includes() functions coudl work
+					const companyDescription: any = company.node.excerpt;
+					if (companyDescription.toLowerCase().includes(search)) {
+						console.log('company description: ', companyDescription);
 						return company;
 					} else {
 						return null;
@@ -108,7 +125,7 @@ export default function Index({
 						}}
 						tags={tagsAndPosts}
 						allPosts={morePosts}
-						dropdownOptions={['choose an option', 'title', '2222222']}
+						dropdownOptions={['title', 'description']}
 						categories={categories}
 					/>
 					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
@@ -152,6 +169,7 @@ type PostTypesListed =
 
 const { TITLE, MODIFIED, DATE } = Field;
 const { ASC, DESC } = Order;
+
 // 09/12/20 --- Note
 // test ISR (incremental static regeneration)
 // this uses revalidate in getStaticProps and is a hybrid method
@@ -169,10 +187,15 @@ export const getServerSideProps = async ({
 	preview = false,
 	// context,
 	field = MODIFIED || TITLE || DATE,
-	order = ASC || DESC
-}: StaticProps) => {
+	order = ASC || DESC,
+	desiredCategory
+}: StaticProps & GetServerSideProps) => {
 	// console.log(context);
-	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
+	const allPosts = await getAllPostsForHomeAlphabetical({
+		preview,
+		field,
+		order
+	});
 	const tagsAndPosts = await getTagAndPosts();
 	const categories = await getCategories();
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
