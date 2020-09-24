@@ -70,7 +70,7 @@ const SearchBox = ({
 						<label className='text-black text-2xl align-middle'></label>
 						<input
 							type='text'
-							className='w-full rounded'
+							className='w-full rounded p-1'
 							placeholder='Search...'
 							name='search-form'
 							onChange={filterFunc}
@@ -79,7 +79,7 @@ const SearchBox = ({
 						<button
 							type='submit'
 							name='search-button'
-							className='hover:bg-white align-middle shadow-xl rounded-full bg-black hover:text-black border border-black text-white font-bold py-1 px-2 md:px-2 sm:px-2 lg:px-2 duration-500 transition-colors lg:mb-0'
+							className='hover:bg-white align-middle shadow-xl rounded-full bg-black hover:text-black border border-black text-white font-bold py-1 px-2 ml-2 md:px-2 sm:px-2 lg:px-2 duration-500 transition-colors lg:mb-0'
 						>
 							<a aria-label='search' className='text-md'>
 								{<FontAwesomeIcon icon={faSearch} />}
