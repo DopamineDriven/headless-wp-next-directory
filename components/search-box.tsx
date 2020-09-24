@@ -6,6 +6,7 @@ import CategoryProps from '../types/category';
 import TagProps from '../types/tag';
 import { ChangeEvent, SyntheticEvent } from 'react';
 import { PostsProps } from '../types/posts';
+import { InferGetServerSidePropsType } from 'next';
 
 interface Props {
 	selectChange: (evt: SyntheticEvent) => void;
@@ -53,7 +54,7 @@ const SearchBox = ({
 						<select
 							onChange={selectChange}
 							value={selectSearch}
-							className='appearance-none w-full h-auto bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight mx--5 focus:outline-none focus:shadow-outline'
+							className=' h-auto bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight mx--5 focus:outline-none focus:shadow-outline'
 						>
 							{dropdownOptions.map((dropDownOption, index) => {
 								return (
@@ -63,9 +64,6 @@ const SearchBox = ({
 								);
 							})}
 						</select>
-						<div className='pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700'>
-							{<FontAwesomeIcon icon={faSortDown} />}
-						</div>
 					</div>
 					<div className='flex w-full'>
 						<span className='w-auto flex justify-end items-center text-gray-500 p-2' />
