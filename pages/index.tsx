@@ -29,6 +29,7 @@ import Cards from '../components/more-cards';
 import TagProps from '../types/tag';
 import CategoryProps from '../types/category';
 import { PostsProps, AllPostsProps } from '../types/posts';
+import { MediaContextProvider } from 'lib/window-width';
 // import Link from 'next/link';
 import FieldEnum from 'types/enums/field-enum';
 import OrderEnum from 'types/enums/order-enum';
@@ -102,37 +103,39 @@ export default function Index({
 
 	return (
 		<Fragment>
-			<Header props={props} />
-			<Layout preview={preview}>
-				<Head>
-					<title>
-						{CLIENT_NAME} landing page via {CMS_NAME}
-					</title>
-				</Head>
-				<Container>
-					<Intro />
-					<SearchBox
-						selectSearch={filterQuery}
-						selectChange={(evt: SyntheticEvent): void => {
-							const element = evt.currentTarget as HTMLSelectElement;
-							console.log('select event: ', element.value);
-							setFilterQuery(element.value);
-						}}
-						filterFunc={(evt: SyntheticEvent): void => {
-							const element = evt.currentTarget as HTMLInputElement;
-							const searchQuery = element.value.toLowerCase();
-							setSearch(searchQuery);
-						}}
-						tags={tagsAndPosts}
-						allPosts={morePosts}
-						dropdownOptions={['title', 'description']}
-						categories={categories}
-					/>
-					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
-						{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
-					</div>
-				</Container>
-			</Layout>
+			<MediaContextProvider>
+				<Header props={props} />
+				<Layout preview={preview}>
+					<Head>
+						<title>
+							{CLIENT_NAME} landing page via {CMS_NAME}
+						</title>
+					</Head>
+					<Container>
+						<Intro />
+						<SearchBox
+							selectSearch={filterQuery}
+							selectChange={(evt: SyntheticEvent): void => {
+								const element = evt.currentTarget as HTMLSelectElement;
+								console.log('select event: ', element.value);
+								setFilterQuery(element.value);
+							}}
+							filterFunc={(evt: SyntheticEvent): void => {
+								const element = evt.currentTarget as HTMLInputElement;
+								const searchQuery = element.value.toLowerCase();
+								setSearch(searchQuery);
+							}}
+							tags={tagsAndPosts}
+							allPosts={morePosts}
+							dropdownOptions={['title', 'description']}
+							categories={categories}
+						/>
+						<div className='grid items-center content-center justify-center max-w-5xl mx-auto mt-5 mb-5 text-center'>
+							{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
+						</div>
+					</Container>
+				</Layout>
+			</MediaContextProvider>
 		</Fragment>
 	);
 }
@@ -281,7 +284,7 @@ export const getServerSideProps = async ({
 // 	// const sortingMap = sortArrayObjects.map(sorting => (
 // 	// 	<button
 // 	// 		key={sorting.title}
-// 	// 		className='mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-500 transition-colors mb-6 lg:mb-0 rounded'
+// 	// 		className='px-12 py-3 mx-3 mb-6 font-bold text-white transition-colors duration-500 bg-black border border-black rounded hover:bg-white hover:text-black lg:px-8 lg:mb-0'
 // 	// 		aria-label='sorting-functions'
 // 	// 		onClick={preventDefault => sorting.sort(preventDefault)}
 // 	// 	>
@@ -304,11 +307,11 @@ export const getServerSideProps = async ({
 // 						allPosts={morePosts.edges.categories}
 // 						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
 // 					/>
-// 					{/* <hr className='border-accent-2 w-full mt-8' />
-// 					<h2 className='text-2xl sm:text-2xl xs:text-2xl font-bold text-center justify-center font-body tracking-tight leading-tight mt-4'>
+// 					{/* <hr className='w-full mt-8 border-accent-2' />
+// 					<h2 className='justify-center mt-4 text-2xl font-bold leading-tight tracking-tight text-center sm:text-2xl xs:text-2xl font-body'>
 // 						Sort Directory by Title or Date Published
 // 					</h2>
-// 					<div className='grid-cols-4 inline-block px-4 py-2 justify-center items-center align-middle'>
+// 					<div className='items-center justify-center inline-block grid-cols-4 px-4 py-2 align-middle'>
 // 						{sortingMap}
 // 					</div> */}
 // 					{morePosts.length > 0 && <Cards posts={morePosts} />}

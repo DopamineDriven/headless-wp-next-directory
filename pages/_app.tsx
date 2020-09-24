@@ -4,14 +4,14 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { ReactElement, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import * as gtag from 'lib/google-analytics';
+import { gaInit, logPageView } from 'lib/google-analytics';
 
 config.autoAddCss = false;
 
 function App({ Component, pageProps }: AppProps): ReactElement {
 	const router = useRouter();
-	const { logPageView } = gtag;
 	useEffect(() => {
+		gaInit();
 		const handleRouteChange = () => {
 			logPageView();
 		};
