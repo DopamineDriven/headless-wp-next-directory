@@ -4,6 +4,9 @@ import {
 	GraphQLObjectType,
 	GraphQLString
 } from 'graphql';
+import CategoryProps from 'types/category';
+import { AllPostsProps, PostsProps } from 'types/posts';
+import TagProps from 'types/tag';
 // import { APIFetchOptions } from "@types/wordpress__api-fetch"
 // import { APIFetchOptions } from '@wordpress/api-fetch';
 import WPGraphQL from 'wp-graphql';
@@ -90,7 +93,7 @@ export async function getAllPostsForHomeAlphabetical({
 	preview,
 	field,
 	order
-}: allPostsForHomeAlphabeticalArgs) {
+}: allPostsForHomeAlphabeticalArgs): Promise<AllPostsProps> {
 	const data = await fetchAPI(
 		`
     query AllPosts {
@@ -268,7 +271,7 @@ export async function getPostAndMorePosts({
 	return data;
 }
 
-export async function getTagAndPosts() {
+export async function getTagAndPosts(): Promise<TagProps> {
 	const variablesGetTagAndPosts = {};
 	const data = await fetchAPI(
 		`query GET_TAGS {
@@ -295,7 +298,7 @@ export async function getTagAndPosts() {
 	return data.tags.edges;
 }
 
-export async function getCategories() {
+export async function getCategories(): Promise<CategoryProps> {
 	const variablesGetCategories = {};
 	const data = await fetchAPI(
 		`query GET_CATEGORIES {
@@ -319,7 +322,7 @@ export async function getCategories() {
 
 export async function getAllPostsForCategory({
 	desiredCategory
-}: getAllPostsForCategoryArgs) {
+}: getAllPostsForCategoryArgs): Promise<PostsProps[]> {
 	const variablesGetAllPostsForCategory = {};
 	const data = await fetchAPI(
 		`query GET_CATEGORIES {
