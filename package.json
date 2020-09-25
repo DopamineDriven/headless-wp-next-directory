@@ -49,12 +49,13 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"dev": "next",
+		"dev": "next -p 4444",
 		"build": "next build",
 		"start": "next start",
 		"postinstall": "npx patch-package"
 	},
 	"dependencies": {
+		"@artsy/fresnel": "^1.2.2",
 		"@fortawesome/fontawesome-svg-core": "^1.2.30",
 		"@fortawesome/free-brands-svg-icons": "^5.14.0",
 		"@fortawesome/free-regular-svg-icons": "^5.14.0",

@@ -6,6 +6,7 @@ import CategoryProps from '../types/category';
 import TagProps from '../types/tag';
 import { ChangeEvent, SyntheticEvent } from 'react';
 import { PostsProps } from '../types/posts';
+import { InferGetServerSidePropsType } from 'next';
 
 interface Props {
 	selectChange: (evt: SyntheticEvent) => void;
@@ -53,7 +54,7 @@ const SearchBox = ({
 						<select
 							onChange={selectChange}
 							value={selectSearch}
-							className='appearance-none w-full h-auto bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight mx--5 focus:outline-none focus:shadow-outline'
+							className=' h-auto bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight mx--5 focus:outline-none focus:shadow-outline'
 						>
 							{dropdownOptions.map((dropDownOption, index) => {
 								return (
@@ -63,16 +64,13 @@ const SearchBox = ({
 								);
 							})}
 						</select>
-						<div className='pointer-events-none absolute inset-y-0 right-0 flex items-center text-gray-700'>
-							{<FontAwesomeIcon icon={faSortDown} />}
-						</div>
 					</div>
 					<div className='flex w-full'>
 						<span className='w-auto flex justify-end items-center text-gray-500 p-2' />
 						<label className='text-black text-2xl align-middle'></label>
 						<input
 							type='text'
-							className='w-full rounded'
+							className='w-full rounded p-1'
 							placeholder='Search...'
 							name='search-form'
 							onChange={filterFunc}
@@ -81,7 +79,7 @@ const SearchBox = ({
 						<button
 							type='submit'
 							name='search-button'
-							className='hover:bg-white align-middle shadow-xl rounded-full bg-black hover:text-black border border-black text-white font-bold py-1 px-2 md:px-2 sm:px-2 lg:px-2 duration-500 transition-colors lg:mb-0'
+							className='hover:bg-white align-middle shadow-xl rounded-full bg-black hover:text-black border border-black text-white font-bold py-1 px-2 ml-2 md:px-2 sm:px-2 lg:px-2 duration-500 transition-colors lg:mb-0'
 						>
 							<a aria-label='search' className='text-md'>
 								{<FontAwesomeIcon icon={faSearch} />}

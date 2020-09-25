@@ -9,14 +9,18 @@ import {
 import Container from '../components/container';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
-import { GetServerSideProps, GetStaticProps } from 'next';
+import {
+	GetServerSideProps,
+	GetStaticProps,
+	InferGetServerSidePropsType
+} from 'next';
 import {
 	getAllPostsForHomeAlphabetical,
 	getTagAndPosts,
 	getCategories
 	// getAllPostsForHomeSorted,
 	// getAllPostsTitleDesc
-} from '../lib/api';
+} from '../lib/api-ts';
 import { CMS_NAME, CLIENT_NAME } from '../lib/constants';
 import Header from '../components/header';
 // import HeroPost from '../components/hero-post';
@@ -25,6 +29,7 @@ import Cards from '../components/more-cards';
 import TagProps from '../types/tag';
 import CategoryProps from '../types/category';
 import { PostsProps, AllPostsProps } from '../types/posts';
+import { MediaContextProvider } from 'lib/window-width';
 // import Link from 'next/link';
 import FieldEnum from 'types/enums/field-enum';
 import OrderEnum from 'types/enums/order-enum';
@@ -47,7 +52,7 @@ export default function Index({
 	const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
 
-	const [filterQuery, setFilterQuery] = useState('');
+	const [filterQuery, setFilterQuery] = useState('title');
 	const [allCompanies, setAllCompanies] = useState<PostsProps[]>(morePosts);
 	const [filteredCompanies, setFilteredCompanies] = useState<PostsProps[]>(
 		morePosts
@@ -76,6 +81,19 @@ export default function Index({
 					}
 				});
 				setFilteredCompanies(filterCompanies);
+			} else if (filterQuery === 'description') {
+				const filterCompanies = edges.filter((company: PostsProps) => {
+					//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
+					//this was done so that toLowerCase() and includes() functions coudl work
+					const companyDescription: any = company.node.excerpt;
+					if (companyDescription.toLowerCase().includes(search)) {
+						console.log('company description: ', companyDescription);
+						return company;
+					} else {
+						return null;
+					}
+				});
+				setFilteredCompanies(filterCompanies);
 			} else {
 				console.log('not title');
 				setFilteredCompanies(allCompanies);
@@ -85,37 +103,39 @@ export default function Index({
 
 	return (
 		<Fragment>
-			<Header props={props} />
-			<Layout preview={preview}>
-				<Head>
-					<title>
-						{CLIENT_NAME} landing page via {CMS_NAME}
-					</title>
-				</Head>
-				<Container>
-					<Intro />
-					<SearchBox
-						selectSearch={filterQuery}
-						selectChange={(evt: SyntheticEvent): void => {
-							const element = evt.currentTarget as HTMLSelectElement;
-							console.log('select event: ', element.value);
-							setFilterQuery(element.value);
-						}}
-						filterFunc={(evt: SyntheticEvent): void => {
-							const element = evt.currentTarget as HTMLInputElement;
-							const searchQuery = element.value.toLowerCase();
-							setSearch(searchQuery);
-						}}
-						tags={tagsAndPosts}
-						allPosts={morePosts}
-						dropdownOptions={['choose an option', 'title', '2222222']}
-						categories={categories}
-					/>
-					<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
-						{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
-					</div>
-				</Container>
-			</Layout>
+			<MediaContextProvider>
+				<Header props={props} />
+				<Layout preview={preview}>
+					<Head>
+						<title>
+							{CLIENT_NAME} landing page via {CMS_NAME}
+						</title>
+					</Head>
+					<Container>
+						<Intro />
+						<SearchBox
+							selectSearch={filterQuery}
+							selectChange={(evt: SyntheticEvent): void => {
+								const element = evt.currentTarget as HTMLSelectElement;
+								console.log('select event: ', element.value);
+								setFilterQuery(element.value);
+							}}
+							filterFunc={(evt: SyntheticEvent): void => {
+								const element = evt.currentTarget as HTMLInputElement;
+								const searchQuery = element.value.toLowerCase();
+								setSearch(searchQuery);
+							}}
+							tags={tagsAndPosts}
+							allPosts={morePosts}
+							dropdownOptions={['title', 'description']}
+							categories={categories}
+						/>
+						<div className='grid items-center content-center justify-center max-w-5xl mx-auto mt-5 mb-5 text-center'>
+							{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
+						</div>
+					</Container>
+				</Layout>
+			</MediaContextProvider>
 		</Fragment>
 	);
 }
@@ -152,6 +172,7 @@ type PostTypesListed =
 
 const { TITLE, MODIFIED, DATE } = Field;
 const { ASC, DESC } = Order;
+
 // 09/12/20 --- Note
 // test ISR (incremental static regeneration)
 // this uses revalidate in getStaticProps and is a hybrid method
@@ -169,10 +190,15 @@ export const getServerSideProps = async ({
 	preview = false,
 	// context,
 	field = MODIFIED || TITLE || DATE,
-	order = ASC || DESC
-}: StaticProps) => {
+	order = ASC || DESC,
+	desiredCategory
+}: StaticProps & GetServerSideProps) => {
 	// console.log(context);
-	const allPosts = await getAllPostsForHomeAlphabetical(preview, field, order);
+	const allPosts = await getAllPostsForHomeAlphabetical({
+		preview,
+		field,
+		order
+	});
 	const tagsAndPosts = await getTagAndPosts();
 	const categories = await getCategories();
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
@@ -258,7 +284,7 @@ export const getServerSideProps = async ({
 // 	// const sortingMap = sortArrayObjects.map(sorting => (
 // 	// 	<button
 // 	// 		key={sorting.title}
-// 	// 		className='mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-500 transition-colors mb-6 lg:mb-0 rounded'
+// 	// 		className='px-12 py-3 mx-3 mb-6 font-bold text-white transition-colors duration-500 bg-black border border-black rounded hover:bg-white hover:text-black lg:px-8 lg:mb-0'
 // 	// 		aria-label='sorting-functions'
 // 	// 		onClick={preventDefault => sorting.sort(preventDefault)}
 // 	// 	>
@@ -281,11 +307,11 @@ export const getServerSideProps = async ({
 // 						allPosts={morePosts.edges.categories}
 // 						dropdownOptions={SELECT_DROPDOWN_OPTIONS}
 // 					/>
-// 					{/* <hr className='border-accent-2 w-full mt-8' />
-// 					<h2 className='text-2xl sm:text-2xl xs:text-2xl font-bold text-center justify-center font-body tracking-tight leading-tight mt-4'>
+// 					{/* <hr className='w-full mt-8 border-accent-2' />
+// 					<h2 className='justify-center mt-4 text-2xl font-bold leading-tight tracking-tight text-center sm:text-2xl xs:text-2xl font-body'>
 // 						Sort Directory by Title or Date Published
 // 					</h2>
-// 					<div className='grid-cols-4 inline-block px-4 py-2 justify-center items-center align-middle'>
+// 					<div className='items-center justify-center inline-block grid-cols-4 px-4 py-2 align-middle'>
 // 						{sortingMap}
 // 					</div> */}
 // 					{morePosts.length > 0 && <Cards posts={morePosts} />}
