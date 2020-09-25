@@ -59,10 +59,8 @@ const LeadSpan = (): JSX.Element => {
 		);
 	});
 	return (
-		<p className='block font-thin tracking-tighter text-center transition-all ease-in-out transform -translate-y-paddingAboutTitleRight text-customExcerptMobile md:text-customTitleMobile pr-portfolioRS md:pl-portfolioLS leading-headerP font-somaRoman'>
-			Chicago Independent Media Alliance
-			<br />
-			Save Local Media
+		<p className='block font-thin tracking-tighter text-center transition-all ease-in-out transform -translate-y-paddingAboutTitleRight text-customExcerptMobile md:text-customTitleMobile pr-portfolioRS md:pl-portfolioLS leading-headerP font-head'>
+			SAVE CHICAGO MEDIA
 		</p>
 	);
 };

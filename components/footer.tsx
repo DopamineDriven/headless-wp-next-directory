@@ -15,25 +15,25 @@ const socialSnippets: SocialContact[] = [
 		id: 0,
 		label: 'Email',
 		target: '__blank',
-		href: 'mailto:andrew.simpson.ross@gmail.com'
+		href: 'mailto:ydominguez@chicagoreader.com'
 	},
 	{
 		id: 1,
-		label: 'LinkedIn',
+		label: 'Facebook',
 		target: '__blank',
-		href: 'https://www.linkedin.com/in/asross/'
+		href: 'https://www.facebook.com/ChiIndyMedia/'
 	},
 	{
 		id: 2,
 		label: 'Twitter',
 		target: '__blank',
-		href: 'https://twitter.com/Dopamine_Driven'
+		href: 'https://twitter.com/chiindymedia?lang=en'
 	},
 	{
 		id: 3,
-		label: 'GitHub',
+		label: 'Instagram',
 		target: '__blank',
-		href: 'https://github.com/DopamineDriven'
+		href: 'https://www.instagram.com/chiindymedia/'
 	}
 ];
 

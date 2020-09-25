@@ -11,7 +11,7 @@ const Lead = (): JSX.Element => {
 		<Fragment>
 			<Meta />
 			<header
-				className='select-none relative z-1 justify-between pt-portfolio navbar-expand-lg flex flex-col min-w-full w-full container overflow-y-hidden overflow-x-hidden transform pb-introToPortfolioMobile md:pb-portfolioPadding'
+				className='container relative flex flex-col justify-between w-full min-w-full overflow-x-hidden overflow-y-hidden transform select-none z-1 pt-portfolio navbar-expand-lg pb-portfolioPadding md:pb-portfolio'
 				style={{ transform: 'translate3d(0px, 0px, 0px)' }}
 			>
 				<LeadIcon />
