@@ -49,7 +49,7 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"dev": "next -p 4444",
+		"dev": "next",
 		"build": "next build",
 		"start": "next start",
 		"analyze": "ANALYZE=true yarn build",
