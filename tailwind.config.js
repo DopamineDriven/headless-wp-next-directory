@@ -426,15 +426,3 @@ module.exports = {
 };
 
 // https://tailwindcss.com/docs/configuration#core-plugins
-
-/*
-				head: ['goudy-bookletter-1911', 'serif'],
-				header: ['Playfair Display', 'serif'],
-				body: ['Barlow Condensed', 'sans-serif'],
-				display: ['Barlow Condensed', 'sans-serif'],
-				polished: ['brandon-grotesque', 'sans-serif'],
-				somaRoman: ['neue-haas-grotesk-text', 'sans-serif'],
-				somaDisplay: ['neue-haas-grotesk-display', 'sans-serif'],
-				somaDisplayLight: ['neue-haas-grotesk-display', 'sans-serif'],
-				subpolished: ['Montserrat', 'sans-serif']
-*/

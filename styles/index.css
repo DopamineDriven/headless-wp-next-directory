@@ -2,29 +2,58 @@
 https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth#:~:text=WebKit%20implements%20a%20similar%20property,%2Dwebkit%2Dfont%2Dsmoothing%20.&text=antialiased%20%2D%20Smooth%20the%20font%20on,backgrounds%20makes%20it%20look%20lighter.
 */
 
+.light-mode {
+	@apply bg-portfolio text-black border-black;
+	--color-bg-primary: #ebe8e0;
+	--color-bg-auxiliary: #eaeaea;
+	--color-text-primary: #000000;
+	--color-text-auxiliary: #151515;
+	--color-text-tertiary: #505050;
+	--color-text-quaternary: #ebe8e0;
+	--color-border-primary: #000000;
+	--color-fill-primary: #000000;
+	--color-fill-auxiliary: #151515;
+	--color-fill-tertiary: #505050;
+	--color-fill-quaternary: #afafaf;
+	--color-fill-quinary: #eaeaea;
+	--color-fill-senary: #ffffff;
+	--color-stroke-primary: #000000;
+}
+
+.dark-mode {
+	@apply bg-black text-white border-white;
+	--color-bg-primary: #000000;
+	--color-bg-auxiliary: #151515;
+	--color-text-primary: #ffffff;
+	--color-text-auxiliary: #eaeaea;
+	--color-text-tertiary: #afafaf;
+	--color-text-quaternary: #000000;
+	--color-border-primary: #ffffff;
+	--color-fill-primary: #ffffff;
+	--color-fill-auxiliary: #eaeaea;
+	--color-fill-tertiary: #afafaf;
+	--color-fill-quaternary: #505050;
+	--color-fill-quinary: #151515;
+	--color-fill-senary: #000000;
+	--color-stroke-primary: #ffffff;
+}
+
+:root {
+	@apply .light-mode;
+	@apply .dark-mode;
+}
+
 html {
 	-webkit-text-size-adjust: none;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: auto;
 	-webkit-tap-highlight-color: transparent;
-	background-color: #ffffff;
 	margin: 0;
 	padding: 0;
 	scroll-behavior: smooth;
 	text-shadow: none;
 }
-
-/* ::-moz-selection {
-	text-shadow: none;
-	background: #333;
-	color: #fff;
-}
-::selection {
-	text-shadow: none;
-	background: #333;
-	color: #fff;
-} */
 
 #__next {
 	margin: 0;
@@ -51,9 +80,6 @@ body::-webkit-scrollbar {
 /* Stop purging. */
 
 /* Write custom component styles here */
-/* @ {
-	text-shadow: 'none';
-} */
 
 /* Start purging... */
 @tailwind utilities;
@@ -188,4 +214,8 @@ body::-webkit-scrollbar {
 	.p-last:nth-child(n + 1):nth-child(-n + 12) {
 		@apply pl-aboutOffsetPRMobile;
 	}
+}
+
+.fa-portfolioDivider {
+	@apply text-customTitle;
 }
