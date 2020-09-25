@@ -8,13 +8,14 @@ const SvgLogo: FC<SvgIconConstituentValues> = (props): JSX.Element => {
 		width = '5vw',
 		height = '5vw',
 		rotateCenter = 0,
-		classNameSVG = `  `
+		classNameSVG = `  `,
+		fillColor0 = 'none'
 	} = props;
 
 	return (
 		<svg
-			width='5vw'
-			height='5vw'
+			width={width}
+			height={height}
 			viewBox='0 0 137 137'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'

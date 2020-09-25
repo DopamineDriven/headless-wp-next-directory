@@ -85,6 +85,7 @@
 		"@types/react": "^16.9.48",
 		"@types/react-dom": "^16.9.8",
 		"@types/wordpress__api-fetch": "^3.2.2",
+		"autoprefixer": "9.8.6",
 		"husky": "^4.2.5",
 		"postcss-flexbugs-fixes": "^4.2.1",
 		"postcss-preset-env": "^6.7.0",
