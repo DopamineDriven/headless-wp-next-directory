@@ -3,7 +3,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import ErrorPage from 'next/error';
 import Container from 'components/container';
 import PostBody from 'components/post-body';
-import Header from 'components/header';
+import Header from 'components/lead-sub';
 import PostHeader from 'components/post-header';
 import Layout from 'components/layout';
 import { getAllPostsWithSlug, getPostAndMorePosts } from 'lib/api';
@@ -29,7 +29,7 @@ export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
 
 	return (
 		<Fragment>
-			<Header />
+			<Header title={post.title} />
 			<Layout preview={preview}>
 				<Container>
 					{router.isFallback ? (

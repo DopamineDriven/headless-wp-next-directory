@@ -12,34 +12,34 @@ const socialSnippets: SocialContact[] = [
 		id: 0,
 		label: 'Email',
 		target: '__blank',
-		href: 'mailto:andrew.simpson.ross@gmail.com'
+		href: 'mailto:ydominguez@chicagoreader.com'
 	},
 	{
 		id: 1,
-		label: 'LinkedIn',
+		label: 'Facebook',
 		target: '__blank',
-		href: 'https://www.linkedin.com/in/asross/'
+		href: 'https://www.facebook.com/ChiIndyMedia/'
 	},
 	{
 		id: 2,
 		label: 'Twitter',
 		target: '__blank',
-		href: 'https://twitter.com/Dopamine_Driven'
+		href: 'https://twitter.com/chiindymedia?lang=en'
 	},
 	{
 		id: 3,
-		label: 'GitHub',
+		label: 'Instagram',
 		target: '__blank',
-		href: 'https://github.com/DopamineDriven'
+		href: 'https://www.instagram.com/chiindymedia/'
 	}
 ];
 
 const LeadSocial = (): JSX.Element => {
 	const socialMap: JSX.Element[] = socialSnippets.map(constituent => {
 		return (
-			<div className='mt-socialMargin block' key={constituent.id}>
+			<div className='block mt-socialMargin' key={constituent.id}>
 				<a
-					className='block z-50 hover:text-tertiary py-portfolioDivider md:py-0 transition-all translate-y-mdmxSocial tracking-wide transform ease-in-out animate-hero'
+					className='z-50 block tracking-wide transition-all ease-in-out transform hover:text-tertiary py-portfolioDivider md:py-0 translate-y-mdmxSocial animate-hero'
 					target={constituent.target}
 					aria-label={constituent.label}
 					href={constituent.href}
@@ -52,7 +52,7 @@ const LeadSocial = (): JSX.Element => {
 	return (
 		<Fragment>
 			<div
-				className='md:text-customExcerptMobile md:leading-portfolio md:visible invisible md:transition-all md:-translate-y-portfolioDivider md:transform md:animate-hero md:ease-in-out'
+				className='invisible md:text-customExcerptMobile md:leading-portfolio md:visible md:transition-all md:-translate-y-portfolioDivider md:transform md:animate-hero md:ease-in-out'
 				style={{
 					position: 'absolute',
 					top: '90.78333vw',
@@ -62,7 +62,7 @@ const LeadSocial = (): JSX.Element => {
 				{socialMap}
 			</div>
 			<div
-				className='text-customTitle font-somaRoman leading-customSLM tracking-wide block uppercase md:hidden transition-all translate-y-portfolioLS transform animate-hero ease-in-out'
+				className='block tracking-wide uppercase transition-all ease-in-out transform text-customTitle font-somaRoman leading-customSLM md:hidden translate-y-portfolioLS animate-hero'
 				style={{ position: 'absolute', top: '94.78333vw', left: '3.33333vw' }}
 			>
 				{socialMap}

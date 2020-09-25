@@ -4,8 +4,8 @@ import { Media } from 'lib/window-width';
 import { Fragment } from 'react';
 import DarkMode from 'components/lead-dark-mode';
 
-const ArIconConditional = (): JSX.Element => {
-	const arIconXs: JSX.Element = (
+const CimaIconConditional = (): JSX.Element => {
+	const cimaIconXs: JSX.Element = (
 		<Media at='xs'>
 			<Link href='/'>
 				<a
@@ -19,7 +19,7 @@ const ArIconConditional = (): JSX.Element => {
 		</Media>
 	);
 
-	const arIconSm: JSX.Element = (
+	const cimaIconSm: JSX.Element = (
 		<Media at='sm'>
 			<Link href='/'>
 				<a
@@ -33,7 +33,7 @@ const ArIconConditional = (): JSX.Element => {
 		</Media>
 	);
 
-	const arIconMd: JSX.Element = (
+	const cimaIconMd: JSX.Element = (
 		<Media at='md'>
 			<Link href='/'>
 				<a
@@ -47,7 +47,7 @@ const ArIconConditional = (): JSX.Element => {
 		</Media>
 	);
 
-	const arIconDesktop: JSX.Element = (
+	const cimaIconDesktop: JSX.Element = (
 		<Media greaterThan='md'>
 			<Link href='/'>
 				<a
@@ -74,24 +74,24 @@ const ArIconConditional = (): JSX.Element => {
 		</div>
 	);
 
-	const ArIconsCoalesced = (): JSX.Element => (
+	const CimaIconsCoalesced = (): JSX.Element => (
 		<Fragment>
 			<div className='relative justify-between block w-full min-w-full col-span-2 transition-all lg:w-auto lg:static lg:block lg:justify-start'>
-				{arIconXs}
-				{arIconSm}
-				{arIconMd}
-				{arIconDesktop}
+				{cimaIconXs}
+				{cimaIconSm}
+				{cimaIconMd}
+				{cimaIconDesktop}
 			</div>
 		</Fragment>
 	);
 	return (
 		<Fragment>
 			<div className='container relative grid justify-between w-full min-w-full grid-cols-6 overflow-x-hidden overflow-y-hidden transform select-none z-1 pt-portfolioDivider navbar-expand-lg'>
-				<ArIconsCoalesced />
+				<CimaIconsCoalesced />
 				<DarkModeToggler />
 			</div>
 		</Fragment>
 	);
 };
 
-export default ArIconConditional;
+export default CimaIconConditional;

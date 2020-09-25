@@ -6,9 +6,9 @@ import {
 	SyntheticEvent,
 	Fragment
 } from 'react';
-import Container from '../components/container';
-import Intro from '../components/intro';
-import Layout from '../components/layout';
+import Container from 'components/container';
+import Intro from 'components/intro';
+import Layout from 'components/layout';
 import {
 	GetServerSideProps,
 	GetStaticProps,
@@ -20,15 +20,15 @@ import {
 	getCategories
 	// getAllPostsForHomeSorted,
 	// getAllPostsTitleDesc
-} from '../lib/api-ts';
-import { CMS_NAME, CLIENT_NAME } from '../lib/constants';
-import Header from '../components/header';
+} from 'lib/api-ts';
+import { CMS_NAME, CLIENT_NAME } from 'lib/constants';
+import Header from 'components/lead';
 // import HeroPost from '../components/hero-post';
-import SearchBox from '../components/search-box';
-import Cards from '../components/more-cards';
-import TagProps from '../types/tag';
-import CategoryProps from '../types/category';
-import { PostsProps, AllPostsProps } from '../types/posts';
+import SearchBox from 'components/search-box';
+import Cards from 'components/more-cards';
+import TagProps from 'types/tag';
+import CategoryProps from 'types/category';
+import { PostsProps, AllPostsProps } from 'types/posts';
 import { MediaContextProvider } from 'lib/window-width';
 // import Link from 'next/link';
 import FieldEnum from 'types/enums/field-enum';

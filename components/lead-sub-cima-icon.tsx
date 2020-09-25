@@ -4,7 +4,7 @@ import { Media } from 'lib/window-width';
 import { Fragment } from 'react';
 import DarkMode from 'components/lead-dark-mode';
 
-const SubArIconConditional = (): JSX.Element => {
+const SubCimaIconConditional = (): JSX.Element => {
 	const cimaIconXs: JSX.Element = (
 		<Media at='xs'>
 			<Link href='/'>
@@ -62,7 +62,7 @@ const SubArIconConditional = (): JSX.Element => {
 		</div>
 	);
 
-	const ArIconsCoalesced = (): JSX.Element => (
+	const CimaIconsCoalesced = (): JSX.Element => (
 		<Fragment>
 			<div className='relative justify-between block w-full min-w-full col-span-5 transition-all lg:w-auto lg:static lg:block lg:justify-start'>
 				{cimaIconXs}
@@ -75,10 +75,10 @@ const SubArIconConditional = (): JSX.Element => {
 	return (
 		<Fragment>
 			<div className='relative justify-between block w-full min-w-full transition-all lg:w-auto lg:static lg:block lg:justify-start'>
-				<ArIconsCoalesced />
+				<CimaIconsCoalesced />
 			</div>
 		</Fragment>
 	);
 };
 
-export default SubArIconConditional;
+export default SubCimaIconConditional;
