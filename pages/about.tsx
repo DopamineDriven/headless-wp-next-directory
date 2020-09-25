@@ -28,16 +28,16 @@ const About = ({
 	console.log(categoriesAndPosts);
 	return (
 		<>
-			<Header props={props} />
+			<Header />
 			<Layout preview={preview}>
 				<Head>
 					<title>{`${CLIENT_NAME} about page`}</title>
 				</Head>
 				<Container>
-					<h2 className='text-6xl font-bold tracking-tight md:tracking-tighter text-center align-middle justify-center font-serif leading-tight mt-8'>
+					<h2 className='justify-center mt-8 font-serif text-6xl font-bold leading-tight tracking-tight text-center align-middle md:tracking-tighter'>
 						<Link href='/'>
 							<a
-								className='text-black hover:text-cimaRed cursor-text select-text'
+								className='text-black select-text hover:text-cimaRed cursor-text'
 								aria-label='About Chicago Independent Media Alliance'
 							>
 								About

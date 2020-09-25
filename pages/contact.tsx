@@ -13,15 +13,15 @@ interface Props {
 const Contact = ({ preview, props }: Props) => {
 	return (
 		<>
-			<Header props={props} />
+			<Header />
 			<Layout preview={preview}>
 				<Head>
 					<title>{`${CLIENT_NAME} contact page`}</title>
 				</Head>
 				<Container>
-					<h2 className='text-2xl md:text-4xl font-bold tracking-tight md:tracking-tighter leading-tight mb-20 mt-8'>
+					<h2 className='mt-8 mb-20 text-2xl font-bold leading-tight tracking-tight md:text-4xl md:tracking-tighter'>
 						<Link href='/'>
-							<a className='hover:underline text-cimaRed px-8'>
+							<a className='px-8 hover:underline text-cimaRed'>
 								Contact
 							</a>
 						</Link>

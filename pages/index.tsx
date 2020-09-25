@@ -37,7 +37,6 @@ import OrderEnum from 'types/enums/order-enum';
 interface IndexProps {
 	allPosts: AllPostsProps;
 	preview: boolean;
-	props: string | number;
 	tagsAndPosts: TagProps[];
 	categories: CategoryProps[];
 }
@@ -46,8 +45,7 @@ export default function Index({
 	allPosts: { edges },
 	preview,
 	tagsAndPosts,
-	categories,
-	props
+	categories
 }: IndexProps) {
 	const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
@@ -104,7 +102,7 @@ export default function Index({
 	return (
 		<Fragment>
 			<MediaContextProvider>
-				<Header props={props} />
+				<Header />
 				<Layout preview={preview}>
 					<Head>
 						<title>

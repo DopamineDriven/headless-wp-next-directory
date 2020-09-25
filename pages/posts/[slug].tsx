@@ -11,15 +11,15 @@ import PostTitle from 'components/post-title';
 import Head from 'next/head';
 import { CMS_NAME } from 'lib/constants';
 import MoreCards from 'components/more-cards';
+import { Fragment } from 'react';
 
 interface SlugProps {
-	props: string | number;
 	post: any;
 	posts: any;
 	preview: boolean;
 }
 
-export default function Post({ post, posts, preview, props }: SlugProps) {
+export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
 	const router = useRouter();
 	const morePosts = posts?.edges;
 
@@ -28,8 +28,8 @@ export default function Post({ post, posts, preview, props }: SlugProps) {
 	}
 
 	return (
-		<>
-			<Header props={props} />
+		<Fragment>
+			<Header />
 			<Layout preview={preview}>
 				<Container>
 					{router.isFallback ? (
@@ -61,14 +61,14 @@ export default function Post({ post, posts, preview, props }: SlugProps) {
 									{post.tags.edges.length > 0 && <Tags tags={post.tags} />}
 								</footer> */}
 							</article>
-							<div className='max-w-5xl grid mx-auto content-center justify-center items-center text-center'>
+							<div className='grid items-center content-center justify-center max-w-5xl mx-auto text-center'>
 								{morePosts.length > 0 && <MoreCards posts={morePosts} />}
 							</div>
 						</>
 					)}
 				</Container>
 			</Layout>
-		</>
+		</Fragment>
 	);
 }
 
@@ -78,7 +78,7 @@ interface Params {
 	};
 	preview: boolean;
 	previewData: any;
-};
+}
 
 export const getStaticProps = async ({
 	params,
