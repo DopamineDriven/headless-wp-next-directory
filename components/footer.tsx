@@ -1,36 +1,114 @@
-import Container from './container';
-import { EXAMPLE_PATH } from '../lib/constants';
+import Link from 'next/link';
+import PortfolioDivider from 'components/site-divider';
+import { Fragment } from 'react';
+import BackToTop from 'components/footer-back-to-top';
 
-const Footer = () => {
+interface SocialContact {
+	id: number;
+	label: string;
+	target: string;
+	href: string;
+}
+
+const socialSnippets: SocialContact[] = [
+	{
+		id: 0,
+		label: 'Email',
+		target: '__blank',
+		href: 'mailto:ydominguez@chicagoreader.com'
+	},
+	{
+		id: 1,
+		label: 'Facebook',
+		target: '__blank',
+		href: 'https://www.facebook.com/ChiIndyMedia/'
+	},
+	{
+		id: 2,
+		label: 'Twitter',
+		target: '__blank',
+		href: 'https://twitter.com/chiindymedia?lang=en'
+	},
+	{
+		id: 3,
+		label: 'Instagram',
+		target: '__blank',
+		href: 'https://www.instagram.com/chiindymedia/'
+	}
+];
+
+const Footer = (): JSX.Element => {
+	const socialMap = socialSnippets.map(constituent => {
+		return (
+			<div
+				className='float-right w-auto min-w-full text-center list-none md:w-full md:text-right'
+				key={constituent.id}
+			>
+				<a
+					className='block w-auto transition-all delay-300 transform duration-2000 translate-y-portfolioDivider animate-hero hover:text-tertiary md:text-center'
+					target={constituent.target}
+					aria-label={constituent.label}
+					href={constituent.href}
+				>
+					<p className='w-auto'>{constituent.label}</p>
+				</a>
+			</div>
+		);
+	});
+
+	const copyRight = (
+		<div className='flex flex-row w-full mx-auto tracking-wide text-center'>
+			<div className='block w-auto mx-auto text-center align-top font-somaRoman'>
+				<a
+					className='justify-center block transition-all delay-300 transform duration-3000 -translate-y-portfolioDivider animate-hero hover:text-tertiary'
+					href='https://github.com/DopamineDriven/asross-portfolio'
+					target='__blank'
+					aria-label='repo'
+				>
+					©2020 All Rights Reserved
+				</a>
+			</div>
+		</div>
+	);
 	return (
-		<footer className='bg-cimaRed border-t border-cimaRed'>
-			<Container>
-				<div className='py-16 flex flex-col lg:flex-row items-center'>
-					<h3 className='text-3xl lg:text-4xl font-bold tracking-tighter text-white leading-tight text-center lg:text-left mb-10 lg:mb-0 lg:pr-4 lg:w-1/2'>
-						Statically Generated with Next.js.
-					</h3>
-					<div className='flex flex-col lg:flex-row justify-center items-center align-middle lg:pl-4 lg:w-6/12 font-center'>
-						<a
-							href='https://nextjs.org/docs/basic-features/pages'
-							className='mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-500 transition-colors mb-6 lg:mb-0'
-							target='__blank'
-							aria-label='Documentation'
-						>
-							Documentation
-						</a>
-						<a
-							href={`https://github.com/DopamineDriven/${EXAMPLE_PATH}`}
-							className='mx-3 bg-black hover:bg-white hover:text-black border border-black text-white font-bold py-3 px-12 lg:px-8 duration-500 transition-colors mb-6 lg:mb-0'
-							target='__blank'
-							aria-label='Github'
-						>
-							GitHub
-						</a>
+		<Fragment>
+			<footer className='w-full max-w-full select-none font-somaRoman px-portfolioFooter text-customFooterMobile md:text-customTitle pt-portfolioH2F pb-mobileGapY'>
+				<div className='w-full min-w-full'>
+					<div className='block w-full min-w-full overflow-hidden'>
+						<div className='grid content-end justify-end w-full grid-cols-8 align-bottom first:col-span-3'>
+							<BackToTop />
+							{socialMap}
+						</div>
+						<PortfolioDivider />
+						{copyRight}
 					</div>
 				</div>
-			</Container>
-		</footer>
+			</footer>
+		</Fragment>
 	);
 };
 
 export default Footer;
+
+/*
+	<div className='grid w-full grid-cols-3 tracking-wide'>
+		<div className='block text-center align-top font-somaRoman text-primary hover:text-fiveOBlack'>
+			<a
+				className='flex flex-row-reverse justify-center w-full text-center uppercase'
+				target='__blank'
+				href='https://github.com/DopamineDriven/asross-portfolio'
+				aria-label='all rights reserved, 2020'
+			>
+				UI, Duncan Ross
+			</a>
+		</div>
+		<div className='block text-right align-top transition-colors duration-300 cursor-pointer font-somaRoman text-primary hover:text-everythingIsBlue'>
+			<a
+				className='items-end justify-end block float-right w-full text-right uppercase'
+				aria-label='everything is blue'
+			>
+				Everything is blue
+			</a>
+		</div>
+	</div> 
+*/

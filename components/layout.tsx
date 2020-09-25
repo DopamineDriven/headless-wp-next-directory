@@ -8,15 +8,13 @@ type Props = {
 	children: ReactNode;
 };
 
-export default function Layout({ preview, children }: Props) {
+export default function Layout({ children }: Props) {
 	return (
 		<>
 			<Meta />
 			<div className='min-h-screen'>
 				<main>{children}</main>
 			</div>
-			<Alert preview={preview} />
-			<Footer />
 		</>
 	);
 }

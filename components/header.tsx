@@ -1,18 +1,12 @@
 import { Fragment, useState } from 'react';
 import Link from 'next/link';
 import SvgLogo from './svg-logo-only';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Container from './container';
 
 interface NavRef {
 	href: string;
 	label: string;
 }
-
-type HeaderProps = {
-	props: string | number;
-};
 
 const links: NavRef[] = [
 	{
@@ -29,13 +23,13 @@ const links: NavRef[] = [
 	}
 ];
 
-const Header = ({ props }: HeaderProps) => {
+const Header = (): JSX.Element => {
 	const [navOpen, setNavOpen] = useState(false);
 	const navlist = links.map(link => (
 		<li className='nav-item' key={`${link.label}`}>
 			<Link href={link.href} passHref as={`${link.href}`}>
 				<a
-					className='px-3 pb-2 flex items-center float-right text-right text-xl w-full min-w-full sm:text-2xl font-bold leading-tight sm:leading-none text-white font-header hover:opacity-75'
+					className='flex items-center float-right w-full min-w-full px-3 pb-2 text-xl font-bold leading-tight text-right text-white sm:text-2xl sm:leading-none font-header hover:opacity-75'
 					aria-label={link.label}
 				>
 					{link.label}
@@ -46,10 +40,10 @@ const Header = ({ props }: HeaderProps) => {
 	const svgLogo = (
 		<Link href='/'>
 			<a
-				className='inline-block leading-relaxed mr-4 whitespace-no-wrap float-left z-50'
+				className='z-50 inline-block float-left mr-4 leading-relaxed whitespace-no-wrap'
 				style={{}}
 			>
-				{<SvgLogo props={props} />}
+				{<SvgLogo />}
 			</a>
 		</Link>
 	);
@@ -60,7 +54,7 @@ const Header = ({ props }: HeaderProps) => {
 				'sm:flex flex-grow items-center' + (navOpen ? ' flex' : ' hidden')
 			}
 		>
-			<ul className='flex flex-col sm:flex-row list-none sm:ml-auto pt-portfolio pr-portfolio'>
+			<ul className='flex flex-col list-none sm:flex-row sm:ml-auto pt-portfolio pr-portfolio'>
 				{navlist}
 			</ul>
 		</div>
@@ -74,7 +68,7 @@ const Header = ({ props }: HeaderProps) => {
 			<svg
 				fill='none'
 				viewBox='0 0 24 24'
-				className='h-6 w-6 transition transform rotate-180 duration-1000 hover-opacity-75'
+				className='w-6 h-6 transition duration-1000 transform rotate-180 hover-opacity-75'
 			>
 				<path
 					d='M6 18L18 6M6 6L18 18'
@@ -90,12 +84,12 @@ const Header = ({ props }: HeaderProps) => {
 	const navOpenTernaryElse = (
 		<a
 			aria-label='open-nav'
-			className='transition-colors duration-1000 hover:opacity-75 transform rotate-45'
+			className='transition-colors duration-1000 transform rotate-45 hover:opacity-75'
 		>
 			<svg
 				fill='none'
 				viewBox='0 0 24 24'
-				className='h-6 w-6 transform rotate-45 transition duration-1000 hover:opacity-75'
+				className='w-6 h-6 transition duration-1000 transform rotate-45 hover:opacity-75'
 			>
 				<path
 					d='M6 18L18 6M6 6L18 18'
@@ -126,10 +120,10 @@ const Header = ({ props }: HeaderProps) => {
 					>
 						{svgLogo}
 						<Container>
-							<div className='container flex flex-wrap px-4 justify-between mx-auto'>
-								<div className='block sm:flex-row justify-between sm:w-auto sm:static sm:justify-start sm:block'>
+							<div className='container flex flex-wrap justify-between px-4 mx-auto'>
+								<div className='justify-between block sm:flex-row sm:w-auto sm:static sm:justify-start sm:block'>
 									<button
-										className='text-white block cursor-pointer text-xl leading-none px-3 border border-solid border-transparent rounded bg-transparent sm:hidden outline-none focus:outline-none'
+										className='block px-3 text-xl leading-none text-white bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer sm:hidden focus:outline-none'
 										type='button'
 										onClick={() => setNavOpen(!navOpen)}
 										name='open-nav-button'
@@ -148,7 +142,7 @@ const Header = ({ props }: HeaderProps) => {
 };
 
 export default Header;
-// <ul className='flex flex-col-reverse sm:flex-row-reverse sm:text-smxmd list-none sm:ml-auto font-polished w-full float-right text-right sm:pt-4'>
+// <ul className='flex flex-col-reverse float-right w-full text-right list-none sm:flex-row-reverse sm:text-smxmd sm:ml-auto font-polished sm:pt-4'>
 // text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none
 /*
 import { useState } from 'react';
@@ -187,7 +181,7 @@ const Header = ({ props }: HeaderProps) => {
 		<li className='nav-item' key={`${link.href}-${link.label}`}>
 			<Link href={link.href}>
 				<a
-					className='px-3 py-2 flex items-center text-lg uppercase font-bold leading-snug text-white hover:opacity-75'
+					className='flex items-center px-3 py-2 text-lg font-bold leading-snug text-white uppercase hover:opacity-75'
 					aria-label={link.label}
 				>
 					{link.label}
@@ -196,14 +190,14 @@ const Header = ({ props }: HeaderProps) => {
 		</li>
 	));
 	return (
-		<nav className='relative flex flex-wrap shadow-boxshadow items-center justify-between px-2 py-1 navbar-expand-lg bg-cimaRed'>
-			<div className='container mx-auto flex flex-wrap items-center justify-between'>
-				<div className='w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start'>
+		<nav className='relative flex flex-wrap items-center justify-between px-2 py-1 shadow-boxshadow navbar-expand-lg bg-cimaRed'>
+			<div className='container flex flex-wrap items-center justify-between mx-auto'>
+				<div className='relative flex justify-between w-full lg:w-auto lg:static lg:block lg:justify-start'>
 					<Link href='/'>
 						<a>{<SvgLogo props={props} />}</a>
 					</Link>
 					<button
-						className='text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none'
+						className='block px-3 py-1 text-xl leading-none text-white bg-transparent border border-transparent border-solid rounded outline-none cursor-pointer lg:hidden focus:outline-none'
 						type='button'
 						onClick={() => setNavOpen(!navOpen)}
 						name='open-nav-button'
@@ -219,7 +213,7 @@ const Header = ({ props }: HeaderProps) => {
 						(navOpen ? ' flex float-right' : ' hidden')
 					}
 				>
-					<ul className='flex flex-col lg:flex-row list-none lg:ml-auto font-body'>
+					<ul className='flex flex-col list-none lg:flex-row lg:ml-auto font-body'>
 						{navlist}
 					</ul>
 				</div>

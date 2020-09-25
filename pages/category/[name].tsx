@@ -18,29 +18,22 @@ import { Fragment } from 'react';
 import { PostsProps } from '../../types/posts';
 
 interface SlugProps {
-	props: string | number;
 	posts: PostsProps[];
 	preview: boolean;
 }
 
-export default function Post({ posts, preview, props }: SlugProps) {
+export default function Post({ posts, preview }: SlugProps): JSX.Element {
 	const router = useRouter();
-	// const morePosts = posts?.edges;
-
-	// if (!router.isFallback) {
-	// 	return <ErrorPage statusCode={404} />;
-	// }
-
 	return (
 		<>
-			<Header props={props} />
+			<Header />
 			<Layout preview={preview}>
 				<Container>
 					{router.isFallback ? (
 						<PostTitle>Loading…</PostTitle>
 					) : (
 						<Fragment>
-							<div className='max-w-5xl mt-5 mb-5 grid mx-auto content-center justify-center items-center text-center'>
+							<div className='grid items-center content-center justify-center max-w-5xl mx-auto mt-5 mb-5 text-center'>
 								{posts.length > 0 ? (
 									<Cards posts={posts} />
 								) : (

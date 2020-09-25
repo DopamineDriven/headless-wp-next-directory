@@ -1,44 +1,81 @@
 # headless-wp-next-directory
 
+## ReactElement vs ReactNode vs JSX.Element
+- https://stackoverflow.com/questions/58123398/when-to-use-jsx-element-vs-reactnode-vs-reactelement
+- https://www.mmbyte.com/article/44732.html#:~:text=Element%20is%20ReactElement%20%2C%20whose%20props,render()%20in%20class%20components
+
+```ts
+interface ReactElement<
+	P = any,
+	T extends string | JSXElementConstructor<any> =
+		| string
+		| JSXElementConstructor<any>
+> {
+	type: T;
+	props: P;
+	key: Key | null;
+}
+interface ReactNodeArray extends Array<ReactNode> {}
+type ReactFragment = {} | ReactNodeArray;
+type ReactNode =
+	| ReactChild
+	| ReactFragment
+	| ReactPortal
+	| boolean
+	| null
+	| undefined;
+```
+
 ## InferGetStaticPropsType, GetStaticPropsResult, GetStaticPropsContext...
+
 - https://github.com/vercel/next.js/pull/11842/files
 
 ## getInitialProps
+
 - https://linguinecode.com/post/next-js-typescript-getinitialprops
 
 ## Incremental Static Regeneration (ISR)
+
 - https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
 - https://github.com/vercel/next.js/discussions/11552
 - https://youtu.be/IJkTpR7sSwI
 
 ## node_modules/wp-graphql/lib/lib/abstract-types
+
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
 ## 8/26/20
+
 - Conditional rendering support incorporated for social icons
   - if string === '', then return
   ```tsx
   <></>
   ```
 - so, if a company doesn't have one or more social media sites, there will be no corresponding icon on their card
-- see components/card-icons.tsx 
+- see components/card-icons.tsx
   - https://dev.to/dopaminedriven/hacking-the-fontawesome-library-for-custom-icon-integration-with-nextjs-and-typescript-1em8
 
 ## Patching node_modules
+
 ```git
 npx patch-package @fortawesome/fontawesome-common-types
 ```
+
 - however, if you were to edit the core css in fontawesome-svg-core, for example, then target that module
+
 ```git
 npx patch-package @fortawesome/fontawesome-svg-core
 ```
+
 - see my post for more details on custom icon incorporation
 
 ## Multilingual Support
+
 - https://medium.com/swlh/making-a-multilingual-site-with-next-js-part-2-518c5c699d23 (published 8/13/20)
 - https://levelup.gitconnected.com/a-simple-next-js-frontend-for-a-multilingual-website-ae31a17387e2
 
 ## Responsive Navbar ideas
+
 - Apple (mobile)
   - https://www.apple.com/
 - Coupled
@@ -47,24 +84,27 @@ npx patch-package @fortawesome/fontawesome-svg-core
 - https://medium.com/@sidbentifraouine/responsive-animated-top-navigation-bar-with-react-transition-group-fd0ccbfb4bbb
 
 ## Thread Vercel with WPEngine in Production
+
 - Goal: link new/updated posts in the headless CMS with a deployed build on Vercel in real time
-  - First steps: 
+  - First steps:
     - determine how WP Engine communicates with local env under the hood
     - configure communication between Vercel and WP Engine clouds in real time
 
 ## WPGQL Custom Post Types
+
 - https://spin.atomicobject.com/2020/03/29/next-js-graphql-api/
 - https://wordpress.org/plugins/headless-cms/
 - https://www.wpwatercooler.com/devbranch/ep04-using-wpgraphql-with-wordpress/
-- https://edwincromley.gitbooks.io/wp-graphql/content/handling-custom-post-types.html ***
+- https://edwincromley.gitbooks.io/wp-graphql/content/handling-custom-post-types.html \*\*\*
 - https://github.com/wp-graphql/wp-graphql-custom-post-type-ui
 - https://github.com/wp-graphql/wp-graphql/issues/344
-- https://stackoverflow.com/questions/60170927/wordpress-wp-graphql-not-working-with-custom-post-type ***
+- https://stackoverflow.com/questions/60170927/wordpress-wp-graphql-not-working-with-custom-post-type \*\*\*
 
 ## WPGQL Typings
-- https://medium.com/javascript-in-plain-english/graphql-pagination-using-edges-vs-nodes-in-connections-f2ddb8edffa0 ***
-- https://relay.dev/graphql/connections.htm ********&larr;
-- https://www.typescriptlang.org/docs/handbook/basic-types.html *EDGE(S) AND NODE(S) MUST BE OBJECT TYPES*
+
+- https://medium.com/javascript-in-plain-english/graphql-pagination-using-edges-vs-nodes-in-connections-f2ddb8edffa0 \*\*\*
+- https://relay.dev/graphql/connections.htm **\*\*\*\***&larr;
+- https://www.typescriptlang.org/docs/handbook/basic-types.html _EDGE(S) AND NODE(S) MUST BE OBJECT TYPES_
 - https://github.com/aliemteam/wp-graphql
 - https://github.com/MichalLytek/type-graphql#readme
 
@@ -82,6 +122,7 @@ add_action( 'graphql_register_types', function() {
 ```
 
 ## Simple Social Icons Plugin
+
 ```ts
 query MyQuery {
   plugins {
@@ -99,25 +140,29 @@ query MyQuery {
   }
 }
 ```
+
 - returns
+
 ```json
 {
-  "node": {
-    "name": "Simple Social Icons",
-    "path": "simple-social-icons/simple-social-icons.php",
-    "pluginUri": "https://wordpress.org/plugins/simple-social-icons/",
-    "id": "cGx1Z2luOnNpbXBsZS1zb2NpYWwtaWNvbnMvc2ltcGxlLXNvY2lhbC1pY29ucy5waHA=",
-    "description": "A simple CSS and SVG driven social icons widget.",
-    "author": "StudioPress",
-    "authorUri": "https://www.studiopress.com/"
-  }
+	"node": {
+		"name": "Simple Social Icons",
+		"path": "simple-social-icons/simple-social-icons.php",
+		"pluginUri": "https://wordpress.org/plugins/simple-social-icons/",
+		"id": "cGx1Z2luOnNpbXBsZS1zb2NpYWwtaWNvbnMvc2ltcGxlLXNvY2lhbC1pY29ucy5waHA=",
+		"description": "A simple CSS and SVG driven social icons widget.",
+		"author": "StudioPress",
+		"authorUri": "https://www.studiopress.com/"
+	}
 }
 ```
+
 - plugins are independent of posts and authors
 - plugin component made
 - plugin in index and slug.tsx
 
 ## WP-GraphQL-Composer Plugin
+
 - https://developer.aliyun.com/mirror/npm/package/wp-graphql-composer/v/0.1.7
 
 ## Search Bar Configuration
@@ -232,6 +277,7 @@ mutation Login {
 
 - this returns a refresh token value for the WORDPRESS_AUTH_REFRESH_TOKEN key in .env.local
 - set the value of the WORDPRESS_PREVIEW_SECRET key to any url-friendly string
+
 ```ts
 href={`localhost:3000/api/preview?secret=${process.env.WORDPRESS_PREVIEW_SECRET}&id=${draft.id}`}
 ```
@@ -327,6 +373,7 @@ $ npx @svgr/cli --icon Logo.svg
 - voila
 
 ## next-google-fonts npm
+
 - https://codeconqueror.com/blog/using-google-fonts-with-next-js
 - https://github.com/joe-bell/next-google-fonts
 - https://johnny.am/blog/n2-adding-google-fonts-to-nextjs-project
@@ -372,7 +419,6 @@ $ npx @svgr/cli --icon Logo.svg
 ## HTML Symbols
 
 - https://dev.w3.org/html5/html-author/charref
-
 
 ```html
 
