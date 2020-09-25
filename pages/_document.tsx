@@ -14,7 +14,7 @@ export default class MyDocument extends Document {
 						type='text/css'
 						dangerouslySetInnerHTML={{ __html: mediaStyles }}
 					/>
-					<link rel='stylesheet' href='/assets/fonts/index.css' />
+					<link rel='stylesheet' href='/fonts/index.css' />
 					{/* Global Site Tag (gtag.js) - Google Analytics */}
 					<script
 						async
