@@ -1,10 +1,22 @@
+// const plugin = require('tailwindcss/plugin')
+
 module.exports = {
 	important: true,
 	future: {
-		removeDeprecatedGapUtilities: true
+		removeDeprecatedGapUtilities: true,
+		purgeLayersByDefault: true
 	},
-	purge: ['./components/**/*.tsx', './pages/**/*.tsx'],
+	purge: {
+		content: ['./components/**/*.tsx', './pages/**/*.tsx'],
+		options: {
+			whiteList: ['dark-mode', 'light-mode']
+		}
+	},
 	theme: {
+		debugScreens: {
+			position: ['bottom', 'left'],
+			ignore: ['dark']
+		},
 		letterSpacing: {
 			tightest: '-.075em',
 			tighter: '-.024em',
@@ -15,9 +27,12 @@ module.exports = {
 		},
 		rotate: {
 			0: '0deg',
+			40: '40deg',
 			45: '45deg',
+			125: '125deg',
 			180: '180deg',
-			855: '855deg'
+			290: '310deg',
+			855: '845deg'
 		},
 		opacity: {
 			10: '10',
@@ -36,15 +51,19 @@ module.exports = {
 			100: 100
 		},
 		extend: {
+			screens: {
+				light: { raw: '(prefers-color-scheme: light)' },
+				dark: { raw: '(prefers-color-scheme: dark)' }
+			},
 			transitionDuration: {
 				0: '0ms',
-				200: '200ms',
 				300: '300ms',
 				500: '500ms',
 				700: '700ms',
 				1000: '1000ms',
 				2000: '2000ms',
-				3000: '3000ms'
+				3000: '3000ms',
+				10000: '10000ms'
 			},
 			keyframes: {
 				wiggle: {
@@ -56,8 +75,9 @@ module.exports = {
 				}
 			},
 			animation: {
-				wiggle: 'wiggle 1s ease-in-out infinite',
-				hero: 'hero 1s ease-in-out infinite'
+				wiggle: 'wiggle 10s ease-in-out infinite',
+				hero: 'hero 1s ease-in-out infinite',
+				slowPing: 'pulse 10s cubic-bezier(0, 0, 0.2, 1) infinite'
 			},
 			fontFamily: {
 				head: ['goudy-bookletter-1911', 'serif'],
@@ -69,6 +89,31 @@ module.exports = {
 				somaDisplay: ['neue-haas-grotesk-display', 'sans-serif'],
 				somaDisplayLight: ['neue-haas-grotesk-display', 'sans-serif'],
 				subpolished: ['Montserrat', 'sans-serif']
+			},
+			backgroundColor: {
+				primary: 'var(--color-bg-primary)',
+				auxiliary: 'var(--color-bg-auxiliary)'
+			},
+			textColor: {
+				accent: 'var(--color-text-accent)',
+				primary: 'var(--color-text-primary)',
+				auxiliary: 'var(--color-text-auxiliary)',
+				tertiary: 'var(--color-text-tertiary)',
+				quaternary: 'var(--color-text-quaternary)'
+			},
+			borderColor: {
+				primary: 'var(--color-border-primary)'
+			},
+			fill: {
+				primary: 'var(--color-fill-primary)',
+				auxiliary: 'var(--color-fill-auxiliary)',
+				tertiary: 'var(--color-fill-tertiary)',
+				quaternary: 'var(--color-fill-quaternary)',
+				quinary: 'var(--color-fill-quaternary)',
+				senary: 'var(--color-fill-quaternary)'
+			},
+			strokeColor: {
+				primary: 'var(--color-stroke-primary)'
 			},
 			colors: {
 				'accent-1': '#FAFAFA',
@@ -95,8 +140,12 @@ module.exports = {
 				lighterBlack: '#323232',
 				gatsbyPurple: '#663399',
 				oneFiveBlack: '#151515',
+				eaWhite: '#EAEAEA',
+				afWhite: '#AFAFAF',
 				fiveOBlack: '#505050',
 				portfolio: '#EBE8E0',
+				portfolioComplementary: '#E5E0EB',
+				portfolioDark: '#14171F',
 				everythingIsBlue: '#007acc'
 			},
 			height: {
@@ -242,6 +291,7 @@ module.exports = {
 				portfolio: '2.25vw',
 				portfolioH2F: '3.25vw',
 				portfolioLS: '3.33vw',
+				portfolioLSMobile: '3.88vw',
 				portfolioRS: '1.33vw',
 				portfolioDivider: '0.875vw',
 				gapX: '2.2284vw',
@@ -258,14 +308,17 @@ module.exports = {
 				aboutGapX: '8.9136vw',
 				aboutOffsetPR: '43.79944vw',
 				aboutOffsetPRMobile: '37.79944vw',
+				introToPortfolioMobile: '32.79944vw',
 				aboutHackingFontAwesomePT: '6.6852vw',
 				paddingBlog: '26.25vw',
 				paddingBlogOdd: '17.5vw',
 				paddingPostTitleTop: '5.5vw',
 				paddingPostTitleBottom: '3.75vw',
 				paddingAboutTitleRight: '10.75vw',
+				paddingAboutTitleRightMobile: '14.75vw',
 				mxSocial: '1.25vw',
 				mdmxSocial: '0.625vw',
+				landingOverviewTranslation: '7.75vw',
 				7: '1.75rem',
 				14: '3.5rem',
 				18: '4.5rem',
@@ -307,11 +360,13 @@ module.exports = {
 				'8xl': '6.25rem',
 				'10xl': '10rem',
 				custom: '25.41667vw',
+				customWcd: '13.41667vw',
+				customWcdMobile: '10.11667vw',
 				customPMobile: '4.44681vw',
 				customP: '3.2234vw',
 				customS: '2.06667vw',
 				customFooter: '1.16667vw',
-				customFooterMobile: '2.43333vw',
+				customFooterMobile: '2.63333vw',
 				customSM: '3.36667vw',
 				customSMobile: '4.36667vw',
 				customTitle: '2.22341vw',
@@ -324,6 +379,7 @@ module.exports = {
 				customPostAbout: '7.5666vw',
 				customPostBlog: '7.7666vw',
 				customSubPostTitle: '11.9276vw',
+				customSubPostTitleModified: '8.9276vw',
 				customAboutSubMobile: '2.63333vw',
 				customBlogSupraTitle: '8.9276vw'
 			},
@@ -331,13 +387,54 @@ module.exports = {
 				small: '0 5px 10px rgba(0, 0, 0, 0.12)',
 				medium: '0 8px 30px rgba(0, 0, 0, 0.12)'
 			}
-		}
+		},
+		darkSelector: '.dark',
+		lightSelector: '.light'
 	},
 	variants: {
-		padding: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd']
+		padding: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
+		fontSize: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
+		animation: ['responsive', 'hover', 'focus', 'motion-safe', 'motion-reduce'],
+		transitionProperty: [
+			'responsive',
+			'hover',
+			'focus',
+			'motion-safe',
+			'motion-reduce'
+		]
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
-		require('tailwindcss-textshadow')
+		require('tailwindcss-textshadow'),
+		require('tailwindcss-debug-screens'),
+		require('tailwindcss-dark-mode')(),
+		function ({ addBase, config }) {
+			addBase({
+				body: {
+					color: config('theme.colors.black'),
+					backgroundColor: config('theme.colors.white')
+				},
+				'@screen dark': {
+					body: {
+						color: config('theme.colors.white'),
+						backgroundColor: config('theme.colors.black')
+					}
+				}
+			});
+		}
 	]
 };
+
+// https://tailwindcss.com/docs/configuration#core-plugins
+
+/*
+				head: ['goudy-bookletter-1911', 'serif'],
+				header: ['Playfair Display', 'serif'],
+				body: ['Barlow Condensed', 'sans-serif'],
+				display: ['Barlow Condensed', 'sans-serif'],
+				polished: ['brandon-grotesque', 'sans-serif'],
+				somaRoman: ['neue-haas-grotesk-text', 'sans-serif'],
+				somaDisplay: ['neue-haas-grotesk-display', 'sans-serif'],
+				somaDisplayLight: ['neue-haas-grotesk-display', 'sans-serif'],
+				subpolished: ['Montserrat', 'sans-serif']
+*/
