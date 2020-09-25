@@ -13,7 +13,14 @@ const CimaIconConditional = (): JSX.Element => {
 					id='top'
 					aria-label='top'
 				>
-					<CimaLogo width='18vw' height='18vw' />
+					<CimaLogo
+						width='18vw'
+						height='18vw'
+						classNameSVG=' antialised w-svgIcon max-w-svgIcon transform transition-all'
+						classNameP1=' fill-primary'
+						classNameP2=' fill-primary'
+						classNameP3=' fill-primary'
+					/>
 				</a>
 			</Link>
 		</Media>
@@ -27,7 +34,14 @@ const CimaIconConditional = (): JSX.Element => {
 					id='top'
 					aria-label='top'
 				>
-					<CimaLogo width='15vw' height='15vw' />
+					<CimaLogo
+						width='15vw'
+						height='15vw'
+						classNameSVG=' antialised w-svgIcon max-w-svgIcon transform transition-all'
+						classNameP1=' fill-primary'
+						classNameP2=' fill-primary'
+						classNameP3=' fill-primary'
+					/>
 				</a>
 			</Link>
 		</Media>
@@ -41,7 +55,14 @@ const CimaIconConditional = (): JSX.Element => {
 					id='top'
 					aria-label='top'
 				>
-					<CimaLogo width='12.5vw' height='12.5vw' />
+					<CimaLogo
+						width='12.5vw'
+						height='12.5vw'
+						classNameSVG=' antialised w-svgIcon max-w-svgIcon transform transition-all'
+						classNameP1=' fill-primary'
+						classNameP2=' fill-primary'
+						classNameP3=' fill-primary'
+					/>
 				</a>
 			</Link>
 		</Media>
@@ -59,7 +80,7 @@ const CimaIconConditional = (): JSX.Element => {
 						width='10vw'
 						height='10vw'
 						classNameSVG=' antialised w-svgIcon max-w-svgIcon transform transition-all'
-						classNameP1=' stroke-current fill-primary'
+						classNameP1=' fill-primary'
 						classNameP2=' fill-primary'
 						classNameP3=' fill-primary'
 					/>
