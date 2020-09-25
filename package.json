@@ -52,6 +52,7 @@
 		"dev": "next -p 4444",
 		"build": "next build",
 		"start": "next start",
+		"analyze": "ANALYZE=true yarn build",
 		"postinstall": "npx patch-package"
 	},
 	"dependencies": {
