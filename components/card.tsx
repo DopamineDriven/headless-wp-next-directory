@@ -1,6 +1,6 @@
-import CoverImage, { CoverImageProps } from './cover-image-card';
+import CoverImage, { CoverImageProps } from './card-image';
 import Date from './date';
-import Avatar from './avatar';
+import Avatar from './card-avatar';
 import Link from 'next/link';
 import CardIcons from './card-icons';
 import { ContentDescriptor } from 'wp-graphql/lib/lib/abstract-types';
@@ -8,6 +8,7 @@ import { authorType, socialType } from '../types/posts';
 import CardTitle from 'components/card-title';
 import CardExcerpt from 'components/card-excerpt';
 import { Fragment } from 'react';
+import SiteDivider from 'components/site-divider';
 
 type CardProps = {
 	coverImage: CoverImageProps;
@@ -37,16 +38,16 @@ const Card = ({
 	return (
 		<Fragment>
 			<div className='block select-none w-cardGridMobile'>
-				<div className='block overflow-x-visible overflow-y-visible transition-all ease-in-out delay-500 transform max-w-imagePortfolioMobile md:max-w-imagePortfolio md:overflow-hidden duration-3000'>
+				<div className='block overflow-x-hidden overflow-y-hidden transition-all ease-in-out transform max-w-imagePortfolioMobile md:max-w-aboutImage400 lg:max-w-aboutImage500 md:overflow-hidden duration-3000'>
 					<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
-					<div className='flex flex-col justify-center h-auto text-left rounded-b-custom bg-primary'>
+					<div className='flex flex-col justify-center flex-grow h-auto text-left rounded-b-custom bg-primary'>
 						<CardTitle slug={slug} title={title} />
 						<CardExcerpt excerpt={excerpt} />
-						<div className='grid-cols-1 transition-all duration-500 transform pl-portfolioDivider font-somaRoman -translate-y-mdmxSocial'>
+						<div className='block grid-cols-1 transition-all duration-500 transform pl-portfolioDivider font-somaRoman -translate-y-mdmxSocial'>
 							<Avatar author={author.node} modified={modified} />
 						</div>
-						<hr className='w-full border-customGray' />
+						<SiteDivider />
 						<div className='block float-right text-right pr-portfolioDivider font-somaRoman'>
 							<CardIcons social={social} />
 						</div>
