@@ -15,7 +15,7 @@ export default function MoreCards({ posts }: CardsProps) {
 			{/* <h2 className='mb-8 text-6xl leading-tight tracking-tighter md:text-6xl'>
 				More Companies
 			</h2> */}
-			<div className='grid grid-cols-1 text-center align-middle sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-portfolio gap-y-portfolio md:max-w-imagePortfolioMobile max-w-imagePortfolioMobile'>
+			<div className='grid grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-portfolio gap-y-portfolio sm:max-w-cardGridMobile max-w-cardGrid'>
 				{posts.map((company: PostsProps) => {
 					const node: any = company.node;
 					return (

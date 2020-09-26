@@ -37,8 +37,8 @@ const Card = ({
 
 	return (
 		<Fragment>
-			<div className='block select-none w-cardGridMobile'>
-				<div className='block overflow-x-hidden overflow-y-hidden transition-all ease-in-out transform max-w-imagePortfolioMobile md:max-w-aboutImage400 lg:max-w-aboutImage500 md:overflow-hidden duration-3000'>
+			<div className='block mx-auto select-none w-cardGridMobile'>
+				<div className='block overflow-x-hidden overflow-y-hidden transition-all ease-in-out transform max-w-imagePortfolioMobile sm:w-aboutImage600 sm:max-w-aboutimage600 sm:overflow-hidden duration-3000'>
 					<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
 					<div className='flex flex-col justify-center flex-grow h-auto text-left rounded-b-custom bg-primary'>

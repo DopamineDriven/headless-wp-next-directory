@@ -9,7 +9,7 @@ interface CardTitleProps {
 
 const CardTitle = ({ title, slug }: CardTitleProps) => {
 	return (
-		<div className='w-full font-bold leading-tight text-customCardTitle pl-portfolioDivider h-paddingPostTitleTop md:h-paddingPostTitleBottom'>
+		<div className='w-full font-bold leading-tight text-customCardTitle pl-portfolioDivider h-paddingPostTitleTop sm:h-paddingPostTitleBottom'>
 			<Link as={`/posts/${slug}`} href='/posts/[slug]' passHref scroll={true}>
 				<a
 					className='block font-semibold text-left transition-transform duration-500 transform font-head hover:text-auxiliary translate-y-portfolioDivider'
@@ -19,7 +19,7 @@ const CardTitle = ({ title, slug }: CardTitleProps) => {
 					<ReactMarkdown
 						escapeHtml={false}
 						source={title}
-						className='text-center md:text-left hover:text-tertiary text-customTitleMobile md:text-customTitle'
+						className='text-center sm:text-left hover:text-tertiary text-customTitleMobile sm:text-customTitle'
 					/>
 				</a>
 			</Link>

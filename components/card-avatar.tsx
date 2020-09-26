@@ -17,22 +17,23 @@ export default function Avatar({ author, modified }: AvatarProps) {
 
 	return (
 		<Fragment>
-			<div className='grid grid-cols-4 overflow-hidden text-left transition-all transform ml-mdmxSocial items-left translate-y-portfolio py-portfolio'>
-				<div className='flex flex-col w-1/3 mx-portfolioH2F'>
+			<div className='grid grid-cols-4 overflow-hidden text-left transition-all transform ml-mdmxSocial items-left -translate-x-portfolio pt-portfolioDivider text-customCardAuthorDate'>
+				<div className='flex flex-col float-right transition-all duration-500 transform translate-x-portfolio'>
 					<img
 						src={author.avatar.url}
-						className='rounded-full md:w-portfolioLS md:h-portfolioLS w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
+						className='rounded-full sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
 						alt={nombre}
 					/>
 				</div>
 
-				<div className='grid grid-cols-1 grid-rows-2'>
-					<div className='col-span-3 align-top font-semib3ld min-w-portfolioPadding'>
-						<a className='flex w-full'>{nombre}</a>
-					</div>
-					<div className='block float-left w-40 col-span-3 align-top font-text-left min-w-aboutImage300'>
+				<div className='block col-span-3 align-top font-semib3ld min-w-portfolioPadding'>
+					<a className='block w-full'>{nombre}</a>
+				</div>
+				<div className='col-span-1'></div>
+				<div className='block float-left col-span-3 text-left align-top text-tertiary'>
+					<a className='block w-full transition-all transform -translate-y-portfolioLS'>
 						<Modified modifiedString={modified} />
-					</div>
+					</a>
 				</div>
 			</div>
 		</Fragment>

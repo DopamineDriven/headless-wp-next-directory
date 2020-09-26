@@ -378,6 +378,7 @@ module.exports = {
 				customCardIcons: '1.06667vw',
 				customCardTitle: '1.56667vw',
 				customCardExcerpt: '0.8567vw',
+				customCardAuthorDate: '1.8vw',
 				customFooterMobile: '2.63333vw',
 				customSM: '3.36667vw',
 				customSMobile: '4.36667vw',
