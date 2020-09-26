@@ -27,9 +27,13 @@ export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
 		return <ErrorPage statusCode={404} />;
 	}
 
+	const HeaderType = (post: any): JSX.Element => {
+		return <Header title={post.title} />;
+	};
+
 	return (
 		<Fragment>
-			<Header title={post.title} />
+			<HeaderType />
 			<Layout preview={preview}>
 				<Container>
 					{router.isFallback ? (
