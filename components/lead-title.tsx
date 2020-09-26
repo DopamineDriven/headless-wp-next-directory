@@ -9,7 +9,7 @@ const LeadTitle = (): JSX.Element => {
 					className='relative justify-center inline-block w-full min-w-full font-light tracking-wider text-center transition-all ease-in-out transform cursor-default font-head text-custom leading-headerP -translate-y-paddingPostTitleTop'
 					style={{ marginBlockStart: '0.67em', marginBlockEnd: '0.67em' }}
 				>
-					<a className='block text-custom'>Andrew</a>
+					<a className='block text-custom'>CIMA</a>
 				</h1>
 			</div>
 		</Media>

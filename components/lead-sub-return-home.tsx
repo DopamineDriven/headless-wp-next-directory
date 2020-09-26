@@ -1,7 +1,6 @@
 import Link from 'next/link';
-
 interface SubLeadInterface {
-	title: String;
+	title: string;
 }
 
 const LeadSubReturnHome = ({ title }: SubLeadInterface): JSX.Element => {
