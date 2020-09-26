@@ -26,12 +26,12 @@ export default function Avatar({ author, modified }: AvatarProps) {
 					/>
 				</div>
 
-				<div className='block col-span-3 align-top font-semib3ld text-customAboutSubMobile'>
+				<div className='block col-span-3 align-top font-semib3ld text-customAboutSubMobile sm:text-customS'>
 					<a className='block w-full'>{nombre}</a>
 				</div>
 				<div className='col-span-1'></div>
 				<div className='block float-left col-span-3 text-left align-top text-tertiary'>
-					<a className='block w-full transition-all transform -translate-y-portfolioLS text-customCardDateMobile'>
+					<a className='block w-full transition-all transform -translate-y-portfolioLS text-customCardDateMobile sm:text-customCardAuthorDate'>
 						<Modified modifiedString={modified} />
 					</a>
 				</div>

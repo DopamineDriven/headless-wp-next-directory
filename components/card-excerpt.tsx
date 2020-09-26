@@ -6,11 +6,11 @@ interface CardExcerptProps {
 
 const CardExcerpt = ({ excerpt }: CardExcerptProps) => {
 	return (
-		<div className='w-full text-left transition-transform duration-500 transform px-portfolio mb-portfolio sm:mb-portfolioDivider sm:pb-portfolio h-paddingAboutTitleRight text-customCardExcerpt overflow-y translate-y-portfolio font-somaRoman'>
+		<div className='w-full text-left transition-transform duration-500 transform px-portfolio sm:px-portfolioDivider mb-portfolio sm:mb-portfolioDivider sm:pb-portfolio h-paddingAboutTitleRight overflow-y translate-y-portfolio font-somaRoman'>
 			<ReactMarkdown
 				escapeHtml={false}
 				source={excerpt}
-				className=' text-customTitle sm:text-customCardTitle'
+				className=' text-customTitle sm:text-customS'
 			/>
 		</div>
 	);
