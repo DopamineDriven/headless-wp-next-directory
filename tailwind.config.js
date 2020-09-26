@@ -371,6 +371,7 @@ module.exports = {
 				customP: '3.2234vw',
 				customS: '2.06667vw',
 				customFooter: '1.16667vw',
+				customCardIcons: '1.06667vw',
 				customFooterMobile: '2.63333vw',
 				customSM: '3.36667vw',
 				customSMobile: '4.36667vw',

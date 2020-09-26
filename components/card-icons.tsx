@@ -11,8 +11,8 @@ type CardIconProps = {
 };
 
 const CardIcons = ({ social }: CardIconProps) => {
-	const anchorClassNull = ' items-center justify-center mr-mdmxSocial my-2 text-lg inline-block leading-relaxed text-center align-middle transition-colors duration-1000 rounded-full fill-current bg-primary hover:text-primary hover:bg-auxiliary text-quinary focus:outline-none'
-	const anchorClass = ' items-center justify-center inline-block mr-mdmxSocial my-2 text-lg leading-relaxed text-center text-white align-middle transition-colors duration-500 rounded-full fill-current bg-primary hover:text-primary hover:bg-auxiliary focus:outline-none'
+	const anchorClassNull = ' items-center justify-center mr-mdmxSocial my-2 text-customExcerpt inline-block leading-relaxed text-center align-middle transition-colors duration-1000 rounded-full fill-current bg-primary text-quinary focus:outline-none'
+	const anchorClass = ' items-center justify-center inline-block mr-mdmxSocial my-2 text-customCardIcons leading-relaxed text-center text-white align-middle transition-colors duration-500 rounded-full fill-current bg-primary hover:text-primary focus:outline-none'
 	return (
 		<div className='inline-block text-right align-middle justify-right content-right'>
 			<ul className='align-middle'>
