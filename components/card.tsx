@@ -32,11 +32,11 @@ const Card = ({
 	}
 
 	return (
-		<div className='inline-block font-polished'>
-			<div className='inline-block max-w-xs overflow-x-hidden overflow-y-hidden rounded-lg shadow-lg bg-primary'>
+		<div className='inline-block font-polished bg-primary'>
+			<div className='inline-block max-w-xs overflow-x-hidden overflow-y-hidden rounded-lg shadow-lg'>
 				<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
-				<div className='flex flex-col justify-center text-left rounded-b-lg shadow bg-auxiliary'>
+				<div className='flex flex-col justify-center text-left rounded-b-lg shadow '>
 					<div className='w-full h-12 px-4 pb-2 mt-2 text-xl font-bold leading-tight font-polished'>
 						<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 							<a

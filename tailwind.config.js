@@ -92,14 +92,16 @@ module.exports = {
 			},
 			backgroundColor: {
 				primary: 'var(--color-bg-primary)',
-				auxiliary: 'var(--color-bg-auxiliary)'
+				auxiliary: 'var(--color-bg-auxiliary)',
+				tertiary: 'var(--color-bg-tertiary)'
 			},
 			textColor: {
 				accent: 'var(--color-text-accent)',
 				primary: 'var(--color-text-primary)',
 				auxiliary: 'var(--color-text-auxiliary)',
 				tertiary: 'var(--color-text-tertiary)',
-				quaternary: 'var(--color-text-quaternary)'
+				quaternary: 'var(--color-text-quaternary)',
+				quinary: 'var(--color-text-quinary)'
 			},
 			borderColor: {
 				primary: 'var(--color-border-primary)'
@@ -112,6 +114,9 @@ module.exports = {
 				quinary: 'var(--color-fill-quaternary)',
 				senary: 'var(--color-fill-quaternary)'
 			},
+			// boxShadow: {
+			// 	primary: 'var(--color-shadow-primary)'
+			// },
 			strokeColor: {
 				primary: 'var(--color-stroke-primary)'
 			},
@@ -386,6 +391,7 @@ module.exports = {
 			boxShadow: {
 				small: '0 5px 10px rgba(0, 0, 0, 0.12)',
 				medium: '0 8px 30px rgba(0, 0, 0, 0.12)'
+				// custom: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);'
 			}
 		},
 		darkSelector: '.dark',

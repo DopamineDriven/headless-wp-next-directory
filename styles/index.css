@@ -10,7 +10,8 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth#:~:text=WebKit%20im
 	--color-text-primary: #000000;
 	--color-text-auxiliary: #151515;
 	--color-text-tertiary: #505050;
-	--color-text-quaternary: #ebe8e0;
+	--color-text-quaternary: #ffffff;
+	--color-text-quinary: #afafaf;
 	--color-border-primary: #000000;
 	--color-fill-primary: #000000;
 	--color-fill-auxiliary: #151515;
@@ -18,11 +19,10 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth#:~:text=WebKit%20im
 	--color-fill-quaternary: #afafaf;
 	--color-fill-quinary: #eaeaea;
 	--color-fill-senary: #ffffff;
-	--color-stroke-primary: #000000;
 }
 
 .dark-mode {
-	@apply bg-black text-white border-white;
+	@apply bg-oneFiveBlack text-white border-white;
 	--color-bg-primary: #000000;
 	--color-bg-auxiliary: #151515;
 	--color-bg-tertiary: #505050;
@@ -30,6 +30,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth#:~:text=WebKit%20im
 	--color-text-auxiliary: #eaeaea;
 	--color-text-tertiary: #afafaf;
 	--color-text-quaternary: #000000;
+	--color-text-quinary: #505050;
 	--color-border-primary: #ffffff;
 	--color-fill-primary: #ffffff;
 	--color-fill-auxiliary: #eaeaea;
