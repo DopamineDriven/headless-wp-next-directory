@@ -1,7 +1,5 @@
 import CoverImage, { CoverImageProps } from './card-image';
-import Date from './date';
 import Avatar from './card-avatar';
-import Link from 'next/link';
 import CardIcons from './card-icons';
 import { ContentDescriptor } from 'wp-graphql/lib/lib/abstract-types';
 import { authorType, socialType } from '../types/posts';
