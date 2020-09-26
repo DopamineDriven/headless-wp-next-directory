@@ -11,11 +11,11 @@ type CardsProps = {
 
 export default function MoreCards({ posts }: CardsProps) {
 	return (
-		<section>
-			{/* <h2 className='mb-8 text-6xl md:text-6xl tracking-tighter leading-tight'>
+		<section className='content-center justify-center block mx-auto '>
+			{/* <h2 className='mb-8 text-6xl leading-tight tracking-tighter md:text-6xl'>
 				More Companies
 			</h2> */}
-			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 align-middle text-center'>
+			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-portfolio gap-y-portfolio sm:max-w-cardGridMobile max-w-cardGrid'>
 				{posts.map((company: PostsProps) => {
 					const node: any = company.node;
 					return (
@@ -39,10 +39,10 @@ export default function MoreCards({ posts }: CardsProps) {
 // export default function MoreCards({ posts, slug }: CardsProps) {
 // 	return (
 // 		<section>
-// 			{/* <h2 className='mb-8 text-6xl md:text-6xl tracking-tighter leading-tight'>
+// 			{/* <h2 className='mb-8 text-6xl leading-tight tracking-tighter md:text-6xl'>
 // 				More Companies
 // 			</h2> */}
-// 			<div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6 align-middle text-center'>
+// 			<div className='grid grid-cols-1 text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6'>
 // 				<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 // 					<a>
 // 						{posts.map(({ node }: NodeProps) => (

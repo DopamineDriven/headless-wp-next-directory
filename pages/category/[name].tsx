@@ -69,21 +69,29 @@ export async function getStaticProps({ params, preview = false }: Params) {
 	};
 }
 
-
-
 export async function getStaticPaths() {
-	// const router = useRouter();
-	// const hrefRedirect = (e: Event) => {
-	// 	e.preventDefault();
-	// 	router.push(`/category/${category.node.name}`)
-		
-	// }
 	const allCategories = await getCategories();
-	const absoluteURL = process.env.NODE_ENV === 'development' ? `${process.env.DEV_URL}` : `${process.env.WORDPRESS_URL}`;
+
 	return {
 		paths:
-			allCategories.map((category: any) =>  `${absoluteURL}/category/${category.node.name}`) ||
+			allCategories.map((category: any) => `/category/${category.node.name}`) ||
 			[],
 		fallback: true
 	};
 }
+
+
+/*
+const routerPushEvent = async (e: Event) => {
+	const allCategories = await getCategories();
+	const router = useRouter();
+
+	useEffect(() => {
+		e.preventDefault();
+		const mappingCats = allCategories.map((category: any) =>
+			category !== null ? `/?${category.node.name}` : `/`
+		);
+		router.push(mappingCats);
+	}, [router.query.getCategories]);
+};
+*/

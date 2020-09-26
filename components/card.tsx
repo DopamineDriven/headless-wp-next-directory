@@ -1,10 +1,14 @@
-import CoverImage, { CoverImageProps } from './cover-image-card';
+import CoverImage, { CoverImageProps } from './card-image';
 import Date from './date';
-import Avatar from './avatar';
+import Avatar from './card-avatar';
 import Link from 'next/link';
 import CardIcons from './card-icons';
 import { ContentDescriptor } from 'wp-graphql/lib/lib/abstract-types';
 import { authorType, socialType } from '../types/posts';
+import CardTitle from 'components/card-title';
+import CardExcerpt from 'components/card-excerpt';
+import { Fragment } from 'react';
+import SiteDivider from 'components/site-divider';
 
 type CardProps = {
 	coverImage: CoverImageProps;
@@ -32,35 +36,25 @@ const Card = ({
 	}
 
 	return (
-		<div className='inline-block font-polished'>
-			<div className='max-w-xs rounded-lg overflow-x-hidden overflow-y-hidden bg-white shadow-lg inline-block'>
-				<CoverImage coverImage={coverImage} title={title} slug={slug} />
+		<Fragment>
+			<div className='block mx-auto select-none w-full'>
+				<div className='block overflow-x-hidden overflow-y-hidden transition-all duration-1000 ease-in-out transform border-collapse border-current max-w-xsCardGridCima w-xsCardGridCima sm:w-aboutImage600 sm:max-w-aboutimage600 sm:overflow-hidden rounded-custom mx-auto'>
+					<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
-				<div className='flex flex-col text-left justify-center bg-white shadow rounded-b-lg'>
-					<div className='font-bold text-xl h-12 mt-2 w-full font-polished leading-tight px-4 pb-2'>
-						<Link as={`/posts/${slug}`} href='/posts/[slug]'>
-							<a
-								className='hover:underline text-xl font-semibold text-left'
-								dangerouslySetInnerHTML={{ __html: title }}
-							></a>
-						</Link>
-					</div>
-					<div
-						className='text-smxmd px-4 mt-1 text-left leading-tight overflow-y h-16 w-full'
-						dangerouslySetInnerHTML={{ __html: excerpt }}
-					></div>
-					<>
-						<div className='grid-cols-1 pl-2 font-subpolished'>
+					<div className='flex flex-col justify-center flex-grow h-aboutOffsetPRMobile sm:h-auto text-left bg-primary'>
+						<CardTitle slug={slug} title={title} />
+						<CardExcerpt excerpt={excerpt} />
+						<div className='block transition-all duration-500 transform pl-portfolioDivider font-somaRoman'>
 							<Avatar author={author.node} modified={modified} />
 						</div>
-					</>
-					<hr className='border-customGray w-full mt-2' />
-					<div className='text-right block float-right pr-2 font-subpolished'>
-						<CardIcons social={social} />
+						<SiteDivider />
+						<div className='block float-right text-right pr-portfolio font-somaRoman'>
+							<CardIcons social={social} />
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</Fragment>
 	);
 };
 
