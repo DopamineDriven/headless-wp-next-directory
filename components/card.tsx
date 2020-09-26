@@ -33,20 +33,20 @@ const Card = ({
 
 	return (
 		<div className='inline-block font-polished'>
-			<div className='max-w-xs rounded-lg overflow-x-hidden overflow-y-hidden bg-white shadow-lg inline-block'>
+			<div className='inline-block max-w-xs overflow-x-hidden overflow-y-hidden rounded-lg shadow-lg bg-primary'>
 				<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
-				<div className='flex flex-col text-left justify-center bg-white shadow rounded-b-lg'>
-					<div className='font-bold text-xl h-12 mt-2 w-full font-polished leading-tight px-4 pb-2'>
+				<div className='flex flex-col justify-center text-left rounded-b-lg shadow bg-auxiliary'>
+					<div className='w-full h-12 px-4 pb-2 mt-2 text-xl font-bold leading-tight font-polished'>
 						<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 							<a
-								className='hover:underline text-xl font-semibold text-left'
+								className='text-xl font-semibold text-left hover:underline'
 								dangerouslySetInnerHTML={{ __html: title }}
 							></a>
 						</Link>
 					</div>
 					<div
-						className='text-smxmd px-4 mt-1 text-left leading-tight overflow-y h-16 w-full'
+						className='w-full h-16 px-4 mt-1 leading-tight text-left text-smxmd overflow-y'
 						dangerouslySetInnerHTML={{ __html: excerpt }}
 					></div>
 					<>
@@ -54,8 +54,8 @@ const Card = ({
 							<Avatar author={author.node} modified={modified} />
 						</div>
 					</>
-					<hr className='border-customGray w-full mt-2' />
-					<div className='text-right block float-right pr-2 font-subpolished'>
+					<hr className='w-full mt-2 border-customGray' />
+					<div className='block float-right pr-2 text-right font-subpolished'>
 						<CardIcons social={social} />
 					</div>
 				</div>

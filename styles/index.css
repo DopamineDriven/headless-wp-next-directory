@@ -6,6 +6,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth#:~:text=WebKit%20im
 	@apply bg-white text-black border-black;
 	--color-bg-primary: #ffffff;
 	--color-bg-auxiliary: #f0f1f2;
+	--color-bg-tertiary: #f1f2f3;
 	--color-text-primary: #000000;
 	--color-text-auxiliary: #151515;
 	--color-text-tertiary: #505050;
@@ -24,6 +25,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth#:~:text=WebKit%20im
 	@apply bg-black text-white border-white;
 	--color-bg-primary: #000000;
 	--color-bg-auxiliary: #151515;
+	--color-bg-tertiary: #505050;
 	--color-text-primary: #ffffff;
 	--color-text-auxiliary: #eaeaea;
 	--color-text-tertiary: #afafaf;
