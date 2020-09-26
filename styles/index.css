@@ -13,6 +13,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth#:~:text=WebKit%20im
 	--color-text-quaternary: #ffffff;
 	--color-text-quinary: #afafaf;
 	--color-border-primary: #000000;
+	--color-border-auxiliary: #151515;
 	--color-fill-primary: #000000;
 	--color-fill-auxiliary: #151515;
 	--color-fill-tertiary: #505050;
@@ -32,6 +33,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/font-smooth#:~:text=WebKit%20im
 	--color-text-quaternary: #000000;
 	--color-text-quinary: #505050;
 	--color-border-primary: #ffffff;
+	--color-border-auxiliary: #eaeaea;
 	--color-fill-primary: #ffffff;
 	--color-fill-auxiliary: #eaeaea;
 	--color-fill-tertiary: #afafaf;

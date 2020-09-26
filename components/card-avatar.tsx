@@ -17,21 +17,21 @@ export default function Avatar({ author, modified }: AvatarProps) {
 
 	return (
 		<Fragment>
-			<div className='grid grid-cols-4 overflow-hidden text-left transition-all transform ml-mdmxSocial items-left -translate-x-portfolio pt-portfolioDivider text-customCardAuthorDate'>
-				<div className='flex flex-col float-right transition-all duration-500 transform translate-x-portfolio'>
+			<div className='grid grid-cols-4 overflow-hidden text-left transition-all transform ml-mdmxSocial items-left -translate-x-portfolioLSMobile sm:-translate-x-portfolio pt-portfolioDivider text-customCardAuthorDate'>
+				<div className='block float-right transition-all duration-500 transform text-right align-middle pl-portfolio col-span-1'>
 					<img
 						src={author.avatar.url}
-						className='rounded-full sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
+						className='block mx-auto rounded-full sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
 						alt={nombre}
 					/>
 				</div>
 
-				<div className='block col-span-3 align-top font-semib3ld min-w-portfolioPadding'>
+				<div className='block col-span-3 align-top font-semib3ld text-customAboutSubMobile'>
 					<a className='block w-full'>{nombre}</a>
 				</div>
 				<div className='col-span-1'></div>
 				<div className='block float-left col-span-3 text-left align-top text-tertiary'>
-					<a className='block w-full transition-all transform -translate-y-portfolioLS'>
+					<a className='block w-full transition-all transform -translate-y-portfolioLS text-customCardDateMobile'>
 						<Modified modifiedString={modified} />
 					</a>
 				</div>

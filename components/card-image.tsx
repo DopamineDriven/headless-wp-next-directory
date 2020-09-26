@@ -16,7 +16,7 @@ export default function CoverImageCard({
 		<img
 			src={coverImage ? coverImage.sourceUrl : coverImage}
 			alt={title}
-			className={cn('w-socialT max-w-socialT sm:w-aboutImage600 sm:max-w-aboutImage600 h-auto max-h-aboutImage300 sm:h-portfolioS sm:max-h-full rounded-t-custom overflow-x-hidden', {
+			className={cn('w-xsCardGridCima max-w-xsCardGridCima sm:w-aboutImage600 sm:max-w-aboutImage600 h-aboutOffsetPRMobile sm:h-portfolioS sm:max-h-full rounded-t-custom overflow-x-hidden', {
 				'transition-shadow duration-400': slug
 			})}
 		/>

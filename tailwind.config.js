@@ -104,7 +104,8 @@ module.exports = {
 				quinary: 'var(--color-text-quinary)'
 			},
 			borderColor: {
-				primary: 'var(--color-border-primary)'
+				primary: 'var(--color-border-primary)',
+				auxiliary: 'var(--color-border-auxiliary)'
 			},
 			fill: {
 				primary: 'var(--color-fill-primary)',
@@ -114,9 +115,6 @@ module.exports = {
 				quinary: 'var(--color-fill-quaternary)',
 				senary: 'var(--color-fill-quaternary)'
 			},
-			// boxShadow: {
-			// 	primary: 'var(--color-shadow-primary)'
-			// },
 			strokeColor: {
 				primary: 'var(--color-stroke-primary)'
 			},
@@ -231,6 +229,7 @@ module.exports = {
 				socialMargin: '-0.5vw',
 				portfolioS: '18.60284vw',
 				svgIcon: '18.0556vw',
+				xsCardGridCima: '60vw',
 				socialT: '74.58333vw',
 				cardGrid: '85.7939vw',
 				cardGridMobile: '91.1111vw',
@@ -278,6 +277,7 @@ module.exports = {
 				portfolioMTP: '-0.83333vw',
 				socialMargin: '-0.5vw',
 				portfolioS: '18.60284vw',
+				xsCardGridCima: '60vw',
 				svgIcon: '18.0556vw',
 				socialT: '74.58333vw',
 				cardGrid: '85.7939vw',
@@ -316,6 +316,7 @@ module.exports = {
 				aboutOffsetPRMobile: '37.79944vw',
 				introToPortfolioMobile: '32.79944vw',
 				aboutHackingFontAwesomePT: '6.6852vw',
+				aboutHackingFontAwesomePTMobile: '9.6852vw',
 				paddingBlog: '26.25vw',
 				paddingBlogOdd: '17.5vw',
 				paddingPostTitleTop: '5.5vw',
@@ -394,6 +395,7 @@ module.exports = {
 				customSubPostTitle: '11.9276vw',
 				customSubPostTitleModified: '8.9276vw',
 				customAboutSubMobile: '2.63333vw',
+				customCardDateMobile: '2.43333vw',
 				customBlogSupraTitle: '8.9276vw'
 			},
 			boxShadow: {
