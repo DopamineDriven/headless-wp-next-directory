@@ -1,5 +1,8 @@
 # headless-wp-next-directory
 
+## WP-GQL/WP-GQL-ACF
+- https://github.com/wp-graphql/wp-graphql-acf
+
 ## ReactElement vs ReactNode vs JSX.Element
 - https://stackoverflow.com/questions/58123398/when-to-use-jsx-element-vs-reactnode-vs-reactelement
 - https://www.mmbyte.com/article/44732.html#:~:text=Element%20is%20ReactElement%20%2C%20whose%20props,render()%20in%20class%20components

@@ -9,11 +9,11 @@ import PostHeader from '../../components/post-header';
 import Layout from '../../components/layout';
 import { getAllPostsForCategory, getCategories } from '../../lib/api';
 import PostTitle from '../../components/post-title';
-import Cards from '../../components/more-cards';
+import Cards from '../../components/cards-coalesced';
 import Head from 'next/head';
 import { CMS_NAME } from '../../lib/constants';
 // import Tags from '../../components/tags';
-import MoreCards from '../../components/more-cards';
+import MoreCards from '../../components/cards-coalesced';
 import { Fragment } from 'react';
 import { PostsProps } from '../../types/posts';
 
