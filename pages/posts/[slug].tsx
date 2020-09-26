@@ -26,9 +26,6 @@ export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
 	}
-	const titleMapped = morePosts.map((constituent: any) => {
-		return constituent.title;
-	});
 
 	const HeaderType = (post: any): JSX.Element => {
 		return <Header title={post.title} />;
