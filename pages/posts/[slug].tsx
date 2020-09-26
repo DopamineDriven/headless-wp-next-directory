@@ -10,7 +10,7 @@ import { getAllPostsWithSlug, getPostAndMorePosts } from 'lib/api';
 import PostTitle from 'components/post-title';
 import Head from 'next/head';
 import { CMS_NAME } from 'lib/constants';
-import MoreCards from 'components/more-cards';
+import MoreCards from 'components/cards-coalesced';
 import { Fragment } from 'react';
 
 interface SlugProps {

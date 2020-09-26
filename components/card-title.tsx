@@ -9,17 +9,17 @@ interface CardTitleProps {
 
 const CardTitle = ({ title, slug }: CardTitleProps) => {
 	return (
-		<div className='w-full font-bold leading-tight text-customCardTitle pl-portfolioDivider h-paddingPostTitleTop sm:h-paddingPostTitleBottom'>
+		<div className='block w-auto font-bold leading-tight text-customCardTitle pl-portfolioDivider h-paddingPostTitleTop sm:h-paddingPostTitleBottom'>
 			<Link as={`/posts/${slug}`} href='/posts/[slug]' passHref scroll={true}>
 				<a
-					className='block font-semibold text-left transition-transform duration-500 transform font-head hover:text-auxiliary translate-y-portfolioDivider'
+					className='block font-semibold text-left transition-all duration-1000 animate-hero transform font-head hover:text-tertiary translate-y-portfolioDivider'
 					aria-label={`portfolio item title - ${title}`}
 					id={`home-${title}`}
 				>
 					<ReactMarkdown
 						escapeHtml={false}
 						source={title}
-						className='text-center sm:text-left hover:text-tertiary text-customTitleMobile sm:text-customTitle'
+						className='text-center sm:text-left hover:text-tertiary text-customTitleMobile sm:text-customTitle transition-all duration-1000 animate-hero transform '
 					/>
 				</a>
 			</Link>
