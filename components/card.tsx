@@ -38,17 +38,17 @@ const Card = ({
 	return (
 		<Fragment>
 			<div className='block mx-auto select-none w-cardGridMobile'>
-				<div className='block overflow-x-hidden overflow-y-hidden transition-all ease-in-out transform max-w-imagePortfolioMobile sm:w-aboutImage600 sm:max-w-aboutimage600 sm:overflow-hidden duration-3000'>
+				<div className='block overflow-x-hidden overflow-y-hidden transition-all duration-1000 ease-in-out transform border-collapse border-current max-w-socialT sm:w-aboutImage600 sm:max-w-aboutimage600 sm:overflow-hidden rounded-custom'>
 					<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
-					<div className='flex flex-col justify-center flex-grow h-auto text-left rounded-b-custom bg-primary'>
+					<div className='flex flex-col justify-center flex-grow h-auto text-left bg-primary'>
 						<CardTitle slug={slug} title={title} />
 						<CardExcerpt excerpt={excerpt} />
-						<div className='block grid-cols-1 transition-all duration-500 transform pl-portfolioDivider font-somaRoman -translate-y-mdmxSocial'>
+						<div className='block transition-all duration-500 transform pl-portfolioDivider font-somaRoman'>
 							<Avatar author={author.node} modified={modified} />
 						</div>
 						<SiteDivider />
-						<div className='block float-right text-right pr-portfolioDivider font-somaRoman'>
+						<div className='block float-right text-right pr-portfolio font-somaRoman'>
 							<CardIcons social={social} />
 						</div>
 					</div>

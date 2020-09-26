@@ -4,7 +4,7 @@ import { faSortDown } from '@fortawesome/free-solid-svg-icons/faSortDown';
 import Container from './container';
 import CategoryProps from '../types/category';
 import TagProps from '../types/tag';
-import { ChangeEvent, SyntheticEvent } from 'react';
+import { Fragment, ChangeEvent, SyntheticEvent } from 'react';
 import { PostsProps } from '../types/posts';
 import { InferGetServerSidePropsType } from 'next';
 
@@ -26,35 +26,34 @@ const SearchBox = ({
 	dropdownOptions,
 	tags,
 	categories
-}: Props) => {
-	// const handleTabSearch = tabName => {};
+}: Props): JSX.Element => {
+	const categoriesMapped: JSX.Element[] = categories.map((category, index) => {
+		return (
+			<li key={index} className='mr-1'>
+				<a
+					href={`http://localhost:3000/category/${category.node.name}`}
+					className='inline-block min-h-full font-semibold border-t border-l rounded-t h-portfolioLS px-mdmxSocial border-r-custom text-customExcerpt'
+					data-categoryname={category.node.name}
+				>
+					{category.node.name}
+				</a>
+			</li>
+		);
+	});
+
 	console.log(dropdownOptions);
 	return (
-		<Container>
-			<div className='mt-4 flex-row w-auto overflow-y-hidden mb-4 text-sm overflow-x-scroll'>
+		<Fragment>
+			<div className='flex-row w-auto overflow-x-hidden overflow-y-hidden mb-portfolio'>
 				<div className='flex w-auto'>
-					<ul className='w-full flex border-b'>
-						{categories.map((category, index) => {
-							return (
-								<li key={index} className='mr-1'>
-									<a
-										href={`http://localhost:3000/category/${category.node.name}`}
-										className='bg-gray-300 inline-block h-auto border-l border-t border-r rounded-t py-2 px-4 text-blue-700 font-semibold'
-										data-categoryname={category.node.name}
-									>
-										{category.node.name}
-									</a>
-								</li>
-							);
-						})}
-					</ul>
+					<ul className='flex w-full border-b'>{categoriesMapped}</ul>
 				</div>
-				<div className='flex bg-white shadow-2xl p-2 mb-3'>
-					<div className='flex w-auto py-2 h-auto relative'>
+				<div className='flex p-2 mb-3 shadow-2xl bg-primary'>
+					<div className='relative flex w-auto h-auto py-2'>
 						<select
 							onChange={selectChange}
 							value={selectSearch}
-							className=' h-auto bg-white border border-gray-400 hover:border-gray-500 rounded shadow leading-tight mx--5 focus:outline-none focus:shadow-outline'
+							className='h-auto leading-tight bg-white border border-gray-400 rounded shadow hover:border-gray-500 mx--5 focus:outline-none focus:shadow-outline'
 						>
 							{dropdownOptions.map((dropDownOption, index) => {
 								return (
@@ -66,11 +65,11 @@ const SearchBox = ({
 						</select>
 					</div>
 					<div className='flex w-full'>
-						<span className='w-auto flex justify-end items-center text-gray-500 p-2' />
-						<label className='text-black text-2xl align-middle'></label>
+						<span className='flex items-center justify-end w-auto p-2 text-gray-500' />
+						<label className='text-2xl text-black align-middle'></label>
 						<input
 							type='text'
-							className='w-full rounded p-1'
+							className='w-full p-1 rounded'
 							placeholder='Search...'
 							name='search-form'
 							onChange={filterFunc}
@@ -79,7 +78,7 @@ const SearchBox = ({
 						<button
 							type='submit'
 							name='search-button'
-							className='hover:bg-white align-middle shadow-xl rounded-full bg-black hover:text-black border border-black text-white font-bold py-1 px-2 ml-2 md:px-2 sm:px-2 lg:px-2 duration-500 transition-colors lg:mb-0'
+							className='px-2 py-1 ml-2 font-bold text-white align-middle transition-colors duration-500 bg-black border border-black rounded-full shadow-xl hover:bg-white hover:text-black md:px-2 sm:px-2 lg:px-2 lg:mb-0'
 						>
 							<a aria-label='search' className='text-md'>
 								{<FontAwesomeIcon icon={faSearch} />}
@@ -88,7 +87,7 @@ const SearchBox = ({
 					</div>
 				</div>
 			</div>
-		</Container>
+		</Fragment>
 	);
 };
 

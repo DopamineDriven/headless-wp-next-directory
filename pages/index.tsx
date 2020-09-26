@@ -104,40 +104,35 @@ export default function Index({
 		<Fragment>
 			<MediaContextProvider>
 				<Header />
-				<Layout>
-					<Head>
-						<title>
-							{CLIENT_NAME} landing page via {CMS_NAME}
-						</title>
-					</Head>
 
+				<Head>
+					<title>
+						{CLIENT_NAME} landing page via {CMS_NAME}
+					</title>
+				</Head>
 
-						<SearchBox
-							selectSearch={filterQuery}
-							selectChange={(evt: SyntheticEvent): void => {
-								const element = evt.currentTarget as HTMLSelectElement;
-								console.log('select event: ', element.value);
-								setFilterQuery(element.value);
-							}}
-							filterFunc={(evt: SyntheticEvent): void => {
-								const element = evt.currentTarget as HTMLInputElement;
-								const searchQuery = element.value.toLowerCase();
-								setSearch(searchQuery);
-							}}
-							tags={tagsAndPosts}
-							allPosts={morePosts}
-							dropdownOptions={['title', 'description']}
-							categories={categories}
-						/>
-						<div className='items-center content-center justify-center block mx-auto text-centermy-portfolioH2F'>
-							{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
-						</div>
-
-					<Footer />
-				</Layout>
-				<div className='container'>
-
+				<SearchBox
+					selectSearch={filterQuery}
+					selectChange={(evt: SyntheticEvent): void => {
+						const element = evt.currentTarget as HTMLSelectElement;
+						console.log('select event: ', element.value);
+						setFilterQuery(element.value);
+					}}
+					filterFunc={(evt: SyntheticEvent): void => {
+						const element = evt.currentTarget as HTMLInputElement;
+						const searchQuery = element.value.toLowerCase();
+						setSearch(searchQuery);
+					}}
+					tags={tagsAndPosts}
+					allPosts={morePosts}
+					dropdownOptions={['title', 'description']}
+					categories={categories}
+				/>
+				<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
+					{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
 				</div>
+
+				<Footer />
 			</MediaContextProvider>
 		</Fragment>
 	);
@@ -218,4 +213,3 @@ export const getServerSideProps = async ({
 		}
 	};
 };
-
