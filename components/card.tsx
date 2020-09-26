@@ -1,8 +1,8 @@
-import CoverImage, { CoverImageProps } from './card-image';
-import Avatar from './card-avatar';
-import CardIcons from './card-icons';
+import CoverImage, { CoverImageProps } from 'components/card-image';
+import Avatar from 'components/card-avatar';
+import CardIcons from 'components/card-icons';
 import { ContentDescriptor } from 'wp-graphql/lib/lib/abstract-types';
-import { authorType, socialType } from '../types/posts';
+import { authorType, socialType } from 'types/posts';
 import CardTitle from 'components/card-title';
 import CardExcerpt from 'components/card-excerpt';
 import { Fragment } from 'react';
