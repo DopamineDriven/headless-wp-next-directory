@@ -1,6 +1,6 @@
 import Avatar from './post-avatar';
-import Date from './date';
-import Modified from './modified';
+import Date from './date-published';
+import Modified from './date-modified';
 import CoverImage, { CoverImageProps } from './post-cover-image';
 import PostTitle from './post-title';
 import Categories from './categories';

@@ -1,4 +1,4 @@
-import Modified from './modified';
+import Modified from './date-modified';
 import { authorProps } from 'types/posts';
 import { Fragment } from 'react';
 

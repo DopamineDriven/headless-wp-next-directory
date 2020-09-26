@@ -1,5 +1,5 @@
 import Avatar from './card-avatar';
-import Date from './date';
+import Date from './date-published';
 import CoverImage, { CoverImageProps } from './post-cover-image';
 import Link from 'next/link';
 import SectionSeparator from './section-separator';
