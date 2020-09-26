@@ -11,10 +11,16 @@ type CardIconProps = {
 };
 
 const CardIcons = ({ social }: CardIconProps) => {
-	const anchorClassNull = ' items-center justify-center mr-mdmxSocial my-2 text-customExcerpt inline-block leading-relaxed text-center align-middle transition-colors duration-1000 rounded-full fill-current bg-primary text-quinary focus:outline-none'
-	const anchorClass = ' items-center justify-center inline-block mr-mdmxSocial my-2 text-customCardIcons leading-relaxed text-center text-white align-middle transition-colors duration-500 rounded-full fill-current bg-primary hover:text-primary focus:outline-none'
+	const anchorClassNull =
+		' items-center justify-center mx-mdmxSocial my-portfolioDivider text-customCardIcons inline-block leading-relaxed text-center align-middle transition-colors duration-1000 rounded-full fill-current bg-primary text-quinary focus:outline-none';
+	const anchorClass =
+		' items-center justify-center inline-block mx-mdmxSocial my-portfolioDivider text-customCardIcons leading-relaxed text-center text-white align-middle transition-colors duration-500 rounded-full fill-current bg-primary hover:text-primary focus:outline-none';
+	const iconClassNull =
+		' flex font-extrabold text-center align-middle transition-all duration-1000 ease-in-out delay-300 transform md:text-customFooter text-customExcerpt fa-portfolioDivider';
+	const iconClass =
+		' flex font-extrabold text-center align-middle transition-all duration-1000 ease-in-out delay-300 transform md:text-customFooter text-customExcerpt hover:text-tertiary fa-portfolioDivider';
 	return (
-		<div className='inline-block text-right align-middle justify-right content-right'>
+		<div className='inline-block text-right align-middle'>
 			<ul className='align-middle'>
 				<li className='align-middle'>
 					{social.facebook === null ? (
@@ -27,11 +33,7 @@ const CardIcons = ({ social }: CardIconProps) => {
 							{social.facebook === '' ? (
 								<></>
 							) : (
-								<FontAwesomeIcon
-									icon={faFacebook}
-									className='justify-center block font-extrabold text-center text-current align-middle bg-current rounded-full fill-current stroke-current'
-									size='2x'
-								/>
+								<FontAwesomeIcon icon={faFacebook} className={iconClassNull} />
 							)}
 						</a>
 					) : (
@@ -44,10 +46,7 @@ const CardIcons = ({ social }: CardIconProps) => {
 							{social.facebook === '' ? (
 								<></>
 							) : (
-								<FontAwesomeIcon
-									icon={faFacebook}
-									className='font-extrabold text-center align-middle text-md'
-								/>
+								<FontAwesomeIcon icon={faFacebook} className={iconClass} />
 							)}
 						</a>
 					)}
@@ -61,10 +60,7 @@ const CardIcons = ({ social }: CardIconProps) => {
 							{social.instagram === '' ? (
 								<></>
 							) : (
-								<FontAwesomeIcon
-									icon={faInstagram}
-									className='font-extrabold text-center align-middle text-md'
-								/>
+								<FontAwesomeIcon icon={faInstagram} className={iconClassNull} />
 							)}
 						</a>
 					) : (
@@ -72,15 +68,12 @@ const CardIcons = ({ social }: CardIconProps) => {
 							aria-label='instagram'
 							target='__blank'
 							href={social.instagram}
-							className='items-center justify-center inline-block w-8 h-8 mx-1 my-2 text-lg leading-relaxed text-center text-white align-middle transition-colors duration-500 rounded-full bg-customGray hover:text-white hover:bg-iconHover focus:outline-none'
+							className={anchorClass}
 						>
 							{social.instagram === '' ? (
 								<></>
 							) : (
-								<FontAwesomeIcon
-									icon={faInstagram}
-									className='font-extrabold text-center align-middle text-md'
-								/>
+								<FontAwesomeIcon icon={faInstagram} className={iconClass} />
 							)}
 						</a>
 					)}
@@ -89,15 +82,12 @@ const CardIcons = ({ social }: CardIconProps) => {
 							aria-label='twitter'
 							target='__blank'
 							href={social.twitter}
-							className='items-center justify-center inline-block w-8 h-8 mx-1 my-2 text-lg leading-relaxed text-center text-white align-middle transition-colors duration-500 rounded-full bg-customGray hover:text-white focus:outline-none'
+							className={anchorClassNull}
 						>
 							{social.twitter === '' ? (
 								<></>
 							) : (
-								<FontAwesomeIcon
-									icon={faTwitter}
-									className='font-extrabold text-center align-middle text-md'
-								/>
+								<FontAwesomeIcon icon={faTwitter} className={iconClassNull} />
 							)}
 						</a>
 					) : (
@@ -105,15 +95,12 @@ const CardIcons = ({ social }: CardIconProps) => {
 							aria-label='twitter'
 							target='__blank'
 							href={social.twitter}
-							className='items-center justify-center inline-block w-8 h-8 mx-1 my-2 text-lg leading-relaxed text-center text-white align-middle transition-colors duration-500 rounded-full bg-customGray hover:text-white hover:bg-iconHover focus:outline-none'
+							className={anchorClass}
 						>
 							{social.twitter === '' ? (
 								<></>
 							) : (
-								<FontAwesomeIcon
-									icon={faTwitter}
-									className='font-extrabold text-center align-middle text-md'
-								/>
+								<FontAwesomeIcon icon={faTwitter} className={iconClass} />
 							)}
 						</a>
 					)}
@@ -122,18 +109,12 @@ const CardIcons = ({ social }: CardIconProps) => {
 							aria-label='website'
 							target='__blank'
 							href={social.website}
-							className='items-center justify-center inline-block w-8 h-8 mx-1 my-2 text-lg leading-relaxed text-center text-white align-middle transition-colors duration-500 rounded-full bg-customGray hover:text-white focus:outline-none'
+							className={anchorClassNull}
 						>
 							{social.website === '' ? (
-								<FontAwesomeIcon
-									icon={faCustomWebsite}
-									className='font-extrabold text-center align-middle text-md'
-								/>
+								<></>
 							) : (
-								<FontAwesomeIcon
-									icon={faCustomWebsite}
-									className='font-extrabold text-center align-middle text-md'
-								/>
+								<FontAwesomeIcon icon={faCustomWebsite} className={iconClassNull} />
 							)}
 						</a>
 					) : (
@@ -141,18 +122,12 @@ const CardIcons = ({ social }: CardIconProps) => {
 							aria-label='website'
 							target='__blank'
 							href={social.website}
-							className='items-center justify-center inline-block w-8 h-8 mx-1 my-2 text-lg leading-relaxed text-center text-white align-middle transition-colors duration-500 rounded-full bg-customGray hover:text-white hover:bg-iconHover focus:outline-none'
+							className={anchorClass}
 						>
 							{social.website === '' ? (
-								<FontAwesomeIcon
-									icon={faCustomWebsite}
-									className='font-extrabold text-center align-middle text-md'
-								/>
+								<></>
 							) : (
-								<FontAwesomeIcon
-									icon={faCustomWebsite}
-									className='font-extrabold text-center align-middle text-md'
-								/>
+								<FontAwesomeIcon icon={faCustomWebsite} className={iconClass} />
 							)}
 						</a>
 					)}

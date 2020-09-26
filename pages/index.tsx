@@ -110,7 +110,7 @@ export default function Index({
 							{CLIENT_NAME} landing page via {CMS_NAME}
 						</title>
 					</Head>
-					<Container>
+
 
 						<SearchBox
 							selectSearch={filterQuery}
@@ -129,10 +129,10 @@ export default function Index({
 							dropdownOptions={['title', 'description']}
 							categories={categories}
 						/>
-						<div className='grid items-center content-center justify-center max-w-5xl mx-auto mt-5 mb-5 text-center'>
+						<div className='grid items-center content-center justify-center mx-auto text-center mt-portfolio mb-portfolio max-w-cardGridMobile'>
 							{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
 						</div>
-					</Container>
+
 					<Footer />
 				</Layout>
 				<div className='container'>

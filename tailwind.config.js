@@ -309,6 +309,7 @@ module.exports = {
 				portfolioMTP: '-0.83333vw',
 				socialMargin: '-0.5vw',
 				portfolioS: '18.60284vw',
+				portfolioCima: '13.60284vw',
 				socialT: '74.58333vw',
 				aboutGapX: '8.9136vw',
 				aboutOffsetPR: '43.79944vw',
@@ -353,6 +354,9 @@ module.exports = {
 				customSLM: '6.33333vw',
 				leadingAboutMobile: '3.58298vw'
 			},
+			borderRadius: {
+				custom: '0.5vw'
+			},
 			fontSize: {
 				onehalf: '0.5rem',
 				smxmd: '0.9375rem',
@@ -372,6 +376,7 @@ module.exports = {
 				customS: '2.06667vw',
 				customFooter: '1.16667vw',
 				customCardIcons: '1.06667vw',
+				customCardExcerpt: '0.8567vw',
 				customFooterMobile: '2.63333vw',
 				customSM: '3.36667vw',
 				customSMobile: '4.36667vw',

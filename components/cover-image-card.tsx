@@ -16,13 +16,13 @@ export default function CoverImageCard({
 		<img
 			src={coverImage ? coverImage.sourceUrl : coverImage}
 			alt={title}
-			className={cn('shadow-sm w-full h-44 max-h-full overflow-x-hidden rounded-t rounded-b-sm', {
-				'hover:shadow-lg transition-shadow duration-400': slug
+			className={cn('shadow-sm w-aboutImage300 h-portfolioCima max-h-full min-w-aboutImage300 max-w-aboutImage300 overflow-x-hidden rounded-t-custom rounded-b-custom', {
+				'transition-shadow duration-400': slug
 			})}
 		/>
 	);
 	return (
-		<div className='-mx-5 sm:mx-0'>
+		<div className=''>
 			{slug ? (
 				<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 					<a aria-label={title}>{image}</a>
