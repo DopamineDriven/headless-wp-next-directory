@@ -12,13 +12,13 @@ type CardIconProps = {
 
 const CardIcons = ({ social }: CardIconProps) => {
 	const anchorClassNull =
-		' items-center justify-center mx-mdmxSocial my-portfolioDivider text-customCardIcons inline-block leading-relaxed text-center align-middle transition-colors duration-1000 rounded-full fill-current bg-primary text-quinary focus:outline-none';
+		' items-center justify-center mx-mdmxSocial my-portfolioDivider text-customExcerpt inline-block leading-relaxed text-center align-middle transition-colors duration-1000 rounded-full fill-current bg-primary text-quinary focus:outline-none';
 	const anchorClass =
-		' items-center justify-center inline-block mx-mdmxSocial my-portfolioDivider text-customCardIcons leading-relaxed text-center text-white align-middle transition-colors duration-500 rounded-full fill-current bg-primary hover:text-primary focus:outline-none';
+		' items-center justify-center inline-block mx-mdmxSocial my-portfolioDivider text-customExcerpt leading-relaxed text-center align-middle transition-colors duration-500 rounded-full bg-primary hover:text-primary focus:outline-none';
 	const iconClassNull =
-		' flex font-extrabold text-center align-middle transition-all duration-1000 ease-in-out delay-300 transform md:text-customFooter text-customExcerpt fa-portfolioDivider';
+		' flex font-extrabold text-center align-middle transition-all duration-1000 ease-in-out delay-300 transform md:text-customFooter text-customExcerptMobile fa-portfolioDivider';
 	const iconClass =
-		' flex font-extrabold text-center align-middle transition-all duration-1000 ease-in-out delay-300 transform md:text-customFooter text-customExcerpt hover:text-tertiary fa-portfolioDivider';
+		' flex font-extrabold text-center align-middle transition-all duration-1000 ease-in-out delay-300 transform md:text-customFooter text-customExcerptMobile hover:text-tertiary fa-portfolioDivider';
 	return (
 		<div className='inline-block text-right align-middle'>
 			<ul className='align-middle'>

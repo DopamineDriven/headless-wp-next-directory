@@ -16,20 +16,20 @@ export default function Avatar({ author, modified }: AvatarProps) {
 
 	return (
 		<>
-			<div className='ml-1 mt-1 flex flex-row items-left text-left float-left overflow-hidden'>
-				<div className='flex flex-col w-1/3 mr-6'>
+			<div className='flex flex-row float-left overflow-hidden text-left transition-all transform ml-mdmxSocial items-left translate-y-portfolio'>
+				<div className='flex flex-col w-1/3 mx-portfolioH2F'>
 					<img
 						src={author.avatar.url}
-						className='h-12 w-12 rounded-full'
+						className='rounded-full w-portfolioPadding h-portfolioPadding'
 						alt={nombre}
 					/>
 				</div>
 
-				<div className='flex flex-col w-2/3 my-0 text-sm pt-1 pb-2 items-left align-top text-left float-left -mx-5'>
-					<div className='flex flex-row w-40 min-w-40 align-top font-semibold font-subpolished'>
+				<div className='flex flex-col float-left w-2/3 text-left align-top items-left'>
+					<div className='flex flex-row font-semibold align-top w-portfolioPadding min-w-portfolioPadding'>
 						<a className='flex w-full'>{nombre}</a>
 					</div>
-					<div className='flex flex-row text-xs text-gray-500 text-left align-top float-left font-subpolished w-40 min-w-40'>
+					<div className='flex flex-row float-left w-40 align-top font-text-left min-w-aboutImage300'>
 						<Modified modifiedString={modified} />
 					</div>
 				</div>
@@ -39,10 +39,10 @@ export default function Avatar({ author, modified }: AvatarProps) {
 }
 
 /*
-		<div className='flex w-full items-center text-center align-middle justify-center rounded-full shadow-lg border-collapse bg-blizzardBlue border-4 border-white border-opacity-50'>
+		<div className='flex items-center justify-center w-full text-center align-middle border-4 border-collapse border-white border-opacity-50 rounded-full shadow-lg bg-blizzardBlue'>
 			<img
 				src={author.avatar.url}
-				className='h-24 w-24 rounded-full border-transparent border-collapse border-opacity-75 border-2 shadow-xl'
+				className='w-24 h-24 border-2 border-collapse border-transparent border-opacity-75 rounded-full shadow-xl'
 				alt={nombre}
 			/>
 		</div>

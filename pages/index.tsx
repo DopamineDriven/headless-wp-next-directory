@@ -129,7 +129,7 @@ export default function Index({
 							dropdownOptions={['title', 'description']}
 							categories={categories}
 						/>
-						<div className='grid items-center content-center justify-center mx-auto text-center mt-portfolio mb-portfolio max-w-cardGridMobile'>
+						<div className='grid items-center content-center justify-center mx-auto text-center max-w-cardGridMobile md:max-w-cardGrid my-portfolioH2F'>
 							{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
 						</div>
 
