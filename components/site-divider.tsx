@@ -7,13 +7,11 @@ interface SiteDividerProps {
 interface SiteDivide extends FC<SiteDividerProps> {}
 
 const SiteDivider: SiteDivide = (props): JSX.Element => {
-	const {
-		classNameBorder = ` border-primary mt-portfolioDivider pb-portfolioDivider`
-	} = props;
+	const { classNameBorder = ` border-primary` } = props;
 	return (
 		<hr
 			className={
-				'mx-auto w-portfolioDividerWidth max-w-portfolioDividerWidth ' +
+				'mx-auto w-portfolioDividerWidth max-w-portfolioDividerWidth mt-portfolioDivider pb-portfolioDivider' +
 				classNameBorder
 			}
 		/>
