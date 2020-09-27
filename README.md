@@ -1,5 +1,9 @@
 # headless-wp-next-directory
 
+## TypeRoots && TypePlugins
+- https://github.com/Quramy/typescript-eslint-language-service 
+- https://www.typescriptlang.org/tsconfig#typeRoots
+
 ## TailwindCSS Tips and Tricks
 - https://tailwindcss.com/docs/transition-timing-function
 - https://laravel-news.com/tailwind-css-tips-and-tricks

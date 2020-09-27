@@ -8,12 +8,18 @@
 		"forceConsistentCasingInFileNames": true,
 		"noEmit": true,
 		"esModuleInterop": true,
+		"sourceMap": true,
 		"module": "esnext",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
-		"baseUrl": "."
+		"baseUrl": ".",
+		"plugins": [
+			{
+				"name": "typescript-eslint-language-service"
+			}
+		]
 	},
 	"exclude": ["node_modules"],
 	"include": [
