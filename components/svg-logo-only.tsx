@@ -25,7 +25,7 @@ const SvgLogo: FC<SvgIconConstituentValues> = (props): JSX.Element => {
 			viewBox='0 0 137 137'
 			fill={fillColor0}
 			xmlns='http://www.w3.org/2000/svg'
-			transform={`rotate(${rotateCenter}, 3110, 1059)`}
+			transform={`rotate(${rotateCenter}, 137, 137)`}
 			className={`${classNameSVG}`}
 		>
 			<path
