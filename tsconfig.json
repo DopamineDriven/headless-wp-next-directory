@@ -18,6 +18,11 @@
 		"plugins": [
 			{
 				"name": "typescript-eslint-language-service"
+			},
+			{
+				"name": "ts-graphql-plugin",
+				"schema": "./lib/get-all-posts-with-slug.ts",
+				"tag": "gql"
 			}
 		]
 	},

@@ -1,6 +1,17 @@
 import { GraphQLObjectType } from 'graphql';
 import { fetchAPI } from 'lib/api';
+import { postStatusObjectType } from 'wp-graphql/lib/models/post-statuses/types/postStatusType';
 
+/*
+ const RGBType = new GraphQLEnumType({
+   name: 'RGB',
+   values: {
+     RED: { value: 0 },
+     GREEN: { value: 1 },
+     BLUE: { value: 2 }
+   }
+ });
+*/
 interface GetAllPostsForHomeAlphabeticalProps {
 	preview: boolean;
 	field: string;
