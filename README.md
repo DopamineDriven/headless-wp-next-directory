@@ -55,6 +55,14 @@
 }
 ```
 
+## Prettier format script
+
+- Resolve
+
+```json
+		"prettier-format": "prettier --config .prettierrc 'components/**/*.tsx' --write"
+```
+
 ## TailwindCSS Tips and Tricks
 
 - https://tailwindcss.com/docs/transition-timing-function

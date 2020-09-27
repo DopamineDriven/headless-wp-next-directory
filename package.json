@@ -53,8 +53,7 @@
 		"build": "next build",
 		"start": "next start",
 		"analyze": "ANALYZE=true yarn build",
-		"postinstall": "npx patch-package",
-		"prettier-format": "prettier --config .prettierrc './**/*.ts' --write"
+		"postinstall": "npx patch-package"
 	},
 	"dependencies": {
 		"@artsy/fresnel": "^1.2.2",
