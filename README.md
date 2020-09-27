@@ -1,5 +1,16 @@
 # headless-wp-next-directory
 
+## wpapi and @types/wpapi packages
+
+- https://linguinecode.com/post/how-to-make-wordpress-headless-and-fetch-posts-with-javascript
+- https://github.com/wp-api/node-wpapi#requesting-different-resources
+- https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/wpapi/index.d.ts
+- https://www.npmjs.com/package/@types/wpapi
+
+### Better REST Api Featured Images plugin
+
+- https://linguinecode.com/post/how-to-make-wordpress-headless-and-fetch-posts-with-javascript
+
 ## TypeRoots && TypePlugins && TSLint/ESLint config (.eslintrc.json)
 
 - https://medium.com/@gogl.alex/how-to-set-up-typescript-eslint-prettier-for-next-gatsby-c5330b4a9b7a
