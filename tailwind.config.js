@@ -123,20 +123,20 @@ module.exports = {
 				'accent-2': '#EAEAEA',
 				'accent-7': '#333',
 				black: '#000000',
-				white: '#ffffff',
-				success: '#0070f3',
+				white: '#FFFFFF',
+				success: '#0070F3',
 				cyan: '#79FFE1',
-				blizzardBlue: '#b3ddf2',
-				chicagoRed: '#ff0000',
+				blizzardBlue: '#B3DDF2',
+				chicagoRed: '#FF0000',
 				cimaRed: '#B8242C',
-				wcdPink: '#eb57a3',
-				tinyHouseWhite: '#f0f1f2',
+				wcdPink: '#EB57A3',
+				tinyHouseWhite: '#F0F1F2',
 				customGray: '#D0D0D0',
 				iconHover: '#9D9D9D',
 				iconHoverTwo: '#AEAEAE',
 				tailwindBlue: '#2298BD',
 				tailwindGreen: '#0ED7B5',
-				bloodMoon: '#cc6633',
+				bloodMoon: '#CC6633',
 				herokuStroke: '#6762A6',
 				gqlPink: '#E535AB',
 				devPurple: '#3333CC',
@@ -149,7 +149,7 @@ module.exports = {
 				portfolio: '#EBE8E0',
 				portfolioComplementary: '#E5E0EB',
 				portfolioDark: '#14171F',
-				everythingIsBlue: '#007acc'
+				everythingIsBlue: '#007ACC'
 			},
 			height: {
 				whole: '100vh',
@@ -417,7 +417,17 @@ module.exports = {
 			'focus',
 			'motion-safe',
 			'motion-reduce'
-		]
+		],
+		gridTemplateColumns: [
+			'responsive',
+			'last',
+			'first',
+			'hover',
+			'focus',
+			'even',
+			'odd'
+		],
+		gap: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd']
 	},
 	plugins: [
 		require('@tailwindcss/typography'),
