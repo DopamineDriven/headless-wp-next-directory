@@ -1,18 +1,33 @@
 .content {
-	@apply text-lg leading-relaxed;
-	@apply font-subpolished;
-	@apply leading-tight;
+	@apply text-customSM px-portfolioPadding text-primary bg-primary stroke-current fill-current;
 }
 
 .content p,
 .content ul,
 .content ol,
 .content blockquote {
-	@apply my-6;
+	@apply my-6 text-customExcerpt;
+	@apply font-somaRoman;
+}
+
+.content h1 {
+	@apply font-somaRoman text-customPostAbout;
+}
+
+.content h2 {
+	@apply text-customExcerptMobile mt-aboutHackingFontAwesomePT mb-portfolio leading-snug font-somaRoman;
+}
+
+.content h3 {
+	@apply text-customSM mt-portfolio mb-portfolioRS leading-snug;
 }
 
 .content a {
-	@apply underline;
+	@apply font-somaRoman;
+}
+
+.content a:hover {
+	@apply text-herokuStroke;
 }
 
 .content ul,
@@ -34,27 +49,18 @@
 }
 
 .content ul > li > ul {
-	list-style: circle;
-}
-
-.content h2 {
-	@apply text-3xl mt-12 mb-4 leading-snug;
-}
-
-.content h3 {
-	@apply text-2xl mt-8 mb-4 leading-snug;
-}
-
-.content h4 {
-	@apply text-xl mt-6 mb-4 leading-snug;
+	list-style: none;
 }
 
 .content pre {
-	@apply whitespace-pre overflow-x-auto p-4 text-sm leading-tight border border-gray-400 bg-gray-100;
+	@apply whitespace-pre overflow-x-auto p-4 text-customExcerpt leading-tight border border-gray-400 bg-gray-100 outline-none text-shadow-none;
 }
 
 .content code {
-	@apply text-sm;
+	@apply text-customExcerpt;
+}
+
+.content style {
 }
 
 .content figcaption {
@@ -75,4 +81,35 @@
 
 .content audio {
 	@apply w-full;
+}
+
+.content img {
+	@apply block mx-auto py-portfolio;
+}
+
+@media (max-width: 639px) {
+	.content p,
+	.content ul,
+	.content ol,
+	.content blockquote,
+	.content code {
+		@apply my-portfolio text-customExcerptMobile;
+		@apply font-somaRoman;
+	}
+	.content pre,
+	.content span {
+		@apply text-customExcerptMobile;
+	}
+	/* .content span:last-child {
+		@apply text-customExcerpt;
+	} */
+	.content h2 {
+		@apply text-customTitleMobile mb-portfolio pt-aboutHackingFontAwesomePT leading-snug font-somaRoman;
+	}
+	.content h1 {
+		@apply font-somaRoman text-customPostAbout;
+	}
+	.content h4 {
+		@apply pt-portfolioLSMobile pb-portfolioRS text-customSMobile;
+	}
 }
