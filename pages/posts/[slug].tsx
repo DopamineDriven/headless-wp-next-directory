@@ -35,42 +35,40 @@ export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
 		<Fragment>
 			<HeaderType />
 			<Layout preview={preview}>
-				<Container>
-					{router.isFallback ? (
-						<PostTitle>Loading…</PostTitle>
-					) : (
-						<>
-							<article>
-								<Head>
-									<title>
-										{post.title} | Next.js Blog Example with {CMS_NAME}
-									</title>
-									<meta
-										property='og:image'
-										content={post.featuredImage?.node?.sourceUrl}
-									/>
-								</Head>
-								<PostHeader
-									title={post.title}
-									coverImage={post.featuredImage.node}
-									date={post.date}
-									modified={post.modified}
-									author={post.author.node}
-									categories={post.categories}
-									slug={post.slug}
-									social={post.social}
+				{router.isFallback ? (
+					<PostTitle>Loading…</PostTitle>
+				) : (
+					<>
+						<article>
+							<Head>
+								<title>
+									{post.title} | Next.js Blog Example with {CMS_NAME}
+								</title>
+								<meta
+									property='og:image'
+									content={post.featuredImage?.node?.sourceUrl}
 								/>
-								<PostBody content={post.content} />
-								{/* <footer>
+							</Head>
+							<PostHeader
+								title={post.title}
+								coverImage={post.featuredImage.node}
+								date={post.date}
+								modified={post.modified}
+								author={post.author.node}
+								categories={post.categories}
+								slug={post.slug}
+								social={post.social}
+							/>
+							<PostBody content={post.content} />
+							{/* <footer>
 									{post.tags.edges.length > 0 && <Tags tags={post.tags} />}
 								</footer> */}
-							</article>
-							<div className='grid items-center content-center justify-center max-w-5xl mx-auto text-center'>
-								{morePosts.length > 0 && <MoreCards posts={morePosts} />}
-							</div>
-						</>
-					)}
-				</Container>
+						</article>
+						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
+							{morePosts.length > 0 && <MoreCards posts={morePosts} />}
+						</div>
+					</>
+				)}
 			</Layout>
 		</Fragment>
 	);
