@@ -1,5 +1,9 @@
 # headless-wp-next-directory
 
+- https://dev.to/kendalmintcode/using-wordpress-as-a-headless-cms-with-next-js-2h5p
+- https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
+- https://stackoverflow.com/questions/55873197/apollo-query-variable-error-when-passing-state
+
 ## wpapi and @types/wpapi packages
 
 - https://linguinecode.com/post/how-to-make-wordpress-headless-and-fetch-posts-with-javascript
@@ -10,6 +14,79 @@
 ### Better REST Api Featured Images plugin
 
 - https://linguinecode.com/post/how-to-make-wordpress-headless-and-fetch-posts-with-javascript
+
+## IMPORTANT @jlovejo2
+
+- all files ignored by eslintignore currently
+- used this source to configure our project
+- https://paulintrognon.fr/blog/post/typescript-prettier-eslint-next-js
+- will revisit in the future
+
+## ALSO IMPORANT
+
+- Check out the getServerSideProps method used by the author here
+- passing query and resolving props types in that way for getServerSideProps
+- When attempting this approach (see my revisions in andrew-james-notes.md) the following error was returned
+
+```bash
+$ yarn dev
+yarn run v1.22.5
+$ next
+info  - Loaded env from C:\Users\Anthr\headless-wp-next-directory\.env.local
+ready - started server on http://localhost:3000
+event - compiled successfully
+event - build page: /next/dist/pages/_error
+wait  - compiling...
+event - compiled successfully
+event - build page: /
+wait  - compiling...
+event - compiled successfully
+[
+  {
+    message: 'Field "posts" argument "where" requires type PostObjectsConnectionOrderbyEnum, found undefined.',
+    extensions: { category: 'graphql' },
+    locations: [ [Object] ]
+  },
+  {
+    message: 'Field "posts" argument "where" requires type OrderEnum, found undefined.',
+    extensions: { category: 'graphql' },
+    locations: [ [Object] ]
+  }
+]
+Error: Failed to fetch API
+    at fetchAPI (C:\Users\Anthr\headless-wp-next-directory\.next\server\pages\index.js:3204:11)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAllPostsForHomeAlphabetical (C:\Users\Anthr\headless-wp-next-directory\.next\server\pages\index.js:3249:16)
+    at async getServerSideProps (C:\Users\Anthr\headless-wp-next-directory\.next\server\pages\index.js:6530:20)
+    at async renderToHTML (C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\render.js:38:185)
+    at async C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:76:329
+    at async C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:75:142
+    at async DevServer.renderToHTMLWithComponents (C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:99:364)
+    at async DevServer.renderToHTML (C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:100:255)
+[
+  {
+    message: 'Field "posts" argument "where" requires type PostObjectsConnectionOrderbyEnum, found undefined.',
+    locations: [ [Object] ]
+  },
+  {
+    message: 'Field "posts" argument "where" requires type OrderEnum, found undefined.',
+    extensions: { category: 'graphql' },
+    locations: [ [Object] ]
+  }
+]
+Error: Failed to fetch API
+    at fetchAPI (C:\Users\Anthr\headless-wp-next-directory\.next\server\pages\index.js:3204:11)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAllPostsForHomeAlphabetical (C:\Users\Anthr\headless-wp-next-directory\.next\server\pages\index.js:3249:16)
+    at async getServerSideProps (C:\Users\Anthr\headless-wp-next-directory\.next\server\pages\index.js:6530:20)
+    at async renderToHTML (C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\render.js:38:185)
+    at async C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:76:329
+    at async C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:75:142
+    at async DevServer.renderToHTMLWithComponents (C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:99:364)
+    at async DevServer.renderToHTML (C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:100:255)
+```
 
 ## TypeRoots && TypePlugins && TSLint/ESLint config (.eslintrc.json)
 
