@@ -8,11 +8,9 @@ interface GetAllPostsForHomeAlphabeticalProps {
 }
 
 const LandingPosts = new GraphQLObjectType({
-  name: 'Landing',
-  fields: {
-    
-  }
-})
+	name: 'Landing',
+	fields: {}
+});
 
 export default async function getAllPostsForHomeAlphabetical({
 	preview,
@@ -68,7 +66,6 @@ export default async function getAllPostsForHomeAlphabetical({
 	console.log(typeof data, 'type of data.posts'); // data.posts: object, data: object, posts: undefined
 	return data?.posts;
 }
-
 
 /**
  * Object Type Definition

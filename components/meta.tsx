@@ -102,10 +102,7 @@ const MetaData = () => {
 					href='https://headless-wp-next-directory.vercel.app/'
 				/>
 				<meta name='msapplication-TileColor' content='#ffffff' />
-				<meta
-					name='msapplication-config'
-					content='/favicon/browserconfig.xml'
-				/>
+				<meta name='msapplication-config' content='/favicon/browserconfig.xml' />
 				<meta name='theme-color' content='#b8242c' />
 				<link rel='alternate' type='application/rss+xml' href='/feed.xml' />
 				<meta

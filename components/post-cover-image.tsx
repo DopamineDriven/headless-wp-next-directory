@@ -16,9 +16,12 @@ export default function CoverImage({
 		<img
 			src={coverImage ? coverImage.sourceUrl : coverImage}
 			alt={title}
-			className={cn('shadow-small justify-center align-middle content-center text-center items-center', {
-				'hover:shadow-lg transition-shadow duration-400 justify-center align-middle items-center content-center': slug
-			})}
+			className={cn(
+				'shadow-small justify-center align-middle content-center text-center items-center',
+				{
+					'hover:shadow-lg transition-shadow duration-400 justify-center align-middle items-center content-center': slug
+				}
+			)}
 		/>
 	);
 	return (

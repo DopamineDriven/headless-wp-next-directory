@@ -10,6 +10,5 @@ const PortfolioMedia = createMedia({
 	}
 });
 
-
 export const mediaStyles = PortfolioMedia.createMediaStyle();
 export const { Media, MediaContextProvider } = PortfolioMedia;
