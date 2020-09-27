@@ -24,7 +24,7 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 	);
 
 	const NombreJsx = (): JSX.Element => (
-		<div className='block col-span-3 align-top font-semib3ld text-customAboutSubMobile sm:text-customS'>
+		<div className='block col-span-3 align-top text-customAboutSubMobile sm:text-customS'>
 			<a className='block w-full'>{nombre}</a>
 		</div>
 	);

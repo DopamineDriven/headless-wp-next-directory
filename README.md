@@ -1,5 +1,8 @@
 # headless-wp-next-directory
 
+## TailwindCSS Tips and Tricks
+- https://laravel-news.com/tailwind-css-tips-and-tricks
+
 ## WP-GQL/WP-GQL-ACF
 - https://github.com/wp-graphql/wp-graphql-acf
 
