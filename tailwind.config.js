@@ -61,9 +61,9 @@ module.exports = {
 				500: '500ms',
 				700: '700ms',
 				1000: '1000ms',
+				1500: '1500ms',
 				2000: '2000ms',
-				3000: '3000ms',
-				10000: '10000ms'
+				3000: '3000ms'
 			},
 			keyframes: {
 				wiggle: {
@@ -77,7 +77,8 @@ module.exports = {
 			animation: {
 				wiggle: 'wiggle 10s ease-in-out infinite',
 				hero: 'hero 1s ease-in-out infinite',
-				slowPing: 'pulse 10s cubic-bezier(0, 0, 0.2, 1) infinite'
+				slowPing: 'pulse 10s cubic-bezier(0, 0, 0.2, 1) infinite',
+				spinSlow: 'spin 3s linear infinite'
 			},
 			fontFamily: {
 				head: ['goudy-bookletter-1911', 'serif'],
@@ -118,25 +119,49 @@ module.exports = {
 			strokeColor: {
 				primary: 'var(--color-stroke-primary)'
 			},
+			translate: {
+				'19/20': '95%',
+				'9/10': '90%',
+				'17/20': '85%',
+				'4/5': '80%',
+				'3/4': '75%',
+				'7/10': '70%',
+				'13/20': '65%',
+				'3/5': '60%',
+				'1/2': '50%',
+				// 50% preconfigured by tailwind
+				'9/20': '45%',
+				'2/5': '40%',
+				'7/20': '35%',
+				'3/10': '30%',
+				'1/4': '25%',
+				'1/5': '20%',
+				'3/20': '15%',
+				'1/10': '10%',
+				'1/20': '5%',
+				'1/25': '4%',
+				'1/30': '3.33%',
+				'1/50': '2%'
+			},
 			colors: {
 				'accent-1': '#FAFAFA',
 				'accent-2': '#EAEAEA',
 				'accent-7': '#333',
 				black: '#000000',
-				white: '#ffffff',
-				success: '#0070f3',
+				white: '#FFFFFF',
+				success: '#0070F3',
 				cyan: '#79FFE1',
-				blizzardBlue: '#b3ddf2',
-				chicagoRed: '#ff0000',
+				blizzardBlue: '#B3DDF2',
+				chicagoRed: '#FF0000',
 				cimaRed: '#B8242C',
-				wcdPink: '#eb57a3',
-				tinyHouseWhite: '#f0f1f2',
+				wcdPink: '#EB57A3',
+				tinyHouseWhite: '#F0F1F2',
 				customGray: '#D0D0D0',
 				iconHover: '#9D9D9D',
 				iconHoverTwo: '#AEAEAE',
 				tailwindBlue: '#2298BD',
 				tailwindGreen: '#0ED7B5',
-				bloodMoon: '#cc6633',
+				bloodMoon: '#CC6633',
 				herokuStroke: '#6762A6',
 				gqlPink: '#E535AB',
 				devPurple: '#3333CC',
@@ -149,7 +174,7 @@ module.exports = {
 				portfolio: '#EBE8E0',
 				portfolioComplementary: '#E5E0EB',
 				portfolioDark: '#14171F',
-				everythingIsBlue: '#007acc'
+				everythingIsBlue: '#007ACC'
 			},
 			height: {
 				whole: '100vh',
@@ -410,13 +435,86 @@ module.exports = {
 	variants: {
 		padding: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
 		fontSize: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
-		animation: ['responsive', 'hover', 'focus', 'motion-safe', 'motion-reduce'],
+		gap: ['responsive', 'last', 'first', 'hover', 'focus', 'even', 'odd'],
+		gridTemplateColumns: [
+			'responsive',
+			'last',
+			'first',
+			'hover',
+			'focus',
+			'even',
+			'odd'
+		],
+		animation: [
+			'responsive',
+			'hover',
+			'focus',
+			'last',
+			'first',
+			'motion-safe',
+			'motion-reduce',
+			'even',
+			'odd'
+		],
 		transitionProperty: [
 			'responsive',
 			'hover',
 			'focus',
+			'last',
+			'first',
 			'motion-safe',
-			'motion-reduce'
+			'motion-reduce',
+			'even',
+			'odd'
+		],
+		transitionDuration: [
+			'responsive',
+			'last',
+			'first',
+			'hover',
+			'focus',
+			'even',
+			'odd'
+		],
+		transitionTimingFunction: [
+			'responsive',
+			'last',
+			'first',
+			'hover',
+			'focus',
+			'even',
+			'odd'
+		],
+		transitionDelay: [
+			'responsive',
+			'last',
+			'first',
+			'hover',
+			'focus',
+			'even',
+			'odd'
+		],
+		scale: [
+			'responsive',
+			'hover',
+			'focus',
+			'active',
+			'group-hover',
+			'first',
+			'last',
+			'even',
+			'odd'
+		],
+		rotate: [
+			'responsive',
+			'hover',
+			'focus',
+			'active',
+			'group-hover',
+			'first',
+			'last',
+			'even',
+			'odd'
 		]
 	},
 	plugins: [

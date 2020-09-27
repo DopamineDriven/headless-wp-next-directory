@@ -1,5 +1,11 @@
 # headless-wp-next-directory
 
+## TailwindCSS Tips and Tricks
+- https://tailwindcss.com/docs/transition-timing-function
+- https://laravel-news.com/tailwind-css-tips-and-tricks
+- https://tailwind.run/PfhdtG/1
+
+
 ## WP-GQL/WP-GQL-ACF
 - https://github.com/wp-graphql/wp-graphql-acf
 
