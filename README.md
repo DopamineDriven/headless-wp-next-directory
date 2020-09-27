@@ -1,15 +1,80 @@
 # headless-wp-next-directory
 
+## wpapi and @types/wpapi packages
+
+- https://linguinecode.com/post/how-to-make-wordpress-headless-and-fetch-posts-with-javascript
+- https://github.com/wp-api/node-wpapi#requesting-different-resources
+- https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/wpapi/index.d.ts
+- https://www.npmjs.com/package/@types/wpapi
+
+### Better REST Api Featured Images plugin
+
+- https://linguinecode.com/post/how-to-make-wordpress-headless-and-fetch-posts-with-javascript
+
+## TypeRoots && TypePlugins && TSLint/ESLint config (.eslintrc.json)
+
+- https://medium.com/@gogl.alex/how-to-set-up-typescript-eslint-prettier-for-next-gatsby-c5330b4a9b7a
+- https://github.com/Quramy/typescript-eslint-language-service
+- https://www.typescriptlang.org/tsconfig#typeRoots
+- example of `.eslintrc.json` from https://github.com/DopamineDriven/wcd
+
+```json
+{
+	"parser": "@typescript-eslint/parser",
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended"
+	],
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"plugins": ["@typescript-eslint"],
+	"env": {
+		"node": true,
+		"es6": true,
+		"browser": true
+	},
+	"rules": {
+		// could set "indent": [true, "tabs", 1]
+		"indent": "off",
+		"@typescript-eslint/indent": "off",
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"react/prop-types": "off"
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
+}
+```
+
+## Prettier format script
+
+- Resolve
+
+```json
+		"prettier-format": "prettier --config .prettierrc 'components/**/*.tsx' --write"
+```
+
 ## TailwindCSS Tips and Tricks
+
 - https://tailwindcss.com/docs/transition-timing-function
 - https://laravel-news.com/tailwind-css-tips-and-tricks
 - https://tailwind.run/PfhdtG/1
 
-
 ## WP-GQL/WP-GQL-ACF
+
 - https://github.com/wp-graphql/wp-graphql-acf
 
 ## ReactElement vs ReactNode vs JSX.Element
+
 - https://stackoverflow.com/questions/58123398/when-to-use-jsx-element-vs-reactnode-vs-reactelement
 - https://www.mmbyte.com/article/44732.html#:~:text=Element%20is%20ReactElement%20%2C%20whose%20props,render()%20in%20class%20components
 
@@ -358,54 +423,6 @@ https://headless-wp-next-directory.vercel.app/api/preview?secret=/preview-mode&i
 - https://github.com/FortAwesome/react-fontawesome#nextjs
 - https://stackoverflow.com/questions/44752189/how-to-add-font-awesome-to-next-js-project
 
-## CIMA
-
-- https://savechicagomedia.org/
-- Color-Scheme:
-  - cimaRed: #B8242C
-  - white: #FFFFFF
-- Font-Family:
-  - 'Barlow Semi Condensed', sans-serif
-  - https://fonts.google.com/specimen/Barlow+Semi+Condensed?preview.text=CIMA&preview.text_type=custom
-    - Regular 400 (regular text)
-    - Medium 500 to Semi-bold 600 (titles)
-- Transparent PNG ripped from website
-
-## generate JSX from .svg files via the command line
-
-```git
-$ npx @svgr/cli --icon Logo.svg
-```
-
-- target the .svg file
-- c/p command line output into a corresponding .tsx (or .jsx) component
-- voila
-
-## next-google-fonts npm
-
-- https://codeconqueror.com/blog/using-google-fonts-with-next-js
-- https://github.com/joe-bell/next-google-fonts
-- https://johnny.am/blog/n2-adding-google-fonts-to-nextjs-project
-- https://fonts.google.com/specimen/Barlow+Condensed?preview.text=CIMA&preview.text_type=custom&sidebar.open=true&selection.family=Barlow+Condensed|Barlow+Semi+Condensed#license
-
-```css
-@font-face {
-	font-family: 'Barlow Condensed';
-	font-style: normal;
-	font-weight: 400;
-	src: url('../fonts/barlow-condensed-v4-latin-regular.eot'); /* IE9 Compat Modes */
-	src: local('Barlow Condensed Regular'), local('BarlowCondensed-Regular'),
-		url('../fonts/barlow-condensed-v4-latin-regular.eot?#iefix') format('embedded-opentype'),
-		/* IE6-IE8 */ url('../fonts/barlow-condensed-v4-latin-regular.woff2') format('woff2'),
-		/* Super Modern Browsers */
-			url('../fonts/barlow-condensed-v4-latin-regular.woff') format('woff'), /* Modern Browsers */
-			url('../fonts/barlow-condensed-v4-latin-regular.ttf') format('truetype'),
-		/* Safari, Android, iOS */
-			url('../fonts/barlow-condensed-v4-latin-regular.svg#BarlowCondensed')
-			format('svg'); /* Legacy iOS */
-}
-```
-
 ## Customizable Background Patterns -- SVGs
 
 - http://www.heropatterns.com/
@@ -414,21 +431,8 @@ $ npx @svgr/cli --icon Logo.svg
 
 - https://sergiodxa.com/articles/next-tailwind/
 - https://tailwindcss.com/docs/configuration/
-
-## Card ideas
-
-- https://tailwindcomponents.com/component/team-cards
-- https://tailwindtemplates.io/cards/#339
-- https://tailwindtemplates.io/cards/#335
-- https://tailwindtemplates.io/search/#230
-- https://tailwindtemplates.io/search/#331
-
 - https://tailwindcomponents.com/component/search-input
 
 ## HTML Symbols
 
 - https://dev.w3.org/html5/html-author/charref
-
-```html
-
-```

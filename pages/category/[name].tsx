@@ -80,7 +80,6 @@ export async function getStaticPaths() {
 	};
 }
 
-
 /*
 const routerPushEvent = async (e: Event) => {
 	const allCategories = await getCategories();

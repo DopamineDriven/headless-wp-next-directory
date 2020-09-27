@@ -14,7 +14,7 @@
 
 export default function Categories({ categories }: any) {
 	return (
-		<div className="max-w-2xl mx-auto text-center flex flex-row justify-center mt-2">
+		<div className='max-w-2xl mx-auto text-center flex flex-row justify-center mt-2'>
 			<span className='text-xs text-center'>
 				{categories.edges.length > 0 ? (
 					categories.edges.map((category: any, index: any) => (
