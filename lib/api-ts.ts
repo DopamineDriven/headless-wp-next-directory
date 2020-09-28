@@ -18,7 +18,7 @@ import {
 	previewPostArgs
 } from './types';
 
-async function fetchAPI(query: string, variables: any): Promise<any> {
+export async function fetchAPI(query: string, variables: any): Promise<any> {
 	const headers = { 'Content-Type': 'application/json', Authorization: '' };
 
 	let API_URL: string = '';

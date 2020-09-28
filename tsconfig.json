@@ -21,7 +21,7 @@
 			},
 			{
 				"name": "ts-graphql-plugin",
-				"schema": "./lib/get-all-posts-with-slug.ts",
+				"schema": "./pages/api/get-all-posts-with-slug.ts",
 				"tag": "gql"
 			}
 		]

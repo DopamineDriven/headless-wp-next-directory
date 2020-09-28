@@ -19,3 +19,5 @@ lib
 .VSCodeCounter
 .vercel
 .eslintrc.js
+next.config.js
+postcss.config.js

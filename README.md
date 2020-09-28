@@ -1,5 +1,12 @@
 # headless-wp-next-directory
 
+## 9-28-20
+
+- Implementing apollo-client isomorphic unfetch
+- Query using apollo hooks
+- plugins to infer GQL-TS typings and generate them in a designated file
+- Here. We. Go.
+
 - https://dev.to/kendalmintcode/using-wordpress-as-a-headless-cms-with-next-js-2h5p
 - https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
 - https://stackoverflow.com/questions/55873197/apollo-query-variable-error-when-passing-state
@@ -10,6 +17,10 @@
 - https://github.com/wp-api/node-wpapi#requesting-different-resources
 - https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/wpapi/index.d.ts
 - https://www.npmjs.com/package/@types/wpapi
+
+### Wp-GraphQL-WooCommerce Plugin
+
+- - https://github.com/wp-graphql/wp-graphql-woocommerce
 
 ### Better REST Api Featured Images plugin
 
