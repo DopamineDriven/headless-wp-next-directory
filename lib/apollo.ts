@@ -5,7 +5,7 @@ import {
 	InMemoryCache,
 	NormalizedCacheObject
 } from '@apollo/client';
-import { concatPagination } from '@apollo/client/utilities';
+import { concatPagination, Reference } from '@apollo/client/utilities';
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
@@ -24,7 +24,7 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 			typePolicies: {
 				Query: {
 					fields: {
-						posts: concatPagination()
+						posts: concatPagination<Reference>()
 					}
 				}
 			}
