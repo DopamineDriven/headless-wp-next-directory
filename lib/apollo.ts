@@ -9,9 +9,9 @@ import { concatPagination } from '@apollo/client/utilities';
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
-function createApolloClient() {
+function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 	const headers = { 'Content-Type': 'application/json' };
-	return new ApolloClient({
+	return new ApolloClient<NormalizedCacheObject>({
 		ssrMode: typeof window === 'undefined',
 		connectToDevTools: true,
 		link: new HttpLink({
@@ -32,7 +32,9 @@ function createApolloClient() {
 	});
 }
 
-export function initializeApollo(initialState: any = null) {
+export function initializeApollo(
+	initialState: any = null
+): ApolloClient<NormalizedCacheObject> {
 	const _apolloClient = apolloClient ?? createApolloClient();
 	if (initialState) {
 		const existingCache = _apolloClient.extract();
@@ -43,7 +45,9 @@ export function initializeApollo(initialState: any = null) {
 	return _apolloClient;
 }
 
-export function useApollo(initialState: any) {
+export function useApollo(
+	initialState: any
+): ApolloClient<NormalizedCacheObject> {
 	const store = useMemo(() => initializeApollo(initialState), [initialState]);
 	return store;
 }
@@ -54,3 +58,4 @@ export function useApollo(initialState: any) {
 // https://www.apollographql.com/docs/react/data/queries/
 // https://www.apollographql.com/docs/react/caching/cache-configuration/
 // https://www.apollographql.com/docs/react/caching/cache-configuration/#typepolicy-fields
+// https://www.apollographql.com/blog/local-state-management-with-reactive-variables/

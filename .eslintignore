@@ -21,3 +21,5 @@ lib
 .eslintrc.js
 next.config.js
 postcss.config.js
+global.d.ts
+tsconfig.json

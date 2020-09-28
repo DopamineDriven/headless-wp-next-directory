@@ -2,6 +2,10 @@
 
 ## 9-28-20
 
+- GraphQL File Uploads with React Hooks, TypeScript, Amazon-S3
+
+  - https://www.apollographql.com/blog/graphql-file-uploads-with-react-hooks-typescript-amazon-s3-tutorial-ef39d21066a2/
+
 - https://nextjs-graphql-with-prisma-simple.vercel.app/api?query=query%20MyQuery%20%7B%0A%20%20allPosts%20%7B%0A%20%20%20%20title%0A%20%20%7D%0A%7D&operationName=MyQuery
 - Implementing apollo-client isomorphic unfetch
 - Query using apollo hooks
