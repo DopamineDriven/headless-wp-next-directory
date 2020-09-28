@@ -5,10 +5,19 @@ import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { ReactElement, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { gaInit, logPageView } from 'lib/google-analytics';
+import {
+	ApolloProvider,
+	NormalizedCacheObject,
+	ApolloClient
+} from '@apollo/client';
+import { useApollo } from 'lib/apollo';
 
 config.autoAddCss = false;
 
 function App({ Component, pageProps }: AppProps): ReactElement {
+	const apolloClient: ApolloClient<NormalizedCacheObject> = useApollo(
+		pageProps.initializeApollo
+	);
 	const router = useRouter();
 	useEffect(() => {
 		gaInit();
@@ -20,7 +29,11 @@ function App({ Component, pageProps }: AppProps): ReactElement {
 			router.events.off('routeChangeComplete', handleRouteChange);
 		};
 	}, [router.events]);
-	return <Component {...pageProps} />;
+	return (
+		<ApolloProvider client={apolloClient}>
+			<Component {...pageProps} />
+		</ApolloProvider>
+	);
 }
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
@@ -28,3 +41,5 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
 }
 
 export default App;
+
+// https://github.com/vercel/next.js/blob/canary/examples/with-apollo/pages/_app.js
