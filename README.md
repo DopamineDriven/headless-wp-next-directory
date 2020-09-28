@@ -2,6 +2,7 @@
 
 ## 9-28-20
 
+- https://nextjs-graphql-with-prisma-simple.vercel.app/api?query=query%20MyQuery%20%7B%0A%20%20allPosts%20%7B%0A%20%20%20%20title%0A%20%20%7D%0A%7D&operationName=MyQuery
 - Implementing apollo-client isomorphic unfetch
 - Query using apollo hooks
 - plugins to infer GQL-TS typings and generate them in a designated file

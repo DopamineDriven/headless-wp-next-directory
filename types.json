@@ -1,0 +1,1668 @@
+{
+	"data": {
+		"__schema": {
+			"types": [
+				{
+					"name": "RootQuery",
+					"kind": "OBJECT",
+					"description": "The root entry point into the Graph"
+				},
+				{
+					"name": "Settings",
+					"kind": "OBJECT",
+					"description": "All of the registered settings"
+				},
+				{
+					"name": "String",
+					"kind": "SCALAR",
+					"description": "The `String` scalar type represents textual data, represented as UTF-8\ncharacter sequences. The String type is most often used by GraphQL to\nrepresent free-form human-readable text."
+				},
+				{
+					"name": "Int",
+					"kind": "SCALAR",
+					"description": "The `Int` scalar type represents non-fractional signed whole numeric\nvalues. Int can represent values between -(2^31) and 2^31 - 1. "
+				},
+				{
+					"name": "Boolean",
+					"kind": "SCALAR",
+					"description": "The `Boolean` scalar type represents `true` or `false`."
+				},
+				{
+					"name": "RootQueryToCategoryConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToCategoryConnection connection"
+				},
+				{
+					"name": "ID",
+					"kind": "SCALAR",
+					"description": "The `ID` scalar type represents a unique identifier, often used to\nrefetch an object or as key for a cache. The ID type appears in a JSON\nresponse as a String; however, it is not intended to be human-readable.\nWhen expected as an input type, any string (such as `\"4\"`) or integer\n(such as `4`) input value will be accepted as an ID."
+				},
+				{
+					"name": "TermObjectsConnectionOrderbyEnum",
+					"kind": "ENUM",
+					"description": "Options for ordering the connection by"
+				},
+				{
+					"name": "RootQueryToCategoryConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the category type"
+				},
+				{
+					"name": "RootQueryToCategoryConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "Category",
+					"kind": "OBJECT",
+					"description": "The category type"
+				},
+				{
+					"name": "Node",
+					"kind": "INTERFACE",
+					"description": "An object with an ID"
+				},
+				{
+					"name": "TermNode",
+					"kind": "INTERFACE",
+					"description": "Terms are nodes within a Taxonomy, used to group and relate other nodes."
+				},
+				{
+					"name": "TermNodeToEnqueuedScriptConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the TermNode type and the EnqueuedScript type"
+				},
+				{
+					"name": "TermNodeToEnqueuedScriptConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "EnqueuedScript",
+					"kind": "OBJECT",
+					"description": "Script enqueued by the CMS"
+				},
+				{
+					"name": "EnqueuedAsset",
+					"kind": "INTERFACE",
+					"description": "Asset enqueued by the CMS"
+				},
+				{
+					"name": "WPPageInfo",
+					"kind": "OBJECT",
+					"description": "Information about pagination in a connection."
+				},
+				{
+					"name": "TermNodeToEnqueuedStylesheetConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the TermNode type and the EnqueuedStylesheet type"
+				},
+				{
+					"name": "TermNodeToEnqueuedStylesheetConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "EnqueuedStylesheet",
+					"kind": "OBJECT",
+					"description": "Stylesheet enqueued by the CMS"
+				},
+				{
+					"name": "UniformResourceIdentifiable",
+					"kind": "INTERFACE",
+					"description": "Any node that has a URI"
+				},
+				{
+					"name": "HierarchicalTermNode",
+					"kind": "INTERFACE",
+					"description": "Term node with hierarchical (parent/child) relationships"
+				},
+				{
+					"name": "MenuItemLinkable",
+					"kind": "INTERFACE",
+					"description": "Nodes that can be linked to as Menu Items"
+				},
+				{
+					"name": "CategoryToAncestorsCategoryConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the category type and the category type"
+				},
+				{
+					"name": "CategoryToAncestorsCategoryConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "CategoryToCategoryConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the CategoryToCategoryConnection connection"
+				},
+				{
+					"name": "CategoryToCategoryConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the category type and the category type"
+				},
+				{
+					"name": "CategoryToCategoryConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "CategoryToParentCategoryConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the category type and the category type"
+				},
+				{
+					"name": "CategoryToPostConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the CategoryToPostConnection connection"
+				},
+				{
+					"name": "DateQueryInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Filter the connection based on input"
+				},
+				{
+					"name": "DateInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Date values"
+				},
+				{
+					"name": "PostObjectsConnectionDateColumnEnum",
+					"kind": "ENUM",
+					"description": "The column to use when filtering by date"
+				},
+				{
+					"name": "RelationEnum",
+					"kind": "ENUM",
+					"description": "The logical relation between each item in the array when there are more than one."
+				},
+				{
+					"name": "MimeTypeEnum",
+					"kind": "ENUM",
+					"description": "The MimeType of the object"
+				},
+				{
+					"name": "PostObjectsConnectionOrderbyInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Options for ordering the connection"
+				},
+				{
+					"name": "PostObjectsConnectionOrderbyEnum",
+					"kind": "ENUM",
+					"description": "Field to order the connection by"
+				},
+				{
+					"name": "OrderEnum",
+					"kind": "ENUM",
+					"description": "The cardinality of the connection order"
+				},
+				{
+					"name": "PostStatusEnum",
+					"kind": "ENUM",
+					"description": "The status of the object."
+				},
+				{
+					"name": "CategoryToPostConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the category type and the post type"
+				},
+				{
+					"name": "CategoryToPostConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "Post",
+					"kind": "OBJECT",
+					"description": "The post type"
+				},
+				{
+					"name": "ContentNode",
+					"kind": "INTERFACE",
+					"description": "Nodes used to manage content"
+				},
+				{
+					"name": "ContentNodeToEditLockConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the ContentNode type and the User type"
+				},
+				{
+					"name": "User",
+					"kind": "OBJECT",
+					"description": "A User object"
+				},
+				{
+					"name": "Commenter",
+					"kind": "INTERFACE",
+					"description": "The author of a comment"
+				},
+				{
+					"name": "AvatarRatingEnum",
+					"kind": "ENUM",
+					"description": "What rating to display avatars up to. Accepts 'G', 'PG', 'R', 'X', and are judged in that order. Default is the value of the 'avatar_rating' option"
+				},
+				{
+					"name": "Avatar",
+					"kind": "OBJECT",
+					"description": "Avatars are profile images for users. WordPress by default uses the Gravatar service to host and fetch avatars from."
+				},
+				{
+					"name": "UserToCommentConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the UserToCommentConnection connection"
+				},
+				{
+					"name": "ContentTypeEnum",
+					"kind": "ENUM",
+					"description": "Allowed Content Types"
+				},
+				{
+					"name": "CommentsConnectionOrderbyEnum",
+					"kind": "ENUM",
+					"description": "Options for ordering the connection"
+				},
+				{
+					"name": "UserToCommentConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the User type and the Comment type"
+				},
+				{
+					"name": "UserToCommentConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "Comment",
+					"kind": "OBJECT",
+					"description": "A Comment object"
+				},
+				{
+					"name": "CommentToCommenterConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the Comment type and the Commenter type"
+				},
+				{
+					"name": "CommentToContentNodeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the Comment type and the ContentNode type"
+				},
+				{
+					"name": "PostObjectFieldFormatEnum",
+					"kind": "ENUM",
+					"description": "The format of post field data."
+				},
+				{
+					"name": "CommentToParentCommentConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the CommentToParentCommentConnection connection"
+				},
+				{
+					"name": "CommentToParentCommentConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the Comment type and the Comment type"
+				},
+				{
+					"name": "CommentToCommentConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the CommentToCommentConnection connection"
+				},
+				{
+					"name": "CommentToCommentConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the Comment type and the Comment type"
+				},
+				{
+					"name": "CommentToCommentConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "UserToEnqueuedScriptConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the User type and the EnqueuedScript type"
+				},
+				{
+					"name": "UserToEnqueuedScriptConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "UserToEnqueuedStylesheetConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the User type and the EnqueuedStylesheet type"
+				},
+				{
+					"name": "UserToEnqueuedStylesheetConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "UserToMediaItemConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the UserToMediaItemConnection connection"
+				},
+				{
+					"name": "UserToMediaItemConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the User type and the mediaItem type"
+				},
+				{
+					"name": "UserToMediaItemConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "MediaItem",
+					"kind": "OBJECT",
+					"description": "The mediaItem type"
+				},
+				{
+					"name": "NodeWithTitle",
+					"kind": "INTERFACE",
+					"description": "A node that NodeWith a title"
+				},
+				{
+					"name": "NodeWithAuthor",
+					"kind": "INTERFACE",
+					"description": "A node that can have an author assigned to it"
+				},
+				{
+					"name": "NodeWithAuthorToUserConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the NodeWithAuthor type and the User type"
+				},
+				{
+					"name": "NodeWithComments",
+					"kind": "INTERFACE",
+					"description": "A node that can have comments associated with it"
+				},
+				{
+					"name": "HierarchicalContentNode",
+					"kind": "INTERFACE",
+					"description": "Content node with hierarchical (parent/child) relationships"
+				},
+				{
+					"name": "HierarchicalContentNodeToContentNodeConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the HierarchicalContentNode type and the ContentNode type"
+				},
+				{
+					"name": "HierarchicalContentNodeToContentNodeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the HierarchicalContentNode type and the ContentNode type"
+				},
+				{
+					"name": "MediaItemToCommentConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the MediaItemToCommentConnection connection"
+				},
+				{
+					"name": "MediaItemToCommentConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the mediaItem type and the Comment type"
+				},
+				{
+					"name": "MediaItemToCommentConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "MediaItemToContentTypeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the mediaItem type and the ContentType type"
+				},
+				{
+					"name": "ContentType",
+					"kind": "OBJECT",
+					"description": "An Post Type object"
+				},
+				{
+					"name": "ContentTypeToTaxonomyConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the ContentType type and the Taxonomy type"
+				},
+				{
+					"name": "ContentTypeToTaxonomyConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "Taxonomy",
+					"kind": "OBJECT",
+					"description": "A taxonomy object"
+				},
+				{
+					"name": "TaxonomyToContentTypeConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the Taxonomy type and the ContentType type"
+				},
+				{
+					"name": "TaxonomyToContentTypeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "ContentTypeToContentNodeConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the ContentTypeToContentNodeConnection connection"
+				},
+				{
+					"name": "ContentTypeToContentNodeConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the ContentType type and the ContentNode type"
+				},
+				{
+					"name": "ContentTypeToContentNodeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "PostTypeLabelDetails",
+					"kind": "OBJECT",
+					"description": "Details for labels of the PostType"
+				},
+				{
+					"name": "ContentNodeToEnqueuedScriptConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the ContentNode type and the EnqueuedScript type"
+				},
+				{
+					"name": "ContentNodeToEnqueuedScriptConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "ContentNodeToEnqueuedStylesheetConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the ContentNode type and the EnqueuedStylesheet type"
+				},
+				{
+					"name": "ContentNodeToEnqueuedStylesheetConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "MediaItemSizeEnum",
+					"kind": "ENUM",
+					"description": "The size of the media item object."
+				},
+				{
+					"name": "ContentNodeToEditLastConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the ContentNode type and the User type"
+				},
+				{
+					"name": "MediaDetails",
+					"kind": "OBJECT",
+					"description": "File details for a Media Item"
+				},
+				{
+					"name": "MediaItemMeta",
+					"kind": "OBJECT",
+					"description": "Meta connected to a MediaItem"
+				},
+				{
+					"name": "Float",
+					"kind": "SCALAR",
+					"description": "The `Float` scalar type represents signed double-precision fractional\nvalues as specified by\n[IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). "
+				},
+				{
+					"name": "MediaSize",
+					"kind": "OBJECT",
+					"description": "Details of an available size for a media item"
+				},
+				{
+					"name": "ContentTemplateUnion",
+					"kind": "UNION",
+					"description": null
+				},
+				{
+					"name": "DefaultTemplate",
+					"kind": "OBJECT",
+					"description": "The template assigned to the node"
+				},
+				{
+					"name": "ContentTemplate",
+					"kind": "INTERFACE",
+					"description": "The template assigned to a node of content"
+				},
+				{
+					"name": "CoverTemplateTemplate",
+					"kind": "OBJECT",
+					"description": "The template assigned to the node"
+				},
+				{
+					"name": "FullWidthTemplateTemplate",
+					"kind": "OBJECT",
+					"description": "The template assigned to the node"
+				},
+				{
+					"name": "ContentNodeToTermNodeConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the ContentNodeToTermNodeConnection connection"
+				},
+				{
+					"name": "TaxonomyEnum",
+					"kind": "ENUM",
+					"description": "Allowed taxonomies"
+				},
+				{
+					"name": "ContentNodeToTermNodeConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the ContentNode type and the TermNode type"
+				},
+				{
+					"name": "ContentNodeToTermNodeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "UserToPageConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the UserToPageConnection connection"
+				},
+				{
+					"name": "UserToPageConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the User type and the page type"
+				},
+				{
+					"name": "UserToPageConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "Page",
+					"kind": "OBJECT",
+					"description": "The page type"
+				},
+				{
+					"name": "NodeWithContentEditor",
+					"kind": "INTERFACE",
+					"description": "A node that supports the content editor"
+				},
+				{
+					"name": "NodeWithFeaturedImage",
+					"kind": "INTERFACE",
+					"description": "A node that can have a featured image set"
+				},
+				{
+					"name": "NodeWithFeaturedImageToMediaItemConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the NodeWithFeaturedImage type and the MediaItem type"
+				},
+				{
+					"name": "NodeWithRevisions",
+					"kind": "INTERFACE",
+					"description": "A node that can have revisions"
+				},
+				{
+					"name": "NodeWithRevisionsToContentNodeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the NodeWithRevisions type and the ContentNode type"
+				},
+				{
+					"name": "NodeWithPageAttributes",
+					"kind": "INTERFACE",
+					"description": "A node that can have page attributes"
+				},
+				{
+					"name": "PageToCommentConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the PageToCommentConnection connection"
+				},
+				{
+					"name": "PageToCommentConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the page type and the Comment type"
+				},
+				{
+					"name": "PageToCommentConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "PageToContentTypeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the page type and the ContentType type"
+				},
+				{
+					"name": "PageToPreviewConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the page type and the page type"
+				},
+				{
+					"name": "PageToRevisionConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the pageToRevisionConnection connection"
+				},
+				{
+					"name": "PageToRevisionConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the page type and the page type"
+				},
+				{
+					"name": "PageToRevisionConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "UserToPostConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the UserToPostConnection connection"
+				},
+				{
+					"name": "UserToPostConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the User type and the post type"
+				},
+				{
+					"name": "UserToPostConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "UserToContentRevisionUnionConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the UserToContentRevisionUnionConnection connection"
+				},
+				{
+					"name": "UserToContentRevisionUnionConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the User type and the ContentRevisionUnion type"
+				},
+				{
+					"name": "UserToContentRevisionUnionConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "ContentRevisionUnion",
+					"kind": "UNION",
+					"description": null
+				},
+				{
+					"name": "UserToUserRoleConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the User type and the UserRole type"
+				},
+				{
+					"name": "UserToUserRoleConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "UserRole",
+					"kind": "OBJECT",
+					"description": "A user role object"
+				},
+				{
+					"name": "NodeWithExcerpt",
+					"kind": "INTERFACE",
+					"description": "A node that can have an excerpt"
+				},
+				{
+					"name": "NodeWithTrackbacks",
+					"kind": "INTERFACE",
+					"description": "A node that can have trackbacks and pingbacks"
+				},
+				{
+					"name": "PostToCategoryConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the PostToCategoryConnection connection"
+				},
+				{
+					"name": "PostToCategoryConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the post type and the category type"
+				},
+				{
+					"name": "PostToCategoryConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "PostToCommentConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the PostToCommentConnection connection"
+				},
+				{
+					"name": "PostToCommentConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the post type and the Comment type"
+				},
+				{
+					"name": "PostToCommentConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "PostToContentTypeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the post type and the ContentType type"
+				},
+				{
+					"name": "PostToPostFormatConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the PostToPostFormatConnection connection"
+				},
+				{
+					"name": "PostToPostFormatConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the post type and the postFormat type"
+				},
+				{
+					"name": "PostToPostFormatConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "PostFormat",
+					"kind": "OBJECT",
+					"description": "The postFormat type"
+				},
+				{
+					"name": "PostFormatToPostConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the PostFormatToPostConnection connection"
+				},
+				{
+					"name": "PostFormatToPostConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the postFormat type and the post type"
+				},
+				{
+					"name": "PostFormatToPostConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "PostFormatToTaxonomyConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the postFormat type and the Taxonomy type"
+				},
+				{
+					"name": "PostToPreviewConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the post type and the post type"
+				},
+				{
+					"name": "PostToRevisionConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the postToRevisionConnection connection"
+				},
+				{
+					"name": "PostToRevisionConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the post type and the post type"
+				},
+				{
+					"name": "PostToRevisionConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "Post_Social",
+					"kind": "OBJECT",
+					"description": "Field Group"
+				},
+				{
+					"name": "PostToTagConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the PostToTagConnection connection"
+				},
+				{
+					"name": "PostToTagConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the post type and the tag type"
+				},
+				{
+					"name": "PostToTagConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "Tag",
+					"kind": "OBJECT",
+					"description": "The tag type"
+				},
+				{
+					"name": "TagToPostConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the TagToPostConnection connection"
+				},
+				{
+					"name": "TagToPostConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the tag type and the post type"
+				},
+				{
+					"name": "TagToPostConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "TagToTaxonomyConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the tag type and the Taxonomy type"
+				},
+				{
+					"name": "CategoryToTaxonomyConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the category type and the Taxonomy type"
+				},
+				{
+					"name": "CategoryIdType",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single resource. Default is ID."
+				},
+				{
+					"name": "RootQueryToCommentConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToCommentConnection connection"
+				},
+				{
+					"name": "RootQueryToCommentConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the Comment type"
+				},
+				{
+					"name": "RootQueryToCommentConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "ContentNodeIdTypeEnum",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single resource. Default is ID."
+				},
+				{
+					"name": "RootQueryToContentNodeConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToContentNodeConnection connection"
+				},
+				{
+					"name": "RootQueryToContentNodeConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the ContentNode type"
+				},
+				{
+					"name": "RootQueryToContentNodeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "ContentTypeIdTypeEnum",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single Content Type node. To be used along with the \"id\" field. Default is \"ID\"."
+				},
+				{
+					"name": "RootQueryToContentTypeConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the ContentType type"
+				},
+				{
+					"name": "RootQueryToContentTypeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "DiscussionSettings",
+					"kind": "OBJECT",
+					"description": "The discussion setting type"
+				},
+				{
+					"name": "GeneralSettings",
+					"kind": "OBJECT",
+					"description": "The general setting type"
+				},
+				{
+					"name": "MediaItemIdType",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single resource. Default is ID."
+				},
+				{
+					"name": "RootQueryToMediaItemConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToMediaItemConnection connection"
+				},
+				{
+					"name": "RootQueryToMediaItemConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the mediaItem type"
+				},
+				{
+					"name": "RootQueryToMediaItemConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "MenuNodeIdTypeEnum",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single node. Default is \"ID\". To be used along with the \"id\" field."
+				},
+				{
+					"name": "Menu",
+					"kind": "OBJECT",
+					"description": "Menus are the containers for navigation items. Menus can be assigned to menu locations, which are typically registered by the active theme."
+				},
+				{
+					"name": "MenuLocationEnum",
+					"kind": "ENUM",
+					"description": "Registered menu locations"
+				},
+				{
+					"name": "MenuToMenuItemConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the MenuToMenuItemConnection connection"
+				},
+				{
+					"name": "MenuToMenuItemConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the Menu type and the MenuItem type"
+				},
+				{
+					"name": "MenuToMenuItemConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "MenuItem",
+					"kind": "OBJECT",
+					"description": "Navigation menu items are the individual items assigned to a menu. These are rendered as the links in a navigation menu."
+				},
+				{
+					"name": "MenuItemToMenuItemConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the MenuItemToMenuItemConnection connection"
+				},
+				{
+					"name": "MenuItemToMenuItemConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the MenuItem type and the MenuItem type"
+				},
+				{
+					"name": "MenuItemToMenuItemConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "MenuItemToMenuItemLinkableConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the MenuItem type and the MenuItemLinkable type"
+				},
+				{
+					"name": "MenuItemObjectUnion",
+					"kind": "UNION",
+					"description": "Deprecated in favor of MenuItemLinkeable Interface"
+				},
+				{
+					"name": "MenuItemToMenuConnectionEdge",
+					"kind": "OBJECT",
+					"description": "Connection between the MenuItem type and the Menu type"
+				},
+				{
+					"name": "MenuItemNodeIdTypeEnum",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single node. Default is \"ID\". To be used along with the \"id\" field."
+				},
+				{
+					"name": "RootQueryToMenuItemConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToMenuItemConnection connection"
+				},
+				{
+					"name": "RootQueryToMenuItemConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the MenuItem type"
+				},
+				{
+					"name": "RootQueryToMenuItemConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "RootQueryToMenuConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToMenuConnection connection"
+				},
+				{
+					"name": "RootQueryToMenuConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the Menu type"
+				},
+				{
+					"name": "RootQueryToMenuConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "PageIdType",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single resource. Default is ID."
+				},
+				{
+					"name": "RootQueryToPageConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToPageConnection connection"
+				},
+				{
+					"name": "RootQueryToPageConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the page type"
+				},
+				{
+					"name": "RootQueryToPageConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "Plugin",
+					"kind": "OBJECT",
+					"description": "An plugin object"
+				},
+				{
+					"name": "RootQueryToPluginConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the Plugin type"
+				},
+				{
+					"name": "RootQueryToPluginConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "PostIdType",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single resource. Default is ID."
+				},
+				{
+					"name": "PostFormatIdType",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single resource. Default is ID."
+				},
+				{
+					"name": "RootQueryToPostFormatConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToPostFormatConnection connection"
+				},
+				{
+					"name": "RootQueryToPostFormatConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the postFormat type"
+				},
+				{
+					"name": "RootQueryToPostFormatConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "RootQueryToPostConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToPostConnection connection"
+				},
+				{
+					"name": "RootQueryToPostConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the post type"
+				},
+				{
+					"name": "RootQueryToPostConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "ReadingSettings",
+					"kind": "OBJECT",
+					"description": "The reading setting type"
+				},
+				{
+					"name": "RootQueryToEnqueuedScriptConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the EnqueuedScript type"
+				},
+				{
+					"name": "RootQueryToEnqueuedScriptConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "RootQueryToEnqueuedStylesheetConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the EnqueuedStylesheet type"
+				},
+				{
+					"name": "RootQueryToEnqueuedStylesheetConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "RootQueryToContentRevisionUnionConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToContentRevisionUnionConnection connection"
+				},
+				{
+					"name": "RootQueryToContentRevisionUnionConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the ContentRevisionUnion type"
+				},
+				{
+					"name": "RootQueryToContentRevisionUnionConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "TagIdType",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single resource. Default is ID."
+				},
+				{
+					"name": "RootQueryToTagConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToTagConnection connection"
+				},
+				{
+					"name": "RootQueryToTagConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the tag type"
+				},
+				{
+					"name": "RootQueryToTagConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "RootQueryToTaxonomyConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the Taxonomy type"
+				},
+				{
+					"name": "RootQueryToTaxonomyConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "TaxonomyIdTypeEnum",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single Taxonomy node. To be used along with the \"id\" field. Default is \"ID\"."
+				},
+				{
+					"name": "TermNodeIdTypeEnum",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single resource. Default is \"ID\". To be used along with the \"id\" field."
+				},
+				{
+					"name": "RootQueryToTermNodeConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToTermNodeConnection connection"
+				},
+				{
+					"name": "RootQueryToTermNodeConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the TermNode type"
+				},
+				{
+					"name": "RootQueryToTermNodeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "Theme",
+					"kind": "OBJECT",
+					"description": "A theme object"
+				},
+				{
+					"name": "RootQueryToThemeConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the Theme type"
+				},
+				{
+					"name": "RootQueryToThemeConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "UserNodeIdTypeEnum",
+					"kind": "ENUM",
+					"description": "The Type of Identifier used to fetch a single User node. To be used along with the \"id\" field. Default is \"ID\"."
+				},
+				{
+					"name": "RootQueryToUserRoleConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the UserRole type"
+				},
+				{
+					"name": "RootQueryToUserRoleConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "RootQueryToUserConnectionWhereArgs",
+					"kind": "INPUT_OBJECT",
+					"description": "Arguments for filtering the RootQueryToUserConnection connection"
+				},
+				{
+					"name": "UsersConnectionOrderbyInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Options for ordering the connection"
+				},
+				{
+					"name": "UsersConnectionOrderbyEnum",
+					"kind": "ENUM",
+					"description": "Field to order the connection by"
+				},
+				{
+					"name": "UserRoleEnum",
+					"kind": "ENUM",
+					"description": "Names of available user roles"
+				},
+				{
+					"name": "RootQueryToUserConnection",
+					"kind": "OBJECT",
+					"description": "Connection between the RootQuery type and the User type"
+				},
+				{
+					"name": "RootQueryToUserConnectionEdge",
+					"kind": "OBJECT",
+					"description": "An edge in a connection"
+				},
+				{
+					"name": "WritingSettings",
+					"kind": "OBJECT",
+					"description": "The writing setting type"
+				},
+				{
+					"name": "RootMutation",
+					"kind": "OBJECT",
+					"description": "The root mutation"
+				},
+				{
+					"name": "UpdateCategoryInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the UpdateCategory mutation"
+				},
+				{
+					"name": "UpdateCategoryPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the UpdateCategory mutation"
+				},
+				{
+					"name": "UpdatePostFormatInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the UpdatePostFormat mutation"
+				},
+				{
+					"name": "UpdatePostFormatPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the UpdatePostFormat mutation"
+				},
+				{
+					"name": "UpdateTagInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the UpdateTag mutation"
+				},
+				{
+					"name": "UpdateTagPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the UpdateTag mutation"
+				},
+				{
+					"name": "CreateCategoryInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the createCategory mutation"
+				},
+				{
+					"name": "CreateCategoryPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the createCategory mutation"
+				},
+				{
+					"name": "CreateCommentInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the createComment mutation"
+				},
+				{
+					"name": "CreateCommentPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the createComment mutation"
+				},
+				{
+					"name": "CreateMediaItemInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the createMediaItem mutation"
+				},
+				{
+					"name": "MediaItemStatusEnum",
+					"kind": "ENUM",
+					"description": "The status of the media item object."
+				},
+				{
+					"name": "CreateMediaItemPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the createMediaItem mutation"
+				},
+				{
+					"name": "CreatePageInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the createPage mutation"
+				},
+				{
+					"name": "CreatePagePayload",
+					"kind": "OBJECT",
+					"description": "The payload for the createPage mutation"
+				},
+				{
+					"name": "CreatePostInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the createPost mutation"
+				},
+				{
+					"name": "PostCategoriesInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Set relationships between the post to categories"
+				},
+				{
+					"name": "PostCategoriesNodeInput",
+					"kind": "INPUT_OBJECT",
+					"description": "List of categories to connect the post to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists."
+				},
+				{
+					"name": "PostPostFormatsInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Set relationships between the post to postFormats"
+				},
+				{
+					"name": "PostPostFormatsNodeInput",
+					"kind": "INPUT_OBJECT",
+					"description": "List of postFormats to connect the post to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists."
+				},
+				{
+					"name": "PostTagsInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Set relationships between the post to tags"
+				},
+				{
+					"name": "PostTagsNodeInput",
+					"kind": "INPUT_OBJECT",
+					"description": "List of tags to connect the post to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists."
+				},
+				{
+					"name": "CreatePostPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the createPost mutation"
+				},
+				{
+					"name": "CreatePostFormatInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the createPostFormat mutation"
+				},
+				{
+					"name": "CreatePostFormatPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the createPostFormat mutation"
+				},
+				{
+					"name": "CreateTagInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the createTag mutation"
+				},
+				{
+					"name": "CreateTagPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the createTag mutation"
+				},
+				{
+					"name": "CreateUserInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the createUser mutation"
+				},
+				{
+					"name": "CreateUserPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the createUser mutation"
+				},
+				{
+					"name": "DeleteCategoryInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the deleteCategory mutation"
+				},
+				{
+					"name": "DeleteCategoryPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the deleteCategory mutation"
+				},
+				{
+					"name": "DeleteCommentInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the deleteComment mutation"
+				},
+				{
+					"name": "DeleteCommentPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the deleteComment mutation"
+				},
+				{
+					"name": "DeleteMediaItemInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the deleteMediaItem mutation"
+				},
+				{
+					"name": "DeleteMediaItemPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the deleteMediaItem mutation"
+				},
+				{
+					"name": "DeletePageInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the deletePage mutation"
+				},
+				{
+					"name": "DeletePagePayload",
+					"kind": "OBJECT",
+					"description": "The payload for the deletePage mutation"
+				},
+				{
+					"name": "DeletePostInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the deletePost mutation"
+				},
+				{
+					"name": "DeletePostPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the deletePost mutation"
+				},
+				{
+					"name": "DeletePostFormatInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the deletePostFormat mutation"
+				},
+				{
+					"name": "DeletePostFormatPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the deletePostFormat mutation"
+				},
+				{
+					"name": "DeleteTagInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the deleteTag mutation"
+				},
+				{
+					"name": "DeleteTagPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the deleteTag mutation"
+				},
+				{
+					"name": "DeleteUserInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the deleteUser mutation"
+				},
+				{
+					"name": "DeleteUserPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the deleteUser mutation"
+				},
+				{
+					"name": "LoginInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the login mutation"
+				},
+				{
+					"name": "LoginPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the login mutation"
+				},
+				{
+					"name": "RefreshJwtAuthTokenInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the refreshJwtAuthToken mutation"
+				},
+				{
+					"name": "RefreshJwtAuthTokenPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the refreshJwtAuthToken mutation"
+				},
+				{
+					"name": "RegisterUserInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the registerUser mutation"
+				},
+				{
+					"name": "RegisterUserPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the registerUser mutation"
+				},
+				{
+					"name": "ResetUserPasswordInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the resetUserPassword mutation"
+				},
+				{
+					"name": "ResetUserPasswordPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the resetUserPassword mutation"
+				},
+				{
+					"name": "RestoreCommentInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the restoreComment mutation"
+				},
+				{
+					"name": "RestoreCommentPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the restoreComment mutation"
+				},
+				{
+					"name": "SendPasswordResetEmailInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the sendPasswordResetEmail mutation"
+				},
+				{
+					"name": "SendPasswordResetEmailPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the sendPasswordResetEmail mutation"
+				},
+				{
+					"name": "UpdateCommentInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the updateComment mutation"
+				},
+				{
+					"name": "UpdateCommentPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the updateComment mutation"
+				},
+				{
+					"name": "UpdateMediaItemInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the updateMediaItem mutation"
+				},
+				{
+					"name": "UpdateMediaItemPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the updateMediaItem mutation"
+				},
+				{
+					"name": "UpdatePageInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the updatePage mutation"
+				},
+				{
+					"name": "UpdatePagePayload",
+					"kind": "OBJECT",
+					"description": "The payload for the updatePage mutation"
+				},
+				{
+					"name": "UpdatePostInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the updatePost mutation"
+				},
+				{
+					"name": "UpdatePostPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the updatePost mutation"
+				},
+				{
+					"name": "UpdateSettingsInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the updateSettings mutation"
+				},
+				{
+					"name": "UpdateSettingsPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the updateSettings mutation"
+				},
+				{
+					"name": "UpdateUserInput",
+					"kind": "INPUT_OBJECT",
+					"description": "Input for the updateUser mutation"
+				},
+				{
+					"name": "UpdateUserPayload",
+					"kind": "OBJECT",
+					"description": "The payload for the updateUser mutation"
+				},
+				{
+					"name": "__Schema",
+					"kind": "OBJECT",
+					"description": "A GraphQL Schema defines the capabilities of a GraphQL server. It exposes all available types and directives on the server, as well as the entry points for query, mutation, and subscription operations."
+				},
+				{
+					"name": "__Type",
+					"kind": "OBJECT",
+					"description": "The fundamental unit of any GraphQL Schema is the type. There are many kinds of types in GraphQL as represented by the `__TypeKind` enum.\n\nDepending on the kind of a type, certain fields describe information about that type. Scalar types provide no information beyond a name and description, while Enum types provide their values. Object and Interface types provide the fields they describe. Abstract types, Union and Interface, provide the Object types possible at runtime. List and NonNull types compose other types."
+				},
+				{
+					"name": "__TypeKind",
+					"kind": "ENUM",
+					"description": "An enum describing what kind of type a given `__Type` is."
+				},
+				{
+					"name": "__Field",
+					"kind": "OBJECT",
+					"description": "Object and Interface types are described by a list of Fields, each of which has a name, potentially a list of arguments, and a return type."
+				},
+				{
+					"name": "__InputValue",
+					"kind": "OBJECT",
+					"description": "Arguments provided to Fields or Directives and the input fields of an InputObject are represented as Input Values which describe their type and optionally a default value."
+				},
+				{
+					"name": "__EnumValue",
+					"kind": "OBJECT",
+					"description": "One possible value for a given Enum. Enum values are unique values, not a placeholder for a string or numeric value. However an Enum value is returned in a JSON response as a string."
+				},
+				{
+					"name": "__Directive",
+					"kind": "OBJECT",
+					"description": "A Directive provides a way to describe alternate runtime execution and type validation behavior in a GraphQL document.\n\nIn some cases, you need to provide options to alter GraphQL&#039;s execution behavior in ways field arguments will not suffice, such as conditionally including or skipping a field. Directives provide this by describing additional information to the executor."
+				},
+				{
+					"name": "__DirectiveLocation",
+					"kind": "ENUM",
+					"description": "A Directive can be adjacent to many parts of the GraphQL language, a __DirectiveLocation describes one such possible adjacencies."
+				}
+			]
+		}
+	}
+}
