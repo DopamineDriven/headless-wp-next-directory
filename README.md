@@ -18,6 +18,10 @@
 - https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/wpapi/index.d.ts
 - https://www.npmjs.com/package/@types/wpapi
 
+### Wp-GraphQL-WooCommerce Plugin
+
+- - https://github.com/wp-graphql/wp-graphql-woocommerce
+
 ### Better REST Api Featured Images plugin
 
 - https://linguinecode.com/post/how-to-make-wordpress-headless-and-fetch-posts-with-javascript
