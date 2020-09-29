@@ -16,8 +16,8 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 		ssrMode: typeof window === 'undefined',
 		connectToDevTools: true,
 		link: new HttpLink({
-			uri: `${process.env.WORDPRESS_API_URL}`,
-			credentials: `${headers}`
+			uri: `${process.env.WORDPRESS_API_URL}/`,
+			credentials: 'Access-Control-Allow-Origin'
 		}),
 		cache: new InMemoryCache({
 			// possibleTypes: possibleTypes,

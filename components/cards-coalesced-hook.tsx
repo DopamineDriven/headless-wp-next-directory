@@ -15,8 +15,8 @@ export const ALL_POSTS_QUERY: DocumentNode = gql`
 	# fragment PostFields on Post {
 
 	# }
-	query AllPosts($first: Int!, $skip: Int!) {
-		posts(orderBy: { modified: DESC }, first: $first, skip: $skip) {
+	query AllPosts($field: PostObjectsConnectionOrderbyEnum!, $order: OrderEnum!) {
+		posts(first: 35, where: { orderby: { field: $field, order: $order } }) {
 			edges {
 				node {
 					id
@@ -53,8 +53,8 @@ export const ALL_POSTS_QUERY: DocumentNode = gql`
 `;
 
 export const allPostsQueryVars = {
-	skip: 0,
-	first: 35
+	field: 'MODIFIED',
+	order: 'ASC'
 };
 
 export default function PostList() {
@@ -73,13 +73,13 @@ export default function PostList() {
 			}
 		});
 	};
-	if (error) return <aside>Error Loading Posts</aside>;
+	if (error) return <aside>{`${error}`}</aside>;
 	if (loading && !loadingMorePosts) return <aside>Loading...</aside>;
 	if (networkStatus === NetworkStatus.refetch) {
 		loadMorePosts;
 		return <aside>Refetching!</aside>;
 	}
-	const { posts } = data;
+	const { posts } = data?.posts.nodes;
 	return (
 		<section className='content-center justify-center block mx-auto '>
 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
