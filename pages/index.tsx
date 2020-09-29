@@ -34,7 +34,11 @@ import { MediaContextProvider } from 'lib/window-width';
 import FieldEnum from 'types/enums/field-enum';
 import OrderEnum from 'types/enums/order-enum';
 import Footer from 'components/footer';
-
+import CardsHooked, {
+	allPostsQueryVars,
+	ALL_POSTS_QUERY
+} from 'components/cards-coalesced-hook';
+import { initializeApollo } from 'lib/apollo';
 interface IndexProps {
 	allPosts: AllPostsProps;
 	preview: boolean;
@@ -190,7 +194,7 @@ export const getServerSideProps = async ({
 	field = MODIFIED || TITLE || DATE,
 	order = ASC || DESC,
 	desiredCategory
-}: StaticProps & GetServerSideProps) => {
+}: StaticProps) => {
 	// console.log(context);
 	const allPosts = await getAllPostsForHomeAlphabetical({
 		preview,
@@ -199,10 +203,18 @@ export const getServerSideProps = async ({
 	});
 	const tagsAndPosts = await getTagAndPosts();
 	const categories = await getCategories();
+
+	// const apolloClient = initializeApollo();
+
+	// await apolloClient.query({
+	// 	query: ALL_POSTS_QUERY,
+	// 	variables: allPostsQueryVars
+	// });
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
 	return {
 		props: {
+			// initialApolloState: apolloClient.cache.extract(),
 			allPosts,
 			preview,
 			tagsAndPosts,

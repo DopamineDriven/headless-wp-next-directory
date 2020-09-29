@@ -2,6 +2,12 @@
 
 ## 9-28-20
 
+- One-Graph
+  - https://www.onegraph.com/
+- GraphQL-Nexus for strongly Typed GQL Schemas (1.7k stars)
+  - https://github.com/graphql-nexus/schema/tree/develop/examples/apollo-fullstack
+- GraphQL Voyager
+  - https://apis.guru/graphql-voyager/
 - GraphQL File Uploads with React Hooks, TypeScript, Amazon-S3
 
   - https://www.apollographql.com/blog/graphql-file-uploads-with-react-hooks-typescript-amazon-s3-tutorial-ef39d21066a2/

@@ -6,6 +6,7 @@ import {
 	NormalizedCacheObject
 } from '@apollo/client';
 import { concatPagination, Reference } from '@apollo/client/utilities';
+// import possibleTypes  from 'lib/possible-types';
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
@@ -15,10 +16,11 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 		ssrMode: typeof window === 'undefined',
 		connectToDevTools: true,
 		link: new HttpLink({
-			uri: `${process.env.WORDPRESS_API_URL}`,
-			credentials: `${headers}`
+			uri: `${process.env.WORDPRESS_API_URL}/`,
+			credentials: 'Access-Control-Allow-Origin'
 		}),
 		cache: new InMemoryCache({
+			// possibleTypes: possibleTypes,
 			addTypename: true,
 			resultCaching: true,
 			typePolicies: {
