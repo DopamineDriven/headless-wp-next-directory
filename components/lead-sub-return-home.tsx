@@ -6,7 +6,7 @@ interface SubLeadInterface {
 const LeadSubReturnHome = ({ title }: SubLeadInterface): JSX.Element => {
 	return (
 		<div className='block justify-between lg:justify-start w-full min-w-full z-2 md:text-customExcerpt text-customExcerptMobile tracking-tighter pt-portfolioDivider translate-y-portfolioLS transform'>
-			<Link href={`/#home-${title}`} passHref>
+			<Link href={`/#home-${title}`} as='/' passHref scroll={true}>
 				<a
 					className='block align-middle justify-between mx-auto text-center mt-portfolio font-somaRoman hover:text-tertiary transition-all transform ease-in-out'
 					aria-label='return home'
