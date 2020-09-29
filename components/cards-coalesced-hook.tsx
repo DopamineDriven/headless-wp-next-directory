@@ -1,8 +1,9 @@
 import Card from './card';
 import { PostsProps } from '../types/posts';
 import { gql, useQuery, NetworkStatus } from '@apollo/client';
+import { DocumentNode } from 'graphql';
 
-export const POSTS_QUERY = gql`
+export const ALL_POSTS_QUERY: DocumentNode = gql`
 	# fragment AuthorFields on User {
 	# 	name
 	# 	firstName
@@ -51,15 +52,34 @@ export const POSTS_QUERY = gql`
 	}
 `;
 
-type NodeProps = {
-	node: any;
+export const allPostsQueryVars = {
+	skip: 0,
+	first: 35
 };
 
-type CardsProps = {
-	posts: PostsProps[];
-};
-
-export default function MoreCards({ posts }: CardsProps) {
+export default function PostList() {
+	const { loading, error, data, fetchMore, networkStatus } = useQuery(
+		ALL_POSTS_QUERY,
+		{
+			variables: allPostsQueryVars,
+			notifyOnNetworkStatusChange: true
+		}
+	);
+	const loadingMorePosts: boolean = networkStatus === NetworkStatus.fetchMore;
+	const loadMorePosts = (posts: PostsProps[]) => {
+		fetchMore({
+			variables: {
+				skip: posts.length
+			}
+		});
+	};
+	if (error) return <aside>Error Loading Posts</aside>;
+	if (loading && !loadingMorePosts) return <aside>Loading...</aside>;
+	if (networkStatus === NetworkStatus.refetch) {
+		loadMorePosts;
+		return <aside>Refetching!</aside>;
+	}
+	const { posts } = data;
 	return (
 		<section className='content-center justify-center block mx-auto '>
 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
@@ -82,6 +102,38 @@ export default function MoreCards({ posts }: CardsProps) {
 		</section>
 	);
 }
+
+// type NodeProps = {
+// 	node: any;
+// };
+
+// type CardsProps = {
+// 	posts: PostsProps[];
+// };
+
+// export default function MoreCards({ posts }: CardsProps) {
+// 	return (
+// 		<section className='content-center justify-center block mx-auto '>
+// 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
+// 				{posts.map((company: PostsProps) => {
+// 					const node: any = company.node;
+// 					return (
+// 						<Card
+// 							key={node.slug}
+// 							title={node.title}
+// 							coverImage={node.featuredImage.node}
+// 							modified={node.modified}
+// 							social={node.social}
+// 							author={node.author}
+// 							slug={node.slug}
+// 							excerpt={node.excerpt}
+// 						/>
+// 					);
+// 				})}
+// 			</div>
+// 		</section>
+// 	);
+// }
 
 // export default function MoreCards({ posts, slug }: CardsProps) {
 // 	return (

@@ -6,6 +6,7 @@ import {
 	NormalizedCacheObject
 } from '@apollo/client';
 import { concatPagination, Reference } from '@apollo/client/utilities';
+// import possibleTypes  from 'lib/possible-types';
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
@@ -19,6 +20,7 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 			credentials: `${headers}`
 		}),
 		cache: new InMemoryCache({
+			// possibleTypes: possibleTypes,
 			addTypename: true,
 			resultCaching: true,
 			typePolicies: {
