@@ -1,5 +1,22 @@
 import Card from './card';
 import { PostsProps } from '../types/posts';
+import { gql, useQuery, NetworkStatus } from '@apollo/client';
+
+export const POSTS_QUERY = gql`
+	query posts($first: Int!, $skip: Int!) {
+		posts(orderBy: { modified: DESC }, first: $first, skip: $skip) {
+			nodes {
+				id
+				title
+				excerpt
+				slug
+				date
+				modified
+				social
+			}
+		}
+	}
+`;
 
 type NodeProps = {
 	node: any;
