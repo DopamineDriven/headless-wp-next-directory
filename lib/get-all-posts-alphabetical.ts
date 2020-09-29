@@ -1,6 +1,17 @@
 import { GraphQLObjectType } from 'graphql';
 import { fetchAPI } from 'lib/api';
+import { postStatusObjectType } from 'wp-graphql/lib/models/post-statuses/types/postStatusType';
 
+/*
+ const RGBType = new GraphQLEnumType({
+   name: 'RGB',
+   values: {
+     RED: { value: 0 },
+     GREEN: { value: 1 },
+     BLUE: { value: 2 }
+   }
+ });
+*/
 interface GetAllPostsForHomeAlphabeticalProps {
 	preview: boolean;
 	field: string;
@@ -8,11 +19,9 @@ interface GetAllPostsForHomeAlphabeticalProps {
 }
 
 const LandingPosts = new GraphQLObjectType({
-  name: 'Landing',
-  fields: {
-    
-  }
-})
+	name: 'Landing',
+	fields: {}
+});
 
 export default async function getAllPostsForHomeAlphabetical({
 	preview,
@@ -68,7 +77,6 @@ export default async function getAllPostsForHomeAlphabetical({
 	console.log(typeof data, 'type of data.posts'); // data.posts: object, data: object, posts: undefined
 	return data?.posts;
 }
-
 
 /**
  * Object Type Definition

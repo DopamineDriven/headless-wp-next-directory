@@ -1,44 +1,254 @@
 # headless-wp-next-directory
 
+## 9-28-20
+
+- One-Graph
+  - https://www.onegraph.com/
+- GraphQL-Nexus for strongly Typed GQL Schemas (1.7k stars)
+  - https://github.com/graphql-nexus/schema/tree/develop/examples/apollo-fullstack
+- GraphQL Voyager
+  - https://apis.guru/graphql-voyager/
+- GraphQL File Uploads with React Hooks, TypeScript, Amazon-S3
+
+  - https://www.apollographql.com/blog/graphql-file-uploads-with-react-hooks-typescript-amazon-s3-tutorial-ef39d21066a2/
+
+- https://nextjs-graphql-with-prisma-simple.vercel.app/api?query=query%20MyQuery%20%7B%0A%20%20allPosts%20%7B%0A%20%20%20%20title%0A%20%20%7D%0A%7D&operationName=MyQuery
+- Implementing apollo-client isomorphic unfetch
+- Query using apollo hooks
+- plugins to infer GQL-TS typings and generate them in a designated file
+- Here. We. Go.
+
+- https://dev.to/kendalmintcode/using-wordpress-as-a-headless-cms-with-next-js-2h5p
+- https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project
+- https://stackoverflow.com/questions/55873197/apollo-query-variable-error-when-passing-state
+
+## wpapi and @types/wpapi packages
+
+- https://linguinecode.com/post/how-to-make-wordpress-headless-and-fetch-posts-with-javascript
+- https://github.com/wp-api/node-wpapi#requesting-different-resources
+- https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/wpapi/index.d.ts
+- https://www.npmjs.com/package/@types/wpapi
+
+### Wp-GraphQL-WooCommerce Plugin
+
+- - https://github.com/wp-graphql/wp-graphql-woocommerce
+
+### Better REST Api Featured Images plugin
+
+- https://linguinecode.com/post/how-to-make-wordpress-headless-and-fetch-posts-with-javascript
+
+## IMPORTANT @jlovejo2
+
+- all files ignored by eslintignore currently
+- used this source to configure our project
+- https://paulintrognon.fr/blog/post/typescript-prettier-eslint-next-js
+- will revisit in the future
+
+## ALSO IMPORANT
+
+- Check out the getServerSideProps method used by the author here
+- passing query and resolving props types in that way for getServerSideProps
+- When attempting this approach (see my revisions in andrew-james-notes.md) the following error was returned
+
+```bash
+$ yarn dev
+yarn run v1.22.5
+$ next
+info  - Loaded env from C:\Users\Anthr\headless-wp-next-directory\.env.local
+ready - started server on http://localhost:3000
+event - compiled successfully
+event - build page: /next/dist/pages/_error
+wait  - compiling...
+event - compiled successfully
+event - build page: /
+wait  - compiling...
+event - compiled successfully
+[
+  {
+    message: 'Field "posts" argument "where" requires type PostObjectsConnectionOrderbyEnum, found undefined.',
+    extensions: { category: 'graphql' },
+    locations: [ [Object] ]
+  },
+  {
+    message: 'Field "posts" argument "where" requires type OrderEnum, found undefined.',
+    extensions: { category: 'graphql' },
+    locations: [ [Object] ]
+  }
+]
+Error: Failed to fetch API
+    at fetchAPI (C:\Users\Anthr\headless-wp-next-directory\.next\server\pages\index.js:3204:11)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAllPostsForHomeAlphabetical (C:\Users\Anthr\headless-wp-next-directory\.next\server\pages\index.js:3249:16)
+    at async getServerSideProps (C:\Users\Anthr\headless-wp-next-directory\.next\server\pages\index.js:6530:20)
+    at async renderToHTML (C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\render.js:38:185)
+    at async C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:76:329
+    at async C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:75:142
+    at async DevServer.renderToHTMLWithComponents (C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:99:364)
+    at async DevServer.renderToHTML (C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:100:255)
+[
+  {
+    message: 'Field "posts" argument "where" requires type PostObjectsConnectionOrderbyEnum, found undefined.',
+    locations: [ [Object] ]
+  },
+  {
+    message: 'Field "posts" argument "where" requires type OrderEnum, found undefined.',
+    extensions: { category: 'graphql' },
+    locations: [ [Object] ]
+  }
+]
+Error: Failed to fetch API
+    at fetchAPI (C:\Users\Anthr\headless-wp-next-directory\.next\server\pages\index.js:3204:11)
+    at runMicrotasks (<anonymous>)
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+    at async getAllPostsForHomeAlphabetical (C:\Users\Anthr\headless-wp-next-directory\.next\server\pages\index.js:3249:16)
+    at async getServerSideProps (C:\Users\Anthr\headless-wp-next-directory\.next\server\pages\index.js:6530:20)
+    at async renderToHTML (C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\render.js:38:185)
+    at async C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:76:329
+    at async C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:75:142
+    at async DevServer.renderToHTMLWithComponents (C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:99:364)
+    at async DevServer.renderToHTML (C:\Users\Anthr\headless-wp-next-directory\node_modules\next\dist\next-server\server\next-server.js:100:255)
+```
+
+## TypeRoots && TypePlugins && TSLint/ESLint config (.eslintrc.json)
+
+- https://medium.com/@gogl.alex/how-to-set-up-typescript-eslint-prettier-for-next-gatsby-c5330b4a9b7a
+- https://github.com/Quramy/typescript-eslint-language-service
+- https://www.typescriptlang.org/tsconfig#typeRoots
+- example of `.eslintrc.json` from https://github.com/DopamineDriven/wcd
+
+```json
+{
+	"parser": "@typescript-eslint/parser",
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:react/recommended"
+	],
+	"parserOptions": {
+		"ecmaVersion": 2020,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"plugins": ["@typescript-eslint"],
+	"env": {
+		"node": true,
+		"es6": true,
+		"browser": true
+	},
+	"rules": {
+		// could set "indent": [true, "tabs", 1]
+		"indent": "off",
+		"@typescript-eslint/indent": "off",
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"react/prop-types": "off"
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
+}
+```
+
+## Prettier format script
+
+- Resolve
+
+```json
+		"prettier-format": "prettier --config .prettierrc 'components/**/*.tsx' --write"
+```
+
+## TailwindCSS Tips and Tricks
+
+- https://tailwindcss.com/docs/transition-timing-function
+- https://laravel-news.com/tailwind-css-tips-and-tricks
+- https://tailwind.run/PfhdtG/1
+
+## WP-GQL/WP-GQL-ACF
+
+- https://github.com/wp-graphql/wp-graphql-acf
+
+## ReactElement vs ReactNode vs JSX.Element
+
+- https://stackoverflow.com/questions/58123398/when-to-use-jsx-element-vs-reactnode-vs-reactelement
+- https://www.mmbyte.com/article/44732.html#:~:text=Element%20is%20ReactElement%20%2C%20whose%20props,render()%20in%20class%20components
+
+```ts
+interface ReactElement<
+	P = any,
+	T extends string | JSXElementConstructor<any> =
+		| string
+		| JSXElementConstructor<any>
+> {
+	type: T;
+	props: P;
+	key: Key | null;
+}
+interface ReactNodeArray extends Array<ReactNode> {}
+type ReactFragment = {} | ReactNodeArray;
+type ReactNode =
+	| ReactChild
+	| ReactFragment
+	| ReactPortal
+	| boolean
+	| null
+	| undefined;
+```
+
 ## InferGetStaticPropsType, GetStaticPropsResult, GetStaticPropsContext...
+
 - https://github.com/vercel/next.js/pull/11842/files
 
 ## getInitialProps
+
 - https://linguinecode.com/post/next-js-typescript-getinitialprops
 
 ## Incremental Static Regeneration (ISR)
+
 - https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
 - https://github.com/vercel/next.js/discussions/11552
 - https://youtu.be/IJkTpR7sSwI
 
 ## node_modules/wp-graphql/lib/lib/abstract-types
+
 Headless WP, NextJS, React, TypeScript, Node, Tailwindcss, Vercel
 
 ## 8/26/20
+
 - Conditional rendering support incorporated for social icons
   - if string === '', then return
   ```tsx
   <></>
   ```
 - so, if a company doesn't have one or more social media sites, there will be no corresponding icon on their card
-- see components/card-icons.tsx 
+- see components/card-icons.tsx
   - https://dev.to/dopaminedriven/hacking-the-fontawesome-library-for-custom-icon-integration-with-nextjs-and-typescript-1em8
 
 ## Patching node_modules
+
 ```git
 npx patch-package @fortawesome/fontawesome-common-types
 ```
+
 - however, if you were to edit the core css in fontawesome-svg-core, for example, then target that module
+
 ```git
 npx patch-package @fortawesome/fontawesome-svg-core
 ```
+
 - see my post for more details on custom icon incorporation
 
 ## Multilingual Support
+
 - https://medium.com/swlh/making-a-multilingual-site-with-next-js-part-2-518c5c699d23 (published 8/13/20)
 - https://levelup.gitconnected.com/a-simple-next-js-frontend-for-a-multilingual-website-ae31a17387e2
 
 ## Responsive Navbar ideas
+
 - Apple (mobile)
   - https://www.apple.com/
 - Coupled
@@ -47,24 +257,27 @@ npx patch-package @fortawesome/fontawesome-svg-core
 - https://medium.com/@sidbentifraouine/responsive-animated-top-navigation-bar-with-react-transition-group-fd0ccbfb4bbb
 
 ## Thread Vercel with WPEngine in Production
+
 - Goal: link new/updated posts in the headless CMS with a deployed build on Vercel in real time
-  - First steps: 
+  - First steps:
     - determine how WP Engine communicates with local env under the hood
     - configure communication between Vercel and WP Engine clouds in real time
 
 ## WPGQL Custom Post Types
+
 - https://spin.atomicobject.com/2020/03/29/next-js-graphql-api/
 - https://wordpress.org/plugins/headless-cms/
 - https://www.wpwatercooler.com/devbranch/ep04-using-wpgraphql-with-wordpress/
-- https://edwincromley.gitbooks.io/wp-graphql/content/handling-custom-post-types.html ***
+- https://edwincromley.gitbooks.io/wp-graphql/content/handling-custom-post-types.html \*\*\*
 - https://github.com/wp-graphql/wp-graphql-custom-post-type-ui
 - https://github.com/wp-graphql/wp-graphql/issues/344
-- https://stackoverflow.com/questions/60170927/wordpress-wp-graphql-not-working-with-custom-post-type ***
+- https://stackoverflow.com/questions/60170927/wordpress-wp-graphql-not-working-with-custom-post-type \*\*\*
 
 ## WPGQL Typings
-- https://medium.com/javascript-in-plain-english/graphql-pagination-using-edges-vs-nodes-in-connections-f2ddb8edffa0 ***
-- https://relay.dev/graphql/connections.htm ********&larr;
-- https://www.typescriptlang.org/docs/handbook/basic-types.html *EDGE(S) AND NODE(S) MUST BE OBJECT TYPES*
+
+- https://medium.com/javascript-in-plain-english/graphql-pagination-using-edges-vs-nodes-in-connections-f2ddb8edffa0 \*\*\*
+- https://relay.dev/graphql/connections.htm **\*\*\*\***&larr;
+- https://www.typescriptlang.org/docs/handbook/basic-types.html _EDGE(S) AND NODE(S) MUST BE OBJECT TYPES_
 - https://github.com/aliemteam/wp-graphql
 - https://github.com/MichalLytek/type-graphql#readme
 
@@ -82,6 +295,7 @@ add_action( 'graphql_register_types', function() {
 ```
 
 ## Simple Social Icons Plugin
+
 ```ts
 query MyQuery {
   plugins {
@@ -99,25 +313,29 @@ query MyQuery {
   }
 }
 ```
+
 - returns
+
 ```json
 {
-  "node": {
-    "name": "Simple Social Icons",
-    "path": "simple-social-icons/simple-social-icons.php",
-    "pluginUri": "https://wordpress.org/plugins/simple-social-icons/",
-    "id": "cGx1Z2luOnNpbXBsZS1zb2NpYWwtaWNvbnMvc2ltcGxlLXNvY2lhbC1pY29ucy5waHA=",
-    "description": "A simple CSS and SVG driven social icons widget.",
-    "author": "StudioPress",
-    "authorUri": "https://www.studiopress.com/"
-  }
+	"node": {
+		"name": "Simple Social Icons",
+		"path": "simple-social-icons/simple-social-icons.php",
+		"pluginUri": "https://wordpress.org/plugins/simple-social-icons/",
+		"id": "cGx1Z2luOnNpbXBsZS1zb2NpYWwtaWNvbnMvc2ltcGxlLXNvY2lhbC1pY29ucy5waHA=",
+		"description": "A simple CSS and SVG driven social icons widget.",
+		"author": "StudioPress",
+		"authorUri": "https://www.studiopress.com/"
+	}
 }
 ```
+
 - plugins are independent of posts and authors
 - plugin component made
 - plugin in index and slug.tsx
 
 ## WP-GraphQL-Composer Plugin
+
 - https://developer.aliyun.com/mirror/npm/package/wp-graphql-composer/v/0.1.7
 
 ## Search Bar Configuration
@@ -232,6 +450,7 @@ mutation Login {
 
 - this returns a refresh token value for the WORDPRESS_AUTH_REFRESH_TOKEN key in .env.local
 - set the value of the WORDPRESS_PREVIEW_SECRET key to any url-friendly string
+
 ```ts
 href={`localhost:3000/api/preview?secret=${process.env.WORDPRESS_PREVIEW_SECRET}&id=${draft.id}`}
 ```
@@ -303,53 +522,6 @@ https://headless-wp-next-directory.vercel.app/api/preview?secret=/preview-mode&i
 - https://github.com/FortAwesome/react-fontawesome#nextjs
 - https://stackoverflow.com/questions/44752189/how-to-add-font-awesome-to-next-js-project
 
-## CIMA
-
-- https://savechicagomedia.org/
-- Color-Scheme:
-  - cimaRed: #B8242C
-  - white: #FFFFFF
-- Font-Family:
-  - 'Barlow Semi Condensed', sans-serif
-  - https://fonts.google.com/specimen/Barlow+Semi+Condensed?preview.text=CIMA&preview.text_type=custom
-    - Regular 400 (regular text)
-    - Medium 500 to Semi-bold 600 (titles)
-- Transparent PNG ripped from website
-
-## generate JSX from .svg files via the command line
-
-```git
-$ npx @svgr/cli --icon Logo.svg
-```
-
-- target the .svg file
-- c/p command line output into a corresponding .tsx (or .jsx) component
-- voila
-
-## next-google-fonts npm
-- https://codeconqueror.com/blog/using-google-fonts-with-next-js
-- https://github.com/joe-bell/next-google-fonts
-- https://johnny.am/blog/n2-adding-google-fonts-to-nextjs-project
-- https://fonts.google.com/specimen/Barlow+Condensed?preview.text=CIMA&preview.text_type=custom&sidebar.open=true&selection.family=Barlow+Condensed|Barlow+Semi+Condensed#license
-
-```css
-@font-face {
-	font-family: 'Barlow Condensed';
-	font-style: normal;
-	font-weight: 400;
-	src: url('../fonts/barlow-condensed-v4-latin-regular.eot'); /* IE9 Compat Modes */
-	src: local('Barlow Condensed Regular'), local('BarlowCondensed-Regular'),
-		url('../fonts/barlow-condensed-v4-latin-regular.eot?#iefix') format('embedded-opentype'),
-		/* IE6-IE8 */ url('../fonts/barlow-condensed-v4-latin-regular.woff2') format('woff2'),
-		/* Super Modern Browsers */
-			url('../fonts/barlow-condensed-v4-latin-regular.woff') format('woff'), /* Modern Browsers */
-			url('../fonts/barlow-condensed-v4-latin-regular.ttf') format('truetype'),
-		/* Safari, Android, iOS */
-			url('../fonts/barlow-condensed-v4-latin-regular.svg#BarlowCondensed')
-			format('svg'); /* Legacy iOS */
-}
-```
-
 ## Customizable Background Patterns -- SVGs
 
 - http://www.heropatterns.com/
@@ -358,22 +530,8 @@ $ npx @svgr/cli --icon Logo.svg
 
 - https://sergiodxa.com/articles/next-tailwind/
 - https://tailwindcss.com/docs/configuration/
-
-## Card ideas
-
-- https://tailwindcomponents.com/component/team-cards
-- https://tailwindtemplates.io/cards/#339
-- https://tailwindtemplates.io/cards/#335
-- https://tailwindtemplates.io/search/#230
-- https://tailwindtemplates.io/search/#331
-
 - https://tailwindcomponents.com/component/search-input
 
 ## HTML Symbols
 
 - https://dev.w3.org/html5/html-author/charref
-
-
-```html
-
-```

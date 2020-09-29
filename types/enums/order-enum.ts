@@ -1,4 +1,4 @@
-declare enum OrderEnum {
+enum OrderEnum {
 	ASC = 'ASC',
 	DESC = 'DESC'
 }

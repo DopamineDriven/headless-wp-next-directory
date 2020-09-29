@@ -18,7 +18,7 @@ import {
 	previewPostArgs
 } from './types';
 
-async function fetchAPI(query: string, variables: any): Promise<any> {
+export async function fetchAPI(query: string, variables: any): Promise<any> {
 	const headers = { 'Content-Type': 'application/json', Authorization: '' };
 
 	let API_URL: string = '';
@@ -53,7 +53,7 @@ async function fetchAPI(query: string, variables: any): Promise<any> {
 export async function getPreviewPost({
 	id,
 	idType = 'DATABASE_ID'
-}: previewPostArgs) {
+}: previewPostArgs): Promise<any> {
 	const data = await fetchAPI(
 		`
     query PreviewPost($id: ID!, $idType: PostIdType!) {
@@ -213,9 +213,9 @@ export async function getPostAndMorePosts({
         ...PostFields
         content
         ${
-					// Only some of the fields of a revision are considered (there are some inconsistencies)
-					isRevision
-						? `
+									// Only some of the fields of a revision are considered (there are some inconsistencies)
+									isRevision
+										? `
         revisions(first: 1, where: { orderby: { field: MODIFIED, order: DESC } }) {
           edges {
             node {
@@ -231,8 +231,8 @@ export async function getPostAndMorePosts({
           }
         }
         `
-						: ''
-				}
+										: ''
+								}
       }
       posts(first: 35, where: { orderby: { field: TITLE, order: ASC } }) {
         edges {

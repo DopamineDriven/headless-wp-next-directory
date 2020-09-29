@@ -1,20 +1,28 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Document, {
+	Html,
+	Head,
+	Main,
+	NextScript,
+	DocumentContext,
+	DocumentInitialProps
+} from 'next/document';
 import { mediaStyles } from 'lib/window-width';
 export default class MyDocument extends Document {
-	static async getInitialProps(ctx: any) {
-		const initialProps = await Document.getInitialProps(ctx);
+	static async getInitialProps(ctx: DocumentContext) {
+		const initialProps: DocumentInitialProps = await Document.getInitialProps(
+			ctx
+		);
 		return { ...initialProps };
 	}
-	render() {
+	render(): JSX.Element {
+		const debugScreensDev =
+			process.env.NODE_ENV === 'development' ? ' debug-screens' : '';
 		return (
 			<Html lang='en-US'>
 				<Head>
 					<meta charSet='utf-8' />
-					<style
-						type='text/css'
-						dangerouslySetInnerHTML={{ __html: mediaStyles }}
-					/>
-					<link rel='stylesheet' href='/assets/fonts/index.css' />
+					<style type='text/css' dangerouslySetInnerHTML={{ __html: mediaStyles }} />
+					<link rel='stylesheet' href='/fonts/index.css' />
 					{/* Global Site Tag (gtag.js) - Google Analytics */}
 					<script
 						async
@@ -33,7 +41,10 @@ export default class MyDocument extends Document {
 						}}
 					/>
 				</Head>
-				<body>
+				<body
+					className={`transition-colors duration-1000 ease-in-out transform root ${debugScreensDev}`}
+				>
+					<script src='/noflash.js' />
 					<Main />
 					<NextScript />
 				</body>

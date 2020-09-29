@@ -3,23 +3,23 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import ErrorPage from 'next/error';
 import Container from 'components/container';
 import PostBody from 'components/post-body';
-import Header from 'components/header';
+import Header from 'components/lead-sub';
 import PostHeader from 'components/post-header';
 import Layout from 'components/layout';
 import { getAllPostsWithSlug, getPostAndMorePosts } from 'lib/api';
 import PostTitle from 'components/post-title';
 import Head from 'next/head';
 import { CMS_NAME } from 'lib/constants';
-import MoreCards from 'components/more-cards';
+import MoreCards from 'components/cards-coalesced';
+import { Fragment } from 'react';
 
 interface SlugProps {
-	props: string | number;
 	post: any;
 	posts: any;
 	preview: boolean;
 }
 
-export default function Post({ post, posts, preview, props }: SlugProps) {
+export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
 	const router = useRouter();
 	const morePosts = posts?.edges;
 
@@ -27,48 +27,50 @@ export default function Post({ post, posts, preview, props }: SlugProps) {
 		return <ErrorPage statusCode={404} />;
 	}
 
+	const HeaderType = (post: any): JSX.Element => {
+		return <Header title={post.title} />;
+	};
+
 	return (
-		<>
-			<Header props={props} />
+		<Fragment>
+			<HeaderType />
 			<Layout preview={preview}>
-				<Container>
-					{router.isFallback ? (
-						<PostTitle>Loading…</PostTitle>
-					) : (
-						<>
-							<article>
-								<Head>
-									<title>
-										{post.title} | Next.js Blog Example with {CMS_NAME}
-									</title>
-									<meta
-										property='og:image'
-										content={post.featuredImage?.node?.sourceUrl}
-									/>
-								</Head>
-								<PostHeader
-									title={post.title}
-									coverImage={post.featuredImage.node}
-									date={post.date}
-									modified={post.modified}
-									author={post.author.node}
-									categories={post.categories}
-									slug={post.slug}
-									social={post.social}
+				{router.isFallback ? (
+					<PostTitle>Loading…</PostTitle>
+				) : (
+					<>
+						<article>
+							<Head>
+								<title>
+									{post.title} | Next.js Blog Example with {CMS_NAME}
+								</title>
+								<meta
+									property='og:image'
+									content={post.featuredImage?.node?.sourceUrl}
 								/>
-								<PostBody content={post.content} />
-								{/* <footer>
+							</Head>
+							<PostHeader
+								title={post.title}
+								coverImage={post.featuredImage.node}
+								date={post.date}
+								modified={post.modified}
+								author={post.author.node}
+								categories={post.categories}
+								slug={post.slug}
+								social={post.social}
+							/>
+							<PostBody content={post.content} />
+							{/* <footer>
 									{post.tags.edges.length > 0 && <Tags tags={post.tags} />}
 								</footer> */}
-							</article>
-							<div className='max-w-5xl grid mx-auto content-center justify-center items-center text-center'>
-								{morePosts.length > 0 && <MoreCards posts={morePosts} />}
-							</div>
-						</>
-					)}
-				</Container>
+						</article>
+						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
+							{morePosts.length > 0 && <MoreCards posts={morePosts} />}
+						</div>
+					</>
+				)}
 			</Layout>
-		</>
+		</Fragment>
 	);
 }
 
@@ -78,7 +80,7 @@ interface Params {
 	};
 	preview: boolean;
 	previewData: any;
-};
+}
 
 export const getStaticProps = async ({
 	params,
