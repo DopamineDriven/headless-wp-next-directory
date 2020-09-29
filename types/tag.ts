@@ -1,8 +1,17 @@
 import { Tag } from 'wp-graphql';
 import { DocumentNode } from 'graphql';
 
-interface TagProps {
+interface TagProp {
 	node: DocumentNode & Tag;
+}
+
+interface TagProps {
+	node: DocumentNode & UniqueTag;
+}
+
+interface UniqueTag extends Tag {
+	databaseid: string;
+	posts: [];
 }
 
 // interface Tag {
