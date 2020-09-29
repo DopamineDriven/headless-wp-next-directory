@@ -7,6 +7,7 @@ import {
 } from '@apollo/client';
 import { concatPagination, Reference } from '@apollo/client/utilities';
 // import possibleTypes  from 'lib/possible-types';
+// https://github.com/vercel/next.js/discussions/11957
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
@@ -16,8 +17,8 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 		ssrMode: typeof window === 'undefined',
 		connectToDevTools: true,
 		link: new HttpLink({
-			uri: `${process.env.WORDPRESS_API_URL}/`,
-			credentials: 'Access-Control-Allow-Origin'
+			uri: `${process.env.WORDPRESS_API_URL}`,
+			credentials: 'include'
 		}),
 		cache: new InMemoryCache({
 			// possibleTypes: possibleTypes,
