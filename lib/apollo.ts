@@ -24,7 +24,8 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 			typePolicies: {
 				Query: {
 					fields: {
-						posts: concatPagination<Reference>()
+						posts: concatPagination<Reference>(),
+						categories: concatPagination<Reference>()
 					}
 				}
 			}
@@ -48,7 +49,10 @@ export function initializeApollo(
 export function useApollo(
 	initialState: any
 ): ApolloClient<NormalizedCacheObject> {
-	const store = useMemo(() => initializeApollo(initialState), [initialState]);
+	const store = useMemo<ApolloClient<NormalizedCacheObject>>(
+		() => initializeApollo(initialState),
+		[initialState]
+	);
 	return store;
 }
 
