@@ -3,16 +3,49 @@ import { PostsProps } from '../types/posts';
 import { gql, useQuery, NetworkStatus } from '@apollo/client';
 
 export const POSTS_QUERY = gql`
-	query posts($first: Int!, $skip: Int!) {
+	# fragment AuthorFields on User {
+	# 	name
+	# 	firstName
+	# 	lastName
+	# 	avatar {
+	# 		url
+	# 	}
+	# }
+	# fragment PostFields on Post {
+
+	# }
+	query AllPosts($first: Int!, $skip: Int!) {
 		posts(orderBy: { modified: DESC }, first: $first, skip: $skip) {
-			nodes {
-				id
-				title
-				excerpt
-				slug
-				date
-				modified
-				social
+			edges {
+				node {
+					id
+					title
+					excerpt
+					slug
+					date
+					modified
+					social {
+						facebook
+						instagram
+						twitter
+						website
+					}
+					featuredImage {
+						node {
+							sourceUrl
+						}
+					}
+					author {
+						node {
+							name
+							firstName
+							lastName
+							avatar {
+								url
+							}
+						}
+					}
+				}
 			}
 		}
 	}
