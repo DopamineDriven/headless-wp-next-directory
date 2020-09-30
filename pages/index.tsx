@@ -133,8 +133,7 @@ export default function Index({
 					categories={categories}
 				/>
 				<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
-					{/* {morePosts.length > 0 && <Cards posts={filteredCompanies} />} */}
-					<CardsHooked />
+					{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
 				</div>
 
 				<Footer />
@@ -205,17 +204,17 @@ export const getServerSideProps = async ({
 	const tagsAndPosts = await getTagAndPosts();
 	const categories = await getCategories();
 
-	const apolloClient = initializeApollo();
+	// const apolloClient = initializeApollo();
 
-	await apolloClient.query({
-		query: ALL_POSTS_QUERY,
-		variables: allPostsQueryVars
-	});
+	// await apolloClient.query({
+	// 	query: ALL_POSTS_QUERY,
+	// 	variables: allPostsQueryVars
+	// });
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
 	return {
 		props: {
-			initialApolloState: apolloClient.cache.extract(),
+			// initialApolloState: apolloClient.cache.extract(),
 			allPosts,
 			preview,
 			tagsAndPosts,
