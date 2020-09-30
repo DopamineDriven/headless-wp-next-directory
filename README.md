@@ -1,6 +1,11 @@
 # headless-wp-next-directory
 
+- Polish About Page
+- Polish Contact Page
+
 ## GraphQL-let codegen (vercel/next example repo)
+
+- https://github.com/vercel/next.js/tree/canary/examples/with-typescript-graphql
 
 ## 9-28-20
 
@@ -26,6 +31,7 @@
 
 ## wpapi and @types/wpapi packages
 
+- VERDICT: For REST, not GQL; Could revisit experimentally (?)
 - https://linguinecode.com/post/how-to-make-wordpress-headless-and-fetch-posts-with-javascript
 - https://github.com/wp-api/node-wpapi#requesting-different-resources
 - https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/wpapi/index.d.ts
