@@ -39,6 +39,7 @@ import CardsHooked, {
 	ALL_POSTS_QUERY
 } from 'components/cards-coalesced-hook';
 import { initializeApollo } from 'lib/apollo';
+import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 interface IndexProps {
 	allPosts: AllPostsProps;
 	preview: boolean;
@@ -153,7 +154,7 @@ export enum Order {
 	DESC = 'DESC'
 }
 
-interface StaticProps extends GetServerSideProps {
+interface StaticProps extends GetStaticProps {
 	preview: boolean;
 	context: any;
 	field: Field;
@@ -188,7 +189,7 @@ https://github.com/vercel/next.js/pull/11842/files
 IMPORTANT
 */
 
-export const getServerSideProps = async ({
+export const getStaticProps = async ({
 	preview = false,
 	// context,
 	field = MODIFIED || TITLE || DATE,
@@ -204,7 +205,7 @@ export const getServerSideProps = async ({
 	const tagsAndPosts = await getTagAndPosts();
 	const categories = await getCategories();
 
-	// const apolloClient = initializeApollo();
+	// const apolloClient: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
 	// await apolloClient.query({
 	// 	query: ALL_POSTS_QUERY,
@@ -220,8 +221,8 @@ export const getServerSideProps = async ({
 			tagsAndPosts,
 			field,
 			order,
-			categories,
-			revalidate: 1
-		}
+			categories
+		},
+		revalidate: 1
 	};
 };
