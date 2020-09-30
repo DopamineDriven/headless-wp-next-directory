@@ -14,11 +14,12 @@ let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 	const headers = { 'Content-Type': 'application/json' };
 	return new ApolloClient<NormalizedCacheObject>({
-		ssrMode: typeof window === 'undefined',
+		ssrMode: true,
 		connectToDevTools: true,
 		link: new HttpLink({
 			uri: `${process.env.WORDPRESS_API_URL}`,
-			credentials: 'Access-Control-Allow-Origin:*'
+			headers: headers,
+			fetch
 		}),
 		cache: new InMemoryCache({
 			// possibleTypes: possibleTypes,
