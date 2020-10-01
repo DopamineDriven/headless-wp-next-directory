@@ -8,7 +8,7 @@ import CardExcerpt from 'components/card-excerpt';
 import { Fragment } from 'react';
 import SiteDivider from 'components/site-divider';
 
-type CardProps = {
+interface CardProps {
 	coverImage: CoverImageProps;
 	title: string;
 	slug: string | number;
@@ -16,7 +16,7 @@ type CardProps = {
 	author: authorType;
 	excerpt?: string;
 	social: socialType;
-};
+}
 
 const Card = ({
 	author,
@@ -26,7 +26,7 @@ const Card = ({
 	slug,
 	social,
 	title
-}: CardProps) => {
+}: CardProps): JSX.Element => {
 	//had to add this in because without it _html was erroring out because it is of type string.
 
 	if (!excerpt) {

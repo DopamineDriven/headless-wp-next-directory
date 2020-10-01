@@ -13,4 +13,5 @@ export async function getStandaloneApolloClient() {
 	});
 }
 // eloquent solution
+// dynamic imports https://javascript.info/modules-dynamic-imports
 // https://github.com/vercel/next.js/discussions/11957
