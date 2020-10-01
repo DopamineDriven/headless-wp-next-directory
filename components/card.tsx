@@ -26,7 +26,7 @@ const Card = ({
 	slug,
 	social,
 	title
-}: CardProps) => {
+}: CardProps): JSX.Element => {
 	//had to add this in because without it _html was erroring out because it is of type string.
 
 	if (!excerpt) {
