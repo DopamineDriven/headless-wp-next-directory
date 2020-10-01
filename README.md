@@ -1,5 +1,9 @@
 # headless-wp-next-directory
 
+## GraphQL.js + CodeGen
+
+- https://medium.com/swlh/graphql-js-vs-typegraphql-vs-graphql-nexus-2a8036deb851
+
 - Polish About Page
 - Polish Contact Page
 
