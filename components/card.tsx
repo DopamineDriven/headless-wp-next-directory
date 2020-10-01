@@ -8,7 +8,7 @@ import CardExcerpt from 'components/card-excerpt';
 import { Fragment } from 'react';
 import SiteDivider from 'components/site-divider';
 
-type CardProps = {
+interface CardProps {
 	coverImage: CoverImageProps;
 	title: string;
 	slug: string | number;
@@ -16,7 +16,7 @@ type CardProps = {
 	author: authorType;
 	excerpt?: string;
 	social: socialType;
-};
+}
 
 const Card = ({
 	author,
