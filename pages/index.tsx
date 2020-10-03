@@ -32,15 +32,15 @@ import CategoryProps from 'types/category';
 import { PostsProps, AllPostsProps } from 'types/posts';
 import { MediaContextProvider } from 'lib/window-width';
 // import Link from 'next/link';
-import FieldEnum from 'types/enums/field-enum';
-import OrderEnum from 'types/enums/order-enum';
+// import FieldEnum from 'types/enums/field-enum';
+// import OrderEnum from 'types/enums/order-enum';
 import Footer from 'components/footer';
-import CardsHooked, {
-	allPostsQueryVars,
-	ALL_POSTS_QUERY
-} from 'components/cards-coalesced-hook';
-import { initializeApollo } from 'lib/apollo';
-import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+// import CardsHooked, {
+// 	allPostsQueryVars,
+// 	ALL_POSTS_QUERY
+// } from 'components/cards-coalesced-hook';
+// import { initializeApollo } from 'lib/apollo';
+// import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 interface IndexProps {
 	allPosts: AllPostsProps;
 	preview: boolean;
@@ -53,8 +53,8 @@ const Index = ({
 	preview,
 	tagsAndPosts,
 	categories
-}: IndexProps & NextPage): JSX.Element => {
-	const heroPost = edges[0]?.node;
+}: IndexProps): JSX.Element => {
+	// const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
 
 	const [filterQuery, setFilterQuery] = useState('title');
@@ -224,7 +224,7 @@ export const getStaticProps = async ({
 			order,
 			categories
 		},
-		revalidate: 1
+		revalidate: 10
 	};
 };
 

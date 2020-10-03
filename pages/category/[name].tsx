@@ -74,7 +74,7 @@ export const getStaticProps = async ({
 			preview,
 			posts: data
 		},
-		revalidate: 1
+		revalidate: 10
 	};
 };
 
