@@ -1,52 +1,67 @@
-import { useRouter } from 'next/router';
-import ErrorPage from 'next/error';
-import Container from '../../components/container';
-import PostBody from '../../components/post-body';
-// import MoreStories from '../../components/more-stories';
-import Header from '../../components/header';
-import PostHeader from '../../components/post-header';
-// import SectionSeparator from '../../components/section-separator';
-import Layout from '../../components/layout';
-import { getAllPostsForCategory, getCategories } from '../../lib/api';
-import PostTitle from '../../components/post-title';
-import Cards from '../../components/cards-coalesced';
+import { useRouter, NextRouter } from 'next/router';
+import Container from 'components/container';
+import PostBody from 'components/post-body';
+// import MoreStories from 'components/more-stories';
+import Header from 'components/header';
+import PostHeader from 'components/post-header';
+// import SectionSeparator from 'components/section-separator';
+import Layout from 'components/layout';
+import { getAllPostsForCategory, getCategories } from 'lib/api';
+import PostTitle from 'components/post-title';
+import Cards from 'components/cards-coalesced';
 import Head from 'next/head';
-import { CMS_NAME } from '../../lib/constants';
-// import Tags from '../../components/tags';
-import MoreCards from '../../components/cards-coalesced';
+import { CMS_NAME } from 'lib/constants';
+// import Tags from 'components/tags';
+import MoreCards from 'components/cards-coalesced';
 import { Fragment } from 'react';
-import { PostsProps } from '../../types/posts';
+import { PostsProps, AllPostsProps } from 'types/posts';
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { MediaContextProvider } from 'lib/window-width';
 
 interface SlugProps {
 	posts: PostsProps[];
 	preview: boolean;
+	allPosts: AllPostsProps;
 }
 
-export default function Post({ posts, preview }: SlugProps): JSX.Element {
-	const router = useRouter();
+const Category = ({
+	posts,
+	preview,
+	allPosts: { edges }
+}: SlugProps): JSX.Element => {
+	const router: NextRouter = useRouter();
+	const hero = edges[0]?.node;
+
 	return (
-		<>
+		<Fragment>
 			<Header />
 			<Layout preview={preview}>
-				<Container>
-					{router.isFallback ? (
-						<PostTitle>Loading…</PostTitle>
-					) : (
-						<Fragment>
-							<div className='grid items-center content-center justify-center max-w-5xl mx-auto mt-5 mb-5 text-center'>
-								{posts.length > 0 ? (
-									<Cards posts={posts} />
-								) : (
-									'No posts for this category'
-								)}
-							</div>
-						</Fragment>
-					)}
-				</Container>
+				{router.isFallback ? (
+					<PostTitle>Loading…</PostTitle>
+				) : (
+					<>
+						<article>
+							<Head>
+								<title>Category search {CMS_NAME}</title>
+								<meta
+									property='og:image'
+									content={hero?.featuredImage.node.coverImage}
+								/>
+							</Head>
+						</article>
+						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
+							{posts.length > 0 ? (
+								<Cards posts={posts} />
+							) : (
+								'No posts for this category'
+							)}
+						</div>
+					</>
+				)}
 			</Layout>
-		</>
+		</Fragment>
 	);
-}
+};
 
 type Params = {
 	params: {
@@ -55,7 +70,10 @@ type Params = {
 	preview: boolean;
 };
 
-export async function getStaticProps({ params, preview = false }: Params) {
+export const getStaticProps = async ({
+	params,
+	preview = false
+}: Params & GetStaticProps) => {
 	console.log(params.name);
 	const data = await getAllPostsForCategory(params.name);
 
@@ -63,13 +81,13 @@ export async function getStaticProps({ params, preview = false }: Params) {
 	return {
 		props: {
 			preview,
-			posts: data,
-			revalidate: 1
-		}
+			posts: data
+		},
+		revalidate: 1
 	};
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
 	const allCategories = await getCategories();
 
 	return {
@@ -78,8 +96,9 @@ export async function getStaticPaths() {
 			[],
 		fallback: true
 	};
-}
+};
 
+export default Category;
 /*
 const routerPushEvent = async (e: Event) => {
 	const allCategories = await getCategories();
