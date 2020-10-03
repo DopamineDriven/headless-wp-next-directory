@@ -230,3 +230,5 @@ export const getStaticProps = async ({
 
 export default Index;
 // https://github.com/evgeny-t/test-get-static-props/blob/master/pages/index.tsx
+// force invalidation
+// https://getstarted.sh/with/nextjs-incremental-static-regeneration/4
