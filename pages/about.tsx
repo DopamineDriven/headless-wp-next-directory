@@ -76,6 +76,7 @@ export async function getStaticProps({ preview = false }: StaticProps) {
 	const categoriesAndPosts = await getCategories();
 
 	return {
-		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts }
+		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts },
+		revalidate: 1
 	};
 }
