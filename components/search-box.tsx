@@ -52,6 +52,7 @@ const SearchBox = ({
 					<div className='relative flex w-auto h-auto py-2'>
 						<select
 							onChange={selectChange}
+							aria-label='search options'
 							value={selectSearch}
 							className='h-auto leading-tight bg-white border border-gray-400 rounded shadow hover:border-gray-500 mx--5 focus:outline-none focus:shadow-outline'
 						>
@@ -69,6 +70,7 @@ const SearchBox = ({
 						<label className='text-2xl text-black align-middle'></label>
 						<input
 							type='text'
+							aria-label='search field'
 							className='w-full p-1 rounded'
 							placeholder='Search...'
 							name='search-form'
