@@ -12,7 +12,8 @@ import Layout from 'components/layout';
 import {
 	GetServerSideProps,
 	GetStaticProps,
-	InferGetServerSidePropsType
+	InferGetServerSidePropsType,
+	NextPage
 } from 'next';
 import {
 	getAllPostsForHomeAlphabetical,
@@ -47,12 +48,12 @@ interface IndexProps {
 	categories: CategoryProps[];
 }
 
-export default function Index({
+const Index = ({
 	allPosts: { edges },
 	preview,
 	tagsAndPosts,
 	categories
-}: IndexProps) {
+}: IndexProps & NextPage): JSX.Element => {
 	const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
 
@@ -141,7 +142,7 @@ export default function Index({
 			</MediaContextProvider>
 		</Fragment>
 	);
-}
+};
 
 export enum Field {
 	TITLE = 'TITLE',
@@ -226,3 +227,8 @@ export const getStaticProps = async ({
 		revalidate: 1
 	};
 };
+
+export default Index;
+// https://github.com/evgeny-t/test-get-static-props/blob/master/pages/index.tsx
+// force invalidation
+// https://getstarted.sh/with/nextjs-incremental-static-regeneration/4
