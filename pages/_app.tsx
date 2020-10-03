@@ -3,7 +3,7 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { ReactElement, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter, NextRouter } from 'next/router';
 import { gaInit, logPageView } from 'lib/google-analytics';
 import {
 	ApolloProvider,
@@ -18,7 +18,7 @@ function App({ Component, pageProps }: AppProps): ReactElement {
 	const apolloClient: ApolloClient<NormalizedCacheObject> = useApollo(
 		pageProps.initializeApollo
 	);
-	const router = useRouter();
+	const router: NextRouter = useRouter();
 	useEffect(() => {
 		gaInit();
 		const handleRouteChange = () => {
