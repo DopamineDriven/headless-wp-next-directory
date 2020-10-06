@@ -2,6 +2,21 @@
 
 ## GraphQL.js + CodeGen
 
+## PostOrderByType
+
+```ts
+import { GraphQLEnumType } from 'graphql';
+export declare type PostOrderBy =
+	| 'date'
+	| 'id'
+	| 'include'
+	| 'relevance'
+	| 'slug'
+	| 'title';
+declare const postOrderByType: GraphQLEnumType;
+export default postOrderByType;
+```
+
 - https://medium.com/swlh/graphql-js-vs-typegraphql-vs-graphql-nexus-2a8036deb851
 
 - Polish About Page

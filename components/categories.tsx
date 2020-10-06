@@ -1,3 +1,4 @@
+import { GraphQLObjectType, GraphQLScalarType } from 'graphql';
 // type CategoriesProps = {
 // 	categories: {
 // 		edges: any;
@@ -11,8 +12,23 @@
 
 // DocumentNode from graphql
 // Category from wp-graphql
+// import TypedFields from 'wp-graphql';
+import { Category } from 'wp-graphql';
+// import { GraphQLObjectType } from 'graphql';
+// import Category from 'pages/category/[name]';
+// export interface Meta {
+// 	[metaKey: string]: any;
+// }
 
-export default function Categories({ categories }: any) {
+// const obj = new GraphQLObjectType<Category>({
+// })
+
+// interface CatsProps {
+// 	name: GraphQLScalarType;
+// 	edges: GraphQLObjectType;
+// }
+
+export default function Categories({ categories }: any): JSX.Element {
 	return (
 		<div className='max-w-2xl mx-auto text-center flex flex-row justify-center mt-2'>
 			<span className='text-xs text-center'>
@@ -34,38 +50,81 @@ export default function Categories({ categories }: any) {
 }
 
 /*
-type CategoriesProps = {
-	categories: {
-		edges: any;
-	} | any;
-};
+// https://github.com/aliemteam/wp-graphql/blob/master/src/models/categories/types/categoryType.ts
+// import {
+//     GraphQLInt,
+//     GraphQLNonNull,
+//     GraphQLObjectType,
+//     GraphQLString,
+// } from 'graphql';
+// import { Meta, TypedFields } from '../../../lib/strongTypes';
+import { GraphQLObjectType } from 'graphql';
 
-type CategoryProps = {
-	category: any;
-	index: any;
-}
+// export interface Category<TMeta = Meta> {
+//     /** Number of published posts for the term. */
+//     readonly count: number;
+//     /** HTML description of the term. */
+//     description: string;
+//     /** Unique identifier for the term. */
+//     readonly id: number;
+//     /** URL of the term. */
+//     readonly link: string;
+//     /** The expected shape of the category meta fields. */
+//     meta: TMeta;
+//     /** HTML title for the term. */
+//     name: string;
+//     /** The parent term ID. */
+//     parent: number;
+//     /** An alphanumeric identifier for the term unique to its type. */
+//     slug: string;
+//     /** Type attribution for the term. */
+//     taxonomy: 'category'|'post_tag'|'nav_menu'|'link_category'|'post_format';
+// }
 
-export default function Categories({ categories }: CategoriesProps) {
-	return (
-		<span className='ml-1'>
-			under
-			{categories.edges.length > 0 ? (
-				categories.edges.map(({category, index}: CategoryProps) => {
-					return category.node.name.length > 1 ? (
-						<span key={index} className='ml-1'>
-							{category.node.name},
-						</span>
-					) : (
-						<span key={index} className='ml-1'>
-							{category.node.name}
-						</span>
-					);
-				})
-			) : (
-				<span className='ml-1'>{categories.edges.node.name}</span>
-			)}
-		</span>
-	);
-}
+// const categoryFields: TypedFields<Category> = {
+//     count: {
+//         description: 'Number of published posts for the term.',
+//         type: GraphQLInt,
+//     },
+//     description: {
+//         description: 'HTML description of the term.',
+//         type: GraphQLString,
+//     },
+//     id: {
+//         description: 'Unique identifier for the term.',
+//         type: new GraphQLNonNull(GraphQLInt),
+//     },
+//     link: {
+//         description: 'URL of the term.',
+//         type: GraphQLString,
+//     },
+//     meta: {
+//         description: 'JSON stringified meta fields.',
+//         type: GraphQLString,
+//         resolve: category => JSON.stringify(category.meta),
+//     },
+//     name: {
+//         description: 'HTML title for the term.',
+//         type: GraphQLString,
+//     },
+//     parent: {
+//         description: 'The parent term ID.',
+//         type: GraphQLInt,
+//     },
+//     slug: {
+//         description: 'An alphanumeric identifier for the term unique to its type.',
+//         type: GraphQLString,
+//     },
+//     taxonomy: {
+//         description: 'Type attribution for the term.',
+//         type: GraphQLString,
+//     },
+// };
 
-*/
+// export default new GraphQLObjectType({
+//     name: 'Category',
+//     description: 'A single category.',
+//     fields: () => ({
+//         ...categoryFields,
+//     }),
+// });

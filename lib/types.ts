@@ -22,3 +22,5 @@ export interface getAllPostsForCategoryArgs {
 export interface getAllPostsForAboutArgs {
 	preview: boolean;
 }
+
+// https://wp-graphql.github.io/wp-graphql-api-docs/class-WPGraphQL.Type.PostObject.Connection.PostObjectConnectionResolver.html
