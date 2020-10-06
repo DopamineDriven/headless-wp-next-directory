@@ -1,3 +1,20 @@
+type Social {
+	facebook: String!
+	instagram: String!
+	twitter: String!
+	website: String!
+}
+
 type Post {
 	id: ID!
+	featuredImage: mediaItem!
+	databaseID: Int!
+	date: String!
+	modified: String!
+	slug: String!
+	social: Social!
+}
+
+type Query {
+	posts: [Post!]!
 }
