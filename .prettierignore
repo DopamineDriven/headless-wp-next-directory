@@ -8,3 +8,4 @@ yarn.lock
 patches
 public
 .VSCodeCounter
+lib/typedefs.graphql

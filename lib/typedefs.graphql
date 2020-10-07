@@ -11,8 +11,12 @@ type Post {
 	databaseID: Int!
 	date: String!
 	modified: String!
-	slug: String!
+	slug: String! | Int!
 	social: Social!
+    title: String!
+    excerpt: String!
+    author: Author!
+    content: String!
 }
 
 type Query {
