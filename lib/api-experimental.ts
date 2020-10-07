@@ -10,45 +10,110 @@ import { generateTypeScriptTypes } from 'graphql-schema-typescript';
 import { DocumentNode } from 'graphql';
 import { fetchAPI } from 'lib/api';
 
-const ALL_POSTS_QUERY: DocumentNode = gql`
-	query AllPosts($field: PostObjectsConnectionOrderbyEnum!, $order: OrderEnum!) {
-		posts(first: 35, where: { orderby: { field: $field, order: $order } }) {
-			edges {
-				node {
-					id
-					title
-					excerpt
-					slug
-					date
-					modified
-					social {
-						facebook
-						instagram
-						twitter
-						website
+export const INTROSPECTION_QUERY = async (): Promise<void> => {
+	const data = await fetchAPI(
+		gql`
+			query IntrospectionQuery {
+				__schema {
+					queryType {
+						name
 					}
-					featuredImage {
-						node {
-							sourceUrl
+					mutationType {
+						name
+					}
+					subscriptionType {
+						name
+					}
+					types {
+						...FullType
+					}
+					directives {
+						name
+						description
+						locations
+						args {
+							...InputValue
 						}
 					}
-					author {
-						node {
+				}
+			}
+			fragment FullType on __Type {
+				kind
+				name
+				description
+				fields(includeDeprecated: true) {
+					name
+					description
+					args {
+						...InputValue
+					}
+					type {
+						...TypeRef
+					}
+					isDeprecated
+					deprecationReason
+				}
+				inputFields {
+					...InputValue
+				}
+				interfaces {
+					...TypeRef
+				}
+				enumValues(includeDeprecated: true) {
+					name
+					description
+					isDeprecated
+					deprecationReason
+				}
+				possibleTypes {
+					...TypeRef
+				}
+			}
+			fragment InputValue on __InputValue {
+				name
+				description
+				type {
+					...TypeRef
+				}
+				defaultValue
+			}
+			fragment TypeRef on __Type {
+				kind
+				name
+				ofType {
+					kind
+					name
+					ofType {
+						kind
+						name
+						ofType {
+							kind
 							name
-							firstName
-							lastName
-							avatar {
-								url
+							ofType {
+								kind
+								name
+								ofType {
+									kind
+									name
+									ofType {
+										kind
+										name
+										ofType {
+											kind
+											name
+										}
+									}
+								}
 							}
 						}
 					}
 				}
 			}
-		}
-	}
-`;
-
-export const allPostsQueryVars = {
-	field: 'MODIFIED',
-	order: 'ASC'
+		`
+	);
 };
+
+// export const allPostsQueryVars = {
+// 	field: 'MODIFIED',
+// 	order: 'ASC'
+// };
