@@ -22,3 +22,8 @@ type Post {
 type Query {
 	posts: [Post!]!
 }
+
+
+# type Categories {
+# 	category: 
+# }
