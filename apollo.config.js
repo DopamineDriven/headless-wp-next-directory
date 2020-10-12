@@ -3,7 +3,8 @@ module.exports = {
 		service: {
 			name: 'cima2020',
 			url: process.env.WORDPRESS_API_URL,
-			skipSSLValidation: true
+			skipSSLValidation: true,
+			includes: ['./graphql/**/*.ts', './lib/apollo.ts']
 		}
 	}
 };
