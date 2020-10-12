@@ -56,7 +56,9 @@
 		"analyze": "ANALYZE=true yarn build",
 		"postinstall": "npx patch-package",
 		"prettier-check": "prettier --config .prettierrc --check .",
-		"prettier-write": "prettier --config .prettierrc --write ."
+		"prettier-write": "prettier --config .prettierrc --write .",
+		"client:schema": "yarn apollo client:download-schema ./schema.json --endpoint=https://cima2020.wpengine.com/graphql",
+		"client:generate": "yarn apollo codegen:generate --endpoint=https://cima2020.wpengine.com/graphql --target=typescript --includes=graphql/**/*.ts --tagName=gql --addTypename --globalTypesFile=types/graphql-global-types.ts"
 	},
 	"husky": {
 		"hooks": {
