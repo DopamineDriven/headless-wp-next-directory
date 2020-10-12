@@ -1,14 +1,7 @@
-// import { fallbackHttpConfig } from '@apollo/client';
-// import WPGraphQL, {PostTypeList } from 'wp-graphql';
-// import { postTypeList } from 'wp-graphql/lib/models/post-types/types/postTypeType';
-// const defined = process.env.WORDPRESS_API_URL;
-
-// let fallbackC
-// const gql: WPGraphQL = new WPGraphQL(`${process.env.WORDPRESS_API_URL}`, { });
 import { gql } from '@apollo/client';
 import { fetchAPI } from 'lib/api';
 
-export const INTROSPECTION_QUERY = async (): Promise<void> => {
+const INTROSPECTION_QUERY = async (): Promise<void> => {
 	const data = await fetchAPI(
 		gql`
 			query IntrospectionQuery {
@@ -109,9 +102,7 @@ export const INTROSPECTION_QUERY = async (): Promise<void> => {
 			}
 		`
 	);
+	return data;
 };
 
-// export const allPostsQueryVars = {
-// 	field: 'MODIFIED',
-// 	order: 'ASC'
-// };
+export default INTROSPECTION_QUERY;

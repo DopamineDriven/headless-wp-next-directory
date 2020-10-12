@@ -1,17 +1,30 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCustomWebsite } from '../lib/fas-custom-integration';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
 	faFacebook,
 	faInstagram,
 	faTwitter
 } from '@fortawesome/free-brands-svg-icons';
 
-type CardIconProps = {
-	social: any;
-};
+interface CardIconProps {
+	social: {
+		facebook: string;
+		instagram: string;
+		twitter: string;
+		website: string;
+	};
+}
+
+interface faProps {
+	faFacebook: IconProp;
+	faInstagram: IconProp;
+	faTwitter: IconProp;
+	faCustomWebsite: IconProp;
+}
 
 // to edit icon size, target iconClass
-const CardIcons = ({ social }: CardIconProps) => {
+const CardIcons = ({ social }: CardIconProps): JSX.Element => {
 	const anchorClassNull =
 		' items-center justify-center mx-portfolioDivider sm:mx-portfolioDivider mb-portfolioDivider text-customExcerpt sm:text-customTitletMobile inline-block leading-relaxed text-center align-middle transition-colors duration-1000  fill-current bg-primary text-quinary focus:outline-none';
 	const anchorClass =

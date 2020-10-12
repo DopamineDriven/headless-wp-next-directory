@@ -12,6 +12,7 @@ pages/posts
 pages/contact.tsx
 pages/category
 pages/index.tsx
+graphql/**/*
 components
 lib
 .next
