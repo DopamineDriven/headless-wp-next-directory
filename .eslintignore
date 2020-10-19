@@ -12,6 +12,7 @@ pages/posts
 pages/contact.tsx
 pages/category
 pages/index.tsx
+graphql/**/*
 components
 lib
 .next
@@ -23,3 +24,4 @@ next.config.js
 postcss.config.js
 global.d.ts
 tsconfig.json
+client-config.js

@@ -31,7 +31,11 @@ const SearchBox = ({
 		return (
 			<li key={index} className='mr-1'>
 				<a
-					href={`http://localhost:3000/category/${category.node.name}`}
+					href={
+						process.env.NODE_ENV === 'development'
+							? `http://localhost:3000/category/${category.node.name}`
+							: `https://headless-wp-next-directory.vercel.app/category/${category.node.name}`
+					}
 					className='inline-block min-h-full font-semibold border-t border-l rounded-t h-portfolioLS px-mdmxSocial border-r-custom text-customExcerpt'
 					data-categoryname={category.node.name}
 				>
@@ -52,6 +56,7 @@ const SearchBox = ({
 					<div className='relative flex w-auto h-auto py-2'>
 						<select
 							onChange={selectChange}
+							aria-label='search options'
 							value={selectSearch}
 							className='h-auto leading-tight bg-white border border-gray-400 rounded shadow hover:border-gray-500 mx--5 focus:outline-none focus:shadow-outline'
 						>
@@ -66,9 +71,10 @@ const SearchBox = ({
 					</div>
 					<div className='flex w-full'>
 						<span className='flex items-center justify-end w-auto p-2 text-gray-500' />
-						<label className='text-2xl text-black align-middle'></label>
+						<label className='text-2xl text-primary align-middle'></label>
 						<input
 							type='text'
+							aria-label='search field'
 							className='w-full p-1 rounded'
 							placeholder='Search...'
 							name='search-form'

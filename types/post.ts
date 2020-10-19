@@ -1,6 +1,7 @@
-import Author from './author';
-import Tag from './tag';
-import Category from './category';
+import Author from 'types/author';
+import Tag from 'types/tag';
+import Category from 'types/category';
+import Social from 'types/social';
 
 interface PostType {
 	slug: string | number;
@@ -11,6 +12,7 @@ interface PostType {
 			sourceUrl: string;
 		};
 	};
+	social: Social;
 	author: Author;
 	excerpt: string;
 	ogImage?: {

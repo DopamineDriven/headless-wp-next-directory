@@ -1,5 +1,64 @@
 # headless-wp-next-directory
 
+## codegen configuration
+
+```git
+yarn graphql-codegen init
+
+$ C:\Users\Anthr\headless-wp-next-directory\node_modules\.bin\graphql-codegen init
+
+    Welcome to GraphQL Code Generator!
+    Answer few questions and we will setup everything for you.
+
+? What type of application are you building? Application built with React
+? Where is your schema?: (path or url) https://cima2020.wpengine.com/graphql
+? Where are your operations and fragments?: src/**/*.graphql
+? Pick plugins: TypeScript (required by other typescript plugins), TypeScript Operations (operations and fragments), TypeScript React Apollo (typed components and HOCs), TypeScript GraphQL files modules (declarations for .graphql files), TypeScript GraphQL document nodes (embedded GraphQL document), Introspection Fragment Matcher (for Apollo Client)
+? Where to write the output: src/generated/graphql.tsx
+? Do you want to generate an introspection file? Yes
+? How to name the config file? codegen.yml
+? What script in package.json should run the codegen? codegen
+
+    Config file generated at codegen.yml
+
+      $ npm install
+
+    To install the plugins.
+
+      $ npm run codegen
+
+    To run GraphQL Code Generator.
+```
+
+## GraphQL.js + CodeGen
+
+- https://www.techhive.io/our-insights/how-to-build-a-powerful-blog-with-nextjs-and-contentful
+- https://graphql-code-generator.com/docs/plugins/typescript-apollo-next
+
+## PostOrderByType
+
+```ts
+import { GraphQLEnumType } from 'graphql';
+export declare type PostOrderBy =
+	| 'date'
+	| 'id'
+	| 'include'
+	| 'relevance'
+	| 'slug'
+	| 'title';
+declare const postOrderByType: GraphQLEnumType;
+export default postOrderByType;
+```
+
+- https://medium.com/swlh/graphql-js-vs-typegraphql-vs-graphql-nexus-2a8036deb851
+
+- Polish About Page
+- Polish Contact Page
+
+## GraphQL-let codegen (vercel/next example repo)
+
+- https://github.com/vercel/next.js/tree/canary/examples/with-typescript-graphql
+
 ## 9-28-20
 
 - One-Graph
@@ -24,6 +83,7 @@
 
 ## wpapi and @types/wpapi packages
 
+- VERDICT: For REST, not GQL; Could revisit experimentally (?)
 - https://linguinecode.com/post/how-to-make-wordpress-headless-and-fetch-posts-with-javascript
 - https://github.com/wp-api/node-wpapi#requesting-different-resources
 - https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/wpapi/index.d.ts

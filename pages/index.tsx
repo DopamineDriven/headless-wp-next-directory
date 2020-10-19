@@ -12,7 +12,8 @@ import Layout from 'components/layout';
 import {
 	GetServerSideProps,
 	GetStaticProps,
-	InferGetServerSidePropsType
+	InferGetServerSidePropsType,
+	NextPage
 } from 'next';
 import {
 	getAllPostsForHomeAlphabetical,
@@ -31,14 +32,15 @@ import CategoryProps from 'types/category';
 import { PostsProps, AllPostsProps } from 'types/posts';
 import { MediaContextProvider } from 'lib/window-width';
 // import Link from 'next/link';
-import FieldEnum from 'types/enums/field-enum';
-import OrderEnum from 'types/enums/order-enum';
+// import FieldEnum from 'types/enums/field-enum';
+// import OrderEnum from 'types/enums/order-enum';
 import Footer from 'components/footer';
-import CardsHooked, {
-	allPostsQueryVars,
-	ALL_POSTS_QUERY
-} from 'components/cards-coalesced-hook';
-import { initializeApollo } from 'lib/apollo';
+// import CardsHooked, {
+// 	allPostsQueryVars,
+// 	ALL_POSTS_QUERY
+// } from 'components/cards-coalesced-hook';
+// import { initializeApollo } from 'lib/apollo';
+// import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
 interface IndexProps {
 	allPosts: AllPostsProps;
 	preview: boolean;
@@ -46,13 +48,13 @@ interface IndexProps {
 	categories: CategoryProps[];
 }
 
-export default function Index({
+const Index = ({
 	allPosts: { edges },
 	preview,
 	tagsAndPosts,
 	categories
-}: IndexProps) {
-	const heroPost = edges[0]?.node;
+}: IndexProps): JSX.Element => {
+	// const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
 
 	const [filterQuery, setFilterQuery] = useState('title');
@@ -140,7 +142,7 @@ export default function Index({
 			</MediaContextProvider>
 		</Fragment>
 	);
-}
+};
 
 export enum Field {
 	TITLE = 'TITLE',
@@ -153,7 +155,7 @@ export enum Order {
 	DESC = 'DESC'
 }
 
-interface StaticProps extends GetServerSideProps {
+interface StaticProps extends GetStaticProps {
 	preview: boolean;
 	context: any;
 	field: Field;
@@ -188,7 +190,7 @@ https://github.com/vercel/next.js/pull/11842/files
 IMPORTANT
 */
 
-export const getServerSideProps = async ({
+export const getStaticProps = async ({
 	preview = false,
 	// context,
 	field = MODIFIED || TITLE || DATE,
@@ -204,7 +206,7 @@ export const getServerSideProps = async ({
 	const tagsAndPosts = await getTagAndPosts();
 	const categories = await getCategories();
 
-	// const apolloClient = initializeApollo();
+	// const apolloClient: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
 	// await apolloClient.query({
 	// 	query: ALL_POSTS_QUERY,
@@ -220,8 +222,13 @@ export const getServerSideProps = async ({
 			tagsAndPosts,
 			field,
 			order,
-			categories,
-			revalidate: 1
-		}
+			categories
+		},
+		revalidate: 10
 	};
 };
+
+export default Index;
+// https://github.com/evgeny-t/test-get-static-props/blob/master/pages/index.tsx
+// force invalidation
+// https://getstarted.sh/with/nextjs-incremental-static-regeneration/4

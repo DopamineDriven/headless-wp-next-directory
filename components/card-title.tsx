@@ -7,7 +7,7 @@ interface CardTitleProps {
 	// postTitle: string;
 }
 
-const CardTitle = ({ title, slug }: CardTitleProps) => {
+const CardTitle = ({ title, slug }: CardTitleProps): JSX.Element => {
 	return (
 		<div className='block w-auto font-bold leading-tight text-customCardTitle pl-portfolioDivider h-paddingPostTitleTop sm:h-paddingPostTitleBottom'>
 			<Link as={`/posts/${slug}`} href='/posts/[slug]' passHref scroll={true}>

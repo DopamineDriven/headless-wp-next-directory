@@ -1,6 +1,11 @@
 export declare module 'react-spring';
 export declare module 'use-dark-mode';
 
+// declare module '*.graphqls' {
+// 	import { DocumentNode } from 'graphql';
+// 	export default typeof DocumentNode;
+// }
+
 import {
 	IconDefinition,
 	IconPrefix,
