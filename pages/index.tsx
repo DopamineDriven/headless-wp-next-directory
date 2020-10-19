@@ -41,6 +41,11 @@ import Footer from 'components/footer';
 // } from 'components/cards-coalesced-hook';
 // import { initializeApollo } from 'lib/apollo';
 // import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
+import CardFilter from 'components/card-filter';
+import {
+	PostObjectsConnectionOrderbyEnum,
+	OrderEnum
+} from 'types/graphql-global-types';
 interface IndexProps {
 	allPosts: AllPostsProps;
 	preview: boolean;
@@ -64,7 +69,8 @@ const Index = ({
 	);
 	const [search, setSearch] = useState<string | null>(null);
 	const [searchCategory, setSearchedCategory] = useState<string | null>(null);
-
+	const { TITLE } = PostObjectsConnectionOrderbyEnum;
+	const [filter, setFilter] = useState(TITLE);
 	// console.log('tags:', tagsAndPosts);
 	// console.log('categories:', categoriesAndPosts);
 
@@ -134,6 +140,7 @@ const Index = ({
 					dropdownOptions={['title', 'description']}
 					categories={categories}
 				/>
+				<CardFilter filter={filter} setFilter={setFilter} />
 				<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
 					{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
 				</div>
@@ -158,42 +165,17 @@ export enum Order {
 interface StaticProps extends GetStaticProps {
 	preview: boolean;
 	context: any;
-	field: Field;
-	order: Order;
+	field: PostObjectsConnectionOrderbyEnum;
+	order: OrderEnum;
 	desiredCategory: string;
 }
 
-/*
-type PostTypesListed =
-	| 'title'
-	| 'date'
-	| 'slug'
-	| 'coverImage'
-	| 'excerpt'
-	| 'articleImage'
-	| 'postTitle';
-*/
-
-const { TITLE, MODIFIED, DATE } = Field;
-const { ASC, DESC } = Order;
-
-// 09/12/20 --- Note
-// test ISR (incremental static regeneration)
-// this uses revalidate in getStaticProps and is a hybrid method
-
-// ISR usage -> replaced getServerSideProps with getStaticProps success
-
-/*
-IMPORTANT
-@jlovejo2 check out this link...seems very promising for systematically deriving GQL types from lib/api
-https://github.com/vercel/next.js/pull/11842/files
-IMPORTANT
-*/
-
+const { TITLE, AUTHOR, DATE, MODIFIED } = PostObjectsConnectionOrderbyEnum;
+const { ASC, DESC } = OrderEnum;
 export const getStaticProps = async ({
 	preview = false,
 	// context,
-	field = MODIFIED || TITLE || DATE,
+	field = TITLE || AUTHOR || DATE || MODIFIED,
 	order = ASC || DESC,
 	desiredCategory
 }: StaticProps) => {
