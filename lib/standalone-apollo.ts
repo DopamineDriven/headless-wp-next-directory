@@ -7,6 +7,10 @@ export async function getStandaloneApolloClient() {
 	return new ApolloClient({
 		link: new HttpLink({
 			uri: `${clientConfig.graphqlUrl}`,
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: process.env.WORDPRESS_AUTH_REFRESH_TOKEN
+			},
 			fetch
 		}),
 		cache: new InMemoryCache()
