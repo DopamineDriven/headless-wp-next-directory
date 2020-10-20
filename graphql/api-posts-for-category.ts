@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const ALL_POSTS_FOR_CATEGORY = gql`
-	query GET_CATEGORIES {
+	query AllPostsForCategory {
 		categories {
 			edges {
 				node {
