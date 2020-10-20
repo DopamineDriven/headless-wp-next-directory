@@ -56,7 +56,7 @@ export default function PostHeader({
 						<Avatar author={author} />
 					</div>
 					<div className='flex flex-col'>
-						<Categories categories={categories} />
+						<Categories categories={categories} category={categories} />
 					</div>
 					<CardIcons social={social} />
 				</div>
