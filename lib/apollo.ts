@@ -19,9 +19,9 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 		link: new HttpLink({
 			uri: `${process.env.WORDPRESS_API_URL}`,
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				Authorization: `${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`
 			}
-			// fetch
 		}),
 		cache: new InMemoryCache({
 			// possibleTypes: possibleTypes,
