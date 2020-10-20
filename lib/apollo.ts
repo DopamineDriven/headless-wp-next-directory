@@ -18,21 +18,23 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 		connectToDevTools: true,
 		link: new HttpLink({
 			uri: `${process.env.WORDPRESS_API_URL}`,
-			headers: headers,
-			fetch
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`
+			}
 		}),
 		cache: new InMemoryCache({
 			// possibleTypes: possibleTypes,
 			addTypename: true,
-			resultCaching: true,
-			typePolicies: {
-				Query: {
-					fields: {
-						posts: concatPagination<Reference>(),
-						categories: concatPagination<Reference>()
-					}
-				}
-			}
+			resultCaching: true
+			// typePolicies: {
+			// 	Query: {
+			// 		fields: {
+			// 			posts: concatPagination<Reference>(),
+			// 			categories: concatPagination<Reference>()
+			// 		}
+			// 	}
+			// }
 		})
 	});
 }

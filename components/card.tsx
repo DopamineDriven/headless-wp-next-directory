@@ -1,17 +1,17 @@
 import CoverImage, { CoverImageProps } from 'components/card-image';
 import Avatar from 'components/card-avatar';
 import CardIcons from 'components/card-icons';
-import { ContentDescriptor } from 'wp-graphql/lib/lib/abstract-types';
 import { authorType, socialType } from 'types/posts';
 import CardTitle from 'components/card-title';
 import CardExcerpt from 'components/card-excerpt';
 import { Fragment } from 'react';
 import SiteDivider from 'components/site-divider';
+import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../graphql/__generated__/getAllPostsWithSlug';
 
 interface CardProps {
 	coverImage: CoverImageProps;
 	title: string;
-	slug: string | number;
+	slug: PostSlug;
 	modified: string;
 	author: authorType;
 	excerpt?: string;

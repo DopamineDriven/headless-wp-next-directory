@@ -1,34 +1,9 @@
-import { GraphQLObjectType, GraphQLScalarType } from 'graphql';
-// type CategoriesProps = {
-// 	categories: {
-// 		edges: any;
-// 	} | any;
-// };
+import {
+	CategoryTyped,
+	CategoryTypedVariables
+} from 'graphql/__generated__/CategoryTyped';
 
-// type CategoryProps = {
-// 	category: any;
-// 	index: any;
-// }
-
-// DocumentNode from graphql
-// Category from wp-graphql
-// import TypedFields from 'wp-graphql';
-import { Category } from 'wp-graphql';
-// import { GraphQLObjectType } from 'graphql';
-// import Category from 'pages/category/[name]';
-// export interface Meta {
-// 	[metaKey: string]: any;
-// }
-
-// const obj = new GraphQLObjectType<Category>({
-// })
-
-// interface CatsProps {
-// 	name: GraphQLScalarType;
-// 	edges: GraphQLObjectType;
-// }
-
-export default function Categories({ categories }: any): JSX.Element {
+const Cat = ({ categories }: any): JSX.Element => {
 	return (
 		<div className='max-w-2xl mx-auto text-center flex flex-row justify-center mt-2'>
 			<span className='text-xs text-center'>
@@ -47,7 +22,90 @@ export default function Categories({ categories }: any): JSX.Element {
 			</span>
 		</div>
 	);
+};
+
+export default Cat;
+
+/*
+
+import { CategoryIdType } from '../types/graphql-global-types';
+import {
+	CategoriesByEdgesReturnName_categories_edges_node as CategoryName,
+	CategoriesByEdgesReturnName_categories_edges_node as CategoryEdgesNode,
+	CategoriesByEdgesReturnName_categories as CategoriesByEdges,
+	CategoriesByEdgesReturnName_categories_edges as CategoriesTyped,
+	CategoriesByEdgesReturnName as Category
+} from '../graphql/__generated__/CategoriesByEdgesReturnName';
+
+export interface CategoriesProps {
+	categories: CategoriesTyped;
+	edges: CategoriesByEdges;
+	// node: CategoryEdgesNode;
 }
+
+export default function Categories({
+	categories
+}: CategoriesProps): JSX.Element {
+	let node: CategoryEdgesNode;
+	const { NAME } = CategoryIdType;
+	return (
+		<div className='max-w-2xl mx-auto text-center flex flex-row justify-center mt-2'>
+			<span className='text-xs text-center'>
+				{[categories].length > 0 ? (
+					[categories].map((category: CategoriesTyped, index: any) => {
+					return	(
+							<span
+								className='inline-block bg-customGray hover:bg-iconHover transition-colors leading-relaxed duration-500 cursor-pointer rounded-full my-1 px-3 py-1 text-sm font-semibold mx-1 text-white'
+								key={index}
+							>
+							#{category}&nbsp;
+							</span>
+						)
+					})
+				) : (
+					<span className='ml-1'>{categories.node?.name}</span>
+				)}
+			</span>
+		</div>
+	);
+}
+
+
+
+
+import { isNonNullType } from 'graphql';
+import {
+	CategoryTyped,
+	CategoryTyped_categories,
+	CategoryTyped_categories_edges,
+	CategoryTypedVariables
+} from 'graphql/__generated__/CategoryTyped';
+
+const Cat = ({ categories, category }: CategoryTyped): JSX.Element => {
+	return (
+		<div className='max-w-2xl mx-auto text-center flex flex-row justify-center mt-2'>
+			<span className='text-xs text-center'>
+				{categories?.edges !== null && categories?.edges !== undefined ? (
+					categories.edges.map((category: any, index: any) => {
+						return (
+							<span
+								key={index}
+								className='inline-block bg-customGray hover:bg-iconHover transition-colors leading-relaxed duration-500 cursor-pointer rounded-full my-1 px-3 py-1 text-sm font-semibold mx-1 text-white'
+							>
+								#{category?.name}&nbsp;
+							</span>
+						)
+					})
+				) : (
+					<span className='ml-1'>{category?.name}</span>
+				)}
+			</span>
+		</div>
+	);
+};
+
+export default Cat;
+*/
 
 /*
 // https://github.com/aliemteam/wp-graphql/blob/master/src/models/categories/types/categoryType.ts
