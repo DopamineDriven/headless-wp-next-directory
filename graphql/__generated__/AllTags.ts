@@ -7,33 +7,33 @@
 // GraphQL query operation: AllTags
 // ====================================================
 
-export interface AllTags_categories_edges_node {
-	__typename: 'Category';
+export interface AllTags_tags_edges_node {
+	__typename: 'Tag';
 	/**
 	 * The human friendly name of the object.
 	 */
 	name: string | null;
 }
 
-export interface AllTags_categories_edges {
-	__typename: 'RootQueryToCategoryConnectionEdge';
+export interface AllTags_tags_edges {
+	__typename: 'RootQueryToTagConnectionEdge';
 	/**
 	 * The item at the end of the edge
 	 */
-	node: AllTags_categories_edges_node | null;
+	node: AllTags_tags_edges_node | null;
 }
 
-export interface AllTags_categories {
-	__typename: 'RootQueryToCategoryConnection';
+export interface AllTags_tags {
+	__typename: 'RootQueryToTagConnection';
 	/**
-	 * Edges for the RootQueryToCategoryConnection connection
+	 * Edges for the RootQueryToTagConnection connection
 	 */
-	edges: (AllTags_categories_edges | null)[] | null;
+	edges: (AllTags_tags_edges | null)[] | null;
 }
 
 export interface AllTags {
 	/**
-	 * Connection between the RootQuery type and the category type
+	 * Connection between the RootQuery type and the tag type
 	 */
-	categories: AllTags_categories | null;
+	tags: AllTags_tags | null;
 }

@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const ALL_TAGS = gql`
 	query AllTags {
-		categories {
+		tags {
 			edges {
 				node {
 					name
