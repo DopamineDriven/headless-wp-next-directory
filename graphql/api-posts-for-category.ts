@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-const ALL_POSTS_FOR_CATEGORY = gql`
+export const ALL_POSTS_FOR_CATEGORY = gql`
 	query AllPostsForCategory {
 		categories {
 			edges {
