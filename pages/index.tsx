@@ -51,12 +51,13 @@ import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
 } from 'types/graphql-global-types';
+import { ALL_TAGS } from 'graphql/api-all-tags';
 
 interface IndexProps {
 	allPosts: AllPostsProps;
 	preview: boolean;
-	tagsAndPosts: TagProps[];
-	categories: AllCategories_categories_edges_node[];
+	tagsAndPosts: any;
+	// categories: AllCategories_categories_edges_node[];
 	initializeApollo: any;
 }
 
@@ -71,6 +72,7 @@ const Index = ({
 	let morePosts = edges.slice(0);
 	let categoriesTabs: AllCategories_categories_edges[] =
 		initializeApollo.ROOT_QUERY.categories.edges;
+	let tagProps = tagsAndPosts.ROOT_QUERY.tags.edges;
 
 	const [filterQuery, setFilterQuery] = useState('title');
 	const [allCompanies, setAllCompanies] = useState<PostsProps[]>(morePosts);
@@ -81,22 +83,6 @@ const Index = ({
 	const [searchCategory, setSearchedCategory] = useState<string | null>(null);
 	const { TITLE } = PostObjectsConnectionOrderbyEnum;
 	const [filter, setFilter] = useState(TITLE);
-
-	console.log('initial Apollo state: ', initializeApollo);
-
-	// const { data: categories, error } = useQuery<AllCategories_categories_edges_node[]>(ALL_CATEGORIES, {
-	// 	//   variables: {
-	// 	// 	filter: ListingsFilter.PRICE_HIGH_TO_LOW,
-	// 	// 	limit: PAGE_LIMIT,
-	// 	// 	page: PAGE_NUMBER,
-	// 	//   },
-	// 	//cache-and-network get the information from the cache but also make the request to network to update if the information has changed
-	// 	fetchPolicy: 'cache-and-network'
-	// });
-
-	// if(error) {
-	// 	console.log('error in useQuery: ', error)
-	// }
 
 	useEffect(() => {
 		if (!search) {
@@ -172,7 +158,7 @@ const Index = ({
 						const searchQuery = element.value.toLowerCase();
 						setSearch(searchQuery);
 					}}
-					tags={tagsAndPosts}
+					tags={tagProps}
 					allPosts={morePosts}
 					dropdownOptions={['title', 'description']}
 					categories={categoriesTabs}
@@ -223,33 +209,35 @@ export const getStaticProps = async ({
 		field,
 		order
 	});
-	const tagsAndPosts = await getTagAndPosts();
-	const categories = await getCategories();
+	// const tagsAndPosts = await getTagAndPosts();
+	// const categories = await getCategories();
 
-	const apolloClient: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
-	await apolloClient.query({
+	await categoriesWordPress.query({
 		query: ALL_CATEGORIES
+		// variables: allPostsQueryVars
+	});
+
+	await tagsWordPress.query({
+		query: ALL_TAGS
 		// variables: allPostsQueryVars
 	});
 
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
 
-	// const categoriesReturn = apolloClient.cache.extract().ROOT_QUERY === undefined ? {} : apolloClient.cache.extract().ROOT_QUERY.categories
-
-	// console.log('apollo client: ', await apolloClient.cache.extract().ROOT_QUERY.categories)
-
 	return {
 		props: {
 			// initialApolloState: apolloClient.cache.extract(),
 			allPosts,
 			preview,
-			tagsAndPosts,
+			tagsAndPosts: await tagsWordPress.cache.extract(),
 			field,
 			order,
 			// categories: await apolloClient.cache.extract().ROOT_QUERY.categories,
-			initializeApollo: await apolloClient.cache.extract()
+			initializeApollo: await categoriesWordPress.cache.extract()
 		},
 		revalidate: 10
 	};
