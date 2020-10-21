@@ -50,15 +50,15 @@
 	"private": true,
 	"scripts": {
 		"codegen": "graphql-codegen --config codegen.yml",
-		"dev": "next",
+		"dev": "next -p 4000",
 		"build": "next build",
 		"start": "next start",
 		"analyze": "ANALYZE=true yarn build",
 		"postinstall": "npx patch-package",
 		"prettier-check": "prettier --config .prettierrc --check .",
 		"prettier-write": "prettier --config .prettierrc --write .",
-		"client:download": "dotenv cross-var yarn apollo client:download-schema --includes=graphql --endpoint=%WORDPRESS_API_URL%",
-		"client:generate": "yarn apollo codegen:generate --localSchemaFile=schema.json --target=typescript --includes=graphql/**/*.ts --tagName=gql --addTypename --globalTypesFile=types/graphql-global-types.ts"
+		"client:schema": "dotenv cross-var yarn apollo client:download-schema --includes=graphql --addTypename --endpoint=%WORDPRESS_API_URL%",
+		"client:codegen": "yarn apollo codegen:generate --localSchemaFile=schema.json --target=typescript --includes=graphql/**/*.ts --tagName=gql --addTypename --globalTypesFile=types/graphql-global-types.ts"
 	},
 	"husky": {
 		"hooks": {
@@ -102,6 +102,7 @@
 		"@next/bundle-analyzer": "^9.5.5",
 		"@types/classnames": "^2.2.10",
 		"@types/google.analytics": "^0.0.40",
+		"@types/graphql": "^14.5.0",
 		"@types/node": "^14.11.8",
 		"@types/react": "^16.9.52",
 		"@types/react-dom": "^16.9.8",
