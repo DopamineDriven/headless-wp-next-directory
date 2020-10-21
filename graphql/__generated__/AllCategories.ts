@@ -10,14 +10,6 @@
 export interface AllCategories_categories_edges_node {
 	__typename: 'Category';
 	/**
-	 * The globally unique ID for the object
-	 */
-	id: string;
-	/**
-	 * Identifies the primary key from the database.
-	 */
-	databaseId: number;
-	/**
 	 * The human friendly name of the object.
 	 */
 	name: string | null;
