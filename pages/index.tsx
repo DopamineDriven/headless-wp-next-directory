@@ -15,6 +15,14 @@ import {
 	InferGetServerSidePropsType,
 	NextPage
 } from 'next';
+import { useQuery } from '@apollo/client';
+import { ALL_CATEGORIES } from '../graphql/api-all-categories';
+import { ALL_POSTS_FOR_CATEGORY } from '../graphql/api-posts-for-category';
+import { AllCategories } from '../graphql/__generated__/AllCategories';
+import {
+	AllPostsForCategory,
+	AllPostsForCategory_categories
+} from '../graphql/__generated__/AllPostsForCategory';
 import {
 	getAllPostsForHomeAlphabetical,
 	getTagAndPosts,
@@ -74,6 +82,19 @@ const Index = ({
 	// console.log('tags:', tagsAndPosts);
 	// console.log('categories:', categoriesAndPosts);
 
+	// const { data, loading } = useQuery<AllPostsForCategory_categories>(
+	// 	ALL_POSTS_FOR_CATEGORY,
+	// 	{
+	// 	//   variables: {
+	// 	// 	filter: ListingsFilter.PRICE_HIGH_TO_LOW,
+	// 	// 	limit: PAGE_LIMIT,
+	// 	// 	page: PAGE_NUMBER,
+	// 	//   },
+	// 	  //cache-and-network get the information from the cache but also make the request to network to update if the information has changed
+	// 	  fetchPolicy: "cache-and-network",
+	// 	}
+	//   );
+
 	useEffect(() => {
 		if (!search) {
 			setFilteredCompanies(allCompanies);
@@ -112,6 +133,19 @@ const Index = ({
 		}
 	}, [filterQuery, search]);
 
+	// const categoryData = () => {
+	// 	if (data) {
+	// 		console.log('data returned from useQuery: ', data)
+	// 		return (<p>Data returned</p>)
+	// 	}
+
+	// 	if (loading) {
+	// 		return <p>Wait for data</p>;
+	// 	}
+
+	// 		  return null;
+	// }
+
 	return (
 		<Fragment>
 			<MediaContextProvider>
@@ -140,6 +174,7 @@ const Index = ({
 					dropdownOptions={['title', 'description']}
 					categories={categories}
 				/>
+				{/* {categoryData()} */}
 				<CardFilter filter={filter} setFilter={setFilter} />
 				<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
 					{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
@@ -186,7 +221,15 @@ export const getStaticProps = async ({
 		order
 	});
 	const tagsAndPosts = await getTagAndPosts();
-	const categories = await getCategories();
+	const { data: categories } = useQuery<AllCategories>(ALL_CATEGORIES, {
+		//   variables: {
+		// 	filter: ListingsFilter.PRICE_HIGH_TO_LOW,
+		// 	limit: PAGE_LIMIT,
+		// 	page: PAGE_NUMBER,
+		//   },
+		//cache-and-network get the information from the cache but also make the request to network to update if the information has changed
+		fetchPolicy: 'cache-and-network'
+	});
 
 	// const apolloClient: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
