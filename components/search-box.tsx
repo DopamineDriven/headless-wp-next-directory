@@ -12,13 +12,15 @@ import {
 	AllCategories_categories,
 	AllCategories_categories_edges
 } from '../graphql/__generated__/AllCategories';
+import { AllTags_tags_edges } from '../graphql/__generated__/AllTags';
+import { useQuery } from '@apollo/client';
 
 interface Props {
 	selectChange: (evt: SyntheticEvent) => void;
 	selectSearch: string;
 	filterFunc: (evt: SyntheticEvent) => void;
 	allPosts: PostsProps[];
-	tags: TagProps[];
+	tags: AllTags_tags_edges[] | null;
 	dropdownOptions: string[];
 	categories: AllCategories_categories_edges[] | null;
 }
@@ -33,6 +35,7 @@ const SearchBox = ({
 	categories
 }: Props): JSX.Element => {
 	console.log('categories prop: ', categories);
+	console.log('tags props: ', tags);
 
 	const categoriesMapped: JSX.Element | (JSX.Element | null)[] = categories ? (
 		categories.map((category, index) => {
