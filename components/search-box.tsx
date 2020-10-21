@@ -7,6 +7,11 @@ import TagProps from '../types/tag';
 import { Fragment, ChangeEvent, SyntheticEvent } from 'react';
 import { PostsProps } from '../types/posts';
 import { InferGetServerSidePropsType } from 'next';
+import {
+	AllCategories,
+	AllCategories_categories,
+	AllCategories_categories_edges
+} from '../graphql/__generated__/AllCategories';
 
 interface Props {
 	selectChange: (evt: SyntheticEvent) => void;
@@ -15,7 +20,7 @@ interface Props {
 	allPosts: PostsProps[];
 	tags: TagProps[];
 	dropdownOptions: string[];
-	categories: CategoryProps[];
+	categories: AllCategories_categories_edges[] | null;
 }
 
 const SearchBox = ({
@@ -27,23 +32,32 @@ const SearchBox = ({
 	tags,
 	categories
 }: Props): JSX.Element => {
-	const categoriesMapped: JSX.Element[] = categories.map((category, index) => {
-		return (
-			<li key={index} className='mr-1'>
-				<a
-					href={
-						process.env.NODE_ENV === 'development'
-							? `http://localhost:4000/category/${category.node.name}`
-							: `https://headless-wp-next-directory.vercel.app/category/${category.node.name}`
-					}
-					className='block align-bottom min-h-auto font-semibold border-t border-l rounded-t px-mdmxSocial border-r-custom text-primary bg-primary'
-					data-categoryname={category.node.name}
-				>
-					{category.node.name}
-				</a>
-			</li>
-		);
-	});
+	console.log('categories prop: ', categories);
+
+	const categoriesMapped: JSX.Element | (JSX.Element | null)[] = categories ? (
+		categories.map((category, index) => {
+			if (category.node === null) {
+				return null;
+			}
+			return (
+				<li key={index} className='mr-1'>
+					<a
+						href={
+							process.env.NODE_ENV === 'development'
+								? `http://localhost:4000/category/${category.node.name}`
+								: `https://headless-wp-next-directory.vercel.app/category/${category.node.name}`
+						}
+						className='block align-bottom min-h-auto font-semibold border-t border-l rounded-t px-mdmxSocial border-r-custom text-primary bg-primary'
+						data-categoryname={category.node.name}
+					>
+						{category.node.name}
+					</a>
+				</li>
+			);
+		})
+	) : (
+		<li>no categories</li>
+	);
 
 	console.log(dropdownOptions);
 	return (

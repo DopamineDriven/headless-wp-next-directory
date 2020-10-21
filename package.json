@@ -107,7 +107,6 @@
 		"@types/react": "^16.9.52",
 		"@types/react-dom": "^16.9.8",
 		"@types/react-syntax-highlighter": "^11.0.5",
-		"@types/wordpress__api-fetch": "^3.2.2",
 		"@typescript-eslint/eslint-plugin": "^4.2.0",
 		"@typescript-eslint/parser": "^4.2.0",
 		"@typescript-eslint/typescript-estree": "^4.2.0",
