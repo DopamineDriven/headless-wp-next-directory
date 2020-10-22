@@ -19,27 +19,17 @@ import { ApolloClient, NormalizedCacheObject, useQuery } from '@apollo/client';
 import { initializeApollo } from '../lib/apollo';
 import { ALL_CATEGORIES } from '../graphql/api-all-categories';
 import { ALL_POSTS_FOR_CATEGORY } from '../graphql/api-posts-for-category';
-import {
-	AllCategories,
-	AllCategories_categories_edges,
-	AllCategories_categories_edges_node
-} from '../graphql/__generated__/AllCategories';
+import { AllCategories_categories_edges } from '../graphql/__generated__/AllCategories';
 import {
 	AllPostsForCategory,
 	AllPostsForCategory_categories
 } from '../graphql/__generated__/AllPostsForCategory';
-import {
-	getAllPostsForHomeAlphabetical,
-	getTagAndPosts,
-	getCategories
-} from 'lib/api-ts';
+import { getAllPostsForHomeAlphabetical } from 'lib/api-ts';
 import { CMS_NAME, CLIENT_NAME } from 'lib/constants';
 import Header from 'components/lead';
 // import HeroPost from '../components/hero-post';
 import SearchBox from 'components/search-box';
 import Cards from 'components/cards-coalesced';
-import TagProps from 'types/tag';
-import CategoryProps from 'types/category';
 import { PostsProps, AllPostsProps } from 'types/posts';
 import { MediaContextProvider } from 'lib/window-width';
 // import Link from 'next/link';
