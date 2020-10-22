@@ -9,7 +9,7 @@ export async function getStandaloneApolloClient() {
 			uri: `${clientConfig.graphqlUrl}`,
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: process.env.WORDPRESS_AUTH_REFRESH_TOKEN
+				Authorization: `${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`
 			},
 			fetch
 		}),

@@ -4,11 +4,7 @@ import {
 	GraphQLObjectType,
 	GraphQLString
 } from 'graphql';
-import CategoryProps from 'types/category';
 import { AllPostsProps, PostsProps } from 'types/posts';
-import TagProps from 'types/tag';
-// import { APIFetchOptions } from "@types/wordpress__api-fetch"
-// import { APIFetchOptions } from '@wordpress/api-fetch';
 import {
 	allPostsForHomeAlphabeticalArgs,
 	getAllPostsForAboutArgs,
@@ -270,7 +266,7 @@ export async function getPostAndMorePosts({
 	return data;
 }
 
-export async function getTagAndPosts(): Promise<TagProps> {
+export async function getTagAndPosts(): Promise<any> {
 	const variablesGetTagAndPosts = {};
 	const data = await fetchAPI(
 		`query GET_TAGS {
@@ -297,7 +293,7 @@ export async function getTagAndPosts(): Promise<TagProps> {
 	return data.tags.edges;
 }
 
-export async function getCategories(): Promise<CategoryProps> {
+export async function getCategories(): Promise<any> {
 	const variablesGetCategories = {};
 	const data = await fetchAPI(
 		`query GET_CATEGORIES {

@@ -15,52 +15,54 @@ import {
 	InferGetServerSidePropsType,
 	NextPage
 } from 'next';
+import { ApolloClient, NormalizedCacheObject, useQuery } from '@apollo/client';
+import { initializeApollo } from '../lib/apollo';
+import { ALL_CATEGORIES } from '../graphql/api-all-categories';
+import { ALL_POSTS_FOR_CATEGORY } from '../graphql/api-posts-for-category';
+import { AllCategories_categories_edges } from '../graphql/__generated__/AllCategories';
 import {
-	getAllPostsForHomeAlphabetical,
-	getTagAndPosts,
-	getCategories
-	// getAllPostsForHomeSorted,
-	// getAllPostsTitleDesc
-} from 'lib/api-ts';
+	AllPostsForCategory,
+	AllPostsForCategory_categories
+} from '../graphql/__generated__/AllPostsForCategory';
+import { getAllPostsForHomeAlphabetical } from 'lib/api-ts';
 import { CMS_NAME, CLIENT_NAME } from 'lib/constants';
 import Header from 'components/lead';
 // import HeroPost from '../components/hero-post';
 import SearchBox from 'components/search-box';
 import Cards from 'components/cards-coalesced';
-import TagProps from 'types/tag';
-import CategoryProps from 'types/category';
 import { PostsProps, AllPostsProps } from 'types/posts';
 import { MediaContextProvider } from 'lib/window-width';
 // import Link from 'next/link';
 // import FieldEnum from 'types/enums/field-enum';
 // import OrderEnum from 'types/enums/order-enum';
 import Footer from 'components/footer';
-// import CardsHooked, {
-// 	allPostsQueryVars,
-// 	ALL_POSTS_QUERY
-// } from 'components/cards-coalesced-hook';
-// import { initializeApollo } from 'lib/apollo';
-// import { ApolloClient, NormalizedCacheObject } from '@apollo/client';
-import CardFilter from 'components/card-filter';
+// import CardFilter from 'components/card-filter';
 import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
 } from 'types/graphql-global-types';
+import { ALL_TAGS } from 'graphql/api-all-tags';
+
 interface IndexProps {
 	allPosts: AllPostsProps;
 	preview: boolean;
-	tagsAndPosts: TagProps[];
-	categories: CategoryProps[];
+	tagsAndPosts: any;
+	// categories: AllCategories_categories_edges_node[];
+	initializeApollo: any;
 }
 
 const Index = ({
 	allPosts: { edges },
 	preview,
 	tagsAndPosts,
-	categories
+	// categories,
+	initializeApollo
 }: IndexProps): JSX.Element => {
 	// const heroPost = edges[0]?.node;
 	let morePosts = edges.slice(0);
+	let categoriesTabs: AllCategories_categories_edges[] =
+		initializeApollo.ROOT_QUERY.categories.edges;
+	let tagProps = tagsAndPosts.ROOT_QUERY.tags.edges;
 
 	const [filterQuery, setFilterQuery] = useState('title');
 	const [allCompanies, setAllCompanies] = useState<PostsProps[]>(morePosts);
@@ -70,9 +72,7 @@ const Index = ({
 	const [search, setSearch] = useState<string | null>(null);
 	const [searchCategory, setSearchedCategory] = useState<string | null>(null);
 	const { TITLE } = PostObjectsConnectionOrderbyEnum;
-	const [filter, setFilter] = useState(TITLE);
-	// console.log('tags:', tagsAndPosts);
-	// console.log('categories:', categoriesAndPosts);
+	// const [filter, setFilter] = useState(TITLE);
 
 	useEffect(() => {
 		if (!search) {
@@ -112,6 +112,19 @@ const Index = ({
 		}
 	}, [filterQuery, search]);
 
+	// const categoryData = () => {
+	// 	if (data) {
+	// 		console.log('data returned from useQuery: ', data)
+	// 		return (<p>Data returned</p>)
+	// 	}
+
+	// 	if (loading) {
+	// 		return <p>Wait for data</p>;
+	// 	}
+
+	// 		  return null;
+	// }
+
 	return (
 		<Fragment>
 			<MediaContextProvider>
@@ -135,12 +148,13 @@ const Index = ({
 						const searchQuery = element.value.toLowerCase();
 						setSearch(searchQuery);
 					}}
-					tags={tagsAndPosts}
+					tags={tagProps}
 					allPosts={morePosts}
 					dropdownOptions={['title', 'description']}
-					categories={categories}
+					categories={categoriesTabs}
 				/>
-				<CardFilter filter={filter} setFilter={setFilter} />
+				{/* {categoryData()} */}
+				{/* <CardFilter filter={filter} setFilter={setFilter} /> */}
 				<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
 					{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
 				</div>
@@ -185,26 +199,35 @@ export const getStaticProps = async ({
 		field,
 		order
 	});
-	const tagsAndPosts = await getTagAndPosts();
-	const categories = await getCategories();
+	// const tagsAndPosts = await getTagAndPosts();
+	// const categories = await getCategories();
 
-	// const apolloClient: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
-	// await apolloClient.query({
-	// 	query: ALL_POSTS_QUERY,
-	// 	variables: allPostsQueryVars
-	// });
+	await categoriesWordPress.query({
+		query: ALL_CATEGORIES
+		// variables: allPostsQueryVars
+	});
+
+	await tagsWordPress.query({
+		query: ALL_TAGS
+		// variables: allPostsQueryVars
+	});
+
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
+
 	return {
 		props: {
 			// initialApolloState: apolloClient.cache.extract(),
 			allPosts,
 			preview,
-			tagsAndPosts,
+			tagsAndPosts: await tagsWordPress.cache.extract(),
 			field,
 			order,
-			categories
+			// categories: await apolloClient.cache.extract().ROOT_QUERY.categories,
+			initializeApollo: await categoriesWordPress.cache.extract()
 		},
 		revalidate: 10
 	};
