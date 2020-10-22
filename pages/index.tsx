@@ -22,6 +22,12 @@ import {
 	allCategoryQueryVariables,
 	categoryKeyNameForCache
 } from '../graphql/api-all-categories';
+import {
+	allTagQueryVariables,
+	ALL_TAGS,
+	tagKeyNameForCache
+} from '../graphql/api-all-tags';
+
 import { ALL_POSTS_FOR_CATEGORY } from '../graphql/api-posts-for-category';
 import { AllCategories_categories_edges } from '../graphql/__generated__/AllCategories';
 import {
@@ -45,7 +51,6 @@ import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
 } from 'types/graphql-global-types';
-import { ALL_TAGS } from 'graphql/api-all-tags';
 
 interface IndexProps {
 	allPosts: AllPostsProps;
@@ -72,7 +77,7 @@ const Index = ({
 	let morePosts = edges.slice(0);
 	let categoriesTabs: AllCategories_categories_edges[] =
 		initializeApollo.ROOT_QUERY[categoryKeyNameForCache].edges;
-	let tagProps = tagsAndPosts.ROOT_QUERY.tags.edges;
+	let tagProps = tagsAndPosts.ROOT_QUERY[tagKeyNameForCache].edges;
 
 	const [filterQuery, setFilterQuery] = useState('title');
 	const [allCompanies, setAllCompanies] = useState<PostsProps[]>(morePosts);
@@ -225,8 +230,8 @@ export const getStaticProps = async ({
 	}
 
 	await tagsWordPress.query({
-		query: ALL_TAGS
-		// variables: allPostsQueryVars
+		query: ALL_TAGS,
+		variables: allTagQueryVariables
 	});
 
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
