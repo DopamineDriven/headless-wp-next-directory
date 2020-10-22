@@ -19,7 +19,8 @@ import { ApolloClient, NormalizedCacheObject, useQuery } from '@apollo/client';
 import { initializeApollo } from '../lib/apollo';
 import {
 	ALL_CATEGORIES,
-	allCategoryQueryVariables
+	allCategoryQueryVariables,
+	categoryKeyNameForCache
 } from '../graphql/api-all-categories';
 import { ALL_POSTS_FOR_CATEGORY } from '../graphql/api-posts-for-category';
 import { AllCategories_categories_edges } from '../graphql/__generated__/AllCategories';
@@ -61,10 +62,16 @@ const Index = ({
 	// categories,
 	initializeApollo
 }: IndexProps): JSX.Element => {
-	// const heroPost = edges[0]?.node;
+	console.log('initializeApollo Prop: ', initializeApollo);
+	console.log(
+		'attempt at matching key: ',
+		initializeApollo.ROOT_QUERY.categoryKeyNameForCache
+	);
+	console.log('key name: ', categoryKeyNameForCache);
+
 	let morePosts = edges.slice(0);
 	let categoriesTabs: AllCategories_categories_edges[] =
-		initializeApollo.ROOT_QUERY.categories.edges;
+		initializeApollo.ROOT_QUERY[categoryKeyNameForCache].edges;
 	let tagProps = tagsAndPosts.ROOT_QUERY.tags.edges;
 
 	const [filterQuery, setFilterQuery] = useState('title');
@@ -208,10 +215,14 @@ export const getStaticProps = async ({
 	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
 	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
-	await categoriesWordPress.query({
-		query: ALL_CATEGORIES,
-		variables: allCategoryQueryVariables
-	});
+	try {
+		await categoriesWordPress.query({
+			query: ALL_CATEGORIES,
+			variables: allCategoryQueryVariables
+		});
+	} catch (error) {
+		console.log('Error with category query: ', error);
+	}
 
 	await tagsWordPress.query({
 		query: ALL_TAGS
