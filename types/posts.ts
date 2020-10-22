@@ -2,7 +2,6 @@ import PostType from './post';
 import { Post } from 'wp-graphql';
 import { DocumentNode } from 'graphql';
 import { CoverImageProps } from '../components/card-image';
-import { ContentDescriptor } from 'wp-graphql/lib/lib/abstract-types';
 
 export interface AllPostsProps {
 	edges: PostsProps[];
