@@ -56,4 +56,5 @@ export interface AllCategories {
 
 export interface AllCategoriesVariables {
 	first?: number | null;
+	skip?: number | null;
 }

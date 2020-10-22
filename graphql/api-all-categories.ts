@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const ALL_CATEGORIES = gql`
-	query AllCategories($first: Int) {
-		categories(first: $first) {
+	query AllCategories($first: Int, $skip: Int) {
+		categories(first: $first, skip: $skip) {
 			pageInfo {
 				hasNextPage
 				endCursor
@@ -15,3 +15,8 @@ export const ALL_CATEGORIES = gql`
 		}
 	}
 `;
+
+export const allCategoryQueryVariables = {
+	first: 10,
+	skip: 0
+};
