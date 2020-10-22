@@ -19,3 +19,5 @@ export const ALL_CATEGORIES = gql`
 export const allCategoryQueryVariables = {
 	first: 10
 };
+
+export const categoryKeyNameForCache = `categories({"first":${allCategoryQueryVariables.first}})`;
