@@ -38,8 +38,6 @@ import Header from 'components/lead';
 // import HeroPost from '../components/hero-post';
 import SearchBox from 'components/search-box';
 import Cards from 'components/cards-coalesced';
-import TagProps from 'types/tag';
-import CategoryProps from 'types/category';
 import { PostsProps, AllPostsProps } from 'types/posts';
 import { MediaContextProvider } from 'lib/window-width';
 // import Link from 'next/link';
