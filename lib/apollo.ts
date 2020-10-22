@@ -3,8 +3,10 @@ import {
 	ApolloClient,
 	HttpLink,
 	InMemoryCache,
+	defaultDataIdFromObject,
 	NormalizedCacheObject
 } from '@apollo/client';
+import { categoryKeyNameForCache } from 'graphql/api-all-categories';
 import { concatPagination, Reference } from '@apollo/client/utilities';
 // import possibleTypes  from 'lib/possible-types';
 // https://github.com/vercel/next.js/discussions/11957
@@ -26,15 +28,19 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 		cache: new InMemoryCache({
 			// possibleTypes: possibleTypes,
 			addTypename: true,
-			resultCaching: true
-			// typePolicies: {
-			// 	Query: {
-			// 		fields: {
-			// 			posts: concatPagination<Reference>(),
-			// 			categories: concatPagination<Reference>()
-			// 		}
-			// 	}
-			// }
+			resultCaching: true,
+			typePolicies: {
+				Query: {
+					keyFields: ['data']
+				},
+				Category: {
+					keyFields: ['name']
+					// fields: {
+					// 	posts: concatPagination<Reference>(),
+					// 	categories: concatPagination<Reference>()
+					// }
+				}
+			}
 		})
 	});
 }
