@@ -1,6 +1,4 @@
 import Author from 'types/author';
-import Tag from 'types/tag';
-import Category from 'types/category';
 import Social from 'types/social';
 
 interface PostType {
@@ -19,7 +17,7 @@ interface PostType {
 		url: string;
 	};
 	content: string;
-	categories?: Category[];
+	categories?: any[];
 	tags: { edges: any[] };
 }
 

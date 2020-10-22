@@ -2,8 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons/faSortDown';
 import Container from './container';
-import CategoryProps from '../types/category';
-import TagProps from '../types/tag';
 import { Fragment, ChangeEvent, SyntheticEvent } from 'react';
 import { PostsProps } from '../types/posts';
 import { InferGetServerSidePropsType } from 'next';
