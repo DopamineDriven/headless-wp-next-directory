@@ -17,7 +17,10 @@ import {
 } from 'next';
 import { ApolloClient, NormalizedCacheObject, useQuery } from '@apollo/client';
 import { initializeApollo } from '../lib/apollo';
-import { ALL_CATEGORIES } from '../graphql/api-all-categories';
+import {
+	ALL_CATEGORIES,
+	allCategoryQueryVariables
+} from '../graphql/api-all-categories';
 import { ALL_POSTS_FOR_CATEGORY } from '../graphql/api-posts-for-category';
 import { AllCategories_categories_edges } from '../graphql/__generated__/AllCategories';
 import {
@@ -206,8 +209,8 @@ export const getStaticProps = async ({
 	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
 	await categoriesWordPress.query({
-		query: ALL_CATEGORIES
-		// variables: allPostsQueryVars
+		query: ALL_CATEGORIES,
+		variables: allCategoryQueryVariables
 	});
 
 	await tagsWordPress.query({
