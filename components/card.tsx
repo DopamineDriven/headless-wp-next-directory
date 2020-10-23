@@ -36,13 +36,13 @@ const Card = ({
 	return (
 		<Fragment>
 			<div className='block mx-auto select-none w-full'>
-				<div className='block overflow-x-hidden overflow-y-hidden transition-all duration-1000 ease-in-out transform border-collapse border-current max-w-xsCardGridCima w-xsCardGridCima sm:w-aboutImage600 sm:max-w-aboutimage600 sm:overflow-hidden rounded-custom mx-auto'>
+				<div className='block overflow-x-hidden overflow-y-hidden transition-all duration-1000 ease-in-out transform border-collapse border-current max-w-xsCardGridCima w-xsCardGridCima sm:w-aboutImage600 sm:max-w-aboutimage600 sm:overflow-hidden lg:w-aboutImage400 rounded-custom mx-auto'>
 					<CoverImage coverImage={coverImage} title={title} slug={slug} />
 
 					<div className='flex flex-col justify-center flex-grow h-aboutOffsetPRMobile sm:h-auto text-left bg-primary'>
 						<CardTitle slug={slug} title={title} />
 						<CardExcerpt excerpt={excerpt} />
-						<div className='block transition-all duration-500 transform pl-portfolioDivider font-somaRoman'>
+						<div className='block transition-all duration-1000 transform pl-portfolioDivider font-somaRoman translate-y-portfolio'>
 							<Avatar author={author.node} modified={modified} />
 						</div>
 						<SiteDivider />

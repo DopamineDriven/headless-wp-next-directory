@@ -75,6 +75,7 @@
 		"@fortawesome/react-fontawesome": "^0.1.11",
 		"@tailwindcss/typography": "^0.2.0",
 		"@vercel/node": "^1.8.0",
+		"@welldone-software/why-did-you-render": "^5.0.0",
 		"apollo": "^2.31.0",
 		"classnames": "^2.2.6",
 		"date-fns": "^2.15.0",
