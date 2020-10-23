@@ -1,4 +1,14 @@
 import { useRouter, NextRouter } from 'next/router';
+import {
+	ApolloClient,
+	ApolloQueryResult,
+	NormalizedCacheObject,
+	NormalizedCache,
+	ApolloCache,
+	StoreObject,
+	StoreValue
+} from '@apollo/client';
+import { initializeApollo } from '../../lib/apollo';
 import Container from 'components/container';
 import PostBody from 'components/post-body';
 // import MoreStories from 'components/more-stories';
@@ -17,6 +27,20 @@ import { Fragment } from 'react';
 import { PostsProps, AllPostsProps } from 'types/posts';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { MediaContextProvider } from 'lib/window-width';
+import {
+	ALL_POSTS_FOR_CATEGORY,
+	allPostsForCategoryQueryVariables
+} from 'graphql/api-posts-for-category';
+import {
+	ALL_CATEGORIES,
+	allCategoryQueryVariables,
+	categoryKeyNameForCache
+} from 'graphql/api-all-categories';
+import {
+	AllCategoriesVariables,
+	AllCategories_categories,
+	AllCategories
+} from 'graphql/__generated__/AllCategories';
 
 interface SlugProps {
 	posts: PostsProps[];
@@ -66,27 +90,61 @@ export const getStaticProps = async ({
 	preview = false
 }: Params & GetStaticProps) => {
 	console.log(params.name);
-	const data = await getAllPostsForCategory(params.name);
 
-	console.log('data: ', data);
+	const allPostsForCategory: ApolloClient<NormalizedCacheObject> = initializeApollo();
+
+	await allPostsForCategory.query({
+		query: ALL_POSTS_FOR_CATEGORY,
+		variables: allPostsForCategoryQueryVariables
+	});
+
 	return {
 		props: {
 			preview,
-			posts: data
+			posts: await allPostsForCategory.cache.extract()
 		},
 		revalidate: 10
 	};
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const allCategories = await getCategories();
+	// const allCategories = await getCategories();
 
-	return {
-		paths:
-			allCategories.map((category: any) => `/category/${category.node.name}`) ||
-			[],
-		fallback: true
-	};
+	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+
+	const queryResult: ApolloQueryResult<AllCategories> = await categoriesWordPress.query(
+		{
+			query: ALL_CATEGORIES,
+			variables: allCategoryQueryVariables
+		}
+	);
+
+	const categoryCache: AllCategories_categories | null =
+		queryResult.data.categories;
+
+	if (categoryCache != null) {
+		if (categoryCache.edges != null) {
+			console.log('category cache', categoryCache);
+
+			return {
+				paths:
+					(await categoryCache.edges.map(
+						(category: any) => `/category/${category.node.name}`
+					)) || [],
+				fallback: true
+			};
+		} else {
+			// throw new Error ('edges in categories are null')
+			return {
+				fallback: true
+			};
+		}
+	} else {
+		// throw new Error('object null')
+		return {
+			fallback: true
+		};
+	}
 };
 
 export default Category;
