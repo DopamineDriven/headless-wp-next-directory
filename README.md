@@ -1,5 +1,10 @@
 # headless-wp-next-directory
 
+## AWS Amplify
+
+- https://github.com/dabit3/nextjs-data-story/blob/main/components/Comments.js
+- https://dev.to/dabit3/next-js-the-data-story-2b0d
+
 ## GraphQL.js + CodeGen
 
 - https://www.techhive.io/our-insights/how-to-build-a-powerful-blog-with-nextjs-and-contentful
