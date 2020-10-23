@@ -25,7 +25,7 @@ import { CMS_NAME, HOME_OG_IMAGE_URL } from 'lib/constants';
 import MoreCards from 'components/cards-coalesced';
 import { Fragment } from 'react';
 import { PostsProps, AllPostsProps } from 'types/posts';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from 'next';
 import { MediaContextProvider } from 'lib/window-width';
 import {
 	ALL_POSTS_FOR_CATEGORY,
@@ -39,7 +39,8 @@ import {
 import {
 	AllCategoriesVariables,
 	AllCategories_categories,
-	AllCategories
+	AllCategories,
+	AllCategories_categories_edges_node
 } from 'graphql/__generated__/AllCategories';
 
 interface SlugProps {
@@ -107,7 +108,9 @@ export const getStaticProps = async ({
 	};
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async (): Promise<
+	GetStaticPathsResult
+> => {
 	// const allCategories = await getCategories();
 
 	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
@@ -122,28 +125,31 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	const categoryCache: AllCategories_categories | null =
 		queryResult.data.categories;
 
-	if (categoryCache != null) {
+	if (categoryCache != null && categoryCache != undefined) {
 		if (categoryCache.edges != null) {
 			console.log('category cache', categoryCache);
 
+			const dataArray: string[] = categoryCache.edges.map(
+				(category: any) => `/category/${category.node.name}`
+			);
+
 			return {
-				paths:
-					(await categoryCache.edges.map(
-						(category: any) => `/category/${category.node.name}`
-					)) || [],
+				paths: dataArray || [],
 				fallback: true
 			};
 		} else {
-			// throw new Error ('edges in categories are null')
-			return {
-				fallback: true
-			};
+			throw new Error('edges in categories are null');
+			// return {
+			// 	paths: ,
+			// 	fallback: true
+			// };
 		}
 	} else {
-		// throw new Error('object null')
-		return {
-			fallback: true
-		};
+		throw new Error('object null');
+		// return {
+		// 	paths:
+		// 	fallback: true
+		// };
 	}
 };
 
