@@ -2,7 +2,7 @@ import 'styles/index.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { AppProps, NextWebVitalsMetric } from 'next/app';
-import { ReactElement, useEffect } from 'react';
+import React, { ReactElement, useEffect } from 'react';
 import { useRouter, NextRouter } from 'next/router';
 import { gaInit, logPageView } from 'lib/google-analytics';
 import {
@@ -13,6 +13,23 @@ import {
 import { useApollo } from 'lib/apollo';
 
 config.autoAddCss = false;
+
+// https://github.com/UnlyEd/next-right-now/blob/v2-mst-aptd-gcms-lcz-sty/src/pages/_app.tsx
+
+if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
+	// eslint-disable-next-line @typescript-eslint/no-var-requires
+	const whyDidYouRender = require('@welldone-software/why-did-you-render');
+	// eslint-disable-next-line no-console
+	console.debug(
+		'Applying whyDidYouRender, to help you locate unnecessary re-renders during development. See https://github.com/welldone-software/why-did-you-render'
+	);
+	whyDidYouRender(React, {
+		trackAllPureComponents: true,
+		trackHooks: true,
+		logOwnerReasons: true,
+		collapseGroups: true
+	});
+}
 
 function App({ Component, pageProps }: AppProps): ReactElement {
 	const apolloClient: ApolloClient<NormalizedCacheObject> = useApollo(
@@ -37,7 +54,7 @@ function App({ Component, pageProps }: AppProps): ReactElement {
 }
 
 export function reportWebVitals(metric: NextWebVitalsMetric) {
-	console.log(metric);
+	console.debug(metric);
 }
 
 export default App;
