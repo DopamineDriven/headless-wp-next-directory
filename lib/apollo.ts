@@ -30,16 +30,13 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 			addTypename: true,
 			resultCaching: true,
 			typePolicies: {
-				Query: {
-					keyFields: ['data']
-				},
-				Category: {
-					keyFields: ['name']
-					// fields: {
-					// 	posts: concatPagination<Reference>(),
-					// 	categories: concatPagination<Reference>()
-					// }
-				}
+				// Query: {
+				// 	keyFields: false,
+				// fields: {
+				// 	posts: concatPagination<Reference>(),
+				// 	categories: concatPagination<Reference>()
+				// }
+				// }
 			}
 		})
 	});
