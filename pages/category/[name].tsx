@@ -42,14 +42,20 @@ import {
 	AllCategories,
 	AllCategories_categories_edges_node
 } from 'graphql/__generated__/AllCategories';
+import {
+	AllPostsForCategory,
+	AllPostsForCategory_categories
+} from 'graphql/__generated__/AllPostsForCategory';
 
 interface SlugProps {
-	posts: PostsProps[];
+	posts: AllPostsForCategory_categories;
 	preview: boolean;
 }
 
 const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 	const router: NextRouter = useRouter();
+
+	console.log('posts received: ', posts.edges[0].node.posts);
 
 	return (
 		<Fragment>
@@ -94,15 +100,20 @@ export const getStaticProps = async ({
 
 	const allPostsForCategory: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
-	await allPostsForCategory.query({
-		query: ALL_POSTS_FOR_CATEGORY,
-		variables: allPostsForCategoryQueryVariables
-	});
+	const queryResult: ApolloQueryResult<AllPostsForCategory> = await allPostsForCategory.query(
+		{
+			query: ALL_POSTS_FOR_CATEGORY,
+			variables: { first: 10, name: params.name }
+		}
+	);
+
+	const postsForCategoryCache: AllPostsForCategory_categories | null =
+		queryResult.data.categories;
 
 	return {
 		props: {
 			preview,
-			posts: await allPostsForCategory.cache.extract()
+			posts: postsForCategoryCache
 		},
 		revalidate: 10
 	};
