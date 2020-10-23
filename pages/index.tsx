@@ -236,6 +236,7 @@ export const getStaticProps = async ({
 
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
+	// console.log('identity of cache: ' cache.identify(categoriesWordPress))
 
 	return {
 		props: {
