@@ -1,8 +1,12 @@
 import { gql } from '@apollo/client';
 
 export const ALL_TAGS = gql`
-	query AllTags {
-		tags {
+	query AllTags($first: Int) {
+		tags(first: $first) {
+			pageInfo {
+				hasNextPage
+				endCursor
+			}
 			edges {
 				node {
 					name
@@ -11,3 +15,9 @@ export const ALL_TAGS = gql`
 		}
 	}
 `;
+
+export const allTagQueryVariables = {
+	first: 10
+};
+
+export const tagKeyNameForCache = `tags({"first":${allTagQueryVariables.first}})`;

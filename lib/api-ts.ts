@@ -310,8 +310,6 @@ export async function getCategories(): Promise<any> {
 		variablesGetCategories
 	);
 
-	console.log(data);
-	console.log(data.categories);
 	return data.categories?.edges;
 }
 
