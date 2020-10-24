@@ -181,17 +181,9 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 			};
 		} else {
 			throw new Error('edges in categories are null');
-			// return {
-			// 	paths: ,
-			// 	fallback: true
-			// };
 		}
 	} else {
 		throw new Error('object null');
-		// return {
-		// 	paths:
-		// 	fallback: true
-		// };
 	}
 };
 
