@@ -74,40 +74,38 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 		}
 	}
 
-	if (postData != null) {
-		// console.log('posts received: ', postData.nodes);
+	console.log('posts received: ', postData.nodes);
 
-		return (
-			<Fragment>
-				<Header />
-				<Layout preview={preview}>
-					{router.isFallback ? (
-						<PostTitle>Loading…</PostTitle>
-					) : (
-						<>
-							<article>
-								<Head>
-									<title>Category search {CMS_NAME}</title>
-									<meta property='og:image' content={HOME_OG_IMAGE_URL} />
-								</Head>
-							</article>
-							<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
-								{postData.nodes != null ? (
-									postData.nodes.length > 0 ? (
-										<Cards posts={postData.nodes} />
-									) : (
-										'No posts for this category'
-									)
+	return (
+		<Fragment>
+			<Header />
+			<Layout preview={preview}>
+				{router.isFallback ? (
+					<PostTitle>Loading…</PostTitle>
+				) : (
+					<>
+						<article>
+							<Head>
+								<title>Category search {CMS_NAME}</title>
+								<meta property='og:image' content={HOME_OG_IMAGE_URL} />
+							</Head>
+						</article>
+						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
+							{postData.nodes != null ? (
+								postData.nodes.length > 0 ? (
+									<Cards posts={postData.nodes} />
 								) : (
-									'postData.nodes is null'
-								)}
-							</div>
-						</>
-					)}
-				</Layout>
-			</Fragment>
-		);
-	}
+									'No posts for this category'
+								)
+							) : (
+								'postData.nodes is null'
+							)}
+						</div>
+					</>
+				)}
+			</Layout>
+		</Fragment>
+	);
 };
 
 type Params = {
@@ -183,17 +181,9 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 			};
 		} else {
 			throw new Error('edges in categories are null');
-			// return {
-			// 	paths: ,
-			// 	fallback: true
-			// };
 		}
 	} else {
 		throw new Error('object null');
-		// return {
-		// 	paths:
-		// 	fallback: true
-		// };
 	}
 };
 
