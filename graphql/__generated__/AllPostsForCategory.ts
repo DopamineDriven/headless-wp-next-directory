@@ -166,3 +166,8 @@ export interface AllPostsForCategory {
 	 */
 	categories: AllPostsForCategory_categories | null;
 }
+
+export interface AllPostsForCategoryVariables {
+	first?: number | null;
+	name?: (string | null)[] | null;
+}
