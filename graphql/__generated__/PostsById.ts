@@ -13,6 +13,14 @@ export interface PostsById_posts_nodes {
 	 * The globally unique identifier of the post object.
 	 */
 	id: string;
+	/**
+	 * The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
+	 */
+	title: string | null;
+	/**
+	 * The ID of the node in the database.
+	 */
+	databaseId: number;
 }
 
 export interface PostsById_posts {

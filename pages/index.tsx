@@ -42,6 +42,7 @@ import {
 	OrderEnum
 } from 'types/graphql-global-types';
 import { ALL_TAGS } from 'graphql/api-all-tags';
+import { allPostsQueryVars } from '../components/cards-coalesced-hook';
 
 interface IndexProps {
 	allPosts: AllPostsProps;
