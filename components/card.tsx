@@ -9,9 +9,9 @@ import SiteDivider from 'components/site-divider';
 import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../graphql/__generated__/getAllPostsWithSlug';
 
 interface CardProps {
-	coverImage: CoverImageProps;
+	coverImage: any;
 	title: string;
-	slug: PostSlug;
+	slug: string;
 	modified: string;
 	author: authorType;
 	excerpt?: string;
