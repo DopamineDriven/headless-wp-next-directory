@@ -44,7 +44,9 @@ import {
 } from 'graphql/__generated__/AllCategories';
 import {
 	AllPostsForCategory,
-	AllPostsForCategory_categories
+	AllPostsForCategory_categories,
+	AllPostsForCategory_categories_edges_node_posts,
+	AllPostsForCategory_categories_edges_node_posts_nodes
 } from 'graphql/__generated__/AllPostsForCategory';
 
 interface SlugProps {
@@ -55,34 +57,57 @@ interface SlugProps {
 const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 	const router: NextRouter = useRouter();
 
-	console.log('posts received: ', posts.edges[0].node.posts);
+	let postData: AllPostsForCategory_categories_edges_node_posts = {
+		__typename: 'CategoryToPostConnection',
+		nodes: []
+	};
 
-	return (
-		<Fragment>
-			<Header />
-			<Layout preview={preview}>
-				{router.isFallback ? (
-					<PostTitle>Loading…</PostTitle>
-				) : (
-					<>
-						<article>
-							<Head>
-								<title>Category search {CMS_NAME}</title>
-								<meta property='og:image' content={HOME_OG_IMAGE_URL} />
-							</Head>
-						</article>
-						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
-							{posts.length > 0 ? (
-								<Cards posts={posts} />
-							) : (
-								'No posts for this category'
-							)}
-						</div>
-					</>
-				)}
-			</Layout>
-		</Fragment>
-	);
+	if (posts != null) {
+		if (posts.edges != null) {
+			if (posts.edges[0] != null) {
+				if (posts.edges[0].node != null) {
+					if (posts.edges[0].node.posts != null) {
+						postData = posts.edges[0].node.posts;
+					}
+				}
+			}
+		}
+	}
+
+	if (postData != null) {
+		// console.log('posts received: ', postData.nodes);
+
+		return (
+			<Fragment>
+				<Header />
+				<Layout preview={preview}>
+					{router.isFallback ? (
+						<PostTitle>Loading…</PostTitle>
+					) : (
+						<>
+							<article>
+								<Head>
+									<title>Category search {CMS_NAME}</title>
+									<meta property='og:image' content={HOME_OG_IMAGE_URL} />
+								</Head>
+							</article>
+							<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
+								{postData.nodes != null ? (
+									postData.nodes.length > 0 ? (
+										<Cards posts={postData.nodes} />
+									) : (
+										'No posts for this category'
+									)
+								) : (
+									'postData.nodes is null'
+								)}
+							</div>
+						</>
+					)}
+				</Layout>
+			</Fragment>
+		);
+	}
 };
 
 type Params = {
@@ -110,13 +135,21 @@ export const getStaticProps = async ({
 	const postsForCategoryCache: AllPostsForCategory_categories | null =
 		queryResult.data.categories;
 
-	return {
-		props: {
-			preview,
-			posts: postsForCategoryCache
-		},
-		revalidate: 10
-	};
+	if (postsForCategoryCache != null) {
+		if (postsForCategoryCache.edges != null) {
+			return {
+				props: {
+					preview,
+					posts: postsForCategoryCache
+				},
+				revalidate: 10
+			};
+		} else {
+			throw new Error('posts for category data returned from query is null ');
+		}
+	} else {
+		throw new Error('edges inside posts for category data is null');
+	}
 };
 
 export const getStaticPaths: GetStaticPaths = async (): Promise<
