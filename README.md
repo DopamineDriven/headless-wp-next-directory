@@ -1,5 +1,10 @@
 # headless-wp-next-directory
 
+## Try adding undefined
+
+- try adding undefined with null, so that null or undefined are both covered...
+- https://www.amitmerchant.com/strictly-check-null-undefined-typescript/
+
 ## AWS Amplify
 
 - https://github.com/dabit3/nextjs-data-story/blob/main/components/Comments.js
