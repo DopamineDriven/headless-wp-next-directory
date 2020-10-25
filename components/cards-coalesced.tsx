@@ -10,12 +10,12 @@ type CardsProps = {
 };
 
 type Required<T extends CardsProps> = {
-	[PostProps in keyof T]-?: T[PostProps];
+	[CardProps in keyof T]-?: T[CardProps];
 };
 
 type HasSelect<T extends CardsProps> = {};
 
-export default function CardsCoalesced({ posts }: CardsProps) {
+export default function CardsCoalesced({ posts }: Required<CardsProps>) {
 	return (
 		<section className='content-center justify-center block mx-auto '>
 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
