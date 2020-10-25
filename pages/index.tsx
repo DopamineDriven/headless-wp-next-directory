@@ -17,7 +17,17 @@ import {
 } from 'next';
 import { ApolloClient, NormalizedCacheObject, useQuery } from '@apollo/client';
 import { initializeApollo } from '../lib/apollo';
-import { ALL_CATEGORIES } from '../graphql/api-all-categories';
+import {
+	ALL_CATEGORIES,
+	allCategoryQueryVariables,
+	categoryKeyNameForCache
+} from '../graphql/api-all-categories';
+import {
+	allTagQueryVariables,
+	ALL_TAGS,
+	tagKeyNameForCache
+} from '../graphql/api-all-tags';
+
 import { ALL_POSTS_FOR_CATEGORY } from '../graphql/api-posts-for-category';
 import { AllCategories_categories_edges } from '../graphql/__generated__/AllCategories';
 import {
@@ -41,7 +51,6 @@ import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
 } from 'types/graphql-global-types';
-import { ALL_TAGS } from 'graphql/api-all-tags';
 
 interface IndexProps {
 	allPosts: AllPostsProps;
@@ -58,11 +67,17 @@ const Index = ({
 	// categories,
 	initializeApollo
 }: IndexProps): JSX.Element => {
-	// const heroPost = edges[0]?.node;
+	console.log('initializeApollo Prop: ', initializeApollo);
+	console.log(
+		'attempt at matching key: ',
+		initializeApollo.ROOT_QUERY.categoryKeyNameForCache
+	);
+	console.log('key name: ', categoryKeyNameForCache);
+
 	let morePosts = edges.slice(0);
 	let categoriesTabs: AllCategories_categories_edges[] =
-		initializeApollo.ROOT_QUERY.categories.edges;
-	let tagProps = tagsAndPosts.ROOT_QUERY.tags.edges;
+		initializeApollo.ROOT_QUERY[categoryKeyNameForCache].edges;
+	let tagProps = tagsAndPosts.ROOT_QUERY[tagKeyNameForCache].edges;
 
 	const [filterQuery, setFilterQuery] = useState('title');
 	const [allCompanies, setAllCompanies] = useState<PostsProps[]>(morePosts);
@@ -205,18 +220,23 @@ export const getStaticProps = async ({
 	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
 	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
-	await categoriesWordPress.query({
-		query: ALL_CATEGORIES
-		// variables: allPostsQueryVars
-	});
+	try {
+		await categoriesWordPress.query({
+			query: ALL_CATEGORIES,
+			variables: allCategoryQueryVariables
+		});
+	} catch (error) {
+		console.log('Error with category query: ', error);
+	}
 
 	await tagsWordPress.query({
-		query: ALL_TAGS
-		// variables: allPostsQueryVars
+		query: ALL_TAGS,
+		variables: allTagQueryVariables
 	});
 
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
+	// console.log('identity of cache: ' cache.identify(categoriesWordPress))
 
 	return {
 		props: {

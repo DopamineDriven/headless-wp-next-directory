@@ -5,6 +5,8 @@ export const POSTS_BY_ID = gql`
 		posts(where: { in: [] }) {
 			nodes {
 				id
+				title
+				databaseId
 			}
 		}
 	}

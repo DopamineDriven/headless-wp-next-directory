@@ -4,7 +4,7 @@ import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../graphql/__g
 
 interface CardTitleProps {
 	title: string;
-	slug?: PostSlug;
+	slug: string;
 	// postTitle: string;
 }
 
