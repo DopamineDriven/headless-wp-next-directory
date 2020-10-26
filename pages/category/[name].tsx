@@ -25,7 +25,8 @@ import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from 'next';
 import { MediaContextProvider } from 'lib/window-width';
 import {
 	ALL_POSTS_FOR_CATEGORY,
-	allPostsForCategoryQueryVariables
+	allPostsForCategoryQueryVariables,
+	PsuedoObj_AllPostsForCategory_categories_edges_node_posts
 } from 'graphql/api-posts-for-category';
 import {
 	ALL_CATEGORIES,
@@ -53,10 +54,7 @@ interface SlugProps {
 const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 	const router: NextRouter = useRouter();
 
-	let postData: AllPostsForCategory_categories_edges_node_posts = {
-		__typename: 'CategoryToPostConnection',
-		nodes: []
-	};
+	let postData: AllPostsForCategory_categories_edges_node_posts = PsuedoObj_AllPostsForCategory_categories_edges_node_posts;
 
 	if (posts != null) {
 		if (posts.node != null) {
@@ -92,7 +90,7 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 									'No posts for this category'
 								)
 							) : (
-								'postData.nodes is null'
+								'An error occurred returning posts.  Sorry for the inconvenience, please try again later.'
 							)}
 						</div>
 					</>
