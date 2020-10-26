@@ -12,14 +12,12 @@ import Header from 'components/header';
 import PostHeader from 'components/post-header';
 // import SectionSeparator from 'components/section-separator';
 import Layout from 'components/layout';
-import { getAllPostsForCategory, getCategories } from 'lib/api';
 import PostTitle from 'components/post-title';
-import Cards from 'components/cards-coalesced';
+import CategoryPostsCards from 'components/cards-coalesced-category-posts';
 import Head from 'next/head';
 import { CMS_NAME, HOME_OG_IMAGE_URL } from 'lib/constants';
 // import Tags from 'components/tags';
 import { Fragment } from 'react';
-import { PostsProps, AllPostsProps } from 'types/posts';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from 'next';
 import { MediaContextProvider } from 'lib/window-width';
 import {
@@ -76,18 +74,6 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 		}
 	}
 
-	// 	if (posts !== null) {
-	// 		if (posts.edges !== null) {
-	// 			if (posts.edges[0] !== null) {
-	// 				if (posts.edges[0].node !== null) {
-	// 					if (posts.edges[0].node.posts !== null) {
-	// 						postData = posts.edges[0]?.node.posts;
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-
 	console.log('posts received: ', posts);
 
 	return (
@@ -105,9 +91,9 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 							</Head>
 						</article>
 						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
-							{postData.nodes !== null ? (
+							{postData.nodes != null ? (
 								postData.nodes.length > 0 ? (
-									<Cards posts={postData} />
+									<CategoryPostsCards posts={postData.nodes} />
 								) : (
 									'No posts for this category'
 								)
@@ -144,6 +130,7 @@ export const getStaticProps = async ({
 		}
 	);
 
+	//checks to see in query result at top level is null.  If it is sets a psuedoObj equal to data and returns that.
 	const postsForCategoryCache: AllPostsForCategory_categories | null = queryResult
 		.data.categories ?? {
 		__typename: 'RootQueryToCategoryConnection',
