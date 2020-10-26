@@ -1,5 +1,9 @@
 # headless-wp-next-directory
 
+## Make Links "Crawlable"
+
+- https://support.google.com/webmasters/answer/9112205
+
 ## Try adding undefined
 
 - try adding undefined with null, so that null or undefined are both covered...
