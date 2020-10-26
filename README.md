@@ -1,5 +1,9 @@
 # headless-wp-next-directory
 
+## Code Review - Advanced Apollo TS
+
+- https://github.com/borisowsky/next-advanced-apollo-starter/blob/master/tsconfig.json
+
 ## Make Links "Crawlable"
 
 - https://support.google.com/webmasters/answer/9112205
