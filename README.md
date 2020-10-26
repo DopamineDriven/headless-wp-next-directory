@@ -1,34 +1,22 @@
 # headless-wp-next-directory
 
-## codegen configuration
+## Code Review - Advanced Apollo TS
 
-```git
-yarn graphql-codegen init
+- https://github.com/borisowsky/next-advanced-apollo-starter/blob/master/tsconfig.json
 
-$ C:\Users\Anthr\headless-wp-next-directory\node_modules\.bin\graphql-codegen init
+## Make Links "Crawlable"
 
-    Welcome to GraphQL Code Generator!
-    Answer few questions and we will setup everything for you.
+- https://support.google.com/webmasters/answer/9112205
 
-? What type of application are you building? Application built with React
-? Where is your schema?: (path or url) https://cima2020.wpengine.com/graphql
-? Where are your operations and fragments?: src/**/*.graphql
-? Pick plugins: TypeScript (required by other typescript plugins), TypeScript Operations (operations and fragments), TypeScript React Apollo (typed components and HOCs), TypeScript GraphQL files modules (declarations for .graphql files), TypeScript GraphQL document nodes (embedded GraphQL document), Introspection Fragment Matcher (for Apollo Client)
-? Where to write the output: src/generated/graphql.tsx
-? Do you want to generate an introspection file? Yes
-? How to name the config file? codegen.yml
-? What script in package.json should run the codegen? codegen
+## Try adding undefined
 
-    Config file generated at codegen.yml
+- try adding undefined with null, so that null or undefined are both covered...
+- https://www.amitmerchant.com/strictly-check-null-undefined-typescript/
 
-      $ npm install
+## AWS Amplify
 
-    To install the plugins.
-
-      $ npm run codegen
-
-    To run GraphQL Code Generator.
-```
+- https://github.com/dabit3/nextjs-data-story/blob/main/components/Comments.js
+- https://dev.to/dabit3/next-js-the-data-story-2b0d
 
 ## GraphQL.js + CodeGen
 

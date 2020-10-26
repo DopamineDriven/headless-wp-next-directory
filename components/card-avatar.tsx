@@ -1,10 +1,12 @@
-import Modified from './date-modified';
+import Modified from 'components/date-modified';
 import { authorProps } from 'types/posts';
 import { Fragment } from 'react';
+// import { Author_users_edges_node_avatar } from '../graphql/__generated__/Author';
 
 interface AvatarProps {
 	author: authorProps;
 	modified: string;
+	// avatar: Author_users_edges_node_avatar;
 }
 
 const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
@@ -12,19 +14,18 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 		author.firstName && author.lastName
 			? `${author.firstName} ${author.lastName}`
 			: author.name;
-
 	const ImageJsx = (): JSX.Element => (
-		<div className='block float-right transition-all duration-500 transform text-right align-middle pl-portfolio col-span-1'>
+		<div className='block float-right col-span-1 text-right align-middle transition-all duration-1000 transform pl-portfolio lg:pl-portfolioDivider'>
 			<img
 				src={author.avatar.url}
-				className='block mx-auto rounded-full sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
-				alt={nombre}
+				className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
+				alt={`avatar for ${nombre}`}
 			/>
 		</div>
 	);
 
 	const NombreJsx = (): JSX.Element => (
-		<div className='block col-span-3 align-top text-customAboutSubMobile sm:text-customS'>
+		<div className='block col-span-3 align-top text-customAboutSubMobile sm:text-customS lg:text-customExcerpt'>
 			<a className='block w-full'>{nombre}</a>
 		</div>
 	);
@@ -33,7 +34,7 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 
 	const ModifiedJsx = (): JSX.Element => (
 		<div className='block float-left col-span-3 text-left align-top text-tertiary'>
-			<a className='block w-full transition-all transform -translate-y-portfolioLS text-customCardDateMobile sm:text-customCardAuthorDate'>
+			<a className='block w-full transition-all transform -translate-y-portfolioLS lg:-translate-y-portfolio text-customCardDateMobile sm:text-customCardAuthorDate lg:text-customExcerpt'>
 				<Modified modifiedString={modified} />
 			</a>
 		</div>

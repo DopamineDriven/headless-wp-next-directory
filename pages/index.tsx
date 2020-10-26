@@ -46,7 +46,7 @@ import { MediaContextProvider } from 'lib/window-width';
 // import FieldEnum from 'types/enums/field-enum';
 // import OrderEnum from 'types/enums/order-enum';
 import Footer from 'components/footer';
-import CardFilter from 'components/card-filter';
+// import CardFilter from 'components/card-filter';
 import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
@@ -87,7 +87,7 @@ const Index = ({
 	const [search, setSearch] = useState<string | null>(null);
 	const [searchCategory, setSearchedCategory] = useState<string | null>(null);
 	const { TITLE } = PostObjectsConnectionOrderbyEnum;
-	const [filter, setFilter] = useState(TITLE);
+	// const [filter, setFilter] = useState(TITLE);
 
 	useEffect(() => {
 		if (!search) {
@@ -169,7 +169,7 @@ const Index = ({
 					categories={categoriesTabs}
 				/>
 				{/* {categoryData()} */}
-				<CardFilter filter={filter} setFilter={setFilter} />
+				{/* <CardFilter filter={filter} setFilter={setFilter} /> */}
 				<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
 					{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
 				</div>

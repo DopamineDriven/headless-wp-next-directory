@@ -1,6 +1,13 @@
-import { gql } from '@apollo/client';
+import { gql, TypedDocumentNode } from '@apollo/client';
+import { DocumentNode, Location } from 'graphql';
 
-export const ALL_CATEGORIES = gql`
+type Required<T extends DocumentNode> = {
+	[DocumentNode in keyof T]-?: T[DocumentNode];
+};
+
+type HasLoc<T extends DocumentNode> = `loc` extends keyof T ? true : false;
+
+export const ALL_CATEGORIES: DocumentNode = gql`
 	query AllCategories($first: Int) {
 		categories(first: $first) {
 			pageInfo {

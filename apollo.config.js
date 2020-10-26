@@ -4,7 +4,7 @@ module.exports = {
 			name: 'cima2020',
 			url: process.env.WORDPRESS_API_URL,
 			skipSSLValidation: true,
-			includes: ['./graphql/**/*.ts', './lib/apollo.ts']
+			includes: ['./graphql/**/*.ts', './lib/apollo.ts', './pages/**/*.tsx']
 		}
 	}
 };

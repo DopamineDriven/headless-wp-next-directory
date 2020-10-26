@@ -1,5 +1,5 @@
-import Card from './card';
-import { PostsProps } from '../types/posts';
+import Card from 'components/card';
+import { PostsProps } from 'types/posts';
 
 type NodeProps = {
 	node: any;
@@ -9,10 +9,16 @@ type CardsProps = {
 	posts: PostsProps[];
 };
 
-export default function MoreCards({ posts }: CardsProps) {
+type Required<T extends CardsProps> = {
+	[CardProps in keyof T]-?: T[CardProps];
+};
+
+type HasSelect<T extends CardsProps> = {};
+
+export default function CardsCoalesced({ posts }: Required<CardsProps>) {
 	return (
 		<section className='content-center justify-center block mx-auto '>
-			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
+			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
 				{posts.map((company: PostsProps) => {
 					const node: any = company.node;
 					return (
@@ -33,29 +39,42 @@ export default function MoreCards({ posts }: CardsProps) {
 	);
 }
 
-// export default function MoreCards({ posts, slug }: CardsProps) {
+// import Card from 'components/card';
+// import { PostsProps } from 'types/posts';
+// import { AllPosts } from 'graphql/custom-types/get-all-posts';
+// import { AllPosts_posts_edges, AllPosts_posts } from '../graphql/custom-types/get-all-posts';
+
+// type NodeProps = {
+// 	node: any;
+// };
+
+// type CardsProps = {
+// 	posts: PostsProps[];
+// };
+
+// type Required<T> = {
+// 	[P in keyof T]-?: T[P];
+// };
+
+// export default function CardsCoalesced({ posts }: Required<AllPosts[]>) {
 // 	return (
-// 		<section>
-// 			{/* <h2 className='mb-8 text-6xl leading-tight tracking-tighter md:text-6xl'>
-// 				More Companies
-// 			</h2> */}
-// 			<div className='grid grid-cols-1 text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6'>
-// 				<Link as={`/posts/${slug}`} href='/posts/[slug]'>
-// 					<a>
-// 						{posts.map(({ node }: NodeProps) => (
-// 							<Card
-// 								key={node.slug}
-// 								title={node.title}
-// 								coverImage={node.featuredImage.node}
-// 								date={node.date}
-// 								social={node.social}
-// 								author={node.author.node}
-// 								slug={node.slug}
-// 								excerpt={node.excerpt}
-// 							/>
-// 						))}
-// 					</a>
-// 				</Link>
+// 		<section className='content-center justify-center block mx-auto '>
+// 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
+// 				{posts.map((company: Required<AllPosts[]>) => {
+// 					let node: Required<AllPosts_posts_edges>;
+// 					return (
+// 						<Card
+// 							key={company.__typename}
+// 							title={company.node.title}
+// 							coverImage={company.node.featuredImage.node.sourceUrl}
+// 							modified={company.node.modified}
+// 							social={company.node.social}
+// 							author={company.node.author}
+// 							slug={company.node.slug}
+// 							excerpt={company.node.excerpt}
+// 						/>
+// 					);
+// 				})}
 // 			</div>
 // 		</section>
 // 	);

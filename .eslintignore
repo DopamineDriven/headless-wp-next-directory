@@ -26,3 +26,5 @@ global.d.ts
 tsconfig.json
 client-config.js
 utils
+pages/_error.tsx
+pages/404.tsx
