@@ -2,11 +2,7 @@ import { useRouter, NextRouter } from 'next/router';
 import {
 	ApolloClient,
 	ApolloQueryResult,
-	NormalizedCacheObject,
-	NormalizedCache,
-	ApolloCache,
-	StoreObject,
-	StoreValue
+	NormalizedCacheObject
 } from '@apollo/client';
 import { initializeApollo } from '../../lib/apollo';
 import Container from 'components/container';
@@ -46,11 +42,11 @@ import {
 	AllPostsForCategory,
 	AllPostsForCategory_categories,
 	AllPostsForCategory_categories_edges_node_posts,
-	AllPostsForCategory_categories_edges_node_posts_nodes
+	AllPostsForCategory_categories_edges
 } from 'graphql/__generated__/AllPostsForCategory';
 
 interface SlugProps {
-	posts: AllPostsForCategory_categories;
+	posts: AllPostsForCategory_categories_edges;
 	preview: boolean;
 }
 
@@ -63,18 +59,16 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 	};
 
 	if (posts != null) {
-		if (posts.edges != null) {
-			if (posts.edges[0] != null) {
-				if (posts.edges[0].node != null) {
-					if (posts.edges[0].node.posts != null) {
-						postData = posts.edges[0].node.posts;
-					}
-				}
+		if (posts.node != null) {
+			if (posts.node.posts != null) {
+				// if (posts.node.posts.nodes !=null) {
+				postData = posts.node.posts;
+				// }
 			}
 		}
 	}
 
-	console.log('posts received: ', postData.nodes);
+	console.log('posts received: ', posts);
 
 	return (
 		<Fragment>
@@ -93,7 +87,7 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
 							{postData.nodes != null ? (
 								postData.nodes.length > 0 ? (
-									<Cards posts={postData.nodes} />
+									<Cards posts={postData} />
 								) : (
 									'No posts for this category'
 								)
@@ -130,23 +124,22 @@ export const getStaticProps = async ({
 		}
 	);
 
-	const postsForCategoryCache: AllPostsForCategory_categories | null =
-		queryResult.data.categories;
+	const postsForCategoryCache: AllPostsForCategory_categories | null = queryResult
+		.data.categories ?? {
+		__typename: 'RootQueryToCategoryConnection',
+		edges: null
+	};
 
-	if (postsForCategoryCache != null) {
-		if (postsForCategoryCache.edges != null) {
-			return {
-				props: {
-					preview,
-					posts: postsForCategoryCache
-				},
-				revalidate: 10
-			};
-		} else {
-			throw new Error('posts for category data returned from query is null ');
-		}
+	if (postsForCategoryCache.edges != null) {
+		return {
+			props: {
+				preview,
+				posts: postsForCategoryCache.edges
+			},
+			revalidate: 10
+		};
 	} else {
-		throw new Error('edges inside posts for category data is null');
+		throw new Error('posts for category data returned from query is null ');
 	}
 };
 
