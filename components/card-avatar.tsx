@@ -19,23 +19,23 @@ interface AvatarProps {
 
 const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 	const nombre: string | null =
-		author.firstName && author.lastName != null
+		author.firstName !== null && author.lastName !== null
 			? `${author.firstName} ${author.lastName}`
 			: author.name;
 
 	const ImageJsx = (): JSX.Element => (
 		<div className='block float-right col-span-1 text-right align-middle transition-all duration-1000 transform pl-portfolio lg:pl-portfolioDivider'>
-			{author && author.avatar && author.avatar.url ? (
+			{author !== null && author.avatar !== null && author.avatar.url !== null ? (
 				<img
 					src={author.avatar.url}
 					className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
-					alt={`avatar for ${nombre}`}
+					alt={`avatar for ${author.name}`}
 				/>
 			) : (
 				<img
 					src={'https://dev-to-uploads.s3.amazonaws.com/i/5pfcju7s49gsqjd987vx.jpg'}
 					className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
-					alt={`null check avatar for ${nombre}`}
+					alt={`null check avatar for ${author.name}`}
 				/>
 			)}
 		</div>
@@ -43,7 +43,9 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 
 	const NombreJsx = (): JSX.Element => (
 		<div className='block col-span-3 align-top text-customAboutSubMobile sm:text-customS lg:text-customExcerpt'>
-			<a className='block w-full'>{author && author.name ? author.name : 'oi'}</a>
+			<a className='block w-full'>
+				{author !== null && author.name !== null ? author.name : nombre}
+			</a>
 		</div>
 	);
 
