@@ -17,6 +17,8 @@ interface AvatarProps {
 	// avatar: Author_users_edges_node_avatar;
 }
 
+// https://www.apollographql.com/docs/react/development-testing/static-typing/#props
+
 const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 	const nombre: string | null =
 		author.firstName !== null && author.lastName !== null
