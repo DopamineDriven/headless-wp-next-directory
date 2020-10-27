@@ -14,23 +14,6 @@ export const ALL_POSTS_FOR_CATEGORY = gql`
 					name
 					posts {
 						nodes {
-							id
-							title
-							date
-							excerpt
-							slug
-							modified
-							social {
-								facebook
-								instagram
-								twitter
-								website
-							}
-							featuredImage {
-								node {
-									sourceUrl
-								}
-							}
 							author {
 								node {
 									name
@@ -40,6 +23,24 @@ export const ALL_POSTS_FOR_CATEGORY = gql`
 										url
 									}
 								}
+							}
+							title
+							content
+							date
+							excerpt
+							featuredImage {
+								node {
+									sourceUrl
+								}
+							}
+							id
+							modified
+							slug
+							social {
+								facebook
+								instagram
+								twitter
+								website
 							}
 						}
 					}
