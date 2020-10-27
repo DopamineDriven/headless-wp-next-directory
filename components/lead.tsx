@@ -15,7 +15,7 @@ const Lead = (): JSX.Element => {
 				style={{ transform: 'translate3d(0px, 0px, 0px)' }}
 			>
 				<LeadIcon />
-				<LeadTitle />
+				{/* <LeadTitle /> */}
 				<LeadSpan />
 				<LeadSocial />
 			</header>

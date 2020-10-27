@@ -5,7 +5,7 @@ import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../graphql/__g
 export type CoverImageProps = {
 	title: string;
 	coverImage: any;
-	slug: string;
+	slug: PostSlug;
 };
 
 const CoverImageCard = ({
