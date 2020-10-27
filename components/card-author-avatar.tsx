@@ -9,7 +9,7 @@ interface AvatarProps {
 }
 
 export interface AuthorGeneratedProps {
-	author: AuthorCardQueryUsersNodes;
+	author: AvatarProps;
 }
 
 const AuthorAvatar = ({ author }: AuthorGeneratedProps) => {
