@@ -39,8 +39,10 @@ import {
 	AllPostsForCategory,
 	AllPostsForCategory_categories,
 	AllPostsForCategory_categories_edges_node_posts,
+	AllPostsForCategory_categories_edges_node_posts_nodes,
 	AllPostsForCategory_categories_edges
 } from 'graphql/__generated__/AllPostsForCategory';
+import CATEGORIES_BY_NODES from 'graphql/api-categories-by-nodes';
 
 type Required<T> = {
 	[P in keyof T]-?: T[P];
@@ -143,11 +145,38 @@ export const getStaticProps = async ({
 		edges: null
 	};
 
+	const restructurePostsForCategory = (
+		dataObj: (AllPostsForCategory_categories_edges | null)[]
+	) => {
+		let dataArray = [];
+
+		for (let categoryNode of dataObj) {
+			if (categoryNode != null) {
+				if (categoryNode.node != null) {
+					if (categoryNode.node.posts != null) {
+						if (categoryNode.node.posts.nodes != null) {
+							for (let post of categoryNode.node.posts.nodes) {
+								const restructureDataObj = { node: post };
+								dataArray.push(restructureDataObj);
+							}
+							console.log('restructured data Array:', dataArray);
+							return dataArray;
+						}
+					}
+				}
+			}
+		}
+	};
+
 	if (postsForCategoryCache.edges != null) {
+		const restructuredCategoryPostData = restructurePostsForCategory(
+			postsForCategoryCache.edges
+		);
+
 		return {
 			props: {
 				preview,
-				posts: postsForCategoryCache.edges
+				posts: restructuredCategoryPostData
 			},
 			revalidate: 10
 		};
