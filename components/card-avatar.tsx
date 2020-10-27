@@ -1,32 +1,49 @@
 import Modified from 'components/date-modified';
 import { authorProps } from 'types/posts';
 import { Fragment } from 'react';
-// import { Author_users_edges_node_avatar } from '../graphql/__generated__/Author';
+import {
+	AuthorCardQuery_users as AuthorCardQueryUsers,
+	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
+	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
+} from '../graphql/__generated__/AuthorCardQuery';
+
+interface AuthorArray {
+	authors: AuthorCardQueryUsers;
+}
 
 interface AvatarProps {
-	author: authorProps;
+	author: AuthorCardQueryUsersNodes;
 	modified: string;
 	// avatar: Author_users_edges_node_avatar;
 }
 
 const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
-	const nombre: string =
-		author.firstName && author.lastName
+	const nombre: string | null =
+		author.firstName && author.lastName != null
 			? `${author.firstName} ${author.lastName}`
 			: author.name;
+
 	const ImageJsx = (): JSX.Element => (
 		<div className='block float-right col-span-1 text-right align-middle transition-all duration-1000 transform pl-portfolio lg:pl-portfolioDivider'>
-			<img
-				src={author.avatar.url}
-				className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
-				alt={`avatar for ${nombre}`}
-			/>
+			{author && author.avatar && author.avatar.url ? (
+				<img
+					src={author.avatar.url}
+					className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
+					alt={`avatar for ${nombre}`}
+				/>
+			) : (
+				<img
+					src={'https://dev-to-uploads.s3.amazonaws.com/i/5pfcju7s49gsqjd987vx.jpg'}
+					className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
+					alt={`null check avatar for ${nombre}`}
+				/>
+			)}
 		</div>
 	);
 
 	const NombreJsx = (): JSX.Element => (
 		<div className='block col-span-3 align-top text-customAboutSubMobile sm:text-customS lg:text-customExcerpt'>
-			<a className='block w-full'>{nombre}</a>
+			<a className='block w-full'>{author && author.name ? author.name : 'oi'}</a>
 		</div>
 	);
 
@@ -53,3 +70,54 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 };
 
 export default Avatar;
+
+// interface AvatarProps {
+// 	author: authorProps;
+// 	modified: string;
+// 	// avatar: Author_users_edges_node_avatar;
+// }
+
+// const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
+// 	const nombre: string =
+// 		author.firstName && author.lastName
+// 			? `${author.firstName} ${author.lastName}`
+// 			: author.name;
+// 	const ImageJsx = (): JSX.Element => (
+// 		<div className='block float-right col-span-1 text-right align-middle transition-all duration-1000 transform pl-portfolio lg:pl-portfolioDivider'>
+// 			<img
+// 				src={author.avatar.url}
+// 				className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
+// 				alt={`avatar for ${nombre}`}
+// 			/>
+// 		</div>
+// 	);
+
+// 	const NombreJsx = (): JSX.Element => (
+// 		<div className='block col-span-3 align-top text-customAboutSubMobile sm:text-customS lg:text-customExcerpt'>
+// 			<a className='block w-full'>{nombre}</a>
+// 		</div>
+// 	);
+
+// 	const ColSpanJsx = (): JSX.Element => <div className='col-span-1'></div>;
+
+// 	const ModifiedJsx = (): JSX.Element => (
+// 		<div className='block float-left col-span-3 text-left align-top text-tertiary'>
+// 			<a className='block w-full transition-all transform -translate-y-portfolioLS lg:-translate-y-portfolio text-customCardDateMobile sm:text-customCardAuthorDate lg:text-customExcerpt'>
+// 				<Modified modifiedString={modified} />
+// 			</a>
+// 		</div>
+// 	);
+
+// 	return (
+// 		<Fragment>
+// 			<div className='grid grid-cols-4 overflow-hidden text-left transition-all transform ml-mdmxSocial items-left -translate-x-portfolioLSMobile sm:-translate-x-portfolio pt-portfolioDivider text-customCardAuthorDate'>
+// 				<ImageJsx />
+// 				<NombreJsx />
+// 				<ColSpanJsx />
+// 				<ModifiedJsx />
+// 			</div>
+// 		</Fragment>
+// 	);
+// };
+
+// export default Avatar;

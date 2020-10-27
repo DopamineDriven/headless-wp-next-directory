@@ -1,4 +1,8 @@
 import PostPreview from './post-preview';
+import {
+	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
+	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
+} from '../graphql/__generated__/AuthorCardQuery';
 
 type NodeProps = {
 	node: any;

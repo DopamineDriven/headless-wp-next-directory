@@ -3,10 +3,14 @@ import Date from './date-published';
 import CoverImage, { CoverImageProps } from './post-cover-image';
 import Link from 'next/link';
 import SectionSeparator from './section-separator';
+import {
+	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
+	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
+} from '../graphql/__generated__/AuthorCardQuery';
 
 type HeroPostProps = {
 	coverImage: CoverImageProps;
-	author: any;
+	author: AuthorCardQueryUsersNodes;
 	slug: string | number;
 	excerpt: string;
 	date: string;
