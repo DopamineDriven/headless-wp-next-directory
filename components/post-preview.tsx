@@ -2,6 +2,10 @@ import Avatar from './card-avatar';
 import Date from './date-published';
 import CoverImage, { CoverImageProps } from './post-cover-image';
 import Link from 'next/link';
+import {
+	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
+	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
+} from '../graphql/__generated__/AuthorCardQuery';
 
 type PostPreviewProps = {
 	coverImage: CoverImageProps;
@@ -11,6 +15,7 @@ type PostPreviewProps = {
 	excerpt: string;
 	author: any;
 	slug: string | number;
+	// avatar: AuthorCardQueryUsersNodes;
 };
 
 export default function PostPreview({
