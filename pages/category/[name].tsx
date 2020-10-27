@@ -70,8 +70,14 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 				// if (posts.node.posts.nodes !=null) {
 				postData = posts.node.posts;
 				// }
+			} else {
+				throw new Error('no posts returned in post_node');
 			}
+		} else {
+			throw new Error('no node returned in posts');
 		}
+	} else {
+		throw new Error('no posts returned');
 	}
 
 	console.log('posts received: ', posts);
@@ -130,7 +136,7 @@ export const getStaticProps = async ({
 		}
 	);
 
-	//checks to see in query result at top level is null.  If it is sets a psuedoObj equal to data and returns that.
+	//checks to see if query result at top level is null.  If it is sets a psuedoObj equal to data and returns that.
 	const postsForCategoryCache: AllPostsForCategory_categories | null = queryResult
 		.data.categories ?? {
 		__typename: 'RootQueryToCategoryConnection',
