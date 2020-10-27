@@ -27,13 +27,7 @@ import {
 	ALL_TAGS,
 	tagKeyNameForCache
 } from '../graphql/api-all-tags';
-
-import { ALL_POSTS_FOR_CATEGORY } from '../graphql/api-posts-for-category';
 import { AllCategories_categories_edges } from '../graphql/__generated__/AllCategories';
-import {
-	AllPostsForCategory,
-	AllPostsForCategory_categories
-} from '../graphql/__generated__/AllPostsForCategory';
 import { getAllPostsForHomeAlphabetical } from 'lib/api-ts';
 import { CMS_NAME, CLIENT_NAME } from 'lib/constants';
 import Header from 'components/lead';
