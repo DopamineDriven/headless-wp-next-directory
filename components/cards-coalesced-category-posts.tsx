@@ -29,7 +29,7 @@ export default function CardsCoalescedCategoryPosts({
 								<Card
 									key={company.slug}
 									title={company.title}
-									coverImage={company.node.featuredImage}
+									coverImage={company.featuredImage}
 									modified={company.modified}
 									social={company.social}
 									author={company.author}
