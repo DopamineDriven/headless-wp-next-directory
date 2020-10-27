@@ -7,13 +7,19 @@ import CardExcerpt from 'components/card-excerpt';
 import { Fragment } from 'react';
 import SiteDivider from 'components/site-divider';
 import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../graphql/__generated__/getAllPostsWithSlug';
+import {
+	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
+	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
+} from '../graphql/__generated__/AuthorCardQuery';
 
-interface CardProps {
+interface AuthorPropTypes {
+	author: AuthorCardQueryUsersNodes;
+}
+interface CardProps extends AuthorPropTypes {
 	coverImage: any;
 	title: string;
-	slug: string;
+	slug: PostSlug;
 	modified: string;
-	author: authorType;
 	excerpt?: string;
 	social: socialType;
 }
@@ -43,7 +49,7 @@ const Card = ({
 						<CardTitle slug={slug} title={title} />
 						<CardExcerpt excerpt={excerpt} />
 						<div className='block transition-all duration-1000 transform pl-portfolioDivider font-somaRoman translate-y-portfolio'>
-							<Avatar author={author.node} modified={modified} />
+							<Avatar author={author} modified={modified} />
 						</div>
 						<SiteDivider />
 						<div className='block float-right text-right pr-portfolio font-somaRoman'>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Media } from 'lib/window-width';
 import { Fragment } from 'react';
 import DarkMode from 'components/lead-dark-mode';
+import LeadTitle from 'components/lead-title';
 
 const CimaIconConditional = (): JSX.Element => {
 	const cimaIconXs: JSX.Element = (
@@ -89,8 +90,14 @@ const CimaIconConditional = (): JSX.Element => {
 		</Media>
 	);
 
+	const InlineTitle = () => (
+		<div className='col-span-3 text-right transition-all transform md:pt-portfolio md:text-customTitle md:-translate-y-mdmxSocial translate-y-portfolioLSMobile -translate-x-portfolioPadding'>
+			<LeadTitle />
+		</div>
+	);
+
 	const DarkModeToggler = (): JSX.Element => (
-		<div className='col-span-4 text-right transition-all transform md:pt-portfolio md:text-customTitle md:-translate-y-mdmxSocial translate-y-portfolioLSMobile -translate-x-portfolioPadding'>
+		<div className='col-span-1 text-right transition-all transform md:pt-portfolio md:text-customTitle md:-translate-y-mdmxSocial translate-y-portfolioLSMobile -translate-x-portfolioPadding'>
 			<DarkMode />
 		</div>
 	);
@@ -109,6 +116,7 @@ const CimaIconConditional = (): JSX.Element => {
 		<Fragment>
 			<div className='container relative grid justify-between w-full min-w-full grid-cols-6 overflow-x-hidden overflow-y-hidden transform select-none z-1 pt-portfolioDivider navbar-expand-lg'>
 				<CimaIconsCoalesced />
+				<InlineTitle />
 				<DarkModeToggler />
 			</div>
 		</Fragment>

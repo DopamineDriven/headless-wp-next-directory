@@ -11,24 +11,23 @@ import {
 	ApolloClient
 } from '@apollo/client';
 import { useApollo } from 'lib/apollo';
+import whyDidYouRender from '@welldone-software/why-did-you-render';
 
 config.autoAddCss = false;
 
 // https://github.com/UnlyEd/next-right-now/blob/v2-mst-aptd-gcms-lcz-sty/src/pages/_app.tsx
 
 if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
-	// eslint-disable-next-line @typescript-eslint/no-var-requires
-	const whyDidYouRender = require('@welldone-software/why-did-you-render');
-	// eslint-disable-next-line no-console
-	console.debug(
-		'Applying whyDidYouRender, to help you locate unnecessary re-renders during development. See https://github.com/welldone-software/why-did-you-render'
-	);
 	whyDidYouRender(React, {
 		trackAllPureComponents: true,
 		trackHooks: true,
 		logOwnerReasons: true,
 		collapseGroups: true
 	});
+	// eslint-disable-next-line no-console
+	console.debug(
+		'Applying whyDidYouRender, to help you locate unnecessary re-renders during development. See https://github.com/welldone-software/why-did-you-render'
+	);
 }
 
 function App({ Component, pageProps }: AppProps): ReactElement {
