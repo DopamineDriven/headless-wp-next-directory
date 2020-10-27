@@ -23,7 +23,7 @@ interface AvatarProps {
 
 const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 	const nombre: string | null =
-		author.firstName !== null && author.lastName !== null
+		author.firstName != null && author.lastName != null
 			? `${author.firstName} ${author.lastName}`
 			: author.name;
 
