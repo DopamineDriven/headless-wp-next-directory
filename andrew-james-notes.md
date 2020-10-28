@@ -154,7 +154,7 @@ type PostTypesListed =
 	| 'title'
 	| 'date'
 	| 'slug'
-	| 'coverImage'
+	| 'featuredImage'
 	| 'excerpt'
 	| 'articleImage'
 	| 'postTitle';

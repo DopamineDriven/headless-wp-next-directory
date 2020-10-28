@@ -78,7 +78,7 @@ export default function PostList() {
 						<Card
 							key={node.slug}
 							title={node.title}
-							coverImage={node.featuredImage.node}
+							featuredImage={node.featuredImage.node}
 							modified={node.modified}
 							social={node.social}
 							author={node.author}
@@ -110,7 +110,7 @@ export default function PostList() {
 // 						<Card
 // 							key={node.slug}
 // 							title={node.title}
-// 							coverImage={node.featuredImage.node}
+// 							featuredImage={node.featuredImage.node}
 // 							modified={node.modified}
 // 							social={node.social}
 // 							author={node.author}
@@ -137,7 +137,7 @@ export default function PostList() {
 // 							<Card
 // 								key={node.slug}
 // 								title={node.title}
-// 								coverImage={node.featuredImage.node}
+// 								featuredImage={node.featuredImage.node}
 // 								date={node.date}
 // 								social={node.social}
 // 								author={node.author.node}

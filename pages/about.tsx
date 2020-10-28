@@ -49,7 +49,7 @@ const About = ({
 						{heroPost && (
 							<HeroPost
 								title={heroPost.title}
-								coverImage={heroPost.featuredImage.node}
+								featuredImage={heroPost.featuredImage.node}
 								date={heroPost.date}
 								modified={heroPost.modified}
 								author={heroPost.author.node}
