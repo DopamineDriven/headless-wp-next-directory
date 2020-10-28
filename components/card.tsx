@@ -18,7 +18,7 @@ interface AuthorPropTypes {
 interface CardProps extends AuthorPropTypes {
 	coverImage: any;
 	title: string;
-	slug: string;
+	slug: PostSlug;
 	modified: string;
 	excerpt?: string;
 	social: socialType;

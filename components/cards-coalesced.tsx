@@ -20,7 +20,7 @@ export default function CardsCoalesced({ posts }: Required<CardsProps>) {
 		<section className='content-center justify-center block mx-auto '>
 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
 				{posts.map((company: PostsProps) => {
-					const node: any = company.node;
+					const { node }: any = company;
 					return (
 						<Card
 							key={node.slug}

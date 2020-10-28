@@ -11,42 +11,46 @@ interface AuthorArray {
 	authors: AuthorCardQueryUsers;
 }
 
+interface AvatarURL {
+	avatar: AuthorCardQueryUsersNodesAvatar;
+}
 interface AvatarProps {
 	author: AuthorCardQueryUsersNodes;
 	modified: string;
-	// avatar: Author_users_edges_node_avatar;
 }
 
 // https://www.apollographql.com/docs/react/development-testing/static-typing/#props
 
 const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 	const nombre: string | null =
-		author.firstName !== null && author.lastName !== null
+		author.firstName != null && author.lastName != null
 			? `${author.firstName} ${author.lastName}`
 			: author.name;
 
-	const ImageJsx = (): JSX.Element => (
-		<div className='block float-right col-span-1 text-right align-middle transition-all duration-1000 transform pl-portfolio lg:pl-portfolioDivider'>
-			{author !== null && author.avatar !== null && author.avatar.url !== null ? (
-				<img
-					src={author.avatar.url}
-					className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
-					alt={`avatar for ${author.name}`}
-				/>
-			) : (
-				<img
-					src={'https://dev-to-uploads.s3.amazonaws.com/i/5pfcju7s49gsqjd987vx.jpg'}
-					className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
-					alt={`null check avatar for ${author.name}`}
-				/>
-			)}
-		</div>
-	);
+	const ImageJsx = (): JSX.Element => {
+		return (
+			<div className='block float-right col-span-1 text-right align-middle transition-all duration-1000 transform pl-portfolio lg:pl-portfolioDivider'>
+				{author != null && author.avatar != null && author.avatar.url != null ? (
+					<img
+						src={author.avatar.url}
+						className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
+						alt={`avatar for ${author.name}`}
+					/>
+				) : (
+					<img
+						src={'https://dev-to-uploads.s3.amazonaws.com/i/5pfcju7s49gsqjd987vx.jpg'}
+						className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
+						alt={`null check avatar for ${author.name}`}
+					/>
+				)}
+			</div>
+		);
+	};
 
 	const NombreJsx = (): JSX.Element => (
 		<div className='block col-span-3 align-top text-customAboutSubMobile sm:text-customS lg:text-customExcerpt'>
 			<a className='block w-full'>
-				{author !== null && author.name !== null ? author.name : nombre}
+				{author != null && author.name != null ? author.name : nombre}
 			</a>
 		</div>
 	);

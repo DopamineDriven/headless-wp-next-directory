@@ -1,15 +1,16 @@
 overwrite: true
 schema: 'https://cima2020.wpengine.com/graphql'
-documents: 'lib/**/*.graphql'
+# schemaEntrypoint: './schema.json'
+documents: './graphql'
 generates:
- src/generated/graphql.tsx:
+ ./graphql/codegen/types.ts:
+  #  src/generated/graphql.tsx:
   plugins:
-   - 'typescript'
-   - 'typescript-operations'
-   - 'typescript-react-apollo'
-   - 'typescript-graphql-files-modules'
-   - 'typescript-document-nodes'
-   - 'fragment-matcher'
- ./graphql.schema.json:
-  plugins:
-   - 'introspection'
+   - typescript
+   - typescript-operations
+   - typescript-react-apollo
+  # - 'typescript-graphql-files-modules'
+  # - 'typescript-document-nodes'
+  # - 'fragment-matcher'
+# cacheDir: __generated__
+#  ./graphql.schema.json:
