@@ -11,6 +11,16 @@ query AllPostsGraphQL {
 						sourceUrl
 					}
 				}
+				author {
+					node {
+						avatar {
+							url
+						}
+						name
+						firstName
+						lastName
+					}
+				}
 			}
 		}
 	}
