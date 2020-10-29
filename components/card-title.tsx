@@ -3,8 +3,8 @@ import ReactMarkdown from 'react-markdown/with-html';
 import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../graphql/__generated__/getAllPostsWithSlug';
 
 interface CardTitleProps {
-	title: string;
-	slug: PostSlug;
+	title: string | null;
+	slug: string | null;
 	// postTitle: string;
 }
 
@@ -17,11 +17,13 @@ const CardTitle = ({ title, slug }: CardTitleProps): JSX.Element => {
 					aria-label={`portfolio item title - ${title}`}
 					id={`home-${title}`}
 				>
-					<ReactMarkdown
-						escapeHtml={false}
-						source={title}
-						className='text-center transition-all transform sm:text-left hover:text-tertiary text-customTitleMobile sm:text-customTitle lg:text-customS animate-hero '
-					/>
+					{title != null ? (
+						<ReactMarkdown
+							escapeHtml={false}
+							source={title}
+							className='text-center transition-all transform sm:text-left hover:text-tertiary text-customTitleMobile sm:text-customTitle lg:text-customS animate-hero '
+						/>
+					) : null}
 				</a>
 			</Link>
 		</div>

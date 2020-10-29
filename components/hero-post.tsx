@@ -7,30 +7,33 @@ import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
 } from '../graphql/__generated__/AuthorCardQuery';
+import { AllPosts_posts_edges_node } from 'graphql/__generated__/AllPosts';
 
-type HeroPostProps = {
-	coverImage: CoverImageProps;
-	author: AuthorCardQueryUsersNodes;
-	slug: string | number;
-	excerpt: string;
-	date: string;
-	modified: string;
-	title: string;
-};
+// type HeroPostProps = {
+// 	featuredImage: CoverImageProps;
+// 	author: AuthorCardQueryUsersNodes;
+// 	slug: string | number;
+// 	excerpt: string;
+// 	date: string;
+// 	modified: string;
+// 	title: string;
+// };
 
 export default function HeroPost({
 	title,
-	coverImage,
+	featuredImage,
 	date,
 	modified,
 	excerpt,
 	author,
 	slug
-}: HeroPostProps) {
+}: AllPosts_posts_edges_node) {
 	return (
 		<section>
 			<div className='mb-8 md:mb-8 mt-8'>
-				<CoverImage title={title} coverImage={coverImage} slug={slug} />
+				{title != null && featuredImage != null && slug != null ? (
+					<CoverImage title={title} featuredImage={featuredImage} slug={slug} />
+				) : null}
 			</div>
 			<div className='md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-10'>
 				<div>
@@ -38,7 +41,7 @@ export default function HeroPost({
 						<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 							<a
 								className='hover:underline text-6xl font-bold'
-								dangerouslySetInnerHTML={{ __html: title }}
+								dangerouslySetInnerHTML={{ __html: title != null ? title : 'no title' }}
 							/>
 						</Link>
 					</h3>
@@ -49,9 +52,13 @@ export default function HeroPost({
 				<div>
 					<div
 						className='text-2xl leading-relaxed mb-4'
-						dangerouslySetInnerHTML={{ __html: excerpt }}
+						dangerouslySetInnerHTML={{
+							__html: excerpt != null ? excerpt : 'no excerpt'
+						}}
 					/>
-					<Avatar author={author} modified={modified} />
+					{author != null ? (
+						<Avatar author={author.node} modified={modified} />
+					) : null}
 				</div>
 			</div>
 			<SectionSeparator />

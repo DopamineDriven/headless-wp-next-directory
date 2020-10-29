@@ -1,6 +1,5 @@
 import PostType from './post';
 import { Post } from 'wp-graphql';
-import { DocumentNode } from 'graphql';
 import { CoverImageProps } from '../components/card-image';
 
 export interface AllPostsProps {

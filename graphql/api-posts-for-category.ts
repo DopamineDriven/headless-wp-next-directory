@@ -65,6 +65,7 @@ export const PsuedoObj_AllPostsForCategory_categories_edges_node_posts: AllPosts
 export const PsuedoObj_AllPostsForCategory_categories__edges_node_posts_nodes: AllPostsForCategory_categories_edges_node_posts_nodes = {
 	__typename: 'Post',
 	id: 'nullObject',
+	content: null,
 	title: null,
 	date: null,
 	excerpt: null,

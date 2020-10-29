@@ -9,3 +9,4 @@ patches
 public
 .VSCodeCounter
 lib/typedefs.graphql
+.yml

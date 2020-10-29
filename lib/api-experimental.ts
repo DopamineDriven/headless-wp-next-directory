@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client';
-import { fetchAPI } from 'lib/api';
+import { fetchAPI } from './api';
 
 export const INTROSPECTION_QUERY = async (): Promise<void> => {
 	const data = await fetchAPI(

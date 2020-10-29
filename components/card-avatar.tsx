@@ -6,26 +6,30 @@ import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
 } from '../graphql/__generated__/AuthorCardQuery';
+import { AllPosts_posts_edges_node_author_node } from 'graphql/__generated__/AllPosts';
 
-interface AuthorArray {
-	authors: AuthorCardQueryUsers;
-}
+// interface AuthorArray {
+// 	authors: AuthorCardQueryUsers;
+// }
 
-interface AvatarURL {
-	avatar: AuthorCardQueryUsersNodesAvatar;
-}
+// interface AvatarURL {
+// 	avatar: AuthorCardQueryUsersNodesAvatar;
+// }
+
 interface AvatarProps {
-	author: AuthorCardQueryUsersNodes;
-	modified: string;
+	author: AllPosts_posts_edges_node_author_node | null;
+	modified: string | null;
 }
 
 // https://www.apollographql.com/docs/react/development-testing/static-typing/#props
 
 const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 	const nombre: string | null =
-		author.firstName !== null && author.lastName !== null
-			? `${author.firstName} ${author.lastName}`
-			: author.name;
+		author != null
+			? author.firstName != null && author.lastName != null
+				? `${author.firstName} ${author.lastName}`
+				: author.name
+			: null;
 
 	const ImageJsx = (): JSX.Element => {
 		return (
@@ -40,7 +44,7 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 					<img
 						src={'https://dev-to-uploads.s3.amazonaws.com/i/5pfcju7s49gsqjd987vx.jpg'}
 						className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
-						alt={`null check avatar for ${author.name}`}
+						alt={`Author is null and image src did not load.`}
 					/>
 				)}
 			</div>

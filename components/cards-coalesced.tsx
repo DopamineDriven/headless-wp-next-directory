@@ -30,16 +30,24 @@ export default function CardsCoalesced({ posts }: Required<CardsProps>) {
 					if (company.node != null) {
 						return (
 							<Card
+								__typename={company.node.__typename}
+								content={company.node.content}
+								date={company.node.date}
+								id={company.node.id}
 								key={company.node.slug}
 								title={company.node.title}
-								coverImage={company.node.featuredImage.node}
+								featuredImage={
+									company.node.featuredImage != null ? company.node.featuredImage : null
+								}
 								modified={company.node.modified}
 								social={company.node.social}
 								author={company.node.author}
 								slug={company.node.slug}
-								excerpt={node.excerpt}
+								excerpt={company.node.excerpt}
 							/>
 						);
+					} else {
+						return <p>No company card data avaialable</p>;
 					}
 				})}
 			</div>
@@ -74,7 +82,7 @@ export default function CardsCoalesced({ posts }: Required<CardsProps>) {
 // 						<Card
 // 							key={company.__typename}
 // 							title={company.node.title}
-// 							coverImage={company.node.featuredImage.node.sourceUrl}
+// 							featuredImage={company.node.featuredImage.node.sourceUrl}
 // 							modified={company.node.modified}
 // 							social={company.node.social}
 // 							author={company.node.author}

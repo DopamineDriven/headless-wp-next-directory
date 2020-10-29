@@ -6,14 +6,10 @@ import {
 	faInstagram,
 	faTwitter
 } from '@fortawesome/free-brands-svg-icons';
+import { AllPosts_posts_edges_node_social } from '../graphql/__generated__/AllPosts';
 
 interface CardIconProps {
-	social: {
-		facebook: string;
-		instagram: string;
-		twitter: string;
-		website: string;
-	};
+	social: AllPosts_posts_edges_node_social;
 }
 
 interface faProps {
@@ -41,7 +37,7 @@ const CardIcons = ({ social }: CardIconProps): JSX.Element => {
 						<a
 							aria-label='facebook'
 							target='__blank'
-							href={social.facebook}
+							href={'#'}
 							className={anchorClassNull}
 						>
 							{social.facebook === '' ? (
@@ -68,7 +64,7 @@ const CardIcons = ({ social }: CardIconProps): JSX.Element => {
 						<a
 							aria-label='instagram'
 							target='__blank'
-							href={social.instagram}
+							href={'#'}
 							className={anchorClassNull}
 						>
 							{social.instagram === '' ? (
@@ -95,7 +91,7 @@ const CardIcons = ({ social }: CardIconProps): JSX.Element => {
 						<a
 							aria-label='twitter'
 							target='__blank'
-							href={social.twitter}
+							href={'#'}
 							className={anchorClassNull}
 						>
 							{social.twitter === '' ? (
@@ -122,7 +118,7 @@ const CardIcons = ({ social }: CardIconProps): JSX.Element => {
 						<a
 							aria-label='website'
 							target='__blank'
-							href={social.website}
+							href={'#'}
 							className={anchorClassNull}
 						>
 							{social.website === '' ? (

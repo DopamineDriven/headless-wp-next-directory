@@ -1,5 +1,145 @@
 # headless-wp-next-directory
 
+## Apollo Client Codegen options
+
+- https://github.com/apollographql/apollo-tooling#apollo-clientcodegen-output
+
+```md
+USAGE
+\$ apollo client:codegen [OUTPUT]
+
+ARGUMENTS
+OUTPUT
+Directory to which generated files will be written. - For TypeScript/Flow generators, this specifies a directory relative
+to each source file by default. - For TypeScript/Flow generators with the "outputFlat" flag is set,
+and for the Swift generator, this specifies a file or directory
+(absolute or relative to the current working directory) to which: - a file will be written for each query (if "output" is a
+directory) - all generated types will be written - For all other types, this defines a file (absolute or relative to
+the current working directory) to which all generated types are
+written.
+
+OPTIONS
+-c, --config=config
+Path to your Apollo config file
+
+-g, --graph=graph
+The ID for the graph in Apollo to operate client commands with.
+Overrides config file if set.
+
+-v, --variant=variant
+The variant of the graph in Apollo to associate this client to
+
+--[no-]addTypename
+[default: true] Automatically add \_\_typename to your queries, can be
+unset with --no-addTypename
+
+--clientName=clientName
+Name of the client that the queries will be attached to
+
+--clientReferenceId=clientReferenceId
+Reference id for the client which will match ids from client traces,
+will use clientName if not provided
+
+--clientVersion=clientVersion
+The version of the client that the queries will be attached to
+
+--customScalarsPrefix=customScalarsPrefix
+Include a prefix when using provided types for custom scalars
+
+--endpoint=endpoint
+The URL for the CLI use to introspect your service
+
+--excludes=excludes
+Glob of files to exclude for GraphQL operations. Caveat: this doesn't
+currently work in watch mode
+
+--globalTypesFile=globalTypesFile
+By default, TypeScript will put a file named "globalTypes.ts" inside
+the "output" directory. Set "globalTypesFile" to specify a different
+path. Alternatively, set "tsFileExtension" to modify the extension of
+the file, for example "d.ts" will output "globalTypes.d.ts"
+
+--header=header
+Additional header to send during introspection. May be used multiple
+times to add multiple headers. NOTE: The `--endpoint` flag is REQUIRED
+if using the `--header` flag.
+
+--includes=includes
+Glob of files to search for GraphQL operations. This should be used to
+find queries _and_ any client schema extensions
+
+--key=key
+The API key to use for authentication to Apollo
+
+--localSchemaFile=localSchemaFile
+Path to one or more local GraphQL schema file(s), as introspection
+result or SDL. Supports comma-separated list of paths (ex.
+`--localSchemaFile=schema.graphql,extensions.graphql`)
+
+--mergeInFieldsFromFragmentSpreads
+Merge fragment fields onto its enclosing type
+
+--namespace=namespace
+The namespace to emit generated code into.
+
+--omitDeprecatedEnumCases
+Omit deprecated enum cases from generated code [Swift only]
+
+--only=only
+Parse all input files, but only output generated code for the
+specified file [Swift only]
+
+--operationIdsPath=operationIdsPath
+Path to an operation id JSON map file. If specified, also stores the
+operation ids (hashes) as properties on operation types [currently
+Swift-only]
+
+--outputFlat
+By default, TypeScript/Flow will put each generated file in a
+directory next to its source file using the value of the "output" as
+the directory name. Set "outputFlat" to put all generated files in the
+directory relative to the current working directory defined by
+"output".
+
+--passthroughCustomScalars
+Use your own types for custom scalars
+
+--queries=queries
+Deprecated in favor of the includes flag
+
+--suppressSwiftMultilineStringLiterals
+Prevents operations from being rendered as multiline strings [Swift
+only]
+
+--tagName=tagName
+Name of the template literal tag used to identify template literals
+containing GraphQL queries in Javascript/Typescript code
+
+--target=target
+(required) Type of code generator to use (swift | typescript | flow |
+scala | json | json-modern (exposes raw json types))
+
+--tsFileExtension=tsFileExtension
+By default, TypeScript will output "ts" files. Set "tsFileExtension"
+to specify a different file extension, for example "d.ts"
+
+--useFlowExactObjects
+Use Flow exact objects for generated types [flow only]
+
+--useFlowReadOnlyTypes
+Use read only types for generated types [flow only]. **Deprecated in
+favor of `useReadOnlyTypes`.**
+
+--useReadOnlyTypes
+Use read only types for generated types [flow | typescript]
+
+--watch
+Watch for file changes and reload codegen
+
+ALIASES
+\$ apollo codegen:generate
+```
+
 ## Code Review - Advanced Apollo TS
 
 - https://github.com/borisowsky/next-advanced-apollo-starter/blob/master/tsconfig.json

@@ -1,9 +1,9 @@
 import Card from './card';
 import { PostsProps } from '../types/posts';
 import { gql, useQuery, NetworkStatus } from '@apollo/client';
-import { DocumentNode } from 'graphql';
+import { AllPosts_posts_edges } from 'graphql/__generated__/AllPosts';
 
-export const ALL_POSTS_QUERY: DocumentNode = gql`
+export const ALL_POSTS_QUERY = gql`
 	query AllPosts($field: PostObjectsConnectionOrderbyEnum!, $order: OrderEnum!) {
 		posts(first: 35, where: { orderby: { field: $field, order: $order } }) {
 			edges {
@@ -55,7 +55,7 @@ export default function PostList() {
 		}
 	);
 	const loadingMorePosts: boolean = networkStatus === NetworkStatus.fetchMore;
-	const loadMorePosts = (posts: PostsProps[]) => {
+	const loadMorePosts = (posts: AllPosts_posts_edges[]) => {
 		fetchMore({
 			variables: {
 				skip: posts.length
@@ -72,13 +72,17 @@ export default function PostList() {
 	return (
 		<section className='content-center justify-center block mx-auto '>
 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
-				{posts.map((company: PostsProps) => {
+				{posts.map((company: AllPosts_posts_edges) => {
 					const node: any = company.node;
 					return (
 						<Card
+							__typename={node.__typename}
+							content={node.content}
+							date={node.date}
+							id={node.id}
 							key={node.slug}
 							title={node.title}
-							coverImage={node.featuredImage.node}
+							featuredImage={node.featuredImage.node}
 							modified={node.modified}
 							social={node.social}
 							author={node.author}
@@ -110,7 +114,7 @@ export default function PostList() {
 // 						<Card
 // 							key={node.slug}
 // 							title={node.title}
-// 							coverImage={node.featuredImage.node}
+// 							featuredImage={node.featuredImage.node}
 // 							modified={node.modified}
 // 							social={node.social}
 // 							author={node.author}
@@ -137,7 +141,7 @@ export default function PostList() {
 // 							<Card
 // 								key={node.slug}
 // 								title={node.title}
-// 								coverImage={node.featuredImage.node}
+// 								featuredImage={node.featuredImage.node}
 // 								date={node.date}
 // 								social={node.social}
 // 								author={node.author.node}

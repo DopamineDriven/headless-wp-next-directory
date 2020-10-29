@@ -1,13 +1,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Header from 'components/lead';
-import Layout from 'components/layout';
-import Container from 'components/container';
-import { CLIENT_NAME } from 'lib/constants';
-import { getAllPostsForAbout, getTagAndPosts, getCategories } from 'lib/api';
-import Intro from 'components/intro';
-import HeroPost from 'components/hero-post';
-import { MediaContextProvider } from 'lib/window-width';
+import Header from '../components/lead';
+import Layout from '../components/layout';
+import Container from '../components/container';
+import { CLIENT_NAME } from '../lib/constants';
+import { getAllPostsForAbout, getTagAndPosts, getCategories } from '../lib/api';
+import Intro from '../components/intro';
+import HeroPost from '../components/hero-post';
+import { MediaContextProvider } from '../lib/window-width';
 import { Fragment } from 'react';
 
 interface AboutProps {
@@ -49,7 +49,7 @@ const About = ({
 						{heroPost && (
 							<HeroPost
 								title={heroPost.title}
-								coverImage={heroPost.featuredImage.node}
+								featuredImage={heroPost.featuredImage.node}
 								date={heroPost.date}
 								modified={heroPost.modified}
 								author={heroPost.author.node}

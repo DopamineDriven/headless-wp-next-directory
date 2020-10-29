@@ -11,30 +11,38 @@ import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
 } from '../graphql/__generated__/AuthorCardQuery';
+import {
+	AllPosts_posts_edges_node,
+	AllPosts_posts_edges_node_social
+} from 'graphql/__generated__/AllPosts';
 
-interface AuthorPropTypes {
-	author: AuthorCardQueryUsersNodes;
-}
-interface CardProps extends AuthorPropTypes {
-	coverImage: any;
-	title: string | null;
-	slug: PostSlug;
-	modified: string | null;
-	excerpt?: string | null;
-	social: socialType | null;
-}
+// interface AuthorPropTypes {
+// 	author: AuthorCardQueryUsersNodes;
+// }
+// interface CardProps extends AuthorPropTypes {
+// 	author
+// 	featuredImage: any;
+// 	title: string;
+// 	slug: PostSlug;
+// 	modified: string | null;
+// 	excerpt?: string | null;
+// 	social: socialType | null;
+// }
 
 const Card = ({
+	__typename,
+	content,
+	date,
+	id,
 	author,
-	coverImage,
+	featuredImage,
 	excerpt,
 	modified,
 	slug,
 	social,
 	title
-}: CardProps): JSX.Element => {
+}: AllPosts_posts_edges_node): JSX.Element => {
 	//had to add this in because without it _html was erroring out because it is of type string.
-
 	if (!excerpt) {
 		excerpt = '';
 	}
@@ -43,17 +51,26 @@ const Card = ({
 		<Fragment>
 			<div className='block mx-auto select-none w-full'>
 				<div className='block overflow-x-hidden overflow-y-hidden transition-all duration-1000 ease-in-out transform border-collapse border-current max-w-xsCardGridCima w-xsCardGridCima sm:w-aboutImage600 sm:max-w-aboutimage600 sm:overflow-hidden lg:w-aboutImage400 rounded-custom mx-auto'>
-					<CoverImage coverImage={coverImage} title={title} slug={slug} />
-
+					{title != null && slug != null && featuredImage != null ? (
+						<CoverImage
+							featuredImage={featuredImage.node}
+							title={title}
+							slug={slug}
+						/>
+					) : null}
 					<div className='flex flex-col justify-center flex-grow h-aboutOffsetPRMobile sm:h-auto text-left bg-primary'>
-						<CardTitle slug={slug} title={title} />
+						{title != null || slug != null ? (
+							<CardTitle slug={slug} title={title} />
+						) : null}
 						<CardExcerpt excerpt={excerpt} />
 						<div className='block transition-all duration-1000 transform pl-portfolioDivider font-somaRoman translate-y-portfolio'>
-							<Avatar author={author} modified={modified} />
+							{author != null ? (
+								<Avatar author={author?.node} modified={modified} />
+							) : null}
 						</div>
 						<SiteDivider />
 						<div className='block float-right text-right pr-portfolio font-somaRoman'>
-							<CardIcons social={social} />
+							{social != null ? <CardIcons social={social} /> : null}
 						</div>
 					</div>
 				</div>
