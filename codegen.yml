@@ -8,8 +8,8 @@ generates:
   plugins:
    - 'typescript'
    - 'typescript-operations'
-   - 'typescript-react-apollo'
-   - 'typescript-document-node'
+   - 'typescript-graphql-files-modules'
+   - 'typescript-document-nodes'
  ./graphql.schema.json:
   plugins:
    - 'introspection'

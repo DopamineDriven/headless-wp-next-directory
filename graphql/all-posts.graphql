@@ -1,4 +1,4 @@
-query AllPosts {
+query AllPostsGraphQL {
 	posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
 		edges {
 			node {
