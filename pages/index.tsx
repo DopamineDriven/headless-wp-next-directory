@@ -6,9 +6,9 @@ import {
 	SyntheticEvent,
 	Fragment
 } from 'react';
-import Container from 'components/container';
-import Intro from 'components/intro';
-import Layout from 'components/layout';
+// import Container from 'components/contai/ner';
+// import Intro from 'components/intro';
+// import Layout from 'components/layout';
 import {
 	GetServerSideProps,
 	GetStaticProps,
@@ -28,26 +28,31 @@ import {
 	tagKeyNameForCache
 } from '../graphql/api-all-tags';
 import { AllCategories_categories_edges } from '../graphql/__generated__/AllCategories';
-import { getAllPostsForHomeAlphabetical } from 'lib/api-ts';
-import { CMS_NAME, CLIENT_NAME } from 'lib/constants';
-import Header from 'components/lead';
+import { getAllPostsForHomeAlphabetical } from '../lib/api-ts';
+import { CMS_NAME, CLIENT_NAME } from '../lib/constants';
+import Header from '../components/lead';
 // import HeroPost from '../components/hero-post';
-import SearchBox from 'components/search-box';
-import Cards from 'components/cards-coalesced';
-import { PostsProps, AllPostsProps } from 'types/posts';
-import { MediaContextProvider } from 'lib/window-width';
+import SearchBox from '../components/search-box';
+import Cards from '../components/cards-coalesced';
+import { PostsProps, AllPostsProps } from '../types/posts';
+import { MediaContextProvider } from '../lib/window-width';
 // import Link from 'next/link';
 // import FieldEnum from 'types/enums/field-enum';
 // import OrderEnum from 'types/enums/order-enum';
-import Footer from 'components/footer';
+import Footer from '../components/footer';
 // import CardFilter from 'components/card-filter';
 import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
-} from 'types/graphql-global-types';
+} from '../types/graphql-global-types';
+import {
+	AllPosts_posts,
+	AllPosts_posts_edges,
+	AllPosts_posts_edges_node
+} from '../graphql/__generated__/AllPosts';
 
 interface IndexProps {
-	allPosts: AllPostsProps;
+	allPosts: AllPosts_posts;
 	preview: boolean;
 	tagsAndPosts: any;
 	// categories: AllCategories_categories_edges_node[];
@@ -74,10 +79,12 @@ const Index = ({
 	let tagProps = tagsAndPosts.ROOT_QUERY[tagKeyNameForCache].edges;
 
 	const [filterQuery, setFilterQuery] = useState('title');
-	const [allCompanies, setAllCompanies] = useState<PostsProps[]>(morePosts);
-	const [filteredCompanies, setFilteredCompanies] = useState<PostsProps[]>(
+	const [allCompanies, setAllCompanies] = useState<AllPosts_posts_edges[]>(
 		morePosts
 	);
+	const [filteredCompanies, setFilteredCompanies] = useState<
+		AllPosts_posts_edges[]
+	>(morePosts);
 	const [search, setSearch] = useState<string | null>(null);
 	const [searchCategory, setSearchedCategory] = useState<string | null>(null);
 	const { TITLE } = PostObjectsConnectionOrderbyEnum;
@@ -89,30 +96,34 @@ const Index = ({
 		} else {
 			if (filterQuery === 'title') {
 				console.log(filteredCompanies);
-				const filterCompanies = edges.filter((company: PostsProps) => {
-					//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
-					//this was done so that toLowerCase() and includes() functions coudl work
-					const companyTitle: any = company.node.title;
-					if (companyTitle.toLowerCase().includes(search)) {
-						console.log('company title: ', companyTitle);
-						return company;
-					} else {
-						return null;
+				const filterCompanies: AllPosts_posts_edges[] = edges.filter(
+					(company: AllPosts_posts_edges) => {
+						//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
+						//this was done so that toLowerCase() and includes() functions coudl work
+						const companyTitle: any = company.node.title;
+						if (companyTitle.toLowerCase().includes(search)) {
+							console.log('company title: ', companyTitle);
+							return company;
+						} else {
+							return null;
+						}
 					}
-				});
+				);
 				setFilteredCompanies(filterCompanies);
 			} else if (filterQuery === 'description') {
-				const filterCompanies = edges.filter((company: PostsProps) => {
-					//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
-					//this was done so that toLowerCase() and includes() functions coudl work
-					const companyDescription: any = company.node.excerpt;
-					if (companyDescription.toLowerCase().includes(search)) {
-						console.log('company description: ', companyDescription);
-						return company;
-					} else {
-						return null;
+				const filterCompanies: AllPosts_posts_edges[] = edges.filter(
+					(company: AllPosts_posts_edges) => {
+						//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
+						//this was done so that toLowerCase() and includes() functions coudl work
+						const companyDescription: any = company.node.excerpt;
+						if (companyDescription.toLowerCase().includes(search)) {
+							console.log('company description: ', companyDescription);
+							return company;
+						} else {
+							return null;
+						}
 					}
-				});
+				);
 				setFilteredCompanies(filterCompanies);
 			} else {
 				console.log('not title');
