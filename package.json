@@ -58,7 +58,8 @@
 		"prettier-check": "prettier --config .prettierrc --check .",
 		"prettier-write": "prettier --config .prettierrc --write .",
 		"client:schema": "dotenv cross-var yarn apollo client:download-schema --includes=graphql --addTypename --endpoint=%WORDPRESS_API_URL%",
-		"client:codegen": "yarn apollo codegen:generate --localSchemaFile=schema.json --target=typescript --includes=graphql/**/*.ts --tagName=gql --addTypename --globalTypesFile=types/graphql-global-types.ts"
+		"client:codegen": "yarn apollo codegen:generate --localSchemaFile=schema.json --target=typescript --includes=graphql/**/*.ts --tagName=gql --addTypename --globalTypesFile=types/graphql-global-types.ts",
+		"codegen:generate": "graphql-codegen --config codegen.yml"
 	},
 	"husky": {
 		"hooks": {
@@ -102,8 +103,10 @@
 	"devDependencies": {
 		"@fullhuman/postcss-purgecss": "^3.0.0",
 		"@graphql-codegen/cli": "^1.19.0",
+		"@graphql-codegen/introspection": "^1.18.0",
 		"@graphql-codegen/plugin-helpers": "^1.18.0",
 		"@graphql-codegen/typescript": "^1.17.11",
+		"@graphql-codegen/typescript-document-nodes": "^1.17.8",
 		"@graphql-codegen/typescript-operations": "^1.17.8",
 		"@next/bundle-analyzer": "^9.5.5",
 		"@types/classnames": "^2.2.10",
