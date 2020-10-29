@@ -11,6 +11,7 @@ generates:
    - 'typescript-graphql-files-modules'
    - 'typescript-document-nodes'
    - 'typescript-apollo-client-helpers'
+   - 'typed-document-node'
  ./graphql.schema.json:
   plugins:
    - 'introspection'
