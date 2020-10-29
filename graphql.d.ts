@@ -9582,12 +9582,30 @@ export type AllPostsGraphQlQuery = { __typename?: 'RootQuery' } & {
 							node?: Maybe<
 								{ __typename?: 'Post' } & Pick<
 									Post,
-									'title' | 'excerpt' | 'slug' | 'date'
+									'id' | 'title' | 'content' | 'excerpt' | 'slug' | 'date' | 'modified'
 								> & {
+										social?: Maybe<
+											{ __typename?: 'Post_Social' } & Pick<
+												Post_Social,
+												'facebook' | 'instagram' | 'twitter' | 'website'
+											>
+										>;
 										featuredImage?: Maybe<
 											{ __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' } & {
 												node?: Maybe<
 													{ __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>
+												>;
+											}
+										>;
+										author?: Maybe<
+											{ __typename?: 'NodeWithAuthorToUserConnectionEdge' } & {
+												node?: Maybe<
+													{ __typename?: 'User' } & Pick<
+														User,
+														'name' | 'firstName' | 'lastName'
+													> & {
+															avatar?: Maybe<{ __typename?: 'Avatar' } & Pick<Avatar, 'url'>>;
+														}
 												>;
 											}
 										>;
@@ -10401,13 +10419,32 @@ export const AllPostsGraphQl = gql`
 		posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
 			edges {
 				node {
+					id
 					title
+					content
 					excerpt
 					slug
 					date
+					modified
+					social {
+						facebook
+						instagram
+						twitter
+						website
+					}
 					featuredImage {
 						node {
 							sourceUrl
+						}
+					}
+					author {
+						node {
+							avatar {
+								url
+							}
+							name
+							firstName
+							lastName
 						}
 					}
 				}
@@ -16390,7 +16427,19 @@ export const AllPostsGraphQlDocument: DocumentNode<
 													selections: [
 														{
 															kind: 'Field',
+															name: { kind: 'Name', value: 'id' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
 															name: { kind: 'Name', value: 'title' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'content' },
 															arguments: [],
 															directives: []
 														},
@@ -16414,6 +16463,47 @@ export const AllPostsGraphQlDocument: DocumentNode<
 														},
 														{
 															kind: 'Field',
+															name: { kind: 'Name', value: 'modified' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'social' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'facebook' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'instagram' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'twitter' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'website' },
+																		arguments: [],
+																		directives: []
+																	}
+																]
+															}
+														},
+														{
+															kind: 'Field',
 															name: { kind: 'Name', value: 'featuredImage' },
 															arguments: [],
 															directives: [],
@@ -16431,6 +16521,63 @@ export const AllPostsGraphQlDocument: DocumentNode<
 																				{
 																					kind: 'Field',
 																					name: { kind: 'Name', value: 'sourceUrl' },
+																					arguments: [],
+																					directives: []
+																				}
+																			]
+																		}
+																	}
+																]
+															}
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'author' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'node' },
+																		arguments: [],
+																		directives: [],
+																		selectionSet: {
+																			kind: 'SelectionSet',
+																			selections: [
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'avatar' },
+																					arguments: [],
+																					directives: [],
+																					selectionSet: {
+																						kind: 'SelectionSet',
+																						selections: [
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'url' },
+																								arguments: [],
+																								directives: []
+																							}
+																						]
+																					}
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'name' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'firstName' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'lastName' },
 																					arguments: [],
 																					directives: []
 																				}

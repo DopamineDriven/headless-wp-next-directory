@@ -32,6 +32,7 @@
 	"exclude": ["node_modules"],
 	"include": [
 		"global.d.ts",
+		"graphql.d.ts",
 		"next-env.d.ts",
 		"pages/**/*.{ts,tsx}",
 		"graphql/**/*.ts",
