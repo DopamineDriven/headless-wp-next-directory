@@ -25,7 +25,7 @@ export default function CardsCoalesced({ posts }: Required<CardsProps>) {
 						<Card
 							key={node.slug}
 							title={node.title}
-							coverImage={node.featuredImage.node}
+							featuredImage={node.featuredImage.node}
 							modified={node.modified}
 							social={node.social}
 							author={node.author}
@@ -66,7 +66,7 @@ export default function CardsCoalesced({ posts }: Required<CardsProps>) {
 // 						<Card
 // 							key={company.__typename}
 // 							title={company.node.title}
-// 							coverImage={company.node.featuredImage.node.sourceUrl}
+// 							featuredImage={company.node.featuredImage.node.sourceUrl}
 // 							modified={company.node.modified}
 // 							social={company.node.social}
 // 							author={company.node.author}

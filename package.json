@@ -49,16 +49,16 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"codegen": "graphql-codegen --config codegen.yml",
 		"dev": "next -p 4000",
 		"build": "next build",
 		"start": "next start",
 		"analyze": "ANALYZE=true yarn build",
-		"postinstall": "npx patch-package",
+		"postinstall": "npx patch-package && patch-typed-document-node",
 		"prettier-check": "prettier --config .prettierrc --check .",
 		"prettier-write": "prettier --config .prettierrc --write .",
 		"client:schema": "dotenv cross-var yarn apollo client:download-schema --includes=graphql --addTypename --endpoint=%WORDPRESS_API_URL%",
-		"client:codegen": "yarn apollo codegen:generate --localSchemaFile=schema.json --target=typescript --includes=graphql/**/*.ts --tagName=gql --addTypename --globalTypesFile=types/graphql-global-types.ts"
+		"client:codegen": "yarn apollo codegen:generate --localSchemaFile=schema.json --target=typescript --includes=graphql/**/*.ts --tagName=gql --addTypename --globalTypesFile=types/graphql-global-types.ts",
+		"codegen:generate": "graphql-codegen --config codegen.yml"
 	},
 	"husky": {
 		"hooks": {
@@ -102,9 +102,17 @@
 	"devDependencies": {
 		"@fullhuman/postcss-purgecss": "^3.0.0",
 		"@graphql-codegen/cli": "^1.19.0",
+		"@graphql-codegen/introspection": "^1.18.0",
 		"@graphql-codegen/plugin-helpers": "^1.18.0",
+		"@graphql-codegen/typed-document-node": "^1.17.9",
 		"@graphql-codegen/typescript": "^1.17.11",
+		"@graphql-codegen/typescript-apollo-client-helpers": "^1.1.0",
+		"@graphql-codegen/typescript-document-nodes": "^1.17.8",
+		"@graphql-codegen/typescript-graphql-files-modules": "^1.18.0",
 		"@graphql-codegen/typescript-operations": "^1.17.8",
+		"@graphql-codegen/typescript-react-apollo": "^2.0.7",
+		"@graphql-typed-document-node/core": "^3.1.0",
+		"@graphql-typed-document-node/patch-cli": "^3.0.8",
 		"@next/bundle-analyzer": "^9.5.5",
 		"@types/classnames": "^2.2.10",
 		"@types/google.analytics": "^0.0.40",
@@ -123,12 +131,14 @@
 		"eslint-plugin-jsx-a11y": "^6.3.1",
 		"eslint-plugin-react": "^7.21.2",
 		"eslint-plugin-react-hooks": "^4.1.2",
+		"file-loader": "^6.2.0",
 		"graphql-codegen-apollo-next-ssr": "^0.0.16",
 		"graphql-schema-typescript": "^1.3.2",
 		"husky": "^4.2.5",
 		"next-compose-plugins": "^2.2.0",
 		"postcss": "^8.1.1",
 		"postcss-flexbugs-fixes": "^4.2.1",
+		"postcss-import": "12.0.0",
 		"postcss-loader": "^4.0.4",
 		"postcss-preset-env": "^6.7.0",
 		"prettier": "^2.1.2",
@@ -141,6 +151,7 @@
 		"ts-graphql-plugin": "^2.0.1",
 		"typescript": "^4.0.5",
 		"typescript-eslint-language-service": "^4.0.1",
-		"webpack": "^5.1.0"
+		"webpack": "^5.1.0",
+		"yaml-loader": "^0.6.0"
 	}
 }

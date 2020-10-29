@@ -52,7 +52,7 @@ export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
 								</Head>
 								<PostHeader
 									title={post.title}
-									coverImage={post.featuredImage.node}
+									featuredImage={post.featuredImage.node}
 									date={post.date}
 									modified={post.modified}
 									author={post.author.node}

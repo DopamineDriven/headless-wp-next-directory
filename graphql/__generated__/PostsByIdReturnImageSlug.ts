@@ -13,6 +13,18 @@ export interface PostsByIdReturnImageSlug_posts_nodes_featuredImage_node {
 	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
 	 */
 	slug: string | null;
+	/**
+	 * URI path for the resource
+	 */
+	uri: string;
+	/**
+	 * The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
+	 */
+	title: string | null;
+	/**
+	 * Url of the mediaItem
+	 */
+	sourceUrl: string | null;
 }
 
 export interface PostsByIdReturnImageSlug_posts_nodes_featuredImage {

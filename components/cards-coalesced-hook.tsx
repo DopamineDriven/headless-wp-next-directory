@@ -1,9 +1,8 @@
 import Card from './card';
 import { PostsProps } from '../types/posts';
 import { gql, useQuery, NetworkStatus } from '@apollo/client';
-import { DocumentNode } from 'graphql';
 
-export const ALL_POSTS_QUERY: DocumentNode = gql`
+export const ALL_POSTS_QUERY = gql`
 	query AllPosts($field: PostObjectsConnectionOrderbyEnum!, $order: OrderEnum!) {
 		posts(first: 35, where: { orderby: { field: $field, order: $order } }) {
 			edges {
@@ -78,7 +77,7 @@ export default function PostList() {
 						<Card
 							key={node.slug}
 							title={node.title}
-							coverImage={node.featuredImage.node}
+							featuredImage={node.featuredImage.node}
 							modified={node.modified}
 							social={node.social}
 							author={node.author}
@@ -110,7 +109,7 @@ export default function PostList() {
 // 						<Card
 // 							key={node.slug}
 // 							title={node.title}
-// 							coverImage={node.featuredImage.node}
+// 							featuredImage={node.featuredImage.node}
 // 							modified={node.modified}
 // 							social={node.social}
 // 							author={node.author}
@@ -137,7 +136,7 @@ export default function PostList() {
 // 							<Card
 // 								key={node.slug}
 // 								title={node.title}
-// 								coverImage={node.featuredImage.node}
+// 								featuredImage={node.featuredImage.node}
 // 								date={node.date}
 // 								social={node.social}
 // 								author={node.author.node}

@@ -8,7 +8,7 @@ import {
 } from '../graphql/__generated__/AuthorCardQuery';
 
 type PostPreviewProps = {
-	coverImage: CoverImageProps;
+	featuredImage: CoverImageProps;
 	title: string;
 	date: string;
 	modified: string;
@@ -20,7 +20,7 @@ type PostPreviewProps = {
 
 export default function PostPreview({
 	title,
-	coverImage,
+	featuredImage,
 	date,
 	modified,
 	excerpt,
@@ -30,7 +30,7 @@ export default function PostPreview({
 	return (
 		<div className='font-polished'>
 			<div className='mb-2'>
-				<CoverImage title={title} coverImage={coverImage} slug={slug} />
+				<CoverImage title={title} featuredImage={featuredImage} slug={slug} />
 			</div>
 			<h3 className='text-3xl mb-2 leading-snug'>
 				<Link as={`/posts/${slug}`} href='/posts/[slug]'>

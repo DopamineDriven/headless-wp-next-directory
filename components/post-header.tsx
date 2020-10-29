@@ -8,7 +8,7 @@ import CardIcons from './card-icons';
 
 type PostHeaderProps = {
 	title: string;
-	coverImage: CoverImageProps;
+	featuredImage: CoverImageProps;
 	author: any;
 	date: string;
 	modified: string;
@@ -19,7 +19,7 @@ type PostHeaderProps = {
 
 export default function PostHeader({
 	title,
-	coverImage,
+	featuredImage,
 	date,
 	modified,
 	author,
@@ -32,8 +32,8 @@ export default function PostHeader({
 			<div className='max-w-screen font-polished'>
 				<div className='mb-4 md:mb-4 -mx-5 sm:mx-0'>
 					<CoverImage
-						title={coverImage?.title}
-						coverImage={coverImage}
+						title={featuredImage?.title}
+						featuredImage={featuredImage}
 						slug={slug}
 					/>
 				</div>
