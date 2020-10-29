@@ -1,4 +1,9 @@
 import gql from 'graphql-tag';
+import {
+	FieldPolicy,
+	FieldReadFunction,
+	TypePolicies
+} from '@apollo/client/cache';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = {
 	[K in keyof T]: T[K];
@@ -10759,3 +10764,5103 @@ export const WpSearchQuery = gql`
 		}
 	}
 `;
+export type RootQueryKeySpecifier = (
+	| 'allSettings'
+	| 'categories'
+	| 'category'
+	| 'comment'
+	| 'comments'
+	| 'contentNode'
+	| 'contentNodes'
+	| 'contentType'
+	| 'contentTypes'
+	| 'discussionSettings'
+	| 'generalSettings'
+	| 'mediaItem'
+	| 'mediaItemBy'
+	| 'mediaItems'
+	| 'menu'
+	| 'menuItem'
+	| 'menuItems'
+	| 'menus'
+	| 'node'
+	| 'nodeByUri'
+	| 'page'
+	| 'pageBy'
+	| 'pages'
+	| 'plugin'
+	| 'plugins'
+	| 'post'
+	| 'postBy'
+	| 'postFormat'
+	| 'postFormats'
+	| 'posts'
+	| 'readingSettings'
+	| 'registeredScripts'
+	| 'registeredStylesheets'
+	| 'revisions'
+	| 'tag'
+	| 'tags'
+	| 'taxonomies'
+	| 'taxonomy'
+	| 'termNode'
+	| 'terms'
+	| 'theme'
+	| 'themes'
+	| 'user'
+	| 'userRole'
+	| 'userRoles'
+	| 'users'
+	| 'viewer'
+	| 'writingSettings'
+	| RootQueryKeySpecifier
+)[];
+export type RootQueryFieldPolicy = {
+	allSettings?: FieldPolicy<any> | FieldReadFunction<any>;
+	categories?: FieldPolicy<any> | FieldReadFunction<any>;
+	category?: FieldPolicy<any> | FieldReadFunction<any>;
+	comment?: FieldPolicy<any> | FieldReadFunction<any>;
+	comments?: FieldPolicy<any> | FieldReadFunction<any>;
+	contentNode?: FieldPolicy<any> | FieldReadFunction<any>;
+	contentNodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	contentType?: FieldPolicy<any> | FieldReadFunction<any>;
+	contentTypes?: FieldPolicy<any> | FieldReadFunction<any>;
+	discussionSettings?: FieldPolicy<any> | FieldReadFunction<any>;
+	generalSettings?: FieldPolicy<any> | FieldReadFunction<any>;
+	mediaItem?: FieldPolicy<any> | FieldReadFunction<any>;
+	mediaItemBy?: FieldPolicy<any> | FieldReadFunction<any>;
+	mediaItems?: FieldPolicy<any> | FieldReadFunction<any>;
+	menu?: FieldPolicy<any> | FieldReadFunction<any>;
+	menuItem?: FieldPolicy<any> | FieldReadFunction<any>;
+	menuItems?: FieldPolicy<any> | FieldReadFunction<any>;
+	menus?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodeByUri?: FieldPolicy<any> | FieldReadFunction<any>;
+	page?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageBy?: FieldPolicy<any> | FieldReadFunction<any>;
+	pages?: FieldPolicy<any> | FieldReadFunction<any>;
+	plugin?: FieldPolicy<any> | FieldReadFunction<any>;
+	plugins?: FieldPolicy<any> | FieldReadFunction<any>;
+	post?: FieldPolicy<any> | FieldReadFunction<any>;
+	postBy?: FieldPolicy<any> | FieldReadFunction<any>;
+	postFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+	postFormats?: FieldPolicy<any> | FieldReadFunction<any>;
+	posts?: FieldPolicy<any> | FieldReadFunction<any>;
+	readingSettings?: FieldPolicy<any> | FieldReadFunction<any>;
+	registeredScripts?: FieldPolicy<any> | FieldReadFunction<any>;
+	registeredStylesheets?: FieldPolicy<any> | FieldReadFunction<any>;
+	revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+	tag?: FieldPolicy<any> | FieldReadFunction<any>;
+	tags?: FieldPolicy<any> | FieldReadFunction<any>;
+	taxonomies?: FieldPolicy<any> | FieldReadFunction<any>;
+	taxonomy?: FieldPolicy<any> | FieldReadFunction<any>;
+	termNode?: FieldPolicy<any> | FieldReadFunction<any>;
+	terms?: FieldPolicy<any> | FieldReadFunction<any>;
+	theme?: FieldPolicy<any> | FieldReadFunction<any>;
+	themes?: FieldPolicy<any> | FieldReadFunction<any>;
+	user?: FieldPolicy<any> | FieldReadFunction<any>;
+	userRole?: FieldPolicy<any> | FieldReadFunction<any>;
+	userRoles?: FieldPolicy<any> | FieldReadFunction<any>;
+	users?: FieldPolicy<any> | FieldReadFunction<any>;
+	viewer?: FieldPolicy<any> | FieldReadFunction<any>;
+	writingSettings?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type SettingsKeySpecifier = (
+	| 'discussionSettingsDefaultCommentStatus'
+	| 'discussionSettingsDefaultPingStatus'
+	| 'generalSettingsDateFormat'
+	| 'generalSettingsDescription'
+	| 'generalSettingsEmail'
+	| 'generalSettingsLanguage'
+	| 'generalSettingsStartOfWeek'
+	| 'generalSettingsTimeFormat'
+	| 'generalSettingsTimezone'
+	| 'generalSettingsTitle'
+	| 'generalSettingsUrl'
+	| 'readingSettingsPostsPerPage'
+	| 'writingSettingsDefaultCategory'
+	| 'writingSettingsDefaultPostFormat'
+	| 'writingSettingsUseSmilies'
+	| SettingsKeySpecifier
+)[];
+export type SettingsFieldPolicy = {
+	discussionSettingsDefaultCommentStatus?:
+		| FieldPolicy<any>
+		| FieldReadFunction<any>;
+	discussionSettingsDefaultPingStatus?:
+		| FieldPolicy<any>
+		| FieldReadFunction<any>;
+	generalSettingsDateFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+	generalSettingsDescription?: FieldPolicy<any> | FieldReadFunction<any>;
+	generalSettingsEmail?: FieldPolicy<any> | FieldReadFunction<any>;
+	generalSettingsLanguage?: FieldPolicy<any> | FieldReadFunction<any>;
+	generalSettingsStartOfWeek?: FieldPolicy<any> | FieldReadFunction<any>;
+	generalSettingsTimeFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+	generalSettingsTimezone?: FieldPolicy<any> | FieldReadFunction<any>;
+	generalSettingsTitle?: FieldPolicy<any> | FieldReadFunction<any>;
+	generalSettingsUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+	readingSettingsPostsPerPage?: FieldPolicy<any> | FieldReadFunction<any>;
+	writingSettingsDefaultCategory?: FieldPolicy<any> | FieldReadFunction<any>;
+	writingSettingsDefaultPostFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+	writingSettingsUseSmilies?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToCategoryConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToCategoryConnectionKeySpecifier
+)[];
+export type RootQueryToCategoryConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToCategoryConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToCategoryConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToCategoryConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CategoryKeySpecifier = (
+	| 'ancestors'
+	| 'categoryId'
+	| 'children'
+	| 'count'
+	| 'databaseId'
+	| 'description'
+	| 'enqueuedScripts'
+	| 'enqueuedStylesheets'
+	| 'id'
+	| 'isRestricted'
+	| 'link'
+	| 'name'
+	| 'parent'
+	| 'parentDatabaseId'
+	| 'parentId'
+	| 'posts'
+	| 'slug'
+	| 'taxonomy'
+	| 'termGroupId'
+	| 'termTaxonomyId'
+	| 'uri'
+	| CategoryKeySpecifier
+)[];
+export type CategoryFieldPolicy = {
+	ancestors?: FieldPolicy<any> | FieldReadFunction<any>;
+	categoryId?: FieldPolicy<any> | FieldReadFunction<any>;
+	children?: FieldPolicy<any> | FieldReadFunction<any>;
+	count?: FieldPolicy<any> | FieldReadFunction<any>;
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	description?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedScripts?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedStylesheets?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	link?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	parent?: FieldPolicy<any> | FieldReadFunction<any>;
+	parentDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	parentId?: FieldPolicy<any> | FieldReadFunction<any>;
+	posts?: FieldPolicy<any> | FieldReadFunction<any>;
+	slug?: FieldPolicy<any> | FieldReadFunction<any>;
+	taxonomy?: FieldPolicy<any> | FieldReadFunction<any>;
+	termGroupId?: FieldPolicy<any> | FieldReadFunction<any>;
+	termTaxonomyId?: FieldPolicy<any> | FieldReadFunction<any>;
+	uri?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeKeySpecifier = ('id' | NodeKeySpecifier)[];
+export type NodeFieldPolicy = {
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TermNodeKeySpecifier = (
+	| 'count'
+	| 'databaseId'
+	| 'description'
+	| 'enqueuedScripts'
+	| 'enqueuedStylesheets'
+	| 'id'
+	| 'isRestricted'
+	| 'link'
+	| 'name'
+	| 'slug'
+	| 'termGroupId'
+	| 'termTaxonomyId'
+	| 'uri'
+	| TermNodeKeySpecifier
+)[];
+export type TermNodeFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>;
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	description?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedScripts?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedStylesheets?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	link?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	slug?: FieldPolicy<any> | FieldReadFunction<any>;
+	termGroupId?: FieldPolicy<any> | FieldReadFunction<any>;
+	termTaxonomyId?: FieldPolicy<any> | FieldReadFunction<any>;
+	uri?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TermNodeToEnqueuedScriptConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| TermNodeToEnqueuedScriptConnectionKeySpecifier
+)[];
+export type TermNodeToEnqueuedScriptConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TermNodeToEnqueuedScriptConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| TermNodeToEnqueuedScriptConnectionEdgeKeySpecifier
+)[];
+export type TermNodeToEnqueuedScriptConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type EnqueuedScriptKeySpecifier = (
+	| 'args'
+	| 'dependencies'
+	| 'extra'
+	| 'handle'
+	| 'id'
+	| 'src'
+	| 'version'
+	| EnqueuedScriptKeySpecifier
+)[];
+export type EnqueuedScriptFieldPolicy = {
+	args?: FieldPolicy<any> | FieldReadFunction<any>;
+	dependencies?: FieldPolicy<any> | FieldReadFunction<any>;
+	extra?: FieldPolicy<any> | FieldReadFunction<any>;
+	handle?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	src?: FieldPolicy<any> | FieldReadFunction<any>;
+	version?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type EnqueuedAssetKeySpecifier = (
+	| 'args'
+	| 'dependencies'
+	| 'extra'
+	| 'handle'
+	| 'id'
+	| 'src'
+	| 'version'
+	| EnqueuedAssetKeySpecifier
+)[];
+export type EnqueuedAssetFieldPolicy = {
+	args?: FieldPolicy<any> | FieldReadFunction<any>;
+	dependencies?: FieldPolicy<any> | FieldReadFunction<any>;
+	extra?: FieldPolicy<any> | FieldReadFunction<any>;
+	handle?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	src?: FieldPolicy<any> | FieldReadFunction<any>;
+	version?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type WPPageInfoKeySpecifier = (
+	| 'endCursor'
+	| 'hasNextPage'
+	| 'hasPreviousPage'
+	| 'startCursor'
+	| WPPageInfoKeySpecifier
+)[];
+export type WPPageInfoFieldPolicy = {
+	endCursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	hasNextPage?: FieldPolicy<any> | FieldReadFunction<any>;
+	hasPreviousPage?: FieldPolicy<any> | FieldReadFunction<any>;
+	startCursor?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TermNodeToEnqueuedStylesheetConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| TermNodeToEnqueuedStylesheetConnectionKeySpecifier
+)[];
+export type TermNodeToEnqueuedStylesheetConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TermNodeToEnqueuedStylesheetConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| TermNodeToEnqueuedStylesheetConnectionEdgeKeySpecifier
+)[];
+export type TermNodeToEnqueuedStylesheetConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type EnqueuedStylesheetKeySpecifier = (
+	| 'args'
+	| 'dependencies'
+	| 'extra'
+	| 'handle'
+	| 'id'
+	| 'src'
+	| 'version'
+	| EnqueuedStylesheetKeySpecifier
+)[];
+export type EnqueuedStylesheetFieldPolicy = {
+	args?: FieldPolicy<any> | FieldReadFunction<any>;
+	dependencies?: FieldPolicy<any> | FieldReadFunction<any>;
+	extra?: FieldPolicy<any> | FieldReadFunction<any>;
+	handle?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	src?: FieldPolicy<any> | FieldReadFunction<any>;
+	version?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UniformResourceIdentifiableKeySpecifier = (
+	| 'databaseId'
+	| 'id'
+	| 'uri'
+	| UniformResourceIdentifiableKeySpecifier
+)[];
+export type UniformResourceIdentifiableFieldPolicy = {
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	uri?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type HierarchicalTermNodeKeySpecifier = (
+	| 'parentDatabaseId'
+	| 'parentId'
+	| HierarchicalTermNodeKeySpecifier
+)[];
+export type HierarchicalTermNodeFieldPolicy = {
+	parentDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	parentId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MenuItemLinkableKeySpecifier = (
+	| 'databaseId'
+	| 'id'
+	| 'uri'
+	| MenuItemLinkableKeySpecifier
+)[];
+export type MenuItemLinkableFieldPolicy = {
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	uri?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CategoryToAncestorsCategoryConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| CategoryToAncestorsCategoryConnectionKeySpecifier
+)[];
+export type CategoryToAncestorsCategoryConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CategoryToAncestorsCategoryConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| CategoryToAncestorsCategoryConnectionEdgeKeySpecifier
+)[];
+export type CategoryToAncestorsCategoryConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CategoryToCategoryConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| CategoryToCategoryConnectionKeySpecifier
+)[];
+export type CategoryToCategoryConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CategoryToCategoryConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| CategoryToCategoryConnectionEdgeKeySpecifier
+)[];
+export type CategoryToCategoryConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CategoryToParentCategoryConnectionEdgeKeySpecifier = (
+	| 'node'
+	| CategoryToParentCategoryConnectionEdgeKeySpecifier
+)[];
+export type CategoryToParentCategoryConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CategoryToPostConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| CategoryToPostConnectionKeySpecifier
+)[];
+export type CategoryToPostConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CategoryToPostConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| CategoryToPostConnectionEdgeKeySpecifier
+)[];
+export type CategoryToPostConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostKeySpecifier = (
+	| 'author'
+	| 'authorDatabaseId'
+	| 'authorId'
+	| 'categories'
+	| 'commentCount'
+	| 'commentStatus'
+	| 'comments'
+	| 'content'
+	| 'contentType'
+	| 'databaseId'
+	| 'date'
+	| 'dateGmt'
+	| 'desiredSlug'
+	| 'editingLockedBy'
+	| 'enclosure'
+	| 'enqueuedScripts'
+	| 'enqueuedStylesheets'
+	| 'excerpt'
+	| 'featuredImage'
+	| 'featuredImageDatabaseId'
+	| 'featuredImageId'
+	| 'guid'
+	| 'id'
+	| 'isPreview'
+	| 'isRestricted'
+	| 'isRevision'
+	| 'lastEditedBy'
+	| 'link'
+	| 'modified'
+	| 'modifiedGmt'
+	| 'pingStatus'
+	| 'pinged'
+	| 'postFormats'
+	| 'postId'
+	| 'preview'
+	| 'previewRevisionDatabaseId'
+	| 'previewRevisionId'
+	| 'revisionOf'
+	| 'revisions'
+	| 'slug'
+	| 'social'
+	| 'status'
+	| 'tags'
+	| 'template'
+	| 'terms'
+	| 'title'
+	| 'toPing'
+	| 'uri'
+	| PostKeySpecifier
+)[];
+export type PostFieldPolicy = {
+	author?: FieldPolicy<any> | FieldReadFunction<any>;
+	authorDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	authorId?: FieldPolicy<any> | FieldReadFunction<any>;
+	categories?: FieldPolicy<any> | FieldReadFunction<any>;
+	commentCount?: FieldPolicy<any> | FieldReadFunction<any>;
+	commentStatus?: FieldPolicy<any> | FieldReadFunction<any>;
+	comments?: FieldPolicy<any> | FieldReadFunction<any>;
+	content?: FieldPolicy<any> | FieldReadFunction<any>;
+	contentType?: FieldPolicy<any> | FieldReadFunction<any>;
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	date?: FieldPolicy<any> | FieldReadFunction<any>;
+	dateGmt?: FieldPolicy<any> | FieldReadFunction<any>;
+	desiredSlug?: FieldPolicy<any> | FieldReadFunction<any>;
+	editingLockedBy?: FieldPolicy<any> | FieldReadFunction<any>;
+	enclosure?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedScripts?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedStylesheets?: FieldPolicy<any> | FieldReadFunction<any>;
+	excerpt?: FieldPolicy<any> | FieldReadFunction<any>;
+	featuredImage?: FieldPolicy<any> | FieldReadFunction<any>;
+	featuredImageDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	featuredImageId?: FieldPolicy<any> | FieldReadFunction<any>;
+	guid?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isPreview?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRevision?: FieldPolicy<any> | FieldReadFunction<any>;
+	lastEditedBy?: FieldPolicy<any> | FieldReadFunction<any>;
+	link?: FieldPolicy<any> | FieldReadFunction<any>;
+	modified?: FieldPolicy<any> | FieldReadFunction<any>;
+	modifiedGmt?: FieldPolicy<any> | FieldReadFunction<any>;
+	pingStatus?: FieldPolicy<any> | FieldReadFunction<any>;
+	pinged?: FieldPolicy<any> | FieldReadFunction<any>;
+	postFormats?: FieldPolicy<any> | FieldReadFunction<any>;
+	postId?: FieldPolicy<any> | FieldReadFunction<any>;
+	preview?: FieldPolicy<any> | FieldReadFunction<any>;
+	previewRevisionDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	previewRevisionId?: FieldPolicy<any> | FieldReadFunction<any>;
+	revisionOf?: FieldPolicy<any> | FieldReadFunction<any>;
+	revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+	slug?: FieldPolicy<any> | FieldReadFunction<any>;
+	social?: FieldPolicy<any> | FieldReadFunction<any>;
+	status?: FieldPolicy<any> | FieldReadFunction<any>;
+	tags?: FieldPolicy<any> | FieldReadFunction<any>;
+	template?: FieldPolicy<any> | FieldReadFunction<any>;
+	terms?: FieldPolicy<any> | FieldReadFunction<any>;
+	title?: FieldPolicy<any> | FieldReadFunction<any>;
+	toPing?: FieldPolicy<any> | FieldReadFunction<any>;
+	uri?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentNodeKeySpecifier = (
+	| 'databaseId'
+	| 'date'
+	| 'dateGmt'
+	| 'desiredSlug'
+	| 'editingLockedBy'
+	| 'enclosure'
+	| 'enqueuedScripts'
+	| 'enqueuedStylesheets'
+	| 'guid'
+	| 'id'
+	| 'isPreview'
+	| 'isRestricted'
+	| 'lastEditedBy'
+	| 'link'
+	| 'modified'
+	| 'modifiedGmt'
+	| 'previewRevisionDatabaseId'
+	| 'previewRevisionId'
+	| 'slug'
+	| 'status'
+	| 'terms'
+	| 'uri'
+	| ContentNodeKeySpecifier
+)[];
+export type ContentNodeFieldPolicy = {
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	date?: FieldPolicy<any> | FieldReadFunction<any>;
+	dateGmt?: FieldPolicy<any> | FieldReadFunction<any>;
+	desiredSlug?: FieldPolicy<any> | FieldReadFunction<any>;
+	editingLockedBy?: FieldPolicy<any> | FieldReadFunction<any>;
+	enclosure?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedScripts?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedStylesheets?: FieldPolicy<any> | FieldReadFunction<any>;
+	guid?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isPreview?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	lastEditedBy?: FieldPolicy<any> | FieldReadFunction<any>;
+	link?: FieldPolicy<any> | FieldReadFunction<any>;
+	modified?: FieldPolicy<any> | FieldReadFunction<any>;
+	modifiedGmt?: FieldPolicy<any> | FieldReadFunction<any>;
+	previewRevisionDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	previewRevisionId?: FieldPolicy<any> | FieldReadFunction<any>;
+	slug?: FieldPolicy<any> | FieldReadFunction<any>;
+	status?: FieldPolicy<any> | FieldReadFunction<any>;
+	terms?: FieldPolicy<any> | FieldReadFunction<any>;
+	uri?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentNodeToEditLockConnectionEdgeKeySpecifier = (
+	| 'lockTimestamp'
+	| 'node'
+	| ContentNodeToEditLockConnectionEdgeKeySpecifier
+)[];
+export type ContentNodeToEditLockConnectionEdgeFieldPolicy = {
+	lockTimestamp?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserKeySpecifier = (
+	| 'avatar'
+	| 'capKey'
+	| 'capabilities'
+	| 'comments'
+	| 'databaseId'
+	| 'description'
+	| 'email'
+	| 'enqueuedScripts'
+	| 'enqueuedStylesheets'
+	| 'extraCapabilities'
+	| 'firstName'
+	| 'id'
+	| 'isJwtAuthSecretRevoked'
+	| 'isRestricted'
+	| 'jwtAuthExpiration'
+	| 'jwtAuthToken'
+	| 'jwtRefreshToken'
+	| 'jwtUserSecret'
+	| 'lastName'
+	| 'locale'
+	| 'mediaItems'
+	| 'name'
+	| 'nicename'
+	| 'nickname'
+	| 'pages'
+	| 'posts'
+	| 'registeredDate'
+	| 'revisions'
+	| 'roles'
+	| 'slug'
+	| 'uri'
+	| 'url'
+	| 'userId'
+	| 'username'
+	| UserKeySpecifier
+)[];
+export type UserFieldPolicy = {
+	avatar?: FieldPolicy<any> | FieldReadFunction<any>;
+	capKey?: FieldPolicy<any> | FieldReadFunction<any>;
+	capabilities?: FieldPolicy<any> | FieldReadFunction<any>;
+	comments?: FieldPolicy<any> | FieldReadFunction<any>;
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	description?: FieldPolicy<any> | FieldReadFunction<any>;
+	email?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedScripts?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedStylesheets?: FieldPolicy<any> | FieldReadFunction<any>;
+	extraCapabilities?: FieldPolicy<any> | FieldReadFunction<any>;
+	firstName?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isJwtAuthSecretRevoked?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	jwtAuthExpiration?: FieldPolicy<any> | FieldReadFunction<any>;
+	jwtAuthToken?: FieldPolicy<any> | FieldReadFunction<any>;
+	jwtRefreshToken?: FieldPolicy<any> | FieldReadFunction<any>;
+	jwtUserSecret?: FieldPolicy<any> | FieldReadFunction<any>;
+	lastName?: FieldPolicy<any> | FieldReadFunction<any>;
+	locale?: FieldPolicy<any> | FieldReadFunction<any>;
+	mediaItems?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	nicename?: FieldPolicy<any> | FieldReadFunction<any>;
+	nickname?: FieldPolicy<any> | FieldReadFunction<any>;
+	pages?: FieldPolicy<any> | FieldReadFunction<any>;
+	posts?: FieldPolicy<any> | FieldReadFunction<any>;
+	registeredDate?: FieldPolicy<any> | FieldReadFunction<any>;
+	revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+	roles?: FieldPolicy<any> | FieldReadFunction<any>;
+	slug?: FieldPolicy<any> | FieldReadFunction<any>;
+	uri?: FieldPolicy<any> | FieldReadFunction<any>;
+	url?: FieldPolicy<any> | FieldReadFunction<any>;
+	userId?: FieldPolicy<any> | FieldReadFunction<any>;
+	username?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CommenterKeySpecifier = (
+	| 'databaseId'
+	| 'email'
+	| 'id'
+	| 'isRestricted'
+	| 'name'
+	| 'url'
+	| CommenterKeySpecifier
+)[];
+export type CommenterFieldPolicy = {
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	email?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	url?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type AvatarKeySpecifier = (
+	| 'default'
+	| 'extraAttr'
+	| 'forceDefault'
+	| 'foundAvatar'
+	| 'height'
+	| 'isRestricted'
+	| 'rating'
+	| 'scheme'
+	| 'size'
+	| 'url'
+	| 'width'
+	| AvatarKeySpecifier
+)[];
+export type AvatarFieldPolicy = {
+	default?: FieldPolicy<any> | FieldReadFunction<any>;
+	extraAttr?: FieldPolicy<any> | FieldReadFunction<any>;
+	forceDefault?: FieldPolicy<any> | FieldReadFunction<any>;
+	foundAvatar?: FieldPolicy<any> | FieldReadFunction<any>;
+	height?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	rating?: FieldPolicy<any> | FieldReadFunction<any>;
+	scheme?: FieldPolicy<any> | FieldReadFunction<any>;
+	size?: FieldPolicy<any> | FieldReadFunction<any>;
+	url?: FieldPolicy<any> | FieldReadFunction<any>;
+	width?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToCommentConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| UserToCommentConnectionKeySpecifier
+)[];
+export type UserToCommentConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToCommentConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| UserToCommentConnectionEdgeKeySpecifier
+)[];
+export type UserToCommentConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CommentKeySpecifier = (
+	| 'agent'
+	| 'approved'
+	| 'author'
+	| 'authorIp'
+	| 'commentId'
+	| 'commentedOn'
+	| 'content'
+	| 'databaseId'
+	| 'date'
+	| 'dateGmt'
+	| 'id'
+	| 'isRestricted'
+	| 'karma'
+	| 'parent'
+	| 'replies'
+	| 'type'
+	| CommentKeySpecifier
+)[];
+export type CommentFieldPolicy = {
+	agent?: FieldPolicy<any> | FieldReadFunction<any>;
+	approved?: FieldPolicy<any> | FieldReadFunction<any>;
+	author?: FieldPolicy<any> | FieldReadFunction<any>;
+	authorIp?: FieldPolicy<any> | FieldReadFunction<any>;
+	commentId?: FieldPolicy<any> | FieldReadFunction<any>;
+	commentedOn?: FieldPolicy<any> | FieldReadFunction<any>;
+	content?: FieldPolicy<any> | FieldReadFunction<any>;
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	date?: FieldPolicy<any> | FieldReadFunction<any>;
+	dateGmt?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	karma?: FieldPolicy<any> | FieldReadFunction<any>;
+	parent?: FieldPolicy<any> | FieldReadFunction<any>;
+	replies?: FieldPolicy<any> | FieldReadFunction<any>;
+	type?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CommentToCommenterConnectionEdgeKeySpecifier = (
+	| 'node'
+	| CommentToCommenterConnectionEdgeKeySpecifier
+)[];
+export type CommentToCommenterConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CommentToContentNodeConnectionEdgeKeySpecifier = (
+	| 'node'
+	| CommentToContentNodeConnectionEdgeKeySpecifier
+)[];
+export type CommentToContentNodeConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CommentToParentCommentConnectionEdgeKeySpecifier = (
+	| 'node'
+	| CommentToParentCommentConnectionEdgeKeySpecifier
+)[];
+export type CommentToParentCommentConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CommentToCommentConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| CommentToCommentConnectionKeySpecifier
+)[];
+export type CommentToCommentConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CommentToCommentConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| CommentToCommentConnectionEdgeKeySpecifier
+)[];
+export type CommentToCommentConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToEnqueuedScriptConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| UserToEnqueuedScriptConnectionKeySpecifier
+)[];
+export type UserToEnqueuedScriptConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToEnqueuedScriptConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| UserToEnqueuedScriptConnectionEdgeKeySpecifier
+)[];
+export type UserToEnqueuedScriptConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToEnqueuedStylesheetConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| UserToEnqueuedStylesheetConnectionKeySpecifier
+)[];
+export type UserToEnqueuedStylesheetConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToEnqueuedStylesheetConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| UserToEnqueuedStylesheetConnectionEdgeKeySpecifier
+)[];
+export type UserToEnqueuedStylesheetConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToMediaItemConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| UserToMediaItemConnectionKeySpecifier
+)[];
+export type UserToMediaItemConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToMediaItemConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| UserToMediaItemConnectionEdgeKeySpecifier
+)[];
+export type UserToMediaItemConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MediaItemKeySpecifier = (
+	| 'altText'
+	| 'ancestors'
+	| 'author'
+	| 'authorDatabaseId'
+	| 'authorId'
+	| 'caption'
+	| 'children'
+	| 'commentCount'
+	| 'commentStatus'
+	| 'comments'
+	| 'contentType'
+	| 'databaseId'
+	| 'date'
+	| 'dateGmt'
+	| 'description'
+	| 'desiredSlug'
+	| 'editingLockedBy'
+	| 'enclosure'
+	| 'enqueuedScripts'
+	| 'enqueuedStylesheets'
+	| 'fileSize'
+	| 'guid'
+	| 'id'
+	| 'isPreview'
+	| 'isRestricted'
+	| 'lastEditedBy'
+	| 'link'
+	| 'mediaDetails'
+	| 'mediaItemId'
+	| 'mediaItemUrl'
+	| 'mediaType'
+	| 'mimeType'
+	| 'modified'
+	| 'modifiedGmt'
+	| 'parent'
+	| 'parentDatabaseId'
+	| 'parentId'
+	| 'previewRevisionDatabaseId'
+	| 'previewRevisionId'
+	| 'sizes'
+	| 'slug'
+	| 'sourceUrl'
+	| 'srcSet'
+	| 'status'
+	| 'template'
+	| 'terms'
+	| 'title'
+	| 'uri'
+	| MediaItemKeySpecifier
+)[];
+export type MediaItemFieldPolicy = {
+	altText?: FieldPolicy<any> | FieldReadFunction<any>;
+	ancestors?: FieldPolicy<any> | FieldReadFunction<any>;
+	author?: FieldPolicy<any> | FieldReadFunction<any>;
+	authorDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	authorId?: FieldPolicy<any> | FieldReadFunction<any>;
+	caption?: FieldPolicy<any> | FieldReadFunction<any>;
+	children?: FieldPolicy<any> | FieldReadFunction<any>;
+	commentCount?: FieldPolicy<any> | FieldReadFunction<any>;
+	commentStatus?: FieldPolicy<any> | FieldReadFunction<any>;
+	comments?: FieldPolicy<any> | FieldReadFunction<any>;
+	contentType?: FieldPolicy<any> | FieldReadFunction<any>;
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	date?: FieldPolicy<any> | FieldReadFunction<any>;
+	dateGmt?: FieldPolicy<any> | FieldReadFunction<any>;
+	description?: FieldPolicy<any> | FieldReadFunction<any>;
+	desiredSlug?: FieldPolicy<any> | FieldReadFunction<any>;
+	editingLockedBy?: FieldPolicy<any> | FieldReadFunction<any>;
+	enclosure?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedScripts?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedStylesheets?: FieldPolicy<any> | FieldReadFunction<any>;
+	fileSize?: FieldPolicy<any> | FieldReadFunction<any>;
+	guid?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isPreview?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	lastEditedBy?: FieldPolicy<any> | FieldReadFunction<any>;
+	link?: FieldPolicy<any> | FieldReadFunction<any>;
+	mediaDetails?: FieldPolicy<any> | FieldReadFunction<any>;
+	mediaItemId?: FieldPolicy<any> | FieldReadFunction<any>;
+	mediaItemUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+	mediaType?: FieldPolicy<any> | FieldReadFunction<any>;
+	mimeType?: FieldPolicy<any> | FieldReadFunction<any>;
+	modified?: FieldPolicy<any> | FieldReadFunction<any>;
+	modifiedGmt?: FieldPolicy<any> | FieldReadFunction<any>;
+	parent?: FieldPolicy<any> | FieldReadFunction<any>;
+	parentDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	parentId?: FieldPolicy<any> | FieldReadFunction<any>;
+	previewRevisionDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	previewRevisionId?: FieldPolicy<any> | FieldReadFunction<any>;
+	sizes?: FieldPolicy<any> | FieldReadFunction<any>;
+	slug?: FieldPolicy<any> | FieldReadFunction<any>;
+	sourceUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+	srcSet?: FieldPolicy<any> | FieldReadFunction<any>;
+	status?: FieldPolicy<any> | FieldReadFunction<any>;
+	template?: FieldPolicy<any> | FieldReadFunction<any>;
+	terms?: FieldPolicy<any> | FieldReadFunction<any>;
+	title?: FieldPolicy<any> | FieldReadFunction<any>;
+	uri?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeWithTitleKeySpecifier = ('title' | NodeWithTitleKeySpecifier)[];
+export type NodeWithTitleFieldPolicy = {
+	title?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeWithAuthorKeySpecifier = (
+	| 'author'
+	| 'authorDatabaseId'
+	| 'authorId'
+	| NodeWithAuthorKeySpecifier
+)[];
+export type NodeWithAuthorFieldPolicy = {
+	author?: FieldPolicy<any> | FieldReadFunction<any>;
+	authorDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	authorId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeWithAuthorToUserConnectionEdgeKeySpecifier = (
+	| 'node'
+	| NodeWithAuthorToUserConnectionEdgeKeySpecifier
+)[];
+export type NodeWithAuthorToUserConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeWithCommentsKeySpecifier = (
+	| 'commentCount'
+	| 'commentStatus'
+	| NodeWithCommentsKeySpecifier
+)[];
+export type NodeWithCommentsFieldPolicy = {
+	commentCount?: FieldPolicy<any> | FieldReadFunction<any>;
+	commentStatus?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type HierarchicalContentNodeKeySpecifier = (
+	| 'ancestors'
+	| 'children'
+	| 'parent'
+	| 'parentDatabaseId'
+	| 'parentId'
+	| HierarchicalContentNodeKeySpecifier
+)[];
+export type HierarchicalContentNodeFieldPolicy = {
+	ancestors?: FieldPolicy<any> | FieldReadFunction<any>;
+	children?: FieldPolicy<any> | FieldReadFunction<any>;
+	parent?: FieldPolicy<any> | FieldReadFunction<any>;
+	parentDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	parentId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type HierarchicalContentNodeToContentNodeConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| HierarchicalContentNodeToContentNodeConnectionKeySpecifier
+)[];
+export type HierarchicalContentNodeToContentNodeConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type HierarchicalContentNodeToContentNodeConnectionEdgeKeySpecifier = (
+	| 'node'
+	| HierarchicalContentNodeToContentNodeConnectionEdgeKeySpecifier
+)[];
+export type HierarchicalContentNodeToContentNodeConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MediaItemToCommentConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| MediaItemToCommentConnectionKeySpecifier
+)[];
+export type MediaItemToCommentConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MediaItemToCommentConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| MediaItemToCommentConnectionEdgeKeySpecifier
+)[];
+export type MediaItemToCommentConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MediaItemToContentTypeConnectionEdgeKeySpecifier = (
+	| 'node'
+	| MediaItemToContentTypeConnectionEdgeKeySpecifier
+)[];
+export type MediaItemToContentTypeConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentTypeKeySpecifier = (
+	| 'canExport'
+	| 'connectedTaxonomies'
+	| 'contentNodes'
+	| 'deleteWithUser'
+	| 'description'
+	| 'excludeFromSearch'
+	| 'graphqlPluralName'
+	| 'graphqlSingleName'
+	| 'hasArchive'
+	| 'hierarchical'
+	| 'id'
+	| 'isRestricted'
+	| 'label'
+	| 'labels'
+	| 'menuIcon'
+	| 'menuPosition'
+	| 'name'
+	| 'public'
+	| 'publiclyQueryable'
+	| 'restBase'
+	| 'restControllerClass'
+	| 'showInAdminBar'
+	| 'showInGraphql'
+	| 'showInMenu'
+	| 'showInNavMenus'
+	| 'showInRest'
+	| 'showUi'
+	| ContentTypeKeySpecifier
+)[];
+export type ContentTypeFieldPolicy = {
+	canExport?: FieldPolicy<any> | FieldReadFunction<any>;
+	connectedTaxonomies?: FieldPolicy<any> | FieldReadFunction<any>;
+	contentNodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	deleteWithUser?: FieldPolicy<any> | FieldReadFunction<any>;
+	description?: FieldPolicy<any> | FieldReadFunction<any>;
+	excludeFromSearch?: FieldPolicy<any> | FieldReadFunction<any>;
+	graphqlPluralName?: FieldPolicy<any> | FieldReadFunction<any>;
+	graphqlSingleName?: FieldPolicy<any> | FieldReadFunction<any>;
+	hasArchive?: FieldPolicy<any> | FieldReadFunction<any>;
+	hierarchical?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	label?: FieldPolicy<any> | FieldReadFunction<any>;
+	labels?: FieldPolicy<any> | FieldReadFunction<any>;
+	menuIcon?: FieldPolicy<any> | FieldReadFunction<any>;
+	menuPosition?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	public?: FieldPolicy<any> | FieldReadFunction<any>;
+	publiclyQueryable?: FieldPolicy<any> | FieldReadFunction<any>;
+	restBase?: FieldPolicy<any> | FieldReadFunction<any>;
+	restControllerClass?: FieldPolicy<any> | FieldReadFunction<any>;
+	showInAdminBar?: FieldPolicy<any> | FieldReadFunction<any>;
+	showInGraphql?: FieldPolicy<any> | FieldReadFunction<any>;
+	showInMenu?: FieldPolicy<any> | FieldReadFunction<any>;
+	showInNavMenus?: FieldPolicy<any> | FieldReadFunction<any>;
+	showInRest?: FieldPolicy<any> | FieldReadFunction<any>;
+	showUi?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentTypeToTaxonomyConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| ContentTypeToTaxonomyConnectionKeySpecifier
+)[];
+export type ContentTypeToTaxonomyConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentTypeToTaxonomyConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| ContentTypeToTaxonomyConnectionEdgeKeySpecifier
+)[];
+export type ContentTypeToTaxonomyConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TaxonomyKeySpecifier = (
+	| 'connectedContentTypes'
+	| 'description'
+	| 'graphqlPluralName'
+	| 'graphqlSingleName'
+	| 'hierarchical'
+	| 'id'
+	| 'isRestricted'
+	| 'label'
+	| 'name'
+	| 'public'
+	| 'restBase'
+	| 'restControllerClass'
+	| 'showCloud'
+	| 'showInAdminColumn'
+	| 'showInGraphql'
+	| 'showInMenu'
+	| 'showInNavMenus'
+	| 'showInQuickEdit'
+	| 'showInRest'
+	| 'showUi'
+	| TaxonomyKeySpecifier
+)[];
+export type TaxonomyFieldPolicy = {
+	connectedContentTypes?: FieldPolicy<any> | FieldReadFunction<any>;
+	description?: FieldPolicy<any> | FieldReadFunction<any>;
+	graphqlPluralName?: FieldPolicy<any> | FieldReadFunction<any>;
+	graphqlSingleName?: FieldPolicy<any> | FieldReadFunction<any>;
+	hierarchical?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	label?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	public?: FieldPolicy<any> | FieldReadFunction<any>;
+	restBase?: FieldPolicy<any> | FieldReadFunction<any>;
+	restControllerClass?: FieldPolicy<any> | FieldReadFunction<any>;
+	showCloud?: FieldPolicy<any> | FieldReadFunction<any>;
+	showInAdminColumn?: FieldPolicy<any> | FieldReadFunction<any>;
+	showInGraphql?: FieldPolicy<any> | FieldReadFunction<any>;
+	showInMenu?: FieldPolicy<any> | FieldReadFunction<any>;
+	showInNavMenus?: FieldPolicy<any> | FieldReadFunction<any>;
+	showInQuickEdit?: FieldPolicy<any> | FieldReadFunction<any>;
+	showInRest?: FieldPolicy<any> | FieldReadFunction<any>;
+	showUi?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TaxonomyToContentTypeConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| TaxonomyToContentTypeConnectionKeySpecifier
+)[];
+export type TaxonomyToContentTypeConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TaxonomyToContentTypeConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| TaxonomyToContentTypeConnectionEdgeKeySpecifier
+)[];
+export type TaxonomyToContentTypeConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentTypeToContentNodeConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| ContentTypeToContentNodeConnectionKeySpecifier
+)[];
+export type ContentTypeToContentNodeConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentTypeToContentNodeConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| ContentTypeToContentNodeConnectionEdgeKeySpecifier
+)[];
+export type ContentTypeToContentNodeConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostTypeLabelDetailsKeySpecifier = (
+	| 'addNew'
+	| 'addNewItem'
+	| 'allItems'
+	| 'archives'
+	| 'attributes'
+	| 'editItem'
+	| 'featuredImage'
+	| 'filterItemsList'
+	| 'insertIntoItem'
+	| 'itemsList'
+	| 'itemsListNavigation'
+	| 'menuName'
+	| 'name'
+	| 'newItem'
+	| 'notFound'
+	| 'notFoundInTrash'
+	| 'parentItemColon'
+	| 'removeFeaturedImage'
+	| 'searchItems'
+	| 'setFeaturedImage'
+	| 'singularName'
+	| 'uploadedToThisItem'
+	| 'useFeaturedImage'
+	| 'viewItem'
+	| 'viewItems'
+	| PostTypeLabelDetailsKeySpecifier
+)[];
+export type PostTypeLabelDetailsFieldPolicy = {
+	addNew?: FieldPolicy<any> | FieldReadFunction<any>;
+	addNewItem?: FieldPolicy<any> | FieldReadFunction<any>;
+	allItems?: FieldPolicy<any> | FieldReadFunction<any>;
+	archives?: FieldPolicy<any> | FieldReadFunction<any>;
+	attributes?: FieldPolicy<any> | FieldReadFunction<any>;
+	editItem?: FieldPolicy<any> | FieldReadFunction<any>;
+	featuredImage?: FieldPolicy<any> | FieldReadFunction<any>;
+	filterItemsList?: FieldPolicy<any> | FieldReadFunction<any>;
+	insertIntoItem?: FieldPolicy<any> | FieldReadFunction<any>;
+	itemsList?: FieldPolicy<any> | FieldReadFunction<any>;
+	itemsListNavigation?: FieldPolicy<any> | FieldReadFunction<any>;
+	menuName?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	newItem?: FieldPolicy<any> | FieldReadFunction<any>;
+	notFound?: FieldPolicy<any> | FieldReadFunction<any>;
+	notFoundInTrash?: FieldPolicy<any> | FieldReadFunction<any>;
+	parentItemColon?: FieldPolicy<any> | FieldReadFunction<any>;
+	removeFeaturedImage?: FieldPolicy<any> | FieldReadFunction<any>;
+	searchItems?: FieldPolicy<any> | FieldReadFunction<any>;
+	setFeaturedImage?: FieldPolicy<any> | FieldReadFunction<any>;
+	singularName?: FieldPolicy<any> | FieldReadFunction<any>;
+	uploadedToThisItem?: FieldPolicy<any> | FieldReadFunction<any>;
+	useFeaturedImage?: FieldPolicy<any> | FieldReadFunction<any>;
+	viewItem?: FieldPolicy<any> | FieldReadFunction<any>;
+	viewItems?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentNodeToEnqueuedScriptConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| ContentNodeToEnqueuedScriptConnectionKeySpecifier
+)[];
+export type ContentNodeToEnqueuedScriptConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentNodeToEnqueuedScriptConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| ContentNodeToEnqueuedScriptConnectionEdgeKeySpecifier
+)[];
+export type ContentNodeToEnqueuedScriptConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentNodeToEnqueuedStylesheetConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| ContentNodeToEnqueuedStylesheetConnectionKeySpecifier
+)[];
+export type ContentNodeToEnqueuedStylesheetConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentNodeToEnqueuedStylesheetConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| ContentNodeToEnqueuedStylesheetConnectionEdgeKeySpecifier
+)[];
+export type ContentNodeToEnqueuedStylesheetConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentNodeToEditLastConnectionEdgeKeySpecifier = (
+	| 'node'
+	| ContentNodeToEditLastConnectionEdgeKeySpecifier
+)[];
+export type ContentNodeToEditLastConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MediaDetailsKeySpecifier = (
+	| 'file'
+	| 'height'
+	| 'meta'
+	| 'sizes'
+	| 'width'
+	| MediaDetailsKeySpecifier
+)[];
+export type MediaDetailsFieldPolicy = {
+	file?: FieldPolicy<any> | FieldReadFunction<any>;
+	height?: FieldPolicy<any> | FieldReadFunction<any>;
+	meta?: FieldPolicy<any> | FieldReadFunction<any>;
+	sizes?: FieldPolicy<any> | FieldReadFunction<any>;
+	width?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MediaItemMetaKeySpecifier = (
+	| 'aperture'
+	| 'camera'
+	| 'caption'
+	| 'copyright'
+	| 'createdTimestamp'
+	| 'credit'
+	| 'focalLength'
+	| 'iso'
+	| 'keywords'
+	| 'orientation'
+	| 'shutterSpeed'
+	| 'title'
+	| MediaItemMetaKeySpecifier
+)[];
+export type MediaItemMetaFieldPolicy = {
+	aperture?: FieldPolicy<any> | FieldReadFunction<any>;
+	camera?: FieldPolicy<any> | FieldReadFunction<any>;
+	caption?: FieldPolicy<any> | FieldReadFunction<any>;
+	copyright?: FieldPolicy<any> | FieldReadFunction<any>;
+	createdTimestamp?: FieldPolicy<any> | FieldReadFunction<any>;
+	credit?: FieldPolicy<any> | FieldReadFunction<any>;
+	focalLength?: FieldPolicy<any> | FieldReadFunction<any>;
+	iso?: FieldPolicy<any> | FieldReadFunction<any>;
+	keywords?: FieldPolicy<any> | FieldReadFunction<any>;
+	orientation?: FieldPolicy<any> | FieldReadFunction<any>;
+	shutterSpeed?: FieldPolicy<any> | FieldReadFunction<any>;
+	title?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MediaSizeKeySpecifier = (
+	| 'file'
+	| 'fileSize'
+	| 'height'
+	| 'mimeType'
+	| 'name'
+	| 'sourceUrl'
+	| 'width'
+	| MediaSizeKeySpecifier
+)[];
+export type MediaSizeFieldPolicy = {
+	file?: FieldPolicy<any> | FieldReadFunction<any>;
+	fileSize?: FieldPolicy<any> | FieldReadFunction<any>;
+	height?: FieldPolicy<any> | FieldReadFunction<any>;
+	mimeType?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	sourceUrl?: FieldPolicy<any> | FieldReadFunction<any>;
+	width?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type DefaultTemplateKeySpecifier = (
+	| 'templateName'
+	| DefaultTemplateKeySpecifier
+)[];
+export type DefaultTemplateFieldPolicy = {
+	templateName?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentTemplateKeySpecifier = (
+	| 'templateName'
+	| ContentTemplateKeySpecifier
+)[];
+export type ContentTemplateFieldPolicy = {
+	templateName?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CoverTemplateTemplateKeySpecifier = (
+	| 'templateName'
+	| CoverTemplateTemplateKeySpecifier
+)[];
+export type CoverTemplateTemplateFieldPolicy = {
+	templateName?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type FullWidthTemplateTemplateKeySpecifier = (
+	| 'templateName'
+	| FullWidthTemplateTemplateKeySpecifier
+)[];
+export type FullWidthTemplateTemplateFieldPolicy = {
+	templateName?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentNodeToTermNodeConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| ContentNodeToTermNodeConnectionKeySpecifier
+)[];
+export type ContentNodeToTermNodeConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ContentNodeToTermNodeConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| ContentNodeToTermNodeConnectionEdgeKeySpecifier
+)[];
+export type ContentNodeToTermNodeConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToPageConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| UserToPageConnectionKeySpecifier
+)[];
+export type UserToPageConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToPageConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| UserToPageConnectionEdgeKeySpecifier
+)[];
+export type UserToPageConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PageKeySpecifier = (
+	| 'ancestors'
+	| 'author'
+	| 'authorDatabaseId'
+	| 'authorId'
+	| 'children'
+	| 'commentCount'
+	| 'commentStatus'
+	| 'comments'
+	| 'content'
+	| 'contentType'
+	| 'databaseId'
+	| 'date'
+	| 'dateGmt'
+	| 'desiredSlug'
+	| 'editingLockedBy'
+	| 'enclosure'
+	| 'enqueuedScripts'
+	| 'enqueuedStylesheets'
+	| 'featuredImage'
+	| 'featuredImageDatabaseId'
+	| 'featuredImageId'
+	| 'guid'
+	| 'id'
+	| 'isFrontPage'
+	| 'isPreview'
+	| 'isRestricted'
+	| 'isRevision'
+	| 'lastEditedBy'
+	| 'link'
+	| 'menuOrder'
+	| 'modified'
+	| 'modifiedGmt'
+	| 'pageId'
+	| 'parent'
+	| 'parentDatabaseId'
+	| 'parentId'
+	| 'preview'
+	| 'previewRevisionDatabaseId'
+	| 'previewRevisionId'
+	| 'revisionOf'
+	| 'revisions'
+	| 'slug'
+	| 'status'
+	| 'template'
+	| 'terms'
+	| 'title'
+	| 'uri'
+	| PageKeySpecifier
+)[];
+export type PageFieldPolicy = {
+	ancestors?: FieldPolicy<any> | FieldReadFunction<any>;
+	author?: FieldPolicy<any> | FieldReadFunction<any>;
+	authorDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	authorId?: FieldPolicy<any> | FieldReadFunction<any>;
+	children?: FieldPolicy<any> | FieldReadFunction<any>;
+	commentCount?: FieldPolicy<any> | FieldReadFunction<any>;
+	commentStatus?: FieldPolicy<any> | FieldReadFunction<any>;
+	comments?: FieldPolicy<any> | FieldReadFunction<any>;
+	content?: FieldPolicy<any> | FieldReadFunction<any>;
+	contentType?: FieldPolicy<any> | FieldReadFunction<any>;
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	date?: FieldPolicy<any> | FieldReadFunction<any>;
+	dateGmt?: FieldPolicy<any> | FieldReadFunction<any>;
+	desiredSlug?: FieldPolicy<any> | FieldReadFunction<any>;
+	editingLockedBy?: FieldPolicy<any> | FieldReadFunction<any>;
+	enclosure?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedScripts?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedStylesheets?: FieldPolicy<any> | FieldReadFunction<any>;
+	featuredImage?: FieldPolicy<any> | FieldReadFunction<any>;
+	featuredImageDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	featuredImageId?: FieldPolicy<any> | FieldReadFunction<any>;
+	guid?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isFrontPage?: FieldPolicy<any> | FieldReadFunction<any>;
+	isPreview?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRevision?: FieldPolicy<any> | FieldReadFunction<any>;
+	lastEditedBy?: FieldPolicy<any> | FieldReadFunction<any>;
+	link?: FieldPolicy<any> | FieldReadFunction<any>;
+	menuOrder?: FieldPolicy<any> | FieldReadFunction<any>;
+	modified?: FieldPolicy<any> | FieldReadFunction<any>;
+	modifiedGmt?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageId?: FieldPolicy<any> | FieldReadFunction<any>;
+	parent?: FieldPolicy<any> | FieldReadFunction<any>;
+	parentDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	parentId?: FieldPolicy<any> | FieldReadFunction<any>;
+	preview?: FieldPolicy<any> | FieldReadFunction<any>;
+	previewRevisionDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	previewRevisionId?: FieldPolicy<any> | FieldReadFunction<any>;
+	revisionOf?: FieldPolicy<any> | FieldReadFunction<any>;
+	revisions?: FieldPolicy<any> | FieldReadFunction<any>;
+	slug?: FieldPolicy<any> | FieldReadFunction<any>;
+	status?: FieldPolicy<any> | FieldReadFunction<any>;
+	template?: FieldPolicy<any> | FieldReadFunction<any>;
+	terms?: FieldPolicy<any> | FieldReadFunction<any>;
+	title?: FieldPolicy<any> | FieldReadFunction<any>;
+	uri?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeWithContentEditorKeySpecifier = (
+	| 'content'
+	| NodeWithContentEditorKeySpecifier
+)[];
+export type NodeWithContentEditorFieldPolicy = {
+	content?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeWithFeaturedImageKeySpecifier = (
+	| 'featuredImage'
+	| 'featuredImageDatabaseId'
+	| 'featuredImageId'
+	| NodeWithFeaturedImageKeySpecifier
+)[];
+export type NodeWithFeaturedImageFieldPolicy = {
+	featuredImage?: FieldPolicy<any> | FieldReadFunction<any>;
+	featuredImageDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	featuredImageId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeWithFeaturedImageToMediaItemConnectionEdgeKeySpecifier = (
+	| 'node'
+	| NodeWithFeaturedImageToMediaItemConnectionEdgeKeySpecifier
+)[];
+export type NodeWithFeaturedImageToMediaItemConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeWithRevisionsKeySpecifier = (
+	| 'isRevision'
+	| 'revisionOf'
+	| NodeWithRevisionsKeySpecifier
+)[];
+export type NodeWithRevisionsFieldPolicy = {
+	isRevision?: FieldPolicy<any> | FieldReadFunction<any>;
+	revisionOf?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeWithRevisionsToContentNodeConnectionEdgeKeySpecifier = (
+	| 'node'
+	| NodeWithRevisionsToContentNodeConnectionEdgeKeySpecifier
+)[];
+export type NodeWithRevisionsToContentNodeConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeWithPageAttributesKeySpecifier = (
+	| 'menuOrder'
+	| NodeWithPageAttributesKeySpecifier
+)[];
+export type NodeWithPageAttributesFieldPolicy = {
+	menuOrder?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PageToCommentConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| PageToCommentConnectionKeySpecifier
+)[];
+export type PageToCommentConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PageToCommentConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| PageToCommentConnectionEdgeKeySpecifier
+)[];
+export type PageToCommentConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PageToContentTypeConnectionEdgeKeySpecifier = (
+	| 'node'
+	| PageToContentTypeConnectionEdgeKeySpecifier
+)[];
+export type PageToContentTypeConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PageToPreviewConnectionEdgeKeySpecifier = (
+	| 'node'
+	| PageToPreviewConnectionEdgeKeySpecifier
+)[];
+export type PageToPreviewConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PageToRevisionConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| PageToRevisionConnectionKeySpecifier
+)[];
+export type PageToRevisionConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PageToRevisionConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| PageToRevisionConnectionEdgeKeySpecifier
+)[];
+export type PageToRevisionConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToPostConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| UserToPostConnectionKeySpecifier
+)[];
+export type UserToPostConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToPostConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| UserToPostConnectionEdgeKeySpecifier
+)[];
+export type UserToPostConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToContentRevisionUnionConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| UserToContentRevisionUnionConnectionKeySpecifier
+)[];
+export type UserToContentRevisionUnionConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToContentRevisionUnionConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| UserToContentRevisionUnionConnectionEdgeKeySpecifier
+)[];
+export type UserToContentRevisionUnionConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToUserRoleConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| UserToUserRoleConnectionKeySpecifier
+)[];
+export type UserToUserRoleConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserToUserRoleConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| UserToUserRoleConnectionEdgeKeySpecifier
+)[];
+export type UserToUserRoleConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UserRoleKeySpecifier = (
+	| 'capabilities'
+	| 'displayName'
+	| 'id'
+	| 'isRestricted'
+	| 'name'
+	| UserRoleKeySpecifier
+)[];
+export type UserRoleFieldPolicy = {
+	capabilities?: FieldPolicy<any> | FieldReadFunction<any>;
+	displayName?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeWithExcerptKeySpecifier = (
+	| 'excerpt'
+	| NodeWithExcerptKeySpecifier
+)[];
+export type NodeWithExcerptFieldPolicy = {
+	excerpt?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type NodeWithTrackbacksKeySpecifier = (
+	| 'pingStatus'
+	| 'pinged'
+	| 'toPing'
+	| NodeWithTrackbacksKeySpecifier
+)[];
+export type NodeWithTrackbacksFieldPolicy = {
+	pingStatus?: FieldPolicy<any> | FieldReadFunction<any>;
+	pinged?: FieldPolicy<any> | FieldReadFunction<any>;
+	toPing?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostToCategoryConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| PostToCategoryConnectionKeySpecifier
+)[];
+export type PostToCategoryConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostToCategoryConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| PostToCategoryConnectionEdgeKeySpecifier
+)[];
+export type PostToCategoryConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostToCommentConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| PostToCommentConnectionKeySpecifier
+)[];
+export type PostToCommentConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostToCommentConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| PostToCommentConnectionEdgeKeySpecifier
+)[];
+export type PostToCommentConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostToContentTypeConnectionEdgeKeySpecifier = (
+	| 'node'
+	| PostToContentTypeConnectionEdgeKeySpecifier
+)[];
+export type PostToContentTypeConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostToPostFormatConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| PostToPostFormatConnectionKeySpecifier
+)[];
+export type PostToPostFormatConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostToPostFormatConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| PostToPostFormatConnectionEdgeKeySpecifier
+)[];
+export type PostToPostFormatConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostFormatKeySpecifier = (
+	| 'count'
+	| 'databaseId'
+	| 'description'
+	| 'enqueuedScripts'
+	| 'enqueuedStylesheets'
+	| 'id'
+	| 'isRestricted'
+	| 'link'
+	| 'name'
+	| 'postFormatId'
+	| 'posts'
+	| 'slug'
+	| 'taxonomy'
+	| 'termGroupId'
+	| 'termTaxonomyId'
+	| 'uri'
+	| PostFormatKeySpecifier
+)[];
+export type PostFormatFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>;
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	description?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedScripts?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedStylesheets?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	link?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	postFormatId?: FieldPolicy<any> | FieldReadFunction<any>;
+	posts?: FieldPolicy<any> | FieldReadFunction<any>;
+	slug?: FieldPolicy<any> | FieldReadFunction<any>;
+	taxonomy?: FieldPolicy<any> | FieldReadFunction<any>;
+	termGroupId?: FieldPolicy<any> | FieldReadFunction<any>;
+	termTaxonomyId?: FieldPolicy<any> | FieldReadFunction<any>;
+	uri?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostFormatToPostConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| PostFormatToPostConnectionKeySpecifier
+)[];
+export type PostFormatToPostConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostFormatToPostConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| PostFormatToPostConnectionEdgeKeySpecifier
+)[];
+export type PostFormatToPostConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostFormatToTaxonomyConnectionEdgeKeySpecifier = (
+	| 'node'
+	| PostFormatToTaxonomyConnectionEdgeKeySpecifier
+)[];
+export type PostFormatToTaxonomyConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostToPreviewConnectionEdgeKeySpecifier = (
+	| 'node'
+	| PostToPreviewConnectionEdgeKeySpecifier
+)[];
+export type PostToPreviewConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostToRevisionConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| PostToRevisionConnectionKeySpecifier
+)[];
+export type PostToRevisionConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostToRevisionConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| PostToRevisionConnectionEdgeKeySpecifier
+)[];
+export type PostToRevisionConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type Post_SocialKeySpecifier = (
+	| 'facebook'
+	| 'fieldGroupName'
+	| 'instagram'
+	| 'twitter'
+	| 'website'
+	| Post_SocialKeySpecifier
+)[];
+export type Post_SocialFieldPolicy = {
+	facebook?: FieldPolicy<any> | FieldReadFunction<any>;
+	fieldGroupName?: FieldPolicy<any> | FieldReadFunction<any>;
+	instagram?: FieldPolicy<any> | FieldReadFunction<any>;
+	twitter?: FieldPolicy<any> | FieldReadFunction<any>;
+	website?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostToTagConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| PostToTagConnectionKeySpecifier
+)[];
+export type PostToTagConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PostToTagConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| PostToTagConnectionEdgeKeySpecifier
+)[];
+export type PostToTagConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TagKeySpecifier = (
+	| 'count'
+	| 'databaseId'
+	| 'description'
+	| 'enqueuedScripts'
+	| 'enqueuedStylesheets'
+	| 'id'
+	| 'isRestricted'
+	| 'link'
+	| 'name'
+	| 'posts'
+	| 'slug'
+	| 'tagId'
+	| 'taxonomy'
+	| 'termGroupId'
+	| 'termTaxonomyId'
+	| 'uri'
+	| TagKeySpecifier
+)[];
+export type TagFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>;
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	description?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedScripts?: FieldPolicy<any> | FieldReadFunction<any>;
+	enqueuedStylesheets?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	link?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	posts?: FieldPolicy<any> | FieldReadFunction<any>;
+	slug?: FieldPolicy<any> | FieldReadFunction<any>;
+	tagId?: FieldPolicy<any> | FieldReadFunction<any>;
+	taxonomy?: FieldPolicy<any> | FieldReadFunction<any>;
+	termGroupId?: FieldPolicy<any> | FieldReadFunction<any>;
+	termTaxonomyId?: FieldPolicy<any> | FieldReadFunction<any>;
+	uri?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TagToPostConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| TagToPostConnectionKeySpecifier
+)[];
+export type TagToPostConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TagToPostConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| TagToPostConnectionEdgeKeySpecifier
+)[];
+export type TagToPostConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TagToTaxonomyConnectionEdgeKeySpecifier = (
+	| 'node'
+	| TagToTaxonomyConnectionEdgeKeySpecifier
+)[];
+export type TagToTaxonomyConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CategoryToTaxonomyConnectionEdgeKeySpecifier = (
+	| 'node'
+	| CategoryToTaxonomyConnectionEdgeKeySpecifier
+)[];
+export type CategoryToTaxonomyConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToCommentConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToCommentConnectionKeySpecifier
+)[];
+export type RootQueryToCommentConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToCommentConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToCommentConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToCommentConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToContentNodeConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToContentNodeConnectionKeySpecifier
+)[];
+export type RootQueryToContentNodeConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToContentNodeConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToContentNodeConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToContentNodeConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToContentTypeConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToContentTypeConnectionKeySpecifier
+)[];
+export type RootQueryToContentTypeConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToContentTypeConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToContentTypeConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToContentTypeConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type DiscussionSettingsKeySpecifier = (
+	| 'defaultCommentStatus'
+	| 'defaultPingStatus'
+	| DiscussionSettingsKeySpecifier
+)[];
+export type DiscussionSettingsFieldPolicy = {
+	defaultCommentStatus?: FieldPolicy<any> | FieldReadFunction<any>;
+	defaultPingStatus?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type GeneralSettingsKeySpecifier = (
+	| 'dateFormat'
+	| 'description'
+	| 'email'
+	| 'language'
+	| 'startOfWeek'
+	| 'timeFormat'
+	| 'timezone'
+	| 'title'
+	| 'url'
+	| GeneralSettingsKeySpecifier
+)[];
+export type GeneralSettingsFieldPolicy = {
+	dateFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+	description?: FieldPolicy<any> | FieldReadFunction<any>;
+	email?: FieldPolicy<any> | FieldReadFunction<any>;
+	language?: FieldPolicy<any> | FieldReadFunction<any>;
+	startOfWeek?: FieldPolicy<any> | FieldReadFunction<any>;
+	timeFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+	timezone?: FieldPolicy<any> | FieldReadFunction<any>;
+	title?: FieldPolicy<any> | FieldReadFunction<any>;
+	url?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToMediaItemConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToMediaItemConnectionKeySpecifier
+)[];
+export type RootQueryToMediaItemConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToMediaItemConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToMediaItemConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToMediaItemConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MenuKeySpecifier = (
+	| 'count'
+	| 'databaseId'
+	| 'id'
+	| 'isRestricted'
+	| 'locations'
+	| 'menuId'
+	| 'menuItems'
+	| 'name'
+	| 'slug'
+	| MenuKeySpecifier
+)[];
+export type MenuFieldPolicy = {
+	count?: FieldPolicy<any> | FieldReadFunction<any>;
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	locations?: FieldPolicy<any> | FieldReadFunction<any>;
+	menuId?: FieldPolicy<any> | FieldReadFunction<any>;
+	menuItems?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	slug?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MenuToMenuItemConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| MenuToMenuItemConnectionKeySpecifier
+)[];
+export type MenuToMenuItemConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MenuToMenuItemConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| MenuToMenuItemConnectionEdgeKeySpecifier
+)[];
+export type MenuToMenuItemConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MenuItemKeySpecifier = (
+	| 'childItems'
+	| 'connectedNode'
+	| 'connectedObject'
+	| 'cssClasses'
+	| 'databaseId'
+	| 'description'
+	| 'id'
+	| 'isRestricted'
+	| 'label'
+	| 'linkRelationship'
+	| 'locations'
+	| 'menu'
+	| 'menuItemId'
+	| 'order'
+	| 'parentDatabaseId'
+	| 'parentId'
+	| 'path'
+	| 'target'
+	| 'title'
+	| 'url'
+	| MenuItemKeySpecifier
+)[];
+export type MenuItemFieldPolicy = {
+	childItems?: FieldPolicy<any> | FieldReadFunction<any>;
+	connectedNode?: FieldPolicy<any> | FieldReadFunction<any>;
+	connectedObject?: FieldPolicy<any> | FieldReadFunction<any>;
+	cssClasses?: FieldPolicy<any> | FieldReadFunction<any>;
+	databaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	description?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	label?: FieldPolicy<any> | FieldReadFunction<any>;
+	linkRelationship?: FieldPolicy<any> | FieldReadFunction<any>;
+	locations?: FieldPolicy<any> | FieldReadFunction<any>;
+	menu?: FieldPolicy<any> | FieldReadFunction<any>;
+	menuItemId?: FieldPolicy<any> | FieldReadFunction<any>;
+	order?: FieldPolicy<any> | FieldReadFunction<any>;
+	parentDatabaseId?: FieldPolicy<any> | FieldReadFunction<any>;
+	parentId?: FieldPolicy<any> | FieldReadFunction<any>;
+	path?: FieldPolicy<any> | FieldReadFunction<any>;
+	target?: FieldPolicy<any> | FieldReadFunction<any>;
+	title?: FieldPolicy<any> | FieldReadFunction<any>;
+	url?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MenuItemToMenuItemConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| MenuItemToMenuItemConnectionKeySpecifier
+)[];
+export type MenuItemToMenuItemConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MenuItemToMenuItemConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| MenuItemToMenuItemConnectionEdgeKeySpecifier
+)[];
+export type MenuItemToMenuItemConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MenuItemToMenuItemLinkableConnectionEdgeKeySpecifier = (
+	| 'node'
+	| MenuItemToMenuItemLinkableConnectionEdgeKeySpecifier
+)[];
+export type MenuItemToMenuItemLinkableConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type MenuItemToMenuConnectionEdgeKeySpecifier = (
+	| 'node'
+	| MenuItemToMenuConnectionEdgeKeySpecifier
+)[];
+export type MenuItemToMenuConnectionEdgeFieldPolicy = {
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToMenuItemConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToMenuItemConnectionKeySpecifier
+)[];
+export type RootQueryToMenuItemConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToMenuItemConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToMenuItemConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToMenuItemConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToMenuConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToMenuConnectionKeySpecifier
+)[];
+export type RootQueryToMenuConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToMenuConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToMenuConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToMenuConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToPageConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToPageConnectionKeySpecifier
+)[];
+export type RootQueryToPageConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToPageConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToPageConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToPageConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type PluginKeySpecifier = (
+	| 'author'
+	| 'authorUri'
+	| 'description'
+	| 'id'
+	| 'isRestricted'
+	| 'name'
+	| 'path'
+	| 'pluginUri'
+	| 'version'
+	| PluginKeySpecifier
+)[];
+export type PluginFieldPolicy = {
+	author?: FieldPolicy<any> | FieldReadFunction<any>;
+	authorUri?: FieldPolicy<any> | FieldReadFunction<any>;
+	description?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	path?: FieldPolicy<any> | FieldReadFunction<any>;
+	pluginUri?: FieldPolicy<any> | FieldReadFunction<any>;
+	version?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToPluginConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToPluginConnectionKeySpecifier
+)[];
+export type RootQueryToPluginConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToPluginConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToPluginConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToPluginConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToPostFormatConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToPostFormatConnectionKeySpecifier
+)[];
+export type RootQueryToPostFormatConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToPostFormatConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToPostFormatConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToPostFormatConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToPostConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToPostConnectionKeySpecifier
+)[];
+export type RootQueryToPostConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToPostConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToPostConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToPostConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ReadingSettingsKeySpecifier = (
+	| 'postsPerPage'
+	| ReadingSettingsKeySpecifier
+)[];
+export type ReadingSettingsFieldPolicy = {
+	postsPerPage?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToEnqueuedScriptConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToEnqueuedScriptConnectionKeySpecifier
+)[];
+export type RootQueryToEnqueuedScriptConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToEnqueuedScriptConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToEnqueuedScriptConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToEnqueuedScriptConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToEnqueuedStylesheetConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToEnqueuedStylesheetConnectionKeySpecifier
+)[];
+export type RootQueryToEnqueuedStylesheetConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToEnqueuedStylesheetConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToEnqueuedStylesheetConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToEnqueuedStylesheetConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToContentRevisionUnionConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToContentRevisionUnionConnectionKeySpecifier
+)[];
+export type RootQueryToContentRevisionUnionConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToContentRevisionUnionConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToContentRevisionUnionConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToContentRevisionUnionConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToTagConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToTagConnectionKeySpecifier
+)[];
+export type RootQueryToTagConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToTagConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToTagConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToTagConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToTaxonomyConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToTaxonomyConnectionKeySpecifier
+)[];
+export type RootQueryToTaxonomyConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToTaxonomyConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToTaxonomyConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToTaxonomyConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToTermNodeConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToTermNodeConnectionKeySpecifier
+)[];
+export type RootQueryToTermNodeConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToTermNodeConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToTermNodeConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToTermNodeConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ThemeKeySpecifier = (
+	| 'author'
+	| 'authorUri'
+	| 'description'
+	| 'id'
+	| 'isRestricted'
+	| 'name'
+	| 'screenshot'
+	| 'slug'
+	| 'tags'
+	| 'themeUri'
+	| 'version'
+	| ThemeKeySpecifier
+)[];
+export type ThemeFieldPolicy = {
+	author?: FieldPolicy<any> | FieldReadFunction<any>;
+	authorUri?: FieldPolicy<any> | FieldReadFunction<any>;
+	description?: FieldPolicy<any> | FieldReadFunction<any>;
+	id?: FieldPolicy<any> | FieldReadFunction<any>;
+	isRestricted?: FieldPolicy<any> | FieldReadFunction<any>;
+	name?: FieldPolicy<any> | FieldReadFunction<any>;
+	screenshot?: FieldPolicy<any> | FieldReadFunction<any>;
+	slug?: FieldPolicy<any> | FieldReadFunction<any>;
+	tags?: FieldPolicy<any> | FieldReadFunction<any>;
+	themeUri?: FieldPolicy<any> | FieldReadFunction<any>;
+	version?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToThemeConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToThemeConnectionKeySpecifier
+)[];
+export type RootQueryToThemeConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToThemeConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToThemeConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToThemeConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToUserRoleConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToUserRoleConnectionKeySpecifier
+)[];
+export type RootQueryToUserRoleConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToUserRoleConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToUserRoleConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToUserRoleConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToUserConnectionKeySpecifier = (
+	| 'edges'
+	| 'nodes'
+	| 'pageInfo'
+	| RootQueryToUserConnectionKeySpecifier
+)[];
+export type RootQueryToUserConnectionFieldPolicy = {
+	edges?: FieldPolicy<any> | FieldReadFunction<any>;
+	nodes?: FieldPolicy<any> | FieldReadFunction<any>;
+	pageInfo?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootQueryToUserConnectionEdgeKeySpecifier = (
+	| 'cursor'
+	| 'node'
+	| RootQueryToUserConnectionEdgeKeySpecifier
+)[];
+export type RootQueryToUserConnectionEdgeFieldPolicy = {
+	cursor?: FieldPolicy<any> | FieldReadFunction<any>;
+	node?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type WritingSettingsKeySpecifier = (
+	| 'defaultCategory'
+	| 'defaultPostFormat'
+	| 'useSmilies'
+	| WritingSettingsKeySpecifier
+)[];
+export type WritingSettingsFieldPolicy = {
+	defaultCategory?: FieldPolicy<any> | FieldReadFunction<any>;
+	defaultPostFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+	useSmilies?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RootMutationKeySpecifier = (
+	| 'updateCategory'
+	| 'updatePostFormat'
+	| 'updateTag'
+	| 'createCategory'
+	| 'createComment'
+	| 'createMediaItem'
+	| 'createPage'
+	| 'createPost'
+	| 'createPostFormat'
+	| 'createTag'
+	| 'createUser'
+	| 'deleteCategory'
+	| 'deleteComment'
+	| 'deleteMediaItem'
+	| 'deletePage'
+	| 'deletePost'
+	| 'deletePostFormat'
+	| 'deleteTag'
+	| 'deleteUser'
+	| 'increaseCount'
+	| 'login'
+	| 'refreshJwtAuthToken'
+	| 'registerUser'
+	| 'resetUserPassword'
+	| 'restoreComment'
+	| 'sendPasswordResetEmail'
+	| 'updateComment'
+	| 'updateMediaItem'
+	| 'updatePage'
+	| 'updatePost'
+	| 'updateSettings'
+	| 'updateUser'
+	| RootMutationKeySpecifier
+)[];
+export type RootMutationFieldPolicy = {
+	updateCategory?: FieldPolicy<any> | FieldReadFunction<any>;
+	updatePostFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+	updateTag?: FieldPolicy<any> | FieldReadFunction<any>;
+	createCategory?: FieldPolicy<any> | FieldReadFunction<any>;
+	createComment?: FieldPolicy<any> | FieldReadFunction<any>;
+	createMediaItem?: FieldPolicy<any> | FieldReadFunction<any>;
+	createPage?: FieldPolicy<any> | FieldReadFunction<any>;
+	createPost?: FieldPolicy<any> | FieldReadFunction<any>;
+	createPostFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+	createTag?: FieldPolicy<any> | FieldReadFunction<any>;
+	createUser?: FieldPolicy<any> | FieldReadFunction<any>;
+	deleteCategory?: FieldPolicy<any> | FieldReadFunction<any>;
+	deleteComment?: FieldPolicy<any> | FieldReadFunction<any>;
+	deleteMediaItem?: FieldPolicy<any> | FieldReadFunction<any>;
+	deletePage?: FieldPolicy<any> | FieldReadFunction<any>;
+	deletePost?: FieldPolicy<any> | FieldReadFunction<any>;
+	deletePostFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+	deleteTag?: FieldPolicy<any> | FieldReadFunction<any>;
+	deleteUser?: FieldPolicy<any> | FieldReadFunction<any>;
+	increaseCount?: FieldPolicy<any> | FieldReadFunction<any>;
+	login?: FieldPolicy<any> | FieldReadFunction<any>;
+	refreshJwtAuthToken?: FieldPolicy<any> | FieldReadFunction<any>;
+	registerUser?: FieldPolicy<any> | FieldReadFunction<any>;
+	resetUserPassword?: FieldPolicy<any> | FieldReadFunction<any>;
+	restoreComment?: FieldPolicy<any> | FieldReadFunction<any>;
+	sendPasswordResetEmail?: FieldPolicy<any> | FieldReadFunction<any>;
+	updateComment?: FieldPolicy<any> | FieldReadFunction<any>;
+	updateMediaItem?: FieldPolicy<any> | FieldReadFunction<any>;
+	updatePage?: FieldPolicy<any> | FieldReadFunction<any>;
+	updatePost?: FieldPolicy<any> | FieldReadFunction<any>;
+	updateSettings?: FieldPolicy<any> | FieldReadFunction<any>;
+	updateUser?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UpdateCategoryPayloadKeySpecifier = (
+	| 'category'
+	| 'clientMutationId'
+	| UpdateCategoryPayloadKeySpecifier
+)[];
+export type UpdateCategoryPayloadFieldPolicy = {
+	category?: FieldPolicy<any> | FieldReadFunction<any>;
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UpdatePostFormatPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'postFormat'
+	| UpdatePostFormatPayloadKeySpecifier
+)[];
+export type UpdatePostFormatPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	postFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UpdateTagPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'tag'
+	| UpdateTagPayloadKeySpecifier
+)[];
+export type UpdateTagPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	tag?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CreateCategoryPayloadKeySpecifier = (
+	| 'category'
+	| 'clientMutationId'
+	| CreateCategoryPayloadKeySpecifier
+)[];
+export type CreateCategoryPayloadFieldPolicy = {
+	category?: FieldPolicy<any> | FieldReadFunction<any>;
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CreateCommentPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'comment'
+	| 'success'
+	| CreateCommentPayloadKeySpecifier
+)[];
+export type CreateCommentPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	comment?: FieldPolicy<any> | FieldReadFunction<any>;
+	success?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CreateMediaItemPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'mediaItem'
+	| CreateMediaItemPayloadKeySpecifier
+)[];
+export type CreateMediaItemPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	mediaItem?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CreatePagePayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'page'
+	| CreatePagePayloadKeySpecifier
+)[];
+export type CreatePagePayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	page?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CreatePostPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'post'
+	| CreatePostPayloadKeySpecifier
+)[];
+export type CreatePostPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	post?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CreatePostFormatPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'postFormat'
+	| CreatePostFormatPayloadKeySpecifier
+)[];
+export type CreatePostFormatPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	postFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CreateTagPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'tag'
+	| CreateTagPayloadKeySpecifier
+)[];
+export type CreateTagPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	tag?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type CreateUserPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'user'
+	| CreateUserPayloadKeySpecifier
+)[];
+export type CreateUserPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	user?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type DeleteCategoryPayloadKeySpecifier = (
+	| 'category'
+	| 'clientMutationId'
+	| 'deletedId'
+	| DeleteCategoryPayloadKeySpecifier
+)[];
+export type DeleteCategoryPayloadFieldPolicy = {
+	category?: FieldPolicy<any> | FieldReadFunction<any>;
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	deletedId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type DeleteCommentPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'comment'
+	| 'deletedId'
+	| DeleteCommentPayloadKeySpecifier
+)[];
+export type DeleteCommentPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	comment?: FieldPolicy<any> | FieldReadFunction<any>;
+	deletedId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type DeleteMediaItemPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'deletedId'
+	| 'mediaItem'
+	| DeleteMediaItemPayloadKeySpecifier
+)[];
+export type DeleteMediaItemPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	deletedId?: FieldPolicy<any> | FieldReadFunction<any>;
+	mediaItem?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type DeletePagePayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'deletedId'
+	| 'page'
+	| DeletePagePayloadKeySpecifier
+)[];
+export type DeletePagePayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	deletedId?: FieldPolicy<any> | FieldReadFunction<any>;
+	page?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type DeletePostPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'deletedId'
+	| 'post'
+	| DeletePostPayloadKeySpecifier
+)[];
+export type DeletePostPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	deletedId?: FieldPolicy<any> | FieldReadFunction<any>;
+	post?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type DeletePostFormatPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'deletedId'
+	| 'postFormat'
+	| DeletePostFormatPayloadKeySpecifier
+)[];
+export type DeletePostFormatPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	deletedId?: FieldPolicy<any> | FieldReadFunction<any>;
+	postFormat?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type DeleteTagPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'deletedId'
+	| 'tag'
+	| DeleteTagPayloadKeySpecifier
+)[];
+export type DeleteTagPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	deletedId?: FieldPolicy<any> | FieldReadFunction<any>;
+	tag?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type DeleteUserPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'deletedId'
+	| 'user'
+	| DeleteUserPayloadKeySpecifier
+)[];
+export type DeleteUserPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	deletedId?: FieldPolicy<any> | FieldReadFunction<any>;
+	user?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type LoginPayloadKeySpecifier = (
+	| 'authToken'
+	| 'clientMutationId'
+	| 'refreshToken'
+	| 'user'
+	| LoginPayloadKeySpecifier
+)[];
+export type LoginPayloadFieldPolicy = {
+	authToken?: FieldPolicy<any> | FieldReadFunction<any>;
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	refreshToken?: FieldPolicy<any> | FieldReadFunction<any>;
+	user?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RefreshJwtAuthTokenPayloadKeySpecifier = (
+	| 'authToken'
+	| 'clientMutationId'
+	| RefreshJwtAuthTokenPayloadKeySpecifier
+)[];
+export type RefreshJwtAuthTokenPayloadFieldPolicy = {
+	authToken?: FieldPolicy<any> | FieldReadFunction<any>;
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RegisterUserPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'user'
+	| RegisterUserPayloadKeySpecifier
+)[];
+export type RegisterUserPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	user?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type ResetUserPasswordPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'user'
+	| ResetUserPasswordPayloadKeySpecifier
+)[];
+export type ResetUserPasswordPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	user?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type RestoreCommentPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'comment'
+	| 'restoredId'
+	| RestoreCommentPayloadKeySpecifier
+)[];
+export type RestoreCommentPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	comment?: FieldPolicy<any> | FieldReadFunction<any>;
+	restoredId?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type SendPasswordResetEmailPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'user'
+	| SendPasswordResetEmailPayloadKeySpecifier
+)[];
+export type SendPasswordResetEmailPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	user?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UpdateCommentPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'comment'
+	| 'success'
+	| UpdateCommentPayloadKeySpecifier
+)[];
+export type UpdateCommentPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	comment?: FieldPolicy<any> | FieldReadFunction<any>;
+	success?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UpdateMediaItemPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'mediaItem'
+	| UpdateMediaItemPayloadKeySpecifier
+)[];
+export type UpdateMediaItemPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	mediaItem?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UpdatePagePayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'page'
+	| UpdatePagePayloadKeySpecifier
+)[];
+export type UpdatePagePayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	page?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UpdatePostPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'post'
+	| UpdatePostPayloadKeySpecifier
+)[];
+export type UpdatePostPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	post?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UpdateSettingsPayloadKeySpecifier = (
+	| 'allSettings'
+	| 'clientMutationId'
+	| 'discussionSettings'
+	| 'generalSettings'
+	| 'readingSettings'
+	| 'writingSettings'
+	| UpdateSettingsPayloadKeySpecifier
+)[];
+export type UpdateSettingsPayloadFieldPolicy = {
+	allSettings?: FieldPolicy<any> | FieldReadFunction<any>;
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	discussionSettings?: FieldPolicy<any> | FieldReadFunction<any>;
+	generalSettings?: FieldPolicy<any> | FieldReadFunction<any>;
+	readingSettings?: FieldPolicy<any> | FieldReadFunction<any>;
+	writingSettings?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type UpdateUserPayloadKeySpecifier = (
+	| 'clientMutationId'
+	| 'user'
+	| UpdateUserPayloadKeySpecifier
+)[];
+export type UpdateUserPayloadFieldPolicy = {
+	clientMutationId?: FieldPolicy<any> | FieldReadFunction<any>;
+	user?: FieldPolicy<any> | FieldReadFunction<any>;
+};
+export type TypedTypePolicies = TypePolicies & {
+	RootQuery?: {
+		keyFields?:
+			| false
+			| RootQueryKeySpecifier
+			| (() => undefined | RootQueryKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryFieldPolicy;
+	};
+	Settings?: {
+		keyFields?:
+			| false
+			| SettingsKeySpecifier
+			| (() => undefined | SettingsKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: SettingsFieldPolicy;
+	};
+	RootQueryToCategoryConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToCategoryConnectionKeySpecifier
+			| (() => undefined | RootQueryToCategoryConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToCategoryConnectionFieldPolicy;
+	};
+	RootQueryToCategoryConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToCategoryConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToCategoryConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToCategoryConnectionEdgeFieldPolicy;
+	};
+	Category?: {
+		keyFields?:
+			| false
+			| CategoryKeySpecifier
+			| (() => undefined | CategoryKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CategoryFieldPolicy;
+	};
+	Node?: {
+		keyFields?: false | NodeKeySpecifier | (() => undefined | NodeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeFieldPolicy;
+	};
+	TermNode?: {
+		keyFields?:
+			| false
+			| TermNodeKeySpecifier
+			| (() => undefined | TermNodeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: TermNodeFieldPolicy;
+	};
+	TermNodeToEnqueuedScriptConnection?: {
+		keyFields?:
+			| false
+			| TermNodeToEnqueuedScriptConnectionKeySpecifier
+			| (() => undefined | TermNodeToEnqueuedScriptConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: TermNodeToEnqueuedScriptConnectionFieldPolicy;
+	};
+	TermNodeToEnqueuedScriptConnectionEdge?: {
+		keyFields?:
+			| false
+			| TermNodeToEnqueuedScriptConnectionEdgeKeySpecifier
+			| (() => undefined | TermNodeToEnqueuedScriptConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: TermNodeToEnqueuedScriptConnectionEdgeFieldPolicy;
+	};
+	EnqueuedScript?: {
+		keyFields?:
+			| false
+			| EnqueuedScriptKeySpecifier
+			| (() => undefined | EnqueuedScriptKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: EnqueuedScriptFieldPolicy;
+	};
+	EnqueuedAsset?: {
+		keyFields?:
+			| false
+			| EnqueuedAssetKeySpecifier
+			| (() => undefined | EnqueuedAssetKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: EnqueuedAssetFieldPolicy;
+	};
+	WPPageInfo?: {
+		keyFields?:
+			| false
+			| WPPageInfoKeySpecifier
+			| (() => undefined | WPPageInfoKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: WPPageInfoFieldPolicy;
+	};
+	TermNodeToEnqueuedStylesheetConnection?: {
+		keyFields?:
+			| false
+			| TermNodeToEnqueuedStylesheetConnectionKeySpecifier
+			| (() => undefined | TermNodeToEnqueuedStylesheetConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: TermNodeToEnqueuedStylesheetConnectionFieldPolicy;
+	};
+	TermNodeToEnqueuedStylesheetConnectionEdge?: {
+		keyFields?:
+			| false
+			| TermNodeToEnqueuedStylesheetConnectionEdgeKeySpecifier
+			| (() => undefined | TermNodeToEnqueuedStylesheetConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: TermNodeToEnqueuedStylesheetConnectionEdgeFieldPolicy;
+	};
+	EnqueuedStylesheet?: {
+		keyFields?:
+			| false
+			| EnqueuedStylesheetKeySpecifier
+			| (() => undefined | EnqueuedStylesheetKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: EnqueuedStylesheetFieldPolicy;
+	};
+	UniformResourceIdentifiable?: {
+		keyFields?:
+			| false
+			| UniformResourceIdentifiableKeySpecifier
+			| (() => undefined | UniformResourceIdentifiableKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UniformResourceIdentifiableFieldPolicy;
+	};
+	HierarchicalTermNode?: {
+		keyFields?:
+			| false
+			| HierarchicalTermNodeKeySpecifier
+			| (() => undefined | HierarchicalTermNodeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: HierarchicalTermNodeFieldPolicy;
+	};
+	MenuItemLinkable?: {
+		keyFields?:
+			| false
+			| MenuItemLinkableKeySpecifier
+			| (() => undefined | MenuItemLinkableKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MenuItemLinkableFieldPolicy;
+	};
+	CategoryToAncestorsCategoryConnection?: {
+		keyFields?:
+			| false
+			| CategoryToAncestorsCategoryConnectionKeySpecifier
+			| (() => undefined | CategoryToAncestorsCategoryConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CategoryToAncestorsCategoryConnectionFieldPolicy;
+	};
+	CategoryToAncestorsCategoryConnectionEdge?: {
+		keyFields?:
+			| false
+			| CategoryToAncestorsCategoryConnectionEdgeKeySpecifier
+			| (() => undefined | CategoryToAncestorsCategoryConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CategoryToAncestorsCategoryConnectionEdgeFieldPolicy;
+	};
+	CategoryToCategoryConnection?: {
+		keyFields?:
+			| false
+			| CategoryToCategoryConnectionKeySpecifier
+			| (() => undefined | CategoryToCategoryConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CategoryToCategoryConnectionFieldPolicy;
+	};
+	CategoryToCategoryConnectionEdge?: {
+		keyFields?:
+			| false
+			| CategoryToCategoryConnectionEdgeKeySpecifier
+			| (() => undefined | CategoryToCategoryConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CategoryToCategoryConnectionEdgeFieldPolicy;
+	};
+	CategoryToParentCategoryConnectionEdge?: {
+		keyFields?:
+			| false
+			| CategoryToParentCategoryConnectionEdgeKeySpecifier
+			| (() => undefined | CategoryToParentCategoryConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CategoryToParentCategoryConnectionEdgeFieldPolicy;
+	};
+	CategoryToPostConnection?: {
+		keyFields?:
+			| false
+			| CategoryToPostConnectionKeySpecifier
+			| (() => undefined | CategoryToPostConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CategoryToPostConnectionFieldPolicy;
+	};
+	CategoryToPostConnectionEdge?: {
+		keyFields?:
+			| false
+			| CategoryToPostConnectionEdgeKeySpecifier
+			| (() => undefined | CategoryToPostConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CategoryToPostConnectionEdgeFieldPolicy;
+	};
+	Post?: {
+		keyFields?: false | PostKeySpecifier | (() => undefined | PostKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostFieldPolicy;
+	};
+	ContentNode?: {
+		keyFields?:
+			| false
+			| ContentNodeKeySpecifier
+			| (() => undefined | ContentNodeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentNodeFieldPolicy;
+	};
+	ContentNodeToEditLockConnectionEdge?: {
+		keyFields?:
+			| false
+			| ContentNodeToEditLockConnectionEdgeKeySpecifier
+			| (() => undefined | ContentNodeToEditLockConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentNodeToEditLockConnectionEdgeFieldPolicy;
+	};
+	User?: {
+		keyFields?: false | UserKeySpecifier | (() => undefined | UserKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserFieldPolicy;
+	};
+	Commenter?: {
+		keyFields?:
+			| false
+			| CommenterKeySpecifier
+			| (() => undefined | CommenterKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CommenterFieldPolicy;
+	};
+	Avatar?: {
+		keyFields?:
+			| false
+			| AvatarKeySpecifier
+			| (() => undefined | AvatarKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: AvatarFieldPolicy;
+	};
+	UserToCommentConnection?: {
+		keyFields?:
+			| false
+			| UserToCommentConnectionKeySpecifier
+			| (() => undefined | UserToCommentConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToCommentConnectionFieldPolicy;
+	};
+	UserToCommentConnectionEdge?: {
+		keyFields?:
+			| false
+			| UserToCommentConnectionEdgeKeySpecifier
+			| (() => undefined | UserToCommentConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToCommentConnectionEdgeFieldPolicy;
+	};
+	Comment?: {
+		keyFields?:
+			| false
+			| CommentKeySpecifier
+			| (() => undefined | CommentKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CommentFieldPolicy;
+	};
+	CommentToCommenterConnectionEdge?: {
+		keyFields?:
+			| false
+			| CommentToCommenterConnectionEdgeKeySpecifier
+			| (() => undefined | CommentToCommenterConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CommentToCommenterConnectionEdgeFieldPolicy;
+	};
+	CommentToContentNodeConnectionEdge?: {
+		keyFields?:
+			| false
+			| CommentToContentNodeConnectionEdgeKeySpecifier
+			| (() => undefined | CommentToContentNodeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CommentToContentNodeConnectionEdgeFieldPolicy;
+	};
+	CommentToParentCommentConnectionEdge?: {
+		keyFields?:
+			| false
+			| CommentToParentCommentConnectionEdgeKeySpecifier
+			| (() => undefined | CommentToParentCommentConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CommentToParentCommentConnectionEdgeFieldPolicy;
+	};
+	CommentToCommentConnection?: {
+		keyFields?:
+			| false
+			| CommentToCommentConnectionKeySpecifier
+			| (() => undefined | CommentToCommentConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CommentToCommentConnectionFieldPolicy;
+	};
+	CommentToCommentConnectionEdge?: {
+		keyFields?:
+			| false
+			| CommentToCommentConnectionEdgeKeySpecifier
+			| (() => undefined | CommentToCommentConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CommentToCommentConnectionEdgeFieldPolicy;
+	};
+	UserToEnqueuedScriptConnection?: {
+		keyFields?:
+			| false
+			| UserToEnqueuedScriptConnectionKeySpecifier
+			| (() => undefined | UserToEnqueuedScriptConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToEnqueuedScriptConnectionFieldPolicy;
+	};
+	UserToEnqueuedScriptConnectionEdge?: {
+		keyFields?:
+			| false
+			| UserToEnqueuedScriptConnectionEdgeKeySpecifier
+			| (() => undefined | UserToEnqueuedScriptConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToEnqueuedScriptConnectionEdgeFieldPolicy;
+	};
+	UserToEnqueuedStylesheetConnection?: {
+		keyFields?:
+			| false
+			| UserToEnqueuedStylesheetConnectionKeySpecifier
+			| (() => undefined | UserToEnqueuedStylesheetConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToEnqueuedStylesheetConnectionFieldPolicy;
+	};
+	UserToEnqueuedStylesheetConnectionEdge?: {
+		keyFields?:
+			| false
+			| UserToEnqueuedStylesheetConnectionEdgeKeySpecifier
+			| (() => undefined | UserToEnqueuedStylesheetConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToEnqueuedStylesheetConnectionEdgeFieldPolicy;
+	};
+	UserToMediaItemConnection?: {
+		keyFields?:
+			| false
+			| UserToMediaItemConnectionKeySpecifier
+			| (() => undefined | UserToMediaItemConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToMediaItemConnectionFieldPolicy;
+	};
+	UserToMediaItemConnectionEdge?: {
+		keyFields?:
+			| false
+			| UserToMediaItemConnectionEdgeKeySpecifier
+			| (() => undefined | UserToMediaItemConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToMediaItemConnectionEdgeFieldPolicy;
+	};
+	MediaItem?: {
+		keyFields?:
+			| false
+			| MediaItemKeySpecifier
+			| (() => undefined | MediaItemKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MediaItemFieldPolicy;
+	};
+	NodeWithTitle?: {
+		keyFields?:
+			| false
+			| NodeWithTitleKeySpecifier
+			| (() => undefined | NodeWithTitleKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeWithTitleFieldPolicy;
+	};
+	NodeWithAuthor?: {
+		keyFields?:
+			| false
+			| NodeWithAuthorKeySpecifier
+			| (() => undefined | NodeWithAuthorKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeWithAuthorFieldPolicy;
+	};
+	NodeWithAuthorToUserConnectionEdge?: {
+		keyFields?:
+			| false
+			| NodeWithAuthorToUserConnectionEdgeKeySpecifier
+			| (() => undefined | NodeWithAuthorToUserConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeWithAuthorToUserConnectionEdgeFieldPolicy;
+	};
+	NodeWithComments?: {
+		keyFields?:
+			| false
+			| NodeWithCommentsKeySpecifier
+			| (() => undefined | NodeWithCommentsKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeWithCommentsFieldPolicy;
+	};
+	HierarchicalContentNode?: {
+		keyFields?:
+			| false
+			| HierarchicalContentNodeKeySpecifier
+			| (() => undefined | HierarchicalContentNodeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: HierarchicalContentNodeFieldPolicy;
+	};
+	HierarchicalContentNodeToContentNodeConnection?: {
+		keyFields?:
+			| false
+			| HierarchicalContentNodeToContentNodeConnectionKeySpecifier
+			| (() =>
+					| undefined
+					| HierarchicalContentNodeToContentNodeConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: HierarchicalContentNodeToContentNodeConnectionFieldPolicy;
+	};
+	HierarchicalContentNodeToContentNodeConnectionEdge?: {
+		keyFields?:
+			| false
+			| HierarchicalContentNodeToContentNodeConnectionEdgeKeySpecifier
+			| (() =>
+					| undefined
+					| HierarchicalContentNodeToContentNodeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: HierarchicalContentNodeToContentNodeConnectionEdgeFieldPolicy;
+	};
+	MediaItemToCommentConnection?: {
+		keyFields?:
+			| false
+			| MediaItemToCommentConnectionKeySpecifier
+			| (() => undefined | MediaItemToCommentConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MediaItemToCommentConnectionFieldPolicy;
+	};
+	MediaItemToCommentConnectionEdge?: {
+		keyFields?:
+			| false
+			| MediaItemToCommentConnectionEdgeKeySpecifier
+			| (() => undefined | MediaItemToCommentConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MediaItemToCommentConnectionEdgeFieldPolicy;
+	};
+	MediaItemToContentTypeConnectionEdge?: {
+		keyFields?:
+			| false
+			| MediaItemToContentTypeConnectionEdgeKeySpecifier
+			| (() => undefined | MediaItemToContentTypeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MediaItemToContentTypeConnectionEdgeFieldPolicy;
+	};
+	ContentType?: {
+		keyFields?:
+			| false
+			| ContentTypeKeySpecifier
+			| (() => undefined | ContentTypeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentTypeFieldPolicy;
+	};
+	ContentTypeToTaxonomyConnection?: {
+		keyFields?:
+			| false
+			| ContentTypeToTaxonomyConnectionKeySpecifier
+			| (() => undefined | ContentTypeToTaxonomyConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentTypeToTaxonomyConnectionFieldPolicy;
+	};
+	ContentTypeToTaxonomyConnectionEdge?: {
+		keyFields?:
+			| false
+			| ContentTypeToTaxonomyConnectionEdgeKeySpecifier
+			| (() => undefined | ContentTypeToTaxonomyConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentTypeToTaxonomyConnectionEdgeFieldPolicy;
+	};
+	Taxonomy?: {
+		keyFields?:
+			| false
+			| TaxonomyKeySpecifier
+			| (() => undefined | TaxonomyKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: TaxonomyFieldPolicy;
+	};
+	TaxonomyToContentTypeConnection?: {
+		keyFields?:
+			| false
+			| TaxonomyToContentTypeConnectionKeySpecifier
+			| (() => undefined | TaxonomyToContentTypeConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: TaxonomyToContentTypeConnectionFieldPolicy;
+	};
+	TaxonomyToContentTypeConnectionEdge?: {
+		keyFields?:
+			| false
+			| TaxonomyToContentTypeConnectionEdgeKeySpecifier
+			| (() => undefined | TaxonomyToContentTypeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: TaxonomyToContentTypeConnectionEdgeFieldPolicy;
+	};
+	ContentTypeToContentNodeConnection?: {
+		keyFields?:
+			| false
+			| ContentTypeToContentNodeConnectionKeySpecifier
+			| (() => undefined | ContentTypeToContentNodeConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentTypeToContentNodeConnectionFieldPolicy;
+	};
+	ContentTypeToContentNodeConnectionEdge?: {
+		keyFields?:
+			| false
+			| ContentTypeToContentNodeConnectionEdgeKeySpecifier
+			| (() => undefined | ContentTypeToContentNodeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentTypeToContentNodeConnectionEdgeFieldPolicy;
+	};
+	PostTypeLabelDetails?: {
+		keyFields?:
+			| false
+			| PostTypeLabelDetailsKeySpecifier
+			| (() => undefined | PostTypeLabelDetailsKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostTypeLabelDetailsFieldPolicy;
+	};
+	ContentNodeToEnqueuedScriptConnection?: {
+		keyFields?:
+			| false
+			| ContentNodeToEnqueuedScriptConnectionKeySpecifier
+			| (() => undefined | ContentNodeToEnqueuedScriptConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentNodeToEnqueuedScriptConnectionFieldPolicy;
+	};
+	ContentNodeToEnqueuedScriptConnectionEdge?: {
+		keyFields?:
+			| false
+			| ContentNodeToEnqueuedScriptConnectionEdgeKeySpecifier
+			| (() => undefined | ContentNodeToEnqueuedScriptConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentNodeToEnqueuedScriptConnectionEdgeFieldPolicy;
+	};
+	ContentNodeToEnqueuedStylesheetConnection?: {
+		keyFields?:
+			| false
+			| ContentNodeToEnqueuedStylesheetConnectionKeySpecifier
+			| (() => undefined | ContentNodeToEnqueuedStylesheetConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentNodeToEnqueuedStylesheetConnectionFieldPolicy;
+	};
+	ContentNodeToEnqueuedStylesheetConnectionEdge?: {
+		keyFields?:
+			| false
+			| ContentNodeToEnqueuedStylesheetConnectionEdgeKeySpecifier
+			| (() =>
+					| undefined
+					| ContentNodeToEnqueuedStylesheetConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentNodeToEnqueuedStylesheetConnectionEdgeFieldPolicy;
+	};
+	ContentNodeToEditLastConnectionEdge?: {
+		keyFields?:
+			| false
+			| ContentNodeToEditLastConnectionEdgeKeySpecifier
+			| (() => undefined | ContentNodeToEditLastConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentNodeToEditLastConnectionEdgeFieldPolicy;
+	};
+	MediaDetails?: {
+		keyFields?:
+			| false
+			| MediaDetailsKeySpecifier
+			| (() => undefined | MediaDetailsKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MediaDetailsFieldPolicy;
+	};
+	MediaItemMeta?: {
+		keyFields?:
+			| false
+			| MediaItemMetaKeySpecifier
+			| (() => undefined | MediaItemMetaKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MediaItemMetaFieldPolicy;
+	};
+	MediaSize?: {
+		keyFields?:
+			| false
+			| MediaSizeKeySpecifier
+			| (() => undefined | MediaSizeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MediaSizeFieldPolicy;
+	};
+	DefaultTemplate?: {
+		keyFields?:
+			| false
+			| DefaultTemplateKeySpecifier
+			| (() => undefined | DefaultTemplateKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: DefaultTemplateFieldPolicy;
+	};
+	ContentTemplate?: {
+		keyFields?:
+			| false
+			| ContentTemplateKeySpecifier
+			| (() => undefined | ContentTemplateKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentTemplateFieldPolicy;
+	};
+	CoverTemplateTemplate?: {
+		keyFields?:
+			| false
+			| CoverTemplateTemplateKeySpecifier
+			| (() => undefined | CoverTemplateTemplateKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CoverTemplateTemplateFieldPolicy;
+	};
+	FullWidthTemplateTemplate?: {
+		keyFields?:
+			| false
+			| FullWidthTemplateTemplateKeySpecifier
+			| (() => undefined | FullWidthTemplateTemplateKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: FullWidthTemplateTemplateFieldPolicy;
+	};
+	ContentNodeToTermNodeConnection?: {
+		keyFields?:
+			| false
+			| ContentNodeToTermNodeConnectionKeySpecifier
+			| (() => undefined | ContentNodeToTermNodeConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentNodeToTermNodeConnectionFieldPolicy;
+	};
+	ContentNodeToTermNodeConnectionEdge?: {
+		keyFields?:
+			| false
+			| ContentNodeToTermNodeConnectionEdgeKeySpecifier
+			| (() => undefined | ContentNodeToTermNodeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ContentNodeToTermNodeConnectionEdgeFieldPolicy;
+	};
+	UserToPageConnection?: {
+		keyFields?:
+			| false
+			| UserToPageConnectionKeySpecifier
+			| (() => undefined | UserToPageConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToPageConnectionFieldPolicy;
+	};
+	UserToPageConnectionEdge?: {
+		keyFields?:
+			| false
+			| UserToPageConnectionEdgeKeySpecifier
+			| (() => undefined | UserToPageConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToPageConnectionEdgeFieldPolicy;
+	};
+	Page?: {
+		keyFields?: false | PageKeySpecifier | (() => undefined | PageKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PageFieldPolicy;
+	};
+	NodeWithContentEditor?: {
+		keyFields?:
+			| false
+			| NodeWithContentEditorKeySpecifier
+			| (() => undefined | NodeWithContentEditorKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeWithContentEditorFieldPolicy;
+	};
+	NodeWithFeaturedImage?: {
+		keyFields?:
+			| false
+			| NodeWithFeaturedImageKeySpecifier
+			| (() => undefined | NodeWithFeaturedImageKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeWithFeaturedImageFieldPolicy;
+	};
+	NodeWithFeaturedImageToMediaItemConnectionEdge?: {
+		keyFields?:
+			| false
+			| NodeWithFeaturedImageToMediaItemConnectionEdgeKeySpecifier
+			| (() =>
+					| undefined
+					| NodeWithFeaturedImageToMediaItemConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeWithFeaturedImageToMediaItemConnectionEdgeFieldPolicy;
+	};
+	NodeWithRevisions?: {
+		keyFields?:
+			| false
+			| NodeWithRevisionsKeySpecifier
+			| (() => undefined | NodeWithRevisionsKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeWithRevisionsFieldPolicy;
+	};
+	NodeWithRevisionsToContentNodeConnectionEdge?: {
+		keyFields?:
+			| false
+			| NodeWithRevisionsToContentNodeConnectionEdgeKeySpecifier
+			| (() =>
+					| undefined
+					| NodeWithRevisionsToContentNodeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeWithRevisionsToContentNodeConnectionEdgeFieldPolicy;
+	};
+	NodeWithPageAttributes?: {
+		keyFields?:
+			| false
+			| NodeWithPageAttributesKeySpecifier
+			| (() => undefined | NodeWithPageAttributesKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeWithPageAttributesFieldPolicy;
+	};
+	PageToCommentConnection?: {
+		keyFields?:
+			| false
+			| PageToCommentConnectionKeySpecifier
+			| (() => undefined | PageToCommentConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PageToCommentConnectionFieldPolicy;
+	};
+	PageToCommentConnectionEdge?: {
+		keyFields?:
+			| false
+			| PageToCommentConnectionEdgeKeySpecifier
+			| (() => undefined | PageToCommentConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PageToCommentConnectionEdgeFieldPolicy;
+	};
+	PageToContentTypeConnectionEdge?: {
+		keyFields?:
+			| false
+			| PageToContentTypeConnectionEdgeKeySpecifier
+			| (() => undefined | PageToContentTypeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PageToContentTypeConnectionEdgeFieldPolicy;
+	};
+	PageToPreviewConnectionEdge?: {
+		keyFields?:
+			| false
+			| PageToPreviewConnectionEdgeKeySpecifier
+			| (() => undefined | PageToPreviewConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PageToPreviewConnectionEdgeFieldPolicy;
+	};
+	PageToRevisionConnection?: {
+		keyFields?:
+			| false
+			| PageToRevisionConnectionKeySpecifier
+			| (() => undefined | PageToRevisionConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PageToRevisionConnectionFieldPolicy;
+	};
+	PageToRevisionConnectionEdge?: {
+		keyFields?:
+			| false
+			| PageToRevisionConnectionEdgeKeySpecifier
+			| (() => undefined | PageToRevisionConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PageToRevisionConnectionEdgeFieldPolicy;
+	};
+	UserToPostConnection?: {
+		keyFields?:
+			| false
+			| UserToPostConnectionKeySpecifier
+			| (() => undefined | UserToPostConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToPostConnectionFieldPolicy;
+	};
+	UserToPostConnectionEdge?: {
+		keyFields?:
+			| false
+			| UserToPostConnectionEdgeKeySpecifier
+			| (() => undefined | UserToPostConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToPostConnectionEdgeFieldPolicy;
+	};
+	UserToContentRevisionUnionConnection?: {
+		keyFields?:
+			| false
+			| UserToContentRevisionUnionConnectionKeySpecifier
+			| (() => undefined | UserToContentRevisionUnionConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToContentRevisionUnionConnectionFieldPolicy;
+	};
+	UserToContentRevisionUnionConnectionEdge?: {
+		keyFields?:
+			| false
+			| UserToContentRevisionUnionConnectionEdgeKeySpecifier
+			| (() => undefined | UserToContentRevisionUnionConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToContentRevisionUnionConnectionEdgeFieldPolicy;
+	};
+	UserToUserRoleConnection?: {
+		keyFields?:
+			| false
+			| UserToUserRoleConnectionKeySpecifier
+			| (() => undefined | UserToUserRoleConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToUserRoleConnectionFieldPolicy;
+	};
+	UserToUserRoleConnectionEdge?: {
+		keyFields?:
+			| false
+			| UserToUserRoleConnectionEdgeKeySpecifier
+			| (() => undefined | UserToUserRoleConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserToUserRoleConnectionEdgeFieldPolicy;
+	};
+	UserRole?: {
+		keyFields?:
+			| false
+			| UserRoleKeySpecifier
+			| (() => undefined | UserRoleKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UserRoleFieldPolicy;
+	};
+	NodeWithExcerpt?: {
+		keyFields?:
+			| false
+			| NodeWithExcerptKeySpecifier
+			| (() => undefined | NodeWithExcerptKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeWithExcerptFieldPolicy;
+	};
+	NodeWithTrackbacks?: {
+		keyFields?:
+			| false
+			| NodeWithTrackbacksKeySpecifier
+			| (() => undefined | NodeWithTrackbacksKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: NodeWithTrackbacksFieldPolicy;
+	};
+	PostToCategoryConnection?: {
+		keyFields?:
+			| false
+			| PostToCategoryConnectionKeySpecifier
+			| (() => undefined | PostToCategoryConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostToCategoryConnectionFieldPolicy;
+	};
+	PostToCategoryConnectionEdge?: {
+		keyFields?:
+			| false
+			| PostToCategoryConnectionEdgeKeySpecifier
+			| (() => undefined | PostToCategoryConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostToCategoryConnectionEdgeFieldPolicy;
+	};
+	PostToCommentConnection?: {
+		keyFields?:
+			| false
+			| PostToCommentConnectionKeySpecifier
+			| (() => undefined | PostToCommentConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostToCommentConnectionFieldPolicy;
+	};
+	PostToCommentConnectionEdge?: {
+		keyFields?:
+			| false
+			| PostToCommentConnectionEdgeKeySpecifier
+			| (() => undefined | PostToCommentConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostToCommentConnectionEdgeFieldPolicy;
+	};
+	PostToContentTypeConnectionEdge?: {
+		keyFields?:
+			| false
+			| PostToContentTypeConnectionEdgeKeySpecifier
+			| (() => undefined | PostToContentTypeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostToContentTypeConnectionEdgeFieldPolicy;
+	};
+	PostToPostFormatConnection?: {
+		keyFields?:
+			| false
+			| PostToPostFormatConnectionKeySpecifier
+			| (() => undefined | PostToPostFormatConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostToPostFormatConnectionFieldPolicy;
+	};
+	PostToPostFormatConnectionEdge?: {
+		keyFields?:
+			| false
+			| PostToPostFormatConnectionEdgeKeySpecifier
+			| (() => undefined | PostToPostFormatConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostToPostFormatConnectionEdgeFieldPolicy;
+	};
+	PostFormat?: {
+		keyFields?:
+			| false
+			| PostFormatKeySpecifier
+			| (() => undefined | PostFormatKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostFormatFieldPolicy;
+	};
+	PostFormatToPostConnection?: {
+		keyFields?:
+			| false
+			| PostFormatToPostConnectionKeySpecifier
+			| (() => undefined | PostFormatToPostConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostFormatToPostConnectionFieldPolicy;
+	};
+	PostFormatToPostConnectionEdge?: {
+		keyFields?:
+			| false
+			| PostFormatToPostConnectionEdgeKeySpecifier
+			| (() => undefined | PostFormatToPostConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostFormatToPostConnectionEdgeFieldPolicy;
+	};
+	PostFormatToTaxonomyConnectionEdge?: {
+		keyFields?:
+			| false
+			| PostFormatToTaxonomyConnectionEdgeKeySpecifier
+			| (() => undefined | PostFormatToTaxonomyConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostFormatToTaxonomyConnectionEdgeFieldPolicy;
+	};
+	PostToPreviewConnectionEdge?: {
+		keyFields?:
+			| false
+			| PostToPreviewConnectionEdgeKeySpecifier
+			| (() => undefined | PostToPreviewConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostToPreviewConnectionEdgeFieldPolicy;
+	};
+	PostToRevisionConnection?: {
+		keyFields?:
+			| false
+			| PostToRevisionConnectionKeySpecifier
+			| (() => undefined | PostToRevisionConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostToRevisionConnectionFieldPolicy;
+	};
+	PostToRevisionConnectionEdge?: {
+		keyFields?:
+			| false
+			| PostToRevisionConnectionEdgeKeySpecifier
+			| (() => undefined | PostToRevisionConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostToRevisionConnectionEdgeFieldPolicy;
+	};
+	Post_Social?: {
+		keyFields?:
+			| false
+			| Post_SocialKeySpecifier
+			| (() => undefined | Post_SocialKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: Post_SocialFieldPolicy;
+	};
+	PostToTagConnection?: {
+		keyFields?:
+			| false
+			| PostToTagConnectionKeySpecifier
+			| (() => undefined | PostToTagConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostToTagConnectionFieldPolicy;
+	};
+	PostToTagConnectionEdge?: {
+		keyFields?:
+			| false
+			| PostToTagConnectionEdgeKeySpecifier
+			| (() => undefined | PostToTagConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PostToTagConnectionEdgeFieldPolicy;
+	};
+	Tag?: {
+		keyFields?: false | TagKeySpecifier | (() => undefined | TagKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: TagFieldPolicy;
+	};
+	TagToPostConnection?: {
+		keyFields?:
+			| false
+			| TagToPostConnectionKeySpecifier
+			| (() => undefined | TagToPostConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: TagToPostConnectionFieldPolicy;
+	};
+	TagToPostConnectionEdge?: {
+		keyFields?:
+			| false
+			| TagToPostConnectionEdgeKeySpecifier
+			| (() => undefined | TagToPostConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: TagToPostConnectionEdgeFieldPolicy;
+	};
+	TagToTaxonomyConnectionEdge?: {
+		keyFields?:
+			| false
+			| TagToTaxonomyConnectionEdgeKeySpecifier
+			| (() => undefined | TagToTaxonomyConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: TagToTaxonomyConnectionEdgeFieldPolicy;
+	};
+	CategoryToTaxonomyConnectionEdge?: {
+		keyFields?:
+			| false
+			| CategoryToTaxonomyConnectionEdgeKeySpecifier
+			| (() => undefined | CategoryToTaxonomyConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CategoryToTaxonomyConnectionEdgeFieldPolicy;
+	};
+	RootQueryToCommentConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToCommentConnectionKeySpecifier
+			| (() => undefined | RootQueryToCommentConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToCommentConnectionFieldPolicy;
+	};
+	RootQueryToCommentConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToCommentConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToCommentConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToCommentConnectionEdgeFieldPolicy;
+	};
+	RootQueryToContentNodeConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToContentNodeConnectionKeySpecifier
+			| (() => undefined | RootQueryToContentNodeConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToContentNodeConnectionFieldPolicy;
+	};
+	RootQueryToContentNodeConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToContentNodeConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToContentNodeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToContentNodeConnectionEdgeFieldPolicy;
+	};
+	RootQueryToContentTypeConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToContentTypeConnectionKeySpecifier
+			| (() => undefined | RootQueryToContentTypeConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToContentTypeConnectionFieldPolicy;
+	};
+	RootQueryToContentTypeConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToContentTypeConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToContentTypeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToContentTypeConnectionEdgeFieldPolicy;
+	};
+	DiscussionSettings?: {
+		keyFields?:
+			| false
+			| DiscussionSettingsKeySpecifier
+			| (() => undefined | DiscussionSettingsKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: DiscussionSettingsFieldPolicy;
+	};
+	GeneralSettings?: {
+		keyFields?:
+			| false
+			| GeneralSettingsKeySpecifier
+			| (() => undefined | GeneralSettingsKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: GeneralSettingsFieldPolicy;
+	};
+	RootQueryToMediaItemConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToMediaItemConnectionKeySpecifier
+			| (() => undefined | RootQueryToMediaItemConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToMediaItemConnectionFieldPolicy;
+	};
+	RootQueryToMediaItemConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToMediaItemConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToMediaItemConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToMediaItemConnectionEdgeFieldPolicy;
+	};
+	Menu?: {
+		keyFields?: false | MenuKeySpecifier | (() => undefined | MenuKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MenuFieldPolicy;
+	};
+	MenuToMenuItemConnection?: {
+		keyFields?:
+			| false
+			| MenuToMenuItemConnectionKeySpecifier
+			| (() => undefined | MenuToMenuItemConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MenuToMenuItemConnectionFieldPolicy;
+	};
+	MenuToMenuItemConnectionEdge?: {
+		keyFields?:
+			| false
+			| MenuToMenuItemConnectionEdgeKeySpecifier
+			| (() => undefined | MenuToMenuItemConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MenuToMenuItemConnectionEdgeFieldPolicy;
+	};
+	MenuItem?: {
+		keyFields?:
+			| false
+			| MenuItemKeySpecifier
+			| (() => undefined | MenuItemKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MenuItemFieldPolicy;
+	};
+	MenuItemToMenuItemConnection?: {
+		keyFields?:
+			| false
+			| MenuItemToMenuItemConnectionKeySpecifier
+			| (() => undefined | MenuItemToMenuItemConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MenuItemToMenuItemConnectionFieldPolicy;
+	};
+	MenuItemToMenuItemConnectionEdge?: {
+		keyFields?:
+			| false
+			| MenuItemToMenuItemConnectionEdgeKeySpecifier
+			| (() => undefined | MenuItemToMenuItemConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MenuItemToMenuItemConnectionEdgeFieldPolicy;
+	};
+	MenuItemToMenuItemLinkableConnectionEdge?: {
+		keyFields?:
+			| false
+			| MenuItemToMenuItemLinkableConnectionEdgeKeySpecifier
+			| (() => undefined | MenuItemToMenuItemLinkableConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MenuItemToMenuItemLinkableConnectionEdgeFieldPolicy;
+	};
+	MenuItemToMenuConnectionEdge?: {
+		keyFields?:
+			| false
+			| MenuItemToMenuConnectionEdgeKeySpecifier
+			| (() => undefined | MenuItemToMenuConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: MenuItemToMenuConnectionEdgeFieldPolicy;
+	};
+	RootQueryToMenuItemConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToMenuItemConnectionKeySpecifier
+			| (() => undefined | RootQueryToMenuItemConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToMenuItemConnectionFieldPolicy;
+	};
+	RootQueryToMenuItemConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToMenuItemConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToMenuItemConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToMenuItemConnectionEdgeFieldPolicy;
+	};
+	RootQueryToMenuConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToMenuConnectionKeySpecifier
+			| (() => undefined | RootQueryToMenuConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToMenuConnectionFieldPolicy;
+	};
+	RootQueryToMenuConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToMenuConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToMenuConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToMenuConnectionEdgeFieldPolicy;
+	};
+	RootQueryToPageConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToPageConnectionKeySpecifier
+			| (() => undefined | RootQueryToPageConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToPageConnectionFieldPolicy;
+	};
+	RootQueryToPageConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToPageConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToPageConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToPageConnectionEdgeFieldPolicy;
+	};
+	Plugin?: {
+		keyFields?:
+			| false
+			| PluginKeySpecifier
+			| (() => undefined | PluginKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: PluginFieldPolicy;
+	};
+	RootQueryToPluginConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToPluginConnectionKeySpecifier
+			| (() => undefined | RootQueryToPluginConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToPluginConnectionFieldPolicy;
+	};
+	RootQueryToPluginConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToPluginConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToPluginConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToPluginConnectionEdgeFieldPolicy;
+	};
+	RootQueryToPostFormatConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToPostFormatConnectionKeySpecifier
+			| (() => undefined | RootQueryToPostFormatConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToPostFormatConnectionFieldPolicy;
+	};
+	RootQueryToPostFormatConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToPostFormatConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToPostFormatConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToPostFormatConnectionEdgeFieldPolicy;
+	};
+	RootQueryToPostConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToPostConnectionKeySpecifier
+			| (() => undefined | RootQueryToPostConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToPostConnectionFieldPolicy;
+	};
+	RootQueryToPostConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToPostConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToPostConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToPostConnectionEdgeFieldPolicy;
+	};
+	ReadingSettings?: {
+		keyFields?:
+			| false
+			| ReadingSettingsKeySpecifier
+			| (() => undefined | ReadingSettingsKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ReadingSettingsFieldPolicy;
+	};
+	RootQueryToEnqueuedScriptConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToEnqueuedScriptConnectionKeySpecifier
+			| (() => undefined | RootQueryToEnqueuedScriptConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToEnqueuedScriptConnectionFieldPolicy;
+	};
+	RootQueryToEnqueuedScriptConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToEnqueuedScriptConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToEnqueuedScriptConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToEnqueuedScriptConnectionEdgeFieldPolicy;
+	};
+	RootQueryToEnqueuedStylesheetConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToEnqueuedStylesheetConnectionKeySpecifier
+			| (() => undefined | RootQueryToEnqueuedStylesheetConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToEnqueuedStylesheetConnectionFieldPolicy;
+	};
+	RootQueryToEnqueuedStylesheetConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToEnqueuedStylesheetConnectionEdgeKeySpecifier
+			| (() =>
+					| undefined
+					| RootQueryToEnqueuedStylesheetConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToEnqueuedStylesheetConnectionEdgeFieldPolicy;
+	};
+	RootQueryToContentRevisionUnionConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToContentRevisionUnionConnectionKeySpecifier
+			| (() => undefined | RootQueryToContentRevisionUnionConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToContentRevisionUnionConnectionFieldPolicy;
+	};
+	RootQueryToContentRevisionUnionConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToContentRevisionUnionConnectionEdgeKeySpecifier
+			| (() =>
+					| undefined
+					| RootQueryToContentRevisionUnionConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToContentRevisionUnionConnectionEdgeFieldPolicy;
+	};
+	RootQueryToTagConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToTagConnectionKeySpecifier
+			| (() => undefined | RootQueryToTagConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToTagConnectionFieldPolicy;
+	};
+	RootQueryToTagConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToTagConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToTagConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToTagConnectionEdgeFieldPolicy;
+	};
+	RootQueryToTaxonomyConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToTaxonomyConnectionKeySpecifier
+			| (() => undefined | RootQueryToTaxonomyConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToTaxonomyConnectionFieldPolicy;
+	};
+	RootQueryToTaxonomyConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToTaxonomyConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToTaxonomyConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToTaxonomyConnectionEdgeFieldPolicy;
+	};
+	RootQueryToTermNodeConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToTermNodeConnectionKeySpecifier
+			| (() => undefined | RootQueryToTermNodeConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToTermNodeConnectionFieldPolicy;
+	};
+	RootQueryToTermNodeConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToTermNodeConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToTermNodeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToTermNodeConnectionEdgeFieldPolicy;
+	};
+	Theme?: {
+		keyFields?: false | ThemeKeySpecifier | (() => undefined | ThemeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ThemeFieldPolicy;
+	};
+	RootQueryToThemeConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToThemeConnectionKeySpecifier
+			| (() => undefined | RootQueryToThemeConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToThemeConnectionFieldPolicy;
+	};
+	RootQueryToThemeConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToThemeConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToThemeConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToThemeConnectionEdgeFieldPolicy;
+	};
+	RootQueryToUserRoleConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToUserRoleConnectionKeySpecifier
+			| (() => undefined | RootQueryToUserRoleConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToUserRoleConnectionFieldPolicy;
+	};
+	RootQueryToUserRoleConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToUserRoleConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToUserRoleConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToUserRoleConnectionEdgeFieldPolicy;
+	};
+	RootQueryToUserConnection?: {
+		keyFields?:
+			| false
+			| RootQueryToUserConnectionKeySpecifier
+			| (() => undefined | RootQueryToUserConnectionKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToUserConnectionFieldPolicy;
+	};
+	RootQueryToUserConnectionEdge?: {
+		keyFields?:
+			| false
+			| RootQueryToUserConnectionEdgeKeySpecifier
+			| (() => undefined | RootQueryToUserConnectionEdgeKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootQueryToUserConnectionEdgeFieldPolicy;
+	};
+	WritingSettings?: {
+		keyFields?:
+			| false
+			| WritingSettingsKeySpecifier
+			| (() => undefined | WritingSettingsKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: WritingSettingsFieldPolicy;
+	};
+	RootMutation?: {
+		keyFields?:
+			| false
+			| RootMutationKeySpecifier
+			| (() => undefined | RootMutationKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RootMutationFieldPolicy;
+	};
+	UpdateCategoryPayload?: {
+		keyFields?:
+			| false
+			| UpdateCategoryPayloadKeySpecifier
+			| (() => undefined | UpdateCategoryPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UpdateCategoryPayloadFieldPolicy;
+	};
+	UpdatePostFormatPayload?: {
+		keyFields?:
+			| false
+			| UpdatePostFormatPayloadKeySpecifier
+			| (() => undefined | UpdatePostFormatPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UpdatePostFormatPayloadFieldPolicy;
+	};
+	UpdateTagPayload?: {
+		keyFields?:
+			| false
+			| UpdateTagPayloadKeySpecifier
+			| (() => undefined | UpdateTagPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UpdateTagPayloadFieldPolicy;
+	};
+	CreateCategoryPayload?: {
+		keyFields?:
+			| false
+			| CreateCategoryPayloadKeySpecifier
+			| (() => undefined | CreateCategoryPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CreateCategoryPayloadFieldPolicy;
+	};
+	CreateCommentPayload?: {
+		keyFields?:
+			| false
+			| CreateCommentPayloadKeySpecifier
+			| (() => undefined | CreateCommentPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CreateCommentPayloadFieldPolicy;
+	};
+	CreateMediaItemPayload?: {
+		keyFields?:
+			| false
+			| CreateMediaItemPayloadKeySpecifier
+			| (() => undefined | CreateMediaItemPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CreateMediaItemPayloadFieldPolicy;
+	};
+	CreatePagePayload?: {
+		keyFields?:
+			| false
+			| CreatePagePayloadKeySpecifier
+			| (() => undefined | CreatePagePayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CreatePagePayloadFieldPolicy;
+	};
+	CreatePostPayload?: {
+		keyFields?:
+			| false
+			| CreatePostPayloadKeySpecifier
+			| (() => undefined | CreatePostPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CreatePostPayloadFieldPolicy;
+	};
+	CreatePostFormatPayload?: {
+		keyFields?:
+			| false
+			| CreatePostFormatPayloadKeySpecifier
+			| (() => undefined | CreatePostFormatPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CreatePostFormatPayloadFieldPolicy;
+	};
+	CreateTagPayload?: {
+		keyFields?:
+			| false
+			| CreateTagPayloadKeySpecifier
+			| (() => undefined | CreateTagPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CreateTagPayloadFieldPolicy;
+	};
+	CreateUserPayload?: {
+		keyFields?:
+			| false
+			| CreateUserPayloadKeySpecifier
+			| (() => undefined | CreateUserPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: CreateUserPayloadFieldPolicy;
+	};
+	DeleteCategoryPayload?: {
+		keyFields?:
+			| false
+			| DeleteCategoryPayloadKeySpecifier
+			| (() => undefined | DeleteCategoryPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: DeleteCategoryPayloadFieldPolicy;
+	};
+	DeleteCommentPayload?: {
+		keyFields?:
+			| false
+			| DeleteCommentPayloadKeySpecifier
+			| (() => undefined | DeleteCommentPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: DeleteCommentPayloadFieldPolicy;
+	};
+	DeleteMediaItemPayload?: {
+		keyFields?:
+			| false
+			| DeleteMediaItemPayloadKeySpecifier
+			| (() => undefined | DeleteMediaItemPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: DeleteMediaItemPayloadFieldPolicy;
+	};
+	DeletePagePayload?: {
+		keyFields?:
+			| false
+			| DeletePagePayloadKeySpecifier
+			| (() => undefined | DeletePagePayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: DeletePagePayloadFieldPolicy;
+	};
+	DeletePostPayload?: {
+		keyFields?:
+			| false
+			| DeletePostPayloadKeySpecifier
+			| (() => undefined | DeletePostPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: DeletePostPayloadFieldPolicy;
+	};
+	DeletePostFormatPayload?: {
+		keyFields?:
+			| false
+			| DeletePostFormatPayloadKeySpecifier
+			| (() => undefined | DeletePostFormatPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: DeletePostFormatPayloadFieldPolicy;
+	};
+	DeleteTagPayload?: {
+		keyFields?:
+			| false
+			| DeleteTagPayloadKeySpecifier
+			| (() => undefined | DeleteTagPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: DeleteTagPayloadFieldPolicy;
+	};
+	DeleteUserPayload?: {
+		keyFields?:
+			| false
+			| DeleteUserPayloadKeySpecifier
+			| (() => undefined | DeleteUserPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: DeleteUserPayloadFieldPolicy;
+	};
+	LoginPayload?: {
+		keyFields?:
+			| false
+			| LoginPayloadKeySpecifier
+			| (() => undefined | LoginPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: LoginPayloadFieldPolicy;
+	};
+	RefreshJwtAuthTokenPayload?: {
+		keyFields?:
+			| false
+			| RefreshJwtAuthTokenPayloadKeySpecifier
+			| (() => undefined | RefreshJwtAuthTokenPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RefreshJwtAuthTokenPayloadFieldPolicy;
+	};
+	RegisterUserPayload?: {
+		keyFields?:
+			| false
+			| RegisterUserPayloadKeySpecifier
+			| (() => undefined | RegisterUserPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RegisterUserPayloadFieldPolicy;
+	};
+	ResetUserPasswordPayload?: {
+		keyFields?:
+			| false
+			| ResetUserPasswordPayloadKeySpecifier
+			| (() => undefined | ResetUserPasswordPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: ResetUserPasswordPayloadFieldPolicy;
+	};
+	RestoreCommentPayload?: {
+		keyFields?:
+			| false
+			| RestoreCommentPayloadKeySpecifier
+			| (() => undefined | RestoreCommentPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: RestoreCommentPayloadFieldPolicy;
+	};
+	SendPasswordResetEmailPayload?: {
+		keyFields?:
+			| false
+			| SendPasswordResetEmailPayloadKeySpecifier
+			| (() => undefined | SendPasswordResetEmailPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: SendPasswordResetEmailPayloadFieldPolicy;
+	};
+	UpdateCommentPayload?: {
+		keyFields?:
+			| false
+			| UpdateCommentPayloadKeySpecifier
+			| (() => undefined | UpdateCommentPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UpdateCommentPayloadFieldPolicy;
+	};
+	UpdateMediaItemPayload?: {
+		keyFields?:
+			| false
+			| UpdateMediaItemPayloadKeySpecifier
+			| (() => undefined | UpdateMediaItemPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UpdateMediaItemPayloadFieldPolicy;
+	};
+	UpdatePagePayload?: {
+		keyFields?:
+			| false
+			| UpdatePagePayloadKeySpecifier
+			| (() => undefined | UpdatePagePayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UpdatePagePayloadFieldPolicy;
+	};
+	UpdatePostPayload?: {
+		keyFields?:
+			| false
+			| UpdatePostPayloadKeySpecifier
+			| (() => undefined | UpdatePostPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UpdatePostPayloadFieldPolicy;
+	};
+	UpdateSettingsPayload?: {
+		keyFields?:
+			| false
+			| UpdateSettingsPayloadKeySpecifier
+			| (() => undefined | UpdateSettingsPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UpdateSettingsPayloadFieldPolicy;
+	};
+	UpdateUserPayload?: {
+		keyFields?:
+			| false
+			| UpdateUserPayloadKeySpecifier
+			| (() => undefined | UpdateUserPayloadKeySpecifier);
+		queryType?: true;
+		mutationType?: true;
+		subscriptionType?: true;
+		fields?: UpdateUserPayloadFieldPolicy;
+	};
+};

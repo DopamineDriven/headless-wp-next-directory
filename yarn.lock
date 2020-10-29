@@ -1399,6 +1399,17 @@
     tslib "~2.0.1"
     upper-case "2.0.1"
 
+"@graphql-codegen/typescript-apollo-client-helpers@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-apollo-client-helpers/-/typescript-apollo-client-helpers-1.1.0.tgz#173088542de089757287305c18a7c79d932812bb"
+  integrity sha512-gxZbg/KJRFXaSb3JSfLtXtnpk0/as2DGxikALu0CkblCNRnIgM/pRbJ+5uPbixqAY8lPWS0QyEXUNoKQx0lLCg==
+  dependencies:
+    "@graphql-codegen/plugin-helpers" "^1.18.0"
+    "@graphql-codegen/visitor-plugin-common" "^1.17.13"
+    auto-bind "~4.0.0"
+    change-case "^4.1.1"
+    tslib "~2.0.1"
+
 "@graphql-codegen/typescript-document-nodes@^1.17.8":
   version "1.17.8"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-document-nodes/-/typescript-document-nodes-1.17.8.tgz#824d0c5bca903e6b2a1d762ba88f5244f054c52a"
@@ -4349,7 +4360,7 @@ chalk@^3.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-change-case@^4.0.0:
+change-case@^4.0.0, change-case@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/change-case/-/change-case-4.1.1.tgz#d5005709275952e7963fed7b91e4f9fdb6180afa"
   integrity sha512-qRlUWn/hXnX1R1LBDF/RelJLiqNjKjUqlmuBVSEIyye8kq49CXqkZWKmi8XeUAdDXWFOcGLUMZ+aHn3Q5lzUXw==
