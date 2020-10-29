@@ -8,11 +8,11 @@ type CardsProps = {
 	posts: (AllPostsForCategory_categories_edges_node_posts_nodes | null)[];
 };
 
-type Required<T extends CardsProps> = {
-	[CardProps in keyof T]-?: T[CardProps];
-};
+// type Required<T extends CardsProps> = {
+// 	[CardProps in keyof T]-?: T[CardProps];
+// };
 
-type HasSelect<T extends CardsProps> = {};
+// type HasSelect<T extends CardsProps> = {};
 
 export default function CardsCoalescedCategoryPosts({
 	posts

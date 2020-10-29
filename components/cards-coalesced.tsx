@@ -1,12 +1,19 @@
 import Card from 'components/card';
 import { PostsProps } from 'types/posts';
-
+import {
+	AllPostsForCategory_categories_edges_node_posts,
+	AllPostsForCategory_categories_edges_node_posts_nodes
+} from '../graphql/__generated__/AllPostsForCategory';
+import {
+	AllPosts_posts_edges,
+	AllPosts_posts_edges_node
+} from '../graphql/__generated__/AllPosts';
 type NodeProps = {
 	node: any;
 };
 
 type CardsProps = {
-	posts: PostsProps[];
+	posts: AllPosts_posts_edges[];
 };
 
 type Required<T extends CardsProps> = {
@@ -19,20 +26,21 @@ export default function CardsCoalesced({ posts }: Required<CardsProps>) {
 	return (
 		<section className='content-center justify-center block mx-auto '>
 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
-				{posts.map((company: PostsProps) => {
-					const node: any = company.node;
-					return (
-						<Card
-							key={node.slug}
-							title={node.title}
-							coverImage={node.featuredImage.node}
-							modified={node.modified}
-							social={node.social}
-							author={node.author}
-							slug={node.slug}
-							excerpt={node.excerpt}
-						/>
-					);
+				{posts.map((company: AllPosts_posts_edges) => {
+					if (company.node != null) {
+						return (
+							<Card
+								key={company.node.slug}
+								title={company.node.title}
+								coverImage={company.node.featuredImage.node}
+								modified={company.node.modified}
+								social={company.node.social}
+								author={company.node.author}
+								slug={company.node.slug}
+								excerpt={node.excerpt}
+							/>
+						);
+					}
 				})}
 			</div>
 		</section>

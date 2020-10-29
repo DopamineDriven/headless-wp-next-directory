@@ -13,7 +13,7 @@ import PostHeader from 'components/post-header';
 // import SectionSeparator from 'components/section-separator';
 import Layout from 'components/layout';
 import PostTitle from 'components/post-title';
-import CategoryPostsCards from 'components/cards-coalesced-category-posts';
+import Cards from 'components/cards-coalesced';
 import Head from 'next/head';
 import { CMS_NAME, HOME_OG_IMAGE_URL } from 'lib/constants';
 // import Tags from 'components/tags';
@@ -42,7 +42,9 @@ import {
 	AllPostsForCategory_categories_edges_node_posts_nodes,
 	AllPostsForCategory_categories_edges
 } from 'graphql/__generated__/AllPostsForCategory';
+import { AllPosts_posts_edges } from '../../graphql/__generated__/AllPosts';
 import CATEGORIES_BY_NODES from 'graphql/api-categories-by-nodes';
+import { AllPosts_posts_edges_node } from 'graphql/custom-types/get-all-posts';
 
 type Required<T> = {
 	[P in keyof T]-?: T[P];
@@ -101,7 +103,7 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
 							{postData.nodes != null ? (
 								postData.nodes.length > 0 ? (
-									<CategoryPostsCards posts={postData.nodes} />
+									<Cards posts={postData.nodes} />
 								) : (
 									'No posts for this category'
 								)
@@ -146,17 +148,21 @@ export const getStaticProps = async ({
 	};
 
 	const restructurePostsForCategory = (
-		dataObj: (AllPostsForCategory_categories_edges | null)[]
-	) => {
+		dataObjArray: (AllPostsForCategory_categories_edges | null)[]
+	): AllPosts_posts_edges[] => {
 		let dataArray = [];
 
-		for (let categoryNode of dataObj) {
+		for (let categoryNode of dataObjArray) {
 			if (categoryNode != null) {
 				if (categoryNode.node != null) {
 					if (categoryNode.node.posts != null) {
 						if (categoryNode.node.posts.nodes != null) {
 							for (let post of categoryNode.node.posts.nodes) {
-								const restructureDataObj = { node: post };
+								post != null ? (post['__typename'] = 'Post') : post;
+								const restructureDataObj = {
+									__typename: '"RootQueryToPostConnectionEdge"',
+									node: post
+								};
 								dataArray.push(restructureDataObj);
 							}
 							console.log('restructured data Array:', dataArray);

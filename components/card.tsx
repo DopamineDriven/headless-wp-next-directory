@@ -17,11 +17,11 @@ interface AuthorPropTypes {
 }
 interface CardProps extends AuthorPropTypes {
 	coverImage: any;
-	title: string;
+	title: string | null;
 	slug: PostSlug;
-	modified: string;
-	excerpt?: string;
-	social: socialType;
+	modified: string | null;
+	excerpt?: string | null;
+	social: socialType | null;
 }
 
 const Card = ({
