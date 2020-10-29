@@ -4,6 +4,7 @@ import {
 	FieldReadFunction,
 	TypePolicies
 } from '@apollo/client/cache';
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = {
 	[K in keyof T]: T[K];
@@ -15863,4 +15864,2874 @@ export type TypedTypePolicies = TypePolicies & {
 		subscriptionType?: true;
 		fields?: UpdateUserPayloadFieldPolicy;
 	};
+};
+export const TypeRefFragmentDoc: DocumentNode<TypeRefFragment, unknown> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'FragmentDefinition',
+			name: { kind: 'Name', value: 'TypeRef' },
+			typeCondition: {
+				kind: 'NamedType',
+				name: { kind: 'Name', value: '__Type' }
+			},
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'kind' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'name' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'ofType' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'kind' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'name' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'ofType' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'kind' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'name' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'ofType' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'kind' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'ofType' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'kind' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'name' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'ofType' },
+																		arguments: [],
+																		directives: [],
+																		selectionSet: {
+																			kind: 'SelectionSet',
+																			selections: [
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'kind' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'name' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'ofType' },
+																					arguments: [],
+																					directives: [],
+																					selectionSet: {
+																						kind: 'SelectionSet',
+																						selections: [
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'kind' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'name' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'ofType' },
+																								arguments: [],
+																								directives: [],
+																								selectionSet: {
+																									kind: 'SelectionSet',
+																									selections: [
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'kind' },
+																											arguments: [],
+																											directives: []
+																										},
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'name' },
+																											arguments: [],
+																											directives: []
+																										}
+																									]
+																								}
+																							}
+																						]
+																					}
+																				}
+																			]
+																		}
+																	}
+																]
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const InputValueFragmentDoc: DocumentNode<
+	InputValueFragment,
+	unknown
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'FragmentDefinition',
+			name: { kind: 'Name', value: 'InputValue' },
+			typeCondition: {
+				kind: 'NamedType',
+				name: { kind: 'Name', value: '__InputValue' }
+			},
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'name' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'description' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'type' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'FragmentSpread',
+									name: { kind: 'Name', value: 'TypeRef' },
+									directives: []
+								}
+							]
+						}
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'defaultValue' },
+						arguments: [],
+						directives: []
+					}
+				]
+			}
+		},
+		...TypeRefFragmentDoc.definitions
+	]
+};
+export const FullTypeFragmentDoc: DocumentNode<FullTypeFragment, unknown> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'FragmentDefinition',
+			name: { kind: 'Name', value: 'FullType' },
+			typeCondition: {
+				kind: 'NamedType',
+				name: { kind: 'Name', value: '__Type' }
+			},
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'kind' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'name' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'description' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'fields' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'includeDeprecated' },
+								value: { kind: 'BooleanValue', value: true }
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'name' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'description' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'args' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'FragmentSpread',
+												name: { kind: 'Name', value: 'InputValue' },
+												directives: []
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'type' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'FragmentSpread',
+												name: { kind: 'Name', value: 'TypeRef' },
+												directives: []
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'isDeprecated' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'deprecationReason' },
+									arguments: [],
+									directives: []
+								}
+							]
+						}
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'inputFields' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'FragmentSpread',
+									name: { kind: 'Name', value: 'InputValue' },
+									directives: []
+								}
+							]
+						}
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'interfaces' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'FragmentSpread',
+									name: { kind: 'Name', value: 'TypeRef' },
+									directives: []
+								}
+							]
+						}
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'enumValues' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'includeDeprecated' },
+								value: { kind: 'BooleanValue', value: true }
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'name' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'description' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'isDeprecated' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'deprecationReason' },
+									arguments: [],
+									directives: []
+								}
+							]
+						}
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'possibleTypes' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'FragmentSpread',
+									name: { kind: 'Name', value: 'TypeRef' },
+									directives: []
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		...InputValueFragmentDoc.definitions,
+		...TypeRefFragmentDoc.definitions
+	]
+};
+export const AllPostsGraphQlDocument: DocumentNode<
+	AllPostsGraphQlQuery,
+	AllPostsGraphQlQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'AllPostsGraphQL' },
+			variableDefinitions: [],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'posts' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'first' },
+								value: { kind: 'IntValue', value: '20' }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'where' },
+								value: {
+									kind: 'ObjectValue',
+									fields: [
+										{
+											kind: 'ObjectField',
+											name: { kind: 'Name', value: 'orderby' },
+											value: {
+												kind: 'ObjectValue',
+												fields: [
+													{
+														kind: 'ObjectField',
+														name: { kind: 'Name', value: 'field' },
+														value: { kind: 'EnumValue', value: 'DATE' }
+													},
+													{
+														kind: 'ObjectField',
+														name: { kind: 'Name', value: 'order' },
+														value: { kind: 'EnumValue', value: 'DESC' }
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'title' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'excerpt' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'slug' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'date' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'featuredImage' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'node' },
+																		arguments: [],
+																		directives: [],
+																		selectionSet: {
+																			kind: 'SelectionSet',
+																			selections: [
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'sourceUrl' },
+																					arguments: [],
+																					directives: []
+																				}
+																			]
+																		}
+																	}
+																]
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const AllCategoriesDocument: DocumentNode<
+	AllCategoriesQuery,
+	AllCategoriesQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'AllCategories' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'first' } },
+					type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'categories' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'first' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'first' } }
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'pageInfo' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'hasNextPage' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'endCursor' },
+												arguments: [],
+												directives: []
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const AllPostsDocument: DocumentNode<
+	AllPostsQuery,
+	AllPostsQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'AllPosts' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'field' } },
+					type: {
+						kind: 'NonNullType',
+						type: {
+							kind: 'NamedType',
+							name: { kind: 'Name', value: 'PostObjectsConnectionOrderbyEnum' }
+						}
+					},
+					directives: []
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'order' } },
+					type: {
+						kind: 'NonNullType',
+						type: { kind: 'NamedType', name: { kind: 'Name', value: 'OrderEnum' } }
+					},
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'posts' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'first' },
+								value: { kind: 'IntValue', value: '35' }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'where' },
+								value: {
+									kind: 'ObjectValue',
+									fields: [
+										{
+											kind: 'ObjectField',
+											name: { kind: 'Name', value: 'orderby' },
+											value: {
+												kind: 'ObjectValue',
+												fields: [
+													{
+														kind: 'ObjectField',
+														name: { kind: 'Name', value: 'field' },
+														value: {
+															kind: 'Variable',
+															name: { kind: 'Name', value: 'field' }
+														}
+													},
+													{
+														kind: 'ObjectField',
+														name: { kind: 'Name', value: 'order' },
+														value: {
+															kind: 'Variable',
+															name: { kind: 'Name', value: 'order' }
+														}
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'author' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'node' },
+																		arguments: [],
+																		directives: [],
+																		selectionSet: {
+																			kind: 'SelectionSet',
+																			selections: [
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'name' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'firstName' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'lastName' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'avatar' },
+																					arguments: [],
+																					directives: [],
+																					selectionSet: {
+																						kind: 'SelectionSet',
+																						selections: [
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'url' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'size' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'height' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'width' },
+																								arguments: [],
+																								directives: []
+																							}
+																						]
+																					}
+																				}
+																			]
+																		}
+																	}
+																]
+															}
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'title' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'content' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'date' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'excerpt' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'featuredImage' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'node' },
+																		arguments: [],
+																		directives: [],
+																		selectionSet: {
+																			kind: 'SelectionSet',
+																			selections: [
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'sourceUrl' },
+																					arguments: [],
+																					directives: []
+																				}
+																			]
+																		}
+																	}
+																]
+															}
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'id' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'modified' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'slug' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'social' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'facebook' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'instagram' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'twitter' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'website' },
+																		arguments: [],
+																		directives: []
+																	}
+																]
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const AllTagsDocument: DocumentNode<
+	AllTagsQuery,
+	AllTagsQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'AllTags' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'first' } },
+					type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'tags' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'first' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'first' } }
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'pageInfo' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'hasNextPage' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'endCursor' },
+												arguments: [],
+												directives: []
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const AuthorCardQueryDocument: DocumentNode<
+	AuthorCardQueryQuery,
+	AuthorCardQueryQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'AuthorCardQuery' },
+			variableDefinitions: [],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'users' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'where' },
+								value: {
+									kind: 'ObjectValue',
+									fields: [
+										{
+											kind: 'ObjectField',
+											name: { kind: 'Name', value: 'include' },
+											value: { kind: 'ListValue', values: [] }
+										}
+									]
+								}
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'nodes' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'name' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'firstName' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'lastName' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'avatar' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'url' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const AuthorDocument: DocumentNode<AuthorQuery, AuthorQueryVariables> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'Author' },
+			variableDefinitions: [],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'users' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'avatar' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'url' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'size' },
+																		arguments: [],
+																		directives: []
+																	}
+																]
+															}
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'firstName' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'id' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'lastName' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'slug' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const CategoriesByEdgesDocument: DocumentNode<
+	CategoriesByEdgesQuery,
+	CategoriesByEdgesQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'CategoriesByEdges' },
+			variableDefinitions: [],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'categories' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'slug' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'count' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'id' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'cursor' },
+												arguments: [],
+												directives: []
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const CategoriesByNodesDocument: DocumentNode<
+	CategoriesByNodesQuery,
+	CategoriesByNodesQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'CategoriesByNodes' },
+			variableDefinitions: [],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'categories' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'nodes' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'name' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'count' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'slug' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'id' },
+												arguments: [],
+												directives: []
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const CategoryByIdDocument: DocumentNode<
+	CategoryByIdQuery,
+	CategoryByIdQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'CategoryById' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+					type: {
+						kind: 'NonNullType',
+						type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } }
+					},
+					directives: []
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'idType' } },
+					type: {
+						kind: 'NonNullType',
+						type: {
+							kind: 'NamedType',
+							name: { kind: 'Name', value: 'CategoryIdType' }
+						}
+					},
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'category' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'id' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'idType' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'idType' } }
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: '__typename' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'name' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'id' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'slug' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'count' },
+									arguments: [],
+									directives: []
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const SearchCategoriesReturnPostsDocument: DocumentNode<
+	SearchCategoriesReturnPostsQuery,
+	SearchCategoriesReturnPostsQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'SearchCategoriesReturnPosts' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'name' } },
+					type: {
+						kind: 'ListType',
+						type: {
+							kind: 'NonNullType',
+							type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
+						}
+					},
+					directives: []
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'search' } },
+					type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } },
+					directives: []
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'field' } },
+					type: {
+						kind: 'NonNullType',
+						type: {
+							kind: 'NamedType',
+							name: { kind: 'Name', value: 'PostObjectsConnectionOrderbyEnum' }
+						}
+					},
+					directives: []
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'order' } },
+					type: {
+						kind: 'NonNullType',
+						type: { kind: 'NamedType', name: { kind: 'Name', value: 'OrderEnum' } }
+					},
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'categories' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'where' },
+								value: {
+									kind: 'ObjectValue',
+									fields: [
+										{
+											kind: 'ObjectField',
+											name: { kind: 'Name', value: 'name' },
+											value: { kind: 'Variable', name: { kind: 'Name', value: 'name' } }
+										},
+										{
+											kind: 'ObjectField',
+											name: { kind: 'Name', value: 'search' },
+											value: { kind: 'Variable', name: { kind: 'Name', value: 'search' } }
+										}
+									]
+								}
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'count' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'id' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'posts' },
+															arguments: [
+																{
+																	kind: 'Argument',
+																	name: { kind: 'Name', value: 'where' },
+																	value: {
+																		kind: 'ObjectValue',
+																		fields: [
+																			{
+																				kind: 'ObjectField',
+																				name: { kind: 'Name', value: 'orderby' },
+																				value: {
+																					kind: 'ObjectValue',
+																					fields: [
+																						{
+																							kind: 'ObjectField',
+																							name: { kind: 'Name', value: 'field' },
+																							value: {
+																								kind: 'Variable',
+																								name: { kind: 'Name', value: 'field' }
+																							}
+																						},
+																						{
+																							kind: 'ObjectField',
+																							name: { kind: 'Name', value: 'order' },
+																							value: {
+																								kind: 'Variable',
+																								name: { kind: 'Name', value: 'order' }
+																							}
+																						}
+																					]
+																				}
+																			}
+																		]
+																	}
+																}
+															],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'edges' },
+																		arguments: [],
+																		directives: [],
+																		selectionSet: {
+																			kind: 'SelectionSet',
+																			selections: [
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'node' },
+																					arguments: [],
+																					directives: [],
+																					selectionSet: {
+																						kind: 'SelectionSet',
+																						selections: [
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'title' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'uri' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'social' },
+																								arguments: [],
+																								directives: [],
+																								selectionSet: {
+																									kind: 'SelectionSet',
+																									selections: [
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'facebook' },
+																											arguments: [],
+																											directives: []
+																										},
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'instagram' },
+																											arguments: [],
+																											directives: []
+																										},
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'twitter' },
+																											arguments: [],
+																											directives: []
+																										},
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'website' },
+																											arguments: [],
+																											directives: []
+																										}
+																									]
+																								}
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'excerpt' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'slug' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'featuredImage' },
+																								arguments: [],
+																								directives: [],
+																								selectionSet: {
+																									kind: 'SelectionSet',
+																									selections: [
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'node' },
+																											arguments: [],
+																											directives: [],
+																											selectionSet: {
+																												kind: 'SelectionSet',
+																												selections: [
+																													{
+																														kind: 'Field',
+																														name: { kind: 'Name', value: 'sourceUrl' },
+																														arguments: [],
+																														directives: []
+																													}
+																												]
+																											}
+																										}
+																									]
+																								}
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'author' },
+																								arguments: [],
+																								directives: [],
+																								selectionSet: {
+																									kind: 'SelectionSet',
+																									selections: [
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'node' },
+																											arguments: [],
+																											directives: [],
+																											selectionSet: {
+																												kind: 'SelectionSet',
+																												selections: [
+																													{
+																														kind: 'Field',
+																														name: { kind: 'Name', value: 'name' },
+																														arguments: [],
+																														directives: []
+																													},
+																													{
+																														kind: 'Field',
+																														name: { kind: 'Name', value: 'firstName' },
+																														arguments: [],
+																														directives: []
+																													},
+																													{
+																														kind: 'Field',
+																														name: { kind: 'Name', value: 'lastName' },
+																														arguments: [],
+																														directives: []
+																													},
+																													{
+																														kind: 'Field',
+																														name: { kind: 'Name', value: 'avatar' },
+																														arguments: [],
+																														directives: [],
+																														selectionSet: {
+																															kind: 'SelectionSet',
+																															selections: [
+																																{
+																																	kind: 'Field',
+																																	name: { kind: 'Name', value: 'url' },
+																																	arguments: [],
+																																	directives: []
+																																},
+																																{
+																																	kind: 'Field',
+																																	name: { kind: 'Name', value: 'size' },
+																																	arguments: [],
+																																	directives: []
+																																},
+																																{
+																																	kind: 'Field',
+																																	name: { kind: 'Name', value: 'height' },
+																																	arguments: [],
+																																	directives: []
+																																},
+																																{
+																																	kind: 'Field',
+																																	name: { kind: 'Name', value: 'width' },
+																																	arguments: [],
+																																	directives: []
+																																}
+																															]
+																														}
+																													}
+																												]
+																											}
+																										}
+																									]
+																								}
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'content' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'date' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'modified' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'id' },
+																								arguments: [],
+																								directives: []
+																							}
+																						]
+																					}
+																				}
+																			]
+																		}
+																	}
+																]
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const CategoryTypedDocument: DocumentNode<
+	CategoryTypedQuery,
+	CategoryTypedQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'CategoryTyped' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'idType' } },
+					type: {
+						kind: 'NonNullType',
+						type: {
+							kind: 'NamedType',
+							name: { kind: 'Name', value: 'CategoryIdType' }
+						}
+					},
+					directives: []
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'id' } },
+					type: {
+						kind: 'NonNullType',
+						type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } }
+					},
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'category' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'id' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'id' } }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'idType' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'idType' } }
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'name' },
+									arguments: [],
+									directives: []
+								}
+							]
+						}
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: '__typename' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'categories' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: '__typename' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: '__typename' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: '__typename' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'id' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'databaseId' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'slug' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const PostsByIdReturnImageSlugDocument: DocumentNode<
+	PostsByIdReturnImageSlugQuery,
+	PostsByIdReturnImageSlugQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'PostsByIdReturnImageSlug' },
+			variableDefinitions: [],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'posts' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'where' },
+								value: {
+									kind: 'ObjectValue',
+									fields: [
+										{
+											kind: 'ObjectField',
+											name: { kind: 'Name', value: 'in' },
+											value: { kind: 'ListValue', values: [] }
+										}
+									]
+								}
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'nodes' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'title' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'featuredImage' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'node' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'slug' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'uri' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'title' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'sourceUrl' },
+																		arguments: [],
+																		directives: []
+																	}
+																]
+															}
+														}
+													]
+												}
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'id' },
+												arguments: [],
+												directives: []
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const IntrospectionQueryDocument: DocumentNode<
+	IntrospectionQueryQuery,
+	IntrospectionQueryQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'IntrospectionQuery' },
+			variableDefinitions: [],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: '__schema' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'queryType' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'name' },
+												arguments: [],
+												directives: []
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'mutationType' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'name' },
+												arguments: [],
+												directives: []
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'subscriptionType' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'name' },
+												arguments: [],
+												directives: []
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'types' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'FragmentSpread',
+												name: { kind: 'Name', value: 'FullType' },
+												directives: []
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'directives' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'name' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'description' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'locations' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'args' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'FragmentSpread',
+															name: { kind: 'Name', value: 'InputValue' },
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		...FullTypeFragmentDoc.definitions,
+		...InputValueFragmentDoc.definitions
+	]
+};
+export const GetAllPostsWithSlugDocument: DocumentNode<
+	GetAllPostsWithSlugQuery,
+	GetAllPostsWithSlugQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'getAllPostsWithSlug' },
+			variableDefinitions: [],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'posts' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'first' },
+								value: { kind: 'IntValue', value: '10000' }
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'slug' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const PostsByIdDocument: DocumentNode<
+	PostsByIdQuery,
+	PostsByIdQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'PostsById' },
+			variableDefinitions: [],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'posts' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'where' },
+								value: {
+									kind: 'ObjectValue',
+									fields: [
+										{
+											kind: 'ObjectField',
+											name: { kind: 'Name', value: 'in' },
+											value: { kind: 'ListValue', values: [] }
+										}
+									]
+								}
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'nodes' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'id' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'title' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'databaseId' },
+												arguments: [],
+												directives: []
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const AllPostsForCategoryDocument: DocumentNode<
+	AllPostsForCategoryQuery,
+	AllPostsForCategoryQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'AllPostsForCategory' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'first' } },
+					type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } },
+					directives: []
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'name' } },
+					type: {
+						kind: 'ListType',
+						type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
+					},
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'categories' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'first' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'first' } }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'where' },
+								value: {
+									kind: 'ObjectValue',
+									fields: [
+										{
+											kind: 'ObjectField',
+											name: { kind: 'Name', value: 'name' },
+											value: { kind: 'Variable', name: { kind: 'Name', value: 'name' } }
+										}
+									]
+								}
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'id' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'databaseId' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'posts' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'nodes' },
+																		arguments: [],
+																		directives: [],
+																		selectionSet: {
+																			kind: 'SelectionSet',
+																			selections: [
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'id' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'title' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'date' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'excerpt' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'slug' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'modified' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'social' },
+																					arguments: [],
+																					directives: [],
+																					selectionSet: {
+																						kind: 'SelectionSet',
+																						selections: [
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'facebook' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'instagram' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'twitter' },
+																								arguments: [],
+																								directives: []
+																							},
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'website' },
+																								arguments: [],
+																								directives: []
+																							}
+																						]
+																					}
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'featuredImage' },
+																					arguments: [],
+																					directives: [],
+																					selectionSet: {
+																						kind: 'SelectionSet',
+																						selections: [
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'node' },
+																								arguments: [],
+																								directives: [],
+																								selectionSet: {
+																									kind: 'SelectionSet',
+																									selections: [
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'sourceUrl' },
+																											arguments: [],
+																											directives: []
+																										}
+																									]
+																								}
+																							}
+																						]
+																					}
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'author' },
+																					arguments: [],
+																					directives: [],
+																					selectionSet: {
+																						kind: 'SelectionSet',
+																						selections: [
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'node' },
+																								arguments: [],
+																								directives: [],
+																								selectionSet: {
+																									kind: 'SelectionSet',
+																									selections: [
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'name' },
+																											arguments: [],
+																											directives: []
+																										},
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'firstName' },
+																											arguments: [],
+																											directives: []
+																										},
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'lastName' },
+																											arguments: [],
+																											directives: []
+																										},
+																										{
+																											kind: 'Field',
+																											name: { kind: 'Name', value: 'avatar' },
+																											arguments: [],
+																											directives: [],
+																											selectionSet: {
+																												kind: 'SelectionSet',
+																												selections: [
+																													{
+																														kind: 'Field',
+																														name: { kind: 'Name', value: 'url' },
+																														arguments: [],
+																														directives: []
+																													}
+																												]
+																											}
+																										}
+																									]
+																								}
+																							}
+																						]
+																					}
+																				}
+																			]
+																		}
+																	}
+																]
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const WpSearchQueryDocument: DocumentNode<
+	WpSearchQueryQuery,
+	WpSearchQueryQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'WPSearchQuery' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'term' } },
+					type: {
+						kind: 'NonNullType',
+						type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
+					},
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						alias: { kind: 'Name', value: 'Posts' },
+						name: { kind: 'Name', value: 'posts' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'first' },
+								value: { kind: 'IntValue', value: '500' }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'where' },
+								value: {
+									kind: 'ObjectValue',
+									fields: [
+										{
+											kind: 'ObjectField',
+											name: { kind: 'Name', value: 'search' },
+											value: { kind: 'Variable', name: { kind: 'Name', value: 'term' } }
+										}
+									]
+								}
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'nodes' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'title' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'uri' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'id' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'date' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'categories' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'nodes' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'name' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'id' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'uri' },
+																		arguments: [],
+																		directives: []
+																	}
+																]
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
 };
