@@ -5,11 +5,11 @@ import {
 	NormalizedCacheObject
 } from '@apollo/client';
 import { initializeApollo } from '../../lib/apollo';
-import Container from 'components/container';
-import PostBody from 'components/post-body';
+// import Container from 'components/container';
+// import PostBody from 'components/post-body';
 // import MoreStories from 'components/more-stories';
 import Header from 'components/header';
-import PostHeader from 'components/post-header';
+// import PostHeader from 'components/post-header';
 // import SectionSeparator from 'components/section-separator';
 import Layout from 'components/layout';
 import PostTitle from 'components/post-title';
@@ -19,7 +19,7 @@ import { CMS_NAME, HOME_OG_IMAGE_URL } from 'lib/constants';
 // import Tags from 'components/tags';
 import { Fragment } from 'react';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from 'next';
-import { MediaContextProvider } from 'lib/window-width';
+// import { MediaContextProvider } from 'lib/window-width';
 import {
 	ALL_POSTS_FOR_CATEGORY,
 	allPostsForCategoryQueryVariables,
