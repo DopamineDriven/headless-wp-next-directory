@@ -49,7 +49,6 @@
 	"license": "MIT",
 	"private": true,
 	"scripts": {
-		"codegen": "graphql-codegen --config codegen.yml",
 		"dev": "next -p 4000",
 		"build": "next build",
 		"start": "next start",
@@ -139,6 +138,7 @@
 		"next-compose-plugins": "^2.2.0",
 		"postcss": "^8.1.1",
 		"postcss-flexbugs-fixes": "^4.2.1",
+		"postcss-import": "12.0.0",
 		"postcss-loader": "^4.0.4",
 		"postcss-preset-env": "^6.7.0",
 		"prettier": "^2.1.2",
