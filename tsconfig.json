@@ -1,11 +1,14 @@
 {
 	"compilerOptions": {
-		"target": "es5",
-		"lib": ["dom", "dom.iterable", "ESNext", "ES2016"],
+		"target": "esnext",
+		"lib": ["dom", "dom.iterable", "ESNext", "ES2017"],
 		"allowJs": true,
+		"alwaysStrict": true,
+		"experimentalDecorators": true,
 		"skipLibCheck": true,
 		"strict": true,
 		"forceConsistentCasingInFileNames": true,
+		"noFallthroughCasesInSwitch": true,
 		"noEmit": true,
 		"esModuleInterop": true,
 		"sourceMap": true,
@@ -30,10 +33,10 @@
 	"include": [
 		"global.d.ts",
 		"next-env.d.ts",
-		"pages/**/*",
-		"graphql/**/*",
-		"components/**/*",
-		"lib/**/*",
-		"types/**/*"
+		"pages/**/*.{ts,tsx}",
+		"graphql/**/*.ts",
+		"components/**/*.tsx",
+		"lib/**/*.{ts,tsx}",
+		"types/**/*.ts"
 	]
 }
