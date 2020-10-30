@@ -8,48 +8,43 @@ import {
 	AllPosts_posts_edges,
 	AllPosts_posts_edges_node
 } from '../graphql/__generated__/AllPosts';
-type NodeProps = {
-	node: any;
-};
+
 
 type CardsProps = {
-	posts: AllPosts_posts_edges[];
+	posts: (AllPosts_posts_edges_node)[] | (AllPostsForCategory_categories_edges_node_posts_nodes)[];
 };
 
-type Required<T extends CardsProps> = {
-	[CardProps in keyof T]-?: T[CardProps];
-};
+// type Required<T extends CardsProps> = {
+// 	[CardProps in keyof T]-?: T[CardProps];
+// };
 
 type HasSelect<T extends CardsProps> = {};
 
-export default function CardsCoalesced({ posts }: Required<CardsProps>) {
+export default function CardsCoalesced({ posts }: CardsProps) {
 	return (
 		<section className='content-center justify-center block mx-auto '>
 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
-				{posts.map((company: AllPosts_posts_edges) => {
-					if (company.node != null) {
+				{posts.map((company: AllPosts_posts_edges_node | AllPostsForCategory_categories_edges_node_posts_nodes) => {
 						return (
 							<Card
-								__typename={company.node.__typename}
-								content={company.node.content}
-								date={company.node.date}
-								id={company.node.id}
-								key={company.node.slug}
-								title={company.node.title}
+								__typename={company.__typename}
+								content={company.content}
+								date={company.date}
+								id={company.id}
+								key={company.slug}
+								title={company.title}
 								featuredImage={
-									company.node.featuredImage != null ? company.node.featuredImage : null
+									company.featuredImage != null ? company.featuredImage : null
 								}
-								modified={company.node.modified}
-								social={company.node.social}
-								author={company.node.author}
-								slug={company.node.slug}
-								excerpt={company.node.excerpt}
+								modified={company.modified}
+								social={company.social}
+								author={company.author}
+								slug={company.slug}
+								excerpt={company.excerpt}
 							/>
-						);
-					} else {
-						return <p>No company card data avaialable</p>;
-					}
-				})}
+						)
+					})
+				}
 			</div>
 		</section>
 	);
