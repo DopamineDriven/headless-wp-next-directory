@@ -8,14 +8,14 @@ import { initializeApollo } from '../../lib/apollo';
 // import Container from 'components/container';
 // import PostBody from 'components/post-body';
 // import MoreStories from 'components/more-stories';
-import Header from 'components/header';
+import Header from '../../components/header';
 // import PostHeader from 'components/post-header';
 // import SectionSeparator from 'components/section-separator';
-import Layout from 'components/layout';
-import PostTitle from 'components/post-title';
-import Cards from 'components/cards-coalesced';
+import Layout from '../../components/layout';
+import PostTitle from '../../components/post-title';
+import Cards from '../../components/cards-coalesced';
 import Head from 'next/head';
-import { CMS_NAME, HOME_OG_IMAGE_URL } from 'lib/constants';
+import { CMS_NAME, HOME_OG_IMAGE_URL } from '../../lib/constants';
 // import Tags from 'components/tags';
 import { Fragment } from 'react';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from 'next';
@@ -24,34 +24,33 @@ import {
 	ALL_POSTS_FOR_CATEGORY,
 	allPostsForCategoryQueryVariables,
 	PsuedoObj_AllPostsForCategory_categories_edges_node_posts
-} from 'graphql/api-posts-for-category';
+} from '../../graphql/api-posts-for-category';
 import {
 	ALL_CATEGORIES,
 	allCategoryQueryVariables,
 	categoryKeyNameForCache
-} from 'graphql/api-all-categories';
+} from '../../graphql/api-all-categories';
 import {
 	AllCategories_categories,
 	AllCategories,
 	AllCategories_categories_edges_node
-} from 'graphql/__generated__/AllCategories';
+} from '../../graphql/__generated__/AllCategories';
 import {
 	AllPostsForCategory,
 	AllPostsForCategory_categories,
 	AllPostsForCategory_categories_edges_node_posts,
 	AllPostsForCategory_categories_edges_node_posts_nodes,
 	AllPostsForCategory_categories_edges
-} from 'graphql/__generated__/AllPostsForCategory';
+} from '../../graphql/__generated__/AllPostsForCategory';
 import { AllPosts_posts_edges } from '../../graphql/__generated__/AllPosts';
-import CATEGORIES_BY_NODES from 'graphql/api-categories-by-nodes';
-import { AllPosts_posts_edges_node } from 'graphql/custom-types/get-all-posts';
 
 type Required<T> = {
 	[P in keyof T]-?: T[P];
 };
+
 interface SlugProps {
-	posts: AllPostsForCategory_categories_edges;
-	// posts: Required<AllPostsForCategory_categories_edges>;
+	// AllPostsForCategory_categories_edges_node_posts
+	posts: AllPostsForCategory_categories_edges_node_posts_nodes[];
 	preview: boolean;
 }
 
@@ -62,27 +61,6 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 	// 	[P in keyof T]-?: T[P];
 	// };
 
-	// let postData:
-	// 	| Required<AllPostsForCategory_categories_edges_node_posts>
-	// 	| any = posts.node.posts
-
-	let postData: AllPostsForCategory_categories_edges_node_posts = PsuedoObj_AllPostsForCategory_categories_edges_node_posts;
-
-	if (posts != null) {
-		if (posts.node != null) {
-			if (posts.node.posts != null) {
-				// if (posts.node.posts.nodes !=null) {
-				postData = posts.node.posts;
-				// }
-			} else {
-				throw new Error('no posts returned in post_node');
-			}
-		} else {
-			throw new Error('no node returned in posts');
-		}
-	} else {
-		throw new Error('no posts returned');
-	}
 
 	console.log('posts received: ', posts);
 
@@ -101,9 +79,9 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 							</Head>
 						</article>
 						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
-							{postData.nodes != null ? (
-								postData.nodes.length > 0 ? (
-									<Cards posts={postData.nodes} />
+							{posts != null ? (
+								posts.length > 0 ? (
+									<Cards posts={posts} />
 								) : (
 									'No posts for this category'
 								)
@@ -129,7 +107,7 @@ export const getStaticProps = async ({
 	params,
 	preview = false
 }: Params & GetStaticProps) => {
-	console.log(params.name);
+	console.log('category name: ', params.name);
 
 	const allPostsForCategory: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
@@ -138,57 +116,21 @@ export const getStaticProps = async ({
 			query: ALL_POSTS_FOR_CATEGORY,
 			variables: { first: 10, name: params.name }
 		}
-	);
+	)
 
 	//checks to see if query result at top level is null.  If it is sets a psuedoObj equal to data and returns that.
 	const postsForCategoryCache: AllPostsForCategory_categories | null = queryResult
-		.data.categories ?? {
-		__typename: 'RootQueryToCategoryConnection',
-		edges: null
-	};
+		.data.categories !=null ? queryResult.data.categories : null;
 
-	const restructurePostsForCategory = (
-		dataObjArray: (AllPostsForCategory_categories_edges | null)[]
-	): AllPosts_posts_edges[] => {
-		let dataArray = [];
-
-		for (let categoryNode of dataObjArray) {
-			if (categoryNode != null) {
-				if (categoryNode.node != null) {
-					if (categoryNode.node.posts != null) {
-						if (categoryNode.node.posts.nodes != null) {
-							for (let post of categoryNode.node.posts.nodes) {
-								post != null ? (post['__typename'] = 'Post') : post;
-								const restructureDataObj = {
-									__typename: '"RootQueryToPostConnectionEdge"',
-									node: post
-								};
-								dataArray.push(restructureDataObj);
-							}
-							console.log('restructured data Array:', dataArray);
-							return dataArray;
-						}
-					}
-				}
-			}
-		}
-	};
-
-	if (postsForCategoryCache.edges != null) {
-		const restructuredCategoryPostData = restructurePostsForCategory(
-			postsForCategoryCache.edges
-		);
+	console.log( 'data and categories are not null', postsForCategoryCache)
 
 		return {
 			props: {
 				preview,
-				posts: restructuredCategoryPostData
+				posts: postsForCategoryCache.edges[0].node.posts.nodes
 			},
-			revalidate: 10
-		};
-	} else {
-		throw new Error('posts for category data returned from query is null ');
-	}
+			// revalidate: 10
+		}; 
 };
 
 export const getStaticPaths: GetStaticPaths = async (): Promise<
