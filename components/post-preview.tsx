@@ -1,4 +1,4 @@
-import Avatar from './Card/card-avatar';
+import Avatar from './Card/card-author';
 import Date from './date-published';
 import CoverImage, { CoverImageProps } from './post-cover-image';
 import Link from 'next/link';

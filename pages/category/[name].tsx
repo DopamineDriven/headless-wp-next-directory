@@ -18,7 +18,7 @@ import PostHeader from 'components/post-header';
 import Layout from 'components/layout';
 import { getAllPostsForCategory, getCategories } from 'lib/api';
 import PostTitle from 'components/post-title';
-import Cards from 'components/cards-coalesced';
+import Cards from 'components/Card/card-coalescence';
 import Head from 'next/head';
 import { CMS_NAME, HOME_OG_IMAGE_URL } from 'lib/constants';
 // import Tags from 'components/tags';

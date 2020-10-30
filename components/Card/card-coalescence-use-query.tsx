@@ -1,5 +1,5 @@
-import Card from 'components/card-unit';
-import { PostsProps } from '../types/posts';
+import Card from 'components/Card/card-unit';
+import { PostsProps } from '../../types/posts';
 import { gql, useQuery, NetworkStatus } from '@apollo/client';
 
 export const ALL_POSTS_QUERY = gql`
