@@ -42,7 +42,7 @@ import { MediaContextProvider } from '../lib/window-width';
 // import Link from 'next/link';
 // import FieldEnum from 'types/enums/field-enum';
 // import OrderEnum from 'types/enums/order-enum';
-import Footer from '../components/footer';
+import Footer from '../components/Footer/footer';
 // import CardFilter from 'components/card-filter';
 import {
 	PostObjectsConnectionOrderbyEnum,

@@ -1,12 +1,12 @@
-import Avatar from './Card/card-author';
-import { DatePublished } from './Date';
-import CoverImage, { CoverImageProps } from './post-cover-image';
+import Avatar from '../Card/card-author';
+import { DatePublished } from '../Date';
+import CoverImage, { CoverImageProps } from '../post-cover-image';
 import Link from 'next/link';
-import { Divider } from './Core';
+import { Divider } from '../Core';
 import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
-} from '../graphql/__generated__/AuthorCardQuery';
+} from '../../graphql/__generated__/AuthorCardQuery';
 
 type HeroPostProps = {
 	featuredImage: CoverImageProps;

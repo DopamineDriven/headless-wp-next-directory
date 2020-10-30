@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import PortfolioDivider from 'components/Core/site-divider';
 import { Fragment } from 'react';
-import BackToTop from 'components/footer-back-to-top';
+import BackToTop from './footer-back-to-top';
 
 interface SocialContact {
 	id: number;

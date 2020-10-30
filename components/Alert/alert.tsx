@@ -1,4 +1,4 @@
-import Container from '../Core/container';
+import Container from '../Container/container';
 import cn from 'classnames';
 import SocialMediaCima from '../social-media-cima';
 

@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import Link from 'next/link';
 import SvgLogo from './Svg/cima-logo';
-import Container from './Core/container';
+import Container from './Container/container';
 
 interface NavRef {
 	href: string;
