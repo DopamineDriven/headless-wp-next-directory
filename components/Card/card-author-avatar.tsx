@@ -2,7 +2,7 @@ import {
 	AuthorCardQuery_users as AuthorCardQueryUsers,
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
-} from '../graphql/__generated__/AuthorCardQuery';
+} from '../../graphql/__generated__/AuthorCardQuery';
 
 interface AvatarProps {
 	avatar: AuthorCardQueryUsersNodesAvatar;

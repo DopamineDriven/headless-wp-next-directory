@@ -1,9 +1,11 @@
-import CoverImage, { CoverImageProps } from 'components/card-image';
-import Avatar from 'components/card-avatar';
-import CardIcons from 'components/card-icons';
+import CoverImage, {
+	CoverImageProps
+} from 'components/Card/card-featured-image';
+import Avatar from 'components/Card/card-avatar';
+import CardIcons from 'components/Card/card-icons';
 import { authorType, socialType } from 'types/posts';
 import CardTitle from 'components/card-title';
-import CardExcerpt from 'components/card-excerpt';
+import { CardExcerpt } from './Card';
 import { Fragment } from 'react';
 import SiteDivider from 'components/site-divider';
 import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../graphql/__generated__/getAllPostsWithSlug';

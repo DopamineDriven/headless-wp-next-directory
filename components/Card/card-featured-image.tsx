@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import Link from 'next/link';
-import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../graphql/__generated__/getAllPostsWithSlug';
+import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../../graphql/__generated__/getAllPostsWithSlug';
 import Image from 'next/image';
 import { PostsByIdReturnImageSlug_posts_nodes_featuredImage } from 'graphql/__generated__/PostsByIdReturnImageSlug';
 
