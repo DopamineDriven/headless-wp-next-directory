@@ -1,16 +1,17 @@
 import CoverImage, { CoverImageProps } from 'components/card-image';
 import Avatar from 'components/card-avatar';
 import CardIcons from 'components/card-icons';
-import { authorType, socialType } from 'types/posts';
+// import { authorType, socialType } from 'types/posts';
 import CardTitle from 'components/card-title';
 import CardExcerpt from 'components/card-excerpt';
 import { Fragment } from 'react';
 import SiteDivider from 'components/site-divider';
-import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../graphql/__generated__/getAllPostsWithSlug';
-import {
-	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
-	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
-} from '../graphql/__generated__/AuthorCardQuery';
+// import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../graphql/__generated__/getAllPostsWithSlug';
+// import {
+// 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
+// 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
+// } from '../graphql/__generated__/AuthorCardQuery';
+import { AllPostsForCategory_categories_edges_node_posts_nodes } from '../graphql/__generated__/AllPostsForCategory';
 import {
 	AllPosts_posts_edges_node,
 	AllPosts_posts_edges_node_social
@@ -41,7 +42,7 @@ const Card = ({
 	slug,
 	social,
 	title
-}: AllPosts_posts_edges_node): JSX.Element => {
+}: AllPosts_posts_edges_node | AllPostsForCategory_categories_edges_node_posts_nodes ): JSX.Element => {
 	//had to add this in because without it _html was erroring out because it is of type string.
 	if (!excerpt) {
 		excerpt = '';
