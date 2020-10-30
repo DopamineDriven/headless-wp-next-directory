@@ -21,6 +21,9 @@ export const ALL_POSTS_FOR_CATEGORY = gql`
 									lastName
 									avatar {
 										url
+										size
+										height
+										width
 									}
 								}
 							}
