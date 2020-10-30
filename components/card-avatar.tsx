@@ -14,6 +14,12 @@ interface AuthorArray {
 interface AvatarURL {
 	avatar: AuthorCardQueryUsersNodesAvatar;
 }
+
+interface AuthorSub {
+	name: string;
+	avatar: AuthorCardQueryUsersNodesAvatar;
+}
+
 interface AvatarProps {
 	author: AuthorCardQueryUsersNodes;
 	modified: string;
