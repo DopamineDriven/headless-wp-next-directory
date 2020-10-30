@@ -1,5 +1,5 @@
 import Avatar from './Card/card-author';
-import Date from './date-published';
+import { DatePublished } from './Date';
 import CoverImage, { CoverImageProps } from './post-cover-image';
 import Link from 'next/link';
 import { Divider } from './Core';
@@ -43,7 +43,7 @@ export default function HeroPost({
 						</Link>
 					</h3>
 					<div className='mb-4 md:mb-0 text-xl'>
-						<Date dateString={date} />
+						<DatePublished dateString={date} />
 					</div>
 				</div>
 				<div>

@@ -1,5 +1,4 @@
-import Modified from 'components/date-modified';
-import { authorProps } from 'types/posts';
+import { DateModified } from '../Date';
 import { Fragment } from 'react';
 import {
 	AuthorCardQuery_users as AuthorCardQueryUsers,
@@ -66,7 +65,7 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 	const ModifiedJsx = (): JSX.Element => (
 		<div className='block float-left col-span-3 text-left align-top text-tertiary'>
 			<a className='block w-full transition-all transform -translate-y-portfolioLS lg:-translate-y-portfolio text-customCardDateMobile sm:text-customCardAuthorDate lg:text-customExcerpt'>
-				<Modified modifiedString={modified} />
+				<DateModified modifiedString={modified} />
 			</a>
 		</div>
 	);
@@ -117,7 +116,7 @@ export default Avatar;
 // 	const ModifiedJsx = (): JSX.Element => (
 // 		<div className='block float-left col-span-3 text-left align-top text-tertiary'>
 // 			<a className='block w-full transition-all transform -translate-y-portfolioLS lg:-translate-y-portfolio text-customCardDateMobile sm:text-customCardAuthorDate lg:text-customExcerpt'>
-// 				<Modified modifiedString={modified} />
+// 				<DateModified modifiedString={modified} />
 // 			</a>
 // 		</div>
 // 	);

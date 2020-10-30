@@ -1,6 +1,6 @@
 import Avatar from './post-avatar';
-import Date from './date-published';
-import Modified from './date-modified';
+import { DatePublished } from './Date';
+import { DateModified } from './Date';
 import CoverImage, { CoverImageProps } from './post-cover-image';
 import PostTitle from './post-title';
 import Categories from './Categories/categories';
@@ -45,11 +45,11 @@ export default function PostHeader({
 					</div>
 					<div className='text-xs font-subpolished'>
 						Published&nbsp;
-						<Date dateString={date} />
+						<DatePublished dateString={date} />
 					</div>
 					<div className='text-xs font-subpolished'>
 						Updated&nbsp;
-						<Modified modifiedString={modified} />
+						<DateModified modifiedString={modified} />
 					</div>
 
 					<div className='block md:hidden w-inherit'>

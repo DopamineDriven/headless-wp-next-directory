@@ -1,11 +1,11 @@
-import Avatar from './Card/card-author';
-import Date from './date-published';
+import { CardAuthor } from './Card';
+import { DatePublished } from './Date';
 import CoverImage, { CoverImageProps } from './post-cover-image';
 import Link from 'next/link';
-import {
-	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
-	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
-} from '../graphql/__generated__/AuthorCardQuery';
+// import {
+// 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
+// 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
+// } from '../graphql/__generated__/AuthorCardQuery';
 
 type PostPreviewProps = {
 	featuredImage: CoverImageProps;
@@ -41,13 +41,13 @@ export default function PostPreview({
 				</Link>
 			</h3>
 			<div className='text-lg mb-2'>
-				<Date dateString={date} />
+				<DatePublished dateString={date} />
 			</div>
 			<div
 				className='text-3xl leading-relaxed mb-2 text-center justify-center'
 				dangerouslySetInnerHTML={{ __html: excerpt }}
 			/>
-			<Avatar author={author} modified={modified} />
+			<CardAuthor author={author} modified={modified} />
 		</div>
 	);
 }
