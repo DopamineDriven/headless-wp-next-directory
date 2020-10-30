@@ -1,8 +1,4 @@
-import SectionSeparator from './section-separator';
-
-type AvatarProps = {
-	author: any;
-};
+import { SiteDivider } from './Core';
 
 export default function Avatar({ author }: any) {
 	const nombre =

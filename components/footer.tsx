@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import PortfolioDivider from 'components/site-divider';
+import PortfolioDivider from 'components/Core/site-divider';
 import { Fragment } from 'react';
 import BackToTop from 'components/footer-back-to-top';
 

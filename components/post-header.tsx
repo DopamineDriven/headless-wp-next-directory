@@ -3,7 +3,7 @@ import Date from './date-published';
 import Modified from './date-modified';
 import CoverImage, { CoverImageProps } from './post-cover-image';
 import PostTitle from './post-title';
-import Categories from './categories';
+import Categories from './Categories/categories';
 import CardIcons from './Card/card-icons';
 
 type PostHeaderProps = {

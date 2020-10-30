@@ -9,7 +9,7 @@ import {
 	StoreValue
 } from '@apollo/client';
 import { initializeApollo } from '../../lib/apollo';
-import Container from 'components/container';
+import Container from 'components/Core/container';
 import PostBody from 'components/post-body';
 // import MoreStories from 'components/more-stories';
 import Header from 'components/header';

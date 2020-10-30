@@ -1,6 +1,6 @@
-import Container from './container';
+import Container from '../Core/container';
 import cn from 'classnames';
-import SocialMediaCima from './social-media-cima';
+import SocialMediaCima from '../social-media-cima';
 
 type Props = {
 	preview?: boolean; // this is a boolean

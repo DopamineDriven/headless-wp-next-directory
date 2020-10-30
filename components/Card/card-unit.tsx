@@ -7,7 +7,7 @@ import { authorType, socialType } from 'types/posts';
 import CardTitle from 'components/Card/card-title';
 import { CardExcerpt } from '.';
 import { Fragment } from 'react';
-import SiteDivider from 'components/site-divider';
+import SiteDivider from 'components/Core/site-divider';
 import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../../graphql/__generated__/getAllPostsWithSlug';
 import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,

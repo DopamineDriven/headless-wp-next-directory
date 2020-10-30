@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Header from '../components/lead';
 import Layout from '../components/layout';
-import Container from '../components/container';
+import Container from '../components/Core/container';
 import { CLIENT_NAME } from '../lib/constants';
 import { MediaContextProvider } from '../lib/window-width';
 import { Fragment } from 'react';

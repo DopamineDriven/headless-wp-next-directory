@@ -2,7 +2,7 @@ import Avatar from './Card/card-author';
 import Date from './date-published';
 import CoverImage, { CoverImageProps } from './post-cover-image';
 import Link from 'next/link';
-import SectionSeparator from './section-separator';
+import { Divider } from './Core';
 import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
@@ -54,7 +54,7 @@ export default function HeroPost({
 					<Avatar author={author} modified={modified} />
 				</div>
 			</div>
-			<SectionSeparator />
+			<Divider />
 		</section>
 	);
 }
