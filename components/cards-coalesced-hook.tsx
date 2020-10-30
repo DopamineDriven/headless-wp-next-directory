@@ -1,4 +1,4 @@
-import Card from './card';
+import Card from 'components/card-unit';
 import { PostsProps } from '../types/posts';
 import { gql, useQuery, NetworkStatus } from '@apollo/client';
 

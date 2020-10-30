@@ -5,7 +5,7 @@ import {
 	AuthorCardQuery_users as AuthorCardQueryUsers,
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
-} from '../graphql/__generated__/AuthorCardQuery';
+} from '../../graphql/__generated__/AuthorCardQuery';
 
 interface AuthorArray {
 	authors: AuthorCardQueryUsers;
@@ -14,6 +14,12 @@ interface AuthorArray {
 interface AvatarURL {
 	avatar: AuthorCardQueryUsersNodesAvatar;
 }
+
+interface AuthorSub {
+	name: string;
+	avatar: AuthorCardQueryUsersNodesAvatar;
+}
+
 interface AvatarProps {
 	author: AuthorCardQueryUsersNodes;
 	modified: string;
