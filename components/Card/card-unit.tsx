@@ -1,18 +1,18 @@
 import CoverImage, {
 	CoverImageProps
 } from 'components/Card/card-featured-image';
-import Avatar from 'components/Card/card-avatar';
+import Avatar from 'components/Card/card-author';
 import CardIcons from 'components/Card/card-icons';
 import { authorType, socialType } from 'types/posts';
-import CardTitle from 'components/card-title';
-import { CardExcerpt } from './Card';
+import CardTitle from 'components/Card/card-title';
+import { CardExcerpt } from '.';
 import { Fragment } from 'react';
-import SiteDivider from 'components/site-divider';
-import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../graphql/__generated__/getAllPostsWithSlug';
+import SiteDivider from 'components/Core/site-divider';
+import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../../graphql/__generated__/getAllPostsWithSlug';
 import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
-} from '../graphql/__generated__/AuthorCardQuery';
+} from '../../graphql/__generated__/AuthorCardQuery';
 
 interface AuthorPropTypes {
 	author: AuthorCardQueryUsersNodes;

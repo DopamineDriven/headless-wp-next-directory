@@ -9,7 +9,7 @@ import { getAllPostsWithSlug, getPostAndMorePosts } from 'lib/api';
 import PostTitle from 'components/post-title';
 import Head from 'next/head';
 import { CMS_NAME } from 'lib/constants';
-import MoreCards from 'components/cards-coalesced';
+import MoreCards from 'components/Card/card-coalescence';
 import { Fragment } from 'react';
 import { MediaContextProvider } from 'lib/window-width';
 

@@ -2,11 +2,11 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Header from 'components/lead';
 import Layout from 'components/layout';
-import Container from 'components/container';
+import Container from 'components/Container/container';
 import { CLIENT_NAME } from 'lib/constants';
 import { getAllPostsForAbout, getTagAndPosts, getCategories } from 'lib/api';
 import Intro from 'components/intro';
-import HeroPost from 'components/hero-post';
+import HeroPost from 'components/Hero/hero-post';
 import { MediaContextProvider } from 'lib/window-width';
 import { Fragment } from 'react';
 

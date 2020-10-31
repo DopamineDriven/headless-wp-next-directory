@@ -1,12 +1,12 @@
-import Avatar from './Card/card-avatar';
-import Date from './date-published';
-import CoverImage, { CoverImageProps } from './post-cover-image';
+import Avatar from '../Card/card-author';
+import { DatePublished } from '../Date';
+import CoverImage, { CoverImageProps } from '../post-cover-image';
 import Link from 'next/link';
-import SectionSeparator from './section-separator';
+import { Divider } from '../Core';
 import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
-} from '../graphql/__generated__/AuthorCardQuery';
+} from '../../graphql/__generated__/AuthorCardQuery';
 
 type HeroPostProps = {
 	featuredImage: CoverImageProps;
@@ -43,7 +43,7 @@ export default function HeroPost({
 						</Link>
 					</h3>
 					<div className='mb-4 md:mb-0 text-xl'>
-						<Date dateString={date} />
+						<DatePublished dateString={date} />
 					</div>
 				</div>
 				<div>
@@ -54,7 +54,7 @@ export default function HeroPost({
 					<Avatar author={author} modified={modified} />
 				</div>
 			</div>
-			<SectionSeparator />
+			<Divider />
 		</section>
 	);
 }
