@@ -113,13 +113,15 @@ interface IndexProps {
 	initializeApollo: any;
 }
 
-const Index = ({
-	allPosts: { edges },
-	preview,
-	tagsAndPosts,
-	// categories,
-	initializeApollo
-}: IndexProps): JSX.Element => {
+const Index = (
+	{
+		allPosts: { edges },
+		preview,
+		tagsAndPosts,
+		// categories,
+		initializeApollo
+	}: IndexProps /*& InferGetStaticPropsType<typeof getStaticProps>*/
+) => {
 	console.log('initializeApollo Prop: ', initializeApollo);
 	console.log(
 		'attempt at matching key: ',
@@ -179,20 +181,6 @@ const Index = ({
 			}
 		}
 	}, [filterQuery, search]);
-
-	// const categoryData = () => {
-	// 	if (data) {
-	// 		console.log('data returned from useQuery: ', data)
-	// 		return (<p>Data returned</p>)
-	// 	}
-
-	// 	if (loading) {
-	// 		return <p>Wait for data</p>;
-	// 	}
-
-	// 		  return null;
-	// }
-
 	return (
 		<Fragment>
 			<MediaContextProvider>

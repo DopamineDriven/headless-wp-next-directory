@@ -14,14 +14,12 @@ const CoverImageCard = ({ title, featuredImage, slug }: CoverImageProps) => {
 	const ImageReturned = () => {
 		console.debug(featuredImage.node?.sourceUrl);
 		// featuredImage ==! undefined && featuredImage?.node && featuredImage.node?.sourceUrl ?
-		return featuredImage !== undefined &&
-			featuredImage?.node &&
-			featuredImage.node?.sourceUrl ? (
+		return featuredImage ||
+			(featuredImage.node && featuredImage.node.sourceUrl) ||
+			featuredImage.sourceUrl ? (
 			<Image
-				src={`${
-					featuredImage ? featuredImage?.node?.sourceUrl : featuredImage?.sourceUrl
-				}`}
-				alt={title}
+				src={`${featuredImage ? featuredImage.sourceUrl : featuredImage.sourceUrl}`}
+				alt={title + ' this is new'}
 				aria-label='Yeah'
 				className={cn(
 					'w-xsCardGridCima max-w-xsCardGridCima sm:w-aboutImage600 sm:max-w-aboutImage600 h-aboutOffsetPRMobile sm:h-portfolioS sm:max-h-full xl:h-imagePortfolio lg:h-paddingBlog rounded-t-custom overflow-x-hidden lg:w-aboutImage400 lg:max-w-aboutImage400',
