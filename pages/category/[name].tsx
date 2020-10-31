@@ -10,7 +10,7 @@ import {
 } from '@apollo/client';
 import { initializeApollo } from '../../lib/apollo';
 import Header from 'components/header';
-import Layout from 'components/layout';
+import Layout from 'components/Layout/layout';
 import PostTitle from 'components/post-title';
 import Cards from 'components/card/card-coalescence';
 import Head from 'next/head';

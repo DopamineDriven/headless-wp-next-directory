@@ -18,10 +18,11 @@
 		"jsx": "preserve",
 		"baseUrl": ".",
 		"paths": {
-			"@lib/*": ["@lib/*"],
-			"@components/*": ["@components/*"],
-			"@graphql/*": ["@graphql/*"],
-			"@types/*": ["@types/*"]
+			"@lib/*": ["lib/*"],
+			"@components/*": ["components/*"],
+			"@graphql/*": ["graphql/*"],
+			"@utils/*": ["utils/*"],
+			"@types/*": ["types/*"]
 		},
 		"plugins": [
 			{
@@ -39,11 +40,8 @@
 		"global.d.ts",
 		"graphql.d.ts",
 		"next-env.d.ts",
+		"**/*.ts",
 		"**/*.tsx",
-		"pages/**/*.tsx}",
-		"graphql/**/*.ts",
-		"components/**/*.tsx",
-		"lib/**/*.{ts,tsx}",
-		"types/**/*.ts"
+		"**/*.js"
 	]
 }

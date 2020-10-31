@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import Header from '../components/lead';
-import Layout from '../components/layout';
+import Layout from '../components/Layout/layout';
 import Container from '../components/Container/container';
 import { CLIENT_NAME } from '../lib/constants';
 import { MediaContextProvider } from '../lib/window-width';
