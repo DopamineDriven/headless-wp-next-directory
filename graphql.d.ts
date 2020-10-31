@@ -1,4 +1,6 @@
 import gql from 'graphql-tag';
+import { gql } from '@apollo/client';
+import * as Apollo from '@apollo/client';
 import {
 	FieldPolicy,
 	FieldReadFunction,
@@ -4087,6 +4089,18 @@ export type ContentNodeToEnqueuedStylesheetConnectionEdge = {
 
 /** The size of the media item object. */
 export enum MediaItemSizeEnum {
+	/** MediaItem with the bc-large size */
+	BcLarge = 'BC_LARGE',
+	/** MediaItem with the bc-medium size */
+	BcMedium = 'BC_MEDIUM',
+	/** MediaItem with the bc-small size */
+	BcSmall = 'BC_SMALL',
+	/** MediaItem with the bc-thumb size */
+	BcThumb = 'BC_THUMB',
+	/** MediaItem with the bc-thumb-large size */
+	BcThumbLarge = 'BC_THUMB_LARGE',
+	/** MediaItem with the bc-xmedium size */
+	BcXmedium = 'BC_XMEDIUM',
 	/** MediaItem with the large size */
 	Large = 'LARGE',
 	/** MediaItem with the medium size */
@@ -6636,6 +6650,7 @@ export type MenuMenuItemsArgs = {
 
 /** Registered menu locations */
 export enum MenuLocationEnum {
+	AmpMenu = 'AMP_MENU',
 	Expanded = 'EXPANDED',
 	Footer = 'FOOTER',
 	Mobile = 'MOBILE',
@@ -7936,6 +7951,7 @@ export enum UserRoleEnum {
 	Administrator = 'ADMINISTRATOR',
 	Author = 'AUTHOR',
 	Contributor = 'CONTRIBUTOR',
+	Customer = 'CUSTOMER',
 	Editor = 'EDITOR',
 	Subscriber = 'SUBSCRIBER'
 }
@@ -10802,6 +10818,1276 @@ export const WpSearchQuery = gql`
 		}
 	}
 `;
+export const TypeRefFragmentDoc = gql`
+	fragment TypeRef on __Type {
+		kind
+		name
+		ofType {
+			kind
+			name
+			ofType {
+				kind
+				name
+				ofType {
+					kind
+					name
+					ofType {
+						kind
+						name
+						ofType {
+							kind
+							name
+							ofType {
+								kind
+								name
+								ofType {
+									kind
+									name
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+`;
+export const InputValueFragmentDoc = gql`
+	fragment InputValue on __InputValue {
+		name
+		description
+		type {
+			...TypeRef
+		}
+		defaultValue
+	}
+	${TypeRefFragmentDoc}
+`;
+export const FullTypeFragmentDoc = gql`
+	fragment FullType on __Type {
+		kind
+		name
+		description
+		fields(includeDeprecated: true) {
+			name
+			description
+			args {
+				...InputValue
+			}
+			type {
+				...TypeRef
+			}
+			isDeprecated
+			deprecationReason
+		}
+		inputFields {
+			...InputValue
+		}
+		interfaces {
+			...TypeRef
+		}
+		enumValues(includeDeprecated: true) {
+			name
+			description
+			isDeprecated
+			deprecationReason
+		}
+		possibleTypes {
+			...TypeRef
+		}
+	}
+	${InputValueFragmentDoc}
+	${TypeRefFragmentDoc}
+`;
+export const AllPostsGraphQlDocument = gql`
+	query AllPostsGraphQL {
+		posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+			edges {
+				node {
+					id
+					title
+					content
+					excerpt
+					slug
+					date
+					modified
+					social {
+						facebook
+						instagram
+						twitter
+						website
+					}
+					featuredImage {
+						node {
+							sourceUrl
+						}
+					}
+					author {
+						node {
+							avatar {
+								url
+							}
+							name
+							firstName
+							lastName
+						}
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useAllPostsGraphQlQuery__
+ *
+ * To run a query within a React component, call `useAllPostsGraphQlQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllPostsGraphQlQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllPostsGraphQlQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAllPostsGraphQlQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		AllPostsGraphQlQuery,
+		AllPostsGraphQlQueryVariables
+	>
+) {
+	return Apollo.useQuery<AllPostsGraphQlQuery, AllPostsGraphQlQueryVariables>(
+		AllPostsGraphQlDocument,
+		baseOptions
+	);
+}
+export function useAllPostsGraphQlLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		AllPostsGraphQlQuery,
+		AllPostsGraphQlQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<
+		AllPostsGraphQlQuery,
+		AllPostsGraphQlQueryVariables
+	>(AllPostsGraphQlDocument, baseOptions);
+}
+export type AllPostsGraphQlQueryHookResult = ReturnType<
+	typeof useAllPostsGraphQlQuery
+>;
+export type AllPostsGraphQlLazyQueryHookResult = ReturnType<
+	typeof useAllPostsGraphQlLazyQuery
+>;
+export type AllPostsGraphQlQueryResult = Apollo.QueryResult<
+	AllPostsGraphQlQuery,
+	AllPostsGraphQlQueryVariables
+>;
+export const AllCategoriesDocument = gql`
+	query AllCategories($first: Int) {
+		categories(first: $first) {
+			pageInfo {
+				hasNextPage
+				endCursor
+			}
+			edges {
+				node {
+					name
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useAllCategoriesQuery__
+ *
+ * To run a query within a React component, call `useAllCategoriesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllCategoriesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllCategoriesQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useAllCategoriesQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		AllCategoriesQuery,
+		AllCategoriesQueryVariables
+	>
+) {
+	return Apollo.useQuery<AllCategoriesQuery, AllCategoriesQueryVariables>(
+		AllCategoriesDocument,
+		baseOptions
+	);
+}
+export function useAllCategoriesLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		AllCategoriesQuery,
+		AllCategoriesQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<AllCategoriesQuery, AllCategoriesQueryVariables>(
+		AllCategoriesDocument,
+		baseOptions
+	);
+}
+export type AllCategoriesQueryHookResult = ReturnType<
+	typeof useAllCategoriesQuery
+>;
+export type AllCategoriesLazyQueryHookResult = ReturnType<
+	typeof useAllCategoriesLazyQuery
+>;
+export type AllCategoriesQueryResult = Apollo.QueryResult<
+	AllCategoriesQuery,
+	AllCategoriesQueryVariables
+>;
+export const AllPostsDocument = gql`
+	query AllPosts($field: PostObjectsConnectionOrderbyEnum!, $order: OrderEnum!) {
+		posts(first: 35, where: { orderby: { field: $field, order: $order } }) {
+			edges {
+				node {
+					author {
+						node {
+							name
+							firstName
+							lastName
+							avatar {
+								url
+								size
+								height
+								width
+							}
+						}
+					}
+					title
+					content
+					date
+					excerpt
+					featuredImage {
+						node {
+							sourceUrl
+						}
+					}
+					id
+					modified
+					slug
+					social {
+						facebook
+						instagram
+						twitter
+						website
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useAllPostsQuery__
+ *
+ * To run a query within a React component, call `useAllPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllPostsQuery({
+ *   variables: {
+ *      field: // value for 'field'
+ *      order: // value for 'order'
+ *   },
+ * });
+ */
+export function useAllPostsQuery(
+	baseOptions?: Apollo.QueryHookOptions<AllPostsQuery, AllPostsQueryVariables>
+) {
+	return Apollo.useQuery<AllPostsQuery, AllPostsQueryVariables>(
+		AllPostsDocument,
+		baseOptions
+	);
+}
+export function useAllPostsLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		AllPostsQuery,
+		AllPostsQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<AllPostsQuery, AllPostsQueryVariables>(
+		AllPostsDocument,
+		baseOptions
+	);
+}
+export type AllPostsQueryHookResult = ReturnType<typeof useAllPostsQuery>;
+export type AllPostsLazyQueryHookResult = ReturnType<
+	typeof useAllPostsLazyQuery
+>;
+export type AllPostsQueryResult = Apollo.QueryResult<
+	AllPostsQuery,
+	AllPostsQueryVariables
+>;
+export const AllTagsDocument = gql`
+	query AllTags($first: Int) {
+		tags(first: $first) {
+			pageInfo {
+				hasNextPage
+				endCursor
+			}
+			edges {
+				node {
+					name
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useAllTagsQuery__
+ *
+ * To run a query within a React component, call `useAllTagsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllTagsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllTagsQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *   },
+ * });
+ */
+export function useAllTagsQuery(
+	baseOptions?: Apollo.QueryHookOptions<AllTagsQuery, AllTagsQueryVariables>
+) {
+	return Apollo.useQuery<AllTagsQuery, AllTagsQueryVariables>(
+		AllTagsDocument,
+		baseOptions
+	);
+}
+export function useAllTagsLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<AllTagsQuery, AllTagsQueryVariables>
+) {
+	return Apollo.useLazyQuery<AllTagsQuery, AllTagsQueryVariables>(
+		AllTagsDocument,
+		baseOptions
+	);
+}
+export type AllTagsQueryHookResult = ReturnType<typeof useAllTagsQuery>;
+export type AllTagsLazyQueryHookResult = ReturnType<typeof useAllTagsLazyQuery>;
+export type AllTagsQueryResult = Apollo.QueryResult<
+	AllTagsQuery,
+	AllTagsQueryVariables
+>;
+export const AuthorCardQueryDocument = gql`
+	query AuthorCardQuery {
+		users(where: { include: [] }) {
+			nodes {
+				name
+				firstName
+				lastName
+				avatar {
+					url
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useAuthorCardQueryQuery__
+ *
+ * To run a query within a React component, call `useAuthorCardQueryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAuthorCardQueryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAuthorCardQueryQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAuthorCardQueryQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		AuthorCardQueryQuery,
+		AuthorCardQueryQueryVariables
+	>
+) {
+	return Apollo.useQuery<AuthorCardQueryQuery, AuthorCardQueryQueryVariables>(
+		AuthorCardQueryDocument,
+		baseOptions
+	);
+}
+export function useAuthorCardQueryLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		AuthorCardQueryQuery,
+		AuthorCardQueryQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<
+		AuthorCardQueryQuery,
+		AuthorCardQueryQueryVariables
+	>(AuthorCardQueryDocument, baseOptions);
+}
+export type AuthorCardQueryQueryHookResult = ReturnType<
+	typeof useAuthorCardQueryQuery
+>;
+export type AuthorCardQueryLazyQueryHookResult = ReturnType<
+	typeof useAuthorCardQueryLazyQuery
+>;
+export type AuthorCardQueryQueryResult = Apollo.QueryResult<
+	AuthorCardQueryQuery,
+	AuthorCardQueryQueryVariables
+>;
+export const AuthorDocument = gql`
+	query Author {
+		users {
+			edges {
+				node {
+					avatar {
+						url
+						size
+					}
+					firstName
+					id
+					lastName
+					name
+					slug
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useAuthorQuery__
+ *
+ * To run a query within a React component, call `useAuthorQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAuthorQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAuthorQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useAuthorQuery(
+	baseOptions?: Apollo.QueryHookOptions<AuthorQuery, AuthorQueryVariables>
+) {
+	return Apollo.useQuery<AuthorQuery, AuthorQueryVariables>(
+		AuthorDocument,
+		baseOptions
+	);
+}
+export function useAuthorLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<AuthorQuery, AuthorQueryVariables>
+) {
+	return Apollo.useLazyQuery<AuthorQuery, AuthorQueryVariables>(
+		AuthorDocument,
+		baseOptions
+	);
+}
+export type AuthorQueryHookResult = ReturnType<typeof useAuthorQuery>;
+export type AuthorLazyQueryHookResult = ReturnType<typeof useAuthorLazyQuery>;
+export type AuthorQueryResult = Apollo.QueryResult<
+	AuthorQuery,
+	AuthorQueryVariables
+>;
+export const CategoriesByEdgesDocument = gql`
+	query CategoriesByEdges {
+		categories {
+			edges {
+				node {
+					slug
+					name
+					count
+					id
+				}
+				cursor
+			}
+		}
+	}
+`;
+
+/**
+ * __useCategoriesByEdgesQuery__
+ *
+ * To run a query within a React component, call `useCategoriesByEdgesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoriesByEdgesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoriesByEdgesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCategoriesByEdgesQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		CategoriesByEdgesQuery,
+		CategoriesByEdgesQueryVariables
+	>
+) {
+	return Apollo.useQuery<
+		CategoriesByEdgesQuery,
+		CategoriesByEdgesQueryVariables
+	>(CategoriesByEdgesDocument, baseOptions);
+}
+export function useCategoriesByEdgesLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		CategoriesByEdgesQuery,
+		CategoriesByEdgesQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<
+		CategoriesByEdgesQuery,
+		CategoriesByEdgesQueryVariables
+	>(CategoriesByEdgesDocument, baseOptions);
+}
+export type CategoriesByEdgesQueryHookResult = ReturnType<
+	typeof useCategoriesByEdgesQuery
+>;
+export type CategoriesByEdgesLazyQueryHookResult = ReturnType<
+	typeof useCategoriesByEdgesLazyQuery
+>;
+export type CategoriesByEdgesQueryResult = Apollo.QueryResult<
+	CategoriesByEdgesQuery,
+	CategoriesByEdgesQueryVariables
+>;
+export const CategoriesByNodesDocument = gql`
+	query CategoriesByNodes {
+		categories {
+			nodes {
+				name
+				count
+				slug
+				id
+			}
+		}
+	}
+`;
+
+/**
+ * __useCategoriesByNodesQuery__
+ *
+ * To run a query within a React component, call `useCategoriesByNodesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoriesByNodesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoriesByNodesQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useCategoriesByNodesQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		CategoriesByNodesQuery,
+		CategoriesByNodesQueryVariables
+	>
+) {
+	return Apollo.useQuery<
+		CategoriesByNodesQuery,
+		CategoriesByNodesQueryVariables
+	>(CategoriesByNodesDocument, baseOptions);
+}
+export function useCategoriesByNodesLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		CategoriesByNodesQuery,
+		CategoriesByNodesQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<
+		CategoriesByNodesQuery,
+		CategoriesByNodesQueryVariables
+	>(CategoriesByNodesDocument, baseOptions);
+}
+export type CategoriesByNodesQueryHookResult = ReturnType<
+	typeof useCategoriesByNodesQuery
+>;
+export type CategoriesByNodesLazyQueryHookResult = ReturnType<
+	typeof useCategoriesByNodesLazyQuery
+>;
+export type CategoriesByNodesQueryResult = Apollo.QueryResult<
+	CategoriesByNodesQuery,
+	CategoriesByNodesQueryVariables
+>;
+export const CategoryByIdDocument = gql`
+	query CategoryById($id: ID!, $idType: CategoryIdType!) {
+		category(id: $id, idType: $idType) {
+			__typename
+			name
+			id
+			slug
+			count
+		}
+	}
+`;
+
+/**
+ * __useCategoryByIdQuery__
+ *
+ * To run a query within a React component, call `useCategoryByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoryByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoryByIdQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *      idType: // value for 'idType'
+ *   },
+ * });
+ */
+export function useCategoryByIdQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		CategoryByIdQuery,
+		CategoryByIdQueryVariables
+	>
+) {
+	return Apollo.useQuery<CategoryByIdQuery, CategoryByIdQueryVariables>(
+		CategoryByIdDocument,
+		baseOptions
+	);
+}
+export function useCategoryByIdLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		CategoryByIdQuery,
+		CategoryByIdQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<CategoryByIdQuery, CategoryByIdQueryVariables>(
+		CategoryByIdDocument,
+		baseOptions
+	);
+}
+export type CategoryByIdQueryHookResult = ReturnType<
+	typeof useCategoryByIdQuery
+>;
+export type CategoryByIdLazyQueryHookResult = ReturnType<
+	typeof useCategoryByIdLazyQuery
+>;
+export type CategoryByIdQueryResult = Apollo.QueryResult<
+	CategoryByIdQuery,
+	CategoryByIdQueryVariables
+>;
+export const SearchCategoriesReturnPostsDocument = gql`
+	query SearchCategoriesReturnPosts(
+		$name: [String!]
+		$search: String
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+	) {
+		categories(where: { name: $name, search: $search }) {
+			edges {
+				node {
+					name
+					count
+					id
+					posts(where: { orderby: { field: $field, order: $order } }) {
+						edges {
+							node {
+								title
+								uri
+								social {
+									facebook
+									instagram
+									twitter
+									website
+								}
+								excerpt
+								slug
+								featuredImage {
+									node {
+										sourceUrl
+									}
+								}
+								author {
+									node {
+										name
+										firstName
+										lastName
+										avatar {
+											url
+											size
+											height
+											width
+										}
+									}
+								}
+								content
+								date
+								modified
+								id
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useSearchCategoriesReturnPostsQuery__
+ *
+ * To run a query within a React component, call `useSearchCategoriesReturnPostsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useSearchCategoriesReturnPostsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useSearchCategoriesReturnPostsQuery({
+ *   variables: {
+ *      name: // value for 'name'
+ *      search: // value for 'search'
+ *      field: // value for 'field'
+ *      order: // value for 'order'
+ *   },
+ * });
+ */
+export function useSearchCategoriesReturnPostsQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		SearchCategoriesReturnPostsQuery,
+		SearchCategoriesReturnPostsQueryVariables
+	>
+) {
+	return Apollo.useQuery<
+		SearchCategoriesReturnPostsQuery,
+		SearchCategoriesReturnPostsQueryVariables
+	>(SearchCategoriesReturnPostsDocument, baseOptions);
+}
+export function useSearchCategoriesReturnPostsLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		SearchCategoriesReturnPostsQuery,
+		SearchCategoriesReturnPostsQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<
+		SearchCategoriesReturnPostsQuery,
+		SearchCategoriesReturnPostsQueryVariables
+	>(SearchCategoriesReturnPostsDocument, baseOptions);
+}
+export type SearchCategoriesReturnPostsQueryHookResult = ReturnType<
+	typeof useSearchCategoriesReturnPostsQuery
+>;
+export type SearchCategoriesReturnPostsLazyQueryHookResult = ReturnType<
+	typeof useSearchCategoriesReturnPostsLazyQuery
+>;
+export type SearchCategoriesReturnPostsQueryResult = Apollo.QueryResult<
+	SearchCategoriesReturnPostsQuery,
+	SearchCategoriesReturnPostsQueryVariables
+>;
+export const CategoryTypedDocument = gql`
+	query CategoryTyped($idType: CategoryIdType!, $id: ID!) {
+		category(id: $id, idType: $idType) {
+			name
+		}
+		__typename
+		categories {
+			__typename
+			edges {
+				__typename
+				node {
+					__typename
+					id
+					name
+					databaseId
+					slug
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useCategoryTypedQuery__
+ *
+ * To run a query within a React component, call `useCategoryTypedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCategoryTypedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCategoryTypedQuery({
+ *   variables: {
+ *      idType: // value for 'idType'
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useCategoryTypedQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		CategoryTypedQuery,
+		CategoryTypedQueryVariables
+	>
+) {
+	return Apollo.useQuery<CategoryTypedQuery, CategoryTypedQueryVariables>(
+		CategoryTypedDocument,
+		baseOptions
+	);
+}
+export function useCategoryTypedLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		CategoryTypedQuery,
+		CategoryTypedQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<CategoryTypedQuery, CategoryTypedQueryVariables>(
+		CategoryTypedDocument,
+		baseOptions
+	);
+}
+export type CategoryTypedQueryHookResult = ReturnType<
+	typeof useCategoryTypedQuery
+>;
+export type CategoryTypedLazyQueryHookResult = ReturnType<
+	typeof useCategoryTypedLazyQuery
+>;
+export type CategoryTypedQueryResult = Apollo.QueryResult<
+	CategoryTypedQuery,
+	CategoryTypedQueryVariables
+>;
+export const PostsByIdReturnImageSlugDocument = gql`
+	query PostsByIdReturnImageSlug {
+		posts(where: { in: [] }) {
+			nodes {
+				title
+				featuredImage {
+					node {
+						slug
+						uri
+						title
+						sourceUrl
+					}
+				}
+				id
+			}
+		}
+	}
+`;
+
+/**
+ * __usePostsByIdReturnImageSlugQuery__
+ *
+ * To run a query within a React component, call `usePostsByIdReturnImageSlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostsByIdReturnImageSlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostsByIdReturnImageSlugQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePostsByIdReturnImageSlugQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		PostsByIdReturnImageSlugQuery,
+		PostsByIdReturnImageSlugQueryVariables
+	>
+) {
+	return Apollo.useQuery<
+		PostsByIdReturnImageSlugQuery,
+		PostsByIdReturnImageSlugQueryVariables
+	>(PostsByIdReturnImageSlugDocument, baseOptions);
+}
+export function usePostsByIdReturnImageSlugLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		PostsByIdReturnImageSlugQuery,
+		PostsByIdReturnImageSlugQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<
+		PostsByIdReturnImageSlugQuery,
+		PostsByIdReturnImageSlugQueryVariables
+	>(PostsByIdReturnImageSlugDocument, baseOptions);
+}
+export type PostsByIdReturnImageSlugQueryHookResult = ReturnType<
+	typeof usePostsByIdReturnImageSlugQuery
+>;
+export type PostsByIdReturnImageSlugLazyQueryHookResult = ReturnType<
+	typeof usePostsByIdReturnImageSlugLazyQuery
+>;
+export type PostsByIdReturnImageSlugQueryResult = Apollo.QueryResult<
+	PostsByIdReturnImageSlugQuery,
+	PostsByIdReturnImageSlugQueryVariables
+>;
+export const IntrospectionQueryDocument = gql`
+	query IntrospectionQuery {
+		__schema {
+			queryType {
+				name
+			}
+			mutationType {
+				name
+			}
+			subscriptionType {
+				name
+			}
+			types {
+				...FullType
+			}
+			directives {
+				name
+				description
+				locations
+				args {
+					...InputValue
+				}
+			}
+		}
+	}
+	${FullTypeFragmentDoc}
+	${InputValueFragmentDoc}
+`;
+
+/**
+ * __useIntrospectionQueryQuery__
+ *
+ * To run a query within a React component, call `useIntrospectionQueryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useIntrospectionQueryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useIntrospectionQueryQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useIntrospectionQueryQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		IntrospectionQueryQuery,
+		IntrospectionQueryQueryVariables
+	>
+) {
+	return Apollo.useQuery<
+		IntrospectionQueryQuery,
+		IntrospectionQueryQueryVariables
+	>(IntrospectionQueryDocument, baseOptions);
+}
+export function useIntrospectionQueryLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		IntrospectionQueryQuery,
+		IntrospectionQueryQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<
+		IntrospectionQueryQuery,
+		IntrospectionQueryQueryVariables
+	>(IntrospectionQueryDocument, baseOptions);
+}
+export type IntrospectionQueryQueryHookResult = ReturnType<
+	typeof useIntrospectionQueryQuery
+>;
+export type IntrospectionQueryLazyQueryHookResult = ReturnType<
+	typeof useIntrospectionQueryLazyQuery
+>;
+export type IntrospectionQueryQueryResult = Apollo.QueryResult<
+	IntrospectionQueryQuery,
+	IntrospectionQueryQueryVariables
+>;
+export const GetAllPostsWithSlugDocument = gql`
+	query getAllPostsWithSlug {
+		posts(first: 10000) {
+			edges {
+				node {
+					slug
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useGetAllPostsWithSlugQuery__
+ *
+ * To run a query within a React component, call `useGetAllPostsWithSlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetAllPostsWithSlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetAllPostsWithSlugQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetAllPostsWithSlugQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		GetAllPostsWithSlugQuery,
+		GetAllPostsWithSlugQueryVariables
+	>
+) {
+	return Apollo.useQuery<
+		GetAllPostsWithSlugQuery,
+		GetAllPostsWithSlugQueryVariables
+	>(GetAllPostsWithSlugDocument, baseOptions);
+}
+export function useGetAllPostsWithSlugLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		GetAllPostsWithSlugQuery,
+		GetAllPostsWithSlugQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<
+		GetAllPostsWithSlugQuery,
+		GetAllPostsWithSlugQueryVariables
+	>(GetAllPostsWithSlugDocument, baseOptions);
+}
+export type GetAllPostsWithSlugQueryHookResult = ReturnType<
+	typeof useGetAllPostsWithSlugQuery
+>;
+export type GetAllPostsWithSlugLazyQueryHookResult = ReturnType<
+	typeof useGetAllPostsWithSlugLazyQuery
+>;
+export type GetAllPostsWithSlugQueryResult = Apollo.QueryResult<
+	GetAllPostsWithSlugQuery,
+	GetAllPostsWithSlugQueryVariables
+>;
+export const PostsByIdDocument = gql`
+	query PostsById {
+		posts(where: { in: [] }) {
+			nodes {
+				id
+				title
+				databaseId
+			}
+		}
+	}
+`;
+
+/**
+ * __usePostsByIdQuery__
+ *
+ * To run a query within a React component, call `usePostsByIdQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostsByIdQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostsByIdQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function usePostsByIdQuery(
+	baseOptions?: Apollo.QueryHookOptions<PostsByIdQuery, PostsByIdQueryVariables>
+) {
+	return Apollo.useQuery<PostsByIdQuery, PostsByIdQueryVariables>(
+		PostsByIdDocument,
+		baseOptions
+	);
+}
+export function usePostsByIdLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		PostsByIdQuery,
+		PostsByIdQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<PostsByIdQuery, PostsByIdQueryVariables>(
+		PostsByIdDocument,
+		baseOptions
+	);
+}
+export type PostsByIdQueryHookResult = ReturnType<typeof usePostsByIdQuery>;
+export type PostsByIdLazyQueryHookResult = ReturnType<
+	typeof usePostsByIdLazyQuery
+>;
+export type PostsByIdQueryResult = Apollo.QueryResult<
+	PostsByIdQuery,
+	PostsByIdQueryVariables
+>;
+export const AllPostsForCategoryDocument = gql`
+	query AllPostsForCategory($first: Int, $name: [String]) {
+		categories(first: $first, where: { name: $name }) {
+			edges {
+				node {
+					id
+					databaseId
+					name
+					posts {
+						nodes {
+							id
+							title
+							date
+							excerpt
+							slug
+							modified
+							social {
+								facebook
+								instagram
+								twitter
+								website
+							}
+							featuredImage {
+								node {
+									sourceUrl
+								}
+							}
+							author {
+								node {
+									name
+									firstName
+									lastName
+									avatar {
+										url
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useAllPostsForCategoryQuery__
+ *
+ * To run a query within a React component, call `useAllPostsForCategoryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useAllPostsForCategoryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useAllPostsForCategoryQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      name: // value for 'name'
+ *   },
+ * });
+ */
+export function useAllPostsForCategoryQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		AllPostsForCategoryQuery,
+		AllPostsForCategoryQueryVariables
+	>
+) {
+	return Apollo.useQuery<
+		AllPostsForCategoryQuery,
+		AllPostsForCategoryQueryVariables
+	>(AllPostsForCategoryDocument, baseOptions);
+}
+export function useAllPostsForCategoryLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		AllPostsForCategoryQuery,
+		AllPostsForCategoryQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<
+		AllPostsForCategoryQuery,
+		AllPostsForCategoryQueryVariables
+	>(AllPostsForCategoryDocument, baseOptions);
+}
+export type AllPostsForCategoryQueryHookResult = ReturnType<
+	typeof useAllPostsForCategoryQuery
+>;
+export type AllPostsForCategoryLazyQueryHookResult = ReturnType<
+	typeof useAllPostsForCategoryLazyQuery
+>;
+export type AllPostsForCategoryQueryResult = Apollo.QueryResult<
+	AllPostsForCategoryQuery,
+	AllPostsForCategoryQueryVariables
+>;
+export const WpSearchQueryDocument = gql`
+	query WPSearchQuery($term: String!) {
+		Posts: posts(first: 500, where: { search: $term }) {
+			nodes {
+				title
+				uri
+				id
+				date
+				categories {
+					nodes {
+						name
+						id
+						uri
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useWpSearchQueryQuery__
+ *
+ * To run a query within a React component, call `useWpSearchQueryQuery` and pass it any options that fit your needs.
+ * When your component renders, `useWpSearchQueryQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useWpSearchQueryQuery({
+ *   variables: {
+ *      term: // value for 'term'
+ *   },
+ * });
+ */
+export function useWpSearchQueryQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		WpSearchQueryQuery,
+		WpSearchQueryQueryVariables
+	>
+) {
+	return Apollo.useQuery<WpSearchQueryQuery, WpSearchQueryQueryVariables>(
+		WpSearchQueryDocument,
+		baseOptions
+	);
+}
+export function useWpSearchQueryLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		WpSearchQueryQuery,
+		WpSearchQueryQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<WpSearchQueryQuery, WpSearchQueryQueryVariables>(
+		WpSearchQueryDocument,
+		baseOptions
+	);
+}
+export type WpSearchQueryQueryHookResult = ReturnType<
+	typeof useWpSearchQueryQuery
+>;
+export type WpSearchQueryLazyQueryHookResult = ReturnType<
+	typeof useWpSearchQueryLazyQuery
+>;
+export type WpSearchQueryQueryResult = Apollo.QueryResult<
+	WpSearchQueryQuery,
+	WpSearchQueryQueryVariables
+>;
 export type RootQueryKeySpecifier = (
 	| 'allSettings'
 	| 'categories'

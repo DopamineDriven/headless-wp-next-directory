@@ -10,6 +10,7 @@ generates:
    - 'typescript-operations'
    - 'typescript-graphql-files-modules'
    - 'typescript-document-nodes'
+   - 'typescript-react-apollo'
    - 'typescript-apollo-client-helpers'
    - 'typed-document-node'
  ./graphql.schema.json:

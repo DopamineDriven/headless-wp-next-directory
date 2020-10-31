@@ -14955,6 +14955,42 @@
 				"interfaces": null,
 				"enumValues": [
 					{
+						"name": "BC_LARGE",
+						"description": "MediaItem with the bc-large size",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "BC_MEDIUM",
+						"description": "MediaItem with the bc-medium size",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "BC_SMALL",
+						"description": "MediaItem with the bc-small size",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "BC_THUMB",
+						"description": "MediaItem with the bc-thumb size",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "BC_THUMB_LARGE",
+						"description": "MediaItem with the bc-thumb-large size",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "BC_XMEDIUM",
+						"description": "MediaItem with the bc-xmedium size",
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
 						"name": "LARGE",
 						"description": "MediaItem with the large size",
 						"isDeprecated": false,
@@ -24809,6 +24845,12 @@
 				"interfaces": null,
 				"enumValues": [
 					{
+						"name": "AMP_MENU",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
 						"name": "EXPANDED",
 						"description": null,
 						"isDeprecated": false,
@@ -29334,6 +29376,12 @@
 					},
 					{
 						"name": "CONTRIBUTOR",
+						"description": null,
+						"isDeprecated": false,
+						"deprecationReason": null
+					},
+					{
+						"name": "CUSTOMER",
 						"description": null,
 						"isDeprecated": false,
 						"deprecationReason": null
