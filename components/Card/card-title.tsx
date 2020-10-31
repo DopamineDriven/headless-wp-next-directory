@@ -2,9 +2,10 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown/with-html';
 import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../../graphql/__generated__/getAllPostsWithSlug';
 import { FC } from 'react';
+import { Title_posts_edges_node } from '@graphql/__generated__/Title';
 
 interface CardTitleProps {
-	title: string;
+	title: string | null;
 	slug: PostSlug;
 	// postTitle: string;
 }
@@ -18,11 +19,19 @@ const CardTitle = ({ title, slug }: CardTitleProps): JSX.Element => {
 					aria-label={`portfolio item title - ${title}`}
 					id={`home-${title}`}
 				>
-					<ReactMarkdown
-						escapeHtml={false}
-						source={title}
-						className='text-center transition-all transform sm:text-left hover:text-tertiary text-customTitleMobile sm:text-customTitle lg:text-customS animate-hero '
-					/>
+					{title ? (
+						<ReactMarkdown
+							escapeHtml={false}
+							source={title}
+							className='text-center transition-all transform sm:text-left hover:text-tertiary text-customTitleMobile sm:text-customTitle lg:text-customS animate-hero '
+						/>
+					) : (
+						<ReactMarkdown
+							escapeHtml={false}
+							source={'title'}
+							className='text-center transition-all transform sm:text-left hover:text-tertiary text-customTitleMobile sm:text-customTitle lg:text-customS animate-hero '
+						/>
+					)}
 				</a>
 			</Link>
 		</div>

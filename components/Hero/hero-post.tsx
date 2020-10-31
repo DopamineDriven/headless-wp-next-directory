@@ -1,4 +1,4 @@
-import { CardAuthor } from '../card';
+import { CardAuthor } from '../Card';
 import { DatePublished } from '../Date';
 import CoverImage, { CoverImageProps } from '../post-cover-image';
 import Link from 'next/link';

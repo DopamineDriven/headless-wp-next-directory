@@ -37,7 +37,7 @@ import { CMS_NAME, CLIENT_NAME } from '@lib/constants';
 import Header from '@components/lead';
 // import HeroPost from '../components/hero-post';
 import { SearchBox } from '@components/index';
-import Cards from '../components/card/card-coalescence';
+import Cards from '../components/Card/card-coalescence';
 import { PostsProps, AllPostsProps } from '../types/posts';
 import { MediaContextProvider } from '../lib/window-width';
 // import Link from 'next/link';

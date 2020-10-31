@@ -9586,6 +9586,24 @@ export enum __DirectiveLocation {
 	InputFieldDefinition = 'INPUT_FIELD_DEFINITION'
 }
 
+export type ExcerptQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ExcerptQuery = { __typename?: 'RootQuery' } & {
+	posts?: Maybe<
+		{ __typename?: 'RootQueryToPostConnection' } & {
+			edges?: Maybe<
+				Array<
+					Maybe<
+						{ __typename?: 'RootQueryToPostConnectionEdge' } & {
+							node?: Maybe<{ __typename?: 'Post' } & Pick<Post, 'excerpt'>>;
+						}
+					>
+				>
+			>;
+		}
+	>;
+};
+
 export type AllPostsGraphQlQueryVariables = Exact<{ [key: string]: never }>;
 
 export type AllPostsGraphQlQuery = { __typename?: 'RootQuery' } & {
@@ -10180,6 +10198,24 @@ export type AllPostsForCategoryQuery = { __typename?: 'RootQuery' } & {
 	>;
 };
 
+export type TitleQueryVariables = Exact<{ [key: string]: never }>;
+
+export type TitleQuery = { __typename?: 'RootQuery' } & {
+	posts?: Maybe<
+		{ __typename?: 'RootQueryToPostConnection' } & {
+			edges?: Maybe<
+				Array<
+					Maybe<
+						{ __typename?: 'RootQueryToPostConnectionEdge' } & {
+							node?: Maybe<{ __typename?: 'Post' } & Pick<Post, 'title'>>;
+						}
+					>
+				>
+			>;
+		}
+	>;
+};
+
 export type WpSearchQueryQueryVariables = Exact<{
 	term: Scalars['String'];
 }>;
@@ -10209,6 +10245,14 @@ export type WpSearchQueryQuery = { __typename?: 'RootQuery' } & {
 		}
 	>;
 };
+
+declare module '*/Excerpt.ts' {
+	import { DocumentNode } from 'graphql';
+	const defaultDocument: DocumentNode;
+	export const Excerpt: DocumentNode;
+
+	export default defaultDocument;
+}
 
 declare module '*/all-posts.graphql' {
 	import { DocumentNode } from 'graphql';
@@ -10341,6 +10385,14 @@ declare module '*/api-posts-for-category.ts' {
 	export default defaultDocument;
 }
 
+declare module '*/api-title.ts' {
+	import { DocumentNode } from 'graphql';
+	const defaultDocument: DocumentNode;
+	export const Title: DocumentNode;
+
+	export default defaultDocument;
+}
+
 declare module '*/wp-search-query.ts' {
 	import { DocumentNode } from 'graphql';
 	const defaultDocument: DocumentNode;
@@ -10429,6 +10481,17 @@ export const FullType = gql`
 	}
 	${InputValue}
 	${TypeRef}
+`;
+export const Excerpt = gql`
+	query Excerpt {
+		posts {
+			edges {
+				node {
+					excerpt
+				}
+			}
+		}
+	}
 `;
 export const AllPostsGraphQl = gql`
 	query AllPostsGraphQL {
@@ -10799,6 +10862,17 @@ export const AllPostsForCategory = gql`
 		}
 	}
 `;
+export const Title = gql`
+	query Title {
+		posts {
+			edges {
+				node {
+					title
+				}
+			}
+		}
+	}
+`;
 export const WpSearchQuery = gql`
 	query WPSearchQuery($term: String!) {
 		Posts: posts(first: 500, where: { search: $term }) {
@@ -10899,6 +10973,55 @@ export const FullTypeFragmentDoc = gql`
 	${InputValueFragmentDoc}
 	${TypeRefFragmentDoc}
 `;
+export const ExcerptDocument = gql`
+	query Excerpt {
+		posts {
+			edges {
+				node {
+					excerpt
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useExcerptQuery__
+ *
+ * To run a query within a React component, call `useExcerptQuery` and pass it any options that fit your needs.
+ * When your component renders, `useExcerptQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useExcerptQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useExcerptQuery(
+	baseOptions?: Apollo.QueryHookOptions<ExcerptQuery, ExcerptQueryVariables>
+) {
+	return Apollo.useQuery<ExcerptQuery, ExcerptQueryVariables>(
+		ExcerptDocument,
+		baseOptions
+	);
+}
+export function useExcerptLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<ExcerptQuery, ExcerptQueryVariables>
+) {
+	return Apollo.useLazyQuery<ExcerptQuery, ExcerptQueryVariables>(
+		ExcerptDocument,
+		baseOptions
+	);
+}
+export type ExcerptQueryHookResult = ReturnType<typeof useExcerptQuery>;
+export type ExcerptLazyQueryHookResult = ReturnType<typeof useExcerptLazyQuery>;
+export type ExcerptQueryResult = Apollo.QueryResult<
+	ExcerptQuery,
+	ExcerptQueryVariables
+>;
 export const AllPostsGraphQlDocument = gql`
 	query AllPostsGraphQL {
 		posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
@@ -12019,6 +12142,55 @@ export type AllPostsForCategoryLazyQueryHookResult = ReturnType<
 export type AllPostsForCategoryQueryResult = Apollo.QueryResult<
 	AllPostsForCategoryQuery,
 	AllPostsForCategoryQueryVariables
+>;
+export const TitleDocument = gql`
+	query Title {
+		posts {
+			edges {
+				node {
+					title
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useTitleQuery__
+ *
+ * To run a query within a React component, call `useTitleQuery` and pass it any options that fit your needs.
+ * When your component renders, `useTitleQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useTitleQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useTitleQuery(
+	baseOptions?: Apollo.QueryHookOptions<TitleQuery, TitleQueryVariables>
+) {
+	return Apollo.useQuery<TitleQuery, TitleQueryVariables>(
+		TitleDocument,
+		baseOptions
+	);
+}
+export function useTitleLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<TitleQuery, TitleQueryVariables>
+) {
+	return Apollo.useLazyQuery<TitleQuery, TitleQueryVariables>(
+		TitleDocument,
+		baseOptions
+	);
+}
+export type TitleQueryHookResult = ReturnType<typeof useTitleQuery>;
+export type TitleLazyQueryHookResult = ReturnType<typeof useTitleLazyQuery>;
+export type TitleQueryResult = Apollo.QueryResult<
+	TitleQuery,
+	TitleQueryVariables
 >;
 export const WpSearchQueryDocument = gql`
 	query WPSearchQuery($term: String!) {
@@ -17638,6 +17810,65 @@ export const FullTypeFragmentDoc: DocumentNode<FullTypeFragment, unknown> = {
 		...TypeRefFragmentDoc.definitions
 	]
 };
+export const ExcerptDocument: DocumentNode<
+	ExcerptQuery,
+	ExcerptQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'Excerpt' },
+			variableDefinitions: [],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'posts' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'excerpt' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
 export const AllPostsGraphQlDocument: DocumentNode<
 	AllPostsGraphQlQuery,
 	AllPostsGraphQlQueryVariables
@@ -20016,6 +20247,62 @@ export const AllPostsForCategoryDocument: DocumentNode<
 																	}
 																]
 															}
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const TitleDocument: DocumentNode<TitleQuery, TitleQueryVariables> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'Title' },
+			variableDefinitions: [],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'posts' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'title' },
+															arguments: [],
+															directives: []
 														}
 													]
 												}

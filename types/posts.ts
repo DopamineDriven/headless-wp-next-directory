@@ -1,6 +1,6 @@
 import PostType from './post';
 import { Post } from 'wp-graphql';
-import { CoverImageProps } from '../components/card/card-featured-image';
+import { CoverImageProps } from '../components/Card/card-featured-image';
 
 export interface AllPostsProps {
 	edges: PostsProps[];

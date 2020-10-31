@@ -25,23 +25,35 @@ interface AuthorSub {
 	avatar: AvatarUrl;
 }
 
-interface AvatarProps {
+type AvatarProps = {
 	author: authorProps;
 	modified: string;
-}
+};
 
 // https://www.apollographql.com/docs/react/development-testing/static-typing/#props
 
 const CardAuthor = ({ author, modified }: AvatarProps): JSX.Element => {
-	const nombre: string =
-		author && author.lastName && author.lastName
-			? `${author.firstName} ${author.lastName}`
-			: author.name;
+	const nombre = (name: string | undefined | null) => {
+		name;
+		if (!name) {
+			name;
+			return name;
+		}
+		name;
+		return name;
+	};
+	// const nombre: string =
+	// 	author && author.lastName && author.lastName
+	// 		? `${author.firstName} ${author.lastName}`
+	// 		: author.name;
 
 	function trim(name: string | null | undefined) {
-		if (typeof name === 'string') {
+		name;
+		if (name) {
+			name;
 			return name.trim().toLocaleLowerCase();
 		}
+		name;
 		return name;
 	}
 
@@ -52,7 +64,7 @@ const CardAuthor = ({ author, modified }: AvatarProps): JSX.Element => {
 					<img
 						src={
 							author.avatar.url === typeof 'string'
-								? author.avatar?.url
+								? author.avatar?.url.toString()
 								: author.avatar.url
 						}
 						className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
