@@ -1,7 +1,7 @@
 import CoverImage, {
 	CoverImageProps
 } from 'components/card/card-featured-image';
-import Avatar from 'components/card/card-author';
+import CardAuthor from 'components/card/card-author';
 import CardIcons from 'components/card/card-icons';
 import { authorType, socialType } from 'types/posts';
 import CardTitle from 'components/card/card-title';
@@ -15,7 +15,7 @@ import {
 } from '../../graphql/__generated__/AuthorCardQuery';
 
 interface AuthorPropTypes {
-	author: AuthorCardQueryUsersNodes;
+	author: any;
 }
 interface CardProps extends AuthorPropTypes {
 	featuredImage: any;
@@ -51,7 +51,7 @@ const Card = ({
 						<CardTitle slug={slug} title={title} />
 						<CardExcerpt excerpt={excerpt} />
 						<div className='block transition-all duration-1000 transform pl-portfolioDivider font-somaRoman translate-y-portfolio'>
-							<Avatar author={author} modified={modified} />
+							<CardAuthor author={author} modified={modified} />
 						</div>
 						<SiteDivider />
 						<div className='block float-right text-right pr-portfolio font-somaRoman'>

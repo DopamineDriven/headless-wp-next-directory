@@ -10,7 +10,7 @@ import {
 
 type HeroPostProps = {
 	featuredImage: CoverImageProps;
-	author: AuthorCardQueryUsersNodes;
+	author: any;
 	slug: string | number;
 	excerpt: string;
 	date: string;

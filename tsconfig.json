@@ -9,6 +9,7 @@
 		"forceConsistentCasingInFileNames": true,
 		"noFallthroughCasesInSwitch": true,
 		"noEmit": true,
+		"strictNullChecks": true,
 		"esModuleInterop": true,
 		"sourceMap": true,
 		"module": "esnext",
