@@ -33,7 +33,7 @@ type AvatarProps = {
 // https://www.apollographql.com/docs/react/development-testing/static-typing/#props
 
 const CardAuthor = ({ author, modified }: AvatarProps): JSX.Element => {
-	const nombre = (name: string | undefined | null) => {
+	const nombre = (name: string | null) => {
 		name;
 		if (!name) {
 			name;
