@@ -1,4 +1,4 @@
-import { CimaLogo } from 'components/Svg';
+import CimaLogo from './CimaLogo';
 import Link from 'next/link';
 import { Media } from 'lib/window-width';
 import { Fragment } from 'react';

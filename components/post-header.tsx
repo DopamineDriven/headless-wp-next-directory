@@ -4,7 +4,7 @@ import { DateModified } from './Date';
 import CoverImage, { CoverImageProps } from './post-cover-image';
 import PostTitle from './post-title';
 import Categories from './Categories/categories';
-import CardIcons from './Card/card-icons';
+import CardIcons from './card/card-icons';
 
 type PostHeaderProps = {
 	title: string;
