@@ -14,8 +14,9 @@ const CoverImageCard = ({ title, featuredImage, slug }: CoverImageProps) => {
 	const ImageReturned = () => {
 		console.debug(featuredImage.node?.sourceUrl);
 		// featuredImage ==! undefined && featuredImage?.node && featuredImage.node?.sourceUrl ?
-		return featuredImage ||
-			(featuredImage.node && featuredImage.node.sourceUrl) ||
+		return (featuredImage &&
+			featuredImage.node &&
+			featuredImage.node.sourceUrl) ||
 			featuredImage.sourceUrl ? (
 			<Image
 				src={`${featuredImage ? featuredImage.sourceUrl : featuredImage.sourceUrl}`}
