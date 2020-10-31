@@ -1,4 +1,4 @@
-import Avatar from '../Card/card-author';
+import { CardAuthor } from '../Card';
 import { DatePublished } from '../Date';
 import CoverImage, { CoverImageProps } from '../post-cover-image';
 import Link from 'next/link';
@@ -10,7 +10,7 @@ import {
 
 type HeroPostProps = {
 	featuredImage: CoverImageProps;
-	author: AuthorCardQueryUsersNodes;
+	author: any;
 	slug: string | number;
 	excerpt: string;
 	date: string;
@@ -51,7 +51,7 @@ export default function HeroPost({
 						className='text-2xl leading-relaxed mb-4'
 						dangerouslySetInnerHTML={{ __html: excerpt }}
 					/>
-					<Avatar author={author} modified={modified} />
+					<CardAuthor author={author} modified={modified} />
 				</div>
 			</div>
 			<Divider />

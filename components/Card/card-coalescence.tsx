@@ -1,4 +1,4 @@
-import Card from 'components/Card/card-unit';
+import Card from '@components/Card/card-unit';
 import { PostsProps } from 'types/posts';
 
 type NodeProps = {

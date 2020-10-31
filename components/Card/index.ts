@@ -6,5 +6,5 @@ export { default as CardExcerpt } from './card-excerpt';
 export { default as CardFeaturedImage } from './card-featured-image';
 export { default as CardFilter } from './card-filter';
 export { default as CardIcons } from './card-icons';
-export { default as CardTitle } from './card-title';
+export { default as CardTitleAbstracted } from './card-title';
 export { default as CardUnit } from './card-unit';

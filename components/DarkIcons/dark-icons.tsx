@@ -49,7 +49,7 @@ interface Props {
 	r2?: string;
 }
 
-const DarkModeSwitch: FC<Props> = ({
+const DarkIcon: FC<Props> = ({
 	onChange,
 	children,
 	checked = false,
@@ -149,7 +149,7 @@ const DarkModeSwitch: FC<Props> = ({
 	);
 };
 
-export default DarkModeSwitch;
+export default DarkIcon;
 
 // import SvgDarkModeShape from 'types/dark-toggle';
 // import { MouseEvent, FC, useState } from 'react';

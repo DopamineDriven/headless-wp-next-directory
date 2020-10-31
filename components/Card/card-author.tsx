@@ -5,7 +5,7 @@ import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
 } from '../../graphql/__generated__/AuthorCardQuery';
-
+import { authorProps } from 'types/posts';
 interface AuthorArray {
 	authors: AuthorCardQueryUsers;
 }
@@ -14,30 +14,59 @@ interface AvatarURL {
 	avatar: AuthorCardQueryUsersNodesAvatar;
 }
 
-interface AuthorSub {
-	name: string;
-	avatar: AuthorCardQueryUsersNodesAvatar;
+interface AvatarUrl {
+	url?: string;
 }
 
-interface AvatarProps {
-	author: AuthorCardQueryUsersNodes;
-	modified: string;
+interface AuthorSub {
+	name: string;
+	firstName: string;
+	lastName: string;
+	avatar: AvatarUrl;
 }
+
+type AvatarProps = {
+	author: authorProps;
+	modified: string;
+};
 
 // https://www.apollographql.com/docs/react/development-testing/static-typing/#props
 
-const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
-	const nombre: string | null =
-		author.firstName != null && author.lastName != null
-			? `${author.firstName} ${author.lastName}`
-			: author.name;
+const CardAuthor = ({ author, modified }: AvatarProps): JSX.Element => {
+	const nombre = (name: string | null) => {
+		name;
+		if (!name) {
+			name;
+			return name;
+		}
+		name;
+		return name;
+	};
+	// const nombre: string =
+	// 	author && author.lastName && author.lastName
+	// 		? `${author.firstName} ${author.lastName}`
+	// 		: author.name;
+
+	function trim(name: string | null | undefined) {
+		name;
+		if (name) {
+			name;
+			return name.trim().toLocaleLowerCase();
+		}
+		name;
+		return name;
+	}
 
 	const ImageJsx = (): JSX.Element => {
 		return (
 			<div className='block float-right col-span-1 text-right align-middle transition-all duration-1000 transform pl-portfolio lg:pl-portfolioDivider'>
-				{author != null && author.avatar != null && author.avatar.url != null ? (
+				{author && author.avatar && author.avatar?.url ? (
 					<img
-						src={author.avatar.url}
+						src={
+							author.avatar.url === typeof 'string'
+								? author.avatar?.url.toString()
+								: author.avatar.url
+						}
 						className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
 						alt={`avatar for ${author.name}`}
 					/>
@@ -45,7 +74,7 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 					<img
 						src={'https://dev-to-uploads.s3.amazonaws.com/i/5pfcju7s49gsqjd987vx.jpg'}
 						className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
-						alt={`null check avatar for ${author.name}`}
+						alt={`null check avatar for ${nombre}`}
 					/>
 				)}
 			</div>
@@ -54,9 +83,7 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 
 	const NombreJsx = (): JSX.Element => (
 		<div className='block col-span-3 align-top text-customAboutSubMobile sm:text-customS lg:text-customExcerpt'>
-			<a className='block w-full'>
-				{author != null && author.name != null ? author.name : nombre}
-			</a>
+			<a className='block w-full text-primary'>{author.name}</a>
 		</div>
 	);
 
@@ -82,7 +109,7 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 	);
 };
 
-export default Avatar;
+export default CardAuthor;
 
 // interface AvatarProps {
 // 	author: authorProps;

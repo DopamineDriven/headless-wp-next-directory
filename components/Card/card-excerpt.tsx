@@ -1,21 +1,38 @@
 import ReactMarkdown from 'react-markdown/with-html';
-// import { PostExcerpts_posts_edges_node } from 'graphql/__generated__/PostExcerpts';
+import { FC } from 'react';
 
-interface CardExcerptProps {
-	excerpt: string;
-}
+type CardExcerptProps = {
+	excerpt: string | null;
+};
 
-const CardExcerpt = ({ excerpt }: CardExcerptProps): JSX.Element => {
+export interface CardExcerptAbstracted extends FC<CardExcerptProps> {}
+
+const CardExcerptFC: CardExcerptAbstracted = props => {
+	const { excerpt: excerpt } = props;
+
+	const ExcerptConditional = (
+		<>
+			{excerpt ? (
+				<ReactMarkdown
+					escapeHtml={false}
+					source={excerpt}
+					className=' text-customTitle sm:text-customS lg:text-customCardTitle'
+				/>
+			) : (
+				<ReactMarkdown
+					escapeHtml={false}
+					source={'excerpt'}
+					className=' text-customTitle sm:text-customS lg:text-customCardTitle'
+				/>
+			)}
+		</>
+	);
+
 	return (
 		<div className='w-full text-left transition-transform duration-1000 transform px-portfolio sm:px-portfolioDivider mb-portfolio sm:mb-portfolioDivider lg:mb-0 sm:pb-portfolio h-paddingAboutTitleRight lg:h-aboutHackingFontAwesomePT overflow-y translate-y-portfolio font-somaRoman'>
-			<ReactMarkdown
-				escapeHtml={false}
-				source={excerpt}
-				className=' text-customTitle sm:text-customS lg:text-customCardTitle'
-			/>
+			{ExcerptConditional}
 		</div>
 	);
 };
 
-export default CardExcerpt;
-// push
+export default CardExcerptFC;

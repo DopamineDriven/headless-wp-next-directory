@@ -4,12 +4,12 @@ import ErrorPage from 'next/error';
 import PostBody from 'components/post-body';
 import Header from 'components/lead-sub';
 import PostHeader from 'components/post-header';
-import Layout from 'components/layout';
+import Layout from 'components/Layout/layout';
 import { getAllPostsWithSlug, getPostAndMorePosts } from 'lib/api';
 import PostTitle from 'components/post-title';
 import Head from 'next/head';
 import { CMS_NAME } from 'lib/constants';
-import MoreCards from 'components/Card/card-coalescence';
+import MoreCards from '@components/Card/card-coalescence';
 import { Fragment } from 'react';
 import { MediaContextProvider } from 'lib/window-width';
 

@@ -1,13 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 import { Fragment, ChangeEvent, SyntheticEvent } from 'react';
-import { PostsProps } from '../types/posts';
+import { PostsProps } from '../../types/posts';
 import {
 	AllCategories,
 	AllCategories_categories,
 	AllCategories_categories_edges
-} from '../graphql/__generated__/AllCategories';
-import { AllTags_tags_edges } from '../graphql/__generated__/AllTags';
+} from '../../graphql/__generated__/AllCategories';
+import { AllTags_tags_edges } from '../../graphql/__generated__/AllTags';
 
 interface Props {
 	selectChange: (evt: SyntheticEvent) => void;

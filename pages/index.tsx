@@ -9,33 +9,34 @@ import {
 import {
 	GetServerSideProps,
 	GetStaticProps,
-	InferGetServerSidePropsType,
+	GetStaticPropsContext,
+	InferGetStaticPropsType,
 	NextPage
 } from 'next';
 import { ApolloClient, NormalizedCacheObject, useQuery } from '@apollo/client';
-import { initializeApollo } from '../lib/apollo';
+import { initializeApollo } from '@lib/apollo';
 import {
 	ALL_CATEGORIES,
 	allCategoryQueryVariables,
 	categoryKeyNameForCache
-} from '../graphql/api-all-categories';
+} from '@graphql/api-all-categories';
 import {
 	allTagQueryVariables,
 	ALL_TAGS,
 	tagKeyNameForCache
-} from '../graphql/api-all-tags';
+} from '@graphql/api-all-tags';
 
-import { ALL_POSTS_FOR_CATEGORY } from '../graphql/api-posts-for-category';
-import { AllCategories_categories_edges } from '../graphql/__generated__/AllCategories';
+import { ALL_POSTS_FOR_CATEGORY } from '@graphql/api-posts-for-category';
+import { AllCategories_categories_edges } from '@graphql/__generated__/AllCategories';
 import {
 	AllPostsForCategory,
 	AllPostsForCategory_categories
-} from '../graphql/__generated__/AllPostsForCategory';
-import { getAllPostsForHomeAlphabetical } from '../lib/api-ts';
-import { CMS_NAME, CLIENT_NAME } from '../lib/constants';
-import Header from '../components/lead';
+} from '@graphql/__generated__/AllPostsForCategory';
+import { getAllPostsForHomeAlphabetical } from '@lib/api-ts';
+import { CMS_NAME, CLIENT_NAME } from '@lib/constants';
+import Header from '@components/lead';
 // import HeroPost from '../components/hero-post';
-import SearchBox from '../components/search-box';
+import { SearchBox } from '@components/index';
 import Cards from '../components/Card/card-coalescence';
 import { PostsProps, AllPostsProps } from '../types/posts';
 import { MediaContextProvider } from '../lib/window-width';
@@ -49,6 +50,61 @@ import {
 	OrderEnum
 } from '../types/graphql-global-types';
 
+interface StaticProps extends GetStaticPropsContext {
+	preview: boolean;
+	context: any;
+	field: PostObjectsConnectionOrderbyEnum;
+	order: OrderEnum;
+	desiredCategory: string;
+}
+
+const { TITLE, AUTHOR, DATE, MODIFIED } = PostObjectsConnectionOrderbyEnum;
+const { ASC, DESC } = OrderEnum;
+export const getStaticProps = async ({
+	preview = false,
+	// context,
+	field = TITLE || AUTHOR || DATE || MODIFIED,
+	order = ASC || DESC
+}: StaticProps) => {
+	// console.log(context);
+	const allPosts = await getAllPostsForHomeAlphabetical({
+		preview,
+		field,
+		order
+	});
+	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	try {
+		await categoriesWordPress.query({
+			query: ALL_CATEGORIES,
+			variables: allCategoryQueryVariables
+		});
+	} catch (error) {
+		console.log('Error with category query: ', error);
+	}
+
+	await tagsWordPress.query({
+		query: ALL_TAGS,
+		variables: allTagQueryVariables
+	});
+
+	// const userOptions = await getAllPostsForHomeSorted(preview, field);
+	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
+	// console.log('identity of cache: ' cache.identify(categoriesWordPress))
+
+	return {
+		props: {
+			allPosts,
+			preview,
+			tagsAndPosts: tagsWordPress.cache.extract(),
+			field,
+			order,
+			initializeApollo: categoriesWordPress.cache.extract()
+		},
+		revalidate: 10
+	};
+};
+
 interface IndexProps {
 	allPosts: AllPostsProps;
 	preview: boolean;
@@ -57,13 +113,15 @@ interface IndexProps {
 	initializeApollo: any;
 }
 
-const Index = ({
-	allPosts: { edges },
-	preview,
-	tagsAndPosts,
-	// categories,
-	initializeApollo
-}: IndexProps): JSX.Element => {
+const Index = (
+	{
+		allPosts: { edges },
+		preview,
+		tagsAndPosts,
+		// categories,
+		initializeApollo
+	}: IndexProps /*& InferGetStaticPropsType<typeof getStaticProps>*/
+) => {
 	console.log('initializeApollo Prop: ', initializeApollo);
 	console.log(
 		'attempt at matching key: ',
@@ -123,20 +181,6 @@ const Index = ({
 			}
 		}
 	}, [filterQuery, search]);
-
-	// const categoryData = () => {
-	// 	if (data) {
-	// 		console.log('data returned from useQuery: ', data)
-	// 		return (<p>Data returned</p>)
-	// 	}
-
-	// 	if (loading) {
-	// 		return <p>Wait for data</p>;
-	// 	}
-
-	// 		  return null;
-	// }
-
 	return (
 		<Fragment>
 			<MediaContextProvider>
@@ -175,79 +219,6 @@ const Index = ({
 			</MediaContextProvider>
 		</Fragment>
 	);
-};
-
-export enum Field {
-	TITLE = 'TITLE',
-	MODIFIED = 'MODIFIED',
-	DATE = 'DATE'
-}
-
-export enum Order {
-	ASC = 'ASC',
-	DESC = 'DESC'
-}
-
-interface StaticProps extends GetStaticProps {
-	preview: boolean;
-	context: any;
-	field: PostObjectsConnectionOrderbyEnum;
-	order: OrderEnum;
-	desiredCategory: string;
-}
-
-const { TITLE, AUTHOR, DATE, MODIFIED } = PostObjectsConnectionOrderbyEnum;
-const { ASC, DESC } = OrderEnum;
-export const getStaticProps = async ({
-	preview = false,
-	// context,
-	field = TITLE || AUTHOR || DATE || MODIFIED,
-	order = ASC || DESC,
-	desiredCategory
-}: StaticProps) => {
-	// console.log(context);
-	const allPosts = await getAllPostsForHomeAlphabetical({
-		preview,
-		field,
-		order
-	});
-	// const tagsAndPosts = await getTagAndPosts();
-	// const categories = await getCategories();
-
-	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
-	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
-
-	try {
-		await categoriesWordPress.query({
-			query: ALL_CATEGORIES,
-			variables: allCategoryQueryVariables
-		});
-	} catch (error) {
-		console.log('Error with category query: ', error);
-	}
-
-	await tagsWordPress.query({
-		query: ALL_TAGS,
-		variables: allTagQueryVariables
-	});
-
-	// const userOptions = await getAllPostsForHomeSorted(preview, field);
-	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
-	// console.log('identity of cache: ' cache.identify(categoriesWordPress))
-
-	return {
-		props: {
-			// initialApolloState: apolloClient.cache.extract(),
-			allPosts,
-			preview,
-			tagsAndPosts: await tagsWordPress.cache.extract(),
-			field,
-			order,
-			// categories: await apolloClient.cache.extract().ROOT_QUERY.categories,
-			initializeApollo: await categoriesWordPress.cache.extract()
-		},
-		revalidate: 10
-	};
 };
 
 export default Index;
