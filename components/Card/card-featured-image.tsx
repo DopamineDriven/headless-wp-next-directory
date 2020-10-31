@@ -7,7 +7,7 @@ import { PostsByIdReturnImageSlug_posts_nodes_featuredImage } from 'graphql/__ge
 export type CoverImageProps = {
 	title: string;
 	featuredImage: any;
-	slug: PostSlug;
+	slug: string | null;
 };
 
 const CoverImageCard = ({ title, featuredImage, slug }: CoverImageProps) => {
