@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const ALL_POSTS = gql`
-	query AllPosts($field: String, $order: String) {
+	query AllPosts($field: PostObjectsConnectionOrderbyEnum!, $order: OrderEnum!) {
 		posts(first: 35, where: { orderby: { field: $field, order: $order } }) {
 			edges {
 				node {
