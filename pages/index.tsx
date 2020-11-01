@@ -39,7 +39,6 @@ import { MediaContextProvider } from '../lib/window-width';
 // import FieldEnum from 'types/enums/field-enum';
 // import OrderEnum from 'types/enums/order-enum';
 import Footer from '../components/footer';
-// import CardFilter from 'components/card-filter';
 import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
@@ -51,24 +50,21 @@ import {
 	AllPosts_posts_edges,
 	AllPosts_posts_edges_node
 } from '../graphql/__generated__/AllPosts';
-import { ALL_POSTS_FOR_CATEGORY } from '../graphql/api-posts-for-category';
-
+import { AllCategories, AllCategories_categories } from '../graphql/__generated__/AllCategories';
 interface IndexProps {
 	allPosts: AllPosts_posts_edges_node[];
 	preview: boolean;
 	tagsAndPosts: any;
-	// categories: AllCategories_categories_edges_node[];
-	initializeApollo: any;
+	categories: AllCategories_categories_edges[];
 }
 
 const Index = ({
 	allPosts,
 	preview,
 	tagsAndPosts,
-	// categories,
-	initializeApollo
+	categories,
 }: IndexProps): JSX.Element => {
-	console.log('All Posts: ', allPosts);
+	// console.log('All Posts: ', allPosts);
 	// console.log('tag prop: ', tagsAndPosts);
 	// console.log('initializeApollo Prop: ', initializeApollo);
 	// console.log(
@@ -78,8 +74,8 @@ const Index = ({
 	// console.log('key name: ', categoryKeyNameForCache);
 
 	// let morePosts: AllPosts_posts_edges[] = allPosts.slice(0);
-	let categoriesTabs: AllCategories_categories_edges[] =
-		initializeApollo.ROOT_QUERY[categoryKeyNameForCache].edges;
+	// let categoriesTabs: AllCategories_categories_edges[] =
+	// 	initializeApollo.ROOT_QUERY[categoryKeyNameForCache].edges;
 	let tagProps = tagsAndPosts.ROOT_QUERY[tagKeyNameForCache].edges;
 
 	const [filterQuery, setFilterQuery] = useState('title');
@@ -105,14 +101,12 @@ const Index = ({
 						//this was done so that toLowerCase() and includes() functions coudl work
 						const companyTitle = company.title;
 						if (companyTitle.toLowerCase().includes(search)) {
-							console.log('company title: ', companyTitle);
 							return company;
 						} else {
 							return null;
 						}
 					}
 				);
-				console.log('title filteredCompanies: ', filteredCompanies)
 				setFilteredCompanies(filterCompanies);
 			} else if (filterQuery === 'description') {
 				const filterCompanies = allPosts.filter(
@@ -121,7 +115,6 @@ const Index = ({
 						//this was done so that toLowerCase() and includes() functions coudl work
 						const companyDescription = company.excerpt;
 						if (companyDescription.toLowerCase().includes(search)) {
-							console.log('company description: ', companyDescription);
 							return company;
 						} else {
 							return null;
@@ -130,24 +123,10 @@ const Index = ({
 				);
 				setFilteredCompanies(filterCompanies);
 			} else {
-				console.log('not title');
 				setFilteredCompanies(allCompanies);
 			}
 		}
 	}, [filterQuery, search]);
-
-	// const categoryData = () => {
-	// 	if (data) {
-	// 		console.log('data returned from useQuery: ', data)
-	// 		return (<p>Data returned</p>)
-	// 	}
-
-	// 	if (loading) {
-	// 		return <p>Wait for data</p>;
-	// 	}
-
-	// 		  return null;
-	// }
 
 	return (
 		<Fragment>
@@ -175,7 +154,7 @@ const Index = ({
 					tags={tagProps}
 					allPosts={allPosts}
 					dropdownOptions={['title', 'description']}
-					categories={categoriesTabs}
+					categories={categories}
 				/>
 				{/* {categoryData()} */}
 				{/* <CardFilter filter={filter} setFilter={setFilter} /> */}
@@ -226,14 +205,10 @@ export const getStaticProps = async ({
 		variables: { field: 'TITLE', order: 'ASC' }
 	}) 
 
-	try {
-		await categoriesWordPress.query({
+	const categoriesQuery: ApolloQueryResult<AllCategories> = await categoriesWordPress.query({
 			query: ALL_CATEGORIES,
 			variables: allCategoryQueryVariables
 		});
-	} catch (error) {
-		console.log('Error with category query: ', error);
-	}
 
 	try {
 	await tagsWordPress.query({
@@ -245,7 +220,17 @@ export const getStaticProps = async ({
 }
 
 	const allPostsCache: AllPosts_posts | null = allPostsQuery.data.posts != null ? allPostsQuery.data.posts : null; 
+	const categoriesCache: AllCategories_categories | null = categoriesQuery.data.categories != null ? categoriesQuery.data.categories : null;
 
+
+	//Can insert pagination here for the categories.  The pageInfo prop that exists in categories cache at this moment if it isn't null will let us know if we have another page
+	if (categoriesCache.pageInfo.hasNextPage) {
+		console.log('more than one page of categories....................')
+	} else {
+		console.log('only one page of categories....................')
+	}
+
+	//this function is necessary because structure of nodes for posts data is slightly different when you get posts by category or grab all posts
 	const removeNode = (array: AllPosts_posts_edges[]): AllPosts_posts_edges_node[] => {
 		let newArray = [];
 
@@ -257,10 +242,10 @@ export const getStaticProps = async ({
 	}
 
 	const allPostsCacheNoNode: AllPosts_posts_edges_node[] = removeNode(allPostsCache.edges)
+
+
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
-	// console.log('identity of cache: ' cache.identify(categoriesWordPress))
-
 	return {
 		props: {
 			// initialApolloState: apolloClient.cache.extract(),
@@ -269,8 +254,7 @@ export const getStaticProps = async ({
 			tagsAndPosts: await tagsWordPress.cache.extract(),
 			field,
 			order,
-			// categories: await apolloClient.cache.extract().ROOT_QUERY.categories,
-			initializeApollo: await categoriesWordPress.cache.extract()
+			categories: await categoriesCache.edges
 		},
 		revalidate: 10
 	};
