@@ -67,27 +67,10 @@ const Index = ({
 	tags,
 	categories,
 }: IndexProps): JSX.Element => {
-	// console.log('All Posts: ', allPosts);
-	// console.log('tag prop: ', tagsAndPosts);
-	// console.log('initializeApollo Prop: ', initializeApollo);
-	// console.log(
-	// 	'attempt at matching key: ',
-	// 	initializeApollo.ROOT_QUERY.categoryKeyNameForCache
-	// );
-	// console.log('key name: ', categoryKeyNameForCache);
-
-	// let morePosts: AllPosts_posts_edges[] = allPosts.slice(0);
-	// let categoriesTabs: AllCategories_categories_edges[] =
-	// 	initializeApollo.ROOT_QUERY[categoryKeyNameForCache].edges;
-	// let tagProps = tagsAndPosts.ROOT_QUERY[tagKeyNameForCache].edges;
 
 	const [filterQuery, setFilterQuery] = useState('title');
-	const [allCompanies, setAllCompanies] = useState<AllPosts_posts_edges_node[]>(
-		allPosts
-	);
-	const [filteredCompanies, setFilteredCompanies] = useState<
-		AllPosts_posts_edges_node[]
-	>(allPosts);
+	const [allCompanies, setAllCompanies] = useState<AllPosts_posts_edges_node[]>(allPosts);
+	const [filteredCompanies, setFilteredCompanies] = useState<AllPosts_posts_edges_node[]>(allPosts);
 	const [search, setSearch] = useState<string | null>(null);
 	const [searchCategory, setSearchedCategory] = useState<string | null>(null);
 	const { TITLE } = PostObjectsConnectionOrderbyEnum;
@@ -190,14 +173,6 @@ export const getStaticProps = async ({
 	order = ASC || DESC,
 	desiredCategory
 }: StaticProps) => {
-	// console.log(context);
-	// const allPosts = await getAllPostsForHomeAlphabetical({
-	// 	preview,
-	// 	field,
-	// 	order
-	// });
-	// const tagsAndPosts = await getTagAndPosts();
-	// const categories = await getCategories();
 
 	const allPostsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
 	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
@@ -217,7 +192,6 @@ export const getStaticProps = async ({
 		query: ALL_TAGS,
 		variables: allTagQueryVariables
 	});
-
 
 	const allPostsCache: AllPosts_posts | null = allPostsQuery.data.posts != null ? allPostsQuery.data.posts : null; 
 	const categoriesCache: AllCategories_categories | null = categoriesQuery.data.categories != null ? categoriesQuery.data.categories : null;
