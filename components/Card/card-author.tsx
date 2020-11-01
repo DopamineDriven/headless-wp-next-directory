@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import { DateModified } from '../Date';
 import { Fragment } from 'react';
 import {
@@ -6,24 +7,22 @@ import {
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
 } from '../../graphql/__generated__/AuthorCardQuery';
 import { authorProps } from 'types/posts';
-interface AuthorArray {
-	authors: AuthorCardQueryUsers;
-}
+import { AvatarFC, AvatarPropsFC } from './card-avatar';
 
-interface AvatarURL {
-	avatar: AuthorCardQueryUsersNodesAvatar;
-}
+type AuthorNodeProps = {
+	nodes: AuthorCardQueryUsersNodes;
+};
 
-interface AvatarUrl {
-	url?: string;
-}
+interface AuthorNodeFC extends FC<AuthorNodeProps> {}
 
-interface AuthorSub {
-	name: string;
-	firstName: string;
-	lastName: string;
-	avatar: AvatarUrl;
-}
+export const AuthorNodeAbstracted: AuthorNodeFC = props => {
+	const { nodes } = props;
+	return (
+		<div>
+			{/* <AvatarFC avatar={nodes && nodes.avatar && nodes.avatar.url ? nodes.avatar.url : nodes.avatar} /> */}
+		</div>
+	);
+};
 
 type AvatarProps = {
 	author: authorProps;
