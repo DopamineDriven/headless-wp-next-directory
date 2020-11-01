@@ -51,17 +51,20 @@ import {
 	AllPosts_posts_edges_node
 } from '../graphql/__generated__/AllPosts';
 import { AllCategories, AllCategories_categories } from '../graphql/__generated__/AllCategories';
+import { AllTags, AllTags_tags, AllTags_tags_edges } from '../graphql/__generated__/AllTags';
+
+
 interface IndexProps {
 	allPosts: AllPosts_posts_edges_node[];
 	preview: boolean;
-	tagsAndPosts: any;
+	tags: AllTags_tags_edges[];
 	categories: AllCategories_categories_edges[];
 }
 
 const Index = ({
 	allPosts,
 	preview,
-	tagsAndPosts,
+	tags,
 	categories,
 }: IndexProps): JSX.Element => {
 	// console.log('All Posts: ', allPosts);
@@ -76,7 +79,7 @@ const Index = ({
 	// let morePosts: AllPosts_posts_edges[] = allPosts.slice(0);
 	// let categoriesTabs: AllCategories_categories_edges[] =
 	// 	initializeApollo.ROOT_QUERY[categoryKeyNameForCache].edges;
-	let tagProps = tagsAndPosts.ROOT_QUERY[tagKeyNameForCache].edges;
+	// let tagProps = tagsAndPosts.ROOT_QUERY[tagKeyNameForCache].edges;
 
 	const [filterQuery, setFilterQuery] = useState('title');
 	const [allCompanies, setAllCompanies] = useState<AllPosts_posts_edges_node[]>(
@@ -151,7 +154,7 @@ const Index = ({
 						const searchQuery = element.value.toLowerCase();
 						setSearch(searchQuery);
 					}}
-					tags={tagProps}
+					tags={tags}
 					allPosts={allPosts}
 					dropdownOptions={['title', 'description']}
 					categories={categories}
@@ -210,18 +213,15 @@ export const getStaticProps = async ({
 			variables: allCategoryQueryVariables
 		});
 
-	try {
-	await tagsWordPress.query({
+	const tagsQuery: ApolloQueryResult<AllTags> = await tagsWordPress.query({
 		query: ALL_TAGS,
 		variables: allTagQueryVariables
 	});
-} catch (err) {
-	console.log('error with tags query: ', err)
-}
+
 
 	const allPostsCache: AllPosts_posts | null = allPostsQuery.data.posts != null ? allPostsQuery.data.posts : null; 
 	const categoriesCache: AllCategories_categories | null = categoriesQuery.data.categories != null ? categoriesQuery.data.categories : null;
-
+	const tagsCache: AllTags_tags | null = tagsQuery.data.tags !=null ? tagsQuery.data.tags : null;
 
 	//Can insert pagination here for the categories.  The pageInfo prop that exists in categories cache at this moment if it isn't null will let us know if we have another page
 	if (categoriesCache.pageInfo.hasNextPage) {
@@ -230,7 +230,6 @@ export const getStaticProps = async ({
 		console.log('only one page of categories....................')
 	}
 
-	//this function is necessary because structure of nodes for posts data is slightly different when you get posts by category or grab all posts
 	const removeNode = (array: AllPosts_posts_edges[]): AllPosts_posts_edges_node[] => {
 		let newArray = [];
 
@@ -241,8 +240,8 @@ export const getStaticProps = async ({
 		return newArray
 	}
 
+	//this function is necessary because structure of nodes for posts data is slightly different when you get posts by category or grab all posts
 	const allPostsCacheNoNode: AllPosts_posts_edges_node[] = removeNode(allPostsCache.edges)
-
 
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
@@ -251,7 +250,7 @@ export const getStaticProps = async ({
 			// initialApolloState: apolloClient.cache.extract(),
 			allPosts: await allPostsCacheNoNode,
 			preview,
-			tagsAndPosts: await tagsWordPress.cache.extract(),
+			tags: await tagsCache.edges,
 			field,
 			order,
 			categories: await categoriesCache.edges
