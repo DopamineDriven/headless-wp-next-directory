@@ -88,7 +88,7 @@ const Index = ({
 	);
 	const [filteredCompanies, setFilteredCompanies] = useState<
 		AllPosts_posts_edges_node[]
-	>();
+	>(allPosts);
 	const [search, setSearch] = useState<string | null>(null);
 	const [searchCategory, setSearchedCategory] = useState<string | null>(null);
 	const { TITLE } = PostObjectsConnectionOrderbyEnum;
@@ -264,7 +264,7 @@ export const getStaticProps = async ({
 	return {
 		props: {
 			// initialApolloState: apolloClient.cache.extract(),
-			allPosts: allPostsCacheNoNode,
+			allPosts: await allPostsCacheNoNode,
 			preview,
 			tagsAndPosts: await tagsWordPress.cache.extract(),
 			field,
