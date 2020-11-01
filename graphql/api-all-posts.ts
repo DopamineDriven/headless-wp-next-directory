@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
-const ALL_POSTS = gql`
-	query AllPosts($field: PostObjectsConnectionOrderbyEnum!, $order: OrderEnum!) {
+export const ALL_POSTS = gql`
+	query AllPosts($field: String, $order: String) {
 		posts(first: 35, where: { orderby: { field: $field, order: $order } }) {
 			edges {
 				node {
@@ -42,4 +42,13 @@ const ALL_POSTS = gql`
 	}
 `;
 
-export default ALL_POSTS;
+export enum Field {
+	TITLE = 'TITLE',
+	MODIFIED = 'MODIFIED',
+	DATE = 'DATE'
+}
+
+export enum Order {
+	ASC = 'ASC',
+	DESC = 'DESC'
+}

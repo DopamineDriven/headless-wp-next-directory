@@ -3,8 +3,6 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { PostObjectsConnectionOrderbyEnum, OrderEnum } from "./../../types/graphql-global-types";
-
 // ====================================================
 // GraphQL query operation: AllPosts
 // ====================================================
@@ -158,6 +156,6 @@ export interface AllPosts {
 }
 
 export interface AllPostsVariables {
-  field: PostObjectsConnectionOrderbyEnum;
-  order: OrderEnum;
+  field?: string | null;
+  order?: string | null;
 }
