@@ -59,7 +59,7 @@
 		"client:schema": "dotenv cross-var yarn apollo client:download-schema --includes=graphql --addTypename --endpoint=%WORDPRESS_API_URL%",
 		"client:codegen": "yarn apollo codegen:generate --localSchemaFile=graphql.schema.json --target=typescript --includes=graphql/**/*.ts --tagName=gql --addTypename --globalTypesFile=types/graphql-global-types.ts",
 		"codegen:generate": "graphql-codegen --config codegen.yml",
-		"codegen:combo": "yarn client:codegen && yarn codegen:generate"
+		"codegen:combo": "yarn codegen:generate && yarn client:codegen"
 	},
 	"husky": {
 		"hooks": {
@@ -75,6 +75,7 @@
 		"@fortawesome/free-regular-svg-icons": "^5.14.0",
 		"@fortawesome/free-solid-svg-icons": "^5.14.0",
 		"@fortawesome/react-fontawesome": "^0.1.11",
+		"@tailwindcss/typography": "^0.2.0",
 		"@vercel/node": "^1.8.0",
 		"@welldone-software/why-did-you-render": "^5.0.0",
 		"apollo": "^2.31.0",
@@ -91,6 +92,9 @@
 		"react-spring": "^8.0.27",
 		"react-syntax-highlighter": "^13.5.3",
 		"swr": "^0.3.5",
+		"tailwindcss": "^1.8.10",
+		"tailwindcss-dark-mode": "^1.1.6",
+		"tailwindcss-gradients": "^3.0.0",
 		"use-dark-mode": "^2.3.1",
 		"vercel": "^20.0.0",
 		"wp-graphql": "^1.0.0",
