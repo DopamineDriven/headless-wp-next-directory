@@ -61,7 +61,11 @@
 		"codegen:generate": "graphql-codegen --config codegen.yml",
 		"codegen:combo": "yarn client:codegen && yarn codegen:generate"
 	},
-	
+	"husky": {
+		"hooks": {
+			"pre-commit": "yarn tsc && pretty-quick --staged"
+		}
+	},
 	"dependencies": {
 		"@apollo/client": "^3.2.1",
 		"@apollo/react-hoc": "^4.0.0",
