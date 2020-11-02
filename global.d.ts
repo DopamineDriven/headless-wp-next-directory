@@ -1,6 +1,7 @@
 export declare module 'react-spring';
 export declare module 'use-dark-mode';
 declare module '@next/bundle-analyzer';
+declare module '*.yml';
 
 // declare module '*.graphqls' {
 // 	import { DocumentNode } from 'graphql';

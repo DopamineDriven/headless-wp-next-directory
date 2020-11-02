@@ -8,4 +8,33 @@ const withImages = {
 	}
 };
 
-module.exports = withPlugins([[withBundleAnalyzer({})], withImages]);
+const GraphQL = {
+	webpack: config => {
+		config.module.rules.push({
+			test: /\.(graphql|gql)$/,
+			exclude: /node_modules/,
+			loader: 'graphql-tag/loader'
+		});
+		return config;
+	},
+	webpackDevMiddleware: config => {
+		return config;
+	}
+};
+
+const Yaml = {
+	webpack(config, options) {
+		config.module.rules.push({
+			test: /\.ya?ml$/,
+			type: 'json',
+			use: 'yaml-loader'
+		});
+	}
+};
+
+module.exports = withPlugins([
+	[withBundleAnalyzer({})],
+	withImages,
+	Yaml,
+	GraphQL
+]);
