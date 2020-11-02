@@ -38,7 +38,6 @@ import {
 	AllPostsForCategory_categories_edges
 } from '../../graphql/__generated__/AllPostsForCategory';
 import { AllPosts_posts_edges } from '../../graphql/__generated__/AllPosts';
-import { AllPostsProps } from '../../types/posts';
 
 type Required<T> = {
 	[P in keyof T]-?: T[P];

@@ -4,7 +4,6 @@ import CoverImage, {
 } from '@components/Card/card-featured-image';
 import CardAuthor from '@components/Card/card-author';
 import CardIcons from '@components/Card/card-icons';
-import { authorType, socialType } from 'types/posts';
 import CardExcerptFC from './card-excerpt';
 import SiteDivider from 'components/Core/site-divider';
 import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../../graphql/__generated__/getAllPostsWithSlug';

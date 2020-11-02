@@ -31,7 +31,6 @@ import Header from '@components/lead';
 // import HeroPost from '../components/hero-post';
 import { SearchBox } from '@components/index';
 import Cards from '../components/Card/card-coalescence';
-import { PostsProps, AllPostsProps } from '../types/posts';
 import { MediaContextProvider } from '../lib/window-width';
 // import Link from 'next/link';
 // import FieldEnum from 'types/enums/field-enum';
@@ -221,12 +220,12 @@ export const getStaticProps = async ({
 	return {
 		props: {
 			// initialApolloState: apolloClient.cache.extract(),
-			allPosts: await allPostsCacheNoNode,
+			allPosts: allPostsCacheNoNode,
 			preview,
-			tags: await tagsCache?.edges,
+			tags: tagsCache?.edges,
 			field,
 			order,
-			categories: await categoriesCache?.edges
+			categories: categoriesCache?.edges
 		},
 		revalidate: 10
 	};

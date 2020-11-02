@@ -1,5 +1,4 @@
 import Card from '@components/Card/card-unit';
-import { PostsProps } from '../../types/posts';
 import { gql, useQuery, NetworkStatus } from '@apollo/client';
 import { AllPosts_posts_edges } from 'graphql/__generated__/AllPosts';
 import {
