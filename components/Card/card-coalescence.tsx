@@ -3,15 +3,16 @@ import { PostsProps } from 'types/posts';
 import {
 	AllPostsForCategory_categories_edges_node_posts,
 	AllPostsForCategory_categories_edges_node_posts_nodes
-} from '../graphql/__generated__/AllPostsForCategory';
+} from '@graphql/__generated__/AllPostsForCategory';
 import {
 	AllPosts_posts_edges,
 	AllPosts_posts_edges_node
-} from '../graphql/__generated__/AllPosts';
-
+} from '@graphql/__generated__/AllPosts';
 
 type CardsProps = {
-	posts: (AllPosts_posts_edges_node)[] | (AllPostsForCategory_categories_edges_node_posts_nodes)[];
+	posts:
+		| AllPosts_posts_edges_node[]
+		| AllPostsForCategory_categories_edges_node_posts_nodes[];
 };
 
 // type Required<T extends CardsProps> = {
@@ -24,7 +25,12 @@ export default function CardsCoalesced({ posts }: CardsProps) {
 	return (
 		<section className='content-center justify-center block mx-auto '>
 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
-				{posts.map((company: AllPosts_posts_edges_node | AllPostsForCategory_categories_edges_node_posts_nodes) => {
+				{posts.map(
+					(
+						company:
+							| AllPosts_posts_edges_node
+							| AllPostsForCategory_categories_edges_node_posts_nodes
+					) => {
 						return (
 							<Card
 								__typename={company.__typename}
@@ -42,9 +48,9 @@ export default function CardsCoalesced({ posts }: CardsProps) {
 								slug={company.slug}
 								excerpt={company.excerpt}
 							/>
-						)
-					})
-				}
+						);
+					}
+				)}
 			</div>
 		</section>
 	);

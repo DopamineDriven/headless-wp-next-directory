@@ -6,7 +6,7 @@ import {
 	faInstagram,
 	faTwitter
 } from '@fortawesome/free-brands-svg-icons';
-import { AllPosts_posts_edges_node_social } from '../graphql/__generated__/AllPosts';
+import { AllPosts_posts_edges_node_social } from '@graphql/__generated__/AllPosts';
 
 interface CardIconProps {
 	social: AllPosts_posts_edges_node_social;
