@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown/with-html';
 import { FC } from 'react';
+import { Title_posts_edges_node } from '@graphql/__generated__/Title';
 
 export interface CardTitleProps {
 	title: string | null;
