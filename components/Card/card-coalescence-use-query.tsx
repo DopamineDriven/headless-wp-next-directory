@@ -1,6 +1,7 @@
 import Card from '@components/Card/card-unit';
 import { PostsProps } from '../../types/posts';
 import { gql, useQuery, NetworkStatus } from '@apollo/client';
+import { AllPosts_posts_edges } from 'graphql/__generated__/AllPosts';
 import {
 	OrderEnum,
 	PostObjectsConnectionOrderbyEnum
@@ -58,7 +59,7 @@ export default function PostList() {
 		}
 	);
 	const loadingMorePosts: boolean = networkStatus === NetworkStatus.fetchMore;
-	const loadMorePosts = (posts: PostsProps[]) => {
+	const loadMorePosts = (posts: AllPosts_posts_edges[]) => {
 		fetchMore({
 			variables: {
 				skip: posts.length
@@ -75,10 +76,14 @@ export default function PostList() {
 	return (
 		<section className='content-center justify-center block mx-auto '>
 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
-				{posts.map((company: PostsProps) => {
+				{posts.map((company: AllPosts_posts_edges) => {
 					const node: any = company.node;
 					return (
 						<Card
+							__typename={node.__typename}
+							content={node.content}
+							date={node.date}
+							id={node.id}
 							key={node.slug}
 							title={node.title}
 							featuredImage={node.featuredImage.node}

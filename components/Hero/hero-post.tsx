@@ -7,6 +7,7 @@ import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
 } from '../../graphql/__generated__/AuthorCardQuery';
+import { Fragment } from 'react';
 
 type HeroPostProps = {
 	featuredImage: CoverImageProps;
@@ -30,7 +31,9 @@ export default function HeroPost({
 	return (
 		<section>
 			<div className='mb-8 md:mb-8 mt-8'>
-				<CoverImage title={title} featuredImage={featuredImage} slug={slug} />
+				{title != null && featuredImage != null && slug != null ? (
+					<CoverImage title={title} featuredImage={featuredImage} slug={slug} />
+				) : null}
 			</div>
 			<div className='md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-10'>
 				<div>
@@ -38,7 +41,7 @@ export default function HeroPost({
 						<Link as={`/posts/${slug}`} href='/posts/[slug]'>
 							<a
 								className='hover:underline text-6xl font-bold'
-								dangerouslySetInnerHTML={{ __html: title }}
+								dangerouslySetInnerHTML={{ __html: title != null ? title : 'no title' }}
 							/>
 						</Link>
 					</h3>
@@ -49,7 +52,9 @@ export default function HeroPost({
 				<div>
 					<div
 						className='text-2xl leading-relaxed mb-4'
-						dangerouslySetInnerHTML={{ __html: excerpt }}
+						dangerouslySetInnerHTML={{
+							__html: excerpt != null ? excerpt : 'no excerpt'
+						}}
 					/>
 					<CardAuthor author={author} modified={modified} />
 				</div>

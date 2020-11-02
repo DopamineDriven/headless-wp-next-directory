@@ -20,15 +20,10 @@ import { CMS_NAME, HOME_OG_IMAGE_URL } from '../../lib/constants';
 import { Fragment } from 'react';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from 'next';
 // import { MediaContextProvider } from 'lib/window-width';
-import {
-	ALL_POSTS_FOR_CATEGORY,
-	allPostsForCategoryQueryVariables,
-	PsuedoObj_AllPostsForCategory_categories_edges_node_posts
-} from '../../graphql/api-posts-for-category';
+import { ALL_POSTS_FOR_CATEGORY } from '../../graphql/api-posts-for-category';
 import {
 	ALL_CATEGORIES,
-	allCategoryQueryVariables,
-	categoryKeyNameForCache
+	allCategoryQueryVariables
 } from '../../graphql/api-all-categories';
 import {
 	AllCategories_categories,
@@ -48,18 +43,27 @@ import { AllPostsProps } from '../../types/posts';
 type Required<T> = {
 	[P in keyof T]-?: T[P];
 };
-type Nullable<AllPostsForCategory_categories_edges_node_posts_nodes> = {
-	[P in keyof AllPostsForCategory_categories_edges_node_posts_nodes]:
-		| AllPostsForCategory_categories_edges_node_posts_nodes[P]
-		| null;
-};
+
 interface SlugProps {
-	postData: any;
 	// AllPostsForCategory_categories_edges_node_posts
-	// posts: Nullable<AllPostsForCategory_categories_edges_node_posts_nodes>;
-	posts: AllPostsForCategory_categories_edges_node_posts_nodes;
+	posts: AllPostsForCategory_categories_edges_node_posts_nodes[];
 	preview: boolean;
+	postData: any;
 }
+
+// type Nullable<AllPostsForCategory_categories_edges_node_posts_nodes> = {
+// 	[P in keyof AllPostsForCategory_categories_edges_node_posts_nodes]:
+// 		| AllPostsForCategory_categories_edges_node_posts_nodes[P]
+// 		| null;
+// };
+
+// interface SlugProps {
+// 	postData: any;
+// 	// AllPostsForCategory_categories_edges_node_posts
+// 	// posts: Nullable<AllPostsForCategory_categories_edges_node_posts_nodes>;
+// 	posts: AllPostsForCategory_categories_edges_node_posts_nodes;
+// 	preview: boolean;
+// }
 
 const Category = ({ posts, preview, postData }: SlugProps): JSX.Element => {
 	const router: NextRouter = useRouter();
@@ -85,9 +89,9 @@ const Category = ({ posts, preview, postData }: SlugProps): JSX.Element => {
 							</Head>
 						</article>
 						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
-							{morePosts ? (
-								morePosts.length > 0 ? (
-									<Cards posts={morePosts} />
+							{posts != null ? (
+								posts.length > 0 ? (
+									<Cards posts={posts} />
 								) : (
 									'No posts for this category'
 								)
@@ -125,6 +129,7 @@ export const getStaticProps = async ({
 	);
 
 	//checks to see if query result at top level is null.  If it is sets a psuedoObj equal to data and returns that.
+
 	const postsForCategoryCache: AllPostsForCategory_categories | null =
 		queryResult.data.categories != null ? queryResult.data.categories : null;
 
@@ -147,6 +152,7 @@ export const getStaticProps = async ({
 		};
 	}
 };
+
 export const getStaticPaths: GetStaticPaths = async (): Promise<
 	GetStaticPathsResult
 > => {

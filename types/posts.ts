@@ -27,10 +27,10 @@ export interface featureImageType {
 }
 
 export interface socialType {
-	facebook: string;
-	instagram: string;
-	twitter: string;
-	website: string;
+	facebook: string | null;
+	instagram: string | null;
+	twitter: string | null;
+	website: string | null;
 }
 
 export interface authorType {

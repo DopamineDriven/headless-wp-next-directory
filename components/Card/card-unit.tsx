@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import CoverImage, {
 	CoverImageProps
 } from '@components/Card/card-featured-image';
@@ -5,7 +6,6 @@ import CardAuthor from '@components/Card/card-author';
 import CardIcons from '@components/Card/card-icons';
 import { authorType, socialType } from 'types/posts';
 import CardExcerptFC from './card-excerpt';
-import { Fragment } from 'react';
 import SiteDivider from 'components/Core/site-divider';
 import { getAllPostsWithSlug_posts_edges_node as PostSlug } from '../../graphql/__generated__/getAllPostsWithSlug';
 import CardTitleFC from './card-title';
@@ -13,20 +13,14 @@ import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
 } from '../../graphql/__generated__/AuthorCardQuery';
-
-interface AuthorPropTypes {
-	author: any;
-}
-interface CardProps extends AuthorPropTypes {
-	featuredImage: any;
-	title: string;
-	slug: string | null;
-	modified: string;
-	excerpt: string;
-	social: socialType;
-}
+import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
+import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
 
 const Card = ({
+	__typename,
+	content,
+	date,
+	id,
 	author,
 	featuredImage,
 	excerpt,
@@ -34,7 +28,12 @@ const Card = ({
 	slug,
 	social,
 	title
-}: CardProps): JSX.Element => {
+}: AllPosts_posts_edges_node | AllPostsForCategory_categories_edges_node_posts_nodes ): JSX.Element => {
+	//had to add this in because without it _html was erroring out because it is of type string.
+	if (!excerpt) {
+		excerpt = '';
+	}
+
 	return (
 		<Fragment>
 			<div className='block mx-auto select-none w-full'>
@@ -48,7 +47,7 @@ const Card = ({
 						</div>
 						<SiteDivider />
 						<div className='block float-right text-right pr-portfolio font-somaRoman'>
-							<CardIcons social={social} />
+							{social != null ? <CardIcons social={social} /> : null}
 						</div>
 					</div>
 				</div>

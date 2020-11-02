@@ -7,6 +7,8 @@ import {
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
 } from '../../graphql/__generated__/AuthorCardQuery';
 import { authorProps } from 'types/posts';
+import { AllPostsForCategory_categories_edges_node_posts_nodes_author } from '@graphql/__generated__/AllPostsForCategory';
+import { AllPosts_posts_edges_node_author } from '@graphql/__generated__/AllPosts';
 import { AvatarFC, AvatarPropsFC } from './card-avatar';
 
 type AuthorNodeProps = {
@@ -25,8 +27,11 @@ export const AuthorNodeAbstracted: AuthorNodeFC = props => {
 };
 
 type AvatarProps = {
-	author: authorProps;
-	modified: string;
+	author:
+		| AllPosts_posts_edges_node_author
+		| AllPostsForCategory_categories_edges_node_posts_nodes_author
+		| null;
+	modified: string | null;
 };
 
 // https://www.apollographql.com/docs/react/development-testing/static-typing/#props
@@ -59,15 +64,18 @@ const CardAuthor = ({ author, modified }: AvatarProps): JSX.Element => {
 	const ImageJsx = (): JSX.Element => {
 		return (
 			<div className='block float-right col-span-1 text-right align-middle transition-all duration-1000 transform pl-portfolio lg:pl-portfolioDivider'>
-				{author && author.avatar && author.avatar?.url ? (
+				{author != null &&
+				author.node != null &&
+				author.node.avatar &&
+				author.node.avatar?.url ? (
 					<img
 						src={
-							author.avatar.url === typeof 'string'
-								? author.avatar?.url.toString()
-								: author.avatar.url
+							author.node.avatar.url === typeof 'string'
+								? author.node.avatar?.url.toString()
+								: author.node.avatar.url
 						}
 						className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
-						alt={`avatar for ${author.name}`}
+						alt={`avatar for ${author.node.name}`}
 					/>
 				) : (
 					<img
@@ -82,7 +90,11 @@ const CardAuthor = ({ author, modified }: AvatarProps): JSX.Element => {
 
 	const NombreJsx = (): JSX.Element => (
 		<div className='block col-span-3 align-top text-customAboutSubMobile sm:text-customS lg:text-customExcerpt'>
-			<a className='block w-full text-primary'>{author.name}</a>
+			<a className='block w-full text-primary'>
+				{author != null && author.node != null
+					? author.node.name
+					: 'No author listed'}
+			</a>
 		</div>
 	);
 

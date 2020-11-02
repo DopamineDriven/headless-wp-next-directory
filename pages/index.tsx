@@ -13,7 +13,7 @@ import {
 	InferGetStaticPropsType,
 	NextPage
 } from 'next';
-import { ApolloClient, NormalizedCacheObject, useQuery } from '@apollo/client';
+import { ApolloClient, ApolloQueryResult, NormalizedCacheObject, useQuery } from '@apollo/client';
 import { initializeApollo } from '@lib/apollo';
 import {
 	ALL_CATEGORIES,
@@ -25,14 +25,7 @@ import {
 	ALL_TAGS,
 	tagKeyNameForCache
 } from '@graphql/api-all-tags';
-
-import { ALL_POSTS_FOR_CATEGORY } from '@graphql/api-posts-for-category';
 import { AllCategories_categories_edges } from '@graphql/__generated__/AllCategories';
-import {
-	AllPostsForCategory,
-	AllPostsForCategory_categories
-} from '@graphql/__generated__/AllPostsForCategory';
-import { getAllPostsForHomeAlphabetical } from '@lib/api-ts';
 import { CMS_NAME, CLIENT_NAME } from '@lib/constants';
 import Header from '@components/lead';
 // import HeroPost from '../components/hero-post';
@@ -49,96 +42,34 @@ import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
 } from '../types/graphql-global-types';
+import { ALL_POSTS, Field, Order } from '../graphql/api-all-posts';
+import {
+	AllPosts,
+	AllPosts_posts,
+	AllPosts_posts_edges,
+	AllPosts_posts_edges_node
+} from '../graphql/__generated__/AllPosts';
+import { AllCategories, AllCategories_categories } from '../graphql/__generated__/AllCategories';
+import { AllTags, AllTags_tags, AllTags_tags_edges } from '../graphql/__generated__/AllTags';
 
-interface StaticProps extends GetStaticPropsContext {
-	preview: boolean;
-	context: any;
-	field: PostObjectsConnectionOrderbyEnum;
-	order: OrderEnum;
-	desiredCategory: string;
-}
-
-const { TITLE, AUTHOR, DATE, MODIFIED } = PostObjectsConnectionOrderbyEnum;
-const { ASC, DESC } = OrderEnum;
-export const getStaticProps = async ({
-	preview = false,
-	// context,
-	field = TITLE || AUTHOR || DATE || MODIFIED,
-	order = ASC || DESC
-}: StaticProps) => {
-	// console.log(context);
-	const allPosts = await getAllPostsForHomeAlphabetical({
-		preview,
-		field,
-		order
-	});
-	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
-	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
-	try {
-		await categoriesWordPress.query({
-			query: ALL_CATEGORIES,
-			variables: allCategoryQueryVariables
-		});
-	} catch (error) {
-		console.log('Error with category query: ', error);
-	}
-
-	await tagsWordPress.query({
-		query: ALL_TAGS,
-		variables: allTagQueryVariables
-	});
-
-	// const userOptions = await getAllPostsForHomeSorted(preview, field);
-	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
-	// console.log('identity of cache: ' cache.identify(categoriesWordPress))
-
-	return {
-		props: {
-			allPosts,
-			preview,
-			tagsAndPosts: tagsWordPress.cache.extract(),
-			field,
-			order,
-			initializeApollo: categoriesWordPress.cache.extract()
-		},
-		revalidate: 10
-	};
-};
 
 interface IndexProps {
-	allPosts: AllPostsProps;
+	allPosts: AllPosts_posts_edges_node[];
 	preview: boolean;
-	tagsAndPosts: any;
-	// categories: AllCategories_categories_edges_node[];
-	initializeApollo: any;
+	tags: AllTags_tags_edges[];
+	categories: AllCategories_categories_edges[];
 }
 
-const Index = (
-	{
-		allPosts: { edges },
-		preview,
-		tagsAndPosts,
-		// categories,
-		initializeApollo
-	}: IndexProps /*& InferGetStaticPropsType<typeof getStaticProps>*/
-) => {
-	console.log('initializeApollo Prop: ', initializeApollo);
-	console.log(
-		'attempt at matching key: ',
-		initializeApollo.ROOT_QUERY.categoryKeyNameForCache
-	);
-	console.log('key name: ', categoryKeyNameForCache);
-
-	let morePosts = edges.slice(0);
-	let categoriesTabs: AllCategories_categories_edges[] =
-		initializeApollo.ROOT_QUERY[categoryKeyNameForCache].edges;
-	let tagProps = tagsAndPosts.ROOT_QUERY[tagKeyNameForCache].edges;
+const Index = ({
+	allPosts,
+	preview,
+	tags,
+	categories,
+}: IndexProps): JSX.Element => {
 
 	const [filterQuery, setFilterQuery] = useState('title');
-	const [allCompanies, setAllCompanies] = useState<PostsProps[]>(morePosts);
-	const [filteredCompanies, setFilteredCompanies] = useState<PostsProps[]>(
-		morePosts
-	);
+	const [allCompanies, setAllCompanies] = useState<AllPosts_posts_edges_node[]>(allPosts);
+	const [filteredCompanies, setFilteredCompanies] = useState<AllPosts_posts_edges_node[]>(allPosts);
 	const [search, setSearch] = useState<string | null>(null);
 	const [searchCategory, setSearchedCategory] = useState<string | null>(null);
 	const { TITLE } = PostObjectsConnectionOrderbyEnum;
@@ -149,38 +80,39 @@ const Index = (
 			setFilteredCompanies(allCompanies);
 		} else {
 			if (filterQuery === 'title') {
-				console.log(filteredCompanies);
-				const filterCompanies = edges.filter((company: PostsProps) => {
-					//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
-					//this was done so that toLowerCase() and includes() functions coudl work
-					const companyTitle: any = company.node.title;
-					if (companyTitle.toLowerCase().includes(search)) {
-						console.log('company title: ', companyTitle);
-						return company;
-					} else {
-						return null;
+				const filterCompanies = allPosts.filter(
+					(company: AllPosts_posts_edges_node) => {
+						//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
+						//this was done so that toLowerCase() and includes() functions coudl work
+						const companyTitle = company.title != null ? company.title : '';
+						if (companyTitle.toLowerCase().includes(search)) {
+							return company;
+						} else {
+							return null;
+						}
 					}
-				});
+				);
 				setFilteredCompanies(filterCompanies);
 			} else if (filterQuery === 'description') {
-				const filterCompanies = edges.filter((company: PostsProps) => {
-					//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
-					//this was done so that toLowerCase() and includes() functions coudl work
-					const companyDescription: any = company.node.excerpt;
-					if (companyDescription.toLowerCase().includes(search)) {
-						console.log('company description: ', companyDescription);
-						return company;
-					} else {
-						return null;
+				const filterCompanies = allPosts.filter(
+					(company: AllPosts_posts_edges_node) => {
+						//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
+						//this was done so that toLowerCase() and includes() functions coudl work
+						const companyDescription = company.excerpt != null ? company.excerpt : '' ;
+						if (companyDescription.toLowerCase().includes(search)) {
+							return company;
+						} else {
+							return null;
+						}
 					}
-				});
+				);
 				setFilteredCompanies(filterCompanies);
 			} else {
-				console.log('not title');
 				setFilteredCompanies(allCompanies);
 			}
 		}
 	}, [filterQuery, search]);
+
 	return (
 		<Fragment>
 			<MediaContextProvider>
@@ -204,21 +136,100 @@ const Index = (
 						const searchQuery = element.value.toLowerCase();
 						setSearch(searchQuery);
 					}}
-					tags={tagProps}
-					allPosts={morePosts}
+					tags={tags}
+					allPosts={allPosts}
 					dropdownOptions={['title', 'description']}
-					categories={categoriesTabs}
+					categories={categories}
 				/>
 				{/* {categoryData()} */}
 				{/* <CardFilter filter={filter} setFilter={setFilter} /> */}
 				<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
-					{morePosts.length > 0 && <Cards posts={filteredCompanies} />}
+					{allPosts.length > 0 && <Cards posts={filteredCompanies} />}
 				</div>
 
 				<Footer />
 			</MediaContextProvider>
 		</Fragment>
 	);
+};
+
+
+
+interface StaticProps extends GetStaticProps {
+	preview: boolean;
+	context: any;
+	field: PostObjectsConnectionOrderbyEnum;
+	order: OrderEnum;
+	desiredCategory: string;
+}
+
+const { TITLE, AUTHOR, DATE, MODIFIED } = PostObjectsConnectionOrderbyEnum;
+const { ASC, DESC } = OrderEnum;
+export const getStaticProps = async ({
+	preview = false,
+	// context,
+	field = TITLE || AUTHOR || DATE || MODIFIED,
+	order = ASC || DESC,
+	desiredCategory
+}: StaticProps) => {
+
+	const allPostsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+
+	const allPostsQuery: ApolloQueryResult<AllPosts> = await allPostsWordPress.query({
+		query: ALL_POSTS,
+		variables: { field: 'TITLE', order: 'ASC' }
+	}) 
+
+	const categoriesQuery: ApolloQueryResult<AllCategories> = await categoriesWordPress.query({
+			query: ALL_CATEGORIES,
+			variables: allCategoryQueryVariables
+		});
+
+	const tagsQuery: ApolloQueryResult<AllTags> = await tagsWordPress.query({
+		query: ALL_TAGS,
+		variables: allTagQueryVariables
+	});
+
+	const allPostsCache: AllPosts_posts | null = allPostsQuery.data.posts != null ? allPostsQuery.data.posts : null; 
+	const categoriesCache: AllCategories_categories | null = categoriesQuery.data.categories != null ? categoriesQuery.data.categories : null ;
+	const tagsCache: AllTags_tags | null = tagsQuery.data.tags !=null ? tagsQuery.data.tags : null;
+
+	//Can insert pagination here for the categories.  The pageInfo prop that exists in categories cache at this moment if it isn't null will let us know if we have another page
+	if (categoriesCache != null && categoriesCache.pageInfo != null && categoriesCache.pageInfo.hasNextPage) {
+		console.log('more than one page of categories....................')
+	} else {
+		console.log('only one page of categories....................')
+	}
+
+	const removeNode = (array: (AllPosts_posts_edges | null)[]): (AllPosts_posts_edges_node | null)[] => {
+		let newArray = [];
+
+		for (let i of array ) {
+			const arrayIndexData = i != null ? i.node : null
+			newArray.push(arrayIndexData)
+		}
+		return newArray
+	}
+
+	//this function is necessary because structure of nodes for posts data is slightly different when you get posts by category or grab all posts
+	const allPostsCacheNoNode: (AllPosts_posts_edges_node | null)[] | null = allPostsCache?.edges != null ? removeNode(allPostsCache.edges) : null
+
+	// const userOptions = await getAllPostsForHomeSorted(preview, field);
+	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
+	return {
+		props: {
+			// initialApolloState: apolloClient.cache.extract(),
+			allPosts: await allPostsCacheNoNode,
+			preview,
+			tags: await tagsCache?.edges,
+			field,
+			order,
+			categories: await categoriesCache?.edges
+		},
+		revalidate: 10
+	};
 };
 
 export default Index;
