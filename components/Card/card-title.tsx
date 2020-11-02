@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown/with-html';
 import { FC } from 'react';
-import { Title_posts_edges_node } from '@graphql/__generated__/Title';
+import { Title_posts_edges_node as TitleProps } from '@graphql/__generated__/Title';
 
 export interface CardTitleProps {
 	title: string | null;
@@ -45,3 +45,16 @@ const CardTitleAbstracted: CardTitleFC = props => {
 };
 
 export default CardTitleAbstracted;
+
+/*
+import { Title_posts_edges_node } from '@graphql/__generated__/Title';
+import { getAllPostsWithSlug_posts_edges_node } from '@graphql/__generated__/getAllPostsWithSlug';
+
+export interface CardTitleProps {
+	title: string | null;
+	slug: string | null;
+}
+
+export interface CardTitleFC
+	extends FC<Title_posts_edges_node & getAllPostsWithSlug_posts_edges_node> {}
+*/
