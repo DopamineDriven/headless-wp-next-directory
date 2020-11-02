@@ -59,22 +59,3 @@ export const allPostsForCategoryQueryVariables = {
 };
 
 export const allPostsForCategoryKeyNameForCache = `categories({"first":${allPostsForCategoryQueryVariables.first},"where":{"name":${allPostsForCategoryQueryVariables.name}}})`;
-
-export const PsuedoObj_AllPostsForCategory_categories_edges_node_posts: AllPostsForCategory_categories_edges_node_posts = {
-	__typename: 'CategoryToPostConnection',
-	nodes: []
-};
-
-export const PsuedoObj_AllPostsForCategory_categories__edges_node_posts_nodes: AllPostsForCategory_categories_edges_node_posts_nodes = {
-	__typename: 'Post',
-	id: 'nullObject',
-	content: null,
-	title: null,
-	date: null,
-	excerpt: null,
-	slug: null,
-	modified: null,
-	social: null,
-	featuredImage: null,
-	author: null
-};
