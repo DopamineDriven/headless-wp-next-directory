@@ -53,9 +53,4 @@ export const ALL_POSTS_FOR_CATEGORY = gql`
 	}
 `;
 
-export const allPostsForCategoryQueryVariables = {
-	first: 10,
-	name: 'Activism'
-};
 
-export const allPostsForCategoryKeyNameForCache = `categories({"first":${allPostsForCategoryQueryVariables.first},"where":{"name":${allPostsForCategoryQueryVariables.name}}})`;
