@@ -9790,6 +9790,58 @@ export type AuthorQuery = { __typename?: 'RootQuery' } & {
 	>;
 };
 
+export type CardsCoalescedQueryVariables = Exact<{
+	field: PostObjectsConnectionOrderbyEnum;
+	order: OrderEnum;
+}>;
+
+export type CardsCoalescedQuery = { __typename?: 'RootQuery' } & {
+	posts?: Maybe<
+		{ __typename?: 'RootQueryToPostConnection' } & {
+			edges?: Maybe<
+				Array<
+					Maybe<
+						{ __typename?: 'RootQueryToPostConnectionEdge' } & {
+							node?: Maybe<
+								{ __typename?: 'Post' } & Pick<
+									Post,
+									'title' | 'content' | 'date' | 'excerpt' | 'modified' | 'slug'
+								> & {
+										author?: Maybe<
+											{ __typename?: 'NodeWithAuthorToUserConnectionEdge' } & {
+												node?: Maybe<
+													{ __typename?: 'User' } & Pick<
+														User,
+														'name' | 'firstName' | 'lastName'
+													> & {
+															avatar?: Maybe<{ __typename?: 'Avatar' } & Pick<Avatar, 'url'>>;
+														}
+												>;
+											}
+										>;
+										featuredImage?: Maybe<
+											{ __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' } & {
+												node?: Maybe<
+													{ __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>
+												>;
+											}
+										>;
+										social?: Maybe<
+											{ __typename?: 'Post_Social' } & Pick<
+												Post_Social,
+												'facebook' | 'instagram' | 'twitter' | 'website'
+											>
+										>;
+									}
+							>;
+						}
+					>
+				>
+			>;
+		}
+	>;
+};
+
 export type CategoriesByEdgesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type CategoriesByEdgesQuery = { __typename?: 'RootQuery' } & {
@@ -10303,6 +10355,14 @@ declare module '*/api-by-author.ts' {
 	export default defaultDocument;
 }
 
+declare module '*/api-cards-coalesced.ts' {
+	import { DocumentNode } from 'graphql';
+	const defaultDocument: DocumentNode;
+	export const CardsCoalesced: DocumentNode;
+
+	export default defaultDocument;
+}
+
 declare module '*/api-categories-by-edges.ts' {
 	import { DocumentNode } from 'graphql';
 	const defaultDocument: DocumentNode;
@@ -10628,6 +10688,46 @@ export const Author = gql`
 					lastName
 					name
 					slug
+				}
+			}
+		}
+	}
+`;
+export const CardsCoalesced = gql`
+	query CardsCoalesced(
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+	) {
+		posts(first: 35, where: { orderby: { field: $field, order: $order } }) {
+			edges {
+				node {
+					author {
+						node {
+							name
+							firstName
+							lastName
+							avatar {
+								url
+							}
+						}
+					}
+					title
+					content
+					date
+					excerpt
+					featuredImage {
+						node {
+							sourceUrl
+						}
+					}
+					modified
+					slug
+					social {
+						facebook
+						instagram
+						twitter
+						website
+					}
 				}
 			}
 		}
@@ -11394,6 +11494,96 @@ export type AuthorLazyQueryHookResult = ReturnType<typeof useAuthorLazyQuery>;
 export type AuthorQueryResult = Apollo.QueryResult<
 	AuthorQuery,
 	AuthorQueryVariables
+>;
+export const CardsCoalescedDocument = gql`
+	query CardsCoalesced(
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+	) {
+		posts(first: 35, where: { orderby: { field: $field, order: $order } }) {
+			edges {
+				node {
+					author {
+						node {
+							name
+							firstName
+							lastName
+							avatar {
+								url
+							}
+						}
+					}
+					title
+					content
+					date
+					excerpt
+					featuredImage {
+						node {
+							sourceUrl
+						}
+					}
+					modified
+					slug
+					social {
+						facebook
+						instagram
+						twitter
+						website
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useCardsCoalescedQuery__
+ *
+ * To run a query within a React component, call `useCardsCoalescedQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCardsCoalescedQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCardsCoalescedQuery({
+ *   variables: {
+ *      field: // value for 'field'
+ *      order: // value for 'order'
+ *   },
+ * });
+ */
+export function useCardsCoalescedQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		CardsCoalescedQuery,
+		CardsCoalescedQueryVariables
+	>
+) {
+	return Apollo.useQuery<CardsCoalescedQuery, CardsCoalescedQueryVariables>(
+		CardsCoalescedDocument,
+		baseOptions
+	);
+}
+export function useCardsCoalescedLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		CardsCoalescedQuery,
+		CardsCoalescedQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<CardsCoalescedQuery, CardsCoalescedQueryVariables>(
+		CardsCoalescedDocument,
+		baseOptions
+	);
+}
+export type CardsCoalescedQueryHookResult = ReturnType<
+	typeof useCardsCoalescedQuery
+>;
+export type CardsCoalescedLazyQueryHookResult = ReturnType<
+	typeof useCardsCoalescedLazyQuery
+>;
+export type CardsCoalescedQueryResult = Apollo.QueryResult<
+	CardsCoalescedQuery,
+	CardsCoalescedQueryVariables
 >;
 export const CategoriesByEdgesDocument = gql`
 	query CategoriesByEdges {
@@ -18741,6 +18931,277 @@ export const AuthorDocument: DocumentNode<AuthorQuery, AuthorQueryVariables> = {
 															name: { kind: 'Name', value: 'slug' },
 															arguments: [],
 															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const CardsCoalescedDocument: DocumentNode<
+	CardsCoalescedQuery,
+	CardsCoalescedQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'CardsCoalesced' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'field' } },
+					type: {
+						kind: 'NonNullType',
+						type: {
+							kind: 'NamedType',
+							name: { kind: 'Name', value: 'PostObjectsConnectionOrderbyEnum' }
+						}
+					},
+					directives: []
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'order' } },
+					type: {
+						kind: 'NonNullType',
+						type: { kind: 'NamedType', name: { kind: 'Name', value: 'OrderEnum' } }
+					},
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'posts' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'first' },
+								value: { kind: 'IntValue', value: '35' }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'where' },
+								value: {
+									kind: 'ObjectValue',
+									fields: [
+										{
+											kind: 'ObjectField',
+											name: { kind: 'Name', value: 'orderby' },
+											value: {
+												kind: 'ObjectValue',
+												fields: [
+													{
+														kind: 'ObjectField',
+														name: { kind: 'Name', value: 'field' },
+														value: {
+															kind: 'Variable',
+															name: { kind: 'Name', value: 'field' }
+														}
+													},
+													{
+														kind: 'ObjectField',
+														name: { kind: 'Name', value: 'order' },
+														value: {
+															kind: 'Variable',
+															name: { kind: 'Name', value: 'order' }
+														}
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'author' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'node' },
+																		arguments: [],
+																		directives: [],
+																		selectionSet: {
+																			kind: 'SelectionSet',
+																			selections: [
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'name' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'firstName' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'lastName' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'avatar' },
+																					arguments: [],
+																					directives: [],
+																					selectionSet: {
+																						kind: 'SelectionSet',
+																						selections: [
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'url' },
+																								arguments: [],
+																								directives: []
+																							}
+																						]
+																					}
+																				}
+																			]
+																		}
+																	}
+																]
+															}
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'title' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'content' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'date' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'excerpt' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'featuredImage' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'node' },
+																		arguments: [],
+																		directives: [],
+																		selectionSet: {
+																			kind: 'SelectionSet',
+																			selections: [
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'sourceUrl' },
+																					arguments: [],
+																					directives: []
+																				}
+																			]
+																		}
+																	}
+																]
+															}
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'modified' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'slug' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'social' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'facebook' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'instagram' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'twitter' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'website' },
+																		arguments: [],
+																		directives: []
+																	}
+																]
+															}
 														}
 													]
 												}
