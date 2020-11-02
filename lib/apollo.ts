@@ -45,6 +45,7 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 export function initializeApollo(
 	initialState: any = null
 ): ApolloClient<NormalizedCacheObject> {
+	console.log('initializing APOLLO......')
 	const _apolloClient = apolloClient ?? createApolloClient();
 	if (initialState) {
 		const existingCache = _apolloClient.extract();

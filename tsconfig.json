@@ -15,6 +15,7 @@
 		"module": "esnext",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
+		"preserveConstEnums": true,
 		"isolatedModules": true,
 		"jsx": "preserve",
 		"baseUrl": ".",

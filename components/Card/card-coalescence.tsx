@@ -1,39 +1,56 @@
 import Card from '@components/Card/card-unit';
 import { PostsProps } from 'types/posts';
-
-type NodeProps = {
-	node: any;
-};
+import {
+	AllPostsForCategory_categories_edges_node_posts,
+	AllPostsForCategory_categories_edges_node_posts_nodes
+} from '@graphql/__generated__/AllPostsForCategory';
+import {
+	AllPosts_posts_edges,
+	AllPosts_posts_edges_node
+} from '@graphql/__generated__/AllPosts';
 
 type CardsProps = {
-	posts: PostsProps[];
+	posts:
+		| AllPosts_posts_edges_node[]
+		| AllPostsForCategory_categories_edges_node_posts_nodes[];
 };
 
-type Required<T extends CardsProps> = {
-	[CardProps in keyof T]-?: T[CardProps];
-};
+// type Required<T extends CardsProps> = {
+// 	[CardProps in keyof T]-?: T[CardProps];
+// };
 
 type HasSelect<T extends CardsProps> = {};
 
-export default function CardsCoalesced({ posts }: Required<CardsProps>) {
+export default function CardsCoalesced({ posts }: CardsProps) {
 	return (
 		<section className='content-center justify-center block mx-auto '>
 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
-				{posts.map((company: PostsProps) => {
-					const { node }: any = company;
-					return (
-						<Card
-							key={node.slug}
-							title={node.title}
-							featuredImage={node.featuredImage.node}
-							modified={node.modified}
-							social={node.social}
-							author={node.author}
-							slug={node.slug}
-							excerpt={node.excerpt}
-						/>
-					);
-				})}
+				{posts.map(
+					(
+						company:
+							| AllPosts_posts_edges_node
+							| AllPostsForCategory_categories_edges_node_posts_nodes
+					) => {
+						return (
+							<Card
+								__typename={company.__typename}
+								content={company.content}
+								date={company.date}
+								id={company.id}
+								key={company.slug}
+								title={company.title}
+								featuredImage={
+									company.featuredImage != null ? company.featuredImage : null
+								}
+								modified={company.modified}
+								social={company.social}
+								author={company.author}
+								slug={company.slug}
+								excerpt={company.excerpt}
+							/>
+						);
+					}
+				)}
 			</div>
 		</section>
 	);

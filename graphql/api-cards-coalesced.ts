@@ -1,7 +1,10 @@
 import { gql } from '@apollo/client';
 
-export const ALL_POSTS = gql`
-	query AllPosts($field: PostObjectsConnectionOrderbyEnum!, $order: OrderEnum!) {
+const CARDS_COALESCED = gql`
+	query CardsCoalesced(
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+	) {
 		posts(first: 35, where: { orderby: { field: $field, order: $order } }) {
 			edges {
 				node {
@@ -12,9 +15,6 @@ export const ALL_POSTS = gql`
 							lastName
 							avatar {
 								url
-								size
-								height
-								width
 							}
 						}
 					}
@@ -27,7 +27,6 @@ export const ALL_POSTS = gql`
 							sourceUrl
 						}
 					}
-					id
 					modified
 					slug
 					social {
@@ -42,13 +41,4 @@ export const ALL_POSTS = gql`
 	}
 `;
 
-export enum Field {
-	TITLE = 'TITLE',
-	MODIFIED = 'MODIFIED',
-	DATE = 'DATE'
-}
-
-export enum Order {
-	ASC = 'ASC',
-	DESC = 'DESC'
-}
+export default CARDS_COALESCED;
