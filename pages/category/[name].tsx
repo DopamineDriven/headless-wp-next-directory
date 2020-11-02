@@ -20,15 +20,10 @@ import { CMS_NAME, HOME_OG_IMAGE_URL } from '../../lib/constants';
 import { Fragment } from 'react';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from 'next';
 // import { MediaContextProvider } from 'lib/window-width';
-import {
-	ALL_POSTS_FOR_CATEGORY,
-	allPostsForCategoryQueryVariables,
-	PsuedoObj_AllPostsForCategory_categories_edges_node_posts
-} from '../../graphql/api-posts-for-category';
+import { ALL_POSTS_FOR_CATEGORY } from '../../graphql/api-posts-for-category';
 import {
 	ALL_CATEGORIES,
-	allCategoryQueryVariables,
-	categoryKeyNameForCache
+	allCategoryQueryVariables
 } from '../../graphql/api-all-categories';
 import {
 	AllCategories_categories,
@@ -51,7 +46,7 @@ type Required<T> = {
 
 interface SlugProps {
 	// AllPostsForCategory_categories_edges_node_posts
-	posts: (AllPostsForCategory_categories_edges_node_posts_nodes | null)[] | null;
+	posts: AllPostsForCategory_categories_edges_node_posts_nodes[];
 	preview: boolean;
 	postData: any;
 }
@@ -131,14 +126,14 @@ export const getStaticProps = async ({
 			query: ALL_POSTS_FOR_CATEGORY,
 			variables: { first: 10, name: params.name }
 		}
-	)
+	);
 
 	//checks to see if query result at top level is null.  If it is sets a psuedoObj equal to data and returns that.
 
-	const postsForCategoryCache: AllPostsForCategory_categories | null = queryResult
-		.data.categories !=null ? queryResult.data.categories : null;
+	const postsForCategoryCache: AllPostsForCategory_categories | null =
+		queryResult.data.categories != null ? queryResult.data.categories : null;
 
-	console.log( 'data and categories are not null', postsForCategoryCache)
+	console.log('data and categories are not null', postsForCategoryCache);
 
 	if (
 		postsForCategoryCache &&
@@ -157,7 +152,7 @@ export const getStaticProps = async ({
 		};
 	}
 };
-	
+
 export const getStaticPaths: GetStaticPaths = async (): Promise<
 	GetStaticPathsResult
 > => {
