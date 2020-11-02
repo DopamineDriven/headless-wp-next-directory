@@ -1,4 +1,4 @@
-import Card from 'components/card';
+import Card from '@components/Card/card-unit';
 import { PostsProps } from 'types/posts';
 import {
 	AllPostsForCategory_categories_edges_node_posts,

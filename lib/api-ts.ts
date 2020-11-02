@@ -1,9 +1,3 @@
-import {
-	graphql,
-	GraphQLSchema,
-	GraphQLObjectType,
-	GraphQLString
-} from 'graphql';
 import { AllPostsProps, PostsProps } from 'types/posts';
 import {
 	allPostsForHomeAlphabeticalArgs,

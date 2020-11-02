@@ -1,23 +1,23 @@
-import Avatar from './card-avatar';
-import Date from './date-published';
-import CoverImage, { CoverImageProps } from './post-cover-image';
+import { CardAuthor } from '../Card';
+import { DatePublished } from '../Date';
+import CoverImage, { CoverImageProps } from '../post-cover-image';
 import Link from 'next/link';
-import SectionSeparator from './section-separator';
+import { Divider } from '../Core';
 import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
-} from '../graphql/__generated__/AuthorCardQuery';
-import { AllPosts_posts_edges_node } from 'graphql/__generated__/AllPosts';
+} from '../../graphql/__generated__/AuthorCardQuery';
+import { Fragment } from 'react';
 
-// type HeroPostProps = {
-// 	featuredImage: CoverImageProps;
-// 	author: AuthorCardQueryUsersNodes;
-// 	slug: string | number;
-// 	excerpt: string;
-// 	date: string;
-// 	modified: string;
-// 	title: string;
-// };
+type HeroPostProps = {
+	featuredImage: CoverImageProps;
+	author: any;
+	slug: string | number;
+	excerpt: string;
+	date: string;
+	modified: string;
+	title: string;
+};
 
 export default function HeroPost({
 	title,
@@ -27,7 +27,7 @@ export default function HeroPost({
 	excerpt,
 	author,
 	slug
-}: AllPosts_posts_edges_node) {
+}: HeroPostProps) {
 	return (
 		<section>
 			<div className='mb-8 md:mb-8 mt-8'>
@@ -46,7 +46,7 @@ export default function HeroPost({
 						</Link>
 					</h3>
 					<div className='mb-4 md:mb-0 text-xl'>
-						<Date dateString={date} />
+						<DatePublished dateString={date} />
 					</div>
 				</div>
 				<div>
@@ -56,12 +56,10 @@ export default function HeroPost({
 							__html: excerpt != null ? excerpt : 'no excerpt'
 						}}
 					/>
-					{author != null ? (
-						<Avatar author={author.node} modified={modified} />
-					) : null}
+					<CardAuthor author={author} modified={modified} />
 				</div>
 			</div>
-			<SectionSeparator />
+			<Divider />
 		</section>
 	);
 }

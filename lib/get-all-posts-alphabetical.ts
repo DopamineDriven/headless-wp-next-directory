@@ -1,5 +1,5 @@
-import { GraphQLObjectType } from 'graphql';
-import { fetchAPI } from 'lib/api';
+import { GraphQLObjectType } from 'graphql/type';
+import { fetchAPI } from '@lib/api';
 
 /*
  const RGBType = new GraphQLEnumType({

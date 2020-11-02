@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCustomWebsite } from '../lib/fas-custom-integration';
+import { faCustomWebsite } from '../../lib/fas-custom-integration';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
 	faFacebook,

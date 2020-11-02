@@ -6,39 +6,38 @@ import {
 	SyntheticEvent,
 	Fragment
 } from 'react';
-// import Container from 'components/contai/ner';
-// import Intro from 'components/intro';
-// import Layout from 'components/layout';
 import {
 	GetServerSideProps,
 	GetStaticProps,
-	InferGetServerSidePropsType,
+	GetStaticPropsContext,
+	InferGetStaticPropsType,
 	NextPage
 } from 'next';
 import { ApolloClient, ApolloQueryResult, NormalizedCacheObject, useQuery } from '@apollo/client';
-import { initializeApollo } from '../lib/apollo';
+import { initializeApollo } from '@lib/apollo';
 import {
 	ALL_CATEGORIES,
 	allCategoryQueryVariables,
 	categoryKeyNameForCache
-} from '../graphql/api-all-categories';
+} from '@graphql/api-all-categories';
 import {
 	allTagQueryVariables,
 	ALL_TAGS,
 	tagKeyNameForCache
-} from '../graphql/api-all-tags';
-import { AllCategories_categories_edges } from '../graphql/__generated__/AllCategories';
-import { getAllPostsForHomeAlphabetical } from '../lib/api-ts';
-import { CMS_NAME, CLIENT_NAME } from '../lib/constants';
-import Header from '../components/lead';
+} from '@graphql/api-all-tags';
+import { AllCategories_categories_edges } from '@graphql/__generated__/AllCategories';
+import { CMS_NAME, CLIENT_NAME } from '@lib/constants';
+import Header from '@components/lead';
 // import HeroPost from '../components/hero-post';
-import SearchBox from '../components/search-box';
-import Cards from '../components/cards-coalesced';
+import { SearchBox } from '@components/index';
+import Cards from '../components/Card/card-coalescence';
+import { PostsProps, AllPostsProps } from '../types/posts';
 import { MediaContextProvider } from '../lib/window-width';
 // import Link from 'next/link';
 // import FieldEnum from 'types/enums/field-enum';
 // import OrderEnum from 'types/enums/order-enum';
-import Footer from '../components/footer';
+import Footer from '../components/Footer/footer';
+// import CardFilter from 'components/card-filter';
 import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
@@ -85,7 +84,7 @@ const Index = ({
 					(company: AllPosts_posts_edges_node) => {
 						//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
 						//this was done so that toLowerCase() and includes() functions coudl work
-						const companyTitle = company.title;
+						const companyTitle = company.title != null ? company.title : '';
 						if (companyTitle.toLowerCase().includes(search)) {
 							return company;
 						} else {
@@ -99,7 +98,7 @@ const Index = ({
 					(company: AllPosts_posts_edges_node) => {
 						//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
 						//this was done so that toLowerCase() and includes() functions coudl work
-						const companyDescription = company.excerpt;
+						const companyDescription = company.excerpt != null ? company.excerpt : '' ;
 						if (companyDescription.toLowerCase().includes(search)) {
 							return company;
 						} else {
@@ -194,28 +193,28 @@ export const getStaticProps = async ({
 	});
 
 	const allPostsCache: AllPosts_posts | null = allPostsQuery.data.posts != null ? allPostsQuery.data.posts : null; 
-	const categoriesCache: AllCategories_categories | null = categoriesQuery.data.categories != null ? categoriesQuery.data.categories : null;
+	const categoriesCache: AllCategories_categories | null = categoriesQuery.data.categories != null ? categoriesQuery.data.categories : null ;
 	const tagsCache: AllTags_tags | null = tagsQuery.data.tags !=null ? tagsQuery.data.tags : null;
 
 	//Can insert pagination here for the categories.  The pageInfo prop that exists in categories cache at this moment if it isn't null will let us know if we have another page
-	if (categoriesCache.pageInfo.hasNextPage) {
+	if (categoriesCache != null && categoriesCache.pageInfo != null && categoriesCache.pageInfo.hasNextPage) {
 		console.log('more than one page of categories....................')
 	} else {
 		console.log('only one page of categories....................')
 	}
 
-	const removeNode = (array: AllPosts_posts_edges[]): AllPosts_posts_edges_node[] => {
+	const removeNode = (array: (AllPosts_posts_edges | null)[]): (AllPosts_posts_edges_node | null)[] => {
 		let newArray = [];
 
 		for (let i of array ) {
-			const arrayIndexData = i.node
+			const arrayIndexData = i != null ? i.node : null
 			newArray.push(arrayIndexData)
 		}
 		return newArray
 	}
 
 	//this function is necessary because structure of nodes for posts data is slightly different when you get posts by category or grab all posts
-	const allPostsCacheNoNode: AllPosts_posts_edges_node[] = removeNode(allPostsCache.edges)
+	const allPostsCacheNoNode: (AllPosts_posts_edges_node | null)[] | null = allPostsCache?.edges != null ? removeNode(allPostsCache.edges) : null
 
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
@@ -224,10 +223,10 @@ export const getStaticProps = async ({
 			// initialApolloState: apolloClient.cache.extract(),
 			allPosts: await allPostsCacheNoNode,
 			preview,
-			tags: await tagsCache.edges,
+			tags: await tagsCache?.edges,
 			field,
 			order,
-			categories: await categoriesCache.edges
+			categories: await categoriesCache?.edges
 		},
 		revalidate: 10
 	};

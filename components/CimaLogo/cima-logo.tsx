@@ -3,7 +3,7 @@ import SvgIconConstituentValues from 'types/svg-icons';
 
 // export interface SvgIconValues extends FC<SvgIconConstituentValues> {}
 
-const SvgLogo: FC<SvgIconConstituentValues> = (props): JSX.Element => {
+const CimaLogo: FC<SvgIconConstituentValues> = (props): JSX.Element => {
 	const {
 		width = '5vw',
 		height = '5vw',
@@ -47,4 +47,4 @@ const SvgLogo: FC<SvgIconConstituentValues> = (props): JSX.Element => {
 	);
 };
 
-export default SvgLogo;
+export default CimaLogo;

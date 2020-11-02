@@ -1,7 +1,11 @@
-import Card from './card';
-import { PostsProps } from '../types/posts';
+import Card from '@components/Card/card-unit';
+import { PostsProps } from '../../types/posts';
 import { gql, useQuery, NetworkStatus } from '@apollo/client';
 import { AllPosts_posts_edges } from 'graphql/__generated__/AllPosts';
+import {
+	OrderEnum,
+	PostObjectsConnectionOrderbyEnum
+} from '../../types/graphql-global-types';
 
 export const ALL_POSTS_QUERY = gql`
 	query AllPosts($field: PostObjectsConnectionOrderbyEnum!, $order: OrderEnum!) {
@@ -42,8 +46,8 @@ export const ALL_POSTS_QUERY = gql`
 `;
 
 export const allPostsQueryVars = {
-	field: 'MODIFIED',
-	order: 'ASC'
+	field: PostObjectsConnectionOrderbyEnum.MODIFIED,
+	order: OrderEnum.DESC
 };
 
 export default function PostList() {

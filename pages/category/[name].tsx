@@ -5,15 +5,10 @@ import {
 	NormalizedCacheObject
 } from '@apollo/client';
 import { initializeApollo } from '../../lib/apollo';
-// import Container from 'components/container';
-// import PostBody from 'components/post-body';
-// import MoreStories from 'components/more-stories';
-import Header from '../../components/header';
-// import PostHeader from 'components/post-header';
-// import SectionSeparator from 'components/section-separator';
-import Layout from '../../components/layout';
-import PostTitle from '../../components/post-title';
-import Cards from '../../components/cards-coalesced';
+import Header from 'components/header';
+import Layout from 'components/Layout/layout';
+import PostTitle from 'components/post-title';
+import Cards from '@components/Card/card-coalescence';
 import Head from 'next/head';
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../../lib/constants';
 // import Tags from 'components/tags';
@@ -50,7 +45,7 @@ type Required<T> = {
 
 interface SlugProps {
 	// AllPostsForCategory_categories_edges_node_posts
-	posts: AllPostsForCategory_categories_edges_node_posts_nodes[];
+	posts: (AllPostsForCategory_categories_edges_node_posts_nodes | null)[] | null;
 	preview: boolean;
 }
 
@@ -127,7 +122,7 @@ export const getStaticProps = async ({
 		return {
 			props: {
 				preview,
-				posts: postsForCategoryCache.edges[0].node.posts.nodes
+				posts: postsForCategoryCache != null && postsForCategoryCache.edges != null ? postsForCategoryCache.edges[0]?.node?.posts?.nodes : null
 			},
 			// revalidate: 10
 		}; 

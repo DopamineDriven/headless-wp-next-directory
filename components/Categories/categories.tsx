@@ -1,9 +1,9 @@
-import {
-	CategoryTyped,
-	CategoryTypedVariables
-} from 'graphql/__generated__/CategoryTyped';
+// import {
+// 	CategoryTyped,
+// 	CategoryTypedVariables
+// } from 'graphql/__generated__/CategoryTyped';
 
-const Cat = ({ categories }: any): JSX.Element => {
+const Categories = ({ categories }: any): JSX.Element => {
 	return (
 		<div className='max-w-2xl mx-auto text-center flex flex-row justify-center mt-2'>
 			<span className='text-xs text-center'>
@@ -24,7 +24,7 @@ const Cat = ({ categories }: any): JSX.Element => {
 	);
 };
 
-export default Cat;
+export default Categories;
 
 /*
 
@@ -81,7 +81,7 @@ import {
 	CategoryTypedVariables
 } from 'graphql/__generated__/CategoryTyped';
 
-const Cat = ({ categories, category }: CategoryTyped): JSX.Element => {
+const Categories = ({ categories, category }: CategoryTyped): JSX.Element => {
 	return (
 		<div className='max-w-2xl mx-auto text-center flex flex-row justify-center mt-2'>
 			<span className='text-xs text-center'>

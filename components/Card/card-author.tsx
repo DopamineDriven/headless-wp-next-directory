@@ -1,42 +1,71 @@
-import Modified from 'components/date-modified';
-import { authorProps } from 'types/posts';
+import { FC } from 'react';
+import { DateModified } from '../Date';
 import { Fragment } from 'react';
 import {
 	AuthorCardQuery_users as AuthorCardQueryUsers,
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
-} from '../graphql/__generated__/AuthorCardQuery';
-import { AllPosts_posts_edges_node_author_node } from 'graphql/__generated__/AllPosts';
+} from '../../graphql/__generated__/AuthorCardQuery';
+import { authorProps } from 'types/posts';
+import { AvatarFC, AvatarPropsFC } from './card-avatar';
 
-// interface AuthorArray {
-// 	authors: AuthorCardQueryUsers;
-// }
+type AuthorNodeProps = {
+	nodes: AuthorCardQueryUsersNodes;
+};
 
-// interface AvatarURL {
-// 	avatar: AuthorCardQueryUsersNodesAvatar;
-// }
+interface AuthorNodeFC extends FC<AuthorNodeProps> {}
 
-interface AvatarProps {
-	author: AllPosts_posts_edges_node_author_node | null;
-	modified: string | null;
-}
+export const AuthorNodeAbstracted: AuthorNodeFC = props => {
+	const { nodes } = props;
+	return (
+		<div>
+			{/* <AvatarFC avatar={nodes && nodes.avatar && nodes.avatar.url ? nodes.avatar.url : nodes.avatar} /> */}
+		</div>
+	);
+};
+
+type AvatarProps = {
+	author: authorProps;
+	modified: string;
+};
 
 // https://www.apollographql.com/docs/react/development-testing/static-typing/#props
 
-const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
-	const nombre: string | null =
-		author != null
-			? author.firstName != null && author.lastName != null
-				? `${author.firstName} ${author.lastName}`
-				: author.name
-			: null;
+const CardAuthor = ({ author, modified }: AvatarProps): JSX.Element => {
+	const nombre = (name: string | null) => {
+		name;
+		if (!name) {
+			name;
+			return name;
+		}
+		name;
+		return name;
+	};
+	// const nombre: string =
+	// 	author && author.lastName && author.lastName
+	// 		? `${author.firstName} ${author.lastName}`
+	// 		: author.name;
+
+	function trim(name: string | null | undefined) {
+		name;
+		if (name) {
+			name;
+			return name.trim().toLocaleLowerCase();
+		}
+		name;
+		return name;
+	}
 
 	const ImageJsx = (): JSX.Element => {
 		return (
 			<div className='block float-right col-span-1 text-right align-middle transition-all duration-1000 transform pl-portfolio lg:pl-portfolioDivider'>
-				{author != null && author.avatar != null && author.avatar.url != null ? (
+				{author && author.avatar && author.avatar?.url ? (
 					<img
-						src={author.avatar.url}
+						src={
+							author.avatar.url === typeof 'string'
+								? author.avatar?.url.toString()
+								: author.avatar.url
+						}
 						className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
 						alt={`avatar for ${author.name}`}
 					/>
@@ -44,7 +73,7 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 					<img
 						src={'https://dev-to-uploads.s3.amazonaws.com/i/5pfcju7s49gsqjd987vx.jpg'}
 						className='block mx-auto rounded-full lg:w-portfolioLSMobile lg:h-portfolioLSMobile sm:w-paddingPostTitleTop sm:h-paddingPostTitleTop w-aboutHackingFontAwesomePT h-aboutHackingFontAwesomePT'
-						alt={`Author is null and image src did not load.`}
+						alt={`null check avatar for ${nombre}`}
 					/>
 				)}
 			</div>
@@ -53,9 +82,7 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 
 	const NombreJsx = (): JSX.Element => (
 		<div className='block col-span-3 align-top text-customAboutSubMobile sm:text-customS lg:text-customExcerpt'>
-			<a className='block w-full'>
-				{author != null && author.name != null ? author.name : nombre}
-			</a>
+			<a className='block w-full text-primary'>{author.name}</a>
 		</div>
 	);
 
@@ -64,7 +91,7 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 	const ModifiedJsx = (): JSX.Element => (
 		<div className='block float-left col-span-3 text-left align-top text-tertiary'>
 			<a className='block w-full transition-all transform -translate-y-portfolioLS lg:-translate-y-portfolio text-customCardDateMobile sm:text-customCardAuthorDate lg:text-customExcerpt'>
-				<Modified modifiedString={modified} />
+				<DateModified modifiedString={modified} />
 			</a>
 		</div>
 	);
@@ -81,7 +108,7 @@ const Avatar = ({ author, modified }: AvatarProps): JSX.Element => {
 	);
 };
 
-export default Avatar;
+export default CardAuthor;
 
 // interface AvatarProps {
 // 	author: authorProps;
@@ -115,7 +142,7 @@ export default Avatar;
 // 	const ModifiedJsx = (): JSX.Element => (
 // 		<div className='block float-left col-span-3 text-left align-top text-tertiary'>
 // 			<a className='block w-full transition-all transform -translate-y-portfolioLS lg:-translate-y-portfolio text-customCardDateMobile sm:text-customCardAuthorDate lg:text-customExcerpt'>
-// 				<Modified modifiedString={modified} />
+// 				<DateModified modifiedString={modified} />
 // 			</a>
 // 		</div>
 // 	);

@@ -1,6 +1,6 @@
 import useDarkMode, { DarkMode } from 'use-dark-mode';
 import { Media } from 'lib/window-width';
-import DarkModeSwitch from 'components/lead-dark-icons';
+import DarkIcons from './DarkIcons';
 import { Fragment } from 'react';
 
 const LeadDarkModeConditional = (): JSX.Element => {
@@ -9,7 +9,7 @@ const LeadDarkModeConditional = (): JSX.Element => {
 	const DarkMobile = (): JSX.Element => {
 		return darkMode.value === true ? (
 			<Media lessThan='md'>
-				<DarkModeSwitch
+				<DarkIcons
 					onChange={darkMode.toggle}
 					checked={true}
 					className='transition-colors transform outline-none stroke-current fill-primary text-primary rotate-290'
@@ -19,7 +19,7 @@ const LeadDarkModeConditional = (): JSX.Element => {
 			</Media>
 		) : (
 			<Media lessThan='md'>
-				<DarkModeSwitch
+				<DarkIcons
 					onChange={darkMode.toggle}
 					checked={false}
 					className='transition-colors transform outline-none fill-current stroke-current text-primary text-customTitle rotate-855'
@@ -33,7 +33,7 @@ const LeadDarkModeConditional = (): JSX.Element => {
 	const DarkDesktop = (): JSX.Element => {
 		return darkMode.value === true ? (
 			<Media greaterThanOrEqual='md'>
-				<DarkModeSwitch
+				<DarkIcons
 					onChange={darkMode.toggle}
 					checked={true}
 					className='transition-colors transform outline-none stroke-current fill-primary text-primary rotate-290'
@@ -43,7 +43,7 @@ const LeadDarkModeConditional = (): JSX.Element => {
 			</Media>
 		) : (
 			<Media greaterThanOrEqual='md'>
-				<DarkModeSwitch
+				<DarkIcons
 					onChange={darkMode.toggle}
 					checked={false}
 					className='transition-colors transform outline-none fill-current stroke-current text-primary text-customTitle rotate-855'
