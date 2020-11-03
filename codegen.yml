@@ -1,8 +1,8 @@
 overwrite: true
 schema: 'https://cima2020.wpengine.com/graphql'
-documents: '**/*.{ts,tsx,graphql}'
+documents: './graphql/**/*.{graphql,ts}'
 generates:
- ./graphql.tsx:
+ ./graphql.d.ts:
   #  src/generated/graphql.tsx:
   plugins:
    - 'typescript'
