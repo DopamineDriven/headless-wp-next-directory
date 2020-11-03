@@ -18,7 +18,7 @@ const Card = ({
 	title
 }:
 	| AllPosts_posts_edges_node
-	| AllPostsForCategory_categories_edges_node_posts_nodes): JSX.Element => {
+	| AllPostsForCategory_categories_edges_node_posts_nodes) => {
 	return (
 		<Fragment>
 			<div className='block mx-auto select-none w-full'>

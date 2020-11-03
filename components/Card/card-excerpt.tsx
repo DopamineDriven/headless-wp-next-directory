@@ -8,7 +8,7 @@ type CardExcerptProps = {
 export interface CardExcerptAbstracted extends FC<CardExcerptProps> {}
 
 const CardExcerptFC: CardExcerptAbstracted = props => {
-	const { excerpt: excerpt } = props;
+	const { excerpt } = props;
 
 	const ExcerptConditional = (
 		<>

@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown/with-html';
 import { FC } from 'react';
-import { Title_posts_edges_node as TitleProps } from '@graphql/__generated__/Title';
 
 export interface CardTitleProps {
 	title: string | null;
@@ -11,7 +10,7 @@ export interface CardTitleProps {
 export interface CardTitleFC extends FC<CardTitleProps> {}
 
 const CardTitleAbstracted: CardTitleFC = props => {
-	const { title: title, slug: slug } = props;
+	const { title, slug } = props;
 
 	const TitleConditional = (
 		<a

@@ -2,12 +2,15 @@ import Avatar from './sub-post-author';
 import { DatePublished } from '../Date';
 import { DateModified } from '../Date';
 import CoverImage, { CoverImageProps } from './sub-post-featured-image';
-import PostTitle from './sub-post-title';
+import SubPostTitle from './sub-post-title';
 import Categories from '../Categories/categories';
 import CardIcons from '../Card/card-icons';
+import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
+import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
+import { AllPostsForCategory } from '../../graphql/__generated__/AllPostsForCategory';
 
 type PostHeaderProps = {
-	title: string;
+	title: string | null;
 	featuredImage: CoverImageProps;
 	author: any;
 	date: string;
@@ -17,7 +20,7 @@ type PostHeaderProps = {
 	social: any;
 };
 
-export default function SubPostHeader({
+const SubPostHeader = ({
 	title,
 	featuredImage,
 	date,
@@ -26,7 +29,9 @@ export default function SubPostHeader({
 	categories,
 	social,
 	slug
-}: PostHeaderProps) {
+}:
+	| AllPosts_posts_edges_node
+	| AllPostsForCategory_categories_edges_node_posts_nodes) => {
 	return (
 		<>
 			<div className='max-w-screen font-polished'>
@@ -37,7 +42,7 @@ export default function SubPostHeader({
 						slug={slug}
 					/>
 				</div>
-				<PostTitle>{title}</PostTitle>
+				<SubPostTitle title={title} />
 
 				<div className='max-w-4xl mx-auto align-middle content-center justified-center text-center'>
 					<div className='hidden md:block align-middle content-center text-center justify-center'>
@@ -65,4 +70,6 @@ export default function SubPostHeader({
 			</div>
 		</>
 	);
-}
+};
+
+export default SubPostHeader;

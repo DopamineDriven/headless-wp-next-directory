@@ -79,7 +79,7 @@ const Category = ({ posts, preview, postData }: SlugProps): JSX.Element => {
 			<Header />
 			<Layout preview={preview}>
 				{router.isFallback ? (
-					<PostTitle>Loading…</PostTitle>
+					<PostTitle title={null}>Loading…</PostTitle>
 				) : (
 					<>
 						<article>

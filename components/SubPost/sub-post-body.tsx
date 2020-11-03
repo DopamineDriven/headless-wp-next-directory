@@ -1,12 +1,13 @@
 import markdownStyles from './sub-post-body.module.css';
 import ReactMarkdown from 'react-markdown/with-html';
+import { FC } from 'react';
 import {
 	Prism as SyntaxHighlighter,
 	SyntaxHighlighterProps
 } from 'react-syntax-highlighter';
 
 interface PostBodyProps {
-	content: string;
+	content: string | null;
 }
 
 const CodeBlock = ({
@@ -25,16 +26,35 @@ const CodeBlock = ({
 	);
 };
 
-const SubPostBody = ({ content }: PostBodyProps): JSX.Element => {
-	return (
-		<div className='text-shadow-none shadow-none select-none mx-auto content-center text-left md:text-left md:text-customP items-center justify-center align-middle max-w-xsCardGridCima '>
+interface PostBodyPropsFC extends FC<PostBodyProps> {}
+
+const SubPostBody: PostBodyPropsFC = props => {
+	const { content } = props;
+
+	const ContentConditional = () => {
+		return content ? (
 			<ReactMarkdown
 				className={markdownStyles['content'] + ' text-shadow-none'}
 				escapeHtml={false}
 				source={content}
 				renderers={{ code: CodeBlock }}
 			/>
-		</div>
+		) : (
+			<ReactMarkdown
+				className={markdownStyles['content'] + ' text-shadow-none'}
+				escapeHtml={false}
+				source={`content failed to load`}
+				renderers={{ code: CodeBlock }}
+			/>
+		);
+	};
+
+	return (
+		<>
+			<div className='text-shadow-none shadow-none select-none mx-auto content-center text-left md:text-left md:text-customP items-center justify-center align-middle max-w-xsCardGridCima '>
+				<ContentConditional />
+			</div>
+		</>
 	);
 };
 

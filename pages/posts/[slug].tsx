@@ -37,7 +37,7 @@ export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
 				<HeaderType />
 				<Layout preview={preview}>
 					{router.isFallback ? (
-						<PostTitle>Loading…</PostTitle>
+						<PostTitle title={null}>Loading…</PostTitle>
 					) : (
 						<>
 							<article>

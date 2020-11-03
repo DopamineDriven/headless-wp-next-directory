@@ -1,8 +1,12 @@
 import PostPreview from './sub-post-preview';
-import {
-	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
-	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
-} from '../../graphql/__generated__/AuthorCardQuery';
+import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
+import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
+
+type MoreStories = {
+	posts:
+		| AllPosts_posts_edges_node[]
+		| AllPostsForCategory_categories_edges_node_posts_nodes[];
+};
 
 type NodeProps = {
 	node: any;
