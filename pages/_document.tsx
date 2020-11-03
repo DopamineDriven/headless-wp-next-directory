@@ -23,7 +23,6 @@ export default class MyDocument extends Document {
 					<meta charSet='utf-8' />
 					<style type='text/css' dangerouslySetInnerHTML={{ __html: mediaStyles }} />
 					<link rel='stylesheet' href='/fonts/index.css' />
-					<link rel='stylesheet' href='/fonts/Inter-UI-Regular.woff2' />
 					{/* Global Site Tag (gtag.js) - Google Analytics */}
 					<script
 						async

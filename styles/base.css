@@ -1,0 +1,96 @@
+.light-mode {
+	@apply bg-portfolio text-black border-black;
+	--color-bg-primary: #ffffff;
+	--color-bg-auxiliary: #f0f1f2;
+	--color-bg-tertiary: #f1f2f3;
+	--color-text-primary: #000000;
+	--color-text-auxiliary: #151515;
+	--color-text-tertiary: #505050;
+	--color-text-quaternary: #ffffff;
+	--color-text-quinary: #afafaf;
+	--color-border-primary: #000000;
+	--color-border-auxiliary: #151515;
+	--color-fill-primary: #000000;
+	--color-fill-auxiliary: #151515;
+	--color-fill-tertiary: #505050;
+	--color-fill-quaternary: #afafaf;
+	--color-fill-quinary: #eaeaea;
+	--color-fill-senary: #ffffff;
+}
+
+.dark-mode {
+	@apply bg-oneFiveBlack text-white border-white;
+	--color-bg-primary: #000000;
+	--color-bg-auxiliary: #151515;
+	--color-bg-tertiary: #505050;
+	--color-text-primary: #ffffff;
+	--color-text-auxiliary: #eaeaea;
+	--color-text-tertiary: #afafaf;
+	--color-text-quaternary: #000000;
+	--color-text-quinary: #505050;
+	--color-border-primary: #ffffff;
+	--color-border-auxiliary: #eaeaea;
+	--color-fill-primary: #ffffff;
+	--color-fill-auxiliary: #eaeaea;
+	--color-fill-tertiary: #afafaf;
+	--color-fill-quaternary: #505050;
+	--color-fill-quinary: #151515;
+	--color-fill-senary: #000000;
+	--color-stroke-primary: #ffffff;
+}
+
+:root {
+	@apply .light-mode;
+	@apply .dark-mode;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+html {
+	height: 100%;
+	box-sizing: border-box;
+	touch-action: manipulation;
+	font-feature-settings: 'case' 1, 'rlig' 1, 'calt' 0;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: transparent;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	padding: 0;
+	scroll-behavior: smooth;
+	text-shadow: none;
+}
+
+html,
+body {
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* 
+#__next {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+} */
+
+body {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+body::-webkit-scrollbar {
+	display: none; /* Hide scrollbar for Chrome, Safari and Opera https://www.w3schools.com/howto/howto_css_hide_scrollbars.asp */
+}
+
+a {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}

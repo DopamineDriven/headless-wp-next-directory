@@ -12,6 +12,8 @@ generates:
    - 'typescript-react-apollo'
    - 'typescript-apollo-client-helpers'
    - 'typed-document-node'
+  config:
+   withHooks: true
  ./graphql.schema.json:
   plugins:
    - 'introspection'

@@ -1,6 +1,24 @@
+const purgecss = [
+	'@fullhuman/postcss-purgecss',
+	{
+		content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+		// extracting class names from templates
+		defaultExtractor: content => {
+			// liberally capture unused classNames
+			const broadMatch = content.match(/[^<>"'`\\s]*[^<>"'`\\s:]/g) || [];
+			// capture classNames undetected by broadMatch such as .block(class="w-1/5")
+			const innerMatch = content.match(/[^<>"'`\\s.()]*[^<>"'`\\s.():]/g) || [];
+			return broadMatch.concat(innerMatch);
+		}
+	}
+];
+
 module.exports = {
 	plugins: [
+		'postcss-import',
 		'tailwindcss',
+		'postcss-nesting',
+		process.env.NODE_ENV === 'production' ? purgecss : undefined,
 		'autoprefixer',
 		'postcss-flexbugs-fixes',
 		[
@@ -17,22 +35,3 @@ module.exports = {
 		]
 	]
 };
-
-// module.exports={
-//     plugins:[
-//         'tailwindcss',
-//         process.env.NODE_ENV === 'production' ? [
-//             '@fullhuman/postcss-purgecss',
-//             {
-//                 content : [
-//                     './pages/**/*.{js,jsx,ts,tsx}',
-//                     './components/**/*.{js,jsx,ts,tsx}'
-//                 ],
-//                 defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-//             }
-
-//         ] : undefined,
-//         'postcss-preset-env',
-//     ]
-// }
-// then set purge to false in tailwind.config.js
