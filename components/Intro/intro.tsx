@@ -1,4 +1,4 @@
-import { CMS_NAME, CMS_URL } from '../lib/constants';
+import { CMS_NAME, CMS_URL } from '../../lib/constants';
 import Link from 'next/link';
 interface SortRef {
 	href: string;

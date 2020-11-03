@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import Meta from 'components/meta';
 import LeadSubIcon from 'components/lead-sub-cima-icon';
 import LeadSubReturnHome from 'components/lead-sub-return-home';
-import DarkMode from 'components/lead-dark-mode';
+import DarkMode from '@components/Lead/lead-dark-mode-toggle';
 
 interface LeadSubProps {
 	title: string;

@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Header from '../components/lead';
+import Lead from '@components/Lead/lead';
 import Layout from '../components/Layout/layout';
 import Container from '../components/Container/container';
 import { CLIENT_NAME } from '../lib/constants';
@@ -15,7 +15,7 @@ const Contact = ({ preview }: Props) => {
 	return (
 		<Fragment>
 			<MediaContextProvider>
-				<Header />
+				<Lead />
 				<Layout preview={preview}>
 					<Head>
 						<title>{`${CLIENT_NAME} contact page`}</title>

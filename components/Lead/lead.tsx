@@ -1,12 +1,10 @@
 import { Fragment } from 'react';
 import Meta from 'components/meta';
-import LeadIcon from 'components/lead-cima-icon';
-import LeadSpan from 'components/lead-span';
-import LeadSocial from 'components/lead-social';
-import LeadTitle from 'components/lead-title';
-// import { Toggle } from 'components/lead-toggle';
+import LeadIcon from '@components/Lead/lead-cima-icon';
+import LeadSpan from '@components/Lead/lead-span';
+import LeadSocial from '@components/Lead/lead-social';
 
-const Lead = (): JSX.Element => {
+const Lead = () => {
 	return (
 		<Fragment>
 			<Meta />

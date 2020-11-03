@@ -32,7 +32,7 @@ import {
 } from '@graphql/api-all-tags';
 import { AllCategories_categories_edges } from '@graphql/__generated__/AllCategories';
 import { CMS_NAME, CLIENT_NAME } from '@lib/constants';
-import Header from '@components/lead';
+import { Lead } from '@components/Lead';
 // import HeroPost from '../components/hero-post';
 import { SearchBox } from '@components/index';
 import Cards from '../components/Card/card-coalescence';
@@ -130,7 +130,7 @@ const Index = ({
 	return (
 		<Fragment>
 			<MediaContextProvider>
-				<Header />
+				<Lead />
 
 				<Head>
 					<title>

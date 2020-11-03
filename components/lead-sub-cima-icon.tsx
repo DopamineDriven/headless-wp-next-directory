@@ -2,7 +2,7 @@ import CimaLogo from './CimaLogo';
 import Link from 'next/link';
 import { Media } from 'lib/window-width';
 import { Fragment } from 'react';
-import DarkMode from 'components/lead-dark-mode';
+import DarkMode from '@components/Lead/lead-dark-mode-toggle';
 
 const SubCimaIconConditional = (): JSX.Element => {
 	const cimaIconXs: JSX.Element = (
