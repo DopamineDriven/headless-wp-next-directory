@@ -10,11 +10,12 @@ import {
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
 } from '../../graphql/__generated__/AuthorCardQuery';
 import { Fragment } from 'react';
+import { AllPosts_posts_edges_node_featuredImage } from '../../graphql/__generated__/AllPosts';
 
 type HeroPostProps = {
-	featuredImage: CoverImageProps;
+	featuredImage: AllPosts_posts_edges_node_featuredImage;
 	author: any;
-	slug: string | number;
+	slug: string | null;
 	excerpt: string;
 	date: string;
 	modified: string;
@@ -33,8 +34,16 @@ export default function HeroPost({
 	return (
 		<section>
 			<div className='mb-8 md:mb-8 mt-8'>
-				{title != null && featuredImage != null && slug != null ? (
-					<CoverImage title={title} featuredImage={featuredImage} slug={slug} />
+				{title != null &&
+				featuredImage != null &&
+				featuredImage.node != null &&
+				featuredImage.node.sourceUrl != null &&
+				slug != null ? (
+					<CoverImage
+						title={title}
+						featuredImage={featuredImage}
+						slug={slug ? slug : '/'}
+					/>
 				) : null}
 			</div>
 			<div className='md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-10'>

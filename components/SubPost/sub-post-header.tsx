@@ -7,18 +7,10 @@ import Categories from '../Categories/categories';
 import CardIcons from '../Card/card-icons';
 import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
 import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
-import { AllPostsForCategory } from '../../graphql/__generated__/AllPostsForCategory';
-
-type PostHeaderProps = {
-	title: string | null;
-	featuredImage: CoverImageProps;
-	author: any;
-	date: string;
-	modified: string;
-	categories: any;
-	slug: string | number;
-	social: any;
-};
+import {
+	AllPostsForCategory,
+	AllPostsForCategory_categories_edges
+} from '../../graphql/__generated__/AllPostsForCategory';
 
 const SubPostHeader = ({
 	title,
@@ -27,17 +19,19 @@ const SubPostHeader = ({
 	modified,
 	author,
 	categories,
+	category,
 	social,
 	slug
-}:
-	| AllPosts_posts_edges_node
-	| AllPostsForCategory_categories_edges_node_posts_nodes) => {
+}: AllPostsForCategory_categories_edges_node_posts_nodes & {
+	categories: AllPostsForCategory;
+	category: AllPostsForCategory_categories_edges;
+}) => {
 	return (
 		<>
 			<div className='max-w-screen font-polished'>
 				<div className='mb-4 md:mb-4 -mx-5 sm:mx-0'>
 					<CoverImage
-						title={featuredImage?.title}
+						title={title ? title : 'title returned null'}
 						featuredImage={featuredImage}
 						slug={slug}
 					/>
@@ -61,9 +55,16 @@ const SubPostHeader = ({
 						<Avatar author={author} />
 					</div>
 					<div className='flex flex-col'>
-						<Categories categories={categories} category={categories} />
+						<Categories
+							categories={categories.categories?.edges}
+							category={
+								category && category.node && category.node.name
+									? category.node.name
+									: 'null'
+							}
+						/>
 					</div>
-					<CardIcons social={social} />
+					{social != null ? <CardIcons social={social ?? social} /> : null}
 				</div>
 
 				<hr className='border-customGray w-4xl' />
