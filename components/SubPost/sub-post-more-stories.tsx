@@ -1,36 +1,44 @@
 import PostPreview from './sub-post-preview';
-import {
-	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
-	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
-} from '../../graphql/__generated__/AuthorCardQuery';
+import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
+import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
 
-type NodeProps = {
-	node: any;
+type MoreStories = {
+	posts:
+		| AllPosts_posts_edges_node[]
+		| AllPostsForCategory_categories_edges_node_posts_nodes[];
 };
 
-type MoreStoriesProps = {
-	posts: any;
-};
-
-export default function SubPostMoreStories({ posts }: MoreStoriesProps) {
+export default function SubPostMoreStories({ posts }: MoreStories) {
 	return (
 		<section>
 			<h2 className='mb-8 text-6xl md:text-6xl font-bold tracking-tighter leading-tight'>
 				More Posts
 			</h2>
 			<div className='grid grid-cols-1 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 gap-y-20 md:gap-y-32 mb-32 align-middle content-center'>
-				{posts.map(({ node }: NodeProps) => (
-					<PostPreview
-						key={node.slug}
-						title={node.title}
-						featuredImage={node.featuredImage.node}
-						modified={node.modified}
-						date={node.date}
-						author={node.author.node}
-						slug={node.slug}
-						excerpt={node.excerpt}
-					/>
-				))}
+				{posts.map(
+					(
+						node:
+							| AllPosts_posts_edges_node
+							| AllPostsForCategory_categories_edges_node_posts_nodes
+					) => {
+						return (
+							<PostPreview
+								__typename={node.__typename}
+								content={node.content}
+								id={node.id}
+								key={node.slug}
+								title={node.title}
+								featuredImage={node.featuredImage != null ? node.featuredImage : null}
+								social={node.social}
+								modified={node.modified}
+								date={node.date}
+								author={node.author}
+								slug={node.slug}
+								excerpt={node.excerpt}
+							/>
+						);
+					}
+				)}
 			</div>
 		</section>
 	);

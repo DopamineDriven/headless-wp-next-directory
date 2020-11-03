@@ -4,41 +4,41 @@ import {
 	ApolloQueryResult,
 	NormalizedCacheObject
 } from '@apollo/client';
-import { initializeApollo } from '../../lib/apollo';
+import { initializeApollo } from '@lib/apollo';
 // import Container from 'components/container';
 // import PostBody from 'components/post-body';
 // import MoreStories from 'components/more-stories';
-import Header from '../../components/Header/header';
+import Header from '@components/Header/header';
 // import PostHeader from 'components/post-header';
 // import SectionSeparator from 'components/section-separator';
 import Layout from '@components/Layout';
-import PostTitle from '../../components/SubPost/sub-post-title';
+import PostTitle from '@components/SubPost/sub-post-title';
 import Cards from '@components/Card/card-coalescence';
 import Head from 'next/head';
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '../../lib/constants';
+import { CMS_NAME, HOME_OG_IMAGE_URL } from '@lib/constants';
 // import Tags from 'components/tags';
 import { Fragment } from 'react';
 import { GetStaticPaths, GetStaticPathsResult, GetStaticProps } from 'next';
 // import { MediaContextProvider } from 'lib/window-width';
-import { ALL_POSTS_FOR_CATEGORY } from '../../graphql/api-posts-for-category';
+import { ALL_POSTS_FOR_CATEGORY } from '@graphql/api-posts-for-category';
 import {
 	ALL_CATEGORIES,
 	allCategoryQueryVariables
-} from '../../graphql/api-all-categories';
+} from '@graphql/api-all-categories';
 import {
 	AllCategories_categories,
 	AllCategories,
 	AllCategories_categories_edges_node
-} from '../../graphql/__generated__/AllCategories';
+} from '@graphql/__generated__/AllCategories';
 import {
 	AllPostsForCategory,
 	AllPostsForCategory_categories,
 	AllPostsForCategory_categories_edges_node_posts,
 	AllPostsForCategory_categories_edges_node_posts_nodes,
 	AllPostsForCategory_categories_edges
-} from '../../graphql/__generated__/AllPostsForCategory';
-import { AllPosts_posts_edges } from '../../graphql/__generated__/AllPosts';
-import { AllPostsProps } from '../../types/posts';
+} from '@graphql/__generated__/AllPostsForCategory';
+import { AllPosts_posts_edges } from '@graphql/__generated__/AllPosts';
+import { AllPostsProps } from 'types/posts';
 
 type Required<T> = {
 	[P in keyof T]-?: T[P];
@@ -79,7 +79,7 @@ const Category = ({ posts, preview, postData }: SlugProps): JSX.Element => {
 			<Header />
 			<Layout preview={preview}>
 				{router.isFallback ? (
-					<PostTitle>Loading…</PostTitle>
+					<PostTitle title={null}>Loading…</PostTitle>
 				) : (
 					<>
 						<article>

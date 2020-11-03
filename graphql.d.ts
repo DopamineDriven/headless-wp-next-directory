@@ -4089,18 +4089,6 @@ export type ContentNodeToEnqueuedStylesheetConnectionEdge = {
 
 /** The size of the media item object. */
 export enum MediaItemSizeEnum {
-	/** MediaItem with the bc-large size */
-	BcLarge = 'BC_LARGE',
-	/** MediaItem with the bc-medium size */
-	BcMedium = 'BC_MEDIUM',
-	/** MediaItem with the bc-small size */
-	BcSmall = 'BC_SMALL',
-	/** MediaItem with the bc-thumb size */
-	BcThumb = 'BC_THUMB',
-	/** MediaItem with the bc-thumb-large size */
-	BcThumbLarge = 'BC_THUMB_LARGE',
-	/** MediaItem with the bc-xmedium size */
-	BcXmedium = 'BC_XMEDIUM',
 	/** MediaItem with the large size */
 	Large = 'LARGE',
 	/** MediaItem with the medium size */
@@ -6650,7 +6638,6 @@ export type MenuMenuItemsArgs = {
 
 /** Registered menu locations */
 export enum MenuLocationEnum {
-	AmpMenu = 'AMP_MENU',
 	Expanded = 'EXPANDED',
 	Footer = 'FOOTER',
 	Mobile = 'MOBILE',
@@ -10147,6 +10134,48 @@ export type TypeRefFragment = { __typename?: '__Type' } & Pick<
 		>;
 	};
 
+export type GetPostBySlugQueryVariables = Exact<{
+	slug: Scalars['ID'];
+}>;
+
+export type GetPostBySlugQuery = { __typename?: 'RootQuery' } & {
+	post?: Maybe<
+		{ __typename?: 'Post' } & Pick<
+			Post,
+			'slug' | 'title' | 'date' | 'modified' | 'content'
+		> & {
+				featuredImage?: Maybe<
+					{ __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' } & {
+						node?: Maybe<{ __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>>;
+					}
+				>;
+				categories?: Maybe<
+					{ __typename?: 'PostToCategoryConnection' } & {
+						nodes?: Maybe<
+							Array<Maybe<{ __typename?: 'Category' } & Pick<Category, 'name'>>>
+						>;
+					}
+				>;
+				social?: Maybe<
+					{ __typename?: 'Post_Social' } & Pick<
+						Post_Social,
+						'facebook' | 'instagram' | 'twitter' | 'website'
+					>
+				>;
+				author?: Maybe<
+					{ __typename?: 'NodeWithAuthorToUserConnectionEdge' } & {
+						node?: Maybe<
+							{ __typename?: 'User' } & Pick<
+								User,
+								'name' | 'firstName' | 'lastName'
+							> & { avatar?: Maybe<{ __typename?: 'Avatar' } & Pick<Avatar, 'url'>> }
+						>;
+					}
+				>;
+			}
+	>;
+};
+
 export type GetAllPostsWithSlugQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetAllPostsWithSlugQuery = { __typename?: 'RootQuery' } & {
@@ -10426,6 +10455,14 @@ declare module '*/api-introspection.ts' {
 	export const FullType: DocumentNode;
 	export const InputValue: DocumentNode;
 	export const TypeRef: DocumentNode;
+
+	export default defaultDocument;
+}
+
+declare module '*/api-post-by-slug.ts' {
+	import { DocumentNode } from 'graphql';
+	const defaultDocument: DocumentNode;
+	export const GetPostBySlug: DocumentNode;
 
 	export default defaultDocument;
 }
@@ -10904,6 +10941,43 @@ export const IntrospectionQuery = gql`
 	}
 	${FullType}
 	${InputValue}
+`;
+export const GetPostBySlug = gql`
+	query GetPostBySlug($slug: ID!) {
+		post(id: $slug, idType: SLUG) {
+			featuredImage {
+				node {
+					sourceUrl
+				}
+			}
+			slug
+			title
+			date
+			modified
+			content
+			categories {
+				nodes {
+					name
+				}
+			}
+			social {
+				facebook
+				instagram
+				twitter
+				website
+			}
+			author {
+				node {
+					name
+					firstName
+					lastName
+					avatar {
+						url
+					}
+				}
+			}
+		}
+	}
 `;
 export const GetAllPostsWithSlug = gql`
 	query getAllPostsWithSlug {
@@ -12138,6 +12212,92 @@ export type IntrospectionQueryLazyQueryHookResult = ReturnType<
 export type IntrospectionQueryQueryResult = Apollo.QueryResult<
 	IntrospectionQueryQuery,
 	IntrospectionQueryQueryVariables
+>;
+export const GetPostBySlugDocument = gql`
+	query GetPostBySlug($slug: ID!) {
+		post(id: $slug, idType: SLUG) {
+			featuredImage {
+				node {
+					sourceUrl
+				}
+			}
+			slug
+			title
+			date
+			modified
+			content
+			categories {
+				nodes {
+					name
+				}
+			}
+			social {
+				facebook
+				instagram
+				twitter
+				website
+			}
+			author {
+				node {
+					name
+					firstName
+					lastName
+					avatar {
+						url
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useGetPostBySlugQuery__
+ *
+ * To run a query within a React component, call `useGetPostBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPostBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPostBySlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetPostBySlugQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		GetPostBySlugQuery,
+		GetPostBySlugQueryVariables
+	>
+) {
+	return Apollo.useQuery<GetPostBySlugQuery, GetPostBySlugQueryVariables>(
+		GetPostBySlugDocument,
+		baseOptions
+	);
+}
+export function useGetPostBySlugLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		GetPostBySlugQuery,
+		GetPostBySlugQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<GetPostBySlugQuery, GetPostBySlugQueryVariables>(
+		GetPostBySlugDocument,
+		baseOptions
+	);
+}
+export type GetPostBySlugQueryHookResult = ReturnType<
+	typeof useGetPostBySlugQuery
+>;
+export type GetPostBySlugLazyQueryHookResult = ReturnType<
+	typeof useGetPostBySlugLazyQuery
+>;
+export type GetPostBySlugQueryResult = Apollo.QueryResult<
+	GetPostBySlugQuery,
+	GetPostBySlugQueryVariables
 >;
 export const GetAllPostsWithSlugDocument = gql`
 	query getAllPostsWithSlug {
@@ -20313,6 +20473,236 @@ export const IntrospectionQueryDocument: DocumentNode<
 		},
 		...FullTypeFragmentDoc.definitions,
 		...InputValueFragmentDoc.definitions
+	]
+};
+export const GetPostBySlugDocument: DocumentNode<
+	GetPostBySlugQuery,
+	GetPostBySlugQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'GetPostBySlug' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'slug' } },
+					type: {
+						kind: 'NonNullType',
+						type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } }
+					},
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'post' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'id' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'slug' } }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'idType' },
+								value: { kind: 'EnumValue', value: 'SLUG' }
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'featuredImage' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'sourceUrl' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'slug' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'title' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'date' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'modified' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'content' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'categories' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'nodes' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'social' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'facebook' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'instagram' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'twitter' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'website' },
+												arguments: [],
+												directives: []
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'author' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'firstName' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'lastName' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'avatar' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'url' },
+																		arguments: [],
+																		directives: []
+																	}
+																]
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
 	]
 };
 export const GetAllPostsWithSlugDocument: DocumentNode<

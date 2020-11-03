@@ -18,7 +18,7 @@ const Card = ({
 	title
 }:
 	| AllPosts_posts_edges_node
-	| AllPostsForCategory_categories_edges_node_posts_nodes): JSX.Element => {
+	| AllPostsForCategory_categories_edges_node_posts_nodes) => {
 	return (
 		<Fragment>
 			<div className='block mx-auto select-none w-full'>
@@ -31,7 +31,7 @@ const Card = ({
 							<CardAuthor author={author} modified={modified} />
 						</div>
 						<SiteDivider />
-						<div className='block float-right text-right pr-portfolio font-somaRoman'>
+						<div className='block float-right text-right pr-portfolioDivider font-somaRoman'>
 							{social != null ? <CardIcons social={social} /> : null}
 						</div>
 					</div>

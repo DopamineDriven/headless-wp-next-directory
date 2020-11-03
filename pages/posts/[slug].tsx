@@ -12,16 +12,24 @@ import { CMS_NAME } from 'lib/constants';
 import MoreCards from '@components/Card/card-coalescence';
 import { Fragment } from 'react';
 import { MediaContextProvider } from 'lib/window-width';
+import {
+	AllPostsForCategory_categories_edges_node_posts_nodes,
+	AllPostsForCategory_categories
+} from '../../graphql/__generated__/AllPostsForCategory';
+import { CategoriesByEdges } from '../../graphql';
 
 interface SlugProps {
 	post: any;
-	posts: any;
+	posts: AllPostsForCategory_categories_edges_node_posts_nodes[];
 	preview: boolean;
 }
 
-export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
+export default function Post({
+	post,
+	posts,
+	preview
+}: SlugProps & { categories: any }): JSX.Element {
 	const router: NextRouter = useRouter();
-	const morePosts = posts?.edges;
 
 	if (!router.isFallback && !post?.slug) {
 		return <ErrorPage statusCode={404} />;
@@ -37,26 +45,37 @@ export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
 				<HeaderType />
 				<Layout preview={preview}>
 					{router.isFallback ? (
-						<PostTitle>Loading…</PostTitle>
+						<PostTitle title={null}>Loading…</PostTitle>
 					) : (
 						<>
 							<article>
 								<Head>
 									<title>
-										{post.title} | Next.js Blog Example with {CMS_NAME}
+										{post.title} | Next.js Directory with {CMS_NAME}
 									</title>
 									<meta
 										property='og:image'
-										content={post.featuredImage?.node?.sourceUrl}
+										content={
+											post.featuredImage &&
+											post.featuredImage.node &&
+											post.featuredImage.node.sourceUrl
+												? post.featuredImage.node.sourceUrl
+												: 'ope'
+										}
 									/>
 								</Head>
 								<PostHeader
-									title={post.title}
-									featuredImage={post.featuredImage.node}
+									excerpt={post.excerpt}
+									categories={post.categories}
+									category={post.category}
+									__typename={post.__typename}
+									title={post.title ?? post.title}
+									content={post.content}
+									id={post.id}
+									featuredImage={post.featuredImage}
 									date={post.date}
 									modified={post.modified}
-									author={post.author.node}
-									categories={post.categories}
+									author={post.author}
 									slug={post.slug}
 									social={post.social}
 								/>
@@ -66,7 +85,15 @@ export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
 								</footer> */}
 							</article>
 							<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
-								{morePosts.length > 0 && <MoreCards posts={morePosts} />}
+								{posts != null ? (
+									posts.length > 0 ? (
+										<MoreCards posts={posts} />
+									) : (
+										'No posts'
+									)
+								) : (
+									'An error occurred returning posts.  Sorry for the inconvenience, please try again later.'
+								)}
 							</div>
 						</>
 					)}
@@ -78,7 +105,7 @@ export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
 
 interface Params {
 	params: {
-		slug: string | number;
+		slug: string | null;
 	};
 	preview: boolean;
 	previewData: any;
@@ -86,10 +113,9 @@ interface Params {
 
 export const getStaticProps = async ({
 	params,
-	preview = false,
-	previewData
+	preview = false
 }: Params & GetStaticProps) => {
-	const data = await getPostAndMorePosts(params.slug, preview, previewData);
+	const data = await getPostAndMorePosts(params.slug, preview);
 	return {
 		props: {
 			preview,
