@@ -42,6 +42,7 @@
 		"global.d.ts",
 		"graphql.d.ts",
 		"next-env.d.ts",
+		"_types/graphql.d.ts",
 		"**/*.ts",
 		"**/*.tsx",
 		"**/*.js"
