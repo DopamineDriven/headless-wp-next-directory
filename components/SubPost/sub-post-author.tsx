@@ -1,6 +1,6 @@
-import { SiteDivider } from './Core';
+import SiteDivider from '../Divider';
 
-export default function Avatar({ author }: any) {
+export default function SubPostAuthor({ author }: any) {
 	const nombre =
 		author.firstName && author.lastName
 			? `${author.firstName} ${author.lastName}`

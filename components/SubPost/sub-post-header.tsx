@@ -1,10 +1,10 @@
-import Avatar from './post-avatar';
-import { DatePublished } from './Date';
-import { DateModified } from './Date';
-import CoverImage, { CoverImageProps } from './post-cover-image';
-import PostTitle from './post-title';
-import Categories from './Categories/categories';
-import CardIcons from './Card/card-icons';
+import Avatar from './sub-post-author';
+import { DatePublished } from '../Date';
+import { DateModified } from '../Date';
+import CoverImage, { CoverImageProps } from './sub-post-featured-image';
+import PostTitle from './sub-post-title';
+import Categories from '../Categories/categories';
+import CardIcons from '../Card/card-icons';
 
 type PostHeaderProps = {
 	title: string;
@@ -17,7 +17,7 @@ type PostHeaderProps = {
 	social: any;
 };
 
-export default function PostHeader({
+export default function SubPostHeader({
 	title,
 	featuredImage,
 	date,

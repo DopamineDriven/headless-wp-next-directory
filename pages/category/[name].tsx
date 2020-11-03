@@ -12,7 +12,7 @@ import Header from '../../components/Header/header';
 // import PostHeader from 'components/post-header';
 // import SectionSeparator from 'components/section-separator';
 import Layout from '@components/Layout';
-import PostTitle from '../../components/post-title';
+import PostTitle from '../../components/SubPost/sub-post-title';
 import Cards from '@components/Card/card-coalescence';
 import Head from 'next/head';
 import { CMS_NAME, HOME_OG_IMAGE_URL } from '../../lib/constants';

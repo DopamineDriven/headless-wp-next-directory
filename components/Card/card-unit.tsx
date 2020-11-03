@@ -3,7 +3,7 @@ import CoverImage from '@components/Card/card-featured-image';
 import CardAuthor from '@components/Card/card-author';
 import CardIcons from '@components/Card/card-icons';
 import CardExcerptFC from './card-excerpt';
-import SiteDivider from 'components/Core/site-divider';
+import SiteDivider from '@components/Divider/site-divider';
 import CardTitleFC from './card-title';
 import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
 import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';

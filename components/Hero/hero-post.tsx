@@ -1,8 +1,10 @@
 import { CardAuthor } from '../Card';
 import { DatePublished } from '../Date';
-import CoverImage, { CoverImageProps } from '../post-cover-image';
+import CoverImage, {
+	CoverImageProps
+} from '../SubPost/sub-post-featured-image';
 import Link from 'next/link';
-import { Divider } from '../Core';
+import SiteDivider from '../Divider';
 import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
@@ -59,7 +61,7 @@ export default function HeroPost({
 					<CardAuthor author={author} modified={modified} />
 				</div>
 			</div>
-			<Divider />
+			<SiteDivider />
 		</section>
 	);
 }
