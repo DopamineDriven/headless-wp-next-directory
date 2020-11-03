@@ -75,6 +75,7 @@
 		"@fortawesome/free-regular-svg-icons": "^5.14.0",
 		"@fortawesome/free-solid-svg-icons": "^5.14.0",
 		"@fortawesome/react-fontawesome": "^0.1.11",
+		"@graphql-tools/load-files": "^6.2.4",
 		"@tailwindcss/typography": "^0.2.0",
 		"@vercel/node": "^1.8.0",
 		"@welldone-software/why-did-you-render": "^5.0.0",
