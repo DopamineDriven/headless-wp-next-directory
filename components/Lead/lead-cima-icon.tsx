@@ -1,11 +1,11 @@
-import CimaLogo from './CimaLogo';
+import CimaLogo from '../CimaLogo';
 import Link from 'next/link';
-import { Media } from 'lib/window-width';
+import { Media } from '@lib/window-width';
 import { Fragment } from 'react';
-import DarkMode from 'components/lead-dark-mode';
-import LeadTitle from 'components/lead-title';
+import DarkMode from '@components/Lead/lead-dark-mode-toggle';
+import LeadTitle from '@components/Lead/lead-title';
 
-const CimaIconConditional = (): JSX.Element => {
+const LeadCimaIcon = (): JSX.Element => {
 	const cimaIconXs: JSX.Element = (
 		<Media at='xs'>
 			<Link href='/'>
@@ -123,4 +123,4 @@ const CimaIconConditional = (): JSX.Element => {
 	);
 };
 
-export default CimaIconConditional;
+export default LeadCimaIcon;

@@ -1,6 +1,6 @@
-import { CardAuthor } from './Card';
-import { DatePublished } from './Date';
-import CoverImage, { CoverImageProps } from './post-cover-image';
+import { CardAuthor } from '../Card';
+import { DatePublished } from '../Date';
+import CoverImage, { CoverImageProps } from './sub-post-featured-image';
 import Link from 'next/link';
 // import {
 // 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
@@ -18,7 +18,7 @@ type PostPreviewProps = {
 	// avatar: AuthorCardQueryUsersNodes;
 };
 
-export default function PostPreview({
+export default function SubPostPreview({
 	title,
 	featuredImage,
 	date,

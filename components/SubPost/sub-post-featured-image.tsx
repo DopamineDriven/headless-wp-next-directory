@@ -7,7 +7,7 @@ export type CoverImageProps = {
 	slug?: string | number;
 };
 
-export default function CoverImage({
+export default function SubPostFeaturedImage({
 	title,
 	featuredImage,
 	slug

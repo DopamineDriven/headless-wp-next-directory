@@ -1,4 +1,4 @@
-import markdownStyles from 'components/post-body.module.css';
+import markdownStyles from './sub-post-body.module.css';
 import ReactMarkdown from 'react-markdown/with-html';
 import {
 	Prism as SyntaxHighlighter,
@@ -25,7 +25,7 @@ const CodeBlock = ({
 	);
 };
 
-const PostBody = ({ content }: PostBodyProps): JSX.Element => {
+const SubPostBody = ({ content }: PostBodyProps): JSX.Element => {
 	return (
 		<div className='text-shadow-none shadow-none select-none mx-auto content-center text-left md:text-left md:text-customP items-center justify-center align-middle max-w-xsCardGridCima '>
 			<ReactMarkdown
@@ -38,4 +38,4 @@ const PostBody = ({ content }: PostBodyProps): JSX.Element => {
 	);
 };
 
-export default PostBody;
+export default SubPostBody;

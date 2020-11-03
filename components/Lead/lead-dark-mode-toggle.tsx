@@ -1,7 +1,7 @@
 import useDarkMode, { DarkMode } from 'use-dark-mode';
 import useClient from 'lib/isClient';
 import { Fragment } from 'react';
-import LeadDarkModeConditional from 'components/lead-dark-mode-conditional';
+import LeadDarkModeConditional from '@components/Lead/lead-dark-mode-conditional';
 
 const LeadDarkModeToggle = (): JSX.Element => {
 	const darkMode: DarkMode = useDarkMode();

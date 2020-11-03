@@ -1,8 +1,8 @@
-import PostPreview from './post-preview';
+import PostPreview from './sub-post-preview';
 import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
-} from '../graphql/__generated__/AuthorCardQuery';
+} from '../../graphql/__generated__/AuthorCardQuery';
 
 type NodeProps = {
 	node: any;
@@ -12,7 +12,7 @@ type MoreStoriesProps = {
 	posts: any;
 };
 
-export default function MoreStories({ posts }: MoreStoriesProps) {
+export default function SubPostMoreStories({ posts }: MoreStoriesProps) {
 	return (
 		<section>
 			<h2 className='mb-8 text-6xl md:text-6xl font-bold tracking-tighter leading-tight'>

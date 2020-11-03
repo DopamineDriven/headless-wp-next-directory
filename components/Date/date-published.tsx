@@ -4,11 +4,13 @@ export type DateProps = {
 	dateString: string | null;
 };
 
-export default function Date({ dateString }: DateProps) {
+const Date = ({ dateString }: DateProps) => {
 	if (dateString != null) {
-		const date = parseISO(dateString);
+		const date: Date = parseISO(dateString);
 		return <time dateTime={dateString}>{format(date, 'LLLL	d, yyyy')}</time>;
 	} else {
-		return null;
+		return <p>Error fetching original date published.</p>;
 	}
-}
+};
+
+export default Date;
