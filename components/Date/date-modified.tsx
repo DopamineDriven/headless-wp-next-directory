@@ -4,7 +4,7 @@ interface ModifiedProps {
 	modifiedString: string | null;
 }
 
-const Modified = ({ modifiedString }: ModifiedProps): JSX.Element => {
+const Modified = ({ modifiedString }: ModifiedProps) => {
 	if (modifiedString != null) {
 		const date: Date = parseISO(modifiedString);
 		return <time dateTime={modifiedString}>{format(date, 'LLLL	d, yyyy')}</time>;
