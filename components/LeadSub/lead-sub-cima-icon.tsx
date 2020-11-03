@@ -1,10 +1,10 @@
-import CimaLogo from './CimaLogo';
+import { CimaLogo } from '@components/index';
 import Link from 'next/link';
 import { Media } from 'lib/window-width';
 import { Fragment } from 'react';
-import DarkMode from '@components/Lead/lead-dark-mode-toggle';
+import { LeadDarkModeToggle } from '@components/Lead';
 
-const SubCimaIconConditional = (): JSX.Element => {
+const LeadSubCimaIcon = (): JSX.Element => {
 	const cimaIconXs: JSX.Element = (
 		<Media at='xs'>
 			<Link href='/'>
@@ -58,7 +58,7 @@ const SubCimaIconConditional = (): JSX.Element => {
 	);
 	const DarkModeToggler = (): JSX.Element => (
 		<div className='col-span-4 text-right transition-all transform md:pt-portfolio md:text-customTitle md:-translate-y-mdmxSocial translate-y-portfolioLSMobile -translate-x-portfolioPadding'>
-			<DarkMode />
+			<LeadDarkModeToggle />
 		</div>
 	);
 
@@ -81,4 +81,4 @@ const SubCimaIconConditional = (): JSX.Element => {
 	);
 };
 
-export default SubCimaIconConditional;
+export default LeadSubCimaIcon;

@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
-import Meta from 'components/meta';
-import LeadSubIcon from 'components/lead-sub-cima-icon';
-import LeadSubReturnHome from 'components/lead-sub-return-home';
-import DarkMode from '@components/Lead/lead-dark-mode-toggle';
+import Meta from '@components/Meta/meta';
+import LeadSubIcon from './lead-sub-cima-icon';
+import LeadSubReturnHome from './lead-sub-return-home';
+import { LeadDarkModeToggle } from '@components/Lead';
 
 interface LeadSubProps {
 	title: string;
@@ -16,7 +16,7 @@ const LeadSub = ({ title }: LeadSubProps): JSX.Element => {
 				<LeadSubIcon />
 				<LeadSubReturnHome title={title} />
 				<div className=' pt-portfolioLS text-center text-primary  block w-full min-w-full transition-all transform translate-x-portfolioPadding'>
-					<DarkMode />
+					<LeadDarkModeToggle />
 				</div>
 			</header>
 		</Fragment>

@@ -2,7 +2,7 @@ import { NextRouter, useRouter } from 'next/router';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import ErrorPage from 'next/error';
 import PostBody from 'components/post-body';
-import Header from 'components/lead-sub';
+import Header from '@components/LeadSub/lead-sub';
 import PostHeader from 'components/post-header';
 import Layout from 'components/Layout/layout';
 import { getAllPostsWithSlug, getPostAndMorePosts } from 'lib/api';

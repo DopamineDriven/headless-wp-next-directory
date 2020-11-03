@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import Meta from 'components/meta';
+import Meta from '@components/Meta/meta';
 import LeadIcon from '@components/Lead/lead-cima-icon';
 import LeadSpan from '@components/Lead/lead-span';
 import LeadSocial from '@components/Lead/lead-social';
