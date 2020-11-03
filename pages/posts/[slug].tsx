@@ -43,7 +43,7 @@ export default function Post({ post, posts, preview }: SlugProps): JSX.Element {
 							<article>
 								<Head>
 									<title>
-										{post.title} | Next.js Blog Example with {CMS_NAME}
+										{post.title} | Next.js Directory with {CMS_NAME}
 									</title>
 									<meta
 										property='og:image'

@@ -31,7 +31,7 @@ const Card = ({
 							<CardAuthor author={author} modified={modified} />
 						</div>
 						<SiteDivider />
-						<div className='block float-right text-right pr-portfolio font-somaRoman'>
+						<div className='block float-right text-right pr-portfolioDivider font-somaRoman'>
 							{social != null ? <CardIcons social={social} /> : null}
 						</div>
 					</div>
