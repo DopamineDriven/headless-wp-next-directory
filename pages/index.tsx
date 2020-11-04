@@ -1,18 +1,6 @@
 import Head from 'next/head';
-import {
-	useState,
-	useEffect,
-	ChangeEvent,
-	SyntheticEvent,
-	Fragment
-} from 'react';
-import {
-	GetServerSideProps,
-	GetStaticProps,
-	GetStaticPropsContext,
-	InferGetStaticPropsType,
-	NextPage
-} from 'next';
+import { useState, useEffect, SyntheticEvent, Fragment } from 'react';
+import { GetStaticProps } from 'next';
 import {
 	ApolloClient,
 	ApolloQueryResult,
@@ -22,26 +10,16 @@ import {
 import { initializeApollo } from '@lib/apollo';
 import {
 	ALL_CATEGORIES,
-	allCategoryQueryVariables,
-	categoryKeyNameForCache
+	allCategoryQueryVariables
 } from '@graphql/api-all-categories';
-import {
-	allTagQueryVariables,
-	ALL_TAGS,
-	tagKeyNameForCache
-} from '@graphql/api-all-tags';
+import { allTagQueryVariables, ALL_TAGS } from '@graphql/api-all-tags';
 import { AllCategories_categories_edges } from '@graphql/__generated__/AllCategories';
 import { CMS_NAME, CLIENT_NAME } from '@lib/constants';
 import { Lead } from '@components/Lead';
-// import HeroPost from '../components/hero-post';
 import { SearchBox } from '@components/index';
 import Cards from '../components/Card/card-coalescence';
 import { MediaContextProvider } from '../lib/window-width';
-// import Link from 'next/link';
-// import FieldEnum from 'types/enums/field-enum';
-// import OrderEnum from 'types/enums/order-enum';
 import Footer from '../components/Footer/footer';
-// import CardFilter from 'components/card-filter';
 import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
@@ -246,7 +224,6 @@ export const getStaticProps = async ({
 	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
 	return {
 		props: {
-			// initialApolloState: apolloClient.cache.extract(),
 			allPosts: allPostsCacheNoNode,
 			preview,
 			tags: tagsCache?.edges,
