@@ -9,11 +9,11 @@ const withImages = {
 };
 
 const GraphQL = {
-	webpack: config => {
+	webpack: (config, options) => {
 		config.module.rules.push({
 			test: /\.(graphql|gql)$/,
 			exclude: /node_modules/,
-			loader: 'graphql-tag/loader'
+			use: [options.defaultLoaders.babel, { loader: 'graphql-tag/loader' }]
 		});
 		return config;
 	},
@@ -23,12 +23,13 @@ const GraphQL = {
 };
 
 const Yaml = {
-	webpack(config, options) {
+	webpack(config, _options) {
 		config.module.rules.push({
 			test: /\.ya?ml$/,
 			type: 'json',
 			use: 'yaml-loader'
 		});
+		return config;
 	}
 };
 

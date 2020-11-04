@@ -6,7 +6,7 @@
 //     lang: string;
 //     langs: string[];
 // }
-export const fallbackLanguage: string = 'en';
+export const fallbackLanguage: string = 'en-US';
 
 // export const languages: string[] = [
 // 	'en', // english**

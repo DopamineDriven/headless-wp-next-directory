@@ -1,6 +1,6 @@
 import useDarkMode, { DarkMode } from 'use-dark-mode';
 import { Media } from 'lib/window-width';
-import DarkIcons from './DarkIcons';
+import DarkIcons from '../DarkIcons';
 import { Fragment } from 'react';
 
 const LeadDarkModeConditional = (): JSX.Element => {

@@ -4089,18 +4089,6 @@ export type ContentNodeToEnqueuedStylesheetConnectionEdge = {
 
 /** The size of the media item object. */
 export enum MediaItemSizeEnum {
-	/** MediaItem with the bc-large size */
-	BcLarge = 'BC_LARGE',
-	/** MediaItem with the bc-medium size */
-	BcMedium = 'BC_MEDIUM',
-	/** MediaItem with the bc-small size */
-	BcSmall = 'BC_SMALL',
-	/** MediaItem with the bc-thumb size */
-	BcThumb = 'BC_THUMB',
-	/** MediaItem with the bc-thumb-large size */
-	BcThumbLarge = 'BC_THUMB_LARGE',
-	/** MediaItem with the bc-xmedium size */
-	BcXmedium = 'BC_XMEDIUM',
 	/** MediaItem with the large size */
 	Large = 'LARGE',
 	/** MediaItem with the medium size */
@@ -6650,7 +6638,6 @@ export type MenuMenuItemsArgs = {
 
 /** Registered menu locations */
 export enum MenuLocationEnum {
-	AmpMenu = 'AMP_MENU',
 	Expanded = 'EXPANDED',
 	Footer = 'FOOTER',
 	Mobile = 'MOBILE',
@@ -10062,6 +10049,107 @@ export type ExcerptQuery = { __typename?: 'RootQuery' } & {
 	>;
 };
 
+export type AuthorFieldsFragment = { __typename?: 'User' } & Pick<
+	User,
+	'name' | 'firstName' | 'lastName'
+> & { avatar?: Maybe<{ __typename?: 'Avatar' } & Pick<Avatar, 'url'>> };
+
+export type PostFieldsFragment = { __typename?: 'Post' } & Pick<
+	Post,
+	'title' | 'excerpt' | 'slug' | 'date' | 'modified'
+> & {
+		featuredImage?: Maybe<
+			{ __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' } & {
+				node?: Maybe<{ __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>>;
+			}
+		>;
+		author?: Maybe<
+			{ __typename?: 'NodeWithAuthorToUserConnectionEdge' } & {
+				node?: Maybe<{ __typename?: 'User' } & AuthorFieldsFragment>;
+			}
+		>;
+		social?: Maybe<
+			{ __typename?: 'Post_Social' } & Pick<
+				Post_Social,
+				'facebook' | 'twitter' | 'instagram' | 'website'
+			>
+		>;
+		categories?: Maybe<
+			{ __typename?: 'PostToCategoryConnection' } & {
+				edges?: Maybe<
+					Array<
+						Maybe<
+							{ __typename?: 'PostToCategoryConnectionEdge' } & {
+								node?: Maybe<{ __typename?: 'Category' } & Pick<Category, 'name'>>;
+							}
+						>
+					>
+				>;
+			}
+		>;
+		tags?: Maybe<
+			{ __typename?: 'PostToTagConnection' } & {
+				edges?: Maybe<
+					Array<
+						Maybe<
+							{ __typename?: 'PostToTagConnectionEdge' } & {
+								node?: Maybe<{ __typename?: 'Tag' } & Pick<Tag, 'name'>>;
+							}
+						>
+					>
+				>;
+			}
+		>;
+	};
+
+export type PostSlugsQueryVariables = Exact<{
+	slug: Scalars['ID'];
+}>;
+
+export type PostSlugsQuery = { __typename?: 'RootQuery' } & {
+	post?: Maybe<
+		{ __typename?: 'Post' } & Pick<Post, 'content'> & {
+				revisions?: Maybe<
+					{ __typename?: 'PostToRevisionConnection' } & {
+						edges?: Maybe<
+							Array<
+								Maybe<
+									{ __typename?: 'PostToRevisionConnectionEdge' } & {
+										node?: Maybe<
+											{ __typename?: 'Post' } & Pick<
+												Post,
+												'title' | 'excerpt' | 'content'
+											> & {
+													author?: Maybe<
+														{ __typename?: 'NodeWithAuthorToUserConnectionEdge' } & {
+															node?: Maybe<{ __typename?: 'User' } & AuthorFieldsFragment>;
+														}
+													>;
+												}
+										>;
+									}
+								>
+							>
+						>;
+					}
+				>;
+			} & PostFieldsFragment
+	>;
+	posts?: Maybe<
+		{ __typename?: 'RootQueryToPostConnection' } & {
+			edges?: Maybe<
+				Array<
+					Maybe<
+						{ __typename?: 'RootQueryToPostConnectionEdge' } & {
+							node?: Maybe<{ __typename?: 'Post' } & PostFieldsFragment>;
+						}
+					>
+				>
+			>;
+		}
+	>;
+};
+
 export type IntrospectionQueryQueryVariables = Exact<{ [key: string]: never }>;
 
 export type IntrospectionQueryQuery = { __typename?: 'RootQuery' } & {
@@ -10146,6 +10234,48 @@ export type TypeRefFragment = { __typename?: '__Type' } & Pick<
 				}
 		>;
 	};
+
+export type GetPostBySlugQueryVariables = Exact<{
+	slug: Scalars['ID'];
+}>;
+
+export type GetPostBySlugQuery = { __typename?: 'RootQuery' } & {
+	post?: Maybe<
+		{ __typename?: 'Post' } & Pick<
+			Post,
+			'slug' | 'title' | 'date' | 'modified' | 'content'
+		> & {
+				featuredImage?: Maybe<
+					{ __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' } & {
+						node?: Maybe<{ __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>>;
+					}
+				>;
+				categories?: Maybe<
+					{ __typename?: 'PostToCategoryConnection' } & {
+						nodes?: Maybe<
+							Array<Maybe<{ __typename?: 'Category' } & Pick<Category, 'name'>>>
+						>;
+					}
+				>;
+				social?: Maybe<
+					{ __typename?: 'Post_Social' } & Pick<
+						Post_Social,
+						'facebook' | 'instagram' | 'twitter' | 'website'
+					>
+				>;
+				author?: Maybe<
+					{ __typename?: 'NodeWithAuthorToUserConnectionEdge' } & {
+						node?: Maybe<
+							{ __typename?: 'User' } & Pick<
+								User,
+								'name' | 'firstName' | 'lastName'
+							> & { avatar?: Maybe<{ __typename?: 'Avatar' } & Pick<Avatar, 'url'>> }
+						>;
+					}
+				>;
+			}
+	>;
+};
 
 export type GetAllPostsWithSlugQueryVariables = Exact<{ [key: string]: never }>;
 
@@ -10419,6 +10549,16 @@ declare module '*/api-excerpt.ts' {
 	export default defaultDocument;
 }
 
+declare module '*/api-get-posts-and-more-posts.ts' {
+	import { DocumentNode } from 'graphql';
+	const defaultDocument: DocumentNode;
+	export const AuthorFields: DocumentNode;
+	export const PostFields: DocumentNode;
+	export const PostSlugs: DocumentNode;
+
+	export default defaultDocument;
+}
+
 declare module '*/api-introspection.ts' {
 	import { DocumentNode } from 'graphql';
 	const defaultDocument: DocumentNode;
@@ -10426,6 +10566,14 @@ declare module '*/api-introspection.ts' {
 	export const FullType: DocumentNode;
 	export const InputValue: DocumentNode;
 	export const TypeRef: DocumentNode;
+
+	export default defaultDocument;
+}
+
+declare module '*/api-post-by-slug.ts' {
+	import { DocumentNode } from 'graphql';
+	const defaultDocument: DocumentNode;
+	export const GetPostBySlug: DocumentNode;
 
 	export default defaultDocument;
 }
@@ -10470,6 +10618,56 @@ declare module '*/wp-search-query.ts' {
 	export default defaultDocument;
 }
 
+export const AuthorFields = gql`
+	fragment AuthorFields on User {
+		name
+		firstName
+		lastName
+		avatar {
+			url
+		}
+	}
+`;
+export const PostFields = gql`
+	fragment PostFields on Post {
+		title
+		excerpt
+		slug
+		date
+		modified
+		featuredImage {
+			node {
+				sourceUrl
+			}
+		}
+		author {
+			node {
+				...AuthorFields
+			}
+		}
+		social {
+			facebook
+			twitter
+			instagram
+			website
+		}
+		categories {
+			edges {
+				node {
+					name
+				}
+			}
+		}
+		tags {
+			edges {
+				node {
+					name
+				}
+			}
+		}
+	}
+	${AuthorFields}
+`;
 export const TypeRef = gql`
 	fragment TypeRef on __Type {
 		kind
@@ -10877,6 +11075,37 @@ export const Excerpt = gql`
 		}
 	}
 `;
+export const PostSlugs = gql`
+	query PostSlugs($slug: ID!) {
+		post(id: $slug, idType: SLUG) {
+			...PostFields
+			content
+			revisions(first: 1, where: { orderby: { field: MODIFIED, order: DESC } }) {
+				edges {
+					node {
+						title
+						excerpt
+						content
+						author {
+							node {
+								...AuthorFields
+							}
+						}
+					}
+				}
+			}
+		}
+		posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+			edges {
+				node {
+					...PostFields
+				}
+			}
+		}
+	}
+	${PostFields}
+	${AuthorFields}
+`;
 export const IntrospectionQuery = gql`
 	query IntrospectionQuery {
 		__schema {
@@ -10904,6 +11133,43 @@ export const IntrospectionQuery = gql`
 	}
 	${FullType}
 	${InputValue}
+`;
+export const GetPostBySlug = gql`
+	query GetPostBySlug($slug: ID!) {
+		post(id: $slug, idType: SLUG) {
+			featuredImage {
+				node {
+					sourceUrl
+				}
+			}
+			slug
+			title
+			date
+			modified
+			content
+			categories {
+				nodes {
+					name
+				}
+			}
+			social {
+				facebook
+				instagram
+				twitter
+				website
+			}
+			author {
+				node {
+					name
+					firstName
+					lastName
+					avatar {
+						url
+					}
+				}
+			}
+		}
+	}
 `;
 export const GetAllPostsWithSlug = gql`
 	query getAllPostsWithSlug {
@@ -11004,6 +11270,56 @@ export const WpSearchQuery = gql`
 			}
 		}
 	}
+`;
+export const AuthorFieldsFragmentDoc = gql`
+	fragment AuthorFields on User {
+		name
+		firstName
+		lastName
+		avatar {
+			url
+		}
+	}
+`;
+export const PostFieldsFragmentDoc = gql`
+	fragment PostFields on Post {
+		title
+		excerpt
+		slug
+		date
+		modified
+		featuredImage {
+			node {
+				sourceUrl
+			}
+		}
+		author {
+			node {
+				...AuthorFields
+			}
+		}
+		social {
+			facebook
+			twitter
+			instagram
+			website
+		}
+		categories {
+			edges {
+				node {
+					name
+				}
+			}
+		}
+		tags {
+			edges {
+				node {
+					name
+				}
+			}
+		}
+	}
+	${AuthorFieldsFragmentDoc}
 `;
 export const TypeRefFragmentDoc = gql`
 	fragment TypeRef on __Type {
@@ -12063,6 +12379,81 @@ export type ExcerptQueryResult = Apollo.QueryResult<
 	ExcerptQuery,
 	ExcerptQueryVariables
 >;
+export const PostSlugsDocument = gql`
+	query PostSlugs($slug: ID!) {
+		post(id: $slug, idType: SLUG) {
+			...PostFields
+			content
+			revisions(first: 1, where: { orderby: { field: MODIFIED, order: DESC } }) {
+				edges {
+					node {
+						title
+						excerpt
+						content
+						author {
+							node {
+								...AuthorFields
+							}
+						}
+					}
+				}
+			}
+		}
+		posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+			edges {
+				node {
+					...PostFields
+				}
+			}
+		}
+	}
+	${PostFieldsFragmentDoc}
+	${AuthorFieldsFragmentDoc}
+`;
+
+/**
+ * __usePostSlugsQuery__
+ *
+ * To run a query within a React component, call `usePostSlugsQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePostSlugsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePostSlugsQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function usePostSlugsQuery(
+	baseOptions?: Apollo.QueryHookOptions<PostSlugsQuery, PostSlugsQueryVariables>
+) {
+	return Apollo.useQuery<PostSlugsQuery, PostSlugsQueryVariables>(
+		PostSlugsDocument,
+		baseOptions
+	);
+}
+export function usePostSlugsLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		PostSlugsQuery,
+		PostSlugsQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<PostSlugsQuery, PostSlugsQueryVariables>(
+		PostSlugsDocument,
+		baseOptions
+	);
+}
+export type PostSlugsQueryHookResult = ReturnType<typeof usePostSlugsQuery>;
+export type PostSlugsLazyQueryHookResult = ReturnType<
+	typeof usePostSlugsLazyQuery
+>;
+export type PostSlugsQueryResult = Apollo.QueryResult<
+	PostSlugsQuery,
+	PostSlugsQueryVariables
+>;
 export const IntrospectionQueryDocument = gql`
 	query IntrospectionQuery {
 		__schema {
@@ -12138,6 +12529,92 @@ export type IntrospectionQueryLazyQueryHookResult = ReturnType<
 export type IntrospectionQueryQueryResult = Apollo.QueryResult<
 	IntrospectionQueryQuery,
 	IntrospectionQueryQueryVariables
+>;
+export const GetPostBySlugDocument = gql`
+	query GetPostBySlug($slug: ID!) {
+		post(id: $slug, idType: SLUG) {
+			featuredImage {
+				node {
+					sourceUrl
+				}
+			}
+			slug
+			title
+			date
+			modified
+			content
+			categories {
+				nodes {
+					name
+				}
+			}
+			social {
+				facebook
+				instagram
+				twitter
+				website
+			}
+			author {
+				node {
+					name
+					firstName
+					lastName
+					avatar {
+						url
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useGetPostBySlugQuery__
+ *
+ * To run a query within a React component, call `useGetPostBySlugQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetPostBySlugQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetPostBySlugQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useGetPostBySlugQuery(
+	baseOptions?: Apollo.QueryHookOptions<
+		GetPostBySlugQuery,
+		GetPostBySlugQueryVariables
+	>
+) {
+	return Apollo.useQuery<GetPostBySlugQuery, GetPostBySlugQueryVariables>(
+		GetPostBySlugDocument,
+		baseOptions
+	);
+}
+export function useGetPostBySlugLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		GetPostBySlugQuery,
+		GetPostBySlugQueryVariables
+	>
+) {
+	return Apollo.useLazyQuery<GetPostBySlugQuery, GetPostBySlugQueryVariables>(
+		GetPostBySlugDocument,
+		baseOptions
+	);
+}
+export type GetPostBySlugQueryHookResult = ReturnType<
+	typeof useGetPostBySlugQuery
+>;
+export type GetPostBySlugLazyQueryHookResult = ReturnType<
+	typeof useGetPostBySlugLazyQuery
+>;
+export type GetPostBySlugQueryResult = Apollo.QueryResult<
+	GetPostBySlugQuery,
+	GetPostBySlugQueryVariables
 >;
 export const GetAllPostsWithSlugDocument = gql`
 	query getAllPostsWithSlug {
@@ -17567,6 +18044,278 @@ export type TypedTypePolicies = TypePolicies & {
 		fields?: UpdateUserPayloadFieldPolicy;
 	};
 };
+export const AuthorFieldsFragmentDoc: DocumentNode<
+	AuthorFieldsFragment,
+	unknown
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'FragmentDefinition',
+			name: { kind: 'Name', value: 'AuthorFields' },
+			typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'User' } },
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'name' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'firstName' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'lastName' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'avatar' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'url' },
+									arguments: [],
+									directives: []
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
+export const PostFieldsFragmentDoc: DocumentNode<
+	PostFieldsFragment,
+	unknown
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'FragmentDefinition',
+			name: { kind: 'Name', value: 'PostFields' },
+			typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'Post' } },
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'title' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'excerpt' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'slug' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'date' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'modified' },
+						arguments: [],
+						directives: []
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'featuredImage' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'node' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'sourceUrl' },
+												arguments: [],
+												directives: []
+											}
+										]
+									}
+								}
+							]
+						}
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'author' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'node' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'FragmentSpread',
+												name: { kind: 'Name', value: 'AuthorFields' },
+												directives: []
+											}
+										]
+									}
+								}
+							]
+						}
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'social' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'facebook' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'twitter' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'instagram' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'website' },
+									arguments: [],
+									directives: []
+								}
+							]
+						}
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'categories' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'tags' },
+						arguments: [],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		...AuthorFieldsFragmentDoc.definitions
+	]
+};
 export const TypeRefFragmentDoc: DocumentNode<TypeRefFragment, unknown> = {
 	kind: 'Document',
 	definitions: [
@@ -20170,6 +20919,255 @@ export const ExcerptDocument: DocumentNode<
 		}
 	]
 };
+export const PostSlugsDocument: DocumentNode<
+	PostSlugsQuery,
+	PostSlugsQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'PostSlugs' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'slug' } },
+					type: {
+						kind: 'NonNullType',
+						type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } }
+					},
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'post' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'id' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'slug' } }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'idType' },
+								value: { kind: 'EnumValue', value: 'SLUG' }
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'FragmentSpread',
+									name: { kind: 'Name', value: 'PostFields' },
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'content' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'revisions' },
+									arguments: [
+										{
+											kind: 'Argument',
+											name: { kind: 'Name', value: 'first' },
+											value: { kind: 'IntValue', value: '1' }
+										},
+										{
+											kind: 'Argument',
+											name: { kind: 'Name', value: 'where' },
+											value: {
+												kind: 'ObjectValue',
+												fields: [
+													{
+														kind: 'ObjectField',
+														name: { kind: 'Name', value: 'orderby' },
+														value: {
+															kind: 'ObjectValue',
+															fields: [
+																{
+																	kind: 'ObjectField',
+																	name: { kind: 'Name', value: 'field' },
+																	value: { kind: 'EnumValue', value: 'MODIFIED' }
+																},
+																{
+																	kind: 'ObjectField',
+																	name: { kind: 'Name', value: 'order' },
+																	value: { kind: 'EnumValue', value: 'DESC' }
+																}
+															]
+														}
+													}
+												]
+											}
+										}
+									],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'edges' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'node' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'title' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'excerpt' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'content' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'author' },
+																		arguments: [],
+																		directives: [],
+																		selectionSet: {
+																			kind: 'SelectionSet',
+																			selections: [
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'node' },
+																					arguments: [],
+																					directives: [],
+																					selectionSet: {
+																						kind: 'SelectionSet',
+																						selections: [
+																							{
+																								kind: 'FragmentSpread',
+																								name: { kind: 'Name', value: 'AuthorFields' },
+																								directives: []
+																							}
+																						]
+																					}
+																				}
+																			]
+																		}
+																	}
+																]
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					},
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'posts' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'first' },
+								value: { kind: 'IntValue', value: '3' }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'where' },
+								value: {
+									kind: 'ObjectValue',
+									fields: [
+										{
+											kind: 'ObjectField',
+											name: { kind: 'Name', value: 'orderby' },
+											value: {
+												kind: 'ObjectValue',
+												fields: [
+													{
+														kind: 'ObjectField',
+														name: { kind: 'Name', value: 'field' },
+														value: { kind: 'EnumValue', value: 'DATE' }
+													},
+													{
+														kind: 'ObjectField',
+														name: { kind: 'Name', value: 'order' },
+														value: { kind: 'EnumValue', value: 'DESC' }
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'FragmentSpread',
+															name: { kind: 'Name', value: 'PostFields' },
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		},
+		...PostFieldsFragmentDoc.definitions,
+		...AuthorFieldsFragmentDoc.definitions
+	]
+};
 export const IntrospectionQueryDocument: DocumentNode<
 	IntrospectionQueryQuery,
 	IntrospectionQueryQueryVariables
@@ -20313,6 +21311,236 @@ export const IntrospectionQueryDocument: DocumentNode<
 		},
 		...FullTypeFragmentDoc.definitions,
 		...InputValueFragmentDoc.definitions
+	]
+};
+export const GetPostBySlugDocument: DocumentNode<
+	GetPostBySlugQuery,
+	GetPostBySlugQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'GetPostBySlug' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'slug' } },
+					type: {
+						kind: 'NonNullType',
+						type: { kind: 'NamedType', name: { kind: 'Name', value: 'ID' } }
+					},
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'post' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'id' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'slug' } }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'idType' },
+								value: { kind: 'EnumValue', value: 'SLUG' }
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'featuredImage' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'sourceUrl' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'slug' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'title' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'date' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'modified' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'content' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'categories' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'nodes' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														}
+													]
+												}
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'social' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'facebook' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'instagram' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'twitter' },
+												arguments: [],
+												directives: []
+											},
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'website' },
+												arguments: [],
+												directives: []
+											}
+										]
+									}
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'author' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'name' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'firstName' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'lastName' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'avatar' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'url' },
+																		arguments: [],
+																		directives: []
+																	}
+																]
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
 	]
 };
 export const GetAllPostsWithSlugDocument: DocumentNode<

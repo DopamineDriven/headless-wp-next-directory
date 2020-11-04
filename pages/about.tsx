@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import Header from 'components/lead';
+import Lead from 'components/Lead/lead';
 import Layout from 'components/Layout/layout';
 import Container from 'components/Container/container';
 import { CLIENT_NAME } from 'lib/constants';
 import { getAllPostsForAbout, getTagAndPosts, getCategories } from 'lib/api';
-import Intro from 'components/intro';
+import Intro from '@components/Intro/intro';
 import HeroPost from 'components/Hero/hero-post';
 import { MediaContextProvider } from 'lib/window-width';
 import { Fragment } from 'react';
@@ -29,7 +29,7 @@ const About = ({
 	return (
 		<Fragment>
 			<MediaContextProvider>
-				<Header />
+				<Lead />
 				<Layout preview={preview}>
 					<Head>
 						<title>{`${CLIENT_NAME} about page`}</title>

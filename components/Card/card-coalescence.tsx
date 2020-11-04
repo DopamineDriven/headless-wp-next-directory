@@ -1,24 +1,12 @@
 import Card from '@components/Card/card-unit';
-import {
-	AllPostsForCategory_categories_edges_node_posts,
-	AllPostsForCategory_categories_edges_node_posts_nodes
-} from '@graphql/__generated__/AllPostsForCategory';
-import {
-	AllPosts_posts_edges,
-	AllPosts_posts_edges_node
-} from '@graphql/__generated__/AllPosts';
+import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
+import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
 
 type CardsProps = {
 	posts:
 		| AllPosts_posts_edges_node[]
 		| AllPostsForCategory_categories_edges_node_posts_nodes[];
 };
-
-// type Required<T extends CardsProps> = {
-// 	[CardProps in keyof T]-?: T[CardProps];
-// };
-
-type HasSelect<T extends CardsProps> = {};
 
 export default function CardsCoalesced({ posts }: CardsProps) {
 	return (

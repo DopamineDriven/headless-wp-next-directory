@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const POSTS_BY_ID = gql`
+const POSTS_BY_ID = gql`
 	query PostsById {
 		posts(where: { in: [] }) {
 			nodes {
@@ -11,3 +11,5 @@ export const POSTS_BY_ID = gql`
 		}
 	}
 `;
+
+export default POSTS_BY_ID;
