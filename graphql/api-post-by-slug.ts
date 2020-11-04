@@ -1,5 +1,6 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
 import POST_SLUGS from './api-post-slugs';
+import { GetPostBySlugQueryVariables, Scalars } from '../graphql';
 
 const GET_POST_BY_SLUG: TypedDocumentNode = gql`
 	query GetPostBySlug($slug: ID!) {
@@ -40,3 +41,7 @@ const GET_POST_BY_SLUG: TypedDocumentNode = gql`
 `;
 
 export default GET_POST_BY_SLUG;
+
+export let allSlugQueryVariables: {
+	slug: Scalars['ID'];
+};
