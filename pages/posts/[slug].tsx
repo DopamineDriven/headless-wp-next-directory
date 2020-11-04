@@ -46,6 +46,7 @@ import {
 } from '../../graphql';
 import { allSlugQueryVariables } from '../../graphql/api-post-by-slug';
 import { PostSlugs_posts_edges } from '../../graphql/__generated__/PostSlugs';
+import { Scalars } from '../../graphql';
 
 interface SlugProps {
 	post: any;
@@ -134,7 +135,7 @@ const Post = ({
 
 interface Params {
 	params: {
-		slug: PostSlugsVariables;
+		slug: Scalars['ID'];
 	};
 	preview: boolean;
 	previewData: any;
