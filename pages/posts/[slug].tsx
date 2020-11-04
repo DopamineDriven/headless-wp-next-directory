@@ -12,11 +12,7 @@ import { CMS_NAME } from 'lib/constants';
 import MoreCards from '@components/Card/card-coalescence';
 import { Fragment } from 'react';
 import { MediaContextProvider } from 'lib/window-width';
-import {
-	AllPostsForCategory_categories_edges_node_posts_nodes,
-	AllPostsForCategory_categories,
-	AllPostsForCategory
-} from '../../graphql/__generated__/AllPostsForCategory';
+import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
 import {
 	CategoriesByEdges,
 	AllPosts,
@@ -29,7 +25,6 @@ import {
 	NormalizedCacheObject
 } from '@apollo/client';
 import { initializeApollo } from '../../lib/apollo';
-import { ALL_POSTS } from '../../graphql/api-all-posts';
 import {
 	PostSlugs,
 	PostSlugsVariables
