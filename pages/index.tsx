@@ -8,6 +8,7 @@ import {
 	useQuery
 } from '@apollo/client';
 import { initializeApollo } from '@lib/apollo';
+import { removeNode } from '@lib/utilFunctions';
 import {
 	ALL_CATEGORIES,
 	allCategoryQueryVariables
@@ -204,18 +205,7 @@ export const getStaticProps = async ({
 		console.log('only one page of categories....................');
 	}
 
-	const removeNode = (
-		array: (AllPosts_posts_edges | null)[]
-	): (AllPosts_posts_edges_node | null)[] => {
-		let newArray = [];
-
-		for (let i of array) {
-			const arrayIndexData = i != null ? i.node : null;
-			newArray.push(arrayIndexData);
-		}
-		return newArray;
-	};
-
+	
 	//this function is necessary because structure of nodes for posts data is slightly different when you get posts by category or grab all posts
 	const allPostsCacheNoNode: (AllPosts_posts_edges_node | null)[] | null =
 		allPostsCache?.edges != null ? removeNode(allPostsCache.edges) : null;
