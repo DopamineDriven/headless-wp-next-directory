@@ -21,12 +21,12 @@ import {
 } from '@graphql/api-all-categories';
 import {
 	AllCategories_categories,
-	AllCategories,
+	AllCategories
 } from '@graphql/__generated__/AllCategories';
 import {
 	AllPostsForCategory,
 	AllPostsForCategory_categories,
-	AllPostsForCategory_categories_edges_node_posts_nodes,
+	AllPostsForCategory_categories_edges_node_posts_nodes
 } from '@graphql/__generated__/AllPostsForCategory';
 
 type Required<T> = {
@@ -45,14 +45,6 @@ interface SlugProps {
 // 		| null;
 // };
 
-// interface SlugProps {
-// 	postData: any;
-// 	// AllPostsForCategory_categories_edges_node_posts
-// 	// posts: Nullable<AllPostsForCategory_categories_edges_node_posts_nodes>;
-// 	posts: AllPostsForCategory_categories_edges_node_posts_nodes;
-// 	preview: boolean;
-// }
-
 const Category = ({ posts, preview, postData }: SlugProps): JSX.Element => {
 	const router: NextRouter = useRouter();
 	const morePosts = postData?.edges;
@@ -60,7 +52,7 @@ const Category = ({ posts, preview, postData }: SlugProps): JSX.Element => {
 	// 	[P in keyof T]-?: T[P];
 	// };
 
-	console.log('Router obj: ',router)
+	console.log('Router obj: ', router);
 	// if (router.isFallback === false ) {
 	// 	return <ErrorPage statusCode={404} />;
 	// }
@@ -110,8 +102,6 @@ export const getStaticProps = async ({
 	params,
 	preview = false
 }: Params & GetStaticProps) => {
-	console.log('category name: ', params.name);
-
 	const allPostsForCategory: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
 	const queryResult: ApolloQueryResult<AllPostsForCategory> = await allPostsForCategory.query(
@@ -138,7 +128,7 @@ export const getStaticProps = async ({
 		return {
 			props: {
 				preview,
-				posts: postsForCategoryCache.edges[0].node.posts.nodes,
+				posts: postsForCategoryCache.edges[0].node.posts.nodes
 			}
 			// revalidate: 10
 		};
@@ -148,7 +138,6 @@ export const getStaticProps = async ({
 export const getStaticPaths: GetStaticPaths = async (): Promise<
 	GetStaticPathsResult
 > => {
-
 	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
 	const queryResult: ApolloQueryResult<AllCategories> = await categoriesWordPress.query(
@@ -163,19 +152,13 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 
 	if (categoryCache != null && categoryCache != undefined) {
 		if (categoryCache.edges != null) {
-			console.log('category cache', categoryCache);
+			const dataArray: string[] = categoryCache.edges.map((category: any) => {
+				return `/category/${category.node.name}`;
+			});
 
-			const dataArray: string[] = categoryCache.edges.map(
-				(category: any) => {
-					console.log('category: ', category)
-					return `/category/${category.node.name}`
-				}
-			);
-
-			console.log('data array: ', dataArray)
 			return {
 				paths: dataArray || [],
-				fallback: true
+				fallback: false
 			};
 		} else {
 			throw new Error('edges in categories are null');
@@ -186,4 +169,3 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 };
 
 export default Category;
-
