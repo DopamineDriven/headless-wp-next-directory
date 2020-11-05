@@ -1,14 +1,27 @@
+import { Fragment } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import {
+	ApolloClient,
+	ApolloQueryResult,
+	NormalizedCacheObject,
+	useQuery
+} from '@apollo/client';
+import { initializeApollo } from '@lib/apollo';
+import { removeNode } from '@lib/utilFunctions';
+import { CLIENT_NAME } from 'lib/constants';
+import { ALL_POSTS } from '../graphql/api-all-posts';
 import Lead from 'components/Lead/lead';
 import Layout from 'components/Layout/layout';
 import Container from 'components/Container/container';
-import { CLIENT_NAME } from 'lib/constants';
-import { getAllPostsForAbout, getTagAndPosts, getCategories } from 'lib/api';
 import Intro from '@components/Intro/intro';
 import HeroPost from 'components/Hero/hero-post';
 import { MediaContextProvider } from 'lib/window-width';
-import { Fragment } from 'react';
+import {
+	AllPosts,
+	AllPosts_posts,
+	AllPosts_posts_edges_node
+} from '../graphql/__generated__/AllPosts';
 
 interface AboutProps {
 	preview?: boolean;
@@ -20,12 +33,8 @@ interface AboutProps {
 const About = ({
 	allPosts: { edges },
 	preview,
-	tagsAndPosts,
-	categoriesAndPosts
 }: AboutProps) => {
 	const heroPost = edges[0]?.node;
-	console.log(tagsAndPosts);
-	console.log(categoriesAndPosts);
 	return (
 		<Fragment>
 			<MediaContextProvider>
@@ -71,12 +80,31 @@ type StaticProps = {
 };
 
 export async function getStaticProps({ preview = false }: StaticProps) {
-	const allPosts = await getAllPostsForAbout(preview);
-	const tagsAndPosts = await getTagAndPosts();
-	const categoriesAndPosts = await getCategories();
+
+	const allPostsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo(
+		null,
+		'about: allposts'
+	);
+
+	const allPostsQuery: ApolloQueryResult<AllPosts> = await allPostsWordPress.query(
+		{
+			query: ALL_POSTS,
+			variables: { field: 'TITLE', order: 'ASC' }
+		}
+	);
+
+	const allPostsCache: AllPosts_posts | null =
+		allPostsQuery.data.posts != null ? allPostsQuery.data.posts : null;
+
+	//this function is necessary because structure of nodes for posts data is slightly different when you get posts by category or grab all posts
+	const allPostsCacheNoNode: (AllPosts_posts_edges_node | null)[] | null =
+		allPostsCache?.edges != null ? removeNode(allPostsCache.edges) : null;
+	
 
 	return {
-		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts },
+		props: { 
+			allPosts: allPostsCacheNoNode
+		 },
 		revalidate: 1
 	};
 }
