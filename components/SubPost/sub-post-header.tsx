@@ -6,11 +6,8 @@ import SubPostTitle from './sub-post-title';
 import Categories from '../Categories/categories';
 import CardIcons from '../Card/card-icons';
 import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
-import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
-import {
-	AllPostsForCategory,
-	AllPostsForCategory_categories_edges
-} from '../../graphql/__generated__/AllPostsForCategory';
+import { AllPostsForCategory_categories } from '@graphql/__generated__/AllPostsForCategory';
+
 import { GetPostBySlug_post } from '@graphql/__generated__/GetPostBySlug';
 
 const SubPostHeader = ({
@@ -53,7 +50,7 @@ const SubPostHeader = ({
 					</div>
 					<div className='flex flex-col'>
 						<Categories
-							categories={categories != null ? categories.nodes : null}
+							categories={categories != null && categories.edges != null ? categories.edges : null}
 							// category={
 							// 	category && category.node && category.node.name
 							// 		? category.node.name
