@@ -1,24 +1,24 @@
-const purgecss = [
-	'@fullhuman/postcss-purgecss',
-	{
-		content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
-		// extracting class names from templates
-		defaultExtractor: content => {
-			// liberally capture unused classNames
-			const broadMatch = content.match(/[^<>"'`\\s]*[^<>"'`\\s:]/g) || [];
-			// capture classNames undetected by broadMatch such as .block(class="w-1/5")
-			const innerMatch = content.match(/[^<>"'`\\s.()]*[^<>"'`\\s.():]/g) || [];
-			return broadMatch.concat(innerMatch);
-		}
-	}
-];
+// const purgecss = [
+// 	'@fullhuman/postcss-purgecss',
+// 	{
+// 		content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}'],
+// 		// extracting class names from templates
+// 		defaultExtractor: content => {
+// 			// liberally capture unused classNames
+// 			const broadMatch = content.match(/[^<>"'`\\s]*[^<>"'`\\s:]/g) || [];
+// 			// capture classNames undetected by broadMatch such as .block(class="w-1/5")
+// 			const innerMatch = content.match(/[^<>"'`\\s.()]*[^<>"'`\\s.():]/g) || [];
+// 			return broadMatch.concat(innerMatch);
+// 		}
+// 	}
+// ]; // built-in under hood as of version 1.4+
 
 module.exports = {
 	plugins: [
 		'postcss-import',
 		'tailwindcss',
 		'postcss-nesting',
-		process.env.NODE_ENV === 'production' ? purgecss : undefined,
+		// process.env.NODE_ENV === 'production' ? purgecss : undefined,
 		'autoprefixer',
 		'postcss-flexbugs-fixes',
 		[
