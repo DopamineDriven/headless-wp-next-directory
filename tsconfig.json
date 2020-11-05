@@ -24,6 +24,7 @@
 			"@components/*": ["components/*"],
 			"@graphql/*": ["graphql/*"],
 			"@utils/*": ["utils/*"],
+			"@styles/*": ["styles/*"],
 			"@types/*": ["types/*"]
 		},
 		"plugins": [

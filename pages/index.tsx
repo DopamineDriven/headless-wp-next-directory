@@ -33,16 +33,10 @@ import {
 import { AllCategories_categories_edges } from '@graphql/__generated__/AllCategories';
 import { CMS_NAME, CLIENT_NAME } from '@lib/constants';
 import { Lead } from '@components/Lead';
-// import HeroPost from '../components/hero-post';
 import { SearchBox } from '@components/index';
-import Cards from '../components/Card/card-coalescence';
-import { PostsProps, AllPostsProps } from '../types/posts';
-import { MediaContextProvider } from '../lib/window-width';
-// import Link from 'next/link';
-// import FieldEnum from 'types/enums/field-enum';
-// import OrderEnum from 'types/enums/order-enum';
+import Cards from '@components/Card/card-coalescence';
+import { MediaContextProvider } from '@lib/window-width';
 import Footer from '../components/Footer/footer';
-// import CardFilter from 'components/card-filter';
 import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum

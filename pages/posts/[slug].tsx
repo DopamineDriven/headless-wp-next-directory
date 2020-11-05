@@ -47,6 +47,8 @@ import {
 import { allSlugQueryVariables } from '../../graphql/api-post-by-slug';
 import { PostSlugs_posts_edges } from '../../graphql/__generated__/PostSlugs';
 import { Scalars } from '../../graphql';
+import { useQuery } from '@apollo/client';
+import POSTS_AND_MORE_POSTS from '../../graphql/api-get-posts-and-more-posts';
 
 interface SlugProps {
 	post: any;
@@ -181,31 +183,39 @@ export const getStaticProps = async ({
 	// };
 };
 
-export const getStaticPaths: GetStaticPaths = async (): Promise<
-	GetStaticPathsResult
-> => {
-	const slugsWP: ApolloClient<NormalizedCacheObject> = initializeApollo();
-	// const queryResult = useGetAllPostsWithSlugQuery(slugsWP);
-	const queryResult: ApolloQueryResult<PostSlugs> = await slugsWP.query({
-		query: GET_POST_BY_SLUG,
-		variables: allSlugQueryVariables
+export const getStaticPaths = async ({
+	slug
+}: PostSlugsQueryVariables & GetStaticPaths) => {
+	const allPostSlugs: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const { loading, error, data } = useQuery(POSTS_AND_MORE_POSTS, {
+		variables: { slug }
 	});
+	if (loading) return null;
+	if (error) return `Error! ${error}`;
+	const paths = data;
 
-	const slugCache: PostSlugs_posts | null = queryResult.data.posts;
-	if (slugCache != null && slugCache.edges != null) {
-		console.log('slug cache', slugCache);
-		const dataArray: string[] = slugCache.edges.map(post =>
-			post != null && post.node != null && post.node.slug != null
-				? `/posts/${post.node.slug}`
-				: `/posts/${post?.node?.slug}`
-		);
-		return {
-			paths: dataArray || [],
-			fallback: true
-		};
-	} else {
-		throw new Error('slugs not returned in getStaticPaths, [slug].tsx');
-	}
+	// const slugsWP: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	// // const queryResult = useGetAllPostsWithSlugQuery(slugsWP);
+	// const queryResult: ApolloQueryResult<PostSlugs> = await slugsWP.query({
+	// 	query: GET_POST_BY_SLUG,
+	// 	variables: allSlugQueryVariables
+	// });
+
+	// const slugCache: PostSlugs_posts | null = queryResult.data.posts;
+	// if (slugCache != null && slugCache.edges != null) {
+	// 	console.log('slug cache', slugCache);
+	// 	const dataArray: string[] = slugCache.edges.map(post =>
+	// 		post != null && post.node != null && post.node.slug != null
+	// 			? `/posts/${post.node.slug}`
+	// 			: `/posts/${post?.node?.slug}`
+	// 	);
+	// 	return {
+	// 		paths: dataArray || [],
+	// 		fallback: true
+	// 	};
+	// } else {
+	// 	throw new Error('slugs not returned in getStaticPaths, [slug].tsx');
+	// }
 };
 
 export default Post;
