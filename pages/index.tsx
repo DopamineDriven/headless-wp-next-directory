@@ -162,9 +162,18 @@ export const getStaticProps = async ({
 	order = ASC || DESC,
 	desiredCategory
 }: StaticProps) => {
-	const allPostsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
-	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
-	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const allPostsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo(
+		null,
+		'index: allposts'
+	);
+	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo(
+		null,
+		'index: categories'
+	);
+	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo(
+		null,
+		'index: tags'
+	);
 
 	const allPostsQuery: ApolloQueryResult<AllPosts> = await allPostsWordPress.query(
 		{
@@ -205,7 +214,6 @@ export const getStaticProps = async ({
 		console.log('only one page of categories....................');
 	}
 
-	
 	//this function is necessary because structure of nodes for posts data is slightly different when you get posts by category or grab all posts
 	const allPostsCacheNoNode: (AllPosts_posts_edges_node | null)[] | null =
 		allPostsCache?.edges != null ? removeNode(allPostsCache.edges) : null;

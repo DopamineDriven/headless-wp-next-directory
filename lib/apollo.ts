@@ -6,8 +6,6 @@ import {
 	defaultDataIdFromObject,
 	NormalizedCacheObject
 } from '@apollo/client';
-import { categoryKeyNameForCache } from 'graphql/api-all-categories';
-import { concatPagination, Reference } from '@apollo/client/utilities';
 // import possibleTypes  from 'lib/possible-types';
 // https://github.com/vercel/next.js/discussions/11957
 
@@ -43,9 +41,11 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 }
 
 export function initializeApollo(
-	initialState: any = null
+	initialState: any = null,
+	consoleLogName?: string
 ): ApolloClient<NormalizedCacheObject> {
-	console.log('initializing APOLLO......')
+	console.log('initializing APOLLO......');
+	console.log(`initializing for ${consoleLogName}.....`);
 	const _apolloClient = apolloClient ?? createApolloClient();
 	if (initialState) {
 		const existingCache = _apolloClient.extract();
@@ -60,7 +60,7 @@ export function useApollo(
 	initialState: any
 ): ApolloClient<NormalizedCacheObject> {
 	const store = useMemo<ApolloClient<NormalizedCacheObject>>(
-		() => initializeApollo(initialState),
+		() => initializeApollo(initialState, 'useApollo...'),
 		[initialState]
 	);
 	return store;
