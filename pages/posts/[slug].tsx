@@ -19,25 +19,9 @@ import { MediaContextProvider } from '@lib/window-width';
 import { CMS_NAME } from '@lib/constants';
 import { removeNode } from '@lib/utilFunctions';
 import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
-import {
-	CategoriesByEdges,
-	GetAllPostsWithSlugQueryVariables,
-	useGetAllPostsWithSlugQuery
-} from '../../graphql';
-import {
-	PostSlugs,
-	PostSlugsVariables,
-	PostSlugs_posts,
-	PostSlugs_posts_edges,
-	PostSlugs_posts_edges_node
-} from '@graphql/__generated__/PostSlugs';
+import { PostSlugs, PostSlugs_posts } from '@graphql/__generated__/PostSlugs';
 import POST_SLUGS from '@graphql/api-post-slugs';
 import GET_POST_BY_SLUG from '@graphql/api-post-by-slug';
-import {
-	GetAllPostsWithSlugQueryResult,
-	PostSlugsQueryVariables
-} from '../../graphql';
-import { allSlugQueryVariables } from '../../graphql/api-post-by-slug';
 import { Scalars } from '../../graphql';
 import {
 	GetPostBySlug,
@@ -166,15 +150,12 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 
 	const slugCache: PostSlugs_posts | null = slugQueryResult.data.posts;
 	if (slugCache != null && slugCache.edges != null) {
-		// console.log('slug cache: ', slugCache);
 		const dataArray: string[] = slugCache.edges.map(post => {
-			// console.log('Inside post map: ', post);
 			return post != null && post.node != null && post.node.slug != null
 				? `/posts/${post.node.slug}`
 				: `/posts/${post?.node?.slug}`;
 		});
 
-		console.log('data array: ', dataArray);
 		return {
 			paths: dataArray || [],
 			fallback: true
@@ -188,7 +169,6 @@ export const getStaticProps = async ({
 	params,
 	preview = false
 }: Params & GetStaticProps) => {
-	console.log('slug name: ', params.slug);
 	const allPostsWP: ApolloClient<NormalizedCacheObject> = initializeApollo(
 		null,
 		'allPosts'
@@ -214,8 +194,6 @@ export const getStaticProps = async ({
 
 	const allPostsCache: AllPosts_posts | null =
 		allPostsQuery.data.posts != null ? allPostsQuery.data.posts : null;
-
-	console.log('Post by slug: ', getPostBySlugCache);
 
 	const allPostsCacheNoNode: (AllPosts_posts_edges_node | null)[] | null =
 		allPostsCache != null && allPostsCache.edges != null
