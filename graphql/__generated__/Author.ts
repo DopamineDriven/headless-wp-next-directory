@@ -17,34 +17,42 @@ export interface Author_users_edges_node_avatar {
    * The size of the avatar in pixels. A value of 96 will match a 96px x 96px gravatar image.
    */
   size: number | null;
+  /**
+   * Height of the avatar image.
+   */
+  height: number | null;
+  /**
+   * Width of the avatar image.
+   */
+  width: number | null;
 }
 
 export interface Author_users_edges_node {
   __typename: "User";
   /**
-   * Avatar object for user. The avatar object can be retrieved in different sizes by specifying the size argument.
-   */
-  avatar: Author_users_edges_node_avatar | null;
-  /**
-   * First name of the user. This is equivalent to the WP_User-&gt;user_first_name property.
-   */
-  firstName: string | null;
-  /**
    * The globally unique identifier for the user object.
    */
   id: string;
   /**
-   * Last name of the user. This is equivalent to the WP_User-&gt;user_last_name property.
+   * The slug for the user. This field is equivalent to WP_User-&gt;user_nicename
    */
-  lastName: string | null;
+  slug: string | null;
   /**
    * Display name of the user. This is equivalent to the WP_User-&gt;dispaly_name property.
    */
   name: string | null;
   /**
-   * The slug for the user. This field is equivalent to WP_User-&gt;user_nicename
+   * First name of the user. This is equivalent to the WP_User-&gt;user_first_name property.
    */
-  slug: string | null;
+  firstName: string | null;
+  /**
+   * Last name of the user. This is equivalent to the WP_User-&gt;user_last_name property.
+   */
+  lastName: string | null;
+  /**
+   * Avatar object for user. The avatar object can be retrieved in different sizes by specifying the size argument.
+   */
+  avatar: Author_users_edges_node_avatar | null;
 }
 
 export interface Author_users_edges {

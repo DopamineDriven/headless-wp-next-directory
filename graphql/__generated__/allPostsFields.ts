@@ -3,13 +3,11 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
-import { PostObjectsConnectionOrderbyEnum, OrderEnum } from "./../../types/graphql-global-types";
-
 // ====================================================
-// GraphQL query operation: AllPosts
+// GraphQL fragment: allPostsFields
 // ====================================================
 
-export interface AllPosts_posts_edges_node_author_node_avatar {
+export interface allPostsFields_author_node_avatar {
   __typename: "Avatar";
   /**
    * URL for the gravatar image source.
@@ -29,7 +27,7 @@ export interface AllPosts_posts_edges_node_author_node_avatar {
   width: number | null;
 }
 
-export interface AllPosts_posts_edges_node_author_node {
+export interface allPostsFields_author_node {
   __typename: "User";
   /**
    * Display name of the user. This is equivalent to the WP_User-&gt;dispaly_name property.
@@ -46,18 +44,18 @@ export interface AllPosts_posts_edges_node_author_node {
   /**
    * Avatar object for user. The avatar object can be retrieved in different sizes by specifying the size argument.
    */
-  avatar: AllPosts_posts_edges_node_author_node_avatar | null;
+  avatar: allPostsFields_author_node_avatar | null;
 }
 
-export interface AllPosts_posts_edges_node_author {
+export interface allPostsFields_author {
   __typename: "NodeWithAuthorToUserConnectionEdge";
   /**
    * The nodes of the connection, without the edges
    */
-  node: AllPosts_posts_edges_node_author_node | null;
+  node: allPostsFields_author_node | null;
 }
 
-export interface AllPosts_posts_edges_node_featuredImage_node {
+export interface allPostsFields_featuredImage_node {
   __typename: "MediaItem";
   /**
    * Url of the mediaItem
@@ -65,15 +63,15 @@ export interface AllPosts_posts_edges_node_featuredImage_node {
   sourceUrl: string | null;
 }
 
-export interface AllPosts_posts_edges_node_featuredImage {
+export interface allPostsFields_featuredImage {
   __typename: "NodeWithFeaturedImageToMediaItemConnectionEdge";
   /**
    * The nodes of the connection, without the edges
    */
-  node: AllPosts_posts_edges_node_featuredImage_node | null;
+  node: allPostsFields_featuredImage_node | null;
 }
 
-export interface AllPosts_posts_edges_node_social {
+export interface allPostsFields_social {
   __typename: "Post_Social";
   /**
    * Facebook Url (optional)
@@ -93,7 +91,7 @@ export interface AllPosts_posts_edges_node_social {
   website: string | null;
 }
 
-export interface AllPosts_posts_edges_node_categories_edges_node {
+export interface allPostsFields_categories_edges_node {
   __typename: "Category";
   /**
    * The human friendly name of the object.
@@ -101,28 +99,28 @@ export interface AllPosts_posts_edges_node_categories_edges_node {
   name: string | null;
 }
 
-export interface AllPosts_posts_edges_node_categories_edges {
+export interface allPostsFields_categories_edges {
   __typename: "PostToCategoryConnectionEdge";
   /**
    * The item at the end of the edge
    */
-  node: AllPosts_posts_edges_node_categories_edges_node | null;
+  node: allPostsFields_categories_edges_node | null;
 }
 
-export interface AllPosts_posts_edges_node_categories {
+export interface allPostsFields_categories {
   __typename: "PostToCategoryConnection";
   /**
    * Edges for the PostToCategoryConnection connection
    */
-  edges: (AllPosts_posts_edges_node_categories_edges | null)[] | null;
+  edges: (allPostsFields_categories_edges | null)[] | null;
 }
 
-export interface AllPosts_posts_edges_node {
+export interface allPostsFields {
   __typename: "Post";
   /**
    * Connection between the NodeWithAuthor type and the User type
    */
-  author: AllPosts_posts_edges_node_author | null;
+  author: allPostsFields_author | null;
   /**
    * The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
    */
@@ -142,7 +140,7 @@ export interface AllPosts_posts_edges_node {
   /**
    * Connection between the NodeWithFeaturedImage type and the MediaItem type
    */
-  featuredImage: AllPosts_posts_edges_node_featuredImage | null;
+  featuredImage: allPostsFields_featuredImage | null;
   /**
    * The globally unique identifier of the post object.
    */
@@ -155,37 +153,9 @@ export interface AllPosts_posts_edges_node {
    * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
    */
   slug: string | null;
-  social: AllPosts_posts_edges_node_social | null;
+  social: allPostsFields_social | null;
   /**
    * Connection between the post type and the category type
    */
-  categories: AllPosts_posts_edges_node_categories | null;
-}
-
-export interface AllPosts_posts_edges {
-  __typename: "RootQueryToPostConnectionEdge";
-  /**
-   * The item at the end of the edge
-   */
-  node: AllPosts_posts_edges_node | null;
-}
-
-export interface AllPosts_posts {
-  __typename: "RootQueryToPostConnection";
-  /**
-   * Edges for the RootQueryToPostConnection connection
-   */
-  edges: (AllPosts_posts_edges | null)[] | null;
-}
-
-export interface AllPosts {
-  /**
-   * Connection between the RootQuery type and the post type
-   */
-  posts: AllPosts_posts | null;
-}
-
-export interface AllPostsVariables {
-  field: PostObjectsConnectionOrderbyEnum;
-  order: OrderEnum;
+  categories: allPostsFields_categories | null;
 }
