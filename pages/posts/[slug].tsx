@@ -1,17 +1,23 @@
+import { Fragment } from 'react';
 import { NextRouter, useRouter } from 'next/router';
 import { GetStaticProps, GetStaticPaths, GetStaticPathsResult } from 'next';
 import ErrorPage from 'next/error';
+import Head from 'next/head';
+import {
+	ApolloClient,
+	ApolloQueryResult,
+	NormalizedCacheObject
+} from '@apollo/client';
 import PostBody from '@components/SubPost/sub-post-body';
 import Header from '@components/LeadSub/lead-sub';
 import PostHeader from '@components/SubPost/sub-post-header';
 import Layout from 'components/Layout/layout';
-import { getAllPostsWithSlug, getPostAndMorePosts } from 'lib/api';
 import PostTitle from '@components/SubPost/sub-post-title';
-import Head from 'next/head';
-import { CMS_NAME } from 'lib/constants';
 import MoreCards from '@components/Card/card-coalescence';
-import { Fragment } from 'react';
-import { MediaContextProvider } from 'lib/window-width';
+import { initializeApollo } from '@lib/apollo';
+import { MediaContextProvider } from '@lib/window-width';
+import { CMS_NAME } from '@lib/constants';
+import { removeNode } from '@lib/utilFunctions';
 import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
 import {
 	CategoriesByEdges,
@@ -19,21 +25,14 @@ import {
 	useGetAllPostsWithSlugQuery
 } from '../../graphql';
 import {
-	ApolloClient,
-	ApolloQueryResult,
-	NormalizedCacheObject
-} from '@apollo/client';
-import { initializeApollo } from '@lib/apollo';
-import { removeNode } from '@lib/utilFunctions';
-import {
 	PostSlugs,
 	PostSlugsVariables,
 	PostSlugs_posts,
 	PostSlugs_posts_edges,
 	PostSlugs_posts_edges_node
-} from '../../graphql/__generated__/PostSlugs';
-import POST_SLUGS from '../../graphql/api-post-slugs';
-import GET_POST_BY_SLUG from '../../graphql/api-post-by-slug';
+} from '@graphql/__generated__/PostSlugs';
+import POST_SLUGS from '@graphql/api-post-slugs';
+import GET_POST_BY_SLUG from '@graphql/api-post-by-slug';
 import {
 	GetAllPostsWithSlugQueryResult,
 	PostSlugsQueryVariables
@@ -52,7 +51,7 @@ import {
 } from '@graphql/__generated__/AllPosts';
 
 interface SlugProps {
-	post: any;
+	post: GetPostBySlug_post;
 	posts: AllPostsForCategory_categories_edges_node_posts_nodes[];
 	preview: boolean;
 }
@@ -101,7 +100,7 @@ const Post = ({ post, posts, preview }: SlugProps): JSX.Element => {
 								<PostHeader
 									excerpt={post.excerpt}
 									categories={post.categories}
-									category={post.category}
+									// category={post.category}
 									__typename={post.__typename}
 									title={post.title}
 									content={post.content}
@@ -148,7 +147,10 @@ interface Params {
 export const getStaticPaths: GetStaticPaths = async (): Promise<
 	GetStaticPathsResult
 > => {
-	const slugsWP: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const slugsWP: ApolloClient<NormalizedCacheObject> = initializeApollo(
+		null,
+		'slugs'
+	);
 	// const queryResult = useGetAllPostsWithSlugQuery(slugsWP);
 	// const queryResult: ApolloQueryResult<PostSlugs> = await slugsWP.query({
 	// 	query: GET_POST_BY_SLUG,
@@ -161,9 +163,9 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 
 	const slugCache: PostSlugs_posts | null = queryResult.data.posts;
 	if (slugCache != null && slugCache.edges != null) {
-		console.log('slug cache: ', slugCache);
+		// console.log('slug cache: ', slugCache);
 		const dataArray: string[] = slugCache.edges.map(post => {
-			console.log('Inside post map: ', post);
+			// console.log('Inside post map: ', post);
 			return post != null && post.node != null && post.node.slug != null
 				? `/posts/${post.node.slug}`
 				: `/posts/${post?.node?.slug}`;
@@ -184,8 +186,14 @@ export const getStaticProps = async ({
 	preview = false
 }: Params & GetStaticProps) => {
 	console.log('slug name: ', params.slug);
-	const allPostsWP: ApolloClient<NormalizedCacheObject> = initializeApollo();
-	const postBySlugWP: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const allPostsWP: ApolloClient<NormalizedCacheObject> = initializeApollo(
+		null,
+		'allPosts'
+	);
+	const postBySlugWP: ApolloClient<NormalizedCacheObject> = initializeApollo(
+		null,
+		'postBySlugWP'
+	);
 
 	const allPostsQuery: ApolloQueryResult<AllPosts> = await allPostsWP.query({
 		query: ALL_POSTS,
@@ -205,7 +213,6 @@ export const getStaticProps = async ({
 	const allPostsCache: AllPosts_posts | null =
 		allPostsQuery.data.posts != null ? allPostsQuery.data.posts : null;
 
-	console.log('All posts cache: ', allPostsCache);
 	console.log('Post by slug: ', getPostBySlugCache);
 
 	const allPostsCacheNoNode: (AllPosts_posts_edges_node | null)[] | null =
@@ -213,7 +220,7 @@ export const getStaticProps = async ({
 			? removeNode(allPostsCache.edges)
 			: null;
 
-	if (getPostBySlugCache && allPostsCache) {
+	if (getPostBySlugCache && allPostsCacheNoNode) {
 		return {
 			props: {
 				preview,
