@@ -18,7 +18,7 @@ import { initializeApollo } from '@lib/apollo';
 import { MediaContextProvider } from '@lib/window-width';
 import { CMS_NAME } from '@lib/constants';
 import { removeNode } from '@lib/utilFunctions';
-import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
+import { AllPostsForCategory_categories_edges_node_posts_edges_node } from '@graphql/__generated__/AllPostsForCategory';
 import { PostSlugs, PostSlugs_posts } from '@graphql/__generated__/PostSlugs';
 import POST_SLUGS from '@graphql/api-post-slugs';
 import GET_POST_BY_SLUG from '@graphql/api-post-by-slug';
@@ -38,17 +38,14 @@ import POSTS_AND_MORE_POSTS from '../../graphql/api-get-posts-and-more-posts';
 
 interface SlugProps {
 	post: GetPostBySlug_post;
-	posts: AllPostsForCategory_categories_edges_node_posts_nodes[];
+	posts: AllPostsForCategory_categories_edges_node_posts_edges_node[];
 	preview: boolean;
 }
 
 const Post = ({ post, posts, preview }: SlugProps): JSX.Element => {
 	const router: NextRouter = useRouter();
 
-	console.log('Router obj: ', router);
-
-	console.log('Router fallback: ', !router.isFallback);
-	console.log('Router fallback 1: ', router.isFallback);
+	console.log('posts in [slug]: ', posts)
 
 	// if (router.isFallback === true) {
 	// 	return <ErrorPage statusCode={404} />;
@@ -99,9 +96,6 @@ const Post = ({ post, posts, preview }: SlugProps): JSX.Element => {
 									social={post.social}
 								/>
 								<PostBody content={post.content} />
-								{/* <footer>
-									{post.tags.edges.length > 0 && <Tags tags={post.tags} />}
-								</footer> */}
 							</article>
 							<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
 								{posts != null ? (
@@ -158,7 +152,7 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 
 		return {
 			paths: dataArray || [],
-			fallback: true
+			fallback: false
 		};
 	} else {
 		throw new Error('slugs not returned in getStaticPaths, [slug].tsx');

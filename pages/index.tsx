@@ -67,6 +67,8 @@ const Index = ({
 	const { TITLE } = PostObjectsConnectionOrderbyEnum;
 	// const [filter, setFilter] = useState(TITLE);
 
+	console.log('Posts in index: ', allPosts)
+
 	useEffect(() => {
 		if (!search) {
 			setFilteredCompanies(allCompanies);

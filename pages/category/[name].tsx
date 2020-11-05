@@ -23,10 +23,11 @@ import {
 	AllCategories_categories,
 	AllCategories
 } from '@graphql/__generated__/AllCategories';
+import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts'
 import {
 	AllPostsForCategory,
 	AllPostsForCategory_categories,
-	AllPostsForCategory_categories_edges_node_posts_nodes
+	AllPostsForCategory_categories_edges_node_posts_edges_node
 } from '@graphql/__generated__/AllPostsForCategory';
 
 type Required<T> = {
@@ -34,9 +35,8 @@ type Required<T> = {
 };
 
 interface SlugProps {
-	posts: AllPostsForCategory_categories_edges_node_posts_nodes[];
+	posts: AllPosts_posts_edges_node[] | AllPostsForCategory_categories_edges_node_posts_edges_node[];
 	preview: boolean;
-	postData: any;
 }
 
 // type Nullable<AllPostsForCategory_categories_edges_node_posts_nodes> = {
@@ -45,9 +45,8 @@ interface SlugProps {
 // 		| null;
 // };
 
-const Category = ({ posts, preview, postData }: SlugProps): JSX.Element => {
+const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 	const router: NextRouter = useRouter();
-	const morePosts = postData?.edges;
 	// type Required<T> = {
 	// 	[P in keyof T]-?: T[P];
 	// };
@@ -123,12 +122,12 @@ export const getStaticProps = async ({
 		postsForCategoryCache.edges[0] &&
 		postsForCategoryCache.edges[0].node &&
 		postsForCategoryCache.edges[0].node.posts &&
-		postsForCategoryCache.edges[0].node.posts.nodes
+		postsForCategoryCache.edges[0].node.posts.edges
 	) {
 		return {
 			props: {
 				preview,
-				posts: postsForCategoryCache.edges[0].node.posts.nodes
+				posts: postsForCategoryCache.edges[0].node.posts.edges
 			}
 			// revalidate: 10
 		};
