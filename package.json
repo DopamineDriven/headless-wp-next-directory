@@ -59,7 +59,7 @@
 		"client:schema": "dotenv cross-var yarn apollo client:download-schema --includes=graphql --addTypename --endpoint=%WORDPRESS_API_URL%",
 		"client:codegen": "yarn apollo codegen:generate --localSchemaFile=graphql.schema.json --target=typescript --includes=graphql/**/*.ts --tagName=gql --addTypename --globalTypesFile=types/graphql-global-types.ts",
 		"codegen:generate": "graphql-codegen --config codegen.yml",
-		"codegen:combo": "yarn codegen:generate && yarn client:codegen"
+		"codegen:combo": "yarn codegen:generate && client:codegen"
 	},
 	"husky": {
 		"hooks": {

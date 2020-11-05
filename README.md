@@ -1,5 +1,26 @@
 # headless-wp-next-directory
 
+## Use for get post preview
+
+```ts
+export async function getPreviewPost(id, idType = 'DATABASE_ID') {
+	const data = await fetchAPI(
+		`
+    query PreviewPost($id: ID!, $idType: PostIdType!) {
+      post(id: $id, idType: $idType) {
+        databaseId
+        slug
+        status
+      }
+    }`,
+		{
+			variables: { id, idType }
+		}
+	);
+	return data.post;
+}
+```
+
 ## Apollo Client Codegen options
 
 - https://github.com/apollographql/apollo-tooling#apollo-clientcodegen-output
