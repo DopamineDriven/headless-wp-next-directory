@@ -1,5 +1,8 @@
 overwrite: true
-schema: 'https://cima2020.wpengine.com/graphql'
+schema:
+ 'https://cima2020.wpengine.com/graphql':
+  headers:
+   Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvY2ltYTIwMjAud3BlbmdpbmUuY29tIiwiaWF0IjoxNTk2NzkyNTE2LCJuYmYiOjE1OTY3OTI1MTYsImV4cCI6MTYyODMyODUxNiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSIsInVzZXJfc2VjcmV0IjoiZ3JhcGhxbF9qd3RfNWYyZDFlYzQ1NmFmYyJ9fX0.XOYhPMuGilD28qldSSr_tj8wGksBUUrJNluZeRnuB1g
 documents: './graphql/**/*.{graphql,ts}'
 generates:
  ./graphql.d.ts:

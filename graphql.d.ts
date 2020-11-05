@@ -1400,6 +1400,7 @@ export enum RelationEnum {
 /** The MimeType of the object */
 export enum MimeTypeEnum {
 	ApplicationJava = 'APPLICATION_JAVA',
+	ApplicationJavascript = 'APPLICATION_JAVASCRIPT',
 	ApplicationMsword = 'APPLICATION_MSWORD',
 	ApplicationOctetStream = 'APPLICATION_OCTET_STREAM',
 	ApplicationOnenote = 'APPLICATION_ONENOTE',
@@ -1468,6 +1469,7 @@ export enum MimeTypeEnum {
 	TextCalendar = 'TEXT_CALENDAR',
 	TextCss = 'TEXT_CSS',
 	TextCsv = 'TEXT_CSV',
+	TextHtml = 'TEXT_HTML',
 	TextPlain = 'TEXT_PLAIN',
 	TextRichtext = 'TEXT_RICHTEXT',
 	TextTabSeparatedValues = 'TEXT_TAB_SEPARATED_VALUES',
