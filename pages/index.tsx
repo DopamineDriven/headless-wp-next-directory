@@ -1,18 +1,6 @@
 import Head from 'next/head';
-import {
-	useState,
-	useEffect,
-	ChangeEvent,
-	SyntheticEvent,
-	Fragment
-} from 'react';
-import {
-	GetServerSideProps,
-	GetStaticProps,
-	GetStaticPropsContext,
-	InferGetStaticPropsType,
-	NextPage
-} from 'next';
+import { useState, useEffect, SyntheticEvent, Fragment } from 'react';
+import { GetStaticProps } from 'next';
 import {
 	ApolloClient,
 	ApolloQueryResult,
@@ -20,23 +8,19 @@ import {
 	useQuery
 } from '@apollo/client';
 import { initializeApollo } from '@lib/apollo';
+import { removeNode } from '@lib/utilFunctions';
 import {
 	ALL_CATEGORIES,
-	allCategoryQueryVariables,
-	categoryKeyNameForCache
+	allCategoryQueryVariables
 } from '@graphql/api-all-categories';
-import {
-	allTagQueryVariables,
-	ALL_TAGS,
-	tagKeyNameForCache
-} from '@graphql/api-all-tags';
+import { allTagQueryVariables, ALL_TAGS } from '@graphql/api-all-tags';
 import { AllCategories_categories_edges } from '@graphql/__generated__/AllCategories';
 import { CMS_NAME, CLIENT_NAME } from '@lib/constants';
 import { Lead } from '@components/Lead';
 import { SearchBox } from '@components/index';
 import Cards from '@components/Card/card-coalescence';
 import { MediaContextProvider } from '@lib/window-width';
-import Footer from '../components/Footer/footer';
+import Footer from '@components/Footer/footer';
 import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum
@@ -178,9 +162,18 @@ export const getStaticProps = async ({
 	order = ASC || DESC,
 	desiredCategory
 }: StaticProps) => {
-	const allPostsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
-	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
-	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const allPostsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo(
+		null,
+		'index: allposts'
+	);
+	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo(
+		null,
+		'index: categories'
+	);
+	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo(
+		null,
+		'index: tags'
+	);
 
 	const allPostsQuery: ApolloQueryResult<AllPosts> = await allPostsWordPress.query(
 		{
@@ -221,18 +214,6 @@ export const getStaticProps = async ({
 		console.log('only one page of categories....................');
 	}
 
-	const removeNode = (
-		array: (AllPosts_posts_edges | null)[]
-	): (AllPosts_posts_edges_node | null)[] => {
-		let newArray = [];
-
-		for (let i of array) {
-			const arrayIndexData = i != null ? i.node : null;
-			newArray.push(arrayIndexData);
-		}
-		return newArray;
-	};
-
 	//this function is necessary because structure of nodes for posts data is slightly different when you get posts by category or grab all posts
 	const allPostsCacheNoNode: (AllPosts_posts_edges_node | null)[] | null =
 		allPostsCache?.edges != null ? removeNode(allPostsCache.edges) : null;
@@ -241,7 +222,6 @@ export const getStaticProps = async ({
 	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
 	return {
 		props: {
-			// initialApolloState: apolloClient.cache.extract(),
 			allPosts: allPostsCacheNoNode,
 			preview,
 			tags: tagsCache?.edges,

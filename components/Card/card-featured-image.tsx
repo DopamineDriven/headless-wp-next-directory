@@ -52,7 +52,7 @@ const CoverImageCard = ({ title, featuredImage, slug }: CoverImageProps) => {
 	return (
 		<div className=''>
 			{slug ? (
-				<Link as={`/posts/${slug}`} href='/posts/[slug]'>
+				<Link as={`/posts/${slug}`} href={`/posts/${slug}`}>
 					<a aria-label={title != null ? title : slug}>
 						<ImageReturned />
 					</a>
