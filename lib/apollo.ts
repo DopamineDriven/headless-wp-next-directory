@@ -27,7 +27,7 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 	// let link;
 	// ssrMode ? link = createHttpLink({ headers }) /*executed serverside*/ : link = createWriteStream();
 	return new ApolloClient({
-		ssrMode: true ? true : undefined,
+		ssrMode: typeof window === 'undefined' ? true : false,
 		connectToDevTools: true,
 		link: new HttpLink({
 			uri: `${process.env.WORDPRESS_API_URL}`,
