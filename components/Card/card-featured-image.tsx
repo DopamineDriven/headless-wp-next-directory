@@ -18,9 +18,10 @@ const CoverImageCard = ({ title, featuredImage, slug }: CoverImageProps) => {
 	const ImageReturned = () => {
 		// console.debug( featuredImage?.node.sourceUrl);
 		// featuredImage ==! undefined && featuredImage?.node && featuredImage.node?.sourceUrl ?
-		return (featuredImage &&
-			featuredImage.node && featuredImage.node.sourceUrl &&
-			featuredImage.node.sourceUrl) ? (
+		return featuredImage &&
+			featuredImage.node &&
+			featuredImage.node.sourceUrl &&
+			featuredImage.node.sourceUrl ? (
 			<Image
 				src={`${featuredImage ? featuredImage.node.sourceUrl : featuredImage}`}
 				alt={title + ' this is new'}
@@ -48,11 +49,11 @@ const CoverImageCard = ({ title, featuredImage, slug }: CoverImageProps) => {
 			/>
 		) : null;
 	};
-	
+
 	return (
 		<div className=''>
 			{slug ? (
-				<Link as={`/posts/${slug}`} href='/posts/[slug]'>
+				<Link as={`/posts/${slug}`} href={`/posts/${slug}`}>
 					<a aria-label={title != null ? title : slug}>
 						<ImageReturned />
 					</a>
