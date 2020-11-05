@@ -49,6 +49,8 @@ import {
 	AllPosts_posts,
 	AllPosts_posts_edges_node
 } from '@graphql/__generated__/AllPosts';
+import { useQuery } from '@apollo/client';
+import POSTS_AND_MORE_POSTS from '../../graphql/api-get-posts-and-more-posts';
 
 interface SlugProps {
 	post: GetPostBySlug_post;
@@ -151,17 +153,18 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 		null,
 		'slugs'
 	);
-	// const queryResult = useGetAllPostsWithSlugQuery(slugsWP);
-	// const queryResult: ApolloQueryResult<PostSlugs> = await slugsWP.query({
-	// 	query: GET_POST_BY_SLUG,
-	// 	variables: allSlugQueryVariables
-	// });
 
-	const queryResult: ApolloQueryResult<PostSlugs> = await slugsWP.query({
+	const slugQueryResult: ApolloQueryResult<PostSlugs> = await slugsWP.query({
 		query: POST_SLUGS
 	});
 
-	const slugCache: PostSlugs_posts | null = queryResult.data.posts;
+	// const allPostSlugs: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	// const { loading, error, data } = useQuery(POSTS_AND_MORE_POSTS, {variables: { slug }});
+	// if (loading) return null;
+	// if (error) return `Error! ${error}`;
+	// const paths = data;
+
+	const slugCache: PostSlugs_posts | null = slugQueryResult.data.posts;
 	if (slugCache != null && slugCache.edges != null) {
 		// console.log('slug cache: ', slugCache);
 		const dataArray: string[] = slugCache.edges.map(post => {

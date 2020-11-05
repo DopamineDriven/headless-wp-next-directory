@@ -18,9 +18,9 @@ import { AllCategories_categories_edges } from '@graphql/__generated__/AllCatego
 import { CMS_NAME, CLIENT_NAME } from '@lib/constants';
 import { Lead } from '@components/Lead';
 import { SearchBox } from '@components/index';
-import Cards from '../components/Card/card-coalescence';
-import { MediaContextProvider } from '../lib/window-width';
-import Footer from '../components/Footer/footer';
+import Cards from '@components/Card/card-coalescence';
+import { MediaContextProvider } from '@lib/window-width';
+import Footer from '@components/Footer/footer';
 import {
 	PostObjectsConnectionOrderbyEnum,
 	OrderEnum

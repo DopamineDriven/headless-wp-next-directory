@@ -4,38 +4,39 @@ import {
 	HttpLink,
 	InMemoryCache,
 	defaultDataIdFromObject,
-	NormalizedCacheObject
+	NormalizedCacheObject,
+	createHttpLink
 } from '@apollo/client';
 // import possibleTypes  from 'lib/possible-types';
+import { createWriteStream } from 'fs';
 // https://github.com/vercel/next.js/discussions/11957
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
 function createApolloClient(): ApolloClient<NormalizedCacheObject> {
-	const headers = { 'Content-Type': 'application/json' };
-	return new ApolloClient<NormalizedCacheObject>({
-		ssrMode: true,
+	const token = process.env.WORDPRESS_AUTH_REFRESH_TOKEN;
+	const authorization = `Bearer ${token}`; // page 63 of fullstack-graphql
+	const headers = {
+		'Content-Type': 'application/json',
+		Authorization: authorization
+	};
+	// https://hasura.io/learn/graphql/nextjs-fullstack-serverless/apollo-client/
+	// const ssrMode = typeof window === 'undefined';
+	// let link;
+	// ssrMode ? link = createHttpLink({ headers }) /*executed serverside*/ : link = createWriteStream();
+	return new ApolloClient({
+		ssrMode: typeof window === 'undefined' ? true : false,
 		connectToDevTools: true,
 		link: new HttpLink({
 			uri: `${process.env.WORDPRESS_API_URL}`,
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`
+				Authorization: authorization
 			}
 		}),
 		cache: new InMemoryCache({
-			// possibleTypes: possibleTypes,
 			addTypename: true,
-			resultCaching: true,
-			typePolicies: {
-				// Query: {
-				// 	keyFields: false,
-				// fields: {
-				// 	posts: concatPagination<Reference>(),
-				// 	categories: concatPagination<Reference>()
-				// }
-				// }
-			}
+			resultCaching: true
 		})
 	});
 }
@@ -46,6 +47,7 @@ export function initializeApollo(
 ): ApolloClient<NormalizedCacheObject> {
 	console.log('initializing APOLLO......');
 	console.log(`initializing for ${consoleLogName}.....`);
+
 	const _apolloClient = apolloClient ?? createApolloClient();
 	if (initialState) {
 		const existingCache = _apolloClient.extract();
