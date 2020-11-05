@@ -202,7 +202,6 @@ export const getStaticProps = async ({
 		query: ALL_POSTS,
 		variables: { field: 'TITLE', order: 'ASC' }
 	});
-
 	const queryGetPostBySlug: ApolloQueryResult<GetPostBySlug> = await postBySlugWP.query(
 		{
 			query: GET_POST_BY_SLUG,
