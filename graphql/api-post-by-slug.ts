@@ -13,7 +13,9 @@ const GET_POST_BY_SLUG: TypedDocumentNode = gql`
 			slug
 			title
 			date
+			id
 			modified
+			excerpt
 			content
 			categories {
 				nodes {

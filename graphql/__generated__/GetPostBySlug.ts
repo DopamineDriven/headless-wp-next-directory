@@ -114,9 +114,17 @@ export interface GetPostBySlug_post {
 	 */
 	date: string | null;
 	/**
+	 * The globally unique identifier of the post object.
+	 */
+	id: string;
+	/**
 	 * The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
 	 */
 	modified: string | null;
+	/**
+	 * The excerpt of the post.
+	 */
+	excerpt: string | null;
 	/**
 	 * The content of the post.
 	 */

@@ -6,6 +6,7 @@ import { PostFields } from '../../graphql/__generated__/PostFields';
 // } from '@graphql/__generated__/AllPostsForCategory';
 
 const SubPostCategories = ({ categories }: PostFields) => {
+	console.log('catergories sub post: ', categories);
 	return (
 		<div className='max-w-2xl mx-auto text-center flex flex-row justify-center mt-2'>
 			<span className='text-xs text-center'>

@@ -2,22 +2,27 @@
 // 	CategoryTyped,
 // 	CategoryTypedVariables
 // } from 'graphql/__generated__/CategoryTyped';
+import { GetPostBySlug_post_categories_nodes } from '@graphql/__generated__/GetPostBySlug';
 
-const Categories = ({ categories }: any): JSX.Element => {
+interface catProps {
+	categories: (GetPostBySlug_post_categories_nodes | null)[] | null;
+}
+
+const Categories = ({ categories }: catProps): JSX.Element => {
 	return (
 		<div className='max-w-2xl mx-auto text-center flex flex-row justify-center mt-2'>
 			<span className='text-xs text-center'>
-				{categories.edges.length > 0 ? (
-					categories.edges.map((category: any, index: any) => (
+				{categories != null && categories.length > 0 ? (
+					categories.map((category: any, index: any) => (
 						<span
 							key={index}
 							className='inline-block bg-customGray hover:bg-iconHover transition-colors leading-relaxed duration-500 cursor-pointer rounded-full my-1 px-3 py-1 text-sm font-semibold mx-1 text-white'
 						>
-							#{category.node.name}&nbsp;
+							#{category.name}&nbsp;
 						</span>
 					))
 				) : (
-					<span className='ml-1'>{categories.edges.node.name}</span>
+					<span className='ml-1'>No categories listed for this post </span>
 				)}
 			</span>
 		</div>
