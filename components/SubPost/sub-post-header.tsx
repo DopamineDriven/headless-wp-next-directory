@@ -11,6 +11,7 @@ import {
 	AllPostsForCategory,
 	AllPostsForCategory_categories_edges
 } from '../../graphql/__generated__/AllPostsForCategory';
+import { GetPostBySlug_post } from '@graphql/__generated__/GetPostBySlug';
 
 const SubPostHeader = ({
 	title,
@@ -19,13 +20,9 @@ const SubPostHeader = ({
 	modified,
 	author,
 	categories,
-	category,
 	social,
 	slug
-}: AllPostsForCategory_categories_edges_node_posts_nodes & {
-	categories: AllPostsForCategory;
-	category: AllPostsForCategory_categories_edges;
-}) => {
+}: GetPostBySlug_post) => {
 	return (
 		<>
 			<div className='max-w-screen font-polished'>
@@ -56,12 +53,12 @@ const SubPostHeader = ({
 					</div>
 					<div className='flex flex-col'>
 						<Categories
-							categories={categories.categories?.edges}
-							category={
-								category && category.node && category.node.name
-									? category.node.name
-									: 'null'
-							}
+							categories={categories != null ? categories.nodes : null}
+							// category={
+							// 	category && category.node && category.node.name
+							// 		? category.node.name
+							// 		: 'null'
+							// }
 						/>
 					</div>
 					{social != null ? <CardIcons social={social ?? social} /> : null}
