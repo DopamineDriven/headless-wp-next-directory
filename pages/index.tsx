@@ -43,7 +43,7 @@ import {
 } from '../graphql/__generated__/AllTags';
 
 interface IndexProps {
-	allPosts: AllPosts_posts_edges_node[];
+	allPosts: AllPosts_posts_edges[];
 	preview: boolean;
 	tags: AllTags_tags_edges[];
 	categories: AllCategories_categories_edges[];
@@ -56,50 +56,52 @@ const Index = ({
 	categories
 }: IndexProps): JSX.Element => {
 	const [filterQuery, setFilterQuery] = useState('title');
-	const [allCompanies, setAllCompanies] = useState<AllPosts_posts_edges_node[]>(
+	const [allCompanies, setAllCompanies] = useState<AllPosts_posts_edges[]>(
 		allPosts
 	);
 	const [filteredCompanies, setFilteredCompanies] = useState<
-		AllPosts_posts_edges_node[]
+		AllPosts_posts_edges[]
 	>(allPosts);
 	const [search, setSearch] = useState<string | null>(null);
 	const [searchCategory, setSearchedCategory] = useState<string | null>(null);
 	const { TITLE } = PostObjectsConnectionOrderbyEnum;
 	// const [filter, setFilter] = useState(TITLE);
 
-	console.log('Posts in index: ', allPosts)
+	console.log('Posts in index: ', allPosts);
 
 	useEffect(() => {
 		if (!search) {
 			setFilteredCompanies(allCompanies);
 		} else {
 			if (filterQuery === 'title') {
-				const filterCompanies = allPosts.filter(
-					(company: AllPosts_posts_edges_node) => {
-						//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
-						//this was done so that toLowerCase() and includes() functions coudl work
-						const companyTitle = company.title != null ? company.title : '';
-						if (companyTitle.toLowerCase().includes(search)) {
-							return company;
-						} else {
-							return null;
-						}
+				const filterCompanies = allPosts.filter((company: AllPosts_posts_edges) => {
+					//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
+					//this was done so that toLowerCase() and includes() functions coudl work
+					const companyTitle =
+						company != null && company.node != null && company.node.title != null
+							? company.node.title
+							: '';
+					if (companyTitle.toLowerCase().includes(search)) {
+						return company;
+					} else {
+						return null;
 					}
-				);
+				});
 				setFilteredCompanies(filterCompanies);
 			} else if (filterQuery === 'description') {
-				const filterCompanies = allPosts.filter(
-					(company: AllPosts_posts_edges_node) => {
-						//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
-						//this was done so that toLowerCase() and includes() functions coudl work
-						const companyDescription = company.excerpt != null ? company.excerpt : '';
-						if (companyDescription.toLowerCase().includes(search)) {
-							return company;
-						} else {
-							return null;
-						}
+				const filterCompanies = allPosts.filter((company: AllPosts_posts_edges) => {
+					//following wp-graphql types, went into basePost type and performed a patch to change type of title from RawOrRender to string.
+					//this was done so that toLowerCase() and includes() functions coudl work
+					const companyDescription =
+						company != null && company.node != null && company.node.excerpt != null
+							? company.node.excerpt
+							: '';
+					if (companyDescription.toLowerCase().includes(search)) {
+						return company;
+					} else {
+						return null;
 					}
-				);
+				});
 				setFilteredCompanies(filterCompanies);
 			} else {
 				setFilteredCompanies(allCompanies);
@@ -216,15 +218,15 @@ export const getStaticProps = async ({
 		console.log('only one page of categories....................');
 	}
 
-	//this function is necessary because structure of nodes for posts data is slightly different when you get posts by category or grab all posts
-	const allPostsCacheNoNode: (AllPosts_posts_edges_node | null)[] | null =
-		allPostsCache?.edges != null ? removeNode(allPostsCache.edges) : null;
+	// //this function is necessary because structure of nodes for posts data is slightly different when you get posts by category or grab all posts
+	// const allPostsCacheNoNode: (AllPosts_posts_edges_node | null)[] | null =
+	// 	allPostsCache?.edges != null ? removeNode(allPostsCache.edges) : null;
 
 	// const userOptions = await getAllPostsForHomeSorted(preview, field);
 	// IMPORTANT https://nextjs.org/blog/next-9-5#stable-incremental-static-regeneration
 	return {
 		props: {
-			allPosts: allPostsCacheNoNode,
+			allPosts: allPostsCache?.edges,
 			preview,
 			tags: tagsCache?.edges,
 			field,
