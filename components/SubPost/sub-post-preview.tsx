@@ -2,24 +2,15 @@ import { CardAuthor } from '../Card';
 import { DatePublished } from '../Date';
 import CoverImage, { CoverImageProps } from './sub-post-featured-image';
 import Link from 'next/link';
-import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
+import { AllPostsForCategory_categories_edges_node_posts_edges_node } from '@graphql/__generated__/AllPostsForCategory';
 import { CardExcerpt as Excerpt } from '../Card';
 import SubPostTitle from './sub-post-title';
+import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
+import { allPostsFields } from '@graphql/__generated__/allPostsFields';
 // import {
 // 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 // 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
 // } from '../graphql/__generated__/AuthorCardQuery';
-
-type PostPreviewProps = {
-	featuredImage: CoverImageProps;
-	title: string;
-	date: string;
-	modified: string;
-	excerpt: string;
-	author: any;
-	slug: string | number;
-	// avatar: AuthorCardQueryUsersNodes;
-};
 
 const SubPostPreview = ({
 	title,
@@ -28,8 +19,9 @@ const SubPostPreview = ({
 	modified,
 	excerpt,
 	author,
-	slug
-}: AllPostsForCategory_categories_edges_node_posts_nodes) => {
+	slug,
+	categories
+}: allPostsFields) => {
 	return (
 		<div className='font-polished'>
 			<div className='mb-2'>

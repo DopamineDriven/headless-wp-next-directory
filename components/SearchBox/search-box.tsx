@@ -2,7 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 import { Fragment, ChangeEvent, SyntheticEvent } from 'react';
 import { InferGetServerSidePropsType } from 'next';
-import { AllPosts_posts_edges, AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
+import {
+	AllPosts_posts_edges,
+	AllPosts_posts_edges_node
+} from '@graphql/__generated__/AllPosts';
 import { AllCategories_categories_edges } from '@graphql/__generated__/AllCategories';
 import { AllTags_tags_edges } from '@graphql/__generated__/AllTags';
 import { useQuery } from '@apollo/client';
@@ -11,7 +14,7 @@ interface Props {
 	selectChange: (evt: SyntheticEvent) => void;
 	selectSearch: string;
 	filterFunc: (evt: SyntheticEvent) => void;
-	allPosts: AllPosts_posts_edges_node[];
+	allPosts: AllPosts_posts_edges[];
 	tags: AllTags_tags_edges[] | null;
 	dropdownOptions: string[];
 	categories: AllCategories_categories_edges[] | null;
