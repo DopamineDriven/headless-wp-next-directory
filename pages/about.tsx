@@ -8,7 +8,6 @@ import {
 	useQuery
 } from '@apollo/client';
 import { initializeApollo } from '@lib/apollo';
-import { removeNode } from '@lib/utilFunctions';
 import { CLIENT_NAME } from 'lib/constants';
 import { ALL_POSTS } from '../graphql/api-all-posts';
 import Lead from 'components/Lead/lead';
@@ -30,10 +29,7 @@ interface AboutProps {
 	categoriesAndPosts: any;
 }
 
-const About = ({
-	allPosts: { edges },
-	preview,
-}: AboutProps) => {
+const About = ({ allPosts: { edges }, preview }: AboutProps) => {
 	const heroPost = edges[0]?.node;
 	return (
 		<Fragment>
@@ -80,7 +76,6 @@ type StaticProps = {
 };
 
 export async function getStaticProps({ preview = false }: StaticProps) {
-
 	const allPostsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo(
 		null,
 		'about: allposts'
@@ -96,15 +91,10 @@ export async function getStaticProps({ preview = false }: StaticProps) {
 	const allPostsCache: AllPosts_posts | null =
 		allPostsQuery.data.posts != null ? allPostsQuery.data.posts : null;
 
-	//this function is necessary because structure of nodes for posts data is slightly different when you get posts by category or grab all posts
-	const allPostsCacheNoNode: (AllPosts_posts_edges_node | null)[] | null =
-		allPostsCache?.edges != null ? removeNode(allPostsCache.edges) : null;
-	
-
 	return {
-		props: { 
-			allPosts: allPostsCacheNoNode
-		 },
+		props: {
+			allPosts: allPostsCache?.edges
+		},
 		revalidate: 1
 	};
 }

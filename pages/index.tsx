@@ -8,7 +8,6 @@ import {
 	useQuery
 } from '@apollo/client';
 import { initializeApollo } from '@lib/apollo';
-import { removeNode } from '@lib/utilFunctions';
 import {
 	ALL_CATEGORIES,
 	allCategoryQueryVariables
