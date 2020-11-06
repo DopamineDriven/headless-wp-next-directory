@@ -47,7 +47,7 @@ export default CardTitleAbstracted;
 
 /*
 import { Title_posts_edges_node } from '@graphql/__generated__/Title';
-import { getAllPostsWithSlug_posts_edges_node } from '@graphql/__generated__/getAllPostsWithSlug';
+import { GetAllPostsWithSlug_posts_edges_node } from '@graphql/__generated__/GetAllPostsWithSlug';
 
 export interface CardTitleProps {
 	title: string | null;
@@ -55,5 +55,5 @@ export interface CardTitleProps {
 }
 
 export interface CardTitleFC
-	extends FC<Title_posts_edges_node & getAllPostsWithSlug_posts_edges_node> {}
+	extends FC<Title_posts_edges_node & GetAllPostsWithSlug_posts_edges_node> {}
 */
