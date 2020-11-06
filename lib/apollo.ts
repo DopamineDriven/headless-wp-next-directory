@@ -7,6 +7,8 @@ import {
 	NormalizedCacheObject,
 	createHttpLink
 } from '@apollo/client';
+import { categoryKeyNameForCache } from 'graphql/api-all-categories';
+import { concatPagination, Reference } from '@apollo/client/utilities';
 // import possibleTypes  from 'lib/possible-types';
 import { createWriteStream } from 'fs';
 // https://github.com/vercel/next.js/discussions/11957
@@ -29,10 +31,7 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 		connectToDevTools: true,
 		link: new HttpLink({
 			uri: `${process.env.WORDPRESS_API_URL}`,
-			headers: {
-				'Content-Type': 'application/json',
-				Authorization: authorization
-			}
+			headers: headers
 		}),
 		cache: new InMemoryCache({
 			addTypename: true,

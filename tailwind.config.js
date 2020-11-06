@@ -7,7 +7,10 @@ module.exports = {
 		purgeLayersByDefault: true
 	},
 	purge: {
-		content: ['./components/**/*.tsx', './pages/**/*.tsx'],
+		content: [
+			'./components/**/*.{js,ts,jsx,tsx}',
+			'./pages/**/*.{js,ts,jsx,tsx}'
+		],
 		options: {
 			whiteList: ['dark-mode', 'light-mode']
 		}
