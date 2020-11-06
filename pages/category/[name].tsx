@@ -23,11 +23,11 @@ import {
 	AllCategories_categories,
 	AllCategories
 } from '@graphql/__generated__/AllCategories';
-import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts'
+import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
 import {
 	AllPostsForCategory,
 	AllPostsForCategory_categories,
-	AllPostsForCategory_categories_edges_node_posts_edges_node
+	AllPostsForCategory_categories_edges_node_posts_edges
 } from '@graphql/__generated__/AllPostsForCategory';
 
 type Required<T> = {
@@ -35,7 +35,7 @@ type Required<T> = {
 };
 
 interface SlugProps {
-	posts: AllPosts_posts_edges_node[] | AllPostsForCategory_categories_edges_node_posts_edges_node[];
+	posts: AllPostsForCategory_categories_edges_node_posts_edges[];
 	preview: boolean;
 }
 
@@ -52,9 +52,9 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 	// };
 
 	console.log('Router obj: ', router);
-	// if (router.isFallback === false ) {
-	// 	return <ErrorPage statusCode={404} />;
-	// }
+	if (router.isFallback) {
+		return <ErrorPage statusCode={404} />;
+	}
 
 	console.log('posts received: ', posts);
 
@@ -128,8 +128,8 @@ export const getStaticProps = async ({
 			props: {
 				preview,
 				posts: postsForCategoryCache.edges[0].node.posts.edges
-			}
-			// revalidate: 10
+			},
+			revalidate: 10
 		};
 	}
 };

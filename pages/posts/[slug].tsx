@@ -17,8 +17,6 @@ import MoreCards from '@components/Card/card-coalescence';
 import { initializeApollo } from '@lib/apollo';
 import { MediaContextProvider } from '@lib/window-width';
 import { CMS_NAME } from '@lib/constants';
-import { removeNode } from '@lib/utilFunctions';
-import { AllPostsForCategory_categories_edges_node_posts_edges_node } from '@graphql/__generated__/AllPostsForCategory';
 import { PostSlugs, PostSlugs_posts } from '@graphql/__generated__/PostSlugs';
 import POST_SLUGS from '@graphql/api-post-slugs';
 import GET_POST_BY_SLUG from '@graphql/api-post-by-slug';
@@ -31,21 +29,21 @@ import { ALL_POSTS } from '@graphql/api-all-posts';
 import {
 	AllPosts,
 	AllPosts_posts,
-	AllPosts_posts_edges_node
+	AllPosts_posts_edges
 } from '@graphql/__generated__/AllPosts';
+import { allPostsFields } from '@graphql/__generated__/allPostsFields';
 import { useQuery } from '@apollo/client';
-import POSTS_AND_MORE_POSTS from '../../graphql/api-get-posts-and-more-posts';
 
 interface SlugProps {
-	post: GetPostBySlug_post;
-	posts: AllPostsForCategory_categories_edges_node_posts_edges_node[];
+	post: allPostsFields;
+	posts: AllPosts_posts_edges[];
 	preview: boolean;
 }
 
 const Post = ({ post, posts, preview }: SlugProps): JSX.Element => {
 	const router: NextRouter = useRouter();
 
-	console.log('posts in [slug]: ', posts)
+	console.log('posts in [slug]: ', posts[0]);
 
 	// if (router.isFallback === true) {
 	// 	return <ErrorPage statusCode={404} />;
@@ -136,12 +134,6 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 		query: POST_SLUGS
 	});
 
-	// const allPostSlugs: ApolloClient<NormalizedCacheObject> = initializeApollo();
-	// const { loading, error, data } = useQuery(POSTS_AND_MORE_POSTS, {variables: { slug }});
-	// if (loading) return null;
-	// if (error) return `Error! ${error}`;
-	// const paths = data;
-
 	const slugCache: PostSlugs_posts | null = slugQueryResult.data.posts;
 	if (slugCache != null && slugCache.edges != null) {
 		const dataArray: string[] = slugCache.edges.map(post => {
@@ -189,17 +181,12 @@ export const getStaticProps = async ({
 	const allPostsCache: AllPosts_posts | null =
 		allPostsQuery.data.posts != null ? allPostsQuery.data.posts : null;
 
-	const allPostsCacheNoNode: (AllPosts_posts_edges_node | null)[] | null =
-		allPostsCache != null && allPostsCache.edges != null
-			? removeNode(allPostsCache.edges)
-			: null;
-
-	if (getPostBySlugCache && allPostsCacheNoNode) {
+	if (getPostBySlugCache && allPostsCache) {
 		return {
 			props: {
 				preview,
 				post: getPostBySlugCache,
-				posts: allPostsCacheNoNode
+				posts: allPostsCache.edges
 			},
 			revalidate: 1
 		};
