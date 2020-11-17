@@ -18,7 +18,7 @@ const CoverImageCard = ({ title, featuredImage, slug }: CoverImageProps) => {
 			featuredImage.node.sourceUrl &&
 			featuredImage.node.sourceUrl ? (
 			<Image
-				src={`${featuredImage ? featuredImage.node.sourceUrl : featuredImage}`}
+				src={`${featuredImage ? featuredImage.node.sourceUrl : ' '}`}
 				alt={title + ' this is new'}
 				aria-label='Yeah'
 				className={cn(
