@@ -36,29 +36,93 @@ type Required<T> = {
 };
 
 interface SlugProps {
-	posts: AllPostsForCategory_categories_edges_node_posts_edges[];
+	// posts: AllPostsForCategory_categories_edges_node_posts_edges[];
 	preview: boolean;
+	initializeApolloState: NormalizedCacheObject;
 }
 
-const Category = ({ posts, preview }: SlugProps): JSX.Element => {
-	const router: NextRouter = useRouter();
+type Params = {
+	params: {
+		name: Scalars['String'];
+	};
+	preview: boolean;
+};
 
-	let { name } = router.query;
+export const getStaticProps = async ({
+	params,
+	preview = false
+}: Params & GetStaticProps) => {
+	const apolloClient = initializeApollo();
 
-	if (typeof name === 'string') {
-		name = name;
+	await apolloClient.query({
+		query: ALL_POSTS_FOR_CATEGORY,
+		variables: { first: 10, name: params.name }
+	});
+
+	return {
+		props: {
+			preview,
+			initializeApolloState: apolloClient.cache.extract()
+		},
+		revalidate: 1
+	};
+};
+
+export const getStaticPaths: GetStaticPaths = async (): Promise<
+	GetStaticPathsResult
+> => {
+	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+
+	const queryResult: ApolloQueryResult<AllCategories> = await categoriesWordPress.query(
+		{
+			query: ALL_CATEGORIES,
+			variables: allCategoryQueryVariables
+		}
+	);
+
+	const categoryCache: AllCategories_categories | null =
+		queryResult.data.categories;
+
+	if (categoryCache != null && categoryCache != undefined) {
+		if (categoryCache.edges != null) {
+			const dataArray: string[] = categoryCache.edges.map((category: any) => {
+				return `/category/${category.node.name}`;
+			});
+
+			return {
+				paths: dataArray || [],
+				fallback: false
+			};
+		} else {
+			throw new Error('edges in categories are null');
+		}
 	} else {
-		name = '';
+		throw new Error('object null');
 	}
+};
+
+const Category = ({
+	initializeApolloState,
+	preview
+}: SlugProps): JSX.Element => {
+	const router: NextRouter = useRouter();
+	console.group('apollo state: ', initializeApolloState);
+
+	const { name } = router.query;
+	console.log('name data: ', name, typeof name);
+
+	const categoryName = typeof name === 'string' ? name : null;
+
 	const { data, error } = useQuery<
 		AllPostsForCategory,
 		AllPostsForCategoryVariables
-	>({
-		query: ALL_POSTS_FOR_CATEGORY,
-		variables: { first: 10, name: name }
+	>(ALL_POSTS_FOR_CATEGORY, {
+		variables: { first: 10, name: categoryName },
+		notifyOnNetworkStatusChange: true
 	});
 
 	console.log('graphql error: ', error);
+	console.log('data :', data);
 
 	console.log('Router obj: ', router);
 	if (router.isFallback) {
@@ -101,66 +165,6 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 			</Layout>
 		</Fragment>
 	);
-};
-
-type Params = {
-	params: {
-		name: Scalars['String'];
-	};
-	preview: boolean;
-};
-
-export const getStaticProps = async ({
-	params,
-	preview = false
-}: Params & GetStaticProps) => {
-	const apolloClient = initializeApollo();
-
-	await apolloClient.query({
-		query: ALL_POSTS_FOR_CATEGORY,
-		variables: { first: 10, name: params.name }
-	});
-
-	return {
-		props: {
-			preview,
-			initialApolloState: apolloClient.cache.extract()
-		},
-		revalidate: 10
-	};
-};
-
-export const getStaticPaths: GetStaticPaths = async (): Promise<
-	GetStaticPathsResult
-> => {
-	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
-
-	const queryResult: ApolloQueryResult<AllCategories> = await categoriesWordPress.query(
-		{
-			query: ALL_CATEGORIES,
-			variables: allCategoryQueryVariables
-		}
-	);
-
-	const categoryCache: AllCategories_categories | null =
-		queryResult.data.categories;
-
-	if (categoryCache != null && categoryCache != undefined) {
-		if (categoryCache.edges != null) {
-			const dataArray: string[] = categoryCache.edges.map((category: any) => {
-				return `/category/${category.node.name}`;
-			});
-
-			return {
-				paths: dataArray || [],
-				fallback: false
-			};
-		} else {
-			throw new Error('edges in categories are null');
-		}
-	} else {
-		throw new Error('object null');
-	}
 };
 
 export default Category;
