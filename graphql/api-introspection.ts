@@ -1,9 +1,6 @@
 import { gql } from '@apollo/client';
-import { fetchAPI } from 'lib/api';
 
-const INTROSPECTION_QUERY = async (): Promise<void> => {
-	const data = await fetchAPI(
-		gql`
+const INTROSPECTION_QUERY = gql`
 			query IntrospectionQuery {
 				__schema {
 					queryType {
@@ -100,9 +97,6 @@ const INTROSPECTION_QUERY = async (): Promise<void> => {
 					}
 				}
 			}
-		`
-	);
-	return data;
-};
+		`;
 
 export default INTROSPECTION_QUERY;

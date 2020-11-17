@@ -2,7 +2,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons/faSearch';
 import { Fragment, ChangeEvent, SyntheticEvent } from 'react';
 import { InferGetServerSidePropsType } from 'next';
-import { AllPosts_posts_edges, AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
+import {
+	AllPosts_posts_edges,
+	AllPosts_posts_edges_node
+} from '@graphql/__generated__/AllPosts';
 import { AllCategories_categories_edges } from '@graphql/__generated__/AllCategories';
 import { AllTags_tags_edges } from '@graphql/__generated__/AllTags';
 import { useQuery } from '@apollo/client';
@@ -11,10 +14,10 @@ interface Props {
 	selectChange: (evt: SyntheticEvent) => void;
 	selectSearch: string;
 	filterFunc: (evt: SyntheticEvent) => void;
-	allPosts: AllPosts_posts_edges_node[];
-	tags: AllTags_tags_edges[] | null;
+	allPosts: (AllPosts_posts_edges | null)[] | null;
+	tags: (AllTags_tags_edges | null)[] | null | undefined;
 	dropdownOptions: string[];
-	categories: AllCategories_categories_edges[] | null;
+	categories: (AllCategories_categories_edges | null)[] | null | undefined;
 }
 
 const SearchBox = ({
@@ -31,7 +34,7 @@ const SearchBox = ({
 
 	const categoriesMapped: JSX.Element | (JSX.Element | null)[] = categories ? (
 		categories.map((category, index) => {
-			if (category.node === null) {
+			if (category === null || category.node === null) {
 				return null;
 			}
 			return (

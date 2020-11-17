@@ -2,7 +2,8 @@ import { useRouter, NextRouter } from 'next/router';
 import {
 	ApolloClient,
 	ApolloQueryResult,
-	NormalizedCacheObject
+	NormalizedCacheObject,
+	useQuery
 } from '@apollo/client';
 import { initializeApollo } from '@lib/apollo';
 import Header from '@components/Header';
@@ -25,83 +26,24 @@ import {
 } from '@graphql/__generated__/AllCategories';
 import {
 	AllPostsForCategory,
-	AllPostsForCategory_categories,
-	AllPostsForCategory_categories_edges_node_posts_nodes
+	AllPostsForCategoryVariables,
+	AllPostsForCategory_categories_edges_node_posts_edges
 } from '@graphql/__generated__/AllPostsForCategory';
+import { Scalars } from '../../graphql';
 
 type Required<T> = {
 	[P in keyof T]-?: T[P];
 };
 
 interface SlugProps {
-	posts: AllPostsForCategory_categories_edges_node_posts_nodes[];
+	// posts: AllPostsForCategory_categories_edges_node_posts_edges[];
 	preview: boolean;
-	postData: any;
+	initializeApolloState: NormalizedCacheObject;
 }
-
-// type Nullable<AllPostsForCategory_categories_edges_node_posts_nodes> = {
-// 	[P in keyof AllPostsForCategory_categories_edges_node_posts_nodes]:
-// 		| AllPostsForCategory_categories_edges_node_posts_nodes[P]
-// 		| null;
-// };
-
-// interface SlugProps {
-// 	postData: any;
-// 	// AllPostsForCategory_categories_edges_node_posts
-// 	// posts: Nullable<AllPostsForCategory_categories_edges_node_posts_nodes>;
-// 	posts: AllPostsForCategory_categories_edges_node_posts_nodes;
-// 	preview: boolean;
-// }
-
-const Category = ({ posts, preview, postData }: SlugProps): JSX.Element => {
-	const router: NextRouter = useRouter();
-	const morePosts = postData?.edges;
-	// type Required<T> = {
-	// 	[P in keyof T]-?: T[P];
-	// };
-
-	console.log('Router obj: ', router);
-	// if (router.isFallback === false ) {
-	// 	return <ErrorPage statusCode={404} />;
-	// }
-
-	console.log('posts received: ', posts);
-
-	return (
-		<Fragment>
-			<Header />
-			<Layout preview={preview}>
-				{router.isFallback ? (
-					<PostTitle title={null}>Loading…</PostTitle>
-				) : (
-					<>
-						<article>
-							<Head>
-								<title>Category search {CMS_NAME}</title>
-								<meta property='og:image' content={HOME_OG_IMAGE_URL} />
-							</Head>
-						</article>
-						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
-							{posts != null ? (
-								posts.length > 0 ? (
-									<Cards posts={posts} />
-								) : (
-									'No posts for this category'
-								)
-							) : (
-								'An error occurred returning posts.  Sorry for the inconvenience, please try again later.'
-							)}
-						</div>
-					</>
-				)}
-			</Layout>
-		</Fragment>
-	);
-};
 
 type Params = {
 	params: {
-		name: string | number;
+		name: Scalars['String'];
 	};
 	preview: boolean;
 };
@@ -110,39 +52,20 @@ export const getStaticProps = async ({
 	params,
 	preview = false
 }: Params & GetStaticProps) => {
-	console.log('category name: ', params.name);
+	const apolloClient = initializeApollo();
 
-	const allPostsForCategory: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	await apolloClient.query({
+		query: ALL_POSTS_FOR_CATEGORY,
+		variables: { first: 10, name: params.name }
+	});
 
-	const queryResult: ApolloQueryResult<AllPostsForCategory> = await allPostsForCategory.query(
-		{
-			query: ALL_POSTS_FOR_CATEGORY,
-			variables: { first: 10, name: params.name }
-		}
-	);
-
-	//checks to see if query result at top level is null.  If it is sets a psuedoObj equal to data and returns that.
-	const postsForCategoryCache: AllPostsForCategory_categories | null =
-		queryResult.data.categories != null ? queryResult.data.categories : null;
-
-	console.log('data and categories are not null', postsForCategoryCache);
-
-	if (
-		postsForCategoryCache &&
-		postsForCategoryCache.edges &&
-		postsForCategoryCache.edges[0] &&
-		postsForCategoryCache.edges[0].node &&
-		postsForCategoryCache.edges[0].node.posts &&
-		postsForCategoryCache.edges[0].node.posts.nodes
-	) {
-		return {
-			props: {
-				preview,
-				posts: postsForCategoryCache.edges[0].node.posts.nodes
-			}
-			// revalidate: 10
-		};
-	}
+	return {
+		props: {
+			preview,
+			initializeApolloState: apolloClient.cache.extract()
+		},
+		revalidate: 1
+	};
 };
 
 export const getStaticPaths: GetStaticPaths = async (): Promise<
@@ -162,17 +85,13 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 
 	if (categoryCache != null && categoryCache != undefined) {
 		if (categoryCache.edges != null) {
-			console.log('category cache', categoryCache);
-
 			const dataArray: string[] = categoryCache.edges.map((category: any) => {
-				console.log('category: ', category);
 				return `/category/${category.node.name}`;
 			});
 
-			console.log('data array: ', dataArray);
 			return {
 				paths: dataArray || [],
-				fallback: true
+				fallback: false
 			};
 		} else {
 			throw new Error('edges in categories are null');
@@ -180,6 +99,72 @@ export const getStaticPaths: GetStaticPaths = async (): Promise<
 	} else {
 		throw new Error('object null');
 	}
+};
+
+const Category = ({
+	initializeApolloState,
+	preview
+}: SlugProps): JSX.Element => {
+	const router: NextRouter = useRouter();
+	console.group('apollo state: ', initializeApolloState);
+
+	const { name } = router.query;
+	console.log('name data: ', name, typeof name);
+
+	const categoryName = typeof name === 'string' ? name : null;
+
+	const { data, error } = useQuery<
+		AllPostsForCategory,
+		AllPostsForCategoryVariables
+	>(ALL_POSTS_FOR_CATEGORY, {
+		variables: { first: 10, name: categoryName },
+		notifyOnNetworkStatusChange: true
+	});
+
+	console.log('graphql error: ', error);
+	console.log('data :', data);
+
+	console.log('Router obj: ', router);
+	if (router.isFallback) {
+		return <ErrorPage statusCode={404} />;
+	}
+
+	return (
+		<Fragment>
+			<Header />
+			<Layout preview={preview}>
+				{router.isFallback ? (
+					<PostTitle title={null}>Loading…</PostTitle>
+				) : (
+					<>
+						<article>
+							<Head>
+								<title>Category search {CMS_NAME}</title>
+								<meta property='og:image' content={HOME_OG_IMAGE_URL} />
+							</Head>
+						</article>
+						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
+							{data != null &&
+							data.categories != null &&
+							data.categories.edges != null &&
+							data.categories.edges[0] != null &&
+							data.categories.edges[0].node != null &&
+							data.categories.edges[0].node.posts != null &&
+							data.categories.edges[0].node.posts.edges != null ? (
+								data.categories.edges[0].node.posts.edges.length > 0 ? (
+									<Cards posts={data.categories.edges[0].node.posts.edges} />
+								) : (
+									'No posts for this category'
+								)
+							) : (
+								'An error occurred returning posts.  Sorry for the inconvenience, please try again later.'
+							)}
+						</div>
+					</>
+				)}
+			</Layout>
+		</Fragment>
+	);
 };
 
 export default Category;

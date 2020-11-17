@@ -6,8 +6,7 @@ import {
 	AuthorCardQuery_users_nodes as AuthorCardQueryUsersNodes,
 	AuthorCardQuery_users_nodes_avatar as AuthorCardQueryUsersNodesAvatar
 } from '../../graphql/__generated__/AuthorCardQuery';
-import { AllPostsForCategory_categories_edges_node_posts_nodes_author } from '@graphql/__generated__/AllPostsForCategory';
-import { AllPosts_posts_edges_node_author } from '@graphql/__generated__/AllPosts';
+import { allPostsFields_author } from '@graphql/__generated__/allPostsFields';
 import { AvatarFC, AvatarPropsFC } from './card-avatar';
 
 type AuthorNodeProps = {
@@ -26,10 +25,7 @@ export const AuthorNodeAbstracted: AuthorNodeFC = props => {
 };
 
 type AvatarProps = {
-	author:
-		| AllPosts_posts_edges_node_author
-		| AllPostsForCategory_categories_edges_node_posts_nodes_author
-		| null;
+	author: allPostsFields_author | null;
 	modified: string | null;
 };
 

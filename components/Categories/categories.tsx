@@ -2,10 +2,10 @@
 // 	CategoryTyped,
 // 	CategoryTypedVariables
 // } from 'graphql/__generated__/CategoryTyped';
-import { GetPostBySlug_post_categories_nodes } from '@graphql/__generated__/GetPostBySlug';
+import { GetPostBySlug_post_categories_edges} from '@graphql/__generated__/GetPostBySlug';
 
 interface catProps {
-	categories: (GetPostBySlug_post_categories_nodes | null)[] | null;
+	categories: (GetPostBySlug_post_categories_edges | null)[] | null;
 }
 
 const Categories = ({ categories }: catProps): JSX.Element => {
@@ -18,7 +18,7 @@ const Categories = ({ categories }: catProps): JSX.Element => {
 							key={index}
 							className='inline-block bg-customGray hover:bg-iconHover transition-colors leading-relaxed duration-500 cursor-pointer rounded-full my-1 px-3 py-1 text-sm font-semibold mx-1 text-white'
 						>
-							#{category.name}&nbsp;
+							#{category.node.name}&nbsp;
 						</span>
 					))
 				) : (

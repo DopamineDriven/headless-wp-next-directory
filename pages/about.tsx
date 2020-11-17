@@ -1,31 +1,48 @@
+import { Fragment } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import {
+	ApolloClient,
+	ApolloQueryResult,
+	NormalizedCacheObject,
+	useQuery
+} from '@apollo/client';
+import { initializeApollo } from '@lib/apollo';
+import { CLIENT_NAME } from 'lib/constants';
+import { ALL_POSTS } from '../graphql/api-all-posts';
 import Lead from 'components/Lead/lead';
 import Layout from 'components/Layout/layout';
 import Container from 'components/Container/container';
-import { CLIENT_NAME } from 'lib/constants';
-import { getAllPostsForAbout, getTagAndPosts, getCategories } from 'lib/api';
 import Intro from '@components/Intro/intro';
 import HeroPost from 'components/Hero/hero-post';
 import { MediaContextProvider } from 'lib/window-width';
-import { Fragment } from 'react';
+import {
+	AllPosts,
+	AllPostsVariables,
+	AllPosts_posts,
+	AllPosts_posts_edges_node
+} from '../graphql/__generated__/AllPosts';
+import {
+	PostObjectsConnectionOrderbyEnum,
+	OrderEnum
+} from '../types/graphql-global-types';
 
 interface AboutProps {
 	preview?: boolean;
-	allPosts: any;
-	tagsAndPosts: any;
-	categoriesAndPosts: any;
 }
 
-const About = ({
-	allPosts: { edges },
-	preview,
-	tagsAndPosts,
-	categoriesAndPosts
-}: AboutProps) => {
-	const heroPost = edges[0]?.node;
-	console.log(tagsAndPosts);
-	console.log(categoriesAndPosts);
+const About = ({ preview }: AboutProps) => {
+	const { TITLE, AUTHOR, DATE, MODIFIED } = PostObjectsConnectionOrderbyEnum;
+	const { ASC, DESC } = OrderEnum;
+
+	const { data } = useQuery<AllPosts, AllPostsVariables>({
+		query: ALL_POSTS,
+		variables: { field: TITLE, order: ASC }
+	});
+
+	const heroPost =
+		data && data.posts && data.posts.edges ? data.posts.edges[0]?.node : null;
+
 	return (
 		<Fragment>
 			<MediaContextProvider>
@@ -46,7 +63,7 @@ const About = ({
 							</Link>
 						</h2>
 						<Intro />
-						{heroPost && (
+						{/* {heroPost && (
 							<HeroPost
 								title={heroPost.title}
 								featuredImage={heroPost.featuredImage.node}
@@ -55,8 +72,8 @@ const About = ({
 								author={heroPost.author.node}
 								slug={heroPost.slug}
 								excerpt={heroPost.excerpt}
-							/>
-						)}
+							/> */}
+						{/* )} */}
 					</Container>
 				</Layout>
 			</MediaContextProvider>
@@ -71,12 +88,17 @@ type StaticProps = {
 };
 
 export async function getStaticProps({ preview = false }: StaticProps) {
-	const allPosts = await getAllPostsForAbout(preview);
-	const tagsAndPosts = await getTagAndPosts();
-	const categoriesAndPosts = await getCategories();
+	const apolloClient = initializeApollo();
+
+	await apolloClient.query({
+		query: ALL_POSTS,
+		variables: { field: 'TITLE', order: 'ASC' }
+	});
 
 	return {
-		props: { allPosts, preview, tagsAndPosts, categoriesAndPosts },
+		props: {
+			allPosts: apolloClient.cache.extract()
+		},
 		revalidate: 1
 	};
 }

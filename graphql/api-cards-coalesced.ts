@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { FRAGMENT_ALL_POSTS_FIELDS } from './postInfo-fragment';
 
 const CARDS_COALESCED = gql`
 	query CardsCoalesced(
@@ -8,37 +9,12 @@ const CARDS_COALESCED = gql`
 		posts(first: 35, where: { orderby: { field: $field, order: $order } }) {
 			edges {
 				node {
-					author {
-						node {
-							name
-							firstName
-							lastName
-							avatar {
-								url
-							}
-						}
-					}
-					title
-					content
-					date
-					excerpt
-					featuredImage {
-						node {
-							sourceUrl
-						}
-					}
-					modified
-					slug
-					social {
-						facebook
-						instagram
-						twitter
-						website
-					}
+					...allPostsFields
 				}
 			}
 		}
 	}
+	${FRAGMENT_ALL_POSTS_FIELDS}
 `;
 
 export default CARDS_COALESCED;

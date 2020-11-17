@@ -1,11 +1,14 @@
 import { __TypeEnumValuesArgs } from '../../graphql';
-import { PostFields } from '../../graphql/__generated__/PostFields';
+import {
+	allPostsFields,
+	allPostsFields_categories_edges
+} from '../../graphql/__generated__/allPostsFields';
 // import {
 // 	AllPostsForCategory_categories_edges_node,
 // 	AllPostsForCategory
 // } from '@graphql/__generated__/AllPostsForCategory';
 
-const SubPostCategories = ({ categories }: PostFields) => {
+const SubPostCategories = ({ categories }: allPostsFields) => {
 	console.log('catergories sub post: ', categories);
 	return (
 		<div className='max-w-2xl mx-auto text-center flex flex-row justify-center mt-2'>
@@ -13,17 +16,19 @@ const SubPostCategories = ({ categories }: PostFields) => {
 				{categories != null &&
 				categories.edges != null &&
 				categories.edges.length > 0 ? (
-					categories.edges.map((category, index: number) => (
-						<span
-							key={index}
-							className='inline-block bg-customGray hover:bg-iconHover transition-colors leading-relaxed duration-500 cursor-pointer rounded-full my-1 px-3 py-1 text-sm font-semibold mx-1 text-white'
-						>
-							#
-							{category != null && category.node != null && category.node.name != null
-								? category.node.name
-								: `${typeof category?.node?.name} returned null or undefined`}
-						</span>
-					))
+					categories.edges.map(
+						(category: allPostsFields_categories_edges | null, index: number) => (
+							<span
+								key={index}
+								className='inline-block bg-customGray hover:bg-iconHover transition-colors leading-relaxed duration-500 cursor-pointer rounded-full my-1 px-3 py-1 text-sm font-semibold mx-1 text-white'
+							>
+								#
+								{category != null && category.node != null && category.node.name != null
+									? category.node.name
+									: `${typeof category?.node?.name} returned null or undefined`}
+							</span>
+						)
+					)
 				) : (
 					<span>
 						{categories != null &&

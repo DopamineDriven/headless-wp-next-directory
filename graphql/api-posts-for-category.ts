@@ -1,49 +1,18 @@
 import { gql } from '@apollo/client';
-import {
-	AllPostsForCategory_categories_edges_node_posts,
-	AllPostsForCategory_categories_edges_node_posts_nodes
-} from './__generated__/AllPostsForCategory';
+import { FRAGMENT_ALL_POSTS_FIELDS } from './postInfo-fragment';
 
 export const ALL_POSTS_FOR_CATEGORY = gql`
-	query AllPostsForCategory($first: Int, $name: [String]) {
-		categories(first: $first, where: { name: $name }) {
+	query AllPostsForCategory($first: Int, $name: String) {
+		categories(first: $first, where: { nameLike: $name }) {
 			edges {
 				node {
 					id
 					databaseId
 					name
 					posts {
-						nodes {
-							author {
-								node {
-									name
-									firstName
-									lastName
-									avatar {
-										url
-										size
-										height
-										width
-									}
-								}
-							}
-							title
-							content
-							date
-							excerpt
-							featuredImage {
-								node {
-									sourceUrl
-								}
-							}
-							id
-							modified
-							slug
-							social {
-								facebook
-								instagram
-								twitter
-								website
+						edges {
+							node {
+								...allPostsFields
 							}
 						}
 					}
@@ -51,6 +20,5 @@ export const ALL_POSTS_FOR_CATEGORY = gql`
 			}
 		}
 	}
+	${FRAGMENT_ALL_POSTS_FIELDS}
 `;
-
-
