@@ -1,9 +1,9 @@
 import { gql } from '@apollo/client';
-import { FRAGMENT_ALL_POSTS_FIELDS } from './postInfo-fragment'
+import { FRAGMENT_ALL_POSTS_FIELDS } from './postInfo-fragment';
 
 export const ALL_POSTS_FOR_CATEGORY = gql`
-	query AllPostsForCategory($first: Int, $name: [String]) {
-		categories(first: $first, where: { name: $name }) {
+	query AllPostsForCategory($first: Int, $name: String) {
+		categories(first: $first, where: { nameLike: $name }) {
 			edges {
 				node {
 					id
@@ -22,5 +22,3 @@ export const ALL_POSTS_FOR_CATEGORY = gql`
 	}
 	${FRAGMENT_ALL_POSTS_FIELDS}
 `;
-
-
