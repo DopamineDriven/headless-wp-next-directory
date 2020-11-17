@@ -18,19 +18,31 @@ import HeroPost from 'components/Hero/hero-post';
 import { MediaContextProvider } from 'lib/window-width';
 import {
 	AllPosts,
+	AllPostsVariables,
 	AllPosts_posts,
 	AllPosts_posts_edges_node
 } from '../graphql/__generated__/AllPosts';
+import {
+	PostObjectsConnectionOrderbyEnum,
+	OrderEnum
+} from '../types/graphql-global-types';
 
 interface AboutProps {
 	preview?: boolean;
-	allPosts: any;
-	tagsAndPosts: any;
-	categoriesAndPosts: any;
 }
 
-const About = ({ allPosts: { edges }, preview }: AboutProps) => {
-	const heroPost = edges[0]?.node;
+const About = ({ preview }: AboutProps) => {
+	const { TITLE, AUTHOR, DATE, MODIFIED } = PostObjectsConnectionOrderbyEnum;
+	const { ASC, DESC } = OrderEnum;
+
+	const { data } = useQuery<AllPosts, AllPostsVariables>({
+		query: ALL_POSTS,
+		variables: { field: TITLE, order: ASC }
+	});
+
+	const heroPost =
+		data && data.posts && data.posts.edges ? data.posts.edges[0]?.node : null;
+
 	return (
 		<Fragment>
 			<MediaContextProvider>
@@ -51,7 +63,7 @@ const About = ({ allPosts: { edges }, preview }: AboutProps) => {
 							</Link>
 						</h2>
 						<Intro />
-						{heroPost && (
+						{/* {heroPost && (
 							<HeroPost
 								title={heroPost.title}
 								featuredImage={heroPost.featuredImage.node}
@@ -60,8 +72,8 @@ const About = ({ allPosts: { edges }, preview }: AboutProps) => {
 								author={heroPost.author.node}
 								slug={heroPost.slug}
 								excerpt={heroPost.excerpt}
-							/>
-						)}
+							/> */}
+						{/* )} */}
 					</Container>
 				</Layout>
 			</MediaContextProvider>
@@ -76,24 +88,16 @@ type StaticProps = {
 };
 
 export async function getStaticProps({ preview = false }: StaticProps) {
-	const allPostsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo(
-		null,
-		'about: allposts'
-	);
+	const apolloClient = initializeApollo();
 
-	const allPostsQuery: ApolloQueryResult<AllPosts> = await allPostsWordPress.query(
-		{
-			query: ALL_POSTS,
-			variables: { field: 'TITLE', order: 'ASC' }
-		}
-	);
-
-	const allPostsCache: AllPosts_posts | null =
-		allPostsQuery.data.posts != null ? allPostsQuery.data.posts : null;
+	await apolloClient.query({
+		query: ALL_POSTS,
+		variables: { field: 'TITLE', order: 'ASC' }
+	});
 
 	return {
 		props: {
-			allPosts: allPostsCache?.edges
+			allPosts: apolloClient.cache.extract()
 		},
 		revalidate: 1
 	};
