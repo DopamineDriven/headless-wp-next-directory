@@ -4,7 +4,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 const withImages = {
 	images: {
-		domains: ['jacob-dental-group.wpengine.com']
+		domains: ['cima2020.wpengine.com']
 	}
 };
 
