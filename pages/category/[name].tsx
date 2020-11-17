@@ -2,7 +2,8 @@ import { useRouter, NextRouter } from 'next/router';
 import {
 	ApolloClient,
 	ApolloQueryResult,
-	NormalizedCacheObject
+	NormalizedCacheObject,
+	useQuery
 } from '@apollo/client';
 import { initializeApollo } from '@lib/apollo';
 import Header from '@components/Header';
@@ -23,12 +24,12 @@ import {
 	AllCategories_categories,
 	AllCategories
 } from '@graphql/__generated__/AllCategories';
-import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
 import {
 	AllPostsForCategory,
-	AllPostsForCategory_categories,
+	AllPostsForCategoryVariables,
 	AllPostsForCategory_categories_edges_node_posts_edges
 } from '@graphql/__generated__/AllPostsForCategory';
+import { Scalars } from '../../graphql';
 
 type Required<T> = {
 	[P in keyof T]-?: T[P];
@@ -39,24 +40,30 @@ interface SlugProps {
 	preview: boolean;
 }
 
-// type Nullable<AllPostsForCategory_categories_edges_node_posts_nodes> = {
-// 	[P in keyof AllPostsForCategory_categories_edges_node_posts_nodes]:
-// 		| AllPostsForCategory_categories_edges_node_posts_nodes[P]
-// 		| null;
-// };
-
 const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 	const router: NextRouter = useRouter();
-	// type Required<T> = {
-	// 	[P in keyof T]-?: T[P];
-	// };
+
+	let { name } = router.query;
+
+	if (typeof name === 'string') {
+		name = name;
+	} else {
+		name = '';
+	}
+	const { data, error } = useQuery<
+		AllPostsForCategory,
+		AllPostsForCategoryVariables
+	>({
+		query: ALL_POSTS_FOR_CATEGORY,
+		variables: { first: 10, name: name }
+	});
+
+	console.log('graphql error: ', error);
 
 	console.log('Router obj: ', router);
 	if (router.isFallback) {
 		return <ErrorPage statusCode={404} />;
 	}
-
-	console.log('posts received: ', posts);
 
 	return (
 		<Fragment>
@@ -73,9 +80,15 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 							</Head>
 						</article>
 						<div className='items-center content-center justify-center block max-w-full mx-auto my-portfolioH2F'>
-							{posts != null ? (
-								posts.length > 0 ? (
-									<Cards posts={posts} />
+							{data != null &&
+							data.categories != null &&
+							data.categories.edges != null &&
+							data.categories.edges[0] != null &&
+							data.categories.edges[0].node != null &&
+							data.categories.edges[0].node.posts != null &&
+							data.categories.edges[0].node.posts.edges != null ? (
+								data.categories.edges[0].node.posts.edges.length > 0 ? (
+									<Cards posts={data.categories.edges[0].node.posts.edges} />
 								) : (
 									'No posts for this category'
 								)
@@ -92,7 +105,7 @@ const Category = ({ posts, preview }: SlugProps): JSX.Element => {
 
 type Params = {
 	params: {
-		name: string | number;
+		name: Scalars['String'];
 	};
 	preview: boolean;
 };
@@ -101,37 +114,20 @@ export const getStaticProps = async ({
 	params,
 	preview = false
 }: Params & GetStaticProps) => {
-	const allPostsForCategory: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const apolloClient = initializeApollo();
 
-	const queryResult: ApolloQueryResult<AllPostsForCategory> = await allPostsForCategory.query(
-		{
-			query: ALL_POSTS_FOR_CATEGORY,
-			variables: { first: 10, name: params.name }
-		}
-	);
+	await apolloClient.query({
+		query: ALL_POSTS_FOR_CATEGORY,
+		variables: { first: 10, name: params.name }
+	});
 
-	//checks to see if query result at top level is null.  If it is sets a psuedoObj equal to data and returns that.
-	const postsForCategoryCache: AllPostsForCategory_categories | null =
-		queryResult.data.categories != null ? queryResult.data.categories : null;
-
-	console.log('data and categories are not null', postsForCategoryCache);
-
-	if (
-		postsForCategoryCache &&
-		postsForCategoryCache.edges &&
-		postsForCategoryCache.edges[0] &&
-		postsForCategoryCache.edges[0].node &&
-		postsForCategoryCache.edges[0].node.posts &&
-		postsForCategoryCache.edges[0].node.posts.edges
-	) {
-		return {
-			props: {
-				preview,
-				posts: postsForCategoryCache.edges[0].node.posts.edges
-			},
-			revalidate: 10
-		};
-	}
+	return {
+		props: {
+			preview,
+			initialApolloState: apolloClient.cache.extract()
+		},
+		revalidate: 10
+	};
 };
 
 export const getStaticPaths: GetStaticPaths = async (): Promise<
