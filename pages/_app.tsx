@@ -32,7 +32,7 @@ if (typeof window !== 'undefined' && process.env.NODE_ENV === 'development') {
 
 function App({ Component, pageProps }: AppProps): ReactElement {
 	const apolloClient: ApolloClient<NormalizedCacheObject> = useApollo(
-		pageProps.initializeApollo
+		pageProps.initializeApolloState
 	);
 	const router: NextRouter = useRouter();
 	useEffect(() => {
