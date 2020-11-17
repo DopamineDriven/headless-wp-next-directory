@@ -1,23 +1,50 @@
 import Card from '@components/Card/card-unit';
+import { Fragment } from 'react';
+import { useQuery } from '@apollo/client';
 import { AllPostsForCategory_categories_edges_node_posts_edges } from '@graphql/__generated__/AllPostsForCategory';
 import {
 	AllPosts_posts_edges,
 	AllPosts_posts_edges_node
 } from '@graphql/__generated__/AllPosts';
-import { Fragment } from 'react';
+import { ALL_POSTS } from '@graphql/api-all-posts';
+import { allTagQueryVariables, ALL_TAGS } from '@graphql/api-all-tags';
+import { allCategoryQueryVariables, ALL_CATEGORIES } from '@graphql/api-all-categories';
 
 type CardsProps = {
 	posts: (
 		| AllPostsForCategory_categories_edges_node_posts_edges
 		| AllPosts_posts_edges
-	)[];
+		| null
+	)[] | null;
 };
 
 export default function CardsCoalesced({ posts }: CardsProps) {
+
+	// 	const multipleQueries = () => {
+
+	// 	const query1 = useQuery(ALL_POSTS,{ variables: { field: 'TITLE', order: 'ASC' }})
+	// 	const query2 = useQuery(ALL_CATEGORIES, { variables: allCategoryQueryVariables})
+	// 	const query3 = useQuery(ALL_TAGS, {variables: allTagQueryVariables})
+
+	// 	return [query1+, query2, query3]
+	// }
+	
+	// const [{data:postsData},{data:categoriesData},{data:tagsData}] = multipleQueries();
+
+	// // const { data: postsData} = useQuery(ALL_POSTS,{ variables: { field: 'TITLE', order: 'ASC' }});
+
+	// const posts = postsData.posts.edges
+	// const categories = categoriesData.categories.edges
+	// const tags = tagsData.tags.edges
+
+	// console.log('posts: ', posts);
+	// console.log('categories: ', categories)
+	// console.log('tags: ', tags);
+
 	return (
 		<section className='content-center justify-center block mx-auto '>
 			<div className='grid content-center justify-center grid-cols-1 mx-auto text-center align-middle sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-x-portfolio gap-y-portfolioPadding sm:max-w-cardGridMobile max-w-cardGrid'>
-				{posts.map(
+				{posts != null ? posts.map(
 					(
 						company:
 							| AllPosts_posts_edges
@@ -58,7 +85,7 @@ export default function CardsCoalesced({ posts }: CardsProps) {
 							</Fragment>
 						);
 					}
-				)}
+				) : 'No posts were found'}
 			</div>
 		</section>
 	);
