@@ -1,5 +1,29 @@
 # headless-wp-next-directory
 
+## return all top level categories (all of ours are)
+
+```gql
+query GET_CATEGORIES {
+	categories(where: { parent: 0 }) {
+		edges {
+			node {
+				id
+				databaseId
+				name
+				children {
+					nodes {
+						id
+						databaseId
+						name
+						parentDatabaseId
+					}
+				}
+			}
+		}
+	}
+}
+```
+
 ## Use for get post preview
 
 ```ts
@@ -183,21 +207,6 @@ ALIASES
 
 - https://www.techhive.io/our-insights/how-to-build-a-powerful-blog-with-nextjs-and-contentful
 - https://graphql-code-generator.com/docs/plugins/typescript-apollo-next
-
-## PostOrderByType
-
-```ts
-import { GraphQLEnumType } from 'graphql';
-export declare type PostOrderBy =
-	| 'date'
-	| 'id'
-	| 'include'
-	| 'relevance'
-	| 'slug'
-	| 'title';
-declare const postOrderByType: GraphQLEnumType;
-export default postOrderByType;
-```
 
 - https://medium.com/swlh/graphql-js-vs-typegraphql-vs-graphql-nexus-2a8036deb851
 

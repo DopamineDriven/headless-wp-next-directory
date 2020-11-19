@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 
 type Props = {
 	preview?: boolean;
-	children: ReactNode;
+	children: ReactNode | any;
 };
 
 export default function Layout({ children }: Props) {

@@ -149,10 +149,7 @@ interface Params {
 export const getStaticPaths: GetStaticPaths = async (): Promise<
 	GetStaticPathsResult
 > => {
-	const slugsWP: ApolloClient<NormalizedCacheObject> = initializeApollo(
-		null,
-		'slugs'
-	);
+	const slugsWP: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
 	const slugQueryResult: ApolloQueryResult<PostSlugs> = await slugsWP.query({
 		query: POST_SLUGS
@@ -189,14 +186,8 @@ export const getStaticProps = async ({
 	preview = false
 }: Params & GetStaticProps) => {
 	console.log('slug name: ', params.slug);
-	const allPostsWP: ApolloClient<NormalizedCacheObject> = initializeApollo(
-		null,
-		'allPosts'
-	);
-	const postBySlugWP: ApolloClient<NormalizedCacheObject> = initializeApollo(
-		null,
-		'postBySlugWP'
-	);
+	const allPostsWP: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const postBySlugWP: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
 	const allPostsQuery: ApolloQueryResult<AllPosts> = await allPostsWP.query({
 		query: ALL_POSTS,

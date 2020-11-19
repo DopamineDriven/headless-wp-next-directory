@@ -1,6 +1,7 @@
 import gql from 'graphql-tag';
 import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
+import * as ApolloReactCommon from '@apollo/client';
+import * as ApolloReactHooks from '@apollo/client';
 import {
 	FieldPolicy,
 	FieldReadFunction,
@@ -9779,6 +9780,59 @@ export type AuthorQuery = { __typename?: 'RootQuery' } & {
 	>;
 };
 
+export type CardCoalescenceQueryVariables = Exact<{
+	first: Scalars['Int'];
+	field: PostObjectsConnectionOrderbyEnum;
+	order: OrderEnum;
+}>;
+
+export type CardCoalescenceQuery = { __typename?: 'RootQuery' } & {
+	posts?: Maybe<
+		{ __typename?: 'RootQueryToPostConnection' } & {
+			edges?: Maybe<
+				Array<
+					Maybe<
+						{ __typename?: 'RootQueryToPostConnectionEdge' } & {
+							node?: Maybe<
+								{ __typename?: 'Post' } & Pick<
+									Post,
+									'id' | 'title' | 'excerpt' | 'slug' | 'date' | 'modified'
+								> & {
+										social?: Maybe<
+											{ __typename?: 'Post_Social' } & Pick<
+												Post_Social,
+												'facebook' | 'instagram' | 'twitter' | 'website'
+											>
+										>;
+										featuredImage?: Maybe<
+											{ __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' } & {
+												node?: Maybe<
+													{ __typename?: 'MediaItem' } & Pick<MediaItem, 'sourceUrl'>
+												>;
+											}
+										>;
+										author?: Maybe<
+											{ __typename?: 'NodeWithAuthorToUserConnectionEdge' } & {
+												node?: Maybe<
+													{ __typename?: 'User' } & Pick<
+														User,
+														'name' | 'firstName' | 'lastName'
+													> & {
+															avatar?: Maybe<{ __typename?: 'Avatar' } & Pick<Avatar, 'url'>>;
+														}
+												>;
+											}
+										>;
+									}
+							>;
+						}
+					>
+				>
+			>;
+		}
+	>;
+};
+
 export type CardsCoalescedQueryVariables = Exact<{
 	field: PostObjectsConnectionOrderbyEnum;
 	order: OrderEnum;
@@ -10245,7 +10299,7 @@ export type GetPostBySlugQuery = { __typename?: 'RootQuery' } & {
 	post?: Maybe<
 		{ __typename?: 'Post' } & Pick<
 			Post,
-			'slug' | 'title' | 'date' | 'modified' | 'content'
+			'slug' | 'title' | 'date' | 'id' | 'modified' | 'excerpt' | 'content'
 		> & {
 				featuredImage?: Maybe<
 					{ __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge' } & {
@@ -10483,6 +10537,14 @@ declare module '*/api-by-author.ts' {
 	import { DocumentNode } from 'graphql';
 	const defaultDocument: DocumentNode;
 	export const Author: DocumentNode;
+
+	export default defaultDocument;
+}
+
+declare module '*/api-cards-coalesce.ts' {
+	import { DocumentNode } from 'graphql';
+	const defaultDocument: DocumentNode;
+	export const CardCoalescence: DocumentNode;
 
 	export default defaultDocument;
 }
@@ -10893,6 +10955,47 @@ export const Author = gql`
 		}
 	}
 `;
+export const CardCoalescence = gql`
+	query CardCoalescence(
+		$first: Int!
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+	) {
+		posts(first: $first, where: { orderby: { field: $field, order: $order } }) {
+			edges {
+				node {
+					id
+					title
+					excerpt
+					slug
+					date
+					modified
+					social {
+						facebook
+						instagram
+						twitter
+						website
+					}
+					featuredImage {
+						node {
+							sourceUrl
+						}
+					}
+					author {
+						node {
+							name
+							firstName
+							lastName
+							avatar {
+								url
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+`;
 export const CardsCoalesced = gql`
 	query CardsCoalesced(
 		$field: PostObjectsConnectionOrderbyEnum!
@@ -11147,7 +11250,9 @@ export const GetPostBySlug = gql`
 			slug
 			title
 			date
+			id
 			modified
+			excerpt
 			content
 			categories {
 				nodes {
@@ -11459,23 +11564,23 @@ export const AllPostsGraphQlDocument = gql`
  * });
  */
 export function useAllPostsGraphQlQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		AllPostsGraphQlQuery,
 		AllPostsGraphQlQueryVariables
 	>
 ) {
-	return Apollo.useQuery<AllPostsGraphQlQuery, AllPostsGraphQlQueryVariables>(
-		AllPostsGraphQlDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useQuery<
+		AllPostsGraphQlQuery,
+		AllPostsGraphQlQueryVariables
+	>(AllPostsGraphQlDocument, baseOptions);
 }
 export function useAllPostsGraphQlLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		AllPostsGraphQlQuery,
 		AllPostsGraphQlQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<
+	return ApolloReactHooks.useLazyQuery<
 		AllPostsGraphQlQuery,
 		AllPostsGraphQlQueryVariables
 	>(AllPostsGraphQlDocument, baseOptions);
@@ -11486,7 +11591,7 @@ export type AllPostsGraphQlQueryHookResult = ReturnType<
 export type AllPostsGraphQlLazyQueryHookResult = ReturnType<
 	typeof useAllPostsGraphQlLazyQuery
 >;
-export type AllPostsGraphQlQueryResult = Apollo.QueryResult<
+export type AllPostsGraphQlQueryResult = ApolloReactCommon.QueryResult<
 	AllPostsGraphQlQuery,
 	AllPostsGraphQlQueryVariables
 >;
@@ -11523,26 +11628,26 @@ export const AllCategoriesDocument = gql`
  * });
  */
 export function useAllCategoriesQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		AllCategoriesQuery,
 		AllCategoriesQueryVariables
 	>
 ) {
-	return Apollo.useQuery<AllCategoriesQuery, AllCategoriesQueryVariables>(
-		AllCategoriesDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useQuery<
+		AllCategoriesQuery,
+		AllCategoriesQueryVariables
+	>(AllCategoriesDocument, baseOptions);
 }
 export function useAllCategoriesLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		AllCategoriesQuery,
 		AllCategoriesQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<AllCategoriesQuery, AllCategoriesQueryVariables>(
-		AllCategoriesDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useLazyQuery<
+		AllCategoriesQuery,
+		AllCategoriesQueryVariables
+	>(AllCategoriesDocument, baseOptions);
 }
 export type AllCategoriesQueryHookResult = ReturnType<
 	typeof useAllCategoriesQuery
@@ -11550,7 +11655,7 @@ export type AllCategoriesQueryHookResult = ReturnType<
 export type AllCategoriesLazyQueryHookResult = ReturnType<
 	typeof useAllCategoriesLazyQuery
 >;
-export type AllCategoriesQueryResult = Apollo.QueryResult<
+export type AllCategoriesQueryResult = ApolloReactCommon.QueryResult<
 	AllCategoriesQuery,
 	AllCategoriesQueryVariables
 >;
@@ -11614,20 +11719,23 @@ export const AllPostsDocument = gql`
  * });
  */
 export function useAllPostsQuery(
-	baseOptions?: Apollo.QueryHookOptions<AllPostsQuery, AllPostsQueryVariables>
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
+		AllPostsQuery,
+		AllPostsQueryVariables
+	>
 ) {
-	return Apollo.useQuery<AllPostsQuery, AllPostsQueryVariables>(
+	return ApolloReactHooks.useQuery<AllPostsQuery, AllPostsQueryVariables>(
 		AllPostsDocument,
 		baseOptions
 	);
 }
 export function useAllPostsLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		AllPostsQuery,
 		AllPostsQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<AllPostsQuery, AllPostsQueryVariables>(
+	return ApolloReactHooks.useLazyQuery<AllPostsQuery, AllPostsQueryVariables>(
 		AllPostsDocument,
 		baseOptions
 	);
@@ -11636,7 +11744,7 @@ export type AllPostsQueryHookResult = ReturnType<typeof useAllPostsQuery>;
 export type AllPostsLazyQueryHookResult = ReturnType<
 	typeof useAllPostsLazyQuery
 >;
-export type AllPostsQueryResult = Apollo.QueryResult<
+export type AllPostsQueryResult = ApolloReactCommon.QueryResult<
 	AllPostsQuery,
 	AllPostsQueryVariables
 >;
@@ -11673,24 +11781,30 @@ export const AllTagsDocument = gql`
  * });
  */
 export function useAllTagsQuery(
-	baseOptions?: Apollo.QueryHookOptions<AllTagsQuery, AllTagsQueryVariables>
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
+		AllTagsQuery,
+		AllTagsQueryVariables
+	>
 ) {
-	return Apollo.useQuery<AllTagsQuery, AllTagsQueryVariables>(
+	return ApolloReactHooks.useQuery<AllTagsQuery, AllTagsQueryVariables>(
 		AllTagsDocument,
 		baseOptions
 	);
 }
 export function useAllTagsLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<AllTagsQuery, AllTagsQueryVariables>
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		AllTagsQuery,
+		AllTagsQueryVariables
+	>
 ) {
-	return Apollo.useLazyQuery<AllTagsQuery, AllTagsQueryVariables>(
+	return ApolloReactHooks.useLazyQuery<AllTagsQuery, AllTagsQueryVariables>(
 		AllTagsDocument,
 		baseOptions
 	);
 }
 export type AllTagsQueryHookResult = ReturnType<typeof useAllTagsQuery>;
 export type AllTagsLazyQueryHookResult = ReturnType<typeof useAllTagsLazyQuery>;
-export type AllTagsQueryResult = Apollo.QueryResult<
+export type AllTagsQueryResult = ApolloReactCommon.QueryResult<
 	AllTagsQuery,
 	AllTagsQueryVariables
 >;
@@ -11725,23 +11839,23 @@ export const AuthorCardQueryDocument = gql`
  * });
  */
 export function useAuthorCardQueryQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		AuthorCardQueryQuery,
 		AuthorCardQueryQueryVariables
 	>
 ) {
-	return Apollo.useQuery<AuthorCardQueryQuery, AuthorCardQueryQueryVariables>(
-		AuthorCardQueryDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useQuery<
+		AuthorCardQueryQuery,
+		AuthorCardQueryQueryVariables
+	>(AuthorCardQueryDocument, baseOptions);
 }
 export function useAuthorCardQueryLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		AuthorCardQueryQuery,
 		AuthorCardQueryQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<
+	return ApolloReactHooks.useLazyQuery<
 		AuthorCardQueryQuery,
 		AuthorCardQueryQueryVariables
 	>(AuthorCardQueryDocument, baseOptions);
@@ -11752,7 +11866,7 @@ export type AuthorCardQueryQueryHookResult = ReturnType<
 export type AuthorCardQueryLazyQueryHookResult = ReturnType<
 	typeof useAuthorCardQueryLazyQuery
 >;
-export type AuthorCardQueryQueryResult = Apollo.QueryResult<
+export type AuthorCardQueryQueryResult = ApolloReactCommon.QueryResult<
 	AuthorCardQueryQuery,
 	AuthorCardQueryQueryVariables
 >;
@@ -11792,26 +11906,124 @@ export const AuthorDocument = gql`
  * });
  */
 export function useAuthorQuery(
-	baseOptions?: Apollo.QueryHookOptions<AuthorQuery, AuthorQueryVariables>
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
+		AuthorQuery,
+		AuthorQueryVariables
+	>
 ) {
-	return Apollo.useQuery<AuthorQuery, AuthorQueryVariables>(
+	return ApolloReactHooks.useQuery<AuthorQuery, AuthorQueryVariables>(
 		AuthorDocument,
 		baseOptions
 	);
 }
 export function useAuthorLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<AuthorQuery, AuthorQueryVariables>
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		AuthorQuery,
+		AuthorQueryVariables
+	>
 ) {
-	return Apollo.useLazyQuery<AuthorQuery, AuthorQueryVariables>(
+	return ApolloReactHooks.useLazyQuery<AuthorQuery, AuthorQueryVariables>(
 		AuthorDocument,
 		baseOptions
 	);
 }
 export type AuthorQueryHookResult = ReturnType<typeof useAuthorQuery>;
 export type AuthorLazyQueryHookResult = ReturnType<typeof useAuthorLazyQuery>;
-export type AuthorQueryResult = Apollo.QueryResult<
+export type AuthorQueryResult = ApolloReactCommon.QueryResult<
 	AuthorQuery,
 	AuthorQueryVariables
+>;
+export const CardCoalescenceDocument = gql`
+	query CardCoalescence(
+		$first: Int!
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+	) {
+		posts(first: $first, where: { orderby: { field: $field, order: $order } }) {
+			edges {
+				node {
+					id
+					title
+					excerpt
+					slug
+					date
+					modified
+					social {
+						facebook
+						instagram
+						twitter
+						website
+					}
+					featuredImage {
+						node {
+							sourceUrl
+						}
+					}
+					author {
+						node {
+							name
+							firstName
+							lastName
+							avatar {
+								url
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useCardCoalescenceQuery__
+ *
+ * To run a query within a React component, call `useCardCoalescenceQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCardCoalescenceQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCardCoalescenceQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      field: // value for 'field'
+ *      order: // value for 'order'
+ *   },
+ * });
+ */
+export function useCardCoalescenceQuery(
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
+		CardCoalescenceQuery,
+		CardCoalescenceQueryVariables
+	>
+) {
+	return ApolloReactHooks.useQuery<
+		CardCoalescenceQuery,
+		CardCoalescenceQueryVariables
+	>(CardCoalescenceDocument, baseOptions);
+}
+export function useCardCoalescenceLazyQuery(
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		CardCoalescenceQuery,
+		CardCoalescenceQueryVariables
+	>
+) {
+	return ApolloReactHooks.useLazyQuery<
+		CardCoalescenceQuery,
+		CardCoalescenceQueryVariables
+	>(CardCoalescenceDocument, baseOptions);
+}
+export type CardCoalescenceQueryHookResult = ReturnType<
+	typeof useCardCoalescenceQuery
+>;
+export type CardCoalescenceLazyQueryHookResult = ReturnType<
+	typeof useCardCoalescenceLazyQuery
+>;
+export type CardCoalescenceQueryResult = ApolloReactCommon.QueryResult<
+	CardCoalescenceQuery,
+	CardCoalescenceQueryVariables
 >;
 export const CardsCoalescedDocument = gql`
 	query CardsCoalesced(
@@ -11872,26 +12084,26 @@ export const CardsCoalescedDocument = gql`
  * });
  */
 export function useCardsCoalescedQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		CardsCoalescedQuery,
 		CardsCoalescedQueryVariables
 	>
 ) {
-	return Apollo.useQuery<CardsCoalescedQuery, CardsCoalescedQueryVariables>(
-		CardsCoalescedDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useQuery<
+		CardsCoalescedQuery,
+		CardsCoalescedQueryVariables
+	>(CardsCoalescedDocument, baseOptions);
 }
 export function useCardsCoalescedLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		CardsCoalescedQuery,
 		CardsCoalescedQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<CardsCoalescedQuery, CardsCoalescedQueryVariables>(
-		CardsCoalescedDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useLazyQuery<
+		CardsCoalescedQuery,
+		CardsCoalescedQueryVariables
+	>(CardsCoalescedDocument, baseOptions);
 }
 export type CardsCoalescedQueryHookResult = ReturnType<
 	typeof useCardsCoalescedQuery
@@ -11899,7 +12111,7 @@ export type CardsCoalescedQueryHookResult = ReturnType<
 export type CardsCoalescedLazyQueryHookResult = ReturnType<
 	typeof useCardsCoalescedLazyQuery
 >;
-export type CardsCoalescedQueryResult = Apollo.QueryResult<
+export type CardsCoalescedQueryResult = ApolloReactCommon.QueryResult<
 	CardsCoalescedQuery,
 	CardsCoalescedQueryVariables
 >;
@@ -11935,23 +12147,23 @@ export const CategoriesByEdgesDocument = gql`
  * });
  */
 export function useCategoriesByEdgesQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		CategoriesByEdgesQuery,
 		CategoriesByEdgesQueryVariables
 	>
 ) {
-	return Apollo.useQuery<
+	return ApolloReactHooks.useQuery<
 		CategoriesByEdgesQuery,
 		CategoriesByEdgesQueryVariables
 	>(CategoriesByEdgesDocument, baseOptions);
 }
 export function useCategoriesByEdgesLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		CategoriesByEdgesQuery,
 		CategoriesByEdgesQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<
+	return ApolloReactHooks.useLazyQuery<
 		CategoriesByEdgesQuery,
 		CategoriesByEdgesQueryVariables
 	>(CategoriesByEdgesDocument, baseOptions);
@@ -11962,7 +12174,7 @@ export type CategoriesByEdgesQueryHookResult = ReturnType<
 export type CategoriesByEdgesLazyQueryHookResult = ReturnType<
 	typeof useCategoriesByEdgesLazyQuery
 >;
-export type CategoriesByEdgesQueryResult = Apollo.QueryResult<
+export type CategoriesByEdgesQueryResult = ApolloReactCommon.QueryResult<
 	CategoriesByEdgesQuery,
 	CategoriesByEdgesQueryVariables
 >;
@@ -11995,23 +12207,23 @@ export const CategoriesByNodesDocument = gql`
  * });
  */
 export function useCategoriesByNodesQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		CategoriesByNodesQuery,
 		CategoriesByNodesQueryVariables
 	>
 ) {
-	return Apollo.useQuery<
+	return ApolloReactHooks.useQuery<
 		CategoriesByNodesQuery,
 		CategoriesByNodesQueryVariables
 	>(CategoriesByNodesDocument, baseOptions);
 }
 export function useCategoriesByNodesLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		CategoriesByNodesQuery,
 		CategoriesByNodesQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<
+	return ApolloReactHooks.useLazyQuery<
 		CategoriesByNodesQuery,
 		CategoriesByNodesQueryVariables
 	>(CategoriesByNodesDocument, baseOptions);
@@ -12022,7 +12234,7 @@ export type CategoriesByNodesQueryHookResult = ReturnType<
 export type CategoriesByNodesLazyQueryHookResult = ReturnType<
 	typeof useCategoriesByNodesLazyQuery
 >;
-export type CategoriesByNodesQueryResult = Apollo.QueryResult<
+export type CategoriesByNodesQueryResult = ApolloReactCommon.QueryResult<
 	CategoriesByNodesQuery,
 	CategoriesByNodesQueryVariables
 >;
@@ -12056,26 +12268,26 @@ export const CategoryByIdDocument = gql`
  * });
  */
 export function useCategoryByIdQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		CategoryByIdQuery,
 		CategoryByIdQueryVariables
 	>
 ) {
-	return Apollo.useQuery<CategoryByIdQuery, CategoryByIdQueryVariables>(
-		CategoryByIdDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useQuery<
+		CategoryByIdQuery,
+		CategoryByIdQueryVariables
+	>(CategoryByIdDocument, baseOptions);
 }
 export function useCategoryByIdLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		CategoryByIdQuery,
 		CategoryByIdQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<CategoryByIdQuery, CategoryByIdQueryVariables>(
-		CategoryByIdDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useLazyQuery<
+		CategoryByIdQuery,
+		CategoryByIdQueryVariables
+	>(CategoryByIdDocument, baseOptions);
 }
 export type CategoryByIdQueryHookResult = ReturnType<
 	typeof useCategoryByIdQuery
@@ -12083,7 +12295,7 @@ export type CategoryByIdQueryHookResult = ReturnType<
 export type CategoryByIdLazyQueryHookResult = ReturnType<
 	typeof useCategoryByIdLazyQuery
 >;
-export type CategoryByIdQueryResult = Apollo.QueryResult<
+export type CategoryByIdQueryResult = ApolloReactCommon.QueryResult<
 	CategoryByIdQuery,
 	CategoryByIdQueryVariables
 >;
@@ -12164,23 +12376,23 @@ export const SearchCategoriesReturnPostsDocument = gql`
  * });
  */
 export function useSearchCategoriesReturnPostsQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		SearchCategoriesReturnPostsQuery,
 		SearchCategoriesReturnPostsQueryVariables
 	>
 ) {
-	return Apollo.useQuery<
+	return ApolloReactHooks.useQuery<
 		SearchCategoriesReturnPostsQuery,
 		SearchCategoriesReturnPostsQueryVariables
 	>(SearchCategoriesReturnPostsDocument, baseOptions);
 }
 export function useSearchCategoriesReturnPostsLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		SearchCategoriesReturnPostsQuery,
 		SearchCategoriesReturnPostsQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<
+	return ApolloReactHooks.useLazyQuery<
 		SearchCategoriesReturnPostsQuery,
 		SearchCategoriesReturnPostsQueryVariables
 	>(SearchCategoriesReturnPostsDocument, baseOptions);
@@ -12191,7 +12403,7 @@ export type SearchCategoriesReturnPostsQueryHookResult = ReturnType<
 export type SearchCategoriesReturnPostsLazyQueryHookResult = ReturnType<
 	typeof useSearchCategoriesReturnPostsLazyQuery
 >;
-export type SearchCategoriesReturnPostsQueryResult = Apollo.QueryResult<
+export type SearchCategoriesReturnPostsQueryResult = ApolloReactCommon.QueryResult<
 	SearchCategoriesReturnPostsQuery,
 	SearchCategoriesReturnPostsQueryVariables
 >;
@@ -12235,26 +12447,26 @@ export const CategoryTypedDocument = gql`
  * });
  */
 export function useCategoryTypedQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		CategoryTypedQuery,
 		CategoryTypedQueryVariables
 	>
 ) {
-	return Apollo.useQuery<CategoryTypedQuery, CategoryTypedQueryVariables>(
-		CategoryTypedDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useQuery<
+		CategoryTypedQuery,
+		CategoryTypedQueryVariables
+	>(CategoryTypedDocument, baseOptions);
 }
 export function useCategoryTypedLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		CategoryTypedQuery,
 		CategoryTypedQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<CategoryTypedQuery, CategoryTypedQueryVariables>(
-		CategoryTypedDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useLazyQuery<
+		CategoryTypedQuery,
+		CategoryTypedQueryVariables
+	>(CategoryTypedDocument, baseOptions);
 }
 export type CategoryTypedQueryHookResult = ReturnType<
 	typeof useCategoryTypedQuery
@@ -12262,7 +12474,7 @@ export type CategoryTypedQueryHookResult = ReturnType<
 export type CategoryTypedLazyQueryHookResult = ReturnType<
 	typeof useCategoryTypedLazyQuery
 >;
-export type CategoryTypedQueryResult = Apollo.QueryResult<
+export type CategoryTypedQueryResult = ApolloReactCommon.QueryResult<
 	CategoryTypedQuery,
 	CategoryTypedQueryVariables
 >;
@@ -12301,23 +12513,23 @@ export const PostsByIdReturnImageSlugDocument = gql`
  * });
  */
 export function usePostsByIdReturnImageSlugQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		PostsByIdReturnImageSlugQuery,
 		PostsByIdReturnImageSlugQueryVariables
 	>
 ) {
-	return Apollo.useQuery<
+	return ApolloReactHooks.useQuery<
 		PostsByIdReturnImageSlugQuery,
 		PostsByIdReturnImageSlugQueryVariables
 	>(PostsByIdReturnImageSlugDocument, baseOptions);
 }
 export function usePostsByIdReturnImageSlugLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		PostsByIdReturnImageSlugQuery,
 		PostsByIdReturnImageSlugQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<
+	return ApolloReactHooks.useLazyQuery<
 		PostsByIdReturnImageSlugQuery,
 		PostsByIdReturnImageSlugQueryVariables
 	>(PostsByIdReturnImageSlugDocument, baseOptions);
@@ -12328,7 +12540,7 @@ export type PostsByIdReturnImageSlugQueryHookResult = ReturnType<
 export type PostsByIdReturnImageSlugLazyQueryHookResult = ReturnType<
 	typeof usePostsByIdReturnImageSlugLazyQuery
 >;
-export type PostsByIdReturnImageSlugQueryResult = Apollo.QueryResult<
+export type PostsByIdReturnImageSlugQueryResult = ApolloReactCommon.QueryResult<
 	PostsByIdReturnImageSlugQuery,
 	PostsByIdReturnImageSlugQueryVariables
 >;
@@ -12360,24 +12572,30 @@ export const ExcerptDocument = gql`
  * });
  */
 export function useExcerptQuery(
-	baseOptions?: Apollo.QueryHookOptions<ExcerptQuery, ExcerptQueryVariables>
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
+		ExcerptQuery,
+		ExcerptQueryVariables
+	>
 ) {
-	return Apollo.useQuery<ExcerptQuery, ExcerptQueryVariables>(
+	return ApolloReactHooks.useQuery<ExcerptQuery, ExcerptQueryVariables>(
 		ExcerptDocument,
 		baseOptions
 	);
 }
 export function useExcerptLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<ExcerptQuery, ExcerptQueryVariables>
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		ExcerptQuery,
+		ExcerptQueryVariables
+	>
 ) {
-	return Apollo.useLazyQuery<ExcerptQuery, ExcerptQueryVariables>(
+	return ApolloReactHooks.useLazyQuery<ExcerptQuery, ExcerptQueryVariables>(
 		ExcerptDocument,
 		baseOptions
 	);
 }
 export type ExcerptQueryHookResult = ReturnType<typeof useExcerptQuery>;
 export type ExcerptLazyQueryHookResult = ReturnType<typeof useExcerptLazyQuery>;
-export type ExcerptQueryResult = Apollo.QueryResult<
+export type ExcerptQueryResult = ApolloReactCommon.QueryResult<
 	ExcerptQuery,
 	ExcerptQueryVariables
 >;
@@ -12430,20 +12648,23 @@ export const PostSlugsDocument = gql`
  * });
  */
 export function usePostSlugsQuery(
-	baseOptions?: Apollo.QueryHookOptions<PostSlugsQuery, PostSlugsQueryVariables>
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
+		PostSlugsQuery,
+		PostSlugsQueryVariables
+	>
 ) {
-	return Apollo.useQuery<PostSlugsQuery, PostSlugsQueryVariables>(
+	return ApolloReactHooks.useQuery<PostSlugsQuery, PostSlugsQueryVariables>(
 		PostSlugsDocument,
 		baseOptions
 	);
 }
 export function usePostSlugsLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		PostSlugsQuery,
 		PostSlugsQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<PostSlugsQuery, PostSlugsQueryVariables>(
+	return ApolloReactHooks.useLazyQuery<PostSlugsQuery, PostSlugsQueryVariables>(
 		PostSlugsDocument,
 		baseOptions
 	);
@@ -12452,7 +12673,7 @@ export type PostSlugsQueryHookResult = ReturnType<typeof usePostSlugsQuery>;
 export type PostSlugsLazyQueryHookResult = ReturnType<
 	typeof usePostSlugsLazyQuery
 >;
-export type PostSlugsQueryResult = Apollo.QueryResult<
+export type PostSlugsQueryResult = ApolloReactCommon.QueryResult<
 	PostSlugsQuery,
 	PostSlugsQueryVariables
 >;
@@ -12501,23 +12722,23 @@ export const IntrospectionQueryDocument = gql`
  * });
  */
 export function useIntrospectionQueryQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		IntrospectionQueryQuery,
 		IntrospectionQueryQueryVariables
 	>
 ) {
-	return Apollo.useQuery<
+	return ApolloReactHooks.useQuery<
 		IntrospectionQueryQuery,
 		IntrospectionQueryQueryVariables
 	>(IntrospectionQueryDocument, baseOptions);
 }
 export function useIntrospectionQueryLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		IntrospectionQueryQuery,
 		IntrospectionQueryQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<
+	return ApolloReactHooks.useLazyQuery<
 		IntrospectionQueryQuery,
 		IntrospectionQueryQueryVariables
 	>(IntrospectionQueryDocument, baseOptions);
@@ -12528,7 +12749,7 @@ export type IntrospectionQueryQueryHookResult = ReturnType<
 export type IntrospectionQueryLazyQueryHookResult = ReturnType<
 	typeof useIntrospectionQueryLazyQuery
 >;
-export type IntrospectionQueryQueryResult = Apollo.QueryResult<
+export type IntrospectionQueryQueryResult = ApolloReactCommon.QueryResult<
 	IntrospectionQueryQuery,
 	IntrospectionQueryQueryVariables
 >;
@@ -12543,7 +12764,9 @@ export const GetPostBySlugDocument = gql`
 			slug
 			title
 			date
+			id
 			modified
+			excerpt
 			content
 			categories {
 				nodes {
@@ -12587,26 +12810,26 @@ export const GetPostBySlugDocument = gql`
  * });
  */
 export function useGetPostBySlugQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		GetPostBySlugQuery,
 		GetPostBySlugQueryVariables
 	>
 ) {
-	return Apollo.useQuery<GetPostBySlugQuery, GetPostBySlugQueryVariables>(
-		GetPostBySlugDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useQuery<
+		GetPostBySlugQuery,
+		GetPostBySlugQueryVariables
+	>(GetPostBySlugDocument, baseOptions);
 }
 export function useGetPostBySlugLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		GetPostBySlugQuery,
 		GetPostBySlugQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<GetPostBySlugQuery, GetPostBySlugQueryVariables>(
-		GetPostBySlugDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useLazyQuery<
+		GetPostBySlugQuery,
+		GetPostBySlugQueryVariables
+	>(GetPostBySlugDocument, baseOptions);
 }
 export type GetPostBySlugQueryHookResult = ReturnType<
 	typeof useGetPostBySlugQuery
@@ -12614,7 +12837,7 @@ export type GetPostBySlugQueryHookResult = ReturnType<
 export type GetPostBySlugLazyQueryHookResult = ReturnType<
 	typeof useGetPostBySlugLazyQuery
 >;
-export type GetPostBySlugQueryResult = Apollo.QueryResult<
+export type GetPostBySlugQueryResult = ApolloReactCommon.QueryResult<
 	GetPostBySlugQuery,
 	GetPostBySlugQueryVariables
 >;
@@ -12646,23 +12869,23 @@ export const GetAllPostsWithSlugDocument = gql`
  * });
  */
 export function useGetAllPostsWithSlugQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		GetAllPostsWithSlugQuery,
 		GetAllPostsWithSlugQueryVariables
 	>
 ) {
-	return Apollo.useQuery<
+	return ApolloReactHooks.useQuery<
 		GetAllPostsWithSlugQuery,
 		GetAllPostsWithSlugQueryVariables
 	>(GetAllPostsWithSlugDocument, baseOptions);
 }
 export function useGetAllPostsWithSlugLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		GetAllPostsWithSlugQuery,
 		GetAllPostsWithSlugQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<
+	return ApolloReactHooks.useLazyQuery<
 		GetAllPostsWithSlugQuery,
 		GetAllPostsWithSlugQueryVariables
 	>(GetAllPostsWithSlugDocument, baseOptions);
@@ -12673,7 +12896,7 @@ export type GetAllPostsWithSlugQueryHookResult = ReturnType<
 export type GetAllPostsWithSlugLazyQueryHookResult = ReturnType<
 	typeof useGetAllPostsWithSlugLazyQuery
 >;
-export type GetAllPostsWithSlugQueryResult = Apollo.QueryResult<
+export type GetAllPostsWithSlugQueryResult = ApolloReactCommon.QueryResult<
 	GetAllPostsWithSlugQuery,
 	GetAllPostsWithSlugQueryVariables
 >;
@@ -12705,20 +12928,23 @@ export const PostsByIdDocument = gql`
  * });
  */
 export function usePostsByIdQuery(
-	baseOptions?: Apollo.QueryHookOptions<PostsByIdQuery, PostsByIdQueryVariables>
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
+		PostsByIdQuery,
+		PostsByIdQueryVariables
+	>
 ) {
-	return Apollo.useQuery<PostsByIdQuery, PostsByIdQueryVariables>(
+	return ApolloReactHooks.useQuery<PostsByIdQuery, PostsByIdQueryVariables>(
 		PostsByIdDocument,
 		baseOptions
 	);
 }
 export function usePostsByIdLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		PostsByIdQuery,
 		PostsByIdQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<PostsByIdQuery, PostsByIdQueryVariables>(
+	return ApolloReactHooks.useLazyQuery<PostsByIdQuery, PostsByIdQueryVariables>(
 		PostsByIdDocument,
 		baseOptions
 	);
@@ -12727,7 +12953,7 @@ export type PostsByIdQueryHookResult = ReturnType<typeof usePostsByIdQuery>;
 export type PostsByIdLazyQueryHookResult = ReturnType<
 	typeof usePostsByIdLazyQuery
 >;
-export type PostsByIdQueryResult = Apollo.QueryResult<
+export type PostsByIdQueryResult = ApolloReactCommon.QueryResult<
 	PostsByIdQuery,
 	PostsByIdQueryVariables
 >;
@@ -12798,23 +13024,23 @@ export const AllPostsForCategoryDocument = gql`
  * });
  */
 export function useAllPostsForCategoryQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		AllPostsForCategoryQuery,
 		AllPostsForCategoryQueryVariables
 	>
 ) {
-	return Apollo.useQuery<
+	return ApolloReactHooks.useQuery<
 		AllPostsForCategoryQuery,
 		AllPostsForCategoryQueryVariables
 	>(AllPostsForCategoryDocument, baseOptions);
 }
 export function useAllPostsForCategoryLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		AllPostsForCategoryQuery,
 		AllPostsForCategoryQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<
+	return ApolloReactHooks.useLazyQuery<
 		AllPostsForCategoryQuery,
 		AllPostsForCategoryQueryVariables
 	>(AllPostsForCategoryDocument, baseOptions);
@@ -12825,7 +13051,7 @@ export type AllPostsForCategoryQueryHookResult = ReturnType<
 export type AllPostsForCategoryLazyQueryHookResult = ReturnType<
 	typeof useAllPostsForCategoryLazyQuery
 >;
-export type AllPostsForCategoryQueryResult = Apollo.QueryResult<
+export type AllPostsForCategoryQueryResult = ApolloReactCommon.QueryResult<
 	AllPostsForCategoryQuery,
 	AllPostsForCategoryQueryVariables
 >;
@@ -12857,24 +13083,30 @@ export const TitleDocument = gql`
  * });
  */
 export function useTitleQuery(
-	baseOptions?: Apollo.QueryHookOptions<TitleQuery, TitleQueryVariables>
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
+		TitleQuery,
+		TitleQueryVariables
+	>
 ) {
-	return Apollo.useQuery<TitleQuery, TitleQueryVariables>(
+	return ApolloReactHooks.useQuery<TitleQuery, TitleQueryVariables>(
 		TitleDocument,
 		baseOptions
 	);
 }
 export function useTitleLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<TitleQuery, TitleQueryVariables>
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
+		TitleQuery,
+		TitleQueryVariables
+	>
 ) {
-	return Apollo.useLazyQuery<TitleQuery, TitleQueryVariables>(
+	return ApolloReactHooks.useLazyQuery<TitleQuery, TitleQueryVariables>(
 		TitleDocument,
 		baseOptions
 	);
 }
 export type TitleQueryHookResult = ReturnType<typeof useTitleQuery>;
 export type TitleLazyQueryHookResult = ReturnType<typeof useTitleLazyQuery>;
-export type TitleQueryResult = Apollo.QueryResult<
+export type TitleQueryResult = ApolloReactCommon.QueryResult<
 	TitleQuery,
 	TitleQueryVariables
 >;
@@ -12915,26 +13147,26 @@ export const WpSearchQueryDocument = gql`
  * });
  */
 export function useWpSearchQueryQuery(
-	baseOptions?: Apollo.QueryHookOptions<
+	baseOptions?: ApolloReactHooks.QueryHookOptions<
 		WpSearchQueryQuery,
 		WpSearchQueryQueryVariables
 	>
 ) {
-	return Apollo.useQuery<WpSearchQueryQuery, WpSearchQueryQueryVariables>(
-		WpSearchQueryDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useQuery<
+		WpSearchQueryQuery,
+		WpSearchQueryQueryVariables
+	>(WpSearchQueryDocument, baseOptions);
 }
 export function useWpSearchQueryLazyQuery(
-	baseOptions?: Apollo.LazyQueryHookOptions<
+	baseOptions?: ApolloReactHooks.LazyQueryHookOptions<
 		WpSearchQueryQuery,
 		WpSearchQueryQueryVariables
 	>
 ) {
-	return Apollo.useLazyQuery<WpSearchQueryQuery, WpSearchQueryQueryVariables>(
-		WpSearchQueryDocument,
-		baseOptions
-	);
+	return ApolloReactHooks.useLazyQuery<
+		WpSearchQueryQuery,
+		WpSearchQueryQueryVariables
+	>(WpSearchQueryDocument, baseOptions);
 }
 export type WpSearchQueryQueryHookResult = ReturnType<
 	typeof useWpSearchQueryQuery
@@ -12942,7 +13174,7 @@ export type WpSearchQueryQueryHookResult = ReturnType<
 export type WpSearchQueryLazyQueryHookResult = ReturnType<
 	typeof useWpSearchQueryLazyQuery
 >;
-export type WpSearchQueryQueryResult = Apollo.QueryResult<
+export type WpSearchQueryQueryResult = ApolloReactCommon.QueryResult<
 	WpSearchQueryQuery,
 	WpSearchQueryQueryVariables
 >;
@@ -19697,6 +19929,286 @@ export const AuthorDocument: DocumentNode<AuthorQuery, AuthorQueryVariables> = {
 		}
 	]
 };
+export const CardCoalescenceDocument: DocumentNode<
+	CardCoalescenceQuery,
+	CardCoalescenceQueryVariables
+> = {
+	kind: 'Document',
+	definitions: [
+		{
+			kind: 'OperationDefinition',
+			operation: 'query',
+			name: { kind: 'Name', value: 'CardCoalescence' },
+			variableDefinitions: [
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'first' } },
+					type: {
+						kind: 'NonNullType',
+						type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } }
+					},
+					directives: []
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'field' } },
+					type: {
+						kind: 'NonNullType',
+						type: {
+							kind: 'NamedType',
+							name: { kind: 'Name', value: 'PostObjectsConnectionOrderbyEnum' }
+						}
+					},
+					directives: []
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'order' } },
+					type: {
+						kind: 'NonNullType',
+						type: { kind: 'NamedType', name: { kind: 'Name', value: 'OrderEnum' } }
+					},
+					directives: []
+				}
+			],
+			directives: [],
+			selectionSet: {
+				kind: 'SelectionSet',
+				selections: [
+					{
+						kind: 'Field',
+						name: { kind: 'Name', value: 'posts' },
+						arguments: [
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'first' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'first' } }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'where' },
+								value: {
+									kind: 'ObjectValue',
+									fields: [
+										{
+											kind: 'ObjectField',
+											name: { kind: 'Name', value: 'orderby' },
+											value: {
+												kind: 'ObjectValue',
+												fields: [
+													{
+														kind: 'ObjectField',
+														name: { kind: 'Name', value: 'field' },
+														value: {
+															kind: 'Variable',
+															name: { kind: 'Name', value: 'field' }
+														}
+													},
+													{
+														kind: 'ObjectField',
+														name: { kind: 'Name', value: 'order' },
+														value: {
+															kind: 'Variable',
+															name: { kind: 'Name', value: 'order' }
+														}
+													}
+												]
+											}
+										}
+									]
+								}
+							}
+						],
+						directives: [],
+						selectionSet: {
+							kind: 'SelectionSet',
+							selections: [
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'edges' },
+									arguments: [],
+									directives: [],
+									selectionSet: {
+										kind: 'SelectionSet',
+										selections: [
+											{
+												kind: 'Field',
+												name: { kind: 'Name', value: 'node' },
+												arguments: [],
+												directives: [],
+												selectionSet: {
+													kind: 'SelectionSet',
+													selections: [
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'id' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'title' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'excerpt' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'slug' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'date' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'modified' },
+															arguments: [],
+															directives: []
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'social' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'facebook' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'instagram' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'twitter' },
+																		arguments: [],
+																		directives: []
+																	},
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'website' },
+																		arguments: [],
+																		directives: []
+																	}
+																]
+															}
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'featuredImage' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'node' },
+																		arguments: [],
+																		directives: [],
+																		selectionSet: {
+																			kind: 'SelectionSet',
+																			selections: [
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'sourceUrl' },
+																					arguments: [],
+																					directives: []
+																				}
+																			]
+																		}
+																	}
+																]
+															}
+														},
+														{
+															kind: 'Field',
+															name: { kind: 'Name', value: 'author' },
+															arguments: [],
+															directives: [],
+															selectionSet: {
+																kind: 'SelectionSet',
+																selections: [
+																	{
+																		kind: 'Field',
+																		name: { kind: 'Name', value: 'node' },
+																		arguments: [],
+																		directives: [],
+																		selectionSet: {
+																			kind: 'SelectionSet',
+																			selections: [
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'name' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'firstName' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'lastName' },
+																					arguments: [],
+																					directives: []
+																				},
+																				{
+																					kind: 'Field',
+																					name: { kind: 'Name', value: 'avatar' },
+																					arguments: [],
+																					directives: [],
+																					selectionSet: {
+																						kind: 'SelectionSet',
+																						selections: [
+																							{
+																								kind: 'Field',
+																								name: { kind: 'Name', value: 'url' },
+																								arguments: [],
+																								directives: []
+																							}
+																						]
+																					}
+																				}
+																			]
+																		}
+																	}
+																]
+															}
+														}
+													]
+												}
+											}
+										]
+									}
+								}
+							]
+						}
+					}
+				]
+			}
+		}
+	]
+};
 export const CardsCoalescedDocument: DocumentNode<
 	CardsCoalescedQuery,
 	CardsCoalescedQueryVariables
@@ -21407,7 +21919,19 @@ export const GetPostBySlugDocument: DocumentNode<
 								},
 								{
 									kind: 'Field',
+									name: { kind: 'Name', value: 'id' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
 									name: { kind: 'Name', value: 'modified' },
+									arguments: [],
+									directives: []
+								},
+								{
+									kind: 'Field',
+									name: { kind: 'Name', value: 'excerpt' },
 									arguments: [],
 									directives: []
 								},

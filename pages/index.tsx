@@ -162,18 +162,9 @@ export const getStaticProps = async ({
 	order = ASC || DESC,
 	desiredCategory
 }: StaticProps) => {
-	const allPostsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo(
-		null,
-		'index: allposts'
-	);
-	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo(
-		null,
-		'index: categories'
-	);
-	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo(
-		null,
-		'index: tags'
-	);
+	const allPostsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const categoriesWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
+	const tagsWordPress: ApolloClient<NormalizedCacheObject> = initializeApollo();
 
 	const allPostsQuery: ApolloQueryResult<AllPosts> = await allPostsWordPress.query(
 		{

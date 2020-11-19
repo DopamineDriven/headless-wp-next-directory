@@ -1,4 +1,4 @@
-import Card from '@components/Card/card-unit';
+import Card from './card-unit';
 import { gql, useQuery, NetworkStatus } from '@apollo/client';
 import { AllPosts_posts_edges } from 'graphql/__generated__/AllPosts';
 import {
@@ -7,8 +7,12 @@ import {
 } from '../../types/graphql-global-types';
 
 export const ALL_POSTS_QUERY = gql`
-	query AllPosts($field: PostObjectsConnectionOrderbyEnum!, $order: OrderEnum!) {
-		posts(first: 35, where: { orderby: { field: $field, order: $order } }) {
+	query AllPosts(
+		$first: Int!
+		$field: PostObjectsConnectionOrderbyEnum!
+		$order: OrderEnum!
+	) {
+		posts(first: $first, where: { orderby: { field: $field, order: $order } }) {
 			edges {
 				node {
 					id
@@ -45,6 +49,7 @@ export const ALL_POSTS_QUERY = gql`
 `;
 
 export const allPostsQueryVars = {
+	first: 10,
 	field: PostObjectsConnectionOrderbyEnum.MODIFIED,
 	order: OrderEnum.DESC
 };
@@ -54,23 +59,26 @@ export default function PostList() {
 		ALL_POSTS_QUERY,
 		{
 			variables: allPostsQueryVars,
+			// Setting this value to true will make the component rerender when
+			// the "networkStatus" changes, so we are able to know if it is fetching
+			// more data
 			notifyOnNetworkStatusChange: true
 		}
 	);
-	const loadingMorePosts: boolean = networkStatus === NetworkStatus.fetchMore;
-	const loadMorePosts = (posts: AllPosts_posts_edges[]) => {
+	const loadingMorePosts = networkStatus === NetworkStatus.fetchMore;
+	const loadMorePosts = () => {
 		fetchMore({
 			variables: {
 				skip: posts.length
 			}
 		});
 	};
-	if (error) return <aside>{`${error}`}</aside>;
+	if (error) return <aside>{`${error} error fetching more posts`}</aside>;
 	if (loading && !loadingMorePosts) return <aside>Loading...</aside>;
-	if (networkStatus === NetworkStatus.refetch) {
-		loadMorePosts;
-		return <aside>Refetching!</aside>;
-	}
+	// if (networkStatus === NetworkStatus.refetch) {
+	// 	loadMorePosts;
+	// 	return <aside>Refetching!</aside>;
+	// }
 	const { posts } = data?.posts.nodes;
 	return (
 		<section className='content-center justify-center block mx-auto '>

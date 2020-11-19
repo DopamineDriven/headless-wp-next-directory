@@ -17,6 +17,8 @@ generates:
    - 'typed-document-node'
   config:
    withHooks: true
+   apolloReactCommonImportFrom: '@apollo/client'
+   apolloReactHooksImportFrom: '@apollo/client'
  ./graphql.schema.json:
   plugins:
    - 'introspection'
