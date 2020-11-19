@@ -5,8 +5,7 @@ import CardIcons from '@components/Card/card-icons';
 import CardExcerptFC from './card-excerpt';
 import SiteDivider from '@components/Divider/site-divider';
 import CardTitleFC from './card-title';
-import { AllPosts_posts_edges_node } from '@graphql/__generated__/AllPosts';
-import { AllPostsForCategory_categories_edges_node_posts_nodes } from '@graphql/__generated__/AllPostsForCategory';
+import { allPostsFields } from '@graphql/__generated__/allPostsFields';
 
 const Card = ({
 	author,
@@ -15,10 +14,13 @@ const Card = ({
 	modified,
 	slug,
 	social,
-	title
-}:
-	| AllPosts_posts_edges_node
-	| AllPostsForCategory_categories_edges_node_posts_nodes) => {
+	title,
+	__typename,
+	content,
+	date,
+	id,
+	categories
+}: allPostsFields) => {
 	return (
 		<Fragment>
 			<div className='block mx-auto select-none w-full'>

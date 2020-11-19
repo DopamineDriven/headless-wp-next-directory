@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 const POST_SLUGS = gql`
-	query getAllPostsWithSlug {
+	query GetAllPostsWithSlug {
 		posts(first: 10000) {
 			edges {
 				node {

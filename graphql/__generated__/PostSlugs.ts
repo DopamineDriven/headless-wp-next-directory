@@ -7,28 +7,24 @@
 // GraphQL query operation: PostSlugs
 // ====================================================
 
-export interface PostSlugs_post_featuredImage_node {
-	__typename: 'MediaItem';
-	/**
-	 * Url of the mediaItem
-	 */
-	sourceUrl: string | null;
-}
-
-export interface PostSlugs_post_featuredImage {
-	__typename: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-	/**
-	 * The nodes of the connection, without the edges
-	 */
-	node: PostSlugs_post_featuredImage_node | null;
-}
-
 export interface PostSlugs_post_author_node_avatar {
 	__typename: 'Avatar';
 	/**
 	 * URL for the gravatar image source.
 	 */
 	url: string | null;
+	/**
+	 * The size of the avatar in pixels. A value of 96 will match a 96px x 96px gravatar image.
+	 */
+	size: number | null;
+	/**
+	 * Height of the avatar image.
+	 */
+	height: number | null;
+	/**
+	 * Width of the avatar image.
+	 */
+	width: number | null;
 }
 
 export interface PostSlugs_post_author_node {
@@ -59,6 +55,22 @@ export interface PostSlugs_post_author {
 	node: PostSlugs_post_author_node | null;
 }
 
+export interface PostSlugs_post_featuredImage_node {
+	__typename: 'MediaItem';
+	/**
+	 * Url of the mediaItem
+	 */
+	sourceUrl: string | null;
+}
+
+export interface PostSlugs_post_featuredImage {
+	__typename: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+	/**
+	 * The nodes of the connection, without the edges
+	 */
+	node: PostSlugs_post_featuredImage_node | null;
+}
+
 export interface PostSlugs_post_social {
 	__typename: 'Post_Social';
 	/**
@@ -66,13 +78,13 @@ export interface PostSlugs_post_social {
 	 */
 	facebook: string | null;
 	/**
-	 * Twitter Url (optional)
-	 */
-	twitter: string | null;
-	/**
 	 * Instagram Url (optional)
 	 */
 	instagram: string | null;
+	/**
+	 * Twitter Url (optional)
+	 */
+	twitter: string | null;
 	/**
 	 * Company Website Url (optional)
 	 */
@@ -103,36 +115,24 @@ export interface PostSlugs_post_categories {
 	edges: (PostSlugs_post_categories_edges | null)[] | null;
 }
 
-export interface PostSlugs_post_tags_edges_node {
-	__typename: 'Tag';
-	/**
-	 * The human friendly name of the object.
-	 */
-	name: string | null;
-}
-
-export interface PostSlugs_post_tags_edges {
-	__typename: 'PostToTagConnectionEdge';
-	/**
-	 * The item at the end of the edge
-	 */
-	node: PostSlugs_post_tags_edges_node | null;
-}
-
-export interface PostSlugs_post_tags {
-	__typename: 'PostToTagConnection';
-	/**
-	 * Edges for the PostToTagConnection connection
-	 */
-	edges: (PostSlugs_post_tags_edges | null)[] | null;
-}
-
 export interface PostSlugs_post_revisions_edges_node_author_node_avatar {
 	__typename: 'Avatar';
 	/**
 	 * URL for the gravatar image source.
 	 */
 	url: string | null;
+	/**
+	 * The size of the avatar in pixels. A value of 96 will match a 96px x 96px gravatar image.
+	 */
+	size: number | null;
+	/**
+	 * Height of the avatar image.
+	 */
+	height: number | null;
+	/**
+	 * Width of the avatar image.
+	 */
+	width: number | null;
 }
 
 export interface PostSlugs_post_revisions_edges_node_author_node {
@@ -202,66 +202,50 @@ export interface PostSlugs_post_revisions {
 export interface PostSlugs_post {
 	__typename: 'Post';
 	/**
+	 * Connection between the NodeWithAuthor type and the User type
+	 */
+	author: PostSlugs_post_author | null;
+	/**
 	 * The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
 	 */
 	title: string | null;
 	/**
-	 * The excerpt of the post.
+	 * The content of the post.
 	 */
-	excerpt: string | null;
-	/**
-	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
-	 */
-	slug: string | null;
+	content: string | null;
 	/**
 	 * Post publishing date.
 	 */
 	date: string | null;
 	/**
-	 * The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
+	 * The excerpt of the post.
 	 */
-	modified: string | null;
+	excerpt: string | null;
 	/**
 	 * Connection between the NodeWithFeaturedImage type and the MediaItem type
 	 */
 	featuredImage: PostSlugs_post_featuredImage | null;
 	/**
-	 * Connection between the NodeWithAuthor type and the User type
+	 * The globally unique identifier of the post object.
 	 */
-	author: PostSlugs_post_author | null;
+	id: string;
+	/**
+	 * The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
+	 */
+	modified: string | null;
+	/**
+	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
+	 */
+	slug: string | null;
 	social: PostSlugs_post_social | null;
 	/**
 	 * Connection between the post type and the category type
 	 */
 	categories: PostSlugs_post_categories | null;
 	/**
-	 * Connection between the post type and the tag type
-	 */
-	tags: PostSlugs_post_tags | null;
-	/**
-	 * The content of the post.
-	 */
-	content: string | null;
-	/**
 	 * Connection between the post type and the post type
 	 */
 	revisions: PostSlugs_post_revisions | null;
-}
-
-export interface PostSlugs_posts_edges_node_featuredImage_node {
-	__typename: 'MediaItem';
-	/**
-	 * Url of the mediaItem
-	 */
-	sourceUrl: string | null;
-}
-
-export interface PostSlugs_posts_edges_node_featuredImage {
-	__typename: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
-	/**
-	 * The nodes of the connection, without the edges
-	 */
-	node: PostSlugs_posts_edges_node_featuredImage_node | null;
 }
 
 export interface PostSlugs_posts_edges_node_author_node_avatar {
@@ -270,6 +254,18 @@ export interface PostSlugs_posts_edges_node_author_node_avatar {
 	 * URL for the gravatar image source.
 	 */
 	url: string | null;
+	/**
+	 * The size of the avatar in pixels. A value of 96 will match a 96px x 96px gravatar image.
+	 */
+	size: number | null;
+	/**
+	 * Height of the avatar image.
+	 */
+	height: number | null;
+	/**
+	 * Width of the avatar image.
+	 */
+	width: number | null;
 }
 
 export interface PostSlugs_posts_edges_node_author_node {
@@ -300,6 +296,22 @@ export interface PostSlugs_posts_edges_node_author {
 	node: PostSlugs_posts_edges_node_author_node | null;
 }
 
+export interface PostSlugs_posts_edges_node_featuredImage_node {
+	__typename: 'MediaItem';
+	/**
+	 * Url of the mediaItem
+	 */
+	sourceUrl: string | null;
+}
+
+export interface PostSlugs_posts_edges_node_featuredImage {
+	__typename: 'NodeWithFeaturedImageToMediaItemConnectionEdge';
+	/**
+	 * The nodes of the connection, without the edges
+	 */
+	node: PostSlugs_posts_edges_node_featuredImage_node | null;
+}
+
 export interface PostSlugs_posts_edges_node_social {
 	__typename: 'Post_Social';
 	/**
@@ -307,13 +319,13 @@ export interface PostSlugs_posts_edges_node_social {
 	 */
 	facebook: string | null;
 	/**
-	 * Twitter Url (optional)
-	 */
-	twitter: string | null;
-	/**
 	 * Instagram Url (optional)
 	 */
 	instagram: string | null;
+	/**
+	 * Twitter Url (optional)
+	 */
+	twitter: string | null;
 	/**
 	 * Company Website Url (optional)
 	 */
@@ -344,69 +356,49 @@ export interface PostSlugs_posts_edges_node_categories {
 	edges: (PostSlugs_posts_edges_node_categories_edges | null)[] | null;
 }
 
-export interface PostSlugs_posts_edges_node_tags_edges_node {
-	__typename: 'Tag';
-	/**
-	 * The human friendly name of the object.
-	 */
-	name: string | null;
-}
-
-export interface PostSlugs_posts_edges_node_tags_edges {
-	__typename: 'PostToTagConnectionEdge';
-	/**
-	 * The item at the end of the edge
-	 */
-	node: PostSlugs_posts_edges_node_tags_edges_node | null;
-}
-
-export interface PostSlugs_posts_edges_node_tags {
-	__typename: 'PostToTagConnection';
-	/**
-	 * Edges for the PostToTagConnection connection
-	 */
-	edges: (PostSlugs_posts_edges_node_tags_edges | null)[] | null;
-}
-
 export interface PostSlugs_posts_edges_node {
 	__typename: 'Post';
+	/**
+	 * Connection between the NodeWithAuthor type and the User type
+	 */
+	author: PostSlugs_posts_edges_node_author | null;
 	/**
 	 * The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made.
 	 */
 	title: string | null;
 	/**
-	 * The excerpt of the post.
+	 * The content of the post.
 	 */
-	excerpt: string | null;
-	/**
-	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
-	 */
-	slug: string | null;
+	content: string | null;
 	/**
 	 * Post publishing date.
 	 */
 	date: string | null;
 	/**
-	 * The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
+	 * The excerpt of the post.
 	 */
-	modified: string | null;
+	excerpt: string | null;
 	/**
 	 * Connection between the NodeWithFeaturedImage type and the MediaItem type
 	 */
 	featuredImage: PostSlugs_posts_edges_node_featuredImage | null;
 	/**
-	 * Connection between the NodeWithAuthor type and the User type
+	 * The globally unique identifier of the post object.
 	 */
-	author: PostSlugs_posts_edges_node_author | null;
+	id: string;
+	/**
+	 * The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time.
+	 */
+	modified: string | null;
+	/**
+	 * The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table.
+	 */
+	slug: string | null;
 	social: PostSlugs_posts_edges_node_social | null;
 	/**
 	 * Connection between the post type and the category type
 	 */
 	categories: PostSlugs_posts_edges_node_categories | null;
-	/**
-	 * Connection between the post type and the tag type
-	 */
-	tags: PostSlugs_posts_edges_node_tags | null;
 }
 
 export interface PostSlugs_posts_edges {

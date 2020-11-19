@@ -1,74 +1,77 @@
 import { gql } from '@apollo/client';
-import { fetchAPI } from 'lib/api';
 
-const INTROSPECTION_QUERY = async (): Promise<void> => {
-	const data = await fetchAPI(
-		gql`
-			query IntrospectionQuery {
-				__schema {
-					queryType {
-						name
-					}
-					mutationType {
-						name
-					}
-					subscriptionType {
-						name
-					}
-					types {
-						...FullType
-					}
-					directives {
-						name
-						description
-						locations
-						args {
-							...InputValue
-						}
-					}
-				}
+const INTROSPECTION_QUERY = gql`
+	query IntrospectionQuery {
+		__schema {
+			queryType {
+				name
 			}
-			fragment FullType on __Type {
-				kind
+			mutationType {
+				name
+			}
+			subscriptionType {
+				name
+			}
+			types {
+				...FullType
+			}
+			directives {
 				name
 				description
-				fields(includeDeprecated: true) {
-					name
-					description
-					args {
-						...InputValue
-					}
-					type {
-						...TypeRef
-					}
-					isDeprecated
-					deprecationReason
-				}
-				inputFields {
+				locations
+				args {
 					...InputValue
 				}
-				interfaces {
-					...TypeRef
-				}
-				enumValues(includeDeprecated: true) {
-					name
-					description
-					isDeprecated
-					deprecationReason
-				}
-				possibleTypes {
-					...TypeRef
-				}
 			}
-			fragment InputValue on __InputValue {
-				name
-				description
-				type {
-					...TypeRef
-				}
-				defaultValue
+		}
+	}
+	fragment FullType on __Type {
+		kind
+		name
+		description
+		fields(includeDeprecated: true) {
+			name
+			description
+			args {
+				...InputValue
 			}
-			fragment TypeRef on __Type {
+			type {
+				...TypeRef
+			}
+			isDeprecated
+			deprecationReason
+		}
+		inputFields {
+			...InputValue
+		}
+		interfaces {
+			...TypeRef
+		}
+		enumValues(includeDeprecated: true) {
+			name
+			description
+			isDeprecated
+			deprecationReason
+		}
+		possibleTypes {
+			...TypeRef
+		}
+	}
+	fragment InputValue on __InputValue {
+		name
+		description
+		type {
+			...TypeRef
+		}
+		defaultValue
+	}
+	fragment TypeRef on __Type {
+		kind
+		name
+		ofType {
+			kind
+			name
+			ofType {
 				kind
 				name
 				ofType {
@@ -86,23 +89,14 @@ const INTROSPECTION_QUERY = async (): Promise<void> => {
 								ofType {
 									kind
 									name
-									ofType {
-										kind
-										name
-										ofType {
-											kind
-											name
-										}
-									}
 								}
 							}
 						}
 					}
 				}
 			}
-		`
-	);
-	return data;
-};
+		}
+	}
+`;
 
 export default INTROSPECTION_QUERY;

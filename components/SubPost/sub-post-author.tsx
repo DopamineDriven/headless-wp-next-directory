@@ -1,14 +1,9 @@
 import SiteDivider from '../Divider';
-import { AllPostsForCategory_categories_edges_node_posts_nodes_author } from '@graphql/__generated__/AllPostsForCategory';
-import { AllPosts_posts_edges_node_author } from '@graphql/__generated__/AllPosts';
+import { allPostsFields_author } from '@graphql/__generated__/allPostsFields';
 import { GetPostBySlug_post_author } from '@graphql/__generated__/GetPostBySlug';
 
 type AvatarProps = {
-	author:
-		| AllPosts_posts_edges_node_author
-		| GetPostBySlug_post_author
-		| AllPostsForCategory_categories_edges_node_posts_nodes_author
-		| null;
+	author: allPostsFields_author | null;
 };
 
 export default function SubPostAuthor({ author }: AvatarProps) {

@@ -1,45 +1,14 @@
 import { gql, TypedDocumentNode } from '@apollo/client';
-import POST_SLUGS from './api-post-slugs';
+import { FRAGMENT_ALL_POSTS_FIELDS } from './postInfo-fragment';
 import { GetPostBySlugQueryVariables, Scalars } from '../graphql';
 
 const GET_POST_BY_SLUG: TypedDocumentNode = gql`
 	query GetPostBySlug($slug: ID!) {
 		post(id: $slug, idType: SLUG) {
-			featuredImage {
-				node {
-					sourceUrl
-				}
-			}
-			slug
-			title
-			date
-			id
-			modified
-			excerpt
-			content
-			categories {
-				nodes {
-					name
-				}
-			}
-			social {
-				facebook
-				instagram
-				twitter
-				website
-			}
-			author {
-				node {
-					name
-					firstName
-					lastName
-					avatar {
-						url
-					}
-				}
-			}
+			...allPostsFields
 		}
 	}
+	${FRAGMENT_ALL_POSTS_FIELDS}
 `;
 
 export default GET_POST_BY_SLUG;

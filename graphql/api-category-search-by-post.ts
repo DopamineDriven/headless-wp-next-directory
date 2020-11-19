@@ -1,4 +1,5 @@
 import { gql } from '@apollo/client';
+import { FRAGMENT_ALL_POSTS_FIELDS } from './postInfo-fragment';
 
 const SEARCH_CATEGORIES_RETURN_POSTS = gql`
 	query SearchCategoriesReturnPosts(
@@ -16,38 +17,7 @@ const SEARCH_CATEGORIES_RETURN_POSTS = gql`
 					posts(where: { orderby: { field: $field, order: $order } }) {
 						edges {
 							node {
-								title
-								uri
-								social {
-									facebook
-									instagram
-									twitter
-									website
-								}
-								excerpt
-								slug
-								featuredImage {
-									node {
-										sourceUrl
-									}
-								}
-								author {
-									node {
-										name
-										firstName
-										lastName
-										avatar {
-											url
-											size
-											height
-											width
-										}
-									}
-								}
-								content
-								date
-								modified
-								id
+								...allPostsFields
 							}
 						}
 					}
@@ -55,6 +25,7 @@ const SEARCH_CATEGORIES_RETURN_POSTS = gql`
 			}
 		}
 	}
+	${FRAGMENT_ALL_POSTS_FIELDS}
 `;
 
 export default SEARCH_CATEGORIES_RETURN_POSTS;

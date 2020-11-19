@@ -99,6 +99,7 @@ export default function PostList() {
 							author={node.author}
 							slug={node.slug}
 							excerpt={node.excerpt}
+							categories={node.categories}
 						/>
 					);
 				})}

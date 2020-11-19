@@ -132,7 +132,6 @@ import {
 	NormalizedCacheObject,
 	createHttpLink
 } from '@apollo/client';
-import { categoryKeyNameForCache } from 'graphql/api-all-categories';
 import { concatPagination, Reference } from '@apollo/client/utilities';
 // import possibleTypes  from 'lib/possible-types';
 import { createWriteStream } from 'fs';
@@ -166,11 +165,10 @@ function createApolloClient(): ApolloClient<NormalizedCacheObject> {
 }
 
 export function initializeApollo(
-	initialState: any = null,
-	consoleLogName?: string
+	initialState: any = null
 ): ApolloClient<NormalizedCacheObject> {
 	console.log('initializing APOLLO......');
-	console.log(`initializing for ${consoleLogName}.....`);
+	// console.log(`initializing for ${consoleLogName}.....`);
 
 	const _apolloClient = apolloClient ?? createApolloClient();
 	if (initialState) {
@@ -186,7 +184,7 @@ export function useApollo(
 	initialState: any
 ): ApolloClient<NormalizedCacheObject> {
 	const store = useMemo<ApolloClient<NormalizedCacheObject>>(
-		() => initializeApollo(initialState, 'useApollo...'),
+		() => initializeApollo(initialState),
 		[initialState]
 	);
 	return store;
