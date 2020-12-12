@@ -40,7 +40,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "yarn tsc && pretty-quick --staged"
+			"pre-commit": "yarn tsc && pretty-quick --staged && yarn tsconfig:effective"
 		}
 	},
 	"dependencies": {

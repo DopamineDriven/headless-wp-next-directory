@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function useIsClient(): boolean {
+export default function useIsClient() {
 	const [isClient, setIsClient] = useState(false);
 
 	useEffect(() => {
